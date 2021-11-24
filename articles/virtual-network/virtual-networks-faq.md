@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 2a916c83cc3249b304648d090f739e66bb6b7dd3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3e59e95de15a34e11bba2071f5b22c722c6845a4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245585"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552125"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>FAQ sur les réseaux virtuels Azure
 
@@ -230,6 +230,18 @@ Oui. Pour plus d’informations, consultez [Présentation de la sécurité rése
 
 ### <a name="do-virtual-networks-store-customer-data"></a>Les réseaux virtuels stockent-ils des données client ?
 Non. Les réseaux virtuels ne stockent aucune donnée client. 
+
+### <a name="can-i-set-flowtimeoutinminutes-property-for-an-entire-subscription"></a>Puis-je définir la propriété [FlowTimeoutInMinutes](/powershell/module/az.network/set-azvirtualnetwork?view=azps-6.5.0) pour un abonnement entier ? 
+Non. Ce paramétrage doit être défini au niveau du réseau virtuel. Les éléments suivants peuvent aider à automatiser la définition de cette propriété pour des abonnements plus volumineux :  
+```Powershell
+$Allvnet = Get-AzVirtualNetwork
+$time = 4 #The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking. $null to disable. 
+ForEach ($vnet in $Allvnet)
+{
+    $vnet.FlowTimeoutInMinutes = $time
+    $vnet | Set-AzVirtualNetwork
+}
+```
 
 ## <a name="apis-schemas-and-tools"></a>API, schémas et outils
 

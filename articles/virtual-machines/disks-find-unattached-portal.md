@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 14ff8552b2e5244a9820f575a397ecc506f24447
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0855516610c9712d5f8db597d1de6e53f01ac546
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689453"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301302"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Trouver et supprimer les disques managés et non managés Azure non attachés - Portail Azure
 
@@ -27,12 +27,10 @@ Si vous avez des disques managés non attachés et que vous n’avez plus besoin
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
 1. Recherchez et sélectionnez **Disques**.
 
-    Le panneau **Disques** liste tous vos disques. Tout disque contenant « **-**  » dans la colonne **Propriétaire** est un disque non attaché.
+    Le panneau **Disques** liste tous vos disques.
 
-    [![Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
-
-1. Sélectionnez le disque non attaché que vous souhaitez supprimer. Le panneau du disque s’ouvre.
-1. Dans le panneau du disque, vous pouvez vérifier que l’état du disque est non attaché, puis sélectionner **Supprimer**.
+1. Sélectionnez le disque que vous souhaitez supprimer. Le panneau du disque s’ouvre.
+1. Dans le panneau du disque, vérifiez que l’état du disque est non attaché, puis sélectionner **Supprimer**.
 
     :::image type="content" source="media/disks-find-unattached-portal/delete-managed-disk-unattached.png" alt-text="Capture d’écran d’un panneau de disque managé individuel. Ce panneau indique « non attaché » dans l’état du disque s’il n’est pas attaché. Vous pouvez supprimer ce disque si vous n’avez plus besoin de conserver ses données":::
 

@@ -1,26 +1,26 @@
 ---
-title: Créer un rapport Power BI depuis des données Azure Sentinel
-description: Découvrez comment créer un rapport Power BI à l’aide d’une requête exportée à partir d’Azure Sentinel Log Analytics. Partagez votre rapport avec d’autres personnes dans le service Power BI et un canal Teams.
+title: Créer un rapport Power BI à partir de données Microsoft Sentinel
+description: Découvrez comment créer un rapport Power BI à l’aide d’une requête exportée à partir de Microsoft Sentinel Log Analytics. Partagez votre rapport avec d’autres personnes dans le service Power BI et un canal Teams.
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 558d6d979321148923f8a10bc2f92bb13eedd746
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cd6c6de1fc1a83cecdf0ea96e912f989bdf6b904
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023041"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521317"
 ---
-# <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>Tutoriel : Créer un rapport Power BI depuis des données Azure Sentinel
+# <a name="tutorial-create-a-power-bi-report-from-microsoft-sentinel-data"></a>Tutoriel : Créer un rapport Power BI à partir de données Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Power BI](https://powerbi.microsoft.com/) est une plateforme de création de rapports et d’analyse qui transforme les données en visualisations interactives, cohérentes et immersives. Power BI vous permet de vous connecter facilement à des sources de données, de visualiser et de découvrir des relations et de partager des insights avec qui vous voulez.
 
-Vous pouvez baser des rapports Power BI sur des données d’espaces de travail Azure Sentinel Log Analytics et partager ces rapports avec des personnes qui n’ont pas accès à Azure Sentinel. Par exemple, vous pouvez partager des informations sur les tentatives de connexion ayant échoué avec les propriétaires d’applications, sans leur octroyer un accès à Azure Sentinel. Les visualisations Power BI peuvent fournir les données en un clin d’œil.
+Vous pouvez baser des rapports Power BI sur des données d’espaces de travail Microsoft Sentinel Log Analytics et partager ces rapports avec des personnes qui n’ont pas accès à Microsoft Sentinel. Par exemple, vous pouvez partager des informations sur les tentatives de connexion ayant échoué avec les propriétaires d’applications, sans leur octroyer un accès à Microsoft Sentinel. Les visualisations Power BI peuvent fournir les données en un clin d’œil.
 
 Dans ce tutoriel, vous allez :
 
@@ -30,24 +30,24 @@ Dans ce tutoriel, vous allez :
 > * Publiez le rapport sur le service Power BI et partagez-le avec d’autres utilisateurs.
 > * Ajoutez le rapport à un canal Teams.
 
-Les personnes auxquelles vous avez accordé l’accès dans le service Power BI et les membres du canal Teams peuvent voir le rapport sans avoir besoin d’autorisations Azure Sentinel.
+Les personnes auxquelles vous avez accordé l’accès dans le service Power BI et les membres du canal Teams peuvent voir le rapport sans avoir besoin d’autorisations Microsoft Sentinel.
 
 > [!NOTE]
-> Ce tutoriel fournit une procédure basée sur un scénario pour répondre à une demande importante des clients : l’affichage des rapports d’analyse dans PowerBI pour vos données Azure Sentinel. Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md) et [Visualiser les données collectées](get-visibility.md).
+> Ce tutoriel fournit une procédure basée sur un scénario pour répondre à une demande importante des clients : l’affichage des rapports d’analyse dans PowerBI pour vos données Microsoft Sentinel. Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md) et [Visualiser les données collectées](get-visibility.md).
 >
 ## <a name="prerequisites"></a>Prérequis
 
 Pour suivre ce didacticiel, vous avez besoin des éléments suivants :
 
-- Au minimum, accès en lecture à un espace de travail Azure Sentinel Log Analytics qui surveille les tentatives de connexion.
+- Au minimum, accès en lecture à un espace de travail Microsoft Sentinel Log Analytics qui surveille les tentatives de connexion.
 - Compte Power BI disposant d’un accès en lecture à l’espace de travail Log Analytics.
 - [Power BI Desktop installé à partir du Microsoft Store](https://aka.ms/pbidesktopstore).
 
 ## <a name="export-a-query-from-log-analytics"></a>Exporter une requête à partir de Log Analytics
 
-Créez, exécutez et exportez une requête Kusto dans votre espace de travail Azure Sentinel Log Analytics. 
+Créez, exécutez et exportez une requête Kusto dans votre espace de travail Microsoft Sentinel Log Analytics. 
 
-1. Pour créer une requête simple, dans votre espace de travail Azure Sentinel Log Analytics, sélectionnez **Journaux**. Dans l’éditeur de requête, sous **Nouvelle requête 1**, entrez la requête Kusto suivante :
+1. Pour créer une requête simple, dans votre espace de travail Microsoft Sentinel Log Analytics, sélectionnez **Journaux**. Dans l’éditeur de requête, sous **Nouvelle requête 1**, entrez la requête Kusto suivante :
    
    ```kusto
    SigninLogs
@@ -57,7 +57,7 @@ Créez, exécutez et exportez une requête Kusto dans votre espace de travail Az
    | sort by Failed
    ```
    
-   Vous pouvez également utiliser la requête Kusto Azure Sentinel Log Analytics de votre choix.
+   Vous pouvez également utiliser la requête Kusto Microsoft Sentinel Log Analytics de votre choix.
    
 1. Sélectionnez **Exécuter** pour exécuter la requête et générer des résultats.
    
@@ -145,7 +145,7 @@ Vous pouvez également afficher le pourcentage d’échecs de tentatives de conn
    
 ### <a name="refresh-the-data-and-save-the-report"></a>Actualiser les données et enregistrer le rapport
 
-1. Sélectionnez **Actualiser** pour récupérer les données les plus récentes d’Azure Sentinel.
+1. Sélectionnez **Actualiser** pour récupérer les données les plus récentes de Microsoft Sentinel.
    
    :::image type="content" source="media/powerbi/refresh.png" alt-text="Capture d’écran montrant le bouton Actualiser dans le ruban.":::
    
@@ -155,7 +155,7 @@ Vous pouvez également afficher le pourcentage d’échecs de tentatives de conn
 
 Pour créer un espace de travail Power BI pour le partage du rapport :
 
-1. Connectez-vous à [powerbi.com](https://powerbi.com) avec le compte utilisé pour Power BI Desktop et l’accès en lecture Azure Sentinel.
+1. Connectez-vous à [powerbi.com](https://powerbi.com) avec le compte utilisé pour Power BI Desktop et l’accès en lecture à Microsoft Sentinel.
    
 1. Sous **Espaces de travail**, sélectionnez **Créer un espace de travail**. Nommez l’espace de travail *Rapports de gestion*, puis sélectionnez **Enregistrer**.
    

@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: efcff17cd867deb885e8591db48dd23424a445a2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3c21d89329db89b73a0e37046062eae876084e2b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452430"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399765"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Responsabilités du client pour l’exécution d’Azure Spring Cloud dans un réseau virtuel
 
 Cet article comprend les spécifications relatives à l’utilisation d’Azure Spring Cloud dans un réseau virtuel.
 
-Quand Azure Spring Cloud est déployé dans votre réseau virtuel, il présente des dépendances sortantes sur des services extérieurs au réseau virtuel. Pour la gestion et à des fins opérationnelles, Azure Spring Cloud doit accéder à certains ports et noms de domaine complet (FQDN). Ces points de terminaison sont nécessaires pour communiquer avec le plan de gestion d’Azure Spring Cloud et pour télécharger et installer les principaux composants du cluster Kubernetes et les mises à jour de sécurité.
+Quand Azure Spring Cloud est déployé dans votre réseau virtuel, il présente des dépendances sortantes sur des services extérieurs au réseau virtuel. Pour la gestion et à des fins opérationnelles, Azure Spring Cloud doit accéder à certains ports et noms de domaine complet (FQDN). Azure Spring Cloud a besoin de ces points de terminaison pour communiquer avec le plan de gestion et pour télécharger et installer les principaux composants du cluster Kubernetes et les mises à jour de sécurité.
 
 Par défaut, Azure Spring Cloud dispose d’un accès Internet sortant (sortie) illimité. Ce niveau d’accès réseau permet aux applications que vous exécutez d’accéder aux ressources externes en fonction des besoins. Si vous souhaitez restreindre le trafic de sortie, un nombre limité de ports et d’adresses doit être accessible pour les tâches de maintenance. La solution la plus simple pour sécuriser les adresses sortantes consiste à utiliser un dispositif de pare-feu permettant de contrôler le trafic sortant en fonction des noms de domaine. Le Pare-feu Azure, par exemple, peut restreindre le trafic HTTP et HTTPS sortant en fonction du nom FQDN de la destination. Vous pouvez également configurer les règles de pare-feu et de sécurité de votre choix pour autoriser ces ports et adresses requis.
 
@@ -64,7 +64,7 @@ Pare-feu Azure fournit la balise de nom de domaine complet (FQDN) **AzureKuberne
 | *crl.microsoft.com*<sup>1</sup>   | HTTPS:80  | Chemins de chaîne de certificats Microsoft requis.                  |
 | *crl3.digicert.com*<sup>1</sup>   | HTTPS:80  | Chemins de chaîne de certificats TLS/SSL tiers.                 |
 
-<sup>1</sup> Notez que ces FQDN (noms de domaine complets) ne sont pas inclus dans l’étiquette FQDN.
+<sup>1</sup> Notez que ces noms de domaine complets (FQDN) ne sont pas inclus dans l’étiquette FQDN.
 
 
 ## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>Nom de domaine complet facultatif d’Azure Spring Cloud pour la gestion des performances des applications tierces
@@ -82,4 +82,4 @@ Pare-feu Azure fournit la balise de nom de domaine complet (FQDN) **AzureKuberne
 ## <a name="see-also"></a>Voir aussi
 
 * [Accéder à votre application sur un réseau privé](access-app-virtual-network.md)
-* [Exposer des applications à l’aide d’Application Gateway et de Pare-feu Azure](expose-apps-gateway-azure-firewall.md)
+* [Exposer des applications à Internet avec Application Gateway](expose-apps-gateway.md)

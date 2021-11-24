@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 10/21/2021
-ms.openlocfilehash: 119405dc4db6d31aaf2ac5b704af7798ce41837a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/09/2021
+ms.openlocfilehash: d71d986ca975b9617af9b966c8795cd30d7db01d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564401"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134933"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>Flux de trafic réseau lors de l’utilisation d’un espace de travail sécurisé
 
@@ -61,6 +61,16 @@ Cet article considère la configuration suivante :
 | [Utiliser Azure Kubernetes Service](#scenario-use-azure-kubernetes-service) | N/D | Pour plus d’informations sur la configuration sortante pour AKS, consultez [Comment déployer sur Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster). | Configurez l’équilibreur de charge interne. Pour plus d’informations, consultez [Guide pratique pour déployer sur Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster). | 
 | [Utiliser des images Docker gérées par Azure Machine Learning](#scenario-use-docker-images-managed-by-azure-ml) | N/D | <ul><li>Registre de conteneurs Microsoft</li><li>Registre de conteneurs global `viennaglobal.azurecr.io`</li></ul> | Si Azure Container Registry pour votre espace de travail se trouve derrière le réseau virtuel, configurez l’espace de travail pour utiliser un cluster de calcul pour générer des images. Pour plus d’informations, consultez [Comment sécuriser un espace de travail dans un réseau virtuel](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr). | 
 
+> [!IMPORTANT]
+> Azure Machine Learning utilise plusieurs comptes de stockage. Chacun d’eux stocke des données différentes et a un objectif différent :
+>
+> * __Votre stockage__ : le ou les comptes Stockage Azure de votre abonnement Azure sont utilisés pour stocker vos données et artefacts tels que les modèles, les données d’apprentissage, les journaux de formation et les scripts Python. Par exemple, le compte de stockage _par défaut_ de votre espace de travail se trouve dans votre abonnement. L’instance de calcul Azure Machine Learning et les clusters de calcul accèdent aux données de __fichier__ et d’__objet blob__ dans ce stockage via les ports 445 (SMB) et 443 (HTTPS).
+> 
+>    Lors de l’utilisation d’une instance de calcul ou d’un cluster de calcul, votre compte de stockage est monté en tant que partage de fichiers à l’aide du protocole SMB. C’est ainsi que l’instance de calcul/cluster accède à vos données.
+>
+> * __Stockage Microsoft__ : l’instance de calcul et les clusters de calcul Azure Machine Learning s’appuient sur Azure Batch et sur l’accès au stockage situé dans un abonnement Microsoft. Ce stockage est utilisé uniquement pour la gestion du cluster ou de l’instance de calcul. Aucune de vos données n’est stockée ici. L’instance de calcul et le cluster de calcul accèdent aux données de l’__objet BLOB__, de la __table__ et de la __file d’attente__ dans ce stockage, à l’aide du port 443 (HTTPS).
+>
+> Machine Learning stocke également les métadonnées dans une instance d’Azure Cosmos DB. Par défaut, cette instance est hébergée dans un abonnement Microsoft et gérée par Microsoft. Vous pouvez éventuellement utiliser une instance de Azure Cosmos DB dans votre abonnement Azure. Pour plus d’informations, consultez [Chiffrement de données avec Azure Machine Learning](concept-data-encryption.md#azure-cosmos-db).
 
 ## <a name="scenario-access-workspace-from-studio"></a>Scénario : Accéder à l’espace de travail à partir de Studio
 

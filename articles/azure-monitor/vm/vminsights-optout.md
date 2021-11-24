@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 8edb225316dfd12acff5c1f6a036246d68d746c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122566114"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306432"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Désactiver l’analyse de vos machines virtuelles dans VM Insights
 
@@ -51,7 +51,7 @@ Si votre espace de travail Log Analytics a encore besoin de prendre en charge la
 >Ne supprimez pas l’agent Log Analytics si : 
 >
 > * Azure Automation gère la machine virtuelle pour orchestrer les processus ou pour gérer la configuration ou les mises à jour. 
-> * Azure Security Center gère la machine virtuelle pour la sécurité et la détection des menaces. 
+> * Microsoft Defender pour le cloud gère la machine virtuelle pour la sécurité et la détection des menaces. 
 >
 > Si vous supprimez l’agent Log Analytics, vous empêchez ces services et ces solutions de gérer de façon proactive votre machine virtuelle. 
 

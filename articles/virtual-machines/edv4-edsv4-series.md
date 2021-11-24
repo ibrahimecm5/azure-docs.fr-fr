@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: f4138c2b2835ede93e0a33693f49ed75ee6bb499
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3f1f1cfa0feb13b03abd5129098ab20c7b755b76
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449086"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401019"
 ---
 # <a name="edv4-and-edsv4-series"></a>Séries Edv4 et Edsv4
 
@@ -34,6 +34,7 @@ Les tailles de la série Edv4 s’exécutent sur les processeurs Intel &reg;​
 [Prise en charge de la génération de machine virtuelle](generation-2.md) : Générations 1 et 2<br>
 [Mise en réseau accélérée](../virtual-network/create-vm-accelerated-networking-cli.md) : Pris en charge<sup>1</sup> <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire maximal : IOPS/Mbits/s<sup>*</sup>  | Nombre max de cartes réseau|Bande passante réseau maximale (Mbits/s) |
@@ -62,6 +63,7 @@ Les tailles de la série Edsv4 s’exécutent sur les processeurs Intel &reg;�
 [Prise en charge de la génération de machine virtuelle](generation-2.md) : Générations 1 et 2<br>
 [Performances réseau accélérées](../virtual-network/create-vm-accelerated-networking-cli.md) : Pris en charge <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire maximal : IOPS/Mbits/s<sup>*</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s | Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> | Nombre max de cartes réseau|Bande passante réseau maximale (Mbits/s) |

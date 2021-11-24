@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: cde36aaa5946519533d4e68eb31da48af08be689
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3ab6ce9f955829cb3faf774c5b85c205f5841474
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546289"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551346"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Configurer un réseau Azure CNI dans AKS (Azure Kubernetes Service)
 
@@ -209,7 +209,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Lorsque vous utilisez cette fonctionnalité, la planification est bien plus simple. Étant donné que les nœuds et les pods se mettent à l’échelle indépendamment, leurs espaces d’adressage peuvent également être planifiés séparément. Étant donné que les sous-réseaux de pod peuvent être configurés pour la granularité d’un pool de nœuds, les clients peuvent toujours ajouter un sous-réseau quand ils ajoutent un pool de nœuds. Les pods système dans un cluster/pool de nœuds recevant également des adresses IP du sous-réseau de pod, ce comportement doit être pris en compte.
 
-La planification des adresses IP pour les services K8S et le pont Docker reste inchangée.
+La planification des adresses IP pour les services Kubernetes et le pont Docker reste inchangée.
 
 ### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Nombre maximal de pods par nœud dans un cluster avec allocation dynamique d’adresses IP et prise en charge de sous-réseau améliorée
 

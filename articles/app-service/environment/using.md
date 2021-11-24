@@ -1,18 +1,16 @@
 ---
 title: Utiliser un environnement App Service
 description: Découvrez comment utiliser votre App Service Environment pour héberger des applications isolées.
-author: ccompy
-ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
+author: madsd
 ms.topic: article
 ms.date: 07/06/2021
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 01d554c5b34796b54fc67877149a116500c41823
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.author: madsd
+ms.openlocfilehash: 6a01e1c746579ea7d51a0b30fd554d2e2e6bb66b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216748"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519633"
 ---
 # <a name="using-an-app-service-environment"></a>Utilisation d’un environnement App Service
 
@@ -35,13 +33,13 @@ Pour créer une application dans un ASE :
 1. Sélectionnez **Créer une ressource** > **Web + Mobile** > **Application web**.
 1. Sélectionnez un abonnement.
 1. Entrez un nom pour un nouveau groupe de ressources ou sélectionnez **Use existing** (Utiliser existant) et choisissez-en un dans la liste déroulante.
-1. Entrez un nom pour l’application. Si vous avez déjà sélectionné un plan App Service dans un environnement ASE, le nom de domaine pour l’application reflète le nom de domaine de l’environnement ASE : ![Créer une application dans un ASE][1]
+1. Entrez un nom pour l’application. Si vous avez déjà sélectionné un plan App Service dans un environnement ASE, le nom de domaine pour l’application reflète le nom de domaine de l’environnement ASE
 1. Sélectionnez vos Type de publication, Pile et Système d’exploitation.
-1. Sélectionnez une région. Vous devez sélectionner ici un App Service Environment v3 préexistant.  Vous ne pouvez pas créer d’ASEv3 pendant la création d’une application 
-1. Sélectionnez un plan App Service ou créez-en un. Si vous créez une application, sélectionnez la taille souhaitée pour votre plan App Service. La seule référence SKU que vous pouvez sélectionner pour votre application est une référence (SKU) de tarification Isolé v2. La création d’un plan App Service prend généralement moins de 20 minutes. 
+1. Sélectionnez une région. Vous devez sélectionner ici un App Service Environment v3 préexistant. Vous ne pouvez pas créer d’ASEv3 pendant la création d’une application : ![créer une application dans un environnement ASE][1]
+1. Sélectionnez un plan App Service ou créez-en un. Si vous créez une application, sélectionnez la taille souhaitée pour votre plan App Service. La seule référence SKU que vous pouvez sélectionner pour votre application est une référence (SKU) de tarification Isolé v2. La création d’un plan App Service prend généralement moins de 20 minutes.
 ![Niveaux tarifaires Isolé v2][2]
-1. Sélectionnez **Suivant : Supervision** Si vous souhaitez activer Application Insights avec votre application, vous pouvez le faire ici pendant le flux de création. 
-1.  Sélectionnez **Suivant : Balises** Ajoutez les balises de votre choix à l’application.  
+1. Sélectionnez **Suivant : Supervision** Si vous souhaitez activer Application Insights avec votre application, vous pouvez le faire ici pendant le flux de création.
+1.  Sélectionnez **Suivant : Balises** Ajoutez les balises de votre choix à l’application.
 1. Sélectionnez **Vérifier + créer**, vérifiez si les informations sont correctes, puis sélectionnez **Créer**.
 
 Les applications Windows et Linux peuvent se trouver dans le même environnement ASE, mais ils ne peuvent pas se trouver dans le même plan App Service.
@@ -50,9 +48,9 @@ Les applications Windows et Linux peuvent se trouver dans le même environnement
 
 Chaque application App Service s’exécute dans un plan App Service. Les environnements App Service contiennent les plans App Service, et les plans App Service contiennent les applications. Lorsque vous mettez à l’échelle une application, vous mettez à l’échelle v le plan App Service, et toutes les applications contenues dans ce même plan.
 
-Lorsque vous mettez à l’échelle un plan App Service, l’infrastructure nécessaire est automatiquement ajoutée. Il existe un délai pour les opérations de mise à l’échelle lorsque l’infrastructure est ajoutée. Lorsque vous mettez à l’échelle un plan App Service, toute autre opération de mise à l’échelle demandée du même système d’exploitation et de la même taille attend que la première opération soit terminée. Une fois l’opération de mise à l’échelle bloquante terminée, toutes les demandes en file d’attente sont traitées en même temps. Une opération de mise à l’échelle sur une taille et un système d’exploitation ne bloque pas les opérations sur d’autres combinaisons de taille et de système d’exploitation. Par exemple, si vous avez mis à l’échelle un plan App Service Windows I2v2, toutes les autres demandes de mise à l’échelle de Windows I2v2 dans cet ASE sont mises en file d’attente jusqu’à ce que l’opération se termine. La mise à l’échelle prend généralement moins de 20 minutes. 
+Lorsque vous mettez à l’échelle un plan App Service, l’infrastructure nécessaire est automatiquement ajoutée. Il existe un délai pour les opérations de mise à l’échelle lorsque l’infrastructure est ajoutée. Lorsque vous mettez à l’échelle un plan App Service et que vous disposez d’une autre opération de mise à l’échelle du même système d’exploitation et de la même taille, il peut y avoir quelques minutes d’attente, jusqu’à ce que la mise à l’échelle demandée démarre. Une opération de mise à l’échelle sur une taille et un système d’exploitation n’impacte pas les opérations sur d’autres combinaisons de taille et de système d’exploitation. Par exemple, si vous mettez à l’échelle un plan App Service Windows I2v2, toutes les autres demandes de mise à l’échelle Windows I2v2 peuvent être légèrement retardées, mais une opération de mise à l’échelle vers un plan de App Service Windows I3v2 démarrera immédiatement. La mise à l’échelle prend généralement moins de 20 minutes.
 
-Dans l’App Service mutualisé, la mise à l’échelle est immédiate, car il existe un pool de ressources instantanément disponible pour la prendre en charge. Dans un environnement ASE, il n’existe pas de mémoire tampon et les ressources sont allouées en fonction des besoins.
+Dans l’App Service mutualisé, la mise à l’échelle est immédiate, car il existe un pool de ressources *partagées* instantanément disponible pour la prendre en charge. ASE est un service à locataire unique, il n’y a donc pas de mémoire tampon partagée, et les ressources sont allouées en fonction des besoins.
 
 ## <a name="app-access"></a>Accès de l’application
 
@@ -184,16 +182,6 @@ Pour supprimer un environnement ASE :
 ![Suppression de ASE][3]
 1. Sélectionnez **OK**.
 
-## <a name="pricing"></a>Tarifs 
-
-Avec ASEv3, il existe un modèle de tarification différent selon le type de déploiement d’ASE. Les trois modèles de tarification sont les suivants : 
-
-- **ASEv3** : si l’environnement ASE est vide, les coûts correspondent à un ASP avec une instance de Windows I1v2. La facturation d’une instance n’est pas un coût supplémentaire, mais elle est appliquée uniquement si ASE est vide.
-- **Zone de disponibilité ASEv3** : il existe des frais minimum pour neuf instances Windows I1v2. Aucun frais n’est facturé pour la prise en charge des zones de disponibilité si vous disposez d’au moins neuf instances de plan App Service. Tous les plans App Service dans un AZ ASEv3 ont également un nombre d’instances minimal de 3 pour s’assurer qu’il existe une instance dans chaque zone de disponibilité. À mesure du scale-out des plans, ceux-ci sont répartis entre les zones de disponibilité. 
-- **Hôte dédié ASEv3** : avec un déploiement d’hôte dédié, deux hôtes dédiés vous sont facturés, conformément à notre tarification à la création de ASEv3, puis un petit pourcentage du tarif Isolé v2 par cœur est facturé quand vous effectuez la mise à l’échelle.
-
-La tarification des instances réservées Isolé v2 est disponible et est décrite dans [Comment les remises de réservation s’appliquent à Azure App Service][reservedinstances]. Des informations sur la tarification, notamment sur la tarification des instances réservées, sont disponibles sous [Tarification d’App Service][pricing] sous **Plan Isolé v2**. 
-
 <!--Image references-->
 
 [1]: ./media/using/using-appcreate.png
@@ -220,5 +208,3 @@ La tarification des instances réservées Isolé v2 est disponible et est décri
 [ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
-[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md#how-reservation-discounts-apply-to-isolated-v2-instances
-[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

@@ -1,23 +1,23 @@
 ---
-title: Monter un partage de fichiers Azure NFS (préversion) - Azure Files
+title: Monter un partage de fichiers Azure NFS - Azure Files
 description: Apprenez à monter un partage NFS (Network File System).
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 04d3174900ce5aa788f3793b39fa4d6c06222001
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: de0a4ef2530971ae2261f6a3e5ab2f1ef8acdc31
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036786"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523768"
 ---
-# <a name="how-to-mount-an-nfs-file-share-preview"></a>Comment monter un partage de fichiers NFS (préversion)
+# <a name="how-to-mount-an-nfs-file-share"></a>Monter un partage de fichiers NFS
 
-[Azure Files](storage-files-introduction.md) est le système de fichiers cloud facile à utiliser de Microsoft. Les partages de fichiers Azure peuvent être montés dans des distributions Linux à l'aide du protocole SMB (Server Message Block) ou du protocole NFS (Network File System) (préversion). Cet article est consacré au montage avec NFS. Pour en savoir plus sur le montage avec SMB, consultez [Utiliser Azure Files avec Linux](storage-how-to-use-files-linux.md). Pour plus d'informations sur chacun des protocoles disponibles, consultez [Protocoles de partage de fichiers Azure](storage-files-planning.md#available-protocols).
+[Azure Files](storage-files-introduction.md) est le système de fichiers cloud facile à utiliser de Microsoft. Les partages de fichiers Azure peuvent être montés dans des distributions Linux à l'aide du protocole SMB (Server Message Block) ou du protocole NFS (Network File System). Cet article est consacré au montage avec NFS. Pour en savoir plus sur le montage avec SMB, consultez [Utiliser Azure Files avec Linux](storage-how-to-use-files-linux.md). Pour plus d'informations sur chacun des protocoles disponibles, consultez [Protocoles de partage de fichiers Azure](storage-files-planning.md#available-protocols).
 
 ## <a name="limitations"></a>Limites
 
@@ -30,10 +30,10 @@ ms.locfileid: "131036786"
 ## <a name="prerequisites"></a>Prérequis
 
 - [Créez un partage NFS](storage-files-how-to-create-nfs-shares.md).
+- Ouvrez le port 2049 sur tout client sur lequel vous souhaitez monter votre partage NFS.
 
     > [!IMPORTANT]
     > Les partages NFS ne sont accessibles qu'à partir de réseaux approuvés. Les connexions à votre partage NFS doivent provenir de l'une des sources suivantes :
-
 - Utilisez l'une des solutions de mise en réseau suivantes :
     - [Créez un point de terminaison privé](storage-files-networking-endpoints.md#create-a-private-endpoint) (recommandé) ou [restreignez l'accès à votre point de terminaison public](storage-files-networking-endpoints.md#restrict-public-endpoint-access).
     - [Configurer un VPN point à site (P2S) sous Linux pour une utilisation avec Azure Files](storage-files-configure-p2s-vpn-linux.md).

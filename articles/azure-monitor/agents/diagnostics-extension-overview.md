@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d83b8080d275417f6ad58456ffa732f5118f0995
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 00a3f7f43a533b66f6671b260290811667f38107
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012356"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325540"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Vue d’ensemble de l’extension Diagnostics Azure
 L’extension Diagnostics Azure est un [agent présent dans Azure Monitor](../agents/agents-overview.md) qui collecte des données de supervision dans le système d’exploitation invité des ressources de calcul Azure, notamment des machines virtuelles. Cet article fournit une vue d’ensemble de l’extension Diagnostics Azure, notamment des fonctionnalités spécifiques qu’elle prend en charge ainsi que des options d’installation et de configuration. 
 
 > [!NOTE]
-> L’extension Diagnostics Azure est l’un des agents disponibles pour collecter des données de supervision à partir du système d’exploitation invité des ressources de calcul. Pour obtenir une description des différents agents et des conseils sur la sélection des agents appropriés en fonction de vos besoins, consultez [Vue d’ensemble des agents Azure Monitor](../agents/agents-overview.md).
+> L’extension Diagnostics Azure est l’un des agents disponibles pour collecter des données de supervision à partir du système d’exploitation invité des ressources de calcul. Pour obtenir une description des différents agents et une aide sur la sélection des agents appropriés en fonction de vos besoins, consultez [Vue d’ensemble des agents Azure Monitor](../agents/agents-overview.md).
 
 ## <a name="primary-scenarios"></a>Principaux scénarios
 Les principaux scénarios traités par l’extension Diagnostics sont les suivants :
@@ -33,7 +33,7 @@ Les principales différences à prendre en compte sont les suivantes :
 
 - L’extension Diagnostics Azure peut être utilisée uniquement avec des machines virtuelles Azure. L’agent Log Analytics peut être utilisé avec des machines virtuelles dans Azure, dans d’autres clouds et en local.
 - L’extension Diagnostics Azure envoie des données à Stockage Azure, à [Azure Monitor Metrics](../essentials/data-platform-metrics.md) (Windows uniquement) et à Event Hubs. L’agent Log Analytics collecte des données dans des [journaux d’activité Azure Monitor](../logs/data-platform-logs.md).
-- L’agent Log Analytics est requis pour les [solutions](../monitor-reference.md#insights-and-curated-visualizations), [VM Insights](../vm/vminsights-overview.md) et d’autres services tels qu’[Azure Security Center](../../security-center/index.yml).
+- L’agent Log Analytics est requis pour les [solutions](../monitor-reference.md#insights-and-curated-visualizations), [VM Insights](../vm/vminsights-overview.md) et d’autres services tels que [Microsoft Defender pour le cloud](../../security-center/index.yml).
 
 ## <a name="costs"></a>Coûts
 Il n’y a aucun coût lié à l’extension Diagnostics Azure, mais vous pouvez être facturé pour les données ingérées. Consultez les [tarifs Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) appliqués pour la destination dans laquelle vous collectez les données.

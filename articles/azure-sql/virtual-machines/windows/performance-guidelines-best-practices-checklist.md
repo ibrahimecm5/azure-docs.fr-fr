@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: pamela
 ms.custom: contperf-fy21q3
 ms.reviewer: mathoma
-ms.openlocfilehash: 1dd05395d921e2a75a56db353e0b0c740b094e49
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 54830fd4052e6121551d6246d6b325e6036b4800
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164509"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551384"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>Liste de vérification : Meilleures pratiques relatives à SQL Server sur les machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,6 +29,8 @@ ms.locfileid: "130164509"
 Cet article fournit une check-list rapide sous la forme d’une série de bonnes pratiques et de recommandations pour optimiser les performances de votre serveur SQL Server dans une instance de SQL Server sur les machines virtuelles Azure. 
 
 Pour des détails complets, consultez les autres articles de cette série : [Liste de vérification](performance-guidelines-best-practices-checklist.md), [Taille de machine virtuelle](performance-guidelines-best-practices-vm-size.md), [Stockage](performance-guidelines-best-practices-storage.md), [Sécurité](security-considerations-best-practices.md), [Configuration HADR](hadr-cluster-best-practices.md) et [Collecter une ligne de base](performance-guidelines-best-practices-collect-baseline.md). 
+
+Activez la fonctionnalité [SQL Assessment pour SQL Server sur des machines virtuelles Azure](sql-assessment-for-sql-vm.md). Votre serveur SQL sera évalué par rapport aux meilleures pratiques connues et les résultats seront affichés sur la [page de gestion des machines virtuelles SQL](manage-sql-vm-portal.md) du portail Azure.
 
 
 ## <a name="overview"></a>Vue d’ensemble
@@ -112,8 +114,8 @@ Voici une liste de vérification rapide des meilleures pratiques pour obtenir un
 - S’inscrire auprès de l’[extension d’agent SQL IaaS](sql-agent-extension-manually-register-single-vm.md) pour déverrouiller un certain nombre d’[avantages liés aux fonctionnalités](sql-server-iaas-agent-extension-automate-management.md#feature-benefits).
 - Tirer parti de la meilleure [stratégie de sauvegarde et de restauration](backup-restore.md#decision-matrix) pour votre charge de travail SQL Server.
 - S’assurer que les [performances réseau accélérées sont activées](../../../virtual-network/create-vm-accelerated-networking-cli.md#portal-creation) sur la machine virtuelle.
-- Tirer parti d’[Azure Security Center](../../../security-center/index.yml) pour améliorer la posture de sécurité globale de votre déploiement.
-- Tirer parti d’[Azure Defender](../../../security-center/azure-defender.md), intégré à [Azure Security Center](https://azure.microsoft.com/services/security-center/), pour une [couverture spécifique des machines virtuelles SQL Server](../../../security-center/defender-for-sql-introduction.md), notamment des évaluations des vulnérabilités et un accès juste-à-temps, ce qui réduit la surface d’attaque tout en permettant aux utilisateurs légitimes d’accéder aux machines virtuelles, le cas échéant. Pour plus d’informations, consultez [Évaluation des vulnérabilités](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md), [Activer l’évaluation des vulnérabilités pour les machines virtuelles SQL Server](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md) et [Accès juste-à-temps](../../../security-center/just-in-time-explained.md). 
+- Tirer parti de [Microsoft Defender pour le cloud](../../../security-center/index.yml) pour améliorer la posture de sécurité globale de votre déploiement de machines virtuelles.
+- Tirer parti de [Microsoft Defender pour le cloud](../../../security-center/azure-defender.md), intégré à [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/), pour une [couverture spécifique des machines virtuelles SQL Server](../../../security-center/defender-for-sql-introduction.md), notamment des évaluations des vulnérabilités et un accès juste-à-temps, ce qui réduit la surface d’attaque tout en permettant aux utilisateurs légitimes d’accéder aux machines virtuelles, le cas échéant. Pour plus d’informations, consultez [Évaluation des vulnérabilités](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md), [Activer l’évaluation des vulnérabilités pour les machines virtuelles SQL Server](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md) et [Accès juste-à-temps](../../../security-center/just-in-time-explained.md). 
 - Tirer parti d’[Azure Advisor](../../../advisor/advisor-overview.md) pour répondre aux recommandations en matière de [performances](../../../advisor/advisor-performance-recommendations.md), de [coûts](../../../advisor/advisor-cost-recommendations.md), de [fiabilité](../../../advisor/advisor-high-availability-recommendations.md), d’[excellence opérationnelle](../../../advisor/advisor-operational-excellence-recommendations.md) et de[ sécurité](../../../advisor/advisor-security-recommendations.md).
 - Tirer parti d’[Azure Monitor](../../../azure-monitor/vm/monitor-virtual-machine.md) pour collecter les données de télémétrie de votre environnement SQL Server, les analyser et agir en conséquence. Cela comprend l’identification des problèmes d’infrastructure avec [VM insights](../../../azure-monitor/vm/vminsights-overview.md) et la surveillance des données avec [Log Analytics](../../../azure-monitor/logs/log-query-overview.md) pour des diagnostics plus approfondis.
 - Activer l’[arrêt automatique](../../../automation/automation-solution-vm-management.md) pour les environnements de développement et de test. 
@@ -126,6 +128,7 @@ Les fonctionnalités de haute disponibilité et récupération d’urgence (HADR
 
 Pour votre cluster Windows, prenez en compte les meilleures pratiques suivantes : 
 
+* Déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux lorsque cela est possible afin d’éviter de dépendre d’un équilibreur de charge Azure ou d’un nom de réseau distribué (DNN) pour acheminer le trafic vers votre solution HADR. 
 * Définissez des paramètres moins agressifs pour le cluster afin d’éviter les pannes inattendues dues à des défaillances momentanées du réseau ou à la maintenance de la plateforme Azure. Pour plus d’informations, consultez les [paramètres de pulsation et de seuil](hadr-cluster-best-practices.md#heartbeat-and-threshold). Pour Windows Server 2012 ou version ultérieure, utilisez les valeurs recommandées suivantes : 
    - **SameSubnetDelay** : 1 seconde
    - **SameSubnetThreshold** : 40 pulsations
@@ -149,7 +152,7 @@ Pour votre groupe de disponibilité SQL Server ou votre instance de cluster de 
     Commencez par 40 secondes. Si vous utilisez les valeurs assouplies de `SameSubnetThreshold` et `SameSubnetDelay` qui ont été recommandées précédemment, ne dépassez pas 80 secondes pour la valeur du délai d’expiration du bail. 
    - **Nombre maximal d’échecs au cours d’une période spécifiée** : vous pouvez définir cette valeur sur 6.
    - **Délai d’attente de vérification** : vous pouvez définir initialement cette valeur sur 60000, et l’ajuster si nécessaire. 
-* Lorsque vous utilisez le nom de réseau virtuel (VNN) pour vous connecter à votre solution HADR, spécifiez `MultiSubnetFailover = true` dans la chaîne de connexion, même si votre cluster s’étend sur un seul sous-réseau. 
+* Lorsque vous utilisez le nom de réseau virtuel (VNN) et Azure Load Balancer pour vous connecter à votre solution HADR, spécifiez `MultiSubnetFailover = true` dans la chaîne de connexion, même si votre cluster s’étend sur un seul sous-réseau. 
    - Si le client ne prend pas en charge `MultiSubnetFailover = True`, vous devrez peut-être définir `RegisterAllProvidersIP = 0` et `HostRecordTTL = 300` pour mettre en cache les informations d’identification du client pour des durées plus courtes. Toutefois, cela peut entraîner des requêtes supplémentaires sur le serveur DNS. 
 - Pour vous connecter à votre solution HADR à l’aide du nom de réseau distribué (DNN), tenez compte des points suivants :
    - Vous devez utiliser un pilote client qui prend en charge `MultiSubnetFailover = True`, et ce paramètre doit figurer dans la chaîne de connexion. 
@@ -172,5 +175,7 @@ Pour en savoir plus, consultez les autres articles de cette série :
 - [Collecter une ligne de base](performance-guidelines-best-practices-collect-baseline.md)
 
 Pour connaître les meilleures pratiques en matière de sécurité, consultez [Considérations relatives à la sécurité de SQL Server sur les machines virtuelles Azure](security-considerations-best-practices.md).
+
+Envisagez d’activer la fonctionnalité [SQL Assessment pour SQL Server sur des machines virtuelles Azure](sql-assessment-for-sql-vm.md).
 
 Consultez d’autres articles relatifs aux machines virtuelles avec SQL Server à la page [Vue d’ensemble de SQL Server sur les machines virtuelles Azure](sql-server-on-azure-vm-iaas-what-is-overview.md). Si vous avez des questions sur les machines virtuelles SQL Server, consultez le [Forum aux Questions](frequently-asked-questions-faq.yml).

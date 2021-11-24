@@ -1,28 +1,28 @@
 ---
-title: Faire apparaître des détails personnalisés dans les alertes Azure Sentinel | Microsoft Docs
-description: Extrayez et faites apparaître des détails d'événements personnalisés dans les alertes à l'aide des règles analytiques d'Azure Sentinel afin de bénéficier d'informations plus pertinentes et plus complètes sur les incidents
+title: Faire apparaître des détails personnalisés dans les alertes Microsoft Sentinel | Microsoft Docs
+description: Extrayez et faites apparaître des détails d'événements personnalisés dans les alertes à l'aide des règles analytiques de Microsoft Sentinel afin de bénéficier d'informations plus pertinentes et plus complètes sur les incidents
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ffde66c8b64968d7b3aa5cc179177d34e8068e50
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 022c58b2d51405043620174030f1f1b85e3238a6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019606"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523844"
 ---
-# <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Faire apparaître des détails d'événements personnalisés dans les alertes d'Azure Sentinel 
+# <a name="surface-custom-event-details-in-alerts-in-microsoft-sentinel"></a>Faire apparaître des détails d'événements personnalisés dans les alertes de Microsoft Sentinel 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131019606"
 
 ## <a name="introduction"></a>Introduction
 
-Les [règles analytiques de requête planifiée](detect-threats-custom.md) analysent les **événements** issus des sources de données connectées à Azure Sentinel, et produisent des **alertes** lorsque le contenu de ces événements est significatif du point de vue de la sécurité. Ces alertes sont ensuite analysées, regroupées et filtrées par les différents moteurs d'Azure Sentinel et transformées en **incidents** qui nécessitent l'attention d'un analyste du centre des opérations de sécurité (SOC). Mais lorsque l'analyste visualise l'incident, seules les propriétés des alertes de composant proprement dites sont immédiatement visibles. Pour accéder au contenu réel (informations contenues dans les événements), il faut creuser un peu.
+Les [règles analytiques de requête planifiée](detect-threats-custom.md) analysent les **événements** issus des sources de données connectées à Microsoft Sentinel, et produisent des **alertes** lorsque le contenu de ces événements est significatif du point de vue de la sécurité. Ces alertes sont ensuite analysées, regroupées et filtrées par les différents moteurs de Microsoft Sentinel et transformées en **incidents** qui nécessitent l'attention d'un analyste du centre des opérations de sécurité (SOC). Mais lorsque l'analyste visualise l'incident, seules les propriétés des alertes de composant proprement dites sont immédiatement visibles. Pour accéder au contenu réel (informations contenues dans les événements), il faut creuser un peu.
 
 À l'aide de la fonctionnalité **Détails personnalisés** de l'**Assistant de règle analytique**, vous pouvez faire apparaître des données d'événements dans les alertes générées à partir de ces événements, en intégrant ces données aux propriétés des alertes. Vous bénéficiez ainsi d'une visibilité immédiate sur le contenu des événements au sein de vos incidents, ce qui vous permet de trier, d'examiner, de tirer des conclusions et de réagir avec beaucoup plus de rapidité et d'efficacité.
 
@@ -40,7 +40,7 @@ La procédure détaillée ci-dessous fait partie de l'Assistant Création de rè
 
 ## <a name="how-to-surface-custom-event-details"></a>Pour faire apparaître des détails d'événements personnalisés
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analyse**.
 
 1. Sélectionnez une règle de requête planifiée, puis cliquez sur **Modifier**. Ou créez une règle en cliquant sur **Créer > Règle de requête planifiée** en haut de l’écran.
 
@@ -72,6 +72,6 @@ La procédure détaillée ci-dessous fait partie de l'Assistant Création de rè
     > - La taille maximale de l'ensemble des détails personnalisés est de **2 Ko**.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris à faire apparaître des détails personnalisés dans les alertes à l'aide des règles analytiques d'Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à faire apparaître des détails personnalisés dans les alertes à l'aide des règles analytiques de Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Obtenez une vue d’ensemble complète des [règles analytiques de requête planifiée](detect-threats-custom.md).
-- Apprenez-en davantage sur les [entités d'Azure Sentinel](entities-in-azure-sentinel.md).
+- Apprenez-en davantage sur les [entités de Microsoft Sentinel](entities-in-azure-sentinel.md).

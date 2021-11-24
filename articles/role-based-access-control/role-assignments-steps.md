@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 1f1b8f627a60a6e9f9b866ffb48324ecd146ffbe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 19f7459debe48bfd689e0ccff93b7957bacd7d52
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362069"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398361"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Procédure d’attribution d’un rôle Azure
 
@@ -83,7 +83,9 @@ Si vous utilisez un principal de service pour attribuer des rôles, il se peut q
 
 ## <a name="step-5-assign-role"></a>Étape 5. Affecter le rôle
 
-Une fois que vous connaissez le principal de sécurité, le rôle et l’étendue, vous pouvez attribuer le rôle. Vous pouvez attribuer des rôles en utilisant le portail Azure, Azure PowerShell, Azure CLI, des Kits de développement logiciel (SDK) Azure ou des API REST. Vous pouvez avoir jusqu’à **2 000** attributions de rôles dans chaque abonnement. Cette limite comprend les attributions de rôles au niveau de l’abonnement, du groupe de ressources et des étendues de ressources. Vous pouvez avoir jusqu’à **500** attributions de rôles dans chaque groupe d'administration.
+Une fois que vous connaissez le principal de sécurité, le rôle et l’étendue, vous pouvez attribuer le rôle. Vous pouvez attribuer des rôles en utilisant le portail Azure, Azure PowerShell, Azure CLI, des Kits de développement logiciel (SDK) Azure ou des API REST.
+
+Vous pouvez avoir jusqu’à **2 000** attributions de rôles dans chaque abonnement. Cette limite comprend les attributions de rôles au niveau de l’abonnement, du groupe de ressources et des étendues de ressources. Vous pouvez avoir jusqu’à **500** attributions de rôles dans chaque groupe d'administration. La limite d’attributions de rôle pour un abonnement est en cours d’augmentation. Pour plus d’informations, consultez [Résoudre les problèmes liés à RBAC Azure](troubleshooting.md#azure-role-assignments-limit).
 
 Consultez les articles suivants pour obtenir la procédure détaillée d’attribution de rôles.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: 06a37bc77d5eda453740881af9ca45ad4b8746e8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 9eb84e0b685a41cd0ead7aae1feb38c475465f83
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325669"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-analyze-monitoring-data"></a>Superviser les machines virtuelles avec Azure Monitor : Analyser les données de supervision
 Cet article fait partie du scénario [Superviser les machines virtuelles et leurs charges de travail dans Azure Monitor](monitor-virtual-machine.md). Il décrit comment analyser les données de supervision de vos machines virtuelles une fois la configuration terminée.
@@ -96,7 +96,7 @@ Trois espaces de noms sont utilisés par les machines virtuelles.
 | Invité de machine virtuelle | Les données sur les performances des applications et du système d’exploitation invité sont disponibles pour toutes les fonctionnalités de Microsoft Azure Monitor, via des mesures. | [Agent Azure Monitor](../agents/azure-monitor-agent-overview.md) installé avec une [règle de collecte de données](../agents/data-collection-rule-overview.md). |
 
 ## <a name="analyze-log-data-with-log-analytics"></a>Analyser les données de journal avec Log Analytics
-Log Analytics vous permet d’effectuer une analyse personnalisée de vos données de journal. Utilisez Log Analytics lorsque vous souhaitez approfondir les données utilisées pour créer les vues dans VM Insights. Vous pouvez analyser différentes logiques et agrégations de ces données, mettre en corrélation les données de sécurité collectées par Azure Security Center et Azure Sentinel avec vos données d’intégrité et de disponibilité, ou utiliser les données collectées pour vos [charges de travail](monitor-virtual-machine-workloads.md).
+Log Analytics vous permet d’effectuer une analyse personnalisée de vos données de journal. Utilisez Log Analytics lorsque vous souhaitez approfondir les données utilisées pour créer les vues dans VM Insights. Vous pouvez analyser différentes logiques et agrégations de ces données, mettre en corrélation les données de sécurité collectées par Microsoft Defender pour le cloud et Microsoft Sentinel avec vos données d’intégrité et de disponibilité ou utiliser les données collectées pour vos [charges de travail](monitor-virtual-machine-workloads.md).
 
 Vous n’avez pas forcément besoin de savoir comment écrire une requête de journal pour utiliser Log Analytics. Il existe plusieurs requêtes prédéfinies que vous pouvez sélectionner et exécuter sans modification ou utiliser comme début d’une requête personnalisée. Sélectionnez **Requêtes** en haut de l’écran Log Analytics et affichez les requêtes avec un **type de ressource** défini sur **Machines virtuelles** ou sur **Groupes de machines virtuelles identiques**. Pour obtenir des informations sur l’utilisation de ces requêtes, consultez [Utilisation de requêtes dans Azure Monitor Log Analytics](../logs/queries.md). Pour suivre un tutoriel sur l’utilisation de Log Analytics pour exécuter des requêtes et utiliser leurs résultats, consultez [Tutoriel sur Log Analytics](../logs/log-analytics-tutorial.md).
 

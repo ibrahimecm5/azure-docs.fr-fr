@@ -1,16 +1,16 @@
 ---
-title: Forum aux questions sur Azure Defender pour IoT destiné aux fabricants d’appareils
-description: Trouvez les réponses aux questions les plus fréquemment posées sur Azure Defender pour IoT.
+title: Forum aux questions sur Microsoft Defender pour IoT destiné aux fabricants d’appareils
+description: Trouvez les réponses aux questions les plus fréquemment posées sur l’agent Microsoft Defender pour IoT.
 ms.topic: conceptual
-ms.date: 07/07/2021
-ms.openlocfilehash: 3c2e099ca0a6c7cde2fa8a33ed766ba1d4b91fd1
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/09/2021
+ms.openlocfilehash: 9075424368a6d3e8c2e17306a573f768cb4a0e45
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434315"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293475"
 ---
-# <a name="azure-defender-for-iot-for-device-builders-frequently-asked-questions"></a>Forum aux questions sur Azure Defender pour IoT destiné aux fabricants d’appareils
+# <a name="microsoft-defender-for-iot-for-device-builders-frequently-asked-questions"></a>Forum aux questions sur Microsoft Defender pour IoT destiné aux fabricants d’appareils
 
 Cet article fournit la liste des questions fréquemment posées et des réponses sur l’agent Defender for IoT.
 

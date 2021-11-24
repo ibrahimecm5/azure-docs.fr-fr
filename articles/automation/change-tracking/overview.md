@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2675f6633da27c12e067cf93463f6cba94b473c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 073fd4918cec0a1ec1dc679285b62fd63fe078d3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769389"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325730"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Présentation de la fonctionnalité Suivi des modifications et inventaire
 
@@ -26,7 +26,7 @@ Cet article présente Suivi des modifications et inventaire dans Azure Automatio
 > [!NOTE]
 > Pour suivre les modifications de propriétés Azure Resource Manager, consultez l’[historique des modifications](../../governance/resource-graph/how-to/get-resource-changes.md) d’Azure Resource Graph.
 
-Suivi des modifications et inventaire utilise le [Monitoring d’intégrité de fichier (FIM) dans Azure Security Center](../../security-center/security-center-file-integrity-monitoring.md) pour examiner les fichiers de système d’exploitation et d’application, ainsi que le Registre Windows. Bien que FIM surveille ces entités, Suivi des modifications et inventaire suit en mode natif :
+Suivi des modifications et inventaire utilise [Supervision de l’intégrité des fichiers (FIM) dans Microsoft Defender pour le cloud](../../security-center/security-center-file-integrity-monitoring.md) pour examiner les fichiers de système d’exploitation et d’application, ainsi que le Registre Windows. Bien que FIM surveille ces entités, Suivi des modifications et inventaire suit en mode natif :
 
 - Modifications de logiciel
 - Services Windows
@@ -34,7 +34,7 @@ Suivi des modifications et inventaire utilise le [Monitoring d’intégrité de 
 
 L’activation des complètes de Suivi des modifications et inventaire peut entraîner des frais supplémentaires. Avant de continuer, passez en revue [Tarification d’Automation](https://azure.microsoft.com/pricing/details/automation/) et [Tarification Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-Suivi des modifications et inventaire transfère les données vers des journaux Azure Monitor, et les données collectées sont stockées dans un espace de travail Log Analytics. La fonctionnalité FIM (File Integrity Monitoring) est disponible uniquement lorsque **Azure Defender pour les serveurs** est activé. Consultez [Tarification d’Azure Security Center](../../security-center/security-center-pricing.md) pour en savoir plus. FIM charge des données dans le même espace de travail Log Analytics que celui créé pour stocker des données à partir de Suivi des modifications et inventaire. Nous vous recommandons de surveiller votre espace de travail Log Analytics lié pour effectuer le suivi de votre utilisation exacte. Pour plus d'informations sur l'analyse de l'utilisation des données des journaux d'activité Azure Monitor, consultez [Gérer l'utilisation et les coûts](../../azure-monitor/logs/manage-cost-storage.md).
+Suivi des modifications et inventaire transfère les données vers des journaux Azure Monitor, et les données collectées sont stockées dans un espace de travail Log Analytics. La fonctionnalité FIM (Supervision de l’intégrité des fichiers) est disponible uniquement lorsque **Microsoft Defender pour les serveurs** est activé. Pour en savoir plus, consultez la [tarification](../../security-center/security-center-pricing.md) de Microsoft Defender pour le cloud. FIM charge des données dans le même espace de travail Log Analytics que celui créé pour stocker des données à partir de Suivi des modifications et inventaire. Nous vous recommandons de surveiller votre espace de travail Log Analytics lié pour effectuer le suivi de votre utilisation exacte. Pour plus d'informations sur l'analyse de l'utilisation des données des journaux d'activité Azure Monitor, consultez [Gérer l'utilisation et les coûts](../../azure-monitor/logs/manage-cost-storage.md).
 
 Les machines connectées à l’espace de travail Log Analytics utilisent l’[agent Log Analytics](../../azure-monitor/agents/log-analytics-agent.md) pour collecter des données sur les modifications apportées aux logiciels installés, aux services Windows, au registre et aux fichiers Windows, ainsi qu’aux démons Linux sur les serveurs analysés. Lorsque des données sont disponibles, l’agent les envoie aux journaux Azure Monitor pour traitement. Les journaux Azure Monitor appliquent une logique aux données reçues, les enregistrent et les rendent disponibles pour analyse.
 

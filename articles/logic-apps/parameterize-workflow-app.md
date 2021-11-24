@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: azla
 ms.topic: how-to
 ms.date: 08/09/2021
-ms.openlocfilehash: 32d15d248154c61320fe12074373a6401fe3bdcd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a29eda23d12ca07057ff1081ae8d9bc4cfdc56ed
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524889"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137027"
 ---
 # <a name="create-parameters-to-use-in-workflows-across-environments-in-single-tenant-azure-logic-apps"></a>Créer des paramètres à utiliser dans les flux de travail entre environnements dans les environnements Azure Logic Apps monolocataires
 
@@ -159,10 +159,10 @@ L’exemple suivant illustre un fichier **connections.json** paramétré qui uti
    "managedApiConnections": {
       "azureblob": {
          "api": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/providers/Microsoft.Web/locations/@appsetting('WORKFLOWS_LOCATION_NAME')/managedApis/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/providers/Microsoft.Web/locations/@{appsetting('WORKFLOWS_LOCATION_NAME')}/managedApis/azureblob"
          },
          "connection": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/resourceGroups/@appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')/providers/Microsoft.Web/connections/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/resourceGroups/@{appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')}/providers/Microsoft.Web/connections/azureblob"
          },
          "connectionRuntimeUrl": "@appsetting('BLOB_CONNECTION_RUNTIMEURL')",
          "authentication": "@parameters('blob_auth')"
@@ -170,6 +170,14 @@ L’exemple suivant illustre un fichier **connections.json** paramétré qui uti
    }
 }
 ```
+
+> [!NOTE]
+> Lorsque vous avez une expression en ligne avec du texte brut, assurez-vous d’utiliser le format interpolé pour cette expression en l’entourant d’accolades ({}). Ce format permet d’éviter les problèmes d’analyse.
+>
+> Par exemple, si vous avez `"<text>/@<function-name>('<parameter-name>')/<text>"`, utilisez plutôt la version suivante : `"<text>/@{<function-name>('<parameter-name>')}/<text>"`. 
+>
+> Pour plus d’informations, consultez [Considérations relatives à l’utilisation des fonctions](workflow-definition-language-functions-reference.md#function-considerations).
+     
 
 ## <a name="manage-parameters-files"></a>Gérer les fichiers de paramètres
 

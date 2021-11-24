@@ -1,5 +1,5 @@
 ---
-title: Intégration d’Azure Active Directory à F5 BIG-IP pour l’authentification unique basée sur les formulaires
+title: F5 BIG-IP APM et Azure AD SSO dans les applications avec authentification basée sur les formulaires
 description: Découvrez comment intégrer BIG-IP Access Policy Manager (APM) de F5 et Azure Active Directory pour un accès hybride sécurisé aux applications basées sur des formulaires.
 author: gargi-sinha
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.date: 10/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fb95b6f79bd306a1e936fa99da7a55fe2eea2a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8306c9f0035eababdcf5feb115786982d78f0d52
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039927"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137179"
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-f5-big-ip-for-forms-based-authentication-single-sign-on"></a>Tutoriel : Intégrer Azure Active Directory à F5 BIG-IP pour l’authentification unique basée sur les formulaires
 
@@ -40,9 +40,13 @@ Au lieu de cela, un BIG-IP Virtual Edition (VE) déployé entre l’Internet et 
 
 Le fait de disposer d’un BIG-IP devant l’application nous permet de superposer le service avec la préauthentification Azure AD et l’authentification unique basée sur les formulaires, améliorant ainsi de manière significative la posture de sécurité globale de l’application, ce qui permet à l’entreprise de continuer à fonctionner à son rythme, sans interruption.
 
+Les informations d’identification de l’utilisateur mises en cache par BIG-IP APM sont ensuite disponibles pour l’authentification unique sur les applications avec authentification basée sur les formulaires.
+
+## <a name="scenario-architecture"></a>Architecture du scénario
+
 La solution d’accès hybride sécurisé pour ce scénario est constituée des éléments suivants :
 
-**Application** : Service principal à protéger par l’accès hybride sécurisé Azure AD et BIG-IP. Cette application particulière valide les informations d’identification de l’utilisateur par rapport à une source ouverte, mais il peut s’agir de n’importe quel répertoire, y compris Active Directory, LDS, etc.
+**Application** : Service principal à protéger par l’accès hybride sécurisé Azure AD et BIG-IP. Cette application spécifique valide les informations d’identification de l’utilisateur sur Active Directory (AD), mais il peut s’agir de n’importe quel répertoire, notamment les services AD LDS (Active Directory Lightweight Directory Services), open source, etc.
 
 **Azure AD** : Fournisseur d’identité SAML (IdP) responsable de la vérification des informations d’identification de l’utilisateur, de l’accès conditionnel et de l’authentification unique à BIG-IP APM.
 
@@ -53,13 +57,13 @@ La solution d’accès hybride sécurisé pour ce scénario est constituée des 
 | Étapes | Description|
 |:-------|:----------|
 | 1. | L’utilisateur se connecte au point de terminaison du fournisseur de services SAML de l’application (BIG-IP APM).|
-|2. | La stratégie d’accès d’APM redirige l’utilisateur vers l’IdP SAML (Azure AD) pour une préauthentification.|
-| 3. | L’IdP SAML authentifie l’utilisateur et applique les stratégies d’accès conditionnel en vigueur.|
-| 4. | Azure AD redirige l’utilisateur vers le fournisseur de services SAML avec le jeton et les revendications émis. |
-| 5. | APM demande le mot de passe de l’application et le stocke dans le cache. |
-| 6. |  La demande du BIG-IP adressée à l’application reçoit le formulaire de connexion.|
-| 7. | Le script APM répond en renseignant le nom d’utilisateur et le mot de passe avant d’envoyer le formulaire.|
-| 8. | La charge utile de l’application est traitée par le serveur web et envoyée au client. Si vous le souhaitez, APM détecte la réussite de la connexion en examinant les en-têtes de réponse et en recherchant le cookie ou l’URI de redirection. |
+| 2. | La stratégie d’accès d’APM redirige l’utilisateur vers l’IdP SAML (Azure AD) pour une préauthentification.|
+| 3. | Le locataire Azure AD authentifie l’utilisateur et applique les stratégies d’accès conditionnel en vigueur.|
+| 4. | L’utilisateur est redirigé vers le fournisseur de services SAML avec le jeton et les revendications émis. |
+| 5. | BIG-IP invite l’utilisateur à indiquer le mot de passe de l’application et le stocke dans le cache. |
+| 6. | BIG-IP envoie une requête à l’application et reçoit un formulaire de connexion.|
+| 7. | Le script APM répond automatiquement en renseignant le nom d’utilisateur et le mot de passe avant d’envoyer le formulaire.|
+| 8. | La charge utile de l’application est traitée par le serveur web et envoyée au client. Si vous le souhaitez, APM détecte la réussite de la connexion en examinant les en-têtes de réponse et en recherchant le cookie ou l’URI de redirection.|
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -89,9 +93,7 @@ Une expérience préalable de BIG-IP n’est pas nécessaire, mais vous aurez be
 
 ## <a name="deployment-modes"></a>Modes de déploiement
 
-Il existe plusieurs méthodes pour configurer un BIG-IP pour ce scénario, notamment plusieurs options basées sur un Assistant ou une configuration avancée.
-
-Ce didacticiel décrit l’approche avancée, qui offre une approche plus flexible pour implémenter un accès hybride sécurisé en créant manuellement tous les objets de configuration du BIG-IP. Vous pouvez également utiliser cette approche pour les scénarios non couverts par la configuration guidée.
+Il existe plusieurs méthodes pour configurer un BIG-IP pour ce scénario. Ce didacticiel décrit l’approche avancée, qui offre une approche plus flexible pour implémenter un accès hybride sécurisé en créant manuellement tous les objets de configuration du BIG-IP. Vous pouvez utiliser cette approche pour les scénarios non couverts par la configuration guidée basée sur le modèle.
 
 >[!NOTE]
 >Tous les exemples de chaînes et de valeurs référencés dans cet article doivent être remplacés par ceux de votre environnement réel.
@@ -355,11 +357,11 @@ Un serveur virtuel est un objet de plan de données BIG-IP représenté par une 
 
 ## <a name="session-management"></a>Gestion des sessions
 
-Les paramètres de gestion de session d’un BIG-IP servent à définir les conditions dans lesquelles les sessions utilisateur sont terminées ou autorisées à se poursuivre, les limites des utilisateurs et des adresses IP, ainsi que les pages d’erreur. Vous pouvez créer votre propre stratégie en allant dans **Access Policy** (Stratégie d’accès) > **Access Profiles** (Profils d’accès) et en sélectionnant votre application dans la liste.
+Les paramètres de gestion d’une session BIG-IP servent à définir les conditions dans lesquelles les sessions utilisateur sont terminées ou autorisées à poursuivre, les limites des utilisateurs et des adresses IP, ainsi que les pages d’erreur. Vous pouvez créer votre propre stratégie en allant dans **Access Policy** (Stratégie d’accès) > **Access Profiles** (Profils d’accès) et en sélectionnant votre application dans la liste.
 
-En ce qui concerne la fonctionnalité SLO, la définition d’un URI de Single Logout dans Azure AD garantit qu’une déconnexion initiée par un IdP à partir du portail MyApps met également fin à la session entre le client et BIG-IP APM.
+En ce qui concerne la fonctionnalité SLO, la définition d’un URI de Single Logout dans Azure AD garantit qu’une déconnexion initiée par un fournisseur d’identité IdP à partir du portail MyApps met également fin à la session entre le client et BIG-IP APM.
 
-L’importation du fichier XML de métadonnées de fédération de l’application fournit à APM le point de terminaison de déconnexion SAML d’Azure AD pour les déconnexions initiées par le fournisseur de services. Mais pour que cela soit vraiment efficace, APM doit savoir exactement quand un utilisateur se déconnecte.
+L’importation du fichier XML de métadonnées de fédération de l’application fournit au service APM le point de terminaison SLO (SLO) SAML d’Azure AD pour les déconnexions initiées par le fournisseur de services. Mais pour que cela soit vraiment efficace, APM doit savoir exactement quand un utilisateur se déconnecte.
 
 Dans le cas où le portail web du BIG-IP n’est pas utilisé, l’utilisateur n’a aucun moyen de demander à APM de se déconnecter. Même si l’utilisateur se déconnecte de l’application elle-même, le BIG-IP n’en est techniquement pas conscient et la session de l’application peut facilement être rétablie par le biais de l’authentification unique. Pour cette raison, la déconnexion initiée par le fournisseur de services doit être soigneusement étudiée afin de s’assurer que les sessions sont terminées de manière sécurisée lorsqu’elles ne sont plus nécessaires.
 
@@ -377,14 +379,11 @@ Pour une sécurité accrue, les entreprises qui utilisent ce modèle pourraient 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-À partir d’un navigateur, connectez-vous à l’URL externe de l’application ou sélectionnez l’icône de l’application dans le portail MyApps. Après vous être authentifié auprès d’Azure AD, vous serez redirigé vers le serveur virtuel BIG-IP de l’application et invité à entrer un mot de passe.
-
->[!Note]
->APM préremplit le nom d’utilisateur avec le nom d’utilisateur principal d’Azure AD.
+À partir d’un navigateur, connectez-vous à l’URL externe de l’application ou sélectionnez l’icône de l’application dans le portail MyApps. Après vous être authentifié auprès d’Azure AD, vous êtes redirigé vers le point de terminaison BIG-IP de l’application et invité à entrer un mot de passe. Notez que le service APM préremplit le nom d’utilisateur avec le nom d’utilisateur principal d’Azure AD. Le nom d’utilisateur prérempli par le service APM est en lecture seule pour garantir la cohérence de session entre Azure AD et l’application principale. Ce champ peut être masqué dans une vue avec une configuration supplémentaire, si nécessaire.
 
 ![Capture d’écran montrant l’authentification unique sécurisée](./media/f5-big-ip-forms-advanced/secured-sso.png)
 
-Une fois les identifiants envoyés, l’utilisateur devrait être automatiquement connecté à l’application et le mot de passe mis en cache pour être réutilisé avec toute autre application publiée à l’aide du profil d’accès de l’authentification unique FBA.
+Après l’envoi, l’utilisateur doit être automatiquement connecté à l’application.
 
 ![Capture d’écran montrant le message de bienvenue](./media/f5-big-ip-forms-advanced/welcome-message.png)
 

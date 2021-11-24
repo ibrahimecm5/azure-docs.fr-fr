@@ -4,13 +4,13 @@ description: Décrit comment utiliser la propriété scope lors du déploiement 
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/16/2021
+ms.openlocfilehash: 8d91aa1109db4b1d884e90e3e0744611f9dbf4d8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733419"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549846"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Définir l’étendue des ressources d’extension dans Bicep
 
@@ -143,11 +143,13 @@ resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-## <a name="next-steps"></a>Étapes suivantes
-
-Pour en savoir plus sur le déploiement sur des étendues, consultez :
+Les mêmes exigences s’appliquent aux ressources d’extension en tant qu’autre ressource lorsque vous ciblez une étendue qui est différente de l’étendue cible du déploiement. Pour en savoir plus sur le déploiement dans plusieurs étendues, consultez :
 
 * [Déploiements de groupes de ressources](deploy-to-resource-group.md)
 * [Déploiements d’abonnements](deploy-to-subscription.md)
 * [Déploiements de groupes d’administration](deploy-to-management-group.md)
 * [Déploiements de locataires](deploy-to-tenant.md)
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Pour obtenir la liste complète des types de ressources d’extension, consultez [Types de ressources qui étendent les fonctionnalités d’autres ressources](../management/extension-resource-types.md).

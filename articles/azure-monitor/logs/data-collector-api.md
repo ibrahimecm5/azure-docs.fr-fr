@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2021
-ms.openlocfilehash: 043427f288a5e757e63aefe79b97953f40a15c69
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a7d998499285dbaa400269bc87d027febfd0ca14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461928"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325616"
 ---
 # <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>Envoyer des données de journal à Azure Monitor à l’aide de l’API Collecte de données HTTP (préversion)
 
@@ -263,7 +263,6 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
     $authorization = 'SharedKey {0}:{1}' -f $customerId,$encodedHash
     return $authorization
 }
-
 
 # Create the function to create and post the request
 Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
@@ -569,7 +568,7 @@ Bien que l’API Collecte de données soit censée répondre à la plupart de vo
 | Alternative | Description | Idéale pour |
 |---|---|---|
 | [Événements personnalisés](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties) : Ingestion native basée sur le Kit de développement logiciel (SDK) dans Application Insights | Application Insights, généralement instrumenté via un kit SDK au sein de votre application, vous permet d’envoyer des données personnalisées par le biais d’événements personnalisés. | <ul><li> Données générées au sein de votre application, mais non récupérées par le kit SDK via un des types de données par défaut (demandes, dépendances, exceptions, etc.).</li><li> Données le plus souvent corrélées à d’autres données d’application dans Application Insights. </li></ul> |
-| API de collecte de données dans les journaux Azure Monitor | L’API de collecte de données dans les journaux Azure Monitor est une méthode d’ingestion de données complètement flexible. Toutes les données mises en forme dans un objet JSON peuvent être envoyées ici. Une fois envoyées, elles sont traitées et mises à disposition dans des journaux Azure Monitor pour être corrélées à d’autres données de journal Azure Monitor ou par rapport à d’autres données Application Insights. <br/><br/> Il est relativement facile de charger les données en tant que fichiers dans un objet blob de Stockage Blob Azure, où ces fichiers seront traités, puis chargés dans Log Analytics. Pour obtenir un exemple d’implémentation, consultez [Créer un pipeline de données avec l’API Collecte de données](./create-pipeline-datacollector-api.md). | <ul><li> Données qui ne sont pas nécessairement générées dans une application instrumentée dans Application Insights.<br>Les exemples incluent les tables de consultations et de faits, les données de référence, les statistiques pré-agrégées, etc. </li><li> Données qui seront référencées de manière croisée par rapport à d’autres données Azure Monitor (Application Insights, autres types de données de journal Azure Monitor, Security Center, Container Insights et machines virtuelles, etc.). </li></ul> |
+| API de collecte de données dans les journaux Azure Monitor | L’API de collecte de données dans les journaux Azure Monitor est une méthode d’ingestion de données complètement flexible. Toutes les données mises en forme dans un objet JSON peuvent être envoyées ici. Une fois envoyées, elles sont traitées et mises à disposition dans des journaux Azure Monitor pour être corrélées à d’autres données de journal Azure Monitor ou par rapport à d’autres données Application Insights. <br/><br/> Il est relativement facile de charger les données en tant que fichiers dans un objet blob de Stockage Blob Azure, où ces fichiers seront traités, puis chargés dans Log Analytics. Pour obtenir un exemple d’implémentation, consultez [Créer un pipeline de données avec l’API Collecte de données](./create-pipeline-datacollector-api.md). | <ul><li> Données qui ne sont pas nécessairement générées dans une application instrumentée dans Application Insights.<br>Les exemples incluent les tables de consultations et de faits, les données de référence, les statistiques pré-agrégées, etc. </li><li> Données qui seront croisées avec d’autres données d’Azure Monitor (Application Insights, autres types de données de journaux d’activité Azure Monitor, Defender pour le cloud, Container Insights et machines virtuelles, etc.). </li></ul> |
 | [Explorateur de données Azure](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer, maintenant en disponibilité générale, est la plateforme de données sur laquelle s’appuient Application Insights Analytics et les journaux Azure Monitor. En utilisant la plateforme de données dans sa forme brute, vous disposez d’une flexibilité totale (mais nécessitez une surcharge de gestion) sur le cluster (contrôle d’accès en fonction du rôle Kubernetes (RBAC), taux de conservation, schéma, etc.). Azure Data Explorer propose de nombreuses [options d’ingestion](/azure/data-explorer/ingest-data-overview#ingestion-methods), notamment les fichiers [CSV, TSV et JSON](/azure/kusto/management/mappings). | <ul><li> Données qui ne seront pas corrélées à d’autres données dans Application Insights ou les journaux Azure Monitor. </li><li> Données nécessitant des fonctionnalités avancées d’ingestion ou de traitement qui ne sont pas disponibles aujourd’hui dans les journaux Azure Monitor. </li></ul> |
 
 

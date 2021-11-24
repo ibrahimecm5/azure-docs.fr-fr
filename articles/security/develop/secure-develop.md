@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 2f81cd3e37b6fefea1a76a8a4bb50c756ff1fca4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: afe4ce82b779a6f8913ed61a44f3cf15992ba7e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463522"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335515"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Développer des applications sécurisées sur Azure
 
@@ -102,7 +102,7 @@ Si votre application autorise les [chargements de fichiers](https://owasp.org/ww
 
 Une solution de protection contre les programmes malveillants permet d’identifier et de supprimer les virus, logiciels espions et autres logiciels malveillants. Vous pouvez installer [Microsoft Antimalware](../fundamentals/antimalware.md) ou une solution de protection des points de terminaison d’un partenaire de Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) ou [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
-Le logiciel [Microsoft Antimalware](../fundamentals/antimalware.md) inclut des fonctionnalités telles que la protection en temps réel, l’analyse planifiée, la correction des logiciels malveillants, la mise à jour des signatures, la mise à jour des moteurs, des exemples de création de rapport et la collecte d’événements d’exclusion. Vous pouvez intégrer Microsoft Antimalware et des solutions de partenaires avec [Azure Security Center](../../security-center/security-center-partner-integration.md) pour bénéficier d’un déploiement simplifié et de fonctionnalités de détection intégrées (alertes et incidents).
+Le logiciel [Microsoft Antimalware](../fundamentals/antimalware.md) inclut des fonctionnalités telles que la protection en temps réel, l’analyse planifiée, la correction des logiciels malveillants, la mise à jour des signatures, la mise à jour des moteurs, des exemples de création de rapport et la collecte d’événements d’exclusion. Vous pouvez intégrer Microsoft Antimalware et des solutions de partenaires à [Microsoft Defender pour le cloud](../../security-center/security-center-partner-integration.md) pour bénéficier d’un déploiement simplifié et de fonctionnalités de détection intégrées (alertes et incidents).
 
 ### <a name="dont-cache-sensitive-content"></a>Ne pas mettre en cache de contenu sensible
 

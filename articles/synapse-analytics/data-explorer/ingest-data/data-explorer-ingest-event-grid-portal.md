@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: f6fc9858589e1a5ee940a8fc44e3eb462a30ce7c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c472ae5950bc035612987c35e76291dc5c23f49
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479041"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485659"
 ---
 # <a name="ingest-blobs-into-azure-synapse-data-explorer-by-subscribing-to-event-grid-notifications-preview"></a>Ingérer des objets blob dans Azure Synapse Data Explorer en s’abonnant à des notifications Event Grid (préversion)
 
@@ -37,7 +37,7 @@ Pour obtenir des informations générales sur l’ingestion dans l’Explorateur
 
 - Créer une table cible à laquelle Event Hubs enverra des données
     1. Dans Synapse Studio, dans le volet de gauche, sélectionnez **Développer**.
-    1. Sous **Scripts KQL**, sélectionnez **&plus;** (Ajouter une nouvelle ressource) > **Script KQL**. Dans le volet de droite, vous pouvez nommer votre script.
+    1. Sous **Scripts KQL**, sélectionnez **&plus;** (Ajouter une nouvelle ressource) > **Script KQL**. Dans le volet de droite, vous pouvez nommer votre script.
     1. Dans le menu **Connecter à**, sélectionnez *contosodataexplorer*.
     1. Dans le menu **Utiliser la base de données**, sélectionnez *TestDatabase*.
     1. Collez la commande suivante, puis sélectionnez **Exécuter** pour créer la table.
@@ -103,7 +103,7 @@ Connectez dès à présent le compte de stockage à l’Explorateur de données 
 1. Sélectionnez **Suivant : Propriétés d’ingestion**.
 
 > [!NOTE]
-> Nous vous recommandons de mettre à jour le compte de stockage pour utiliser les identités managées dès que l’option est disponible.
+> Nous vous recommandons de mettre à jour la connexion de données afin d’utiliser des identités managées pour accéder au compte de stockage dès que cette option est disponible pour votre cluster.
 
 #### <a name="data-connection---ingest-properties-tab"></a>Connexion de données - Onglet Propriétés d’ingestion
 

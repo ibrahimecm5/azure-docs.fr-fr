@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/16/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: dec042c66ebed15a51d5c6c1f3ef6a3e3e2fb456
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7b78fc9a0bb292cbc124e1629351ddd9cc2191e7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131428023"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547580"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Isolation des groupes de charges de travail Azure Synapse Analytics
 
@@ -28,11 +28,20 @@ Les groupes de charges de travail sont des conteneurs pour un ensemble de requê
 
 Les sections suivantes décrivent comment les groupes de charges de travail offrent la possibilité de définir l’isolation, l’autonomie, la définition des ressources de la requête et d’adhérer aux règles d’exécution.
 
+## <a name="resource-governance"></a>Gouvernance des ressources
+
+Les groupes de charges de travail gouvernent les ressources mémoire et processeur.  Les E/S du disque et du réseau ainsi que tempdb ne sont pas régies.  La gouvernance des ressources pour la mémoire et le processeur est la suivante :
+
+La mémoire est régie au niveau de la demande et conservée pendant toute la durée de la demande.  Pour plus d’informations sur la configuration de la quantité de mémoire par requête, consultez [Ressources par définition de requête](#resources-per-request-definition).  Le paramètre MIN_PERCENTAGE_RESOURCE pour le groupe de charge de travail dédie exclusivement de la mémoire à ce groupe de charge de travail.  Le paramètre CAP_PERCENTAGE_RESOURCE pour le groupe de charge de travail est une limite inconditionnelle de la mémoire qu’un groupe de charge de travail peut consommer.
+
+Les ressources du processeur sont régies au niveau du groupe de charge de travail et partagées par toutes les demandes au sein d’un groupe de charge de travail.  Les ressources du processeur sont fluides par rapport à la mémoire qui est dédiée à une requête pendant la durée de l’exécution.  Un processeur donné est une ressource fluide. Les ressources processeur inutilisées peuvent être consommées par tous les groupes de charges de travail.  Cela signifie que l’utilisation du processeur peut dépasser le paramètre CAP_PERCENTAGE_RESOURCE pour le groupe de charge de travail.  Cela signifie également que le paramètre MIN_PERCENTAGE_RESOURCE pour le groupe de charge de travail n’est pas une réservation matérielle comme la mémoire est.  Lorsque les ressources du processeur sont en conflit, l’utilisation s’aligne sur la définition de CAP_PERCENTAGE_RESOURCE pour les groupes de charge de travail.
+
+
 ## <a name="workload-isolation"></a>Isolation des charges de travail
 
 L’isolation de la charge de travail signifie que les ressources sont réservées, exclusivement, pour un groupe de charge de travail.  L’isolation des charges de travail s’effectue en configurant le paramètre MIN_PERCENTAGE_RESOURCE sur une valeur supérieure à zéro dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Pour les charges de travail d’exécution continues qui doivent adhérer à des contrats de niveau de service étroits, l’isolation garantit que les ressources sont toujours disponibles pour le groupe de charge de travail.
 
-La configuration de l’isolation de la charge de travail définit implicitement un niveau garanti de concurrence. Par exemple, un groupe de charge de travail avec un `MIN_PERCENTAGE_RESOURCE` défini sur 30 % et un `REQUEST_MIN_RESOURCE_GRANT_PERCENT` défini sur 2 % a 15 concurrences de garantie.  Le niveau de concurrence est garanti car 2 % des emplacements de ressources avec 15 concurrences sont réservés à tout moment dans le groupe de charge de travail (quelle que soit la façon dont `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` est configuré).  Si `REQUEST_MAX_RESOURCE_GRANT_PERCENT` est supérieur à `REQUEST_MIN_RESOURCE_GRANT_PERCENT` et `CAP_PERCENTAGE_RESOURCE` est supérieur à `MIN_PERCENTAGE_RESOURCE` des ressources supplémentaires sont ajoutées par requête.  Si `REQUEST_MAX_RESOURCE_GRANT_PERCENT` et `REQUEST_MIN_RESOURCE_GRANT_PERCENT` sont égaux et que `CAP_PERCENTAGE_RESOURCE` est supérieur à `MIN_PERCENTAGE_RESOURCE`, une concurrence supplémentaire est possible.  Considérez la méthode ci-dessous pour déterminer la concurrence garantie :
+La configuration de l’isolation de la charge de travail définit implicitement un niveau garanti de concurrence. Par exemple, un groupe de charge de travail avec un MIN_PERCENTAGE_RESOURCE défini sur 30 % et REQUEST_MIN_RESOURCE_GRANT_PERCENT défini à 2 % est garanti 15 accès concurrentiel.  Le niveau de concurrence est garanti car 2 % des emplacements de ressources avec 15 concurrences sont réservés à tout moment dans le groupe de charge de travail (quelle que soit la façon dont REQUEST_ *MAX* _RESOURCE_GRANT_PERCENT est configuré).  Si REQUEST_MAX_RESOURCE_GRANT_PERCENT est supérieur à REQUEST_MIN_RESOURCE_GRANT_PERCENT et CAP_PERCENTAGE_RESOURCE est supérieur à MIN_PERCENTAGE_RESOURCE, des ressources supplémentaires peuvent être ajoutées par demande (en fonction de la disponibilité des ressources).  Si REQUEST_MAX_RESOURCE_GRANT_PERCENT et REQUEST_MIN_RESOURCE_GRANT_PERCENT sont égaux et que CAP_PERCENTAGE_RESOURCE est supérieur à MIN_PERCENTAGE_RESOURCE, une concurrence supplémentaire est possible.  Considérez la méthode ci-dessous pour déterminer la concurrence garantie :
 
 [Accès concurrentiel garanti] = [`MIN_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
@@ -61,7 +70,7 @@ La configuration de l’autonomie de la charge de travail définit implicitement
 
 ## <a name="resources-per-request-definition"></a>Ressources par définition de requête
 
-Les groupes de charges de travail fournissent un mécanisme permettant de définir le nombre minimal et maximal de ressources qui sont allouées par requête avec les paramètres REQUEST_MIN_RESOURCE_GRANT_PERCENT et REQUEST_MAX_RESOURCE_GRANT_PERCENT dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Dans ce cas, la ressource est la mémoire. Les ressources du processeur sont limitées par la valeur CAP_PERCENTAGE_RESOURCE du groupe de charge de travail, et ne sont pas régies au niveau de la requête individuelle. La configuration de ces valeurs détermine la quantité de ressources et le niveau de concurrence pouvant être atteint sur le système.
+Les groupes de charges de travail fournissent un mécanisme permettant de définir le nombre minimal et maximal de ressources qui sont allouées par requête avec les paramètres REQUEST_MIN_RESOURCE_GRANT_PERCENT et REQUEST_MAX_RESOURCE_GRANT_PERCENT dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Dans ce cas, la ressource est la mémoire. La gouvernance des ressources du processeur est traitée dans la section [Gouvernance des ressources](#resource-governance).
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT est un paramètre facultatif qui a comme valeur par défaut la même valeur que celle spécifiée pour REQUEST_MIN_RESOURCE_GRANT_PERCENT.
@@ -75,7 +84,7 @@ La configuration de REQUEST_MAX_RESOURCE_GRANT_PERCENT sur une valeur supérieur
 
 ## <a name="execution-rules"></a>Délai d’exécution
 
-Sur les systèmes de création de rapports ad hoc, les clients peuvent exécuter accidentellement des pertes de contrôle de requêtes qui ont un impact sérieux sur la productivité des autres.  Les administrateurs système sont obligés de perdre du temps en éliminant des pertes de contrôle de requêtes pour libérer des ressources système.  Les groupes de charge de travail permettent de configurer une règle de délai d’expiration d’exécution de requête pour annuler les requêtes qui ont dépassé la valeur spécifiée.  La règle est configurée en définissant le paramètre `QUERY_EXECUTION_TIMEOUT_SEC` dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Sur les systèmes de création de rapports ad hoc, les clients peuvent exécuter accidentellement des pertes de contrôle de requêtes qui ont un impact sérieux sur la productivité des autres.  Les administrateurs système sont obligés de perdre du temps en éliminant des pertes de contrôle de requêtes pour libérer des ressources système.  Les groupes de charge de travail permettent de configurer une règle de délai d’expiration d’exécution de requête pour annuler les requêtes qui ont dépassé la valeur spécifiée.  La règle est configurée en définissant le paramètre QUERY_EXECUTION_TIMEOUT_SEC dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="shared-pool-resources"></a>Ressources de pool partagé
 

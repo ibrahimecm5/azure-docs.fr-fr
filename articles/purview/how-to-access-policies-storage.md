@@ -6,43 +6,32 @@ ms.author: vlrodrig
 ms.service: purview
 ms.subservice: purview-data-policies
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/15/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: ea5285c5fd29bfe34f97c87b2ac0c9bd7a5502a9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: eab2c720aafe2cfd5a1ca46f2549b42d6f644b25
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425232"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555714"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Approvisionnement du jeu de données par le propriétaire des données pour le service Stockage Azure
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
-
-La création de stratégie Purview prend en charge les fonctionnalités suivantes :
--   Stratégie d’accès aux données pour permettre au service Stockage Azure de contrôler l’accès aux données stockées dans des fichiers Blob ou ADLS Gen2
+Ce guide décrit comment configurer stockage Azure pour appliquer des stratégies d’accès aux données créées et gérées à partir d’Azure Purview. La création de stratégie Azure Purview prend en charge les fonctionnalités suivantes :
+-   Stratégies d’accès aux données pour contrôler l’accès aux données stockées dans des fichiers Blob ou ADLS Gen2
 
 > [!IMPORTANT]
 > Ces fonctionnalités sont actuellement en préversion. Cette préversion est fournie sans contrat de niveau de service et ne doit pas être utilisée pour des charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-
-
-## <a name="prerequisites"></a>Prérequis
-
-### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Acceptez de participer à la préversion de la stratégie d’utilisation des données d’Azure Purview
-Cette fonctionnalité étant actuellement en préversion, vous devez [accepter de participer à la préversion des stratégies d’utilisation des données d’Azure Purview](https://aka.ms/opt-in-data-use-policy).
-
-### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>Approvisionner de nouveaux comptes dans un abonnement de test isolé
-Suivez les étapes ci-dessous pour créer un compte Azure Purview et un compte Stockage Azure dans un abonnement de test isolé. Activez ensuite la fonctionnalité de stratégie d’accès dans ces comptes.
+## <a name="important-limitations"></a>Limitations importantes
+1. La fonctionnalité de stratégie d’accès n’est disponible que sur de nouveaux comptes Azure Purview et Stockage Azure.
+2. Inscrivez toutes les sources de données pour utiliser la gouvernance et gérer toutes les stratégies d’accès associées dans un seul compte Azure Purview.
+3. Cette fonctionnalité ne peut être utilisée que dans les régions répertoriées ci-dessous, où les fonctionnalités de gestion des stratégies d’accès et d’application sont déployées.
 
 ### <a name="supported-regions"></a>Régions prises en charge
 
-> [!IMPORTANT]
-> 1. La fonctionnalité de stratégie d’accès n’est disponible que sur de nouveaux comptes Azure Purview et Stockage Azure.
-> 2. Cette fonctionnalité ne peut être utilisée que dans les régions répertoriées ci-dessous, où la fonctionnalité de stratégie d’accès est déployée.
-
-#### <a name="azure-purview"></a>Azure Purview 
-
+#### <a name="azure-purview-management-side"></a>Azure Purview (côté gestion)
 -   Europe Nord
 -   Europe Ouest
 -   Sud du Royaume-Uni
@@ -55,30 +44,24 @@ Suivez les étapes ci-dessous pour créer un compte Azure Purview et un compte S
 -   Centre du Canada
 -   France Centre
 
-
-#### <a name="azure-storage"></a>Stockage Azure
-
+#### <a name="azure-storage-enforcement-side"></a>Stockage Azure (côté application)
 -   France Centre
 -   Centre du Canada
 
+## <a name="prerequisites"></a>Prérequis
+> [!Important]
+> Lisez attentivement cette section. Il existe plusieurs conditions préalables pour que les stratégies d’accès fonctionnent correctement.
 
-### <a name="create-azure-purview-account"></a>Créer un compte Azure Purview
-
-Créez un compte Azure Purview dans les régions où la nouvelle fonctionnalité est activée, sous l’abonnement isolé pour la nouvelle fonctionnalité.
-
-Pour créer un compte Purview, consultez [Démarrage rapide : Créer un compte Azure Purview dans le portail Azure](create-catalog-portal.md).
+### <a name="select-an-isolated-test-subscription"></a>Sélectionner un abonnement de test isolé
+Créez ou utilisez un abonnement de test isolé et suivez les étapes ci-dessous pour créer un nouveau compte Stockage Azure et un nouveau compte Azure Purview dans cet abonnement.
 
 ### <a name="create-azure-storage-account"></a>Créer un compte de stockage Azure
+Créez un compte de stockage Azure dans les régions mentionnées ci-dessus sous limitations. Voir [Créer un compte de stockage - Compte de stockage Azure](../storage/common/storage-account-create.md)
 
-Pour créer un compte Stockage Azure, consultez [Créer un compte de stockage – Stockage Azure](../storage/common/storage-account-create.md).
+### <a name="configure-azure-storage-to-enforce-access-policies-from-purview"></a>Configurer le stockage Azure pour appliquer des stratégies d’accès à partir de Purview
 
-### <a name="configure-azure-purview-and-storage-for-access-policies"></a>Configurer Azure Purview et Stockage Azure pour les stratégies d’accès
-
-Cette section décrit les étapes permettant de configurer Azure Purview et Stockage Azure pour activer les stratégies d’accès.
-
-#### <a name="register-the-access-policies-functionality-in-azure-storage"></a>Inscrire la fonctionnalité des stratégies d’accès dans Stockage Azure
-
-Pour inscrire cette fonctionnalité et vérifier qu’elle est activée pour votre abonnement, exécutez les commandes suivantes dans PowerShell.
+#### <a name="enable-access-policy-enforcement-in-the-subscription"></a>Activer l’application de la stratégie d’accès dans l’abonnement
+Pour vous inscrire et confirmer que la fonctionnalité de stratégie d’accès est activée dans l’abonnement où se trouve le compte stockage Azure, exécutez les commandes suivantes dans PowerShell :
 
 ```powershell
 # Install the Az module
@@ -88,27 +71,46 @@ Connect-AzAccount -Subscription <SubscriptionID>
 # Register the feature
 Register-AzProviderFeature -FeatureName AllowPurviewPolicyEnforcement -ProviderNamespace Microsoft.Storage
 ```
-
 Si la sortie de la dernière commande affiche la valeur de « RegistrationState » « Registered », cela signifie que votre abonnement est activé pour cette fonctionnalité.
 
+#### <a name="check-access-permissions-in-azure-storage"></a>Vérifier les autorisations d’accès dans le Stockage Azure
+Un utilisateur doit avoir le rôle « propriétaire » dans le compte stockage Azure pour inscrire ultérieurement cette source de données dans Azure Purview pour les stratégies d’accès : [cochez l’option accès pour un utilisateur aux ressources Azure Purview](../role-based-access-control/check-access.md)
+
+### <a name="create-azure-purview-account"></a>Créer un compte Azure Purview
+Créez un compte Azure Purview dans les régions où la nouvelle fonctionnalité est activée, sous l’abonnement test isolé. Pour créer un compte Purview, consultez [Démarrage rapide : Créer un compte Azure Purview dans le portail Azure](create-catalog-portal.md).
+
+### <a name="configure-azure-purview-to-manage-access-policies"></a>Configurer Azure Purview pour gérer les stratégies d’accès
+Suivez les étapes ci-dessous pour activer Azure Puview pour gérer les stratégies d’accès 
+
+#### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Acceptez de participer à la préversion de la stratégie d’utilisation des données d’Azure Purview
+Cette fonctionnalité étant actuellement en préversion, vous devez [accepter de participer à la préversion des stratégies d’utilisation des données d’Azure Purview](https://aka.ms/opt-in-data-use-policy)
+
+#### <a name="register-purview-as-a-resource-provider-in-other-subscriptions"></a>Inscrire Purview en tant que fournisseur de ressources dans d’autres abonnements
+Exécutez cette étape uniquement si le compte Stockage auquel vous souhaitez gérer l’accès se trouve dans un autre abonnement que le compte Azure Purview. Inscrivez Azure Purview en tant que fournisseur de ressources dans ces abonnements en suivant ce guide :  
+[Fournisseurs et types de ressources Azure](../azure-resource-manager/management/resource-providers-and-types.md)
+
+#### <a name="configure-permissions-for-policy-management-actions"></a>Configurer des autorisations pour les actions de gestion de stratégie
+- L’utilisateur doit être le propriétaire de la source de données et l’administrateur de la source de données Purview pour inscrire une source pour la gouvernance d’utilisation des données. Toutefois, l’un de ces rôles peut annuler l’inscription de la source pour la gouvernance des données.
+- L’utilisateur doit faire partie du rôle d’auteur de stratégie portée au niveau de la collection racine pour exécuter des actions de création/gestion de stratégie.
+- L’utilisateur doit faire partie du rôle d’administrateur de source de données portée au niveau de la collection racine pour publier la stratégie.
+
+Consultez la section relative à la gestion des attributions de rôles dans le guide [Comment créer et gérer des collections](how-to-create-and-manage-collections.md).
+
+En plus de ces éléments, consultez la section « problèmes connus » en bas de ce document.
+
 #### <a name="register-and-scan-data-sources-in-purview"></a>Inscrire et analyser des sources de données dans Purview
+Enregistrez et analysez chaque source de données avec Purview pour définir ultérieurement des stratégies d’accès. Pour inscrire votre compte de stockage, suivez les guides d’inscription de Purview :
 
-Vous devez inscrire et analyser la source de données avec Purview afin de définir des stratégies. Pour inscrire votre compte de stockage, suivez les guides d’inscription de Purview :
-
--   [Comment analyser un Azure Storage Blob – Azure Purview](register-scan-azure-blob-storage-source.md)
+-   [Comment analyser un Blob de Stockage Azure – Azure Purview](register-scan-azure-blob-storage-source.md)
 
 -   [Inscrire et analyser Azure Data Lake Storage (ADLS) Gen2 – Azure Purview](register-scan-adls-gen2.md)
 
-Pendant l’inscription, activez la source de données pour la gouvernance de l’utilisation des données, comme illustré dans l’image.
+Pendant l’inscription, activez la source de données pour la **gouvernance de l’utilisation des données**, comme illustré dans l’image.
 
 :::image type="content" source="./media/how-to-access-policies-storage/register-data-source-for-policy.png" alt-text="Image montrant comment inscrire une source de données pour la stratégie.":::
 
-#### <a name="configure-permissions-for-policy-management-actions"></a>Configurer des autorisations pour les actions de gestion de stratégie
-
--   Pour pouvoir effectuer des actions de création ou de gestion de stratégie, un utilisateur doit faire partie du rôle conservateur de données Purview.
--   Pour pouvoir publier la stratégie, un utilisateur doit faire partie du rôle administrateur de source de données Purview.
-
-Consultez la section relative à la gestion des attributions de rôles dans le guide [Comment créer et gérer des collections](how-to-create-and-manage-collections.md).
+> [!NOTE]
+> Le comportement du bouton bascule permet d’imposer que toutes les sources de données d’un abonnement donné puissent être inscrites uniquement pour la gouvernance des données à l’aide d’un seul compte Purview. Ce compte Purview lui-même peut être dans n’importe quel abonnement dans le locataire.
 
 ## <a name="policy-authoring"></a>Création de stratégie
 
@@ -185,12 +187,40 @@ Les étapes de publication d’une stratégie sont les suivantes
 
     :::image type="content" source="./media/how-to-access-policies-storage/publish-policy-storage.png" alt-text="Image montrant comment un propriétaire de données peut publier une stratégie.":::
 
-1. Une liste de sources de données s’affiche. Vous pouvez entrer un nom pour la filtrer. Ensuite, sélectionnez chaque source de données dans laquelle cette stratégie doit être publiée, puis cliquez sur le bouton **Publier**. La publication est une opération en arrière-plan. Jusqu’à 2 heures peuvent s’écouler avant que les modifications soient reflétées dans la source de données.
+1. Une liste de sources de données s’affiche. Vous pouvez entrer un nom pour la filtrer. Ensuite, sélectionnez chaque source de données dans laquelle cette stratégie doit être publiée, puis cliquez sur le bouton **Publier**.
 
     :::image type="content" source="./media/how-to-access-policies-storage/select-data-sources-publish-policy-storage.png" alt-text="Image montrant comment un propriétaire de données peut sélectionner la source de données dans laquelle la stratégie sera publiée.":::
 
+>[!NOTE]
+> La publication est une opération en arrière-plan. Jusqu’à **2 heures** peuvent s’écouler avant que les modifications soient reflétées dans la source de données.
+
+## <a name="azure-purview-policy-action-to-azure-storage-action-mapping"></a>Action de stratégie Azure Purview pour le mappage d’action du stockage Azure
+
+Cette section contient une référence sur la façon dont les actions des stratégies de données Azure Purview sont mappées à des actions spécifiques dans le stockage Azure.
+
+| **Action de stratégie Purview** | **Actions spécifiques de la source de données**                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------|
+|||
+| *Lire*                    |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
+|||
+| *Modify*                  |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write               |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action          |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action         |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete              |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/write                     |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/delete                    |
+|||
+
+## <a name="known-issues"></a>Problèmes connus
+Les problèmes connus de la version actuelle sont les suivants :
+1. En plus du rôle auteur de la stratégie, l’utilisateur doit disposer de l’autorisation lecteur de répertoire dans Azure Active Directory (AAD) pour créer une stratégie de propriétaire de données.
+1. Le rôle auteur de la stratégie n’est pas suffisant pour créer des stratégies. Il nécessite également le rôle d’administrateur de la source de données portée.
+
 ## <a name="next-steps"></a>Étapes suivantes
+Consultez le blog et la démonstration relatifs aux fonctionnalités mentionnées dans ce guide pratique.
 
-Consultez cet article pour comprendre les concepts liés à Azure Purview :
-
-* [Vue d’ensemble d’Azure Purview](overview.md)
+* [Nouveautés Azure Purview chez Microsoft Ignite 2021](https://techcommunity.microsoft.com/t5/azure-purview/what-s-new-in-azure-purview-at-microsoft-ignite-2021/ba-p/2915954)
+* [Démonstration de la stratégie d’accès pour le stockage Azure](https://www.youtube.com/watch?v=CFE8ltT19Ss)

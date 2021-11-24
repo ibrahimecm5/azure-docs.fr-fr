@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 04/13/2021
+ms.date: 11/15/2021
 ms.author: danlep
-ms.openlocfilehash: 55e5d8de3761bb50295f849232363b5643329c2b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6159b5c5d677dd66dda12573feeb3aad9faa9764
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596350"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556531"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Comparaison des fonctionnalités des niveaux de la Gestion des API Azure
 
@@ -41,7 +41,8 @@ Chacun des [niveaux tarifaires](https://aka.ms/apimpricing) de la Gestion des AP
 | API de gestion directe                                                                        | Non          | Oui       | Oui   | Oui      | Oui     |
 | Journaux d’activité et métriques Azure Monitor                                                               | Non          | Oui       | Oui   | Oui      | Oui     |
 | Adresse IP statique                                                                                    | Non          | Oui       | Oui   | Oui      | Oui     |
-| [API WebSocket (préversion)](websocket-api.md)                                                                                    | Non          | Oui       | Oui   | Oui      | Oui     |
+| [API WebSocket](websocket-api.md)                                                                                    | Non          | Oui       | Oui   | Oui      | Oui     |
+| [API GraphQL (préversion)](graphql-api.md)                                                                               | Oui          | Oui       | Oui   | Oui      | Oui     |
 
 <sup>1</sup> Permet l’utilisation de Microsoft Azure AD (et Azure AD B2C) en tant que fournisseur d’identité pour la connexion utilisateur sur le portail des développeurs.<br/>
 <sup>2</sup> Y compris les fonctionnalités liées, par exemple, les utilisateurs, les groupes, les problèmes, les modèles d’application et de courrier électronique et les notifications.<br/>

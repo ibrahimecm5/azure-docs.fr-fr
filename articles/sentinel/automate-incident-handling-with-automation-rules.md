@@ -1,32 +1,32 @@
 ---
-title: Automatiser la gestion des incidents dans Azure Sentinel | Microsoft Docs
+title: Automatiser la gestion des incidents dans Microsoft Sentinel | Microsoft Docs
 description: Cet article explique comment utiliser des règles d’automatisation pour automatiser la gestion des incidents, afin d’optimiser l’efficacité et l’efficience de votre centre des opérations de sécurité (SOC) en réponse à des menaces de sécurité.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2d618dacc14c188c188f92be41de3fba20eabe38
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 52f716bf8a5a4457f1f61545e079c17f16c708c3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014217"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522153"
 ---
-# <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>Automatiser la gestion des incidents dans Azure Sentinel à l’aide de règles d’automatisation
+# <a name="automate-incident-handling-in-microsoft-sentinel-with-automation-rules"></a>Automatisation de la gestion des incidents dans Microsoft Sentinel avec des règles d’automatisation
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article explique les règles d’automatisation d’Azure Sentinel et la manière de les utiliser pour implémenter vos opérations d’orchestration, d’automatisation et de réponse en matière de sécurité (Security Orchestration, Automation and Response, SOAR), en renforçant l’efficacité de votre SOC et en vous permettant d’économiser du temps et des ressources.
+Cet article explique les règles d’automatisation de Microsoft Sentinel et la manière de les utiliser pour implémenter vos opérations d’orchestration, d’automatisation et de réponse en matière de sécurité (Security Orchestration, Automation and Response, SOAR), en renforçant l’efficacité de votre SOC et en vous permettant d’économiser du temps et des ressources.
 
 > [!IMPORTANT]
 >
@@ -34,7 +34,7 @@ Cet article explique les règles d’automatisation d’Azure Sentinel et la man
 
 ## <a name="what-are-automation-rules"></a>Que sont les règles d’automatisation ?
 
-Les règles d’automatisation sont un concept nouveau dans Azure Sentinel. Cette fonctionnalité permet aux utilisateurs de gérer de manière centralisée l’automatisation de la gestion des incidents. En plus de vous permettre d’attribuer des playbooks aux incidents (pas seulement aux alertes comme auparavant), les règles d’automatisation vous permettent d’automatiser les réponses pour plusieurs règles d’analytique à la fois, d’étiqueter, d’attribuer ou de fermer automatiquement des incidents sans avoir besoin de playbooks, ainsi que de contrôler l’ordre des actions exécutées. Les règles d’automatisation simplifient l’utilisation de l’automatisation dans Azure Sentinel, et vous permettent de simplifier des flux de travail complexes pour vos processus d’orchestration d’incident.
+Les règles d’automatisation sont un concept nouveau dans Microsoft Sentinel. Cette fonctionnalité permet aux utilisateurs de gérer de manière centralisée l’automatisation de la gestion des incidents. En plus de vous permettre d’attribuer des playbooks aux incidents (pas seulement aux alertes comme auparavant), les règles d’automatisation vous permettent d’automatiser les réponses pour plusieurs règles d’analytique à la fois, d’étiqueter, d’attribuer ou de fermer automatiquement des incidents sans avoir besoin de playbooks, ainsi que de contrôler l’ordre des actions exécutées. Les règles d’automatisation simplifient l’utilisation de l’automatisation dans Microsoft Sentinel, et vous permettent de simplifier des flux de travail complexes pour vos processus d’orchestration d’incident.
 
 ## <a name="components"></a>Composants
 
@@ -44,7 +44,7 @@ Les règles d’automatisation sont constituées de plusieurs composants :
 
 Les règles d’automatisation sont déclenchées par la création d’un incident. 
 
-Pour révision : les incidents sont créés à partir d’alertes déclenchées par des règles d’analytique. Il existe plusieurs types de règles, comme l’explique le tutoriel [Détection des menaces avec des règles d’analytique intégrées dans Azure Sentinel](detect-threats-built-in.md).
+Pour révision : les incidents sont créés à partir d’alertes déclenchées par des règles d’analytique. Il existe plusieurs types de règles, comme l’explique le tutoriel [Détection des menaces avec des règles d’analytique intégrées dans Microsoft Sentinel](detect-threats-built-in.md).
 
 ### <a name="conditions"></a>Conditions
 
@@ -84,14 +84,14 @@ Jusqu’à présent, seules des alertes pouvaient déclencher une réponse autom
 
 ### <a name="trigger-playbooks-for-microsoft-providers"></a>Playbooks de déclencheur pour fournisseurs Microsoft
 
-Les règles d’automatisation offrent un moyen d’automatiser la gestion des alertes de sécurité Microsoft en appliquant ces règles aux incidents créés à partir des alertes. Les règles d’automatisation peuvent appeler des playbooks ([des autorisations spéciales sont requises](#permissions-for-automation-rules-to-run-playbooks)) et leur transmettre les incidents avec tous leurs détails, alertes et entités comprises. En général, les meilleures pratiques d’Azure Sentinel dictent d’utiliser la file d’attente des incidents comme point focal des opérations de sécurité.
+Les règles d’automatisation offrent un moyen d’automatiser la gestion des alertes de sécurité Microsoft en appliquant ces règles aux incidents créés à partir des alertes. Les règles d’automatisation peuvent appeler des playbooks ([des autorisations spéciales sont requises](#permissions-for-automation-rules-to-run-playbooks)) et leur transmettre les incidents avec tous leurs détails, alertes et entités comprises. En général, les meilleures pratiques de Microsoft Sentinel dictent d’utiliser la file d’attente des incidents comme point focal des opérations de sécurité.
 
 Les alertes de sécurité Microsoft sont les suivantes :
 
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender for Cloud Apps
 - Azure AD Identity Protection
-- Azure Defender (ASC)
-- Defender pour IoT (anciennement ASC pour IoT)
+- Microsoft Defender pour le cloud
+- Defender pour IoT (anciennement Azure Security Center pour IoT)
 - Microsoft Defender pour Office 365 (anciennement Office 365 ATP)
 - Microsoft Defender for Endpoint (anciennement MDATP)
 - Microsoft Defender for Identity (anciennement Azure ATP)
@@ -135,27 +135,27 @@ Les actions du playbook au sein d’une règle d’automatisation peuvent être 
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>Autorisations de règles d’automatisation pour l’exécution de playbooks
 
-Quand une règle d’automatisation de Sentinel Azure exécute un playbook, elle utilise un compte de service Azure Sentinel spécial spécifiquement autorisé pour cette action. L’utilisation de ce compte (par opposition à votre compte d’utilisateur) augmente le niveau de sécurité du service.
+Quand une règle d’automatisation de Microsoft Sentinel exécute un playbook, elle utilise un compte de service Microsoft Sentinel spécial spécifiquement autorisé pour cette action. L’utilisation de ce compte (par opposition à votre compte d’utilisateur) augmente le niveau de sécurité du service.
 
 Pour qu’une règle d’automatisation exécute un playbook, ce compte doit disposer d’autorisations explicites sur le groupe de ressources dans lequel se trouve le playbook. À ce stade, toute règle d’automatisation sera en mesure d’exécuter n’importe quel playbook dans ce groupe de ressources.
 
-Quand vous configurez une règle d’automatisation et ajoutez l’action **Exécuter le playbook**, une liste déroulante de playbooks s’affiche. Les playbooks sur lesquels Azure Sentinel n’a pas d’autorisation apparaissent indisponibles (« grisés »). Vous pouvez accorder une autorisation Azure Sentinel aux groupes de ressources du playbook sur place en sélectionnant le lien **Gérer les autorisations des playbooks**.
+Quand vous configurez une règle d’automatisation et ajoutez l’action **Exécuter le playbook**, une liste déroulante de playbooks s’affiche. Les playbooks sur lesquels Microsoft Sentinel n’a pas d’autorisation apparaissent indisponibles (« grisés »). Vous pouvez accorder une autorisation Microsoft Sentinel aux groupes de ressources du playbook sur place en sélectionnant le lien **Gérer les autorisations des playbooks**.
 
 #### <a name="permissions-in-a-multi-tenant-architecture"></a>Autorisations dans une architecture mutualisée
 
 Les règles d’automatisation prennent entièrement en charge les déploiements [multi-locataires](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse) sur plusieurs espaces de travail (avec [Azure Lighthouse](../lighthouse/index.yml) dans le cas d’un déploiement multi-locataire).
 
-Par conséquent, si votre déploiement d’Azure Sentinel utilise une architecture multi-locataire, vous pouvez faire en sorte qu’une règle d’automatisation située dans un locataire exécute un playbook qui se trouve dans un autre locataire. Cependant, les autorisations permettant à Sentinel d’exécuter les playbooks doivent être établies dans le locataire où résident les playbooks, et non dans celui où les règles d’automatisation sont définies.
+Par conséquent, si votre déploiement de Microsoft Sentinel utilise une architecture multi-locataire, vous pouvez faire en sorte qu’une règle d’automatisation située dans un locataire exécute un playbook qui se trouve dans un autre locataire. Cependant, les autorisations permettant à Sentinel d’exécuter les playbooks doivent être établies dans le locataire où résident les playbooks, et non dans celui où les règles d’automatisation sont définies.
 
-Dans le cas précis d’un fournisseur de services de sécurité gérée (où le locataire d’un fournisseur de services gère un espace de travail Azure Sentinel dans le locataire d’un client), deux scénarios particuliers doivent être pris en compte :
+Dans le cas précis d’un fournisseur de services de sécurité gérée (où le locataire d’un fournisseur de services gère un espace de travail Microsoft Sentinel dans le locataire d’un client), deux scénarios particuliers doivent être pris en compte :
 
 - **Une règle d’automatisation créée dans le locataire du client est configurée pour exécuter un playbook situé dans le locataire du fournisseur de services.** 
 
-    Cette approche est normalement utilisée pour protéger la propriété intellectuelle dans le playbook. Rien de spécial n’est nécessaire pour que ce scénario fonctionne. Lorsque vous définissez une action de playbook dans votre règle d’automatisation et que vous arrivez à la phase où vous accordez des autorisations Azure Sentinel sur le groupe de ressources dans lequel se trouve le playbook (à l’aide du panneau **Gérer les autorisations du playbook**), les groupes de ressources appartenant au locataire du fournisseur de services figurent parmi les choix possibles. [Consultez l’ensemble du processus décrit ici](tutorial-respond-threats-playbook.md#respond-to-incidents).
+    Cette approche est normalement utilisée pour protéger la propriété intellectuelle dans le playbook. Rien de spécial n’est nécessaire pour que ce scénario fonctionne. Lorsque vous définissez une action de playbook dans votre règle d’automatisation et que vous arrivez à la phase où vous accordez des autorisations Microsoft Sentinel sur le groupe de ressources dans lequel se trouve le playbook (à l’aide du panneau **Gérer les autorisations du playbook**), les groupes de ressources appartenant au locataire du fournisseur de services figurent parmi les choix possibles. [Consultez l’ensemble du processus décrit ici](tutorial-respond-threats-playbook.md#respond-to-incidents).
 
 - **Une règle d’automatisation créée dans l’espace de travail du client (avec connexion au locataire du fournisseur de services) est configurée pour exécuter un playbook situé dans le locataire du client.**
 
-    Cette configuration est utilisée lorsqu’il n’est pas nécessaire de protéger la propriété intellectuelle. Pour que ce scénario fonctionne, les autorisations d’exécution du playbook doivent être accordées à Azure Sentinel dans ***les deux locataires** _. Dans le locataire du client, vous pouvez les octroyer dans le panneau _ *Gérer les autorisations du playbook** (cf. scénario ci-dessus). Pour accorder les autorisations appropriées dans le locataire du fournisseur de services, vous devez ajouter une délégation Azure Lighthouse supplémentaire qui accorde des droits d’accès à l’application **Azure Security Insights** avec le rôle **Contributeur d’automatisation Azure Sentinel** sur le groupe de ressources où se trouve le playbook.
+    Cette configuration est utilisée lorsqu’il n’est pas nécessaire de protéger la propriété intellectuelle. Pour que ce scénario fonctionne, les autorisations d’exécution du playbook doivent être accordées à Microsoft Sentinel dans ***les deux locataires** _. Dans le locataire du client, vous pouvez les octroyer dans le panneau _ *Gérer les autorisations du playbook** (cf. scénario ci-dessus). Pour accorder les autorisations appropriées dans le locataire du fournisseur de services, vous devez ajouter une délégation Azure Lighthouse supplémentaire qui accorde des droits d’accès à l’application **Azure Security Insights** avec le rôle **Contributeur Automatisation Microsoft Sentinel** sur le groupe de ressources où se trouve le playbook.
 
     Le scénario ressemble à ceci :
 
@@ -165,7 +165,7 @@ Dans le cas précis d’un fournisseur de services de sécurité gérée (où le
 
 ## <a name="creating-and-managing-automation-rules"></a>Création et gestion de règles d’automatisation
 
-Vous pouvez créer et gérer des règles d’automatisation à partir de différents points dans l’expérience Azure Sentinel, en fonction de votre besoin particulier et de votre cas d’utilisation.
+Vous pouvez créer et gérer des règles d’automatisation à partir de différents points dans l’expérience Microsoft Sentinel, en fonction de votre besoin particulier et de votre cas d’utilisation.
 
 - **Panneau Automatisation**
 
@@ -200,7 +200,7 @@ SecurityIncident
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Ce document vous a montré comment utiliser des règles d’automatisation pour gérer votre file d’attente d’incidents Azure Sentinel, et implémenter une automatisation de base de la gestion des incidents.
+Ce document vous a montré comment utiliser des règles d’automatisation pour gérer votre file d’attente d’incidents Microsoft Sentinel, et implémenter une automatisation de base de la gestion des incidents.
 
-- Pour en savoir plus sur les options d’automatisation avancées, consultez [Automatiser la réponse aux menaces à l’aide de playbooks dans Azure Sentinel](automate-responses-with-playbooks.md).
-- Pour obtenir de l’aide sur l’implémentation des playbooks et des règles d’automatisation, consultez [Didacticiel : utiliser des playbooks pour automatiser les réponses aux menaces dans Azure Sentinel](tutorial-respond-threats-playbook.md).
+- Pour en savoir plus sur les options d’automatisation avancées, consultez [Automatiser la réponse aux menaces à l’aide de playbooks dans Microsoft Sentinel](automate-responses-with-playbooks.md).
+- Pour obtenir de l’aide sur l’implémentation des playbooks et des règles d’automatisation, consultez [Didacticiel : utiliser des playbooks pour automatiser les réponses aux menaces dans Microsoft Sentinel](tutorial-respond-threats-playbook.md).

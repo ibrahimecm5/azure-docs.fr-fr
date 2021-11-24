@@ -2,14 +2,16 @@
 title: Détecter un problème lié aux agents et aux extensions
 description: Symptômes, causes et résolution des défaillances de la Sauvegarde Azure liées à l’agent, à l’extension et aux disques.
 ms.topic: troubleshooting
-ms.date: 05/25/2021
+ms.date: 11/10/2021
 ms.service: backup
-ms.openlocfilehash: cefb166363677e0d4a7c52eae967b92a8216c825
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+author: v-amallick
+ms.author: v-amallick
+ms.openlocfilehash: 464b2e6ed2c968ea57d5396570d8a928d9d9bace
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264634"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301947"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Résoudre les problèmes d’une Sauvegarde Azure : Problèmes d’agent ou d’extension
 
@@ -129,6 +131,9 @@ Pour résoudre ce problème, supprimez le verrou du groupe de ressources de la m
 **Message d’erreur** : Sauvegarde Azure ne dispose pas des autorisations d’accès suffisantes au coffre de clés pour la sauvegarde de machines virtuelles chiffrées. <br>
 
 Pour qu’une opération de sauvegarde puisse réussir sur des machines virtuelles chiffrées, elle doit avoir les autorisations d’accès au coffre de clés. Les autorisations peuvent être définies par l’intermédiaire du [Portail Azure](./backup-azure-vms-encryption.md) ou de [PowerShell](./backup-azure-vms-automation.md#enable-protection).
+
+>[!Note]
+>Si les autorisations requises pour accéder au coffre de clés ont déjà été définies, réessayez l’opération après quelques instants.
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork : L’opération de capture instantanée a échoué, car la machine virtuelle ne présente aucune connectivité réseau
 

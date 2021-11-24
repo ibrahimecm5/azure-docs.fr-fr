@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/27/2020
+ms.date: 11/15/2021
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: c19646a554a9c12315a23cfa272625629c844e37
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3474b44f7661fd60a3885ee237f926f13dbfa361
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127152"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549798"
 ---
 # <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>Superviser la charge de travail de votre pool SQL dédié Azure Synapse Analytics à l’aide de vues de gestion dynamique
 
@@ -220,7 +220,7 @@ ORDER BY sr.request_id;
 
 Si vous avez une requête qui consomme une grande quantité de mémoire ou si vous avez reçu un message d’erreur à propos de l’allocation de tempdb, le problème peut être dû à une instruction [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ou [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) très lourde en cours d’exécution qui échoue pendant l’opération de déplacement des données finale. Vous pouvez généralement identifier ce problème dans une opération ShuffleMove dans le plan de requête distribuée juste avant la dernière instruction INSERT SELECT.  Utilisez [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour surveiller les opérations ShuffleMove.
 
-Pour atténuer ce problème, vous pouvez diviser l’instruction CTAS ou INSERT SELECT en plusieurs instructions de chargement de sorte que le volume des données ne dépasse pas la limite de tempdb définie à 1 To par nœud. Vous pouvez également mettre à l’échelle votre cluster vers une taille plus grande qui répartit la taille de tempdb sur plus de nœuds en la réduisant sur chaque nœud individuel.
+La solution la plus courante consiste à fractionner l'instruction CTAS ou INSERT SELECT en plusieurs instructions de chargement afin que le volume de données ne dépasse pas la limite de 2 To par nœud de tempdb (à partir de DW500c). Vous pouvez également mettre à l’échelle votre cluster vers une taille plus grande qui répartit la taille de tempdb sur plus de nœuds en la réduisant sur chaque nœud individuel.
 
 En plus des instructions CTAS et INSERT SELECT, les requêtes volumineuses et complexes s’exécutant avec une mémoire insuffisante peuvent déborder dans tempdb et faire échouer les requêtes.  Envisagez une exécution avec une plus grande [classe de ressources](resource-classes-for-workload-management.md) pour éviter tout débordement dans tempdb.
 

@@ -3,13 +3,16 @@ title: Restaurer des machines virtuelles avec le Portail Azure
 description: Restaurer une machine virtuelle Azure à partir d’un point de récupération à l’aide du portail Azure, et notamment de la fonctionnalité de restauration inter-régions.
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: a848a36632a4c0474c9f20de58c415bd779da198
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/16/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: b207fa803831aaa1e53da2c9991517a26fb9c07b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265033"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550484"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Comment restaurer des données de machine virtuelle Azure dans le Portail Azure
 
@@ -95,6 +98,9 @@ Cette [option de restauration](#restore-options) vous permet de créer rapidemen
 
 1. Sélectionnez **Restaurer** pour démarrer l’opération de restauration.
 
+>[!Note]
+>Avant de modifier les paramètres du groupe de sécurité réseau, assurez-vous que l’opération de restauration de la machine virtuelle est terminée. En savoir plus sur [le suivi de l’opération de restauration](#track-the-restore-operation).
+
 ## <a name="restore-disks"></a>Restaurer des disques
 
 Cette [option de restauration](#restore-options) vous permet de créer un disque à partir d’un point de restauration. Une fois le disque créé, vous pouvez effectuer l’une des actions suivantes :
@@ -163,7 +169,7 @@ Si la CRR est activée, vous pouvez afficher les éléments de sauvegarde dans l
 1. Cliquez sur **Région secondaire** pour afficher les éléments de la région secondaire.
 
 >[!NOTE]
->Seuls les types de gestion des sauvegardes prenant en charge la fonctionnalité CRR s’affichent dans la liste. Actuellement, seule la prise en charge de la restauration de données de région secondaire vers une région secondaire est autorisée.<br></br>CRR pour les machines virtuelles Azure est pris en charge pour les machines virtuelles managées Azure(notamment les machines virtuelles Azure chiffrées).
+>Seuls les types de gestion des sauvegardes prenant en charge la fonctionnalité CRR s’affichent dans la liste. Actuellement, seule la prise en charge de la restauration de données de région secondaire vers une région secondaire est autorisée.<br></br>CRR pour les machines virtuelles Azure est pris en charge pour les machines virtuelles managées Azure(notamment les machines virtuelles Azure chiffrées). Consultez les [types de gestion qui prennent en charge la restauration inter-région](/azure/backup/backup-support-matrix#cross-region-restore).
 
 ![Machines virtuelles dans la région secondaire](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 

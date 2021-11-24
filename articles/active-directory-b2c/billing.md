@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/15/2021
+ms.date: 11/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: aa03c0ec560102ce44aa0cbf2bede5dd59423296
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: ce908193e379fce29b07d36185a446e04a9d86de
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065062"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549199"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Modèle de facturation pour Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ La facturation MAU est entrée en vigueur pour les locataires Azure AD B2C le *
   
 Votre locataire Azure AD B2C doit également être lié au niveau tarifaire Azure approprié en fonction des fonctionnalités que vous souhaitez utiliser. Les fonctionnalités Premium exigent une [tarification Premium P1 ou P2](https://azure.microsoft.com/pricing/details/active-directory-b2c/) d’Azure AD B2C. Vous devrez peut-être mettre à niveau votre niveau tarifaire pour utiliser de nouvelles fonctionnalités. Par exemple, des stratégies d'accès conditionnel basé sur les risques : vous devrez sélectionner le niveau tarifaire Premium P2 d'Azure AD B2C pour votre locataire.
 > [!NOTE]
->  Vos 50 000 premiers utilisateurs actifs mensuels sont gratuits pour les fonctionnalités Premium P1 et Premium P2. Pour déterminer le nombre total d'utilisateurs actifs mensuels, nous combinons les utilisateurs actifs mensuels de tous vos locataires (Azure AD et Azure AD B2C) qui sont associés au même abonnement.
+>  Vos 50 000 premiers MAU par mois sont gratuits pour les fonctions Premium P1 et Premium P2, mais la **gratuité ne s'applique pas aux abonnements d'essai gratuit, à crédit ou de parrainage**. Une fois la période d’essai gratuite ou les crédits expirés pour ces types d’abonnements, vous commencez à payer pour Azure AD B2C utilisateurs actifs mensuels. Pour déterminer le nombre total d'utilisateurs actifs mensuels, nous combinons les utilisateurs actifs mensuels de tous vos locataires (Azure AD et Azure AD B2C) qui sont associés au même abonnement.
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Lier un locataire Azure AD B2C à un abonnement
 
 Les frais d’utilisation pour Azure Active Directory B2C (Azure AD B2C) sont facturés à un abonnement Azure. Vous devez lier explicitement un locataire Azure AD B2C à un abonnement Azure en créant une *ressource* Azure AD B2C au sein de l’abonnement Azure cible. Plusieurs ressources Azure AD B2C peuvent être créées dans un seul abonnement Azure, ainsi que d’autres ressources Azure, comme des machines virtuelles, des comptes de stockage et des applications logiques. Vous pouvez voir toutes les ressources au sein de l’abonnement en accédant au locataire Azure Active Directory (Azure AD) auquel l’abonnement est associé.
@@ -72,7 +72,7 @@ Un abonnement lié à un locataire Azure AD B2C peut être utilisé pour la fact
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 1. Vérifiez que vous utilisez le répertoire qui contient votre abonnement Azure AD, et non le répertoire contenant votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
 1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire Azure AD dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
-1. Sélectionnez **Créer une ressource**, entrez `Active Directory B2C` dans le champ **Rechercher sur la Place de marché**, puis sélectionnez **Azure Active Directory B2C**.
+1. Sélectionnez **Créer une ressource** , puis, dans le champ **Rechercher des services et une place de marché**, recherchez et sélectionnez **Azure Active Directory B2C** .
 1. Sélectionnez **Create** (Créer).
 1. Sélectionnez **Lier un locataire Azure AD B2C existant à mon abonnement Azure**.
 1. Sélectionnez un **locataire Azure AD B2C** dans la liste déroulante. Seuls les locataires dont vous êtes administrateur général et qui ne sont pas déjà liés à un abonnement sont affichés. Le **nom de la ressource Azure AD B2C** est rempli avec le nom de domaine du locataire Azure AD B2C que vous sélectionnez.

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 4453660cb58a1b976488d1cc9e240768637a85b6
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d54aec5bae8fb86b9c0ed0356cd6af713500527f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857091"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492054"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Instructions pour la résolution des problèmes de l’indexeur pour la Recherche cognitive Azure
 
@@ -199,6 +199,43 @@ api-key: [admin key]
 ## <a name="missing-content-from-cosmos-db"></a>Contenu manquant de Cosmos DB
 
 La Recherche cognitive Azure comporte une dépendance implicite vis-à-vis de l’indexation Cosmos DB. Si l’indexation automatique est désactivée dans Cosmos DB, la Recherche cognitive Azure renvoie un état réussi, mais ne parvient pas à indexer le contenu du conteneur. Pour savoir comment vérifier les paramètres et activer l’indexation, voir [Gérer l’indexation dans Azure Cosmos DB](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal).
+
+## <a name="documents-processed-multiple-times"></a>Documents traités plusieurs fois
+
+Les indexeurs s’appuient sur une stratégie de mise en mémoire tampon conservatrice afin de garantir que chaque document nouveau ou modifié dans la source de données est pris en compte lors de l’indexation. Dans certaines situations, ces mémoires tampon peuvent se chevaucher, ce qui fait qu’un indexeur indexe un document deux fois ou plus, et que le nombre de documents traités est supérieur au nombre réel de documents dans la source de données. Ce comportement n’affecte **pas** les données stockées dans l’index, comme la duplication des documents, mais il peut allonger le délai nécessaire pour atteindre la cohérence finale. Cette situation peut être particulièrement prévalente si l’une des conditions suivantes est vraie :
+
+- Les demandes d’indexation à la demande sont émises et se suivent rapidement
+- La topologie de la source de données inclut plusieurs réplicas et partitions (un exemple de ce type est présenté [ici](https://docs.microsoft.com/azure/cosmos-db/consistency-levels))
+
+Les indexeurs ne sont pas destinés à être invoqués plusieurs fois de suite et rapidement. Si vous avez besoin de mises à jour rapides, l’approche recommandée consiste à envoyer les mises à jour vers l’index tout en mettant simultanément à jour la source de données. Pour un traitement à la demande, nous vous recommandons d’échelonner vos demandes par intervalles de cinq minutes ou plus, puis d’exécuter l’indexeur de manière planifiée.
+
+### <a name="example-of-duplicate-document-processing-with-30-second-buffer"></a>Exemple de traitement de documents en double avec une mémoire tampon de 30 secondes
+Les conditions dans lesquelles un document est traité deux fois sont expliquées ci-dessous dans une chronologie qui consigne chaque action et contre-action. La chronologie suivante illustre le problème :
+
+| Chronologie (hh:mm:ss) | Événement | Limite supérieure de l’indexeur | Commentaire |
+|---------------------|-------|-------------------------|---------|
+| 00:01:00 | Écrire `doc1` dans la source de données avec une cohérence finale | `null` | L’horodatage du document est 00:01:00. |
+| 00:01:05 | Écrire `doc2` dans la source de données avec une cohérence finale | `null` | L’horodatage du document est 00:01:05. |
+| 00:01:10 | Lancement de l’indexeur | `null` | |
+| 00:01:11 | Requêtes de l’indexeur pour toutes les modifications avant 00:01:10 ; le réplica que l’indexeur interroge est le seul à connaître `doc2` ; récupère `doc2` uniquement | `null` | L’indexeur demande toutes les modifications avant de commencer l’horodatage mais reçoit en fait un sous-ensemble. Ce comportement nécessite la mémoire tampon des périodes passées. |
+| 00:01:12 | L’indexeur traite `doc2` pour la première fois | `null` | |
+| 00:01:13 | Fin de l’indexeur | 00:01:10 | La limite supérieure est mise à jour avec l’horodatage de l’exécution de l'indexeur actuel. |
+| 00:01:20 | Lancement de l’indexeur | 00:01:10 | |
+| 00:01:21 | Requêtes de l’indexeur pour toutes les modifications entre 00:00:40 et 00:01:20 ; le réplica que l’indexeur interroge est le seul à connaître `doc1` et `doc2` ; récupère `doc1` et `doc2` uniquement | 00:01:10 | Demandes de l’indexeur pour toutes les modifications entre la limite supérieure actuelle moins la mémoire tampon de 30 secondes et l’horodatage de début d’exécution de l’indexeur actuel. |
+| 00:01:22 | L’indexeur traite `doc1` pour la première fois | 00:01:10 | |
+| 00:01:23 | L’indexeur traite `doc2` pour la deuxième fois | 00:01:10 | |
+| 00:01:24 | Fin de l’indexeur | 00:01:20 | La limite supérieure est mise à jour avec l’horodatage de l’exécution de l'indexeur actuel. |
+| 00:01:32 | Lancement de l’indexeur | 00:01:20 | |
+| 00:01:33 | Requêtes de l’indexeur pour toutes les modifications entre 00:00:50 et 00:01:32 ; récupère `doc1` et `doc2` | 00:01:20 | Demandes de l’indexeur pour toutes les modifications entre la limite supérieure actuelle moins la mémoire tampon de 30 secondes et l’horodatage de début d’exécution de l’indexeur actuel. |
+| 00:01:34 | L’indexeur traite `doc1` pour la deuxième fois | 00:01:20 | |
+| 00:01:35 | L’indexeur traite `doc2` pour la troisième fois | 00:01:20 | |
+| 00:01:36 | Fin de l’indexeur | 00:01:32 | La limite supérieure est mise à jour avec l’horodatage de l’exécution de l'indexeur actuel. |
+| 00:01:40 | Lancement de l’indexeur | 00:01:32 | |
+| 00:01:41 | Requêtes de l’indexeur pour toutes les modifications entre 00:01:02 et 00:01:40 ; récupère `doc2` | 00:01:32 | Demandes de l’indexeur pour toutes les modifications entre la limite supérieure actuelle moins la mémoire tampon de 30 secondes et l’horodatage de début d’exécution de l’indexeur actuel. |
+| 00:01:42 | L’indexeur traite `doc2` pour la quatrième fois | 00:01:32 | |
+| 00:01:43 | Fin de l’indexeur | 00:01:40 | Notez que l’exécution de cet indexeur a commencé plus de 30 secondes après la dernière écriture dans la source de données et a également traité `doc2`. Il s’agit du comportement attendu, car si toutes les exécutions de l'indexeur avant 00:01:35 sont éliminées, celle-ci deviendra la première et seule exécution à traiter `doc1` et `doc2`. |
+
+En pratique, ce scénario ne se produit que lorsque des indexeurs à la demande sont invoqués manuellement à quelques minutes d'intervalle, pour certaines sources de données. Il peut en résulter des chiffres erronés (par exemple, l'indexeur a traité 345 documents au total selon ses statistiques d’exécution, mais il y a 340 documents dans la source de données et l’index), ou une facturation potentiellement accrue si vous exécutez plusieurs fois les mêmes compétences pour le même document. L’exécution planifiée d’un indexeur est la meilleure approche.
 
 ## <a name="see-also"></a>Voir aussi
 

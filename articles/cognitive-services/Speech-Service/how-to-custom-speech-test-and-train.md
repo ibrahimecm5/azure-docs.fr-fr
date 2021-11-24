@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/08/2021
+ms.date: 11/09/2021
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 559081847ae83776bdf2d915cd194ccf6ffddb1f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509931"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546383"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Préparer des données pour Custom Speech
 
@@ -49,7 +49,7 @@ Ce tableau liste les types de données acceptés, les cas d’utilisation pour c
 
 | Type de données | Utilisé pour le test | Quantité recommandée | Utilisé pour l’entraînement | Quantité recommandée |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Oui<br>Utilisé pour l’inspection visuelle | 5 fichiers audio et plus | Non | N/A |
+| [Audio uniquement](#audio-data-for-testing) | Oui<br>Utilisé pour l’inspection visuelle | 5 fichiers audio et plus | Non | N/A |
 | [Transcriptions audio + étiquetées à la main](#audio--human-labeled-transcript-data-for-trainingtesting) | Oui<br>Utilisé pour évaluer la précision | 0,5 - 5 heures d’audio | Oui | 1 à 20 heures d’audio |
 | [Texte brut](#plain-text-data-for-training) | Non | n/a | Oui | 1 – 200 Mo de texte associé |
 | [Texte structuré](#structured-text-data-for-training-public-preview) (préversion publique) | Non | n/a | Oui | Jusqu’à 10 classes avec jusqu’à 4000 éléments et jusqu’à 50 000 phrases d’apprentissage |
@@ -92,9 +92,7 @@ Une fois que votre jeu de données est chargé, vous disposez de plusieurs optio
 
 Vous pouvez utiliser l’[API REST de reconnaissance vocale v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) pour automatiser toutes les opérations liées à vos modèles personnalisés. En particulier, vous pouvez l’utiliser pour charger un jeu de données. Cette fonction est particulièrement utile lorsque le fichier de votre jeu de données dépasse 128 Mo, car les fichiers de cette taille ne peuvent pas être chargés à l’aide de l’option *Fichier local* dans Speech Studio. (Vous pouvez également utiliser l’option *Azure Blob ou emplacement partagé* dans Speech Studio dans le même but, comme décrit dans la section précédente.)
 
-Utilisez l’une des requêtes suivantes pour créer et charger un jeu de données :
-* [Créer un jeu de données](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
-* [Créer un jeu de données à partir d’un formulaire](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+Pour créer et télécharger un jeu de données, utilisez la requête[Créer un jeu de données](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset).
 
 **Jeux de données créés par l’API REST et projets Speech Studio**
 
@@ -102,7 +100,7 @@ Un jeu de données créé avec l’API REST de reconnaissance vocale v3.0 ne se
 
 Lorsque vous vous connectez à Speech Studio, son interface utilisateur vous avertit en cas de découverte d’un objet non connecté (comme des jeux de données chargés via l’API REST sans référence à un projet) et vous propose de connecter ces objets à un projet existant. 
 
-Pour connecter le nouveau jeu de données à un projet existant dans Speech Studio pendant son chargement, utilisez [Créer un jeu de données](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) ou [Créer un jeu de données à partir d’un formulaire](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm) et renseignez le corps de la demande en respectant le format suivant :
+Pour connecter le nouveau jeu de données à un projet existant dans Speech Studio pendant son chargement, utilisez [Créer un jeu de données](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) et renseignez le corps de la demande en respectant le format suivant :
 ```json
 {
   "kind": "Acoustic",
@@ -116,7 +114,7 @@ Pour connecter le nouveau jeu de données à un projet existant dans Speech Stud
 }
 ```
 
-L’URL du projet requise pour l’élément `project` peut être obtenue à l’aide de la requête [Get Projects](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects).
+L’URL du projet requise pour l’élément `project` peut être obtenue à l’aide de la requête [Get Projects](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects).
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>Données audio + transcription étiquetée à la main pour l’apprentissage/le test
 
@@ -132,7 +130,7 @@ Les fichiers audio peuvent avoir un silence au début et à la fin de l’enregi
 | Longueur maximale par fichier audio | 2 heures (test) /60 s (entraînement) |
 | Format d’échantillonnage            | PCM, 16 bits                         |
 | Format d’archive           | .zip                                |
-| Taille maximale de zip         | 2 Go                                |
+| Taille maximale de zip         | 2 Go                                |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -192,7 +190,7 @@ Par ailleurs, vous devez prendre en compte les restrictions suivantes :
 
 ## <a name="structured-text-data-for-training-public-preview"></a>Données de texte structuré pour l’apprentissage (préversion publique)
 
-Souvent, les énoncés attendus suivent un certain modèle. Un modèle courant est que les énoncés diffèrent uniquement par des mots ou des expressions extraits d’une liste. Il peut s’agir, par exemple, de « J’ai une question sur `product` », où `product` est une liste de produits possibles. Ou « Colorier `object` en `color` » où `object` est une liste de formes géométriques, et `color` une liste de couleurs. Pour simplifier la création de données d’apprentissage et permettre une meilleure modélisation dans le Modèle de langage personnalisé, vous pouvez utiliser un texte structuré de format Markdown pour définir des listes d’éléments, puis référencer celles-ci à l’intérieur de vos énoncés d’apprentissage. En outre, le format Markdown prend également en charge la spécification de la prononciation phonétique des mots. Le format Markdown est partagé avec le format Markdown `.lu` utilisé pour l’apprentissage des modèles de compréhension du langage (LUIS), en particulier les entités de liste et les exemples d’énoncés. Pour plus d’informations sur le Markdown `.lu` complet, consultez le <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">format de fichier `.lu`</a>.
+Souvent, les énoncés attendus suivent un certain modèle. Un modèle courant est que les énoncés diffèrent uniquement par des mots ou des expressions extraits d’une liste. Il peut s’agir, par exemple, de « J’ai une question sur `product` », où `product` est une liste de produits possibles. Ou « Colorier `object` en `color` » où `object` est une liste de formes géométriques, et `color` une liste de couleurs. Pour simplifier la création de données d’apprentissage et permettre une meilleure modélisation dans le Modèle de langage personnalisé, vous pouvez utiliser un texte structuré de format Markdown pour définir des listes d’éléments, puis référencer celles-ci à l’intérieur de vos énoncés d’apprentissage. En outre, le format Markdown prend également en charge la spécification de la prononciation phonétique des mots. Le fichier Markdown doit avoir une extension `.md`. La syntaxe du fichier Markdown est la même que celle des modèles Language Understanding, en particulier les entités de liste et les énoncés d’exemples. Pour plus d’informations sur la syntaxe complète du fichier Markdown, consultez <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">Language Understanding markdown</a>.
 
 Voici un exemple de format Markdown :
 
@@ -296,7 +294,7 @@ Custom Speech nécessite des fichiers audio avec les propriétés suivantes :
 | Longueur maximale par fichier audio | 2 heures               |
 | Format d’échantillonnage            | PCM, 16 bits           |
 | Format d’archive           | .zip                  |
-| Taille d’archive maximale     | 2 Go                  |
+| Taille d’archive maximale     | 2 Go                  |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

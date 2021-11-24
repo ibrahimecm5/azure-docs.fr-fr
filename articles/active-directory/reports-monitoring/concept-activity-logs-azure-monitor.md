@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1db2a820ab551130fbd9bba832c329b925a0f6a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 110170868ba477060c5cd8ba1fbf28428160e29e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997112"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305576"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Journaux d’activité Azure Active Directory dans Azure Monitor
 
 Vous pouvez acheminer les journaux d’activité Azure Active Directory (Azure AD) vers plusieurs points de terminaison pour une rétention à long terme et l’analyse des données. Cette fonctionnalité vous permet de :
 
 * Archiver les journaux d’activité Azure AD vers un compte de stockage Azure afin conserver les données pendant longtemps.
-* Diffuser les journaux d’activité Azure AD vers un Event Hub Azure pour analyser des données à l’aide des outils populaires de Security Information and Event Management (SIEM), comme Splunk, QRadar et Azure Sentinel.
+* Diffuser les journaux d’activité Azure AD vers un Event Hub Azure pour analyser des données à l’aide des outils populaires de Security Information and Event Management (SIEM), comme Splunk, QRadar et Microsoft Sentinel.
 * Intégrer vos journaux d’activité Azure AD à vos propres solutions de journaux d’activité personnalisés en les diffusant en continu vers un Event Hub.
 * Envoyer vos journaux d’activité Azure AD aux journaux d’activité Azure Monitor pour permettre les visualisations enrichies, la supervision et les alertes sur les données connectées.
 
@@ -39,7 +39,7 @@ Vous pouvez acheminer les journaux d’activité Azure Active Directory (Azure A
 
 ## <a name="supported-reports"></a>Rapports pris en charge
 
-Vous pouvez acheminer les journaux d’audit Azure AD et authentifier des journaux d’activité vers votre compte de stockage Azure, un Event Hub, des journaux d’activité Azure Monitor ou une solution personnalisée à l’aide de cette fonctionnalité. 
+Vous pouvez acheminer les journaux d’audit Azure AD et authentifier des journaux d’activité vers votre compte de stockage Azure, un Event Hub, des journaux d’activité Azure Monitor ou une solution personnalisée à l’aide de cette fonctionnalité.
 
 * **Journaux d’audit** : le [rapport d’activité des journaux d’audit](concept-audit-logs.md) vous permet d’accéder aux informations sur les modifications appliquées à votre locataire, telles que la gestion des utilisateurs et des groupes, ou les mises à jour appliquées aux ressources de votre locataire.
 * **Journaux d’activité de connexion** : Le [rapport d’activité de connexion](concept-sign-ins.md) vous permet d’identifier qui a effectué les tâches consignées dans les journaux d’audit.

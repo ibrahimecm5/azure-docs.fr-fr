@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e1348040bb496448d85c8d1bec3b9621025bf22
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: b6b07624265f4ec33079780f477ebd1b36d9ffab
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653590"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132525048"
 ---
 # <a name="azure-app-service-plan-overview"></a>Présentation des plans d’Azure App Service
 
@@ -23,13 +23,13 @@ Quand vous créez un plan App Service dans une région (par exemple, Europe Oues
 - Région (USA Ouest, USA Est, etc.)
 - Nombre d’instances de machine virtuelle
 - Taille des instances de machine virtuelle (petite, moyenne ou grande)
-- Niveau tarifaire (Gratuit, Partagé, De base, Standard, Premium, PremiumV2, PremiumV3, Isolé)
+- Niveau tarifaire (Gratuit, Partagé, De base, Standard, Premium, PremiumV2, PremiumV3, Isolé, IsoléV2)
 
 Le _niveau tarifaire_ d’un plan App Service détermine les fonctionnalités App Service que vous obtenez et combien vous payez pour le plan. Les niveaux tarifaires disponibles pour votre plan App Service dépendent du système d’exploitation sélectionné au moment de la création. Il existe plusieurs catégories de niveaux tarifaires :
 
 - **Calcul partagé** : Les deux niveaux de base, **Gratuit** et **Partagé**, exécutent une application sur la même machine virtuelle Azure que les autres applications App Service, y compris les applications d’autres clients. Ces niveaux allouent des quotas d’UC à chaque application qui s’exécute sur les ressources partagées, et les ressources ne peuvent pas effectuer un scale-out.
 - **Calcul dédié** : Les niveaux **De base**, **Standard**, **Premium**, **PremiumV2** et **PremiumV3** exécutent les applications sur des machines virtuelles Azure dédiées. Seules les applications qui se trouvent dans un même plan App Service partagent les mêmes ressources de calcul. Plus le niveau est élevé, plus vous disposez d’instances de machine virtuelle pour une mises à l’échelle.
-- **Isolé** : Ce niveau exécute des machines virtuelles Azure dédiées sur des réseaux virtuels Azure dédiés. Il fournit à vos applications l’isolement réseau au-dessus de l’isolation du calcul. Il fournit les fonctionnalités de mises à l’échelle maximales.
+- **Isolé** : Ces niveaux **Isolé** et **IsoléV2** exécutent des machines virtuelles Azure dédiées sur des réseaux virtuels Azure dédiés. Il fournit à vos applications l’isolement réseau au-dessus de l’isolation du calcul. Il fournit les fonctionnalités de mises à l’échelle maximales.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -70,7 +70,7 @@ Cette section décrit la façon dont les applications App Service sont facturée
 
 - Dans le niveau **Partagé**, chaque application reçoit un quota de minutes de processeur ; ainsi, _chaque application_ est facturée pour le quota de processeur.
 - Dans les niveaux de calcul dédié (**De base**, **Standard**, **Premium**, **PremiumV2**, **PremiumV3**), le plan App Service définit le nombre d’instances de machines virtuelles auquel les applications sont mises à l’échelle. Ainsi, _chaque instance de machine virtuelle_ dans le plan App Service est facturée. Ces instances de machine virtuelle sont facturées dans les mêmes proportions, quel que soit le nombre d’applications en cours d’exécution sur ces instances. Pour éviter des frais inattendus, consultez [Nettoyer un plan App Service](app-service-plan-manage.md#delete).
-- Dans le niveau **Isolé**, App Service Environment définit le nombre de Workers isolés qui exécutent vos applications, et _chaque Worker_ est facturé. En outre, l’exécution d’App Service Environment donne lieu à des frais de timbre.
+- Dans les niveaux **Isolé** et **IsoléV2**, App Service Environment définit le nombre de Workers isolés qui exécutent vos applications, et _chaque Worker_ est facturé. En outre, dans le niveau **Isolé**, l’exécution d’App Service Environment donne lieu à des frais de timbre.
 
 Vous ne payez pas pour l’utilisation des fonctionnalités App Service dont vous disposez (configuration de domaines personnalisés, certificats TLS/SSL, emplacements de déploiement, sauvegardes, etc.). Les exceptions sont les suivantes :
 

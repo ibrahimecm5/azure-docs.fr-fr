@@ -203,19 +203,23 @@
       items:
         - name: Utiliser les Kits de développement logiciel (SDK) de services et d’appareils
           items:
-            - name: Utiliser le Kit de développement logiciel (SDK) Azure IoT device pour C
-              href: iot-hub-device-sdk-c-intro.md
+            - name: "SDK Azure IoT Embedded\_C"
+              href: iot-hub-device-embedded-c-sdk.md
+            - name: "SDK Azure IoT\_C"
               items:
-                - name: Utiliser IoTHubClient
-                  href: iot-hub-device-sdk-c-iothubclient.md
-            - name: Informations sur les ressources Azure IoT C SDK
-              href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
-            - name: Développer pour des appareils avec contraintes
-              href: iot-hub-devguide-develop-for-constrained-devices.md
-            - name: Développer pour appareils mobiles
-              href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: Développer pour la plateforme Android Things
-              href: iot-hub-how-to-android-things.md
+                - name: "Utiliser le SDK Azure\_IoT\_C"
+                  href: iot-hub-device-sdk-c-intro.md
+                  items:
+                    - name: Utiliser IoTHubClient
+                      href: iot-hub-device-sdk-c-iothubclient.md
+                - name: Informations sur les ressources Azure IoT C SDK
+                  href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
+                - name: Développer pour des appareils avec contraintes
+                  href: iot-hub-devguide-develop-for-constrained-devices.md
+                - name: Développer pour appareils mobiles
+                  href: iot-hub-how-to-develop-for-mobile-devices.md
+                - name: Développer pour la plateforme Android Things
+                  href: iot-hub-how-to-android-things.md
         - name: Contrôler un appareil sur Android
           href: quickstart-control-device-android.md
         - name: Interroger des données Avro à partir d’un itinéraire de concentrateur

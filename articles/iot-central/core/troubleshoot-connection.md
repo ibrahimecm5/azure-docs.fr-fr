@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a929e5d4bccc3a6b2d27125de6aad4472364d67e
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459103"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179136"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Déterminer la raison pour laquelle les données de vos appareils ne s’affichent pas dans Azure IoT Central
 
@@ -158,6 +158,18 @@ Si vous constatez des problèmes liés à votre flux d’authentification :
 | 412 | L’`ETag` de la requête ne correspond pas à l’`ETag` de la ressource existante, conformément à la RFC7232. | [Créez un ticket auprès du support technique](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 429 | Les opérations sont limitées par le service. Pour connaître les limites de service spécifiques, consultez [Limites du service IoT Hub Device Provisioning](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Réduisez la fréquence des messages, répartissez les responsabilités entre plusieurs appareils. |
 | 500 | Une erreur interne s’est produite. | [Créez un ticket auprès du support technique](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) pour voir s’il est en mesure de vous aider davantage. |
+
+### <a name="detailed-authorization-error-codes"></a>Codes détaillés d’erreur d’autorisation
+
+| Erreur | Sous-code d’erreur | Notes |
+| - | - | - |
+| 401 Non autorisé | 401002 | L’appareil utilise des informations d’identification non valides ou expirées. Cette erreur est signalée par DPS. |
+| 401 Non autorisé | 400209 | L’appareil est en attente d’approbation par un opérateur ou a été bloqué par un opérateur. |
+| 401 IoTHubUnauthorized |  | L’appareil utilise un jeton de sécurité expiré. Cette erreur est signalée par IoT Hub. |
+| 401 IoTHubUnauthorized | DEVICE_DISABLED | L’appareil est désactivé dans ce hub IoT et a été déplacé vers un autre hub IoT. Approvisionnez à nouveau l’appareil. |
+| 401 IoTHubUnauthorized | DEVICE_BLOCKED | Un opérateur a bloqué cet appareil. |
+
+
 
 ### <a name="file-upload-error-codes"></a>Codes d’erreur de chargement du fichier
 

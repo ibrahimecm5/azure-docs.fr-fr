@@ -3,12 +3,12 @@ title: Guide pratique pour planifier et déployer des serveurs avec Azure Arc
 description: Découvrez comment activer un grand nombre de machines sur des serveurs avec Azure Arc, afin de simplifier la configuration des fonctionnalités essentielles de sécurité, de gestion et de surveillance dans Azure.
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a8bd9187d3d8d2394fe340eb1822f45e17a50b7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b32090caf8167874e61bbca0c5f3782557abd620
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708966"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340284"
 ---
 # <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Planifier et déployer des serveurs avec Azure Arc
 
@@ -67,7 +67,7 @@ Au cours de cette phase, des administrateurs ou ingénieurs système activent le
 | Configurer un [contrôle d’accès en fonction du rôle](../../role-based-access-control/overview.md) (RBAC) | Élaborez un plan d’accès pour contrôler qui a accès à la gestion des serveurs avec Azure Arc, et la capacité de ces personnes à afficher leurs données à partir d’autres services et solutions Azure. | Un jour |
 | Identifier les machines sur lesquelles l’agent de Log Analytics est déjà installé | Exécutez la requête de journal suivante dans [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) pour opérer la conversion de déploiements d’agents Log Analytics existants en agents gérés par extension :<br> Heartbeat <br> &#124; where TimeGenerated > ago(30d) <br> &#124; where ResourceType == "machines" and (ComputerEnvironment == "Non-Azure") <br> &#124; summarize by Computer, ResourceProvider, ResourceType, ComputerEnvironment | 1 heure |
 
-<sup>1</sup> Un aspect important à prendre en considération dans le cadre de l’évaluation de la conception de votre espace de travail Log Analytics est l’intégration avec Azure Automation pour la prise en charge de ses fonctionnalités Gestion des mises à jour et Suivi des modifications et inventaire, ainsi qu’avec Azure Security Center et Azure Sentinel. Si votre organisation dispose déjà d’un compte Automation et a activé ses fonctionnalités de gestion liées à un espace de travail Log Analytics, déterminez si vous pouvez centraliser et rationaliser les opérations de gestion, ainsi que réduire les coûts, en utilisant ces ressources existantes plutôt que de créer un compte, un espace de travail ou une autre ressources en double.
+<sup>1</sup> Lors de l’évaluation de la conception de votre espace de travail Log Analytics, il est important de tenir compte de l’intégration à Azure Automation pour la prise en charge de ses fonctionnalités Update Management et Suivi des modifications et inventaire, ainsi qu’à Microsoft Defender pour le cloud et Microsoft Sentinel. Si votre organisation dispose déjà d’un compte Automation et a activé ses fonctionnalités de gestion liées à un espace de travail Log Analytics, déterminez si vous pouvez centraliser et rationaliser les opérations de gestion, ainsi que réduire les coûts, en utilisant ces ressources existantes plutôt que de créer un compte, un espace de travail ou une autre ressources en double.
 
 ## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>Phase 2 : planifier et déployer des serveurs avec Azure Arc
 

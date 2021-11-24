@@ -235,7 +235,7 @@
               href: configure-authentication-provider-google.md
             - name: S’authentifier avec Twitter
               href: configure-authentication-provider-twitter.md
-            - name: S’authentifier auprès d’un fournisseur OpenID Connect (préversion)
+            - name: S’authentifier avec un fournisseur OpenID Connect
               href: configure-authentication-provider-openid-connect.md
             - name: S’authentifier en utilisant Se connecter avec Apple (préversion)
               href: configure-authentication-provider-apple.md

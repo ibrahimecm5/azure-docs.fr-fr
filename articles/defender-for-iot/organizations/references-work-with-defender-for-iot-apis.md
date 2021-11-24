@@ -1,14 +1,14 @@
 ---
 title: Utiliser les API Defender pour IoT
 description: Utilisez une API REST externe pour accéder aux données découvertes par les capteurs et les consoles de gestion et effectuer des actions avec ces données.
-ms.date: 11/08/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: 0176fe3da6c2105c522f92614295500fb8ce0e81
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 3d7fdf855e33c84ce966bbe89e564434b2a8a748
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997663"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325293"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>API de capteur et de console de gestion Defender pour IoT
 
@@ -20,7 +20,7 @@ Les connexions sont sécurisées via SSL.
 
 ## <a name="getting-started"></a>Prise en main
 
-En général, lorsque vous utilisez une API externe sur la console de gestion locale ou le capteur Azure Defender pour IoT, vous devez générer un jeton d’accès. Les jetons ne sont pas requis pour les API d’authentification que vous utilisez sur le capteur et la console de gestion locale.
+En général, lorsque vous utilisez une API externe sur la console de gestion locale ou le capteur Microsoft Defender pour IoT, vous devez générer un jeton d’accès. Les jetons ne sont pas requis pour les API d’authentification que vous utilisez sur le capteur et la console de gestion locale.
 
 Pour générer un jeton :
 

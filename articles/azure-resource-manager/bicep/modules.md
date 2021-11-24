@@ -2,13 +2,13 @@
 title: Modules Bicep
 description: Décrit comment définir un module dans un fichier Bicep et comment utiliser des étendues de module.
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: a8aedd784875fccbad81957550380cc4fa236616
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087378"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551271"
 ---
 # <a name="bicep-modules"></a>Modules Bicep
 
@@ -39,7 +39,7 @@ Ainsi, un exemple simple et concret ressemblerait à ce qui suit :
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" :::
 
-Utilisez le nom symbolique pour référencer le module dans une autre partie du fichier Bicep. Par exemple, vous pouvez utiliser le nom symbolique pour obtenir la sortie d’un module. Le nom symbolique peut contenir les caractères a à z, A à Z, 0 à 9, et « _ ». Le nom ne peut pas commencer par un chiffre. Un module ne peut pas avoir le même nom qu’un paramètre, un module ou une ressource.
+Utilisez le nom symbolique pour référencer le module dans une autre partie du fichier Bicep. Par exemple, vous pouvez utiliser le nom symbolique pour obtenir la sortie d’un module. Le nom symbolique peut contenir les lettres a à z et A à Z, les chiffres 0 à 9 et le trait de soulignement (`_`). Le nom ne peut pas commencer par un chiffre. Un module ne peut pas avoir le même nom qu’un paramètre, un module ou une ressource.
 
 Le chemin d’accès peut être un fichier local ou un fichier dans un registre. Pour plus d’informations, consultez [Chemin d’accès au module](#path-to-module).
 
@@ -53,7 +53,7 @@ Pour **déployer un module de manière conditionnelle**, ajoutez une expression 
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-Pour déployer **plus d’une instance** d’un module, ajoutez l’expression `for`. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
+Pour déployer **plus d’une instance** d’un module, ajoutez l’expression `for`. Vous pouvez utiliser l’élément décoratif `batchSize` pour spécifier si les instances sont déployées en série ou en parallèle. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
@@ -91,7 +91,7 @@ Par exemple :
 
 Lorsque vous référencez un module dans un registre, l’extension Bicep de Visual Studio Code appelle automatiquement la fonction [bicep restore](bicep-cli.md#restore) pour copier le module externe dans le cache local. La restauration du module externe prend quelques instants. Si IntelliSense pour le module ne fonctionne pas immédiatement, attendez la fin de la restauration.
 
-Le chemin d’accès complet d’un module dans un registre peut être long. Au lieu de fournir le chemin d’accès complet chaque fois que vous souhaitez utiliser le module, vous pouvez [configurer des alias dans le fichier bicepconfig.json](bicep-config.md#aliases-for-modules). Les alias permettent de référencer plus facilement le module. Par exemple, grâce à un alias, vous pouvez raccourcir le chemin d’accès à :
+Le chemin d’accès complet d’un module dans un registre peut être long. Au lieu de fournir le chemin d’accès complet chaque fois que vous souhaitez utiliser le module, vous pouvez [configurer des alias dans le fichier bicepconfig.json](bicep-config-modules.md#aliases-for-modules). Les alias permettent de référencer plus facilement le module. Par exemple, grâce à un alias, vous pouvez raccourcir le chemin d’accès à :
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/alias-definition.bicep" highlight="1" :::
 

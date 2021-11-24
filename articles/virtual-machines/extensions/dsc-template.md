@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: magoedte
-ms.openlocfilehash: 6d22e93fe8bd36e24520108bc310d5b08c25120c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 388afa5936b0cc84dcbee57302d48798d957a2bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560019"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492016"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Extension de configuration d’état souhaité avec des modèles Azure Resource Manager
 
@@ -27,6 +27,8 @@ Cet article décrit le modèle Azure Resource Manager destiné au [gestionnaire 
 
 > [!NOTE]
 > Vous pouvez rencontrer des exemples de schéma légèrement différents. Le schéma a été modifié dans la version d’octobre 2016. Pour plus d’informations, consultez [Mettre à jour à partir d’un format antérieur](#update-from-a-previous-format).
+>
+> Avant d’activer l’extension DSC, nous aimerions que vous sachiez qu’une version plus récente de DSC est désormais disponible en version préliminaire, gérée par une fonctionnalité d’Azure Policy nommée [configuration invité](../../governance/policy/concepts/guest-configuration.md). La fonctionnalité de configuration invité combine les fonctionnalités du gestionnaire d’extension DSC (Desired State Configuration), d’Azure Automation State Configuration, ainsi que les fonctionnalités les plus couramment demandées par les commentaires des clients. La configuration invité comprend également une prise en charge d’ordinateur hybride via des [serveurs avec Arc](../../azure-arc/servers/overview.md).
 
 ## <a name="template-example-for-a-windows-vm"></a>Exemple de modèle pour une machine virtuelle sous Windows
 

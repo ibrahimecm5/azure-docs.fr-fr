@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 04/16/2021
-ms.openlocfilehash: 2c0ce50c1aac28b532d23ecd1203ff76f10529d4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/10/2021
+ms.openlocfilehash: 921e441a783d1f7bf4dc68b9decf03d6b23fbdb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130077819"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354032"
 ---
 ## <a name="generalize-the-image"></a>Généraliser l’image
 
@@ -39,13 +39,13 @@ Les disques de système d’exploitation Windows sont généralisés à l’aide
 ### <a name="capture-image"></a>Capturer l’image
 
 > [!NOTE]
-> L’abonnement Azure contenant la SIG doit être sous le même locataire que le compte de l’éditeur pour pouvoir être publié. En outre, le compte de l’éditeur doit avoir au moins un accès Contributeur à l’abonnement contenant la SIG.
+> L’abonnement Azure contenant Azure Compute Gallery doit être sous le même locataire que le compte de l’éditeur pour pouvoir être publié. En outre, le compte de l’éditeur doit avoir au moins un accès Contributeur à l’abonnement contenant Azure Compute Gallery.
 
-Une fois que votre machine virtuelle est prête, vous pouvez la capturer dans une galerie d’images partagées Azure. Suivez les étapes ci-dessous pour la capturer :
+Une fois que votre machine virtuelle est prête, vous pouvez la capturer dans une galerie Azure Compute Gallery (anciennement connue comme Shared Image Gallery). Suivez les étapes ci-dessous pour la capturer :
 
 1. Dans [Portail Azure](https://ms.portal.azure.com/), accédez à la page de votre machine virtuelle.
 2. Sélectionnez **Capturer**.
-3. Sous **Partager l’image dans Shared Image Gallery**, sélectionnez **Oui, la partager dans une galerie en tant que version d’image**.
+3. Sous **Partager l’image dans Azure Compute Gallery**, sélectionnez **Oui, la partager dans une galerie en tant que version d’image**.
 4. Sous **État du système d’exploitation**, sélectionnez Généralisé.
 5. Sélectionnez une galerie d’images cible ou **créez-en une nouvelle**.
 6. Sélectionnez une définition d’image cible ou **créez-en une nouvelle**.
@@ -55,7 +55,7 @@ Une fois que votre machine virtuelle est prête, vous pouvez la capturer dans un
 
 ## <a name="set-the-right-permissions"></a>Définir les autorisations appropriées
 
-Si votre compte Espace partenaires est le propriétaire de l’abonnement qui héberge Shared Image Gallery, rien d’autre n’est nécessaire pour les autorisations.
+Si votre compte Espace partenaires est le propriétaire de l’abonnement qui héberge une galerie Azure Compute Gallery, rien d’autre n’est nécessaire pour les autorisations.
 
 Si vous disposez uniquement d’un accès en lecture à l’abonnement, utilisez l’une des deux options suivantes.
 
@@ -63,7 +63,7 @@ Si vous disposez uniquement d’un accès en lecture à l’abonnement, utilisez
 
 Étapes à suivre pour que le propriétaire accorde son autorisation :
 
-1. Accédez à Shared Image Gallery (SIG).
+1. Accédez à la galerie Azure Compute Gallery.
 2. Sélectionnez **Contrôle d’accès** (IAM) dans le volet gauche.
 3. Sélectionnez **Ajouter**, puis **Ajouter une attribution de rôle**.<br>
     :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="La fenêtre Ajouter une attribution de rôle s’affiche":::.
@@ -74,7 +74,7 @@ Si vous disposez uniquement d’un accès en lecture à l’abonnement, utilisez
 
 ### <a name="option-two--run-a-command"></a>Option 2 : Exécuter une commande
 
-Demandez au propriétaire d’exécuter l’une de ces commandes (dans les deux cas, utilisez le SusbscriptionId de l’abonnement où vous avez créé la galerie d’images partagées).
+Demandez au propriétaire d’exécuter l’une de ces commandes (dans les deux cas, utilisez le SusbscriptionId de l’abonnement où vous avez créé la galerie Azure Compute Gallery).
 
 ```azurecli
 az login
@@ -88,4 +88,4 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
 ```
 
 > [!NOTE]
-> Vous n’avez pas besoin de générer d’URI de SAP, car vous pouvez désormais publier une image provenant d’une galerie d’images partagées sur Espace partenaires. Toutefois, si vous avez encore besoin de vous référer aux étapes de génération d’un URI de SAP, consultez [Comment générer un URI SAS pour une image de machine virtuelle](../azure-vm-get-sas-uri.md).
+> Vous n’avez pas besoin de générer d’URI de SAP, car vous pouvez désormais publier une image provenant d’une galerie Azure Compute Gallery sur l’Espace partenaires. Toutefois, si vous avez encore besoin de vous référer aux étapes de génération d’un URI de SAP, consultez [Comment générer un URI SAS pour une image de machine virtuelle](../azure-vm-get-sas-uri.md).

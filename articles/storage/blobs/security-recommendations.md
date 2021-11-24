@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 7eede4af994bab1ca2dfa06bea20d9c79c6e96a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c3554c60331abacae5796e64cefc0ede7f21b64b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335401"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Recommandations de sécurité pour Stockage Blob
 
 Cet article contient des recommandations de sécurité pour Stockage Blob. Mettez en œuvre ces recommandations pour répondre à vos obligations de sécurité comme décrit dans notre modèle de responsabilité partagée. Pour plus d’informations sur la manière dont Microsoft répond à ses responsabilités de fournisseur de services, consultez [Responsabilité partagée dans le cloud](../../security/fundamentals/shared-responsibility.md).
 
-Certaines recommandations contenues dans cet article peuvent être supervisées automatiquement par Azure Security Center. Azure Security Center est la première ligne de défense dans la protection de vos ressources Azure. Pour plus d’informations sur Azure Security Center, consultez [Présentation d’Azure Security Center](../../security-center/security-center-introduction.md).
+Certaines des recommandations contenues dans cet article peuvent être surveillées automatiquement par Microsoft Defender pour le cloud, qui constitue la première ligne de défense pour protéger vos ressources dans Azure. Pour en savoir plus sur Microsoft Defender pour le cloud, consultez [Qu’est-ce que Microsoft Defender pour le cloud ?](../../security-center/security-center-introduction.md)
 
-Azure Security Center analyse périodiquement l’état de sécurité de vos ressources Azure pour identifier les vulnérabilités de sécurité potentielles. Il fournit ensuite des recommandations sur la façon de les corriger. Pour plus d’informations sur les recommandations Azure Security Center, consultez [Recommandations de sécurité dans Azure Security Center](../../security-center/security-center-recommendations.md).
+Microsoft Defender pour le cloud analyse périodiquement l’état de sécurité de vos ressources Azure afin d’identifier les vulnérabilités potentielles en matière de sécurité. Il fournit ensuite des recommandations sur la façon de les corriger. Pour plus d’informations sur les recommandations de Microsoft Defender pour le cloud, consultez [Recommandations de sécurité dans Microsoft Defender pour le cloud](../../security-center/security-center-recommendations.md).
 
 ## <a name="data-protection"></a>Protection de données
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Utiliser le Modèle de déploiement Azure Resource Manager | Créez des comptes de stockage en utilisant le modèle de déploiement Azure Resource Manager pour les améliorations de sécurité importantes, notamment les fonctionnalités de contrôle d’accès en fonction du rôle Azure (Azure RBAC) et d’audit de premier plan, le déploiement et la gouvernance basés sur Resource Manager, l’accès aux identités managées, l’accès pour Azure Key Vault pour les secrets, et l’authentification et l’autorisation basées sur Azure AD pour l’accès aux données et aux ressources de Stockage Azure. Si possible, migrez les comptes de stockage existants qui utilisent le Modèle de déploiement classique pour qu’ils utilisent Azure Resource Manager. Pour plus d’informations sur Azure Resource Manager, consultez [Vue d’ensemble d’Azure Resource Manager](../../azure-resource-manager/management/overview.md). | - |
-| Activer Azure Defender pour tous vos comptes de stockage | Azure Defender pour le stockage Azure offre une couche supplémentaire de veille de sécurité qui détecte les tentatives d’accès ou d’exploitation inhabituelles et potentiellement dangereuses des comptes de stockage. Les alertes de sécurité sont déclenchées dans Azure Security Center quand des anomalies se produisent dans des activités ; elles sont également envoyées par e-mail aux administrateurs d’abonnement, avec les détails des activités suspectes et des recommandations sur la façon d’examiner et de remédier aux menaces. Pour plus d’informations, consultez [Configurer Azure Defender pour le stockage Azure](../common/azure-defender-storage-configure.md). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
+| Activer Microsoft Defender pour tous vos comptes de stockage | Microsoft Defender pour le stockage fournit une couche supplémentaire d’intelligence de sécurité qui détecte les tentatives inhabituelles et potentiellement dangereuses d’accès ou d’exploitation des comptes de stockage. Les alertes de sécurité sont déclenchées dans Microsoft Defender pour le cloud en cas d’anomalies dans l’activité ; elles sont également envoyées par e-mail aux administrateurs d’abonnement, avec des détails sur l’activité suspecte et des recommandations sur la façon d’examiner les menaces et d’y remédier. Pour plus d’informations, consultez [Configurer Microsoft Defender pour le stockage](../common/azure-defender-storage-configure.md). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
 | Activer la suppression réversible des objets blob | La suppression réversible des objets blob vous permet de récupérer des données d’objet blob après qu’elles ont été supprimées. Pour plus d’informations sur la suppression réversible des objets blob, consultez [Suppression réversible des objets blob Stockage Azure](./soft-delete-blob-overview.md). | - |
 | Activer la suppression réversible des conteneurs | La suppression réversible des conteneurs vous permet de récupérer un conteneur après qu’il a été supprimé. Pour plus d’informations sur la suppression réversible des conteneurs, consultez [Suppression réversible des conteneurs](./soft-delete-container-overview.md). | - |
 | Verrouiller le compte de stockage pour empêcher toute suppression ou modification de la configuration par accident ou par malveillance | Appliquez un verrou Azure Resource Manager sur votre compte de stockage pour protéger le compte contre toute suppression ou modification de configuration accidentelle ou malveillante. Le verrouillage d’un compte de stockage n’empêche pas la suppression des données contenues dans ce compte. Il empêche uniquement la suppression du compte à proprement parler. Pour plus d’informations, consultez [Appliquer un verrou Azure Resource Manager sur un compte de stockage](../common/lock-account-resource.md).
@@ -40,7 +40,7 @@ Azure Security Center analyse périodiquement l’état de sécurité de vos res
 
 ## <a name="identity-and-access-management"></a>Gestion de l’identité et de l’accès
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Utiliser Azure Active Directory (Azure AD) pour autoriser l’accès aux données d’objet blob | Azure AD offre une sécurité et une facilité d’utilisation supérieures sur les clés partagées pour autoriser les demandes auprès du stockage d’objets blob. Pour plus d’informations, consultez [Autoriser l’accès aux données dans Stockage Azure](../common/authorize-data-access.md). | - |
 | Garder à l’esprit le principe du moindre privilège lors de l’attribution d’autorisations à un principal de sécurité Azure AD via Azure RBAC | Quand vous attribuez un rôle à un utilisateur, un groupe ou une application, accordez à ce principal de sécurité seulement les autorisations nécessaires pour effectuer ses tâches. La limitation de l’accès aux ressources permet d’éviter une mauvaise utilisation accidentelle et malveillante de vos données. | - |
@@ -55,7 +55,7 @@ Azure Security Center analyse périodiquement l’état de sécurité de vos res
 
 ## <a name="networking"></a>Mise en réseau
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Configurer la version minimale requise du protocole TLS (Transport Layer Security) pour un compte de stockage.  | Exiger que les clients utilisent une version plus sécurisée de TLS pour effectuer des requêtes sur un compte de stockage Azure en configurant la version minimale de TLS pour ce compte. Pour plus d’informations, consultez [Configure minimum required version of Transport Layer Security (TLS) for a storage account](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Configurer la version minimale requise du protocole TLS pour un compte de stockage)| - |
 | Activer l’option **Transfert sécurisé requis** sur tous vos comptes de stockage | Quand vous activez l’option **Transfert sécurisé requis**, toutes les demandes effectuées auprès du compte de stockage doivent se faire via des connexions sécurisées. Toutes les demandes effectuées sur HTTP échouent. Pour plus d’informations, consultez [Exiger un transfert sécurisé dans Stockage Azure](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
@@ -68,7 +68,7 @@ Azure Security Center analyse périodiquement l’état de sécurité de vos res
 
 ## <a name="loggingmonitoring"></a>Journalisation/Supervision
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Suivre les autorisations des demandes | Activez la journalisation de Stockage Azure pour suivre comment chaque demande effectuée auprès de Stockage Azure était autorisée. Les journaux indiquent si une demande a été faite anonymement, en utilisant un jeton OAuth 2.0, avec une clé partagée ou avec une signature d’accès partagé. Pour plus d’informations, consultez [Supervision du Stockage Blob Azure avec Azure Monitor](monitor-blob-storage.md) ou [Journalisation analytique du Stockage Azure avec la supervision classique](../common/storage-analytics-logging.md). | - |
 | Configurer des alertes dans Azure Monitor | Configurez des alertes de journaux pour évaluer les journaux de ressources à chaque fréquence définie et déclencher une alerte en fonction des résultats. Pour plus d’informations, consultez [Alertes de journal dans Azure Monitor](../../azure-monitor/alerts/alerts-unified-log.md). | - |

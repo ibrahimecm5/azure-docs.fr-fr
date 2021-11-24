@@ -13,14 +13,14 @@ ms.date: 01/14/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: alamaral
-ms.openlocfilehash: 38b7137c130925ef7c8e9c127830c33f507b7642
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1074a89374b2cc4f5e272b3b325062de471b2c76
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046258"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549866"
 ---
-# <a name="review-the-application-activity-report-in-azure-active-directory"></a>Consulter le rapport d’activité de l’application dans Azure Active Directory
+# <a name="review-the-application-activity-report"></a>Analyser le rapport d’activité des applications
 
 De nombreuses organisations utilisent les services de fédération Active Directory (AD FS) pour fournir une authentification unique aux applications clou. Il est avantageux de transférer vos applications AD FS vers Azure AD pour l’authentification, notamment en termes de gestion des coûts, de gestion des risques, de productivité, de conformité et de gouvernance. Toutefois, comprendre quelles applications sont compatibles avec Azure AD et identifier des étapes de migration spécifiques peut prendre beaucoup de temps.
 

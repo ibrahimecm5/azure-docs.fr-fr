@@ -1,14 +1,14 @@
 ---
 title: Mettre à jour les données de renseignement sur les menaces
 description: Le paquet de données pour le renseignement sur les menaces est fourni avec chaque nouvelle version de Defender pour IoT, ou entre deux versions si nécessaire.
-ms.date: 04/17/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: f5282002f406c62341f5d104c14aa1cbe9ad32dd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: ac743c9e8c53e40743bda0c50017885f40381971
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015295"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293190"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Recherche et packages de renseignement sur les menaces #
 ## <a name="overview"></a>Vue d’ensemble ##
@@ -34,7 +34,7 @@ Ces renseignements fournissent des informations contextuelles qui enrichissent l
 
 Les packages de renseignement sur les menaces sont fournis environ une fois par mois, ou plus fréquemment si nécessaire. Les annonces concernant les nouveaux packages sont disponibles à l’adresse suivante : https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT.
 
-Vous pouvez également voir le package livré le plus récent à partir de la section **Mise à jour du renseignement sur les menaces** de la page **Mises à jour** sur le portail Defender pour IoT.  
+Vous pouvez également voir le package livré le plus récent à partir de la section **Mise à jour du renseignement sur les menaces** de la page **Mises à jour** de Defender pour IoT sur le Portail Azure.
 
 ## <a name="update-threat-intelligence-packages-to-your-sensors"></a>Mettre à jour les packages de renseignement sur les menaces sur vos capteurs ##
 
@@ -52,12 +52,11 @@ Les packages de renseignement sur les menaces peuvent être automatiquement mis 
 
 ### <a name="manually-push-threat-intelligence-updates-to-sensors"></a>Envoyer (push) manuellement les mises à jour de renseignement sur les menaces aux capteurs ###
 
-Vos capteurs *connectés au cloud* peuvent être automatiquement mis à jour avec des packages de renseignement sur les menaces. Toutefois, si vous souhaitez adopter une approche plus conservatrice, vous pouvez envoyer (push) des packages aux capteurs à partir du portail Azure Defender pour IoT uniquement lorsque vous estimez que cela est nécessaire.
-Vous avez ainsi la possibilité de contrôler le moment où un package est installé, sans avoir à le télécharger, puis à le charger sur vos capteurs.
+Vos capteurs *connectés au cloud* peuvent être automatiquement mis à jour avec des packages de renseignement sur les menaces. Toutefois, si vous souhaitez adopter une approche plus conservatrice, vous pouvez envoyer (push) des packages aux capteurs à partir de Defender pour IoT uniquement lorsque vous estimez que cela est nécessaire. Vous avez ainsi la possibilité de contrôler le moment où un package est installé, sans avoir à le télécharger, puis à le charger sur vos capteurs.
 
 **Pour envoyer (push) manuellement des packages :**
 
-1. Accédez à la page **Sites et capteurs** d’Azure Defender pour IoT.
+1. Accédez à la page **Sites et capteurs** de Microsoft Defender pour IoT.
 1. Sélectionnez le bouton de sélection (…) pour un capteur, puis sélectionnez **Envoyer (push) la mise à jour du renseignement sur les menaces**. Le champ **État de la mise à jour du renseignement sur les menaces** affiche la progression de la mise à jour.
 
 #### <a name="change-the-threat-intelligence-update-mode"></a>Modifier le mode de mise à jour du renseignement sur les menaces ####
@@ -71,15 +70,15 @@ Vous pouvez modifier le mode de mise à jour du renseignement sur les menaces du
 
 ### <a name="download-packages-and-upload-to-sensors"></a>Télécharger les packages et les charger sur les capteurs ###
 
-Les packages peuvent être téléchargés à partir du portail Defender pour IoT et chargés manuellement sur des capteurs individuels. Si la console de gestion locale gère vos capteurs, vous pouvez télécharger des packages de renseignement sur les menaces sur la console de gestion et les envoyer (push) simultanément à plusieurs capteurs.
+Les packages peuvent être téléchargés par le Portail Azure et chargés manuellement vers des capteurs individuels. Si la console de gestion locale gère vos capteurs, vous pouvez télécharger des packages de renseignement sur les menaces sur la console de gestion et les envoyer (push) simultanément à plusieurs capteurs.
 
-:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Téléchargez les mises à jour via le portail Azure Defender pour IoT.":::
+:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Téléchargez les mises à jour dans le Portail Azure.":::
 
 Cette option est disponible pour les capteurs *connectés au cloud* et *gérés localement*.
 
 **Pour charger sur un seul capteur :**
 
-1. Accédez à la page **Mises à jour** d’Azure Defender pour IoT.
+1. Accédez à la page **Mises à jour** de Microsoft Defender pour IoT.
 
 2. Téléchargez et enregistrez le package **Renseignement sur les menaces**.
 
@@ -93,7 +92,7 @@ Cette option est disponible pour les capteurs *connectés au cloud* et *gérés 
 
 **Pour charger simultanément sur plusieurs capteurs :**
 
-1. Accédez à la page **Mises à jour** d’Azure Defender pour IoT.
+1. Accédez à la page **Mises à jour** de Microsoft Defender pour IoT.
 
 2. Téléchargez et enregistrez le package **Renseignement sur les menaces**.
 
@@ -121,7 +120,7 @@ Vérifiez les informations suivantes sur les packages de renseignement sur les m
 
 Pour vérifiez les informations relatives au renseignement sur les menaces :
 
-1. Accédez à la page **Sites et capteurs** d’Azure Defender pour IoT.
+1. Accédez à la page **Sites et capteurs** de Microsoft Defender pour IoT.
 1. Vérifiez la **version de renseignement sur les menaces** installée sur chaque capteur. Le nom de la version est basé sur le jour où le package a été généré par Defender pour IoT.
 1. Vérifiez le **mode de renseignement sur les menaces**. *Automatique* indique que les packages nouvellement disponibles seront automatiquement installés sur les capteurs au fur et à mesure de leur publication par Defender pour IoT. *Manuel* indique que vous pouvez envoyer (push) des packages nouvellement disponibles directement aux capteurs en fonction des besoins.
 1. Examinez l’**état de mise à jour du renseignement sur les menaces**. Les états suivants peuvent s’afficher :

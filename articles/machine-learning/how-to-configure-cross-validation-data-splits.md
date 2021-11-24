@@ -1,7 +1,7 @@
 ---
 title: Fractionnements de données et validation croisée dans le Machine Learning automatisé
 titleSuffix: Azure Machine Learning
-description: Découvrez comment configurer les fractionnements de jeux de données et la validation croisée pour les expériences de Machine Learning automatisé.
+description: Découvrez comment configurer la formation, la validation, la validation croisée et les données de test pour les expériences AutoML.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
@@ -10,15 +10,15 @@ ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 10/21/2021
-ms.openlocfilehash: be945319a81165137b890277372ba625ad200cd2
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/15/2021
+ms.openlocfilehash: 69f5913b03db51561cde17117ef97ec3c9e50868
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559672"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520614"
 ---
-# <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Configurer les fractionnements de données et la validation croisée dans les opérations de Machine Learning automatisé
+# <a name="configure-training-validation-cross-validation-and-test-data-in-automated-machine-learning"></a>Configurer la formation, la validation, la validation croisée et les données de test en AutoML
 
 Dans cet article, vous allez découvrir les différentes options de configuration des fractionnements de données de formation et de validation et des paramètres de la validation croisée pour vos expériences de Machine Learning automatisé (AutoML).
 
@@ -27,9 +27,6 @@ Dans Azure Machine Learning, quand vous utilisez AutoML pour générer plusieurs
 Les expériences d’AutoML effectuent automatiquement la validation du modèle. Les sections suivantes décrivent comment vous pouvez personnaliser davantage les paramètres de validation avec le [Kit de développement logiciel (SDK) Python pour Azure Machine Learning](/python/api/overview/azure/ml/). 
 
 Pour une expérience avec peu, voire sans code, consultez la section [Créer vos expériences de machine learning automatisé dans Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
-
-> [!NOTE]
-> Studio prend actuellement en charge les fractionnements de données de formation et de validation ainsi que les options de validation croisée, mais il ne prend pas en charge la spécification de fichiers de données individuels pour votre jeu de validation. 
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -64,12 +61,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Si vous ne spécifiez pas explicitement un paramètre `validation_data` ou `n_cross_validations`, AutoML applique les techniques par défaut en fonction du nombre de lignes fournies dans le jeu de données unique `training_data` :
+Si vous ne spécifiez pas explicitement un paramètre `validation_data` ou `n_cross_validations`, l’AutoML applique les techniques par défaut en fonction du nombre de lignes fournies dans le jeu de données unique `training_data`.
 
 |Formation sur la taille des&nbsp;données&nbsp;| Technique de validation |
 |---|-----|
 |**Contient plus&nbsp;de&nbsp;20 000&nbsp;lignes**| Le fractionnement des données de formation/validation est appliqué. La valeur par défaut consiste à prendre 10 % du jeu de données d’apprentissage initial en tant que jeu de validation. Ce jeu de validation est ensuite utilisé pour le calcul des métriques.
 |**Contient moins&nbsp;de&nbsp;20 000&nbsp;lignes**| L’approche de validation croisée est appliquée. Le nombre de plis par défaut dépend du nombre de lignes. <br> **Si le jeu de données est inférieur à 1 000 lignes**, 10 plis sont utilisés. <br> **S’il y a entre 1 000 et 20 000 lignes**, trois plis sont utilisés.
+
 
 ## <a name="provide-validation-data"></a>Fournir des données de validation
 
@@ -200,6 +198,42 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 Lorsque la validation croisée k-fold ou Monte Carlo est utilisée, les métriques sont calculées sur chaque pli de validation, puis agrégées. L’opération d’agrégation est une moyenne pour les métriques scalaires et une somme pour les graphiques. Les métriques calculées pendant la validation croisée sont basées sur tous les plis et, par conséquent, sur tous les échantillons du jeu de formation. [En savoir plus sur les métriques dans le Machine Learning automatisé](how-to-understand-automated-ml.md).
 
 Lorsqu’un jeu de validation personnalisé ou un jeu de validation sélectionné automatiquement est utilisé, les métriques d’évaluation du modèle sont calculées uniquement à partir de ce jeu de validation, et non à partir des données de formation.
+
+## <a name="provide-test-data-preview"></a>Fournir des données de test (version préliminaire)
+
+Vous pouvez également fournir des données de test pour évaluer le modèle recommandé que l’AutoML génère automatiquement à l’issue de l’expérience. Lorsque vous fournissez les données de test, elles sont considérées comme un distinct de la formation et de la validation, afin de ne pas biaiser les résultats de la série de tests du modèle recommandé. [En savoir plus sur les données d’apprentissage, de validation et de test dans l’apprentissage automatique.](concept-automated-ml.md#training-validation-and-test-data) 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+Les jeux de données de test doivent se présenter sous la forme d’un [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset). Vous pouvez spécifier un jeu de données de test avec les paramètres `test_data` et `test_size` dans votre objet `AutoMLConfig`.  Ces paramètres s’excluent mutuellement et ne peuvent pas être spécifiés en même temps. 
+
+Avec le paramètre `test_data`, spécifiez un jeu de données existant à transmettre à votre objet `AutoMLConfig`. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             ...
+                             # Provide an existing test dataset
+                             test_data=test_dataset,
+                             ...
+                             forecasting_parameters=forecasting_parameters)
+```
+
+Pour utiliser un fractionnement formation/test au lieu de fournir des données de test directement, utilisez le paramètre `test_size` lors de la création de `AutoMLConfig`. Ce paramètre doit être une valeur à virgule flottante comprise entre 0,0 et 1,0 exclusivement, et spécifie le pourcentage du jeu de données d’apprentissage qui doit être utilisé pour le jeu de données de test.
+
+```python
+automl_config = AutoMLConfig(task = 'regression',
+                             ...
+                             # Specify train/test split
+                             training_data=training_data,
+                             test_size=0.2)
+```
+
+> [!Note]
+> Pour les tâches de régression, l’échantillonnage aléatoire est utilisé.<br>
+> Pour les tâches de classification, l’échantillonnage stratifié est utilisé, mais l’échantillonnage aléatoire est utilisé comme un recul lorsque l’échantillonnage stratifié n’est pas possible. <br>
+> Les prévisions ne prennent pas actuellement en charge la spécification d’un jeu de données de test à l’aide d’un fractionnement formation/test.
+
+Le passage des paramètres `test_data` ou `test_size` dans le `AutoMLConfig` , déclenche automatiquement une série de tests à distance à la fin de votre expérience. Cette série de tests utilise les données de test fournies pour évaluer le meilleur modèle recommandé par l’AutoML. En savoir plus sur l'[obtention des prédictions à partir de la série de tests](how-to-configure-auto-train.md#test-models-preview).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

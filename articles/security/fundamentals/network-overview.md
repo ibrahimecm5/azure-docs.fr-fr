@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a62e6d5b9450ded54d4dce51cbd4469abbbdcd3b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578928"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297370"
 ---
 # <a name="azure-network-security-overview"></a>Vue d’ensemble de la sécurité du réseau Azure
 
@@ -79,13 +79,13 @@ En savoir plus :
 
 * [Groupes de sécurité réseau](../../virtual-network/network-security-groups-overview.md)
 
-#### <a name="asc-just-in-time-vm-access"></a>Accès juste-à-temps aux machines virtuelles pour ASC
+#### <a name="defender-for-cloud-just-in-time-vm-access"></a>Accès juste-à-temps aux machines virtuelles de Defender pour le cloud
 
-Le [centre de sécurité Azure](../../security-center/security-center-introduction.md) gère les NSG sur les machines virtuelles et verrouille l’accès à la machine virtuelle jusqu’à ce qu’un utilisateur avec les autorisations de contrôle d’accès en fonction du rôle Azure [(Azure RBAC)](../../role-based-access-control/overview.md) appropriées demande l’accès. Quand l’utilisateur est autorisé avec succès, ASC modifie les NSG pour autoriser l’accès aux ports sélectionnés pendant la durée spécifiée. Passé ce délai, les NSG sont restaurés à leur état sécurisé précédent.
+[Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md) gère les NSG sur les machines virtuelles et verrouille l’accès à la machine virtuelle jusqu’à ce qu’un utilisateur avec les autorisations de contrôle d’accès en fonction du rôle Azure [(RBAC Azure)](../../role-based-access-control/overview.md) appropriées demande l’accès. Une fois l’utilisateur autorisé, Defender pour le cloud modifie les NSG pour autoriser l’accès aux ports sélectionnés pendant la durée spécifiée. Passé ce délai, les NSG sont restaurés à leur état sécurisé précédent.
 
 En savoir plus :
 
-* [Accès juste-à-temps dans Azure Security Center](../../security-center/security-center-just-in-time.md)
+* [Microsoft Defender pour le cloud : Accès juste-à-temps](../../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Points de terminaison de service
 
@@ -369,11 +369,11 @@ Pour plus d’informations sur Network Watcher et pour savoir comment commencer 
 > [!NOTE]
 > Pour les notifications les plus récentes sur la disponibilité et l’état de ce service, consultez [la page relative aux mises à jour d’Azure](https://azure.microsoft.com/updates/?product=network-watcher).
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-Azure Security Center vous aide à prévenir, détecter et résoudre les menaces, en vous apportant une visibilité et un contrôle accrus de la sécurité de vos ressources Azure. Il fournit une surveillance de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste ensemble de solutions de sécurité.
+Microsoft Defender pour le cloud vous aide à prévenir, détecter et résoudre les menaces grâce à une visibilité et un contrôle accrus de la sécurité de vos ressources Azure. Il fournit une surveillance de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste ensemble de solutions de sécurité.
 
-Security Center vous permet d’optimiser et de surveiller la sécurité réseau grâce aux opérations suivantes :
+Defender pour le cloud vous permet d’optimiser et de surveiller la sécurité réseau grâce aux opérations suivantes :
 
 * Mise à disposition de recommandations relatives à la sécurité réseau.
 * Surveillance de l’état de votre configuration de la sécurité réseau.
@@ -381,7 +381,7 @@ Security Center vous permet d’optimiser et de surveiller la sécurité réseau
 
 En savoir plus :
 
-* [Présentation d’Azure Security Center](../../security-center/security-center-introduction.md)
+* [Présentation de Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>TAP de réseau virtuel
 

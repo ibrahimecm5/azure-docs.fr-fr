@@ -11,12 +11,12 @@ ms.custom: sqldbrb=2, references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/21/2021
-ms.openlocfilehash: 077d022c5d996f5c495c38e4789a37bf234d093b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e57adde4df10a942baff7b7032706a991d46050c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006218"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556170"
 ---
 # <a name="whats-new-in-azure-sql-database"></a>Nouveautés d’Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "131006218"
 Cet article récapitule les modifications apportées à la documentation en lien avec les nouvelles fonctionnalités et les améliorations introduites dans les versions récentes d’[Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/). Pour en savoir plus sur Azure SQL Database, consultez la [vue d’ensemble](sql-database-paas-overview.md). 
 
 Pour Azure SQL Managed Instance, consultez les [nouveautés](../managed-instance/doc-changes-updates-release-notes-whats-new.md).
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL !](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 

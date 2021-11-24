@@ -7,46 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
-ms.date: 11/08/2021
-ms.openlocfilehash: 59e883f318533ee768d6568c8f6ae673aa356ded
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.date: 11/12/2021
+ms.openlocfilehash: 203b4c6c55c4476e27dad484a2edef4609211343
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063986"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488002"
 ---
 # <a name="create-a-search-index-in-azure-cognitive-search"></a>Créer un index de recherche dans Recherche cognitive Azure
 
-Les demandes de requête dans Recherche cognitive Azure ciblent le texte pouvant faire l’objet d’une recherche dans un index de recherche. Dans cet article, découvrez les étapes de définition et de publication d’un index de recherche à l’aide de l’une des modalités prises en charge par Recherche cognitive Azure. 
+Les requêtes dans Recherche cognitive Azure ciblent le texte pouvant faire l’objet d’une recherche dans un index de recherche. Dans cet article, découvrez les étapes de définition et de publication d’un index de recherche à l’aide de l’une des modalités prises en charge par Recherche cognitive Azure. 
 
-À moins que vous n’utilisiez un [indexeur](search-howto-create-indexers.md), la création d’un index et le remplissage d’un index sont des tâches distinctes. Pour les scénarios sans indexeur, l’étape suivante après la création de l’index est [l’importation de données](search-what-is-data-import.md). Pour plus de renseignements, consultez [Index de recherche dans Recherche cognitive Azure](search-what-is-an-index.md).
+À moins que vous n’utilisiez un [indexeur](search-howto-create-indexers.md), la création d’un index et le remplissage d’un index sont deux tâches distinctes. Pour les scénarios sans indexeur, l’étape suivante après la création de l’index est [l’importation de données](search-what-is-data-import.md). 
+
+Pour en savoir plus sur les concepts liés aux index, consultez [Index de recherche dans Recherche cognitive Azure](search-what-is-an-index.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
-Les autorisations d’écriture sur le service de recherche sont requises pour la création et le chargement d’index. La plupart des opérations requièrent que vous fournissiez une [clé d’API d’administration](search-security-api-keys.md) sur la demande de création d’index. Si vous participez à la [préversion publique du contrôle d’accès en fonction du rôle](search-security-rbac.md) Azure Active Directory, vous pouvez également émettre votre demande en tant que membre du rôle Contributeur de recherche.
+Des autorisations d’accès en écriture sont requises pour la création et le chargement d’index, accordées par le biais d’une [clé API d’administration](search-security-api-keys.md) sur la demande. Si vous participez à la [préversion publique du contrôle d’accès en fonction du rôle](search-security-rbac.md) Azure Active Directory, vous pouvez également émettre votre demande en tant que membre du rôle Contributeur de recherche.
 
 La création d’index est en grande partie un exercice de définition de schéma. Avant d’en créer un, vous devez disposer des éléments suivants :
 
-+ Une idée claire des champs pouvant être consultés, récupérés, filtrés, à choix multiples et triés dans votre index.
++ Une idée claire des champs pouvant être consultés, récupérés, filtrés, à choix multiples et triés dans votre index (pour en savoir plus, consultez la section [Liste de contrôle du schéma](#schema-checklist)).
 
-  Les [affectations d’attributs de champ](search-what-is-an-index.md#index-attributes) déterminent la structure de stockage physique du service de recherche. Au cours de la conception et du développement, commencez avec des exemples de données afin de pouvoir supprimer et reconstruire facilement l’index à mesure que vous finalisez l’affectation des champs.
++ Un identificateur unique dans les données sources qui peut être utilisé comme clé (ou ID) de document dans l’index.
 
-+ Un champ source qui identifie de façon unique chaque ligne, enregistrement ou élément dans les données sources. Si vous effectuez l’indexation à partir d’un objet Stockage Blob, le chemin de stockage est souvent utilisé comme clé de document. 
-
-  Chaque index requiert un champ qui sert de *clé de document* (parfois appelé « ID de document ») et cette clé est mappée à un champ source contenant un identificateur unique. La possibilité d’identifier de façon unique des documents de recherche spécifiques est nécessaire pour récupérer un document spécifique dans l’index de recherche, et pour le traitement sélectif des données en tirant (pull) le bon document des données sources.
-
-+ Emplacement de l’index. Le déplacement d’un index existant vers un autre service de recherche n’est pas pris en charge instantanément. Consultez à nouveau les spécifications de l’application et assurez-vous que le service de recherche existant, sa capacité et son emplacement, sont suffisants pour répondre à vos besoins.
++ Un emplacement d’index stable. Le déplacement d’un index existant vers un autre service de recherche n’est pas pris en charge instantanément. Consultez à nouveau les spécifications de l’application et assurez-vous que le service de recherche existant, sa capacité et son emplacement, sont suffisants pour répondre à vos besoins.
 
 Enfin, tous les niveaux de service ont des [limites d’index](search-limits-quotas-capacity.md#index-limits) sur le nombre d’objets que vous pouvez créer. Par exemple, si vous expérimentez le niveau Gratuit, vous ne pouvez avoir que trois index à la fois. Dans l’index lui-même, il existe des limites sur le nombre de champs et de collections complexes.
 
 ## <a name="allowed-updates"></a>Mises à jour autorisées
 
-[Create Index](/rest/api/searchservice/create-index) est une opération qui crée des structures de données physiques (fichiers et index inversés) sur votre service de recherche. La possibilité d’appliquer des modifications à l’aide de [Update Index](/rest/api/searchservice/update-index) dépend du fait que la modification invalide ou non ces structures physiques. La plupart des attributs de champ ne peuvent pas être modifiés une fois que le champ est créé dans votre index.
+[**Create Index**](/rest/api/searchservice/create-index) est une opération qui crée des structures de données physiques (fichiers et index inversés) sur votre service de recherche. Une fois l’index créé, votre capacité à effectuer des modifications à l’aide de [**Update Index**](/rest/api/searchservice/update-index) dépend du fait que votre modification invalide ou non ces structures physiques. La plupart des attributs de champ ne peuvent pas être modifiés une fois que le champ est créé dans votre index.
 
 Pour réduire l’attrition dans le processus de conception, le tableau suivant décrit les éléments fixes et flexibles dans le schéma. La modification d’un élément fixe nécessite la reconstruction de l’index, alors que les éléments flexibles peuvent être modifiés à tout moment sans impacter l’implémentation physique. 
 
-| Élément | Mise à jour autorisée |
-|---------|----------------|
+| Élément | Possibilité de mise à jour ? |
+|---------|-----------------|
 | Nom | Non |
 | Clé | Non |
 | Noms et types de champs | Non |
@@ -55,7 +53,7 @@ Pour réduire l’attrition dans le processus de conception, le tableau suivant 
 | [Analyseur](search-analyzers.md) | Vous pouvez ajouter et modifier des analyseurs personnalisés dans l’index. En ce qui concerne les affectations de l’analyseur aux champs de chaîne, vous pouvez uniquement modifier « searchAnalyzer ». Toutes les autres affectations et modifications requièrent une reconstruction. |
 | [Profils de score](index-add-scoring-profiles.md) | Oui |
 | [Générateurs de suggestions](index-add-suggesters.md) | Non |
-| [CORS (cross-origin remote scripting)](search-what-is-an-index.md#corsoptions) | Oui |
+| [CORS (cross-origin remote scripting)](#corsoptions) | Oui |
 | [Chiffrement](search-security-manage-encryption-keys.md) | Oui |
 
 > [!NOTE]
@@ -67,11 +65,15 @@ Utilisez cette check-list pour vous aider à prendre les décisions de conceptio
 
 1. Examinez les [conventions d’affectation de noms](/rest/api/searchservice/naming-rules) afin que les noms d’index et de champs soient conformes aux règles d’affectation de noms.
 
-1. Consultez les [types de données pris en charge](/rest/api/searchservice/supported-data-types). Le type de données aura un impact sur l’utilisation du champ. Par exemple, le contenu numérique peut être filtré, mais ne peut pas faire l’objet d’une recherche en texte intégral.
+1. Consultez les [types de données pris en charge](/rest/api/searchservice/supported-data-types). Le type de données aura un impact sur l’utilisation du champ. Par exemple, le contenu numérique peut être filtré, mais ne peut pas faire l’objet d’une recherche en texte intégral. Le type de données le plus courant est `Edm.String` pour le texte pouvant faire l’objet d’une recherche, qui est mis en jeton et interrogé à l’aide du moteur de recherche en texte intégral.
 
-1. Identifiez un champ dans la source de données qui contient des valeurs uniques, en lui permettant de fonctionner en tant que champ clé dans votre index.
+1. Identifiez un champ dans les données sources qui contient des valeurs uniques, lui permettant de fonctionner en tant que champ clé dans votre index. Par exemple, si vous effectuez l’indexation à partir de Stockage Blob, le chemin de stockage est souvent utilisé comme clé de document. 
 
-1. Identifiez les champs dans votre source de données qui peuvent contribuer au contenu pouvant faire l’objet d’une recherche dans l’index. Le contenu pouvant faire l’objet d’une recherche sont des chaînes courtes ou longues qui sont interrogées à l’aide du moteur de recherche en texte intégral. Si le contenu est détaillé (petites phrases ou plus grands morceaux), expérimentez des analyseurs différents pour voir comment le texte est tokénisé.
+   Chaque index requiert un champ qui sert de *clé de document* (parfois appelé « ID de document »). La clé est une chaîne de l’index de recherche, mais vous pouvez la mapper à n’importe quel identificateur unique de vos données sources. La possibilité d’identifier de façon unique des documents de recherche spécifiques est nécessaire pour reconstituer un enregistrement ou une entité dans un résultat de recherche, pour récupérer un document spécifique dans l’index de recherche et pour le traitement sélectif des données au niveau de chaque document.
+
+1. Identifiez les champs dans votre source de données qui contribueront au contenu pouvant faire l’objet d’une recherche dans l’index. Le contenu pouvant faire l’objet d’une recherche comprend des chaînes courtes ou longues qui sont interrogées à l’aide du moteur de recherche en texte intégral. Si le contenu est détaillé (petites phrases ou plus grands morceaux), expérimentez des analyseurs différents pour voir comment le texte est tokénisé.
+
+   Les [affectations d’attribut de champ](search-what-is-an-index.md#index-attributes) déterminent les comportements de recherche et la représentation physique de votre index sur le service de recherche. Déterminer la façon dont les champs doivent être spécifiés est un processus itératif pour de nombreux clients. Pour accélérer les itérations, commencez par des échantillons de données afin de pouvoir les supprimer et les reconstruire facilement.
 
 1. Identifiez les champs sources qui peuvent être utilisés comme filtres. Le contenu numérique et les champs de texte courts, en particulier ceux qui ont des valeurs répétées, constituent de bons choix. Lorsque vous utilisez des filtres, n’oubliez pas :
 
@@ -103,7 +105,7 @@ La capture d’écran suivante montre où vous pouvez trouver **Ajouter un index
 
 ### <a name="rest"></a>[**REST**](#tab/kstore-rest)
 
-[**Create Index (REST)** ](/rest/api/searchservice/create-index) est utilisé pour créer un index. Postman et Visual Studio Code (avec une extension pour Recherche cognitive Azure) peuvent tous deux fonctionner comme client d’index de recherche. En utilisant l’un ou l’autre de ces outils, vous pouvez vous connecter à votre service de recherche et envoyer des requêtes :
+[**Create Index (REST)**](/rest/api/searchservice/create-index) est utilisé pour créer un index. Postman et Visual Studio Code (avec une extension pour Recherche cognitive Azure) peuvent tous deux fonctionner comme client d’index de recherche. En utilisant l’un ou l’autre de ces outils, vous pouvez vous connecter à votre service de recherche et envoyer des requêtes :
 
 + [Créer un index de recherche à l’aide de REST et de Postman](search-get-started-rest.md)
 + [Bien démarrer avec Visual Studio Code et Recherche cognitive Azure](search-get-started-vs-code.md)
@@ -181,6 +183,28 @@ Pour Recherche cognitive, les Kits de développement logiciel (SDK) Azure implé
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
 ---
+
+<a name="corsoptions"></a>
+
+## <a name="set-corsoptions-for-cross-origin-queries"></a>Définir `corsOptions` pour les requêtes Cross-Origin
+
+Les schémas d’index incluent une section pour la définition de `corsOptions`. Le code JavaScript côté client ne peut pas appeler d’API par défaut, car le navigateur empêche toutes les requêtes cross-origin. Pour autoriser les requêtes cross-origin dans l'index, activez CORS (partage des ressources cross-origin) en définissant l'attribut **corsOptions**. Pour des raisons de sécurité, seules les [API de requête](search-query-create.md#choose-query-methods) prennent en charge CORS.
+
+```json
+"corsOptions": {
+  "allowedOrigins": [
+    "*"
+  ],
+  "maxAgeInSeconds": 300
+```
+
+Les propriétés suivantes peuvent être définies pour CORS :
+
++ **allowedOrigins** (obligatoire) : il s'agit de la liste des origines pouvant accéder à l’index. Cela signifie que le code JavaScript distribué à partir de ces origines est autorisé à interroger l’index (s'il fournit la bonne clé API). Chaque origine se présente généralement sous la forme `protocol://<fully-qualified-domain-name>:<port>`, bien que `<port>` soit souvent omis. Pour plus d'informations, voir [Partage des ressources cross-origin (Wikipédia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+
+  Si vous voulez autoriser l'accès à toutes les origines, incluez uniquement l’élément `*` dans le tableau **allowedOrigins**. Si *cette pratique est déconseillée pour les services de recherche de production*, elle est souvent utile pour le développement et le débogage.
+
++ **maxAgeInSeconds** (facultatif) : les navigateurs utilisent cette valeur pour déterminer la durée (en secondes) de mise en cache des réponses CORS préliminaires. Il doit s'agir d'un entier non négatif. Plus cette valeur est importante, meilleures sont les performances, mais plus il faut de temps pour que les modifications apportées à la stratégie CORS prennent effet. Si la valeur n'est pas définie, une durée par défaut de 5 minutes est utilisée.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

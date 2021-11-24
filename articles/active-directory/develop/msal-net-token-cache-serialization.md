@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2021
+ms.date: 11/09/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 896e52bf70229358a25055a23403ab2a5a2d7963
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 22e6dbfbda88035f74e19fabfe296974b362e286
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054302"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517289"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Sérialisation du cache de jetons dans MSAL.NET
 
@@ -27,11 +27,18 @@ Après [avoir acquis un jeton](msal-acquire-cache-tokens.md), la Bibliothèque d
 ## <a name="quick-summary"></a>Résumé
 
 Nous vous recommandons :
-- Dans les applications web et les API web, utilisez [des sérialiseurs de cache de jeton à partir de « Microsoft.Identity.Web.TokenCache »](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization). Ils fournissent même une base de données distribuée ou un système de cache pour stocker les jetons.
-  - Dans les [applications web](scenario-web-app-call-api-overview.md) et l’[API web](scenario-web-api-call-api-overview.md) ASP.NET Core, utilisez [Microsoft.Identity.Web](microsoft-identity-web.md) comme API de niveau supérieur dans ASP.NET Core.
-  - Dans ASP.NET classic, .NET Core, .NET Framework, utilisez MSAL.NET directement avec les [adaptateurs de sérialisation du cache de jetons pour MSAL](msal-net-token-cache-serialization.md?tabs=aspnet) fournis dans le package NuGet Microsoft.identity.Web.TokenCache. 
-- Dans les applications de bureau (qui peuvent utiliser le système de fichiers pour stocker des jetons), utilisez [Microsoft.Identity.Client.Extensions.MSAL](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache) avec MSAL.Net.
-- Dans les applications mobiles (Xamarin.iOS, Xamarin.Android, plateforme Windows universelle), ne faites rien car MSAL.NET gère le cache pour vous : ces plateformes disposent d’un stockage sécurisé.
+- Lors de l’écriture d’une application de bureau, utilisez le cache de jeton multiplateforme comme expliqué dans [Application de bureau](msal-net-token-cache-serialization.md?tabs=desktop#cross-platform-token-cache-msal-only).
+- Ne faites rien pour les [applications mobiles et UWP](msal-net-token-cache-serialization.md?tabs=mobile). Un cache est fourni par MSAL.NET.
+- Dans les [applications web](scenario-web-app-call-api-overview.md) et l’[API web](scenario-web-api-call-api-overview.md) ASP.NET Core, utilisez [Microsoft.Identity.Web](microsoft-identity-web.md) comme API de niveau supérieur dans ASP.NET Core. Vous obtiendrez des caches de jetons et bien plus encore. Voir [Applications web et API web ASP.NET Core](msal-net-token-cache-serialization.md?tabs=aspnetcore).
+- Dans les autres cas d’[applications web](scenario-web-app-call-api-overview.md), l’[API web](scenario-web-api-call-api-overview.md) :
+  - Si vous demandez des jetons pour les utilisateurs d’une application de production, utilisez un [cache de jeton distribué](msal-net-token-cache-serialization.md?tabs=aspnet#distributed-caches) (Redis, SQL, Cosmos DB, mémoire distribuée). Utilisez les sérialiseurs de cache de jeton disponibles dans [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache/).
+  - Sinon, si vous souhaitez utiliser un cache en mémoire :
+    -   Si vous utilisez uniquement `AcquireTokenForClient` :
+      - Soit vous réutilisez l’instance d’application cliente confidentielle et n’ajoutez pas de sérialiseur.
+      - Soit vous créez une nouvelle application cliente confidentielle et activer l’[option de cache partagé](msal-net-token-cache-serialization.md?tabs=aspnet#no-token-cache-serialization). Ce cache est plus rapide, car il n’est pas sérialisé, mais la mémoire augmentera au fur et à mesure que les jetons seront mis en cache. Le nombre de jetons est égal au nombre de locataires multiplié par le nombre d’API en aval. La taille d’un jeton d’application est d’environ 2 ko. C’est parfait pour le développement ou si vous avez peu d’utilisateurs. Si vous avez besoin d’une éviction, consultez le point suivant.
+      - Si vous souhaitez utiliser un cache de jeton en mémoire et contrôler sa taille et les stratégies d’éviction, utilisez l’[option de cache en mémoire de Microsoft.Identity.Web](msal-net-token-cache-serialization.md?tabs=aspnet#in-memory-token-cache-1).
+-   Si vous générez un Kit de développement logiciel (SDK) et souhaitez écrire votre propre sérialiseur de cache de jeton pour des applications clientes confidentielles, héritez de [Microsoft.Identity.Web.MsalAsbtractTokenCacheProvider](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache/MsalAbstractTokenCacheProvider.cs) et remplacez les méthodes `WriteCacheBytesAsync` et `ReadCacheBytesAsync`.
+
 
 ## <a name="aspnet-core-web-apps-and-web-apis"></a>[Applications web et API web ASP.NET Core](#tab/aspnetcore)
 
@@ -39,10 +46,12 @@ La bibliothèque [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-i
 
 | Méthode d’extension | Description  |
 | ---------------- | ------------ |
-| `AddInMemoryTokenCaches` | Sérialisation de cache de jeton en mémoire. Cette implémentation est idéale pour les échantillons et les applications démons (jetons application à application / `AcquireTokenForClient`). Elle est également adaptée aux applications de production, mais sachez que le cache de jeton est perdu lorsque l’application web est redémarrée. À partir de Microsoft.Identity.Web 1.19.0, MSAL est configuré de manière à utiliser un cache statique (partagé) dans toutes les instances d’applications, ce qui est nettement plus rapide que les autres mécanismes de mise en cache.
+| `AddInMemoryTokenCaches` | Sérialisation de cache de jeton en mémoire. Cette implémentation est idéale pour les échantillons et les applications démons (jetons application à application / `AcquireTokenForClient`). Elle est également adaptée aux applications de production, mais sachez que le cache de jeton est perdu lorsque l’application web est redémarrée. À partir de Microsoft.Identity.Web 1.19.0, MSAL.Net est configuré pour utiliser un cache statique (partagé) dans toutes les instances d’applications. Il est plus rapide que les autres mécanismes de mise en cache, mais ne vous permet pas de contrôler la taille du cache.
 | `AddSessionTokenCaches` | Le cache de jeton est lié à la session utilisateur. Cette option n’est pas idéale si le jeton d’ID contient de nombreuses revendications dans la mesure où le cookie devient trop volumineux.
 | `AddDistributedTokenCaches` | Le cache de jeton est un adaptateur par rapport à l’implémentation `IDistributedCache` ASP.NET Core, ce qui vous permet donc de choisir entre un cache de mémoire distribuée, un cache Redis, un cache Ncache distribué ou un cache SQL Server. Pour plus d’informations sur les implémentations `IDistributedCache`, consultez [Cache mémoire distribué](/aspnet/core/performance/caching/distributed).
 
+
+### <a name="in-memory-token-cache"></a>Cache de jeton en mémoire
 
 Voici un exemple de code utilisant le cache en mémoire dans la méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) de la classe [Startup](/aspnet/core/fundamentals/startup) dans une application ASP.NET Core :
 
@@ -70,8 +79,11 @@ public class Startup
 }
 ```
 
-Du point de vue du cache, le code serait similaire dans les API web ASP.NET Core
+AddInMemoryTokenCaches convient en production si vous demandez uniquement des jetons d’application. Si vous utilisez des jetons d’utilisateur, vous devez vraiment envisager un cache de jeton distribué. 
 
+Du point de vue du cache, le code serait similaire dans les applications web et les API web ASP.NET Core.
+
+### <a name="distributed-token-caches"></a>Caches de jetons distribués
 
 Exemples de caches distribués possibles :
 
@@ -82,7 +94,30 @@ Exemples de caches distribués possibles :
              .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest }
                .AddDistributedTokenCaches();
 
-// and then choose your implementation of distributed cache
+// Distributed token caches have a L1/L2 mechanism.
+// L1 is in memory, and L2 is the distributed cache
+// implementation that you will choose below.
+// You can configure them to limit the memory of the 
+// L1 cache, encrypt, and set eviction policies.
+services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+  {
+    // You can disable the L1 cache if you wish. For instance in some cases where you share the L2 cache
+    // between instances of your apps.
+    options.DisableL1Cache = false;
+    
+    // Or limit the memory (by default this is 500 Mb)
+    options.SizeLimit = 500 * 1024 * 1024,   // 500 Mb
+
+    // You can choose if you encrypt or not the cache
+    options.Encrypt = false;
+
+    // And you can set eviction policies for the distributed
+    // cache.
+    options.SlidingExpiration = TimeSpan.FromHours(1);
+  }
+
+// Then, choose your implementation of distributed cache
+// -----------------------------------------------------
 
 // For instance the distributed in memory cache (not cleared when you stop the app)
 services.AddDistributedMemoryCache();
@@ -93,6 +128,21 @@ services.AddStackExchangeRedisCache(options =>
 {
  options.Configuration = "localhost";
  options.InstanceName = "SampleInstance";
+});
+
+// You can even decide if you want to repair the connection
+// with Redis and retry on Redis failures. 
+services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+{
+  options.OnL2CacheFailure = (ex) =>
+  {
+    if (ex is StackExchange.Redis.RedisConnectionException)
+    {
+      // action: try to reconnect or something
+      return true; //try to do the cache operation again
+    }
+    return false;
+  };
 });
 
 // Or even a SQL Server token cache
@@ -115,7 +165,13 @@ services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
 });
 ```
 
-Leur utilisation est présentée dans le tutoriel [Application web ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) au cours de la phase [2-2 Cache de jeton](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
+Pour plus d'informations, consultez les pages suivantes :
+- [Différence entre les caches en mémoire et les caches distribués en mémoire](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#inmemory-vs-distributedmemory-cache-options)
+- [Options avancées du cache distribué](https://github.com/AzureAD/microsoft-identity-web/wiki/L1-Cache-in-Distributed-(L2)-Token-Cache)
+- [Gérer l’éviction du cache L2](https://github.com/AzureAD/microsoft-identity-web/wiki/Handle-L2-cache-eviction)
+- [Configurez un cache Redis dans Docker](https://github.com/AzureAD/microsoft-identity-web/wiki/Set-up-a-Redis-cache-in-Docker)
+
+L’utilisation du cache distribué est présentée dans le tutoriel [Application web ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) au cours de la phase [2-2 Cache de jeton](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
 
 ## <a name="non-aspnet-core-web-apps-and-web-apis"></a>[Applications web et API web non ASP.NET Core](#tab/aspnet)
 
@@ -123,7 +179,7 @@ Même quand vous utilisez MSAL.NET, vous pouvez tirer parti des sérialiseurs de
 
 ### <a name="referencing-the-nuget-package"></a>Référencement du package NuGet
 
-Ajoutez le package NuGet [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) à votre projet en plus de MSAL.NET
+Ajoutez le package NuGet [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) à votre projet au lieu de MSAL.NET.
 
 ### <a name="configuring-the-token-cache"></a>Configuration du cache de jeton
 
@@ -175,16 +231,49 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
 
 ### <a name="available-caching-technologies"></a>Technologies de mise en cache disponibles
 
-Au lieu de `app.AddInMemoryTokenCache();`, vous pouvez utiliser différentes technologies de mise en cache, y compris des caches de jetons distribués fournis par .NET.
+Au lieu de `app.AddInMemoryTokenCache();`, vous pouvez utiliser différentes technologies de sérialisation de mise en cache, notamment sans sérialisation, en mémoire et le stockage de cache de jeton distribué fourni par .NET.
+
+#### <a name="no-token-cache-serialization"></a>Cache de jeton sans sérialisation
+
+Vous pouvez spécifier que vous ne souhaitez pas avoir de sérialisation de cache de jeton (à l’aide du cache interne de MSAL.NET), si vous :
+- utilisez `.WithCacheOptions(CacheOptions.EnableSharedCacheOptions)` lorsque vous générez l’application ;
+- n’ajoutez pas de sérialiseur.
+
+```CSharp
+    // Create the confidential client application
+    app= ConfidentialClientApplicationBuilder.Create(clientId)
+       // Alternatively to the certificate you can use .WithClientSecret(clientSecret)
+       .WithCertificate(cert)
+       .WithLegacyCacheCompatibility(false)
+       .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
+       .WithAuthority(authority)
+       .Build();
+```
 
 #### <a name="in-memory-token-cache"></a>Cache de jeton en mémoire
 
-La sérialisation de cache de jeton en mémoire est un excellent exemple. Elle est également adaptée aux applications de production, mais sachez que le cache de jeton est perdu lorsque l’application web est redémarrée.
+La sérialisation de cache de jeton en mémoire est un excellent exemple. Elle convient également aux applications de production si vous ne demandez que des jetons d’application (`AcquireTokenForClient`), à condition que cela ne vous dérange pas que le cache de jeton soit perdu lorsque l’application web est redémarrée. Elle n’est pas recommandée en production si vous demandez des jetons d’utilisateur (`AcquireTokenByAuthorizationCode`, `AcquireTokenSilent`, `AcquireTokenOnBehalfOf`).
 
 ```CSharp 
      // Add an in-memory token cache
      app.AddInMemoryTokenCache();
 ```
+
+Vous pouvez également spécifier des options pour limiter la taille du cache de jeton en mémoire :
+
+```CSharp 
+  // Add an in-memory token cache with options
+  app.AddInMemoryTokenCache(services =>
+  {
+      // Configure the memory cache options
+      services.Configure<MemoryCacheOptions>(options =>
+      {
+          options.SizeLimit = 500 * 1024 * 1024; // in bytes (500 Mb)
+      });
+  }
+  );
+```
+
 
 #### <a name="distributed-caches"></a>Caches distribués
 
@@ -193,12 +282,33 @@ Si vous utilisez `app.AddDistributedTokenCache`, le cache de jeton est un adapta
 ##### <a name="distributed-in-memory-token-cache"></a>Cache de jeton en mémoire distribué
 
 ```CSharp 
-     // In memory distributed token cache
-     app.AddDistributedTokenCache(services =>
-     {
-       // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
-       services.AddDistributedMemoryCache();
-     });
+  // In memory distributed token cache
+  app.AddDistributedTokenCache(services =>
+  {
+    // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
+    services.AddDistributedMemoryCache();
+
+    // Distributed token caches have a L1/L2 mechanism.
+    // L1 is in memory, and L2 is the distributed cache
+    // implentation that you will choose below.
+    // You can configure them to limit the memory of the 
+    // L1 cache, encrypt, and set eviction policies.
+    services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+      {
+        // You can disable the L1 cache if you wish
+        options.DisableL1Cache = false;
+        
+        // Or limit the memory (by default this is 500 Mb)
+        options.SizeLimit = 500 * 1024 * 1024,   // 500 Mb
+
+        // You can choose if you encrypt or not the cache
+        options.Encrypt = false;
+
+        // And you can set eviction policies for the distributed
+        // cache
+        options.SlidingExpiration = TimeSpan.FromHours(1);
+      });
+  });
 ```
 
 ##### <a name="sql-server"></a>Serveur SQL
@@ -228,16 +338,31 @@ Si vous utilisez `app.AddDistributedTokenCache`, le cache de jeton est un adapta
 ##### <a name="redis-cache"></a>Le cache Redis
 
 ```CSharp 
-     // Redis token cache
-     app.AddDistributedTokenCache(services =>
-     {
-       // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
+    // Redis token cache
+    app.AddDistributedTokenCache(services =>
+    {
+      // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
        services.AddStackExchangeRedisCache(options =>
        {
          options.Configuration = "localhost";
          options.InstanceName = "Redis";
        });
+
+      // You can even decide if you want to repair the connection
+      // with REDIS and retry on Redis failures. 
+      services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+      {
+        options.OnL2CacheFailure = (ex) =>
+        {
+          if (ex is StackExchange.Redis.RedisConnectionException)
+          {
+            // action: try to reconnect or something
+            return true; //try to do the cache operation again
+          }
+          return false;
+        };
       });
+    });
 ```
 
 Consultez aussi [Désactivation de la synchronisation du cache](#disabling-cache-synchronization) si vous constatez que l’acquisition de jeton prend parfois autant de temps que le délai d’expiration du cache Redis. 
@@ -258,6 +383,14 @@ Consultez aussi [Désactivation de la synchronisation du cache](#disabling-cache
         });
        });
 ```
+
+##### <a name="more-about-the-distributed-cache"></a>En savoir plus sur le cache distribué
+
+Pour plus d’informations sur les caches distribués, consultez :
+- [Différence entre les caches en mémoire et les caches distribués en mémoire](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#inmemory-vs-distributedmemory-cache-options)
+- [Options avancées du cache distribué](https://github.com/AzureAD/microsoft-identity-web/wiki/L1-Cache-in-Distributed-(L2)-Token-Cache)
+- [Gérer l’éviction du cache L2](https://github.com/AzureAD/microsoft-identity-web/wiki/Handle-L2-cache-eviction)
+- [Configurez un cache Redis dans Docker](https://github.com/AzureAD/microsoft-identity-web/wiki/Set-up-a-Redis-cache-in-Docker)
 
 ### <a name="disabling-legacy-token-cache"></a>Désactivation du cache de jeton hérité
 
@@ -332,7 +465,7 @@ cacheHelper.RegisterCache(pca.UserTokenCache);
 
 ##### <a name="plain-text-fallback-mode"></a>Mode de secours en texte brut
 
-Le cache de jeton multiplateforme vous permet de stocker des jetons non chiffrés en texte clair. Elle est destinée à être utilisée dans les environnements de développement à des fins de débogage uniquement. Vous pouvez utiliser le mode de secours en texte brut à l’aide du modèle de code suivant.
+Le cache de jeton multiplateforme vous permet de stocker des jetons non chiffrés en texte clair. Cette fonctionnalité est destinée à être utilisée dans les environnements de développement à des fins de débogage uniquement. Vous pouvez utiliser le mode de secours en texte brut à l’aide du modèle de code suivant.
 
 ```csharp
 storageProperties =
@@ -373,11 +506,9 @@ Les stratégies diffèrent selon que vous écrivez une sérialisation du cache d
 
 ### <a name="custom-token-cache-for-a-web-app-or-web-api-confidential-client-application"></a>Cache de jeton pour une application web ou une API web (application cliente confidentielle)
 
-Dans les applications ou API web, le cache peut exploiter la session, un cache Redis, une base de données SQL ou une base de données Cosmos DB. Conservez un cache de jeton par compte dans les applications web et les API web : 
-- Pour les applications web, le cache de jeton doit être indexé par ID de compte.
-- Pour les API web, le compte doit être indexé avec le hachage du jeton utilisé pour appeler l’API.
+Si vous voulez vraiment écrire votre propre sérialiseur de cache de jeton pour les applications clientes confidentielles, il est recommandé d’hériter de [Microsoft.Identity.Web.MsalAsbtractTokenCacheProvider](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache/MsalAbstractTokenCacheProvider.cs) et de remplacer les méthodes `WriteCacheBytesAsync` et `ReadCacheBytesAsync`.
 
-Des exemples de sérialiseurs de cache de jeton sont fournis dans [Microsoft.Identity.Web/TokenCacheProviders](https://github.com/AzureAD/microsoft-identity-web/tree/master/src/Microsoft.Identity.Web/TokenCacheProviders).
+Des exemples de sérialiseurs de cache de jeton sont fournis dans [Microsoft.Identity.Web/TokenCacheProviders](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache).
 
 ### <a name="custom-token-cache-for-a-desktop-or-mobile-app-public-client-application"></a>Cache de jeton personnalisé pour une application de bureau ou mobile (application cliente publique)
 
@@ -608,8 +739,8 @@ MSAL expose des métriques importantes dans l’objet [AuthenticationResult. Aut
 |  `DurationTotalInMs` | Temps total passé dans MSAL, appels réseau et cache inclus   | Alarme sur une latence élevée globale (> 1 s). La valeur dépend de la source du jeton. À partir du cache : un accès au cache. À partir d’AAD : deux accès au cache + un appel HTTP. Le premier appel (par processus) prend plus de temps en raison d’un appel HTTP supplémentaire. |
 |  `DurationInCacheInMs` | Temps passé à charger ou enregistrer le cache de jeton qui est personnalisé par le développeur de l’application (par exemple, enregistrer dans Redis).| Alarme lors de pics. |
 |  `DurationInHttpInMs`| Temps passé à effectuer des appels HTTP à AAD.  | Alarme lors de pics.|
-|  `TokenSource` | Indique la source du jeton. Les jetons sont récupérés à partir du cache beaucoup plus rapidement (par exemple, ~100 ms au lieu de ~700 ms). Peut être utilisé pour surveiller le taux d’accès au cache et générer des alarmes par rapport à celui-ci. | Utiliser avec `DurationTotalInMs` |
-
+|  `TokenSource` | Indique la source du jeton. Les jetons sont récupérés à partir du cache beaucoup plus rapidement (par exemple, ~100 ms au lieu de ~700 ms). Peut être utilisé pour surveiller le taux d’accès au cache et générer des alarmes par rapport à celui-ci. | Utiliser avec `DurationTotalInMs`. |
+|  `CacheRefreshReason` | Spécifie la raison de l’extraction du jeton d’accès auprès du fournisseur d’identité. | Utiliser avec `TokenSource`. |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

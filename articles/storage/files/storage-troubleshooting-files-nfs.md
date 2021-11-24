@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fe9450310e3f8774b31557fd7c045f05ed9b56b1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019137"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518353"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Résolvez les problèmes liés au partage de fichiers Azure NFS
 
-Cet article répertorie des problèmes courants liés aux partages de fichiers Azure NFS (préversion). Il indique des causes potentielles et des solutions de contournement lorsque ces problèmes surviennent. Cet article aborde également des problèmes connus de la préversion publique.
+Cet article répertorie des problèmes courants et les difficultés connues liés aux partages de fichiers Azure NFSliste. Il indique des causes potentielles et des solutions de contournement lorsque ces problèmes surviennent.
 
 ## <a name="applies-to"></a>S’applique à
 | Type de partage de fichiers | SMB | NFS |
@@ -44,31 +44,7 @@ Vérifiez qu’idmapping est désactivé et que rien n’est réactivé, puis pr
 
 ## <a name="unable-to-create-an-nfs-share"></a>Incapacité à créer un partage NFS
 
-### <a name="cause-1-subscription-is-not-enabled"></a>Cause 1 : L’abonnement n’est pas activé
-
-Votre abonnement n’a peut-être pas été inscrit pour la préversion NFS d’Azure Files. Pour activer cette fonctionnalité, vous devez exécuter quelques cmdlets supplémentaires à partir de Cloud Shell ou d’un terminal local.
-
-> [!NOTE]
-> Vous pouvez être amené à attendre jusqu’à 30 minutes pour que l’inscription prenne effet.
-
-
-#### <a name="solution"></a>Solution
-
-Utilisez le script suivant pour inscrire la fonctionnalité et le fournisseur de ressources, en remplaçant `<yourSubscriptionIDHere>` avant d’exécuter le script :
-
-```azurepowershell
-Connect-AzAccount
-
-#If your identity is associated with more than one subscription, set an active subscription
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
-Set-AzContext $context
-
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
-
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-### <a name="cause-2-unsupported-storage-account-settings"></a>Cause 2 : Paramètres de compte de stockage non pris en charge
+### <a name="cause-1-unsupported-storage-account-settings"></a>Cause 1 : Paramètres de compte de stockage non pris en charge
 
 NFS est disponible uniquement sur les comptes de stockage avec la configuration suivante :
 
@@ -79,14 +55,6 @@ NFS est disponible uniquement sur les comptes de stockage avec la configuration 
 #### <a name="solution"></a>Solution
 
 Suivez les instructions fournies dans notre article : [Comment créer un partage NFS](storage-files-how-to-create-nfs-shares.md).
-
-### <a name="cause-3-the-storage-account-was-created-prior-to-registration-completing"></a>Cause 3 : Le compte de stockage a été créé avant la fin de l’inscription
-
-Pour qu’un compte de stockage puisse utiliser la fonctionnalité, il doit être créé une fois l’inscription de l’abonnement terminée pour NFS. L’inscription peut prendre jusqu’à 30 minutes.
-
-#### <a name="solution"></a>Solution
-
-Une fois l’inscription terminée, suivez les instructions de notre article : [Comment créer un partage NFS](storage-files-how-to-create-nfs-shares.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-nfs-file-share"></a>Connexion ou montage impossible d’un partage de fichiers Azure NFS
 

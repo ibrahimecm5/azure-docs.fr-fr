@@ -1,22 +1,30 @@
 ---
-title: Gérer des messages volumineux à l’aide d’une segmentation
-description: Apprenez à gérer les messages volumineux en les segmentant en tâches et flux de travail automatisés que vous créez avec Azure Logic Apps
+title: Traiter les messages volumineux dans les flux de travail à l’aide de la segmentation
+description: Gérez les messages volumineux à l’aide de la segmentation dans Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/18/2020
-ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcbad7c9a71ae5045f24ee25b8de409ece544c0f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97695872"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179162"
 ---
-# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Gérer les messages volumineux avec la segmentation dans Azure Logic Apps
+# <a name="handle-large-messages-in-workflows-using-chunking-in-azure-logic-apps"></a>Gérer les messages volumineux à l’aide de la segmentation dans Azure Logic Apps
 
-Pour traiter les messages, Logic Apps limite leur contenu à une taille maximale. Cette limite permet de réduire la surcharge créée par le stockage et le traitement des messages volumineux. Pour gérer les messages dépassant cette limite de taille, Logic Apps peut *segmenter* un message volumineux en messages de plus petite taille. De cette façon, vous pouvez toujours transférer des fichiers volumineux à l’aide de Logic Apps dans des conditions spécifiques. Lors de la communication avec d’autres services via des connecteurs ou HTTP, Logic Apps peut traiter des messages volumineux mais *uniquement* sous forme de segments. Cette condition signifie que les connecteurs doivent également prendre en charge la segmentation, ou que le protocole d’échange de messages HTTP sous-jacent entre Logic Apps et ces services doit utiliser la segmentation.
+Azure Logic Apps a fixé différentes limites maximales à la taille du contenu des messages que les déclencheurs et les actions peuvent traiter dans les flux de travail d’application logique, en fonction du type de ressource d’application logique et de l’environnement dans lequel le flux de travail d’application logique s’exécute. Ces limites permettent de réduire toute surcharge résultant du stockage et du traitement de [messages volumineux](#what-is-large-message). Pour plus d’informations sur les limites de taille des messages, consultez [Limites des messages dans Azure Logic Apps](logic-apps-limits-and-config.md#messages).
 
-Cet article explique comment configurer la segmentation des actions de gestion des messages qui dépassent la taille maximale autorisée. Les déclencheurs d’application logique ne prennent pas en charge la segmentation en raison de la surcharge liée à l’échange de nombreux messages. 
+Si vous utilisez des actions HTTP intégrées ou des actions spécifiques de connecteur managé et que vous avez besoin qu’Azure Logic Apps travaille avec des messages dont la taille dépasse les limites par défaut, vous pouvez activer la *segmentation*, qui fractionne un message volumineux en messages plus petits. De cette façon, vous pouvez toujours transférer des fichiers volumineux dans des conditions spécifiques. En fait, lorsque vous utilisez ces actions HTTP intégrées ou des actions spécifiques de connecteur managé, la segmentation est la seule façon dont Azure Logic Apps peut consommer des messages volumineux. Cette exigence signifie que l’échange sous-jacent de messages HTTP entre Azure Logic Apps et d’autres services doit utiliser la segmentation ou que les connexions créées par les connecteurs managés que vous souhaitez utiliser doivent également prendre en charge la segmentation.
+
+> [!NOTE]
+> Azure Logic Apps ne prend pas en charge la segmentation sur les déclencheurs en raison de l’augmentation de la surcharge due à l’échange de plusieurs messages.
+> En outre, Azure Logic Apps implémente la segmentation des actions HTTP à l’aide de son propre protocole, comme décrit dans cet article. Ainsi, même si votre site web ou service web prend en charge la segmentation, il ne fonctionnera pas avec la segmentation des actions HTTP. Pour utiliser la segmentation des actions HTTP avec votre site web ou service web, vous devez implémenter le même protocole que celui utilisé par Azure Logic Apps. Dans le cas contraire, n’activez pas la segmentation des actions HTTP. 
+
+Cet article fournit une vue d’ensemble du fonctionnement de la segmentation dans Azure Logic Apps et explique comment configurer la segmentation des actions prises en charge.
+
+<a name="what-is-large-message"></a>
 
 ## <a name="what-makes-messages-large"></a>Qu’est-ce qui rend les messages « volumineux » ?
 
@@ -37,7 +45,6 @@ Dans le cas contraire, vous obtenez une erreur d’exécution lorsque vous essay
 Les services qui communiquent avec Logic Apps peuvent avoir leurs propres limites de taille de message. Ces limites sont souvent inférieures à la limite de Logic Apps. Par exemple, en supposant qu’un connecteur prend en charge la segmentation, celui-ci peut considérer un message de 30 Mo comme volumineux, alors que Logic Apps ne le considérera pas comme tel. Pour respecter la limite de ce connecteur, Logic Apps fractionne tout message supérieur à 30 Mo en segments plus petits.
 
 Pour les connecteurs qui prennent en charge la segmentation, le protocole de segmentation sous-jacent n’est pas visible par les utilisateurs finaux. Toutefois, tous les connecteurs ne prennent pas en charge la segmentation. Ces connecteurs génèrent alors des erreurs d’exécution lorsque les messages entrants dépassent la taille maximale autorisée pour ces connecteurs.
-
 
 Pour les actions qui prennent en charge et sont activées pour la segmentation, vous ne pouvez pas utiliser les corps, les variables et les expressions du déclencheur, comme `@triggerBody()?['Content']`, car l’utilisation de l’une de ces entrées empêche l’opération de segmentation de se produire. Au lieu de cela, utilisez l’action [**Composer**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Plus précisément, vous devez créer un champ `body` à l’aide de l’action **Composer** pour stocker la sortie des données à partir du corps du déclencheur, de la variable, de l’expression, etc., par exemple :
 

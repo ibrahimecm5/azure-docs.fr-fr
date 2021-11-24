@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 7a1f472858480fff785f28abef9262721bcbc799
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2cbdd3dc237c3f2e7b3cf23bb844a06fdd40d605
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836082"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325844"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory-or-synapse-analytics"></a>Copier des données de SAP Business Warehouse à l'aide d'Azure Data Factory ou Synapse Analytics
 > [!div class="op_single_selector" title1="Sélectionnez la version du service Data Factory que vous utilisez :"]
@@ -41,6 +41,9 @@ Plus précisément, ce connecteur SAP Business Warehouse prend en charge ce qui 
 - SAP Business Warehouse **version 7.x**.
 - Copie de données **d’InfoCubes et de QueryCubes** (y compris des requêtes BEx) à l’aide de requêtes MDX.
 - Copie de données en utilisant une authentification de base.
+
+>[!NOTE]
+>Le connecteur SAP Business Warehouse ne prend actuellement pas en charge les paramètres avec MDX.  Si le filtrage avec des paramètres MDX est requis, vous pouvez envisager d’utiliser l’autre [connecteur SAP Open Hub](connector-sap-business-warehouse-open-hub.md) à la place.
 
 ## <a name="prerequisites"></a>Prérequis
 

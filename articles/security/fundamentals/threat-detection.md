@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 36410c2c6f4f5054f04d017f944b840c6251ec8c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f47fce4dea6f03b61c3b300b8932c6ee3260982e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003569"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336973"
 ---
 # <a name="azure-threat-protection"></a>Protection contre les menaces Azure
 
-Azure offre des fonctionnalités intégrées de protection contre les menaces via des services tels qu’Azure Active Directory (Azure AD), les journaux Azure Monitor et Azure Security Center. Cet ensemble de fonctionnalités et de services de sécurité fournit un moyen simple et rapide de comprendre ce qui se passe dans vos déploiements Azure.
+Azure offre des fonctionnalités intégrées de protection contre les menaces via des services tels qu’Azure Active Directory (Azure AD), les journaux Azure Monitor et Microsoft Defender pour le cloud. Cet ensemble de fonctionnalités et de services de sécurité fournit un moyen simple et rapide de comprendre ce qui se passe dans vos déploiements Azure.
 
 Azure propose un large choix d’options pour configurer et personnaliser la sécurité afin de satisfaire les besoins de vos déploiements d’applications. Cet article mentionne comment répondre à ces exigences.
 
@@ -84,7 +84,7 @@ En plus de fournir de précieux services de manière autonome, les journaux Azur
 
 ### <a name="holistic-security-and-compliance-posture"></a>Approche globale de la sécurité et de la conformité
 
-[Azure Security Center](../../security-center/security-center-introduction.md) offre une vue détaillée de la sécurité informatique de votre organisation, avec des requêtes de recherche intégrées pour détecter des problèmes importants nécessitant votre attention. Il fournit un aperçu global de l’état de sécurité de vos ordinateurs. Vous pouvez également voir tous les événements des dernières 24 heures, des 7 derniers jours ou de tout intervalle de temps personnalisé.
+[Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md) offre une vue détaillée de la sécurité informatique de votre organisation, avec des requêtes de recherche intégrées pour détecter des problèmes importants nécessitant votre attention. Il fournit un aperçu global de l’état de sécurité de vos ordinateurs. Vous pouvez également voir tous les événements des dernières 24 heures, des 7 derniers jours ou de tout intervalle de temps personnalisé.
 
 Les journaux Azure Monitor vous permettent de comprendre rapidement et facilement les conditions de sécurité globales de n’importe quel environnement, dans le contexte des opérations informatiques, notamment : évaluation des mises à jour logicielles, évaluation des logiciels anti-programmes malveillants et référentiels de configuration. Les données des journaux de sécurité sont facilement accessibles afin de rationaliser les processus d’audit de sécurité et de conformité.
 
@@ -104,7 +104,7 @@ La plupart de vos interactions avec les journaux Azure Monitor s’effectuent vi
 
 Les solutions permettent d’ajouter des fonctionnalités aux journaux Azure Monitor. Elles s’exécutent principalement dans le cloud et fournissent une analyse des données collectées dans le référentiel Log Analytics. Ces solutions peuvent également définir de nouveaux types d’enregistrements à collecter qui peuvent être analysés avec des recherches de journaux ou via une interface utilisateur supplémentaire fournie par la solution dans le tableau de bord Log Analytics.
 
-Le système Security Center est un exemple de ces types de solutions.
+Defender pour le cloud est un exemple de ces types de solutions.
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automation and Control : alerte sur les anomalies de configuration de la sécurité
 
@@ -114,27 +114,32 @@ Azure Automation automatise les processus administratifs grâce à des runbooks 
 
 Vous pouvez créer et gérer les ressources DSC hébergées dans Azure et les appliquer à des systèmes de cloud et locaux. Ce faisant, vous pouvez définir et appliquez automatiquement leur configuration ou obtenir des rapports pour aider à s’assurer que les configurations de sécurité restent au sein de la stratégie.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-Azure Security Center contribue à protéger votre environnement de cloud hybride. En évaluant continuellement la sécurité de vos ressources connectées, il peut fournir des recommandations de sécurité détaillées concernant les vulnérabilités découvertes.
+Microsoft Defender pour le cloud contribue à protéger votre environnement de cloud hybride. En évaluant continuellement la sécurité de vos ressources connectées, il peut fournir des recommandations de sécurité détaillées concernant les vulnérabilités découvertes.
 
-Les recommandations de Security Center sont basées sur le [Benchmark de sécurité Azure](../benchmarks/introduction.md), l’ensemble des directives propres à Azure et créées par Microsoft contenant les meilleures pratiques en matière de sécurité et de conformité basées sur les infrastructures de conformité courantes. Ce point de référence, largement respecté et centré sur le cloud, est basé sur les contrôles du [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) et du [National Institute of Standards and Technology (NIST)](https://www.nist.gov/).
+Les recommandations de Defender pour le cloud sont basées sur le [Benchmark de sécurité Azure](../benchmarks/introduction.md), l’ensemble des directives propres à Azure et créées par Microsoft contenant les meilleures pratiques en matière de sécurité et de conformité basées sur les infrastructures de conformité courantes. Ce point de référence, largement respecté et centré sur le cloud, est basé sur les contrôles du [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) et du [National Institute of Standards and Technology (NIST)](https://www.nist.gov/).
 
-La plateforme de protection des charges de travail cloud (CWPP) de Security Center, **Azure Defender**, garantit une protection avancée et intelligente de vos ressources et charges de travail Azure et hybrides. L’activation d’Azure Defender offre un large éventail de fonctionnalités de sécurité supplémentaires (voir [Présentation d’Azure Defender](../../security-center/azure-defender.md)). Le tableau de bord Azure Defender de Security Center offre une visibilité et un contrôle des fonctionnalités CWP pour votre environnement :
+L’activation des fonctionnalités de sécurité améliorées de Defender pour le cloud garantit une protection avancée et intelligente de vos ressources et charges de travail Azure, hybrides et multi-cloud. Pour plus d’informations, consultez [Activation des fonctionnalités de sécurité renforcée de Microsoft Defender pour le cloud.](../../defender-for-cloud/enhanced-security-features-overview.md) 
 
-:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Exemple de tableau de bord Azure Defender" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
+Le tableau de bord de protection de la charge de travail dans Defender pour le cloud offre une visibilité et un contrôle des fonctionnalités de protection intégrée de la charge de travail dans le cloud, fournie par une large gamme d’abonnements **Microsoft Defender** :
+
+:::image type="content" source="../../defender-for-cloud/media/workload-protections-dashboard/sample-defender-dashboard-numbered.png" alt-text="Exemple de tableau de bord de protection de charge de travail de Defender pour le cloud." lightbox="../../defender-for-cloud/media/workload-protections-dashboard/sample-defender-dashboard-numbered.png":::
+
+> [!TIP]
+> En savoir plus sur les sections numérotées du [Tableau de bord de la protection de charge de travail](../../defender-for-cloud/workload-protections-dashboard.md).
 
 Les chercheurs en sécurité de Microsoft sont constamment à l’affût des nouvelles menaces. Ils ont accès à un vaste jeu de télémétrie acquis grâce à la présence globale de Microsoft sur le cloud et localement. Cette collection diverse et étendue de jeux de données permet à Microsoft de détecter de nouveaux modèles et de nouvelles tendances d’attaques dans ses produits locaux destinés au consommateur et aux entreprises, ainsi que dans ses services en ligne.
 
-Azure Security Center peut donc rapidement mettre à jour ses algorithmes de détection, puisque les pirates sont à l’origine d’attaques innovantes de plus en plus sophistiquées. Cette approche permet de faire face à des menaces en pleine mutation.
+Par conséquent, Defender pour le cloud peut rapidement mettre à jour ses algorithmes de détection, puisque les attaquants sont à l’origine d’attaques innovantes de plus en plus sophistiquées. Cette approche permet de faire face à des menaces en pleine mutation.
 
-:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste d’alertes de sécurité d’Azure Security Center":::
+:::image type="content" source="../../defender-for-cloud/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste des alertes de sécurité de Microsoft Defender pour le cloud":::
 
-Azure Defender collecte automatiquement les informations de sécurité à partir de vos ressources, du réseau et des solutions de partenaires connectées. Elle analyse ces informations, en corrélant les données issues de plusieurs sources, pour identifier les menaces.
+Microsoft Defender pour le cloud collecte automatiquement les informations de sécurité à partir de vos ressources, du réseau et des solutions de partenaires connectées. Elle analyse ces informations, en corrélant les données issues de plusieurs sources, pour identifier les menaces.
 
-Les alertes d’Azure Defender, ainsi que les recommandations sur la façon de répondre aux menaces, sont classées par ordre de priorité dans Azure Security Center.
+Les alertes de sécurité, ainsi que les recommandations sur la façon de répondre aux menaces, sont hiérarchisées dans Microsoft Defender pour le cloud.
 
-Azure Security Center emploie des analyses de sécurité avancées allant bien au-delà des approches simplement basées sur la signature. Les avancées dans les technologies de big data et d’[apprentissage automatique](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) sont utilisées pour évaluer les événements dans l’ensemble du cloud. L’analytique avancée peut détecter les menaces qui seraient impossibles à identifier avec des approches manuelles et peut prévoir l’évolution des attaques. Ces types d’analyses de sécurité sont mentionnés dans les prochaines sections.
+Defender pour le cloud emploie une analytique de sécurité avancée qui va bien au-delà des approches simplement basées sur la signature. Les avancées dans les technologies de big data et d’[apprentissage automatique](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) sont utilisées pour évaluer les événements dans l’ensemble du cloud. L’analytique avancée peut détecter les menaces qui seraient impossibles à identifier avec des approches manuelles et peut prévoir l’évolution des attaques. Ces types d’analyses de sécurité sont mentionnés dans les prochaines sections.
 
 ### <a name="threat-intelligence"></a>Informations sur les menaces
 
@@ -144,9 +149,9 @@ La télémétrie provient de plusieurs sources, telles qu’Azure, Microsoft 36
 
 ![Découvertes d’informations sur les menaces](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
-Les chercheurs reçoivent également les informations sur les menaces partagées par les principaux fournisseurs de services cloud et s’abonnent aux flux d’informations sur les menaces provenant de tiers. Azure Security Center peut utiliser ces informations pour vous alerter en cas de menaces provenant d’éléments malveillants connus. Voici quelques exemples :
+Les chercheurs reçoivent également les informations sur les menaces partagées par les principaux fournisseurs de services cloud et s’abonnent aux flux d’informations sur les menaces provenant de tiers. Microsoft Defender pour le cloud peut utiliser ces informations pour vous alerter en cas de menaces provenant d’éléments malveillants connus. Voici quelques exemples :
 
--   **Exploitation de la puissance du machine learning** : Azure Security Center a accès à une grande quantité de données sur l’activité réseau cloud, qui peuvent être utilisées pour détecter les menaces ciblant vos déploiements Azure.
+-   **Utilisation de la puissance de Machine Learning** : Microsoft Defender pour le cloud a accès à une grande quantité de données sur l’activité réseau cloud, qui peuvent être utilisées pour détecter les menaces ciblant vos déploiements Azure.
 
 -   **Détection des attaques par force brute** : Le machine learning permet de créer un modèle historique des tentatives d’accès à distance, qui facilite la détection des attaques par force brute sur les ports SQL, RDP (Remote Desktop Protocole) et SSH (Secure Shell).
 
@@ -162,30 +167,30 @@ L’analyse comportementale est une technique qui analyse et compare les donnée
 
 ![Découvrtes sur l’analyse comportementale](./media/threat-detection/azure-threat-detection-fig11.jpg)
 
-Ils sont également déterminés à travers une analyse minutieuse des comportements malveillants par des experts. Azure Security Center peut utiliser l’analyse comportementale pour identifier les ressources compromises en se basant sur l’analyse des journaux d’activité de la machine virtuelle, des journaux d’activité du périphérique réseau virtuel, des journaux d’activité Service Fabric, des vidages sur incident et d’autres sources.
+Ils sont également déterminés à travers une analyse minutieuse des comportements malveillants par des experts. Microsoft Defender pour le cloud peut utiliser l’analytique comportementale pour identifier les ressources compromises en se basant sur l’analyse des journaux de machine virtuelle, des journaux d’appareil réseau virtuel, des journaux d’infrastructure fabric, des vidages sur incident, et autres sources.
 
 En outre, il existe une corrélation entre les modèles et les autres signaux pour rechercher les preuves d’une campagne généralisée. Ce rapprochement permet d’identifier les événements qui sont cohérents avec les indicateurs de compromission établis.
 
 Voici quelques exemples :
--   **Exécution de processus suspect** : les attaquants utilisent diverses techniques pour exécuter des logiciels malveillants en l’absence de détection. Par exemple, un pirate peut donner au programme malveillant le même nom que celui utilisé pour des fichiers système légitimes, mais placer ces fichiers à un autre emplacement, utiliser un nom similaire à un fichier anodin ou masquer la véritable extension du fichier. Security Center modélise les comportements et surveille les exécutions du processus pour détecter les valeurs aberrantes telles que celles-ci.
+-   **Exécution de processus suspect** : les attaquants utilisent diverses techniques pour exécuter des logiciels malveillants en l’absence de détection. Par exemple, un pirate peut donner au programme malveillant le même nom que celui utilisé pour des fichiers système légitimes, mais placer ces fichiers à un autre emplacement, utiliser un nom similaire à un fichier anodin ou masquer la véritable extension du fichier. Defender pour le cloud modélise les comportements et surveille les exécutions du processus pour détecter les valeurs aberrantes telles que celles-ci.
 
--   **Programmes malveillants masqués et tentatives d’exploitation** : des programmes malveillants sophistiqués peuvent échapper aux produits anti-programme malveillant traditionnels en choisissant de ne jamais écrire sur le disque ou en chiffrant des composants logiciels stockés sur le disque. Toutefois, ces logiciels malveillants peuvent être détectés à l’aide de l’analyse de mémoire, car le programme malveillant laisse des traces en mémoire pour pouvoir fonctionner. Lorsque le logiciel se bloque, un vidage sur incident capture une partie de la mémoire au moment de l’incident. En analysant la mémoire dans le vidage sur incident, Azure Security Center peut détecter les techniques utilisées pour exploiter la vulnérabilité des logiciels, accéder aux données confidentielles et persister subrepticement au sein d’un ordinateur compromis sans affecter les performances de votre machine.
+-   **Programmes malveillants masqués et tentatives d’exploitation** : des programmes malveillants sophistiqués peuvent échapper aux produits anti-programme malveillant traditionnels en choisissant de ne jamais écrire sur le disque ou en chiffrant des composants logiciels stockés sur le disque. Toutefois, ces logiciels malveillants peuvent être détectés à l’aide de l’analyse de mémoire, car le programme malveillant laisse des traces en mémoire pour pouvoir fonctionner. Lorsque le logiciel se bloque, un vidage sur incident capture une partie de la mémoire au moment de l’incident. En analysant la mémoire dans le vidage sur incident, Microsoft Defender pour le cloud peut détecter les techniques utilisées pour exploiter la vulnérabilité des logiciels, accéder aux données confidentielles et persister subrepticement au sein d’un ordinateur compromis sans affecter les performances de votre machine.
 
--   **Mouvement latéral et reconnaissance interne** : afin de persister dans un réseau compromis et de localiser/récolter des données précieuses, les attaquants tentent souvent de se déplacer latéralement à partir de l’ordinateur compromis vers d’autres ordinateurs au sein du même réseau. Azure Security Center surveille les activités de processus et de connexion afin de détecter les tentatives de développement du pirate au sein du réseau, telles que l’exécution de commande à distance, la détection de réseau et l’énumération de compte.
+-   **Mouvement latéral et reconnaissance interne** : afin de persister dans un réseau compromis et de localiser/récolter des données précieuses, les attaquants tentent souvent de se déplacer latéralement à partir de l’ordinateur compromis vers d’autres ordinateurs au sein du même réseau. Defender pour le cloud surveille les activités de processus et de connexion afin de détecter les tentatives de développement du pirate au sein du réseau, telles que l’exécution de commande à distance, la détection de réseau et l’énumération de compte.
 
--   **Scripts PowerShell malveillants** : les pirates peuvent utiliser PowerShell pour exécuter du code malveillant sur des machines virtuelles cibles à des fins diverses. Azure Security Center inspecte l’activité PowerShell à la recherche d’activité suspecte.
+-   **Scripts PowerShell malveillants** : les pirates peuvent utiliser PowerShell pour exécuter du code malveillant sur des machines virtuelles cibles à des fins diverses. Microsoft Defender pour le cloud inspecte l’activité PowerShell à la recherche d’activité suspecte.
 
--   **Attaques sortantes** : les pirates ciblent souvent les ressources cloud en vue d’utiliser ces ressources pour lancer d’autres attaques. Les machines virtuelles compromises peuvent, par exemple, servir à lancer des attaques par force brute contre d’autres machines virtuelles, envoyer du courrier indésirable, ou analyser les ports ouverts et autres appareils sur Internet. En appliquant l’apprentissage automatique au trafic réseau, Azure Security Center peut détecter lorsque les communications réseau sortantes dépassent la norme. Lorsque du courrier indésirable est détecté, Azure Security Center met également en corrélation le trafic de messagerie inhabituel avec l'intelligence issue de Microsoft 365 pour déterminer si le courrier est susceptible d'être mal intentionné ou est le résultat d'une campagne de courrier électronique légitime.
+-   **Attaques sortantes** : les pirates ciblent souvent les ressources cloud en vue d’utiliser ces ressources pour lancer d’autres attaques. Les machines virtuelles compromises peuvent, par exemple, servir à lancer des attaques par force brute contre d’autres machines virtuelles, envoyer du courrier indésirable, ou analyser les ports ouverts et autres appareils sur Internet. En appliquant l’apprentissage automatique au trafic réseau, Microsoft Defender pour le cloud peut détecter lorsque les communications réseau sortantes dépassent la norme. Lorsque du courrier indésirable est détecté, Defender pour le cloud met également en corrélation le trafic de messagerie inhabituel avec l'intelligence issue de Microsoft 365 pour déterminer si le courrier est susceptible d'être mal intentionné ou est le résultat d'une campagne de courrier électronique légitime.
 
 ### <a name="anomaly-detection"></a>Détection des anomalies
 
-Azure Security Center utilise également la détection des anomalies pour identifier les menaces. Contrairement à l’analyse comportementale (qui dépend des modèles connus dérivés de grands jeux de données), la détection des anomalies est plus « personnalisée » et se concentre sur les lignes de base propres à vos déploiements. L’apprentissage automatique est appliqué pour déterminer l’activité normale de vos déploiements et les règles sont générées pour définir les conditions de valeurs aberrantes pouvant signaler un événement de sécurité. Voici un exemple :
+Microsoft Defender pour le cloud utilise également la détection d’anomalie pour identifier les menaces. Contrairement à l’analyse comportementale (qui dépend des modèles connus dérivés de grands jeux de données), la détection des anomalies est plus « personnalisée » et se concentre sur les lignes de base propres à vos déploiements. L’apprentissage automatique est appliqué pour déterminer l’activité normale de vos déploiements et les règles sont générées pour définir les conditions de valeurs aberrantes pouvant signaler un événement de sécurité. Voici un exemple :
 
--   **Attaques par force brute RDP/SSH entrantes** : vos déploiements peuvent comporter des machines virtuelles occupées par un nombre plus ou moins important de connexions quotidiennes. Azure Security Center peut déterminer l’activité de connexion de base de ces machines virtuelles et utiliser l’apprentissage automatique pour définir ce qui correspond à des activités normales. Une alerte peut être générée en cas d’écart par rapport à la référence définie pour les caractéristiques de connexion. Là encore, l’apprentissage automatique détermine ce qui est significatif.
+-   **Attaques par force brute RDP/SSH entrantes** : vos déploiements peuvent comporter des machines virtuelles occupées par un nombre plus ou moins important de connexions quotidiennes. Microsoft Defender pour le cloud peut déterminer l’activité de connexion de base de ces machines virtuelles et utiliser l’apprentissage automatique pour définir ce qui correspond à des activités normales. Une alerte peut être générée en cas d’écart par rapport à la référence définie pour les caractéristiques de connexion. Là encore, l’apprentissage automatique détermine ce qui est significatif.
 
 ### <a name="continuous-threat-intelligence-monitoring"></a>Analyse continue des informations sur les menaces
 
-Azure Security Center s’appuie sur des équipes de recherche de sécurité et de sciences des données implantées dans le monde entier, qui surveillent en continu les évolutions en matière de menaces. Cela inclut les initiatives suivantes :
+Microsoft Defender pour le cloud s’appuie sur des équipes de recherche de sécurité et de sciences des données implantées dans le monde entier, qui surveillent en continu les évolutions en matière de menaces. Cela inclut les initiatives suivantes :
 
 -   **Analyse des informations sur les menaces** : les informations sur les menaces incluent des mécanismes, des indicateurs, des implications et des conseils pratiques sur les menaces, nouvelles ou existantes. Ces informations sont partagées avec la communauté dédiée à la sécurité, et Microsoft surveille en permanence le flux des informations sur les menaces provenant de sources internes et externes.
 
@@ -319,24 +324,24 @@ L’API de détection des anomalies est une solution efficace pour un large éve
 
 -   Les groupes d’analyse marketing doivent surveiller en temps réel les changements anormaux des KPI commerciaux (par exemple, le volume des ventes, les sentiments du client, les prix).
 
-### <a name="cloud-app-security"></a>Cloud App Security
+### <a name="defender-for-cloud-apps"></a>Defender for Cloud Apps
 
-[Cloud App Security](/cloud-app-security/what-is-cloud-app-security) est un composant essentiel de la pile de sécurité de Microsoft Cloud. Cette solution complète peut aider votre organisation lorsque vous cherchez à tirer pleinement parti des promesses des applications cloud. Elle vous laisse le contrôle grâce à une meilleure visibilité dans l’activité. Elle vous permet également de renforcer la protection des données critiques dans les applications cloud.
+[Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) est un composant essentiel de la pile de sécurité de Microsoft Cloud. Cette solution complète peut aider votre organisation lorsque vous cherchez à tirer pleinement parti des promesses des applications cloud. Elle vous laisse le contrôle grâce à une meilleure visibilité dans l’activité. Elle vous permet également de renforcer la protection des données critiques dans les applications cloud.
 
 Grâce à des outils qui vous permettent de détecter le Shadow IT, d’évaluer les risques, d’appliquer des stratégies, d’examiner les activités et d’arrêter les menaces, votre organisation est en mesure de migrer en toute sécurité vers le cloud tout en conservant le contrôle sur ses données critiques.
 
 | Category | Description |
 | -------- | ----------- |
-| Découvrez | Découvrez le Shadow IT grâce à Cloud App Security. Bénéficiez d’une meilleure visibilité grâce à une détection des applications, des activités, des utilisateurs, des données et des fichiers dans votre environnement cloud. Détectez les applications tierces connectées à votre cloud.|
+| Découvrez | Découvrez l’informatique fantôme avec Defender for Cloud Apps. Bénéficiez d’une meilleure visibilité grâce à une détection des applications, des activités, des utilisateurs, des données et des fichiers dans votre environnement cloud. Détectez les applications tierces connectées à votre cloud.|
 |Examiner | Examinez vos applications cloud à l’aide d’outils d’investigation cloud conçus pour explorer en profondeur les applications à risque, les utilisateurs spécifiques et les fichiers de votre réseau. Recherchez des modèles parmi les données collectées à partir de votre cloud. Générez des rapports pour surveiller votre cloud. |
-| Control | Limitez les risques en définissant des stratégies et des alertes de manière à accentuer le contrôle sur le trafic réseau cloud. Utilisez Cloud App Security pour migrer vos utilisateurs vers d’autres solutions cloud sécurisées et approuvées. |
-| Protéger | Utilisez Cloud App Security pour approuver ou interdire des applications, appliquer des mesures de prévention des fuites de données, contrôler les autorisations et le partage, et générer des alertes et des rapports personnalisés. |
-| Control | Limitez les risques en définissant des stratégies et des alertes de manière à accentuer le contrôle sur le trafic réseau cloud. Utilisez Cloud App Security pour migrer vos utilisateurs vers d’autres solutions cloud sécurisées et approuvées. |
+| Control | Limitez les risques en définissant des stratégies et des alertes de manière à accentuer le contrôle sur le trafic réseau cloud. Utilisez Defender for Cloud Apps pour migrer vos utilisateurs vers d’autres solutions cloud sécurisées et approuvées. |
+| Protéger | Utilisez Defender for Cloud Apps pour approuver ou interdire des applications, appliquer des mesures de prévention des fuites de données, contrôler les autorisations et le partage, et générer des alertes et des rapports personnalisés. |
+| Control | Limitez les risques en définissant des stratégies et des alertes de manière à accentuer le contrôle sur le trafic réseau cloud. Utilisez Defender for Cloud Apps pour migrer vos utilisateurs vers d’autres solutions cloud sécurisées et approuvées. |
 
 
-![Diagramme Cloud App Security](./media/threat-detection/azure-threat-detection-fig14.png)
+![Diagramme Defender for Cloud Apps](./media/threat-detection/azure-threat-detection-fig14.png)
 
-Cloud App Security intègre la visibilité à votre cloud :
+Defender for Cloud Apps intègre la visibilité à votre cloud de la façon suivante :
 
 -   Utilisation de Cloud Discovery pour mapper et identifier votre environnement cloud et les applications cloud utilisées par votre organisation.
 
@@ -346,7 +351,7 @@ Cloud App Security intègre la visibilité à votre cloud :
 
 -   en vous aidant à préserver le contrôle grâce à la définition et à l’optimisation de stratégies.
 
-Cloud App Security exécute une analyse complexe sur les données recueillies auprès de ces sources. Cette solution vous alerte immédiatement en cas d’activités anormales et vous procure une visibilité totale sur votre environnement cloud. Vous pouvez configurer une stratégie dans Cloud App Security et l’utiliser pour protéger tous les éléments de votre environnement cloud.
+Defender for Cloud Apps exécute une analyse complexe sur les données recueillies auprès de ces sources. Cette solution vous alerte immédiatement en cas d’activités anormales et vous procure une visibilité totale sur votre environnement cloud. Vous pouvez configurer une stratégie dans Defender for Cloud Apps et l’utiliser pour protéger tous les éléments de votre environnement cloud.
 
 ## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Fonctionnalités tierces de protection contre les menaces via la Place de marché Azure
 

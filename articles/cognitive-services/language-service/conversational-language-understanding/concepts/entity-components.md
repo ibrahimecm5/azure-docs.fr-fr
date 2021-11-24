@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-clu, ignite-fall-2021
-ms.openlocfilehash: 5a5c76ed125a600458b87b3c5f4c451a62b13e8c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c42028b10a71a039a208f82cfacb58e5ba8e07cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096836"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347724"
 ---
 # <a name="entity-components"></a>Composants de l’entité
 
@@ -28,7 +28,7 @@ Un composant d’entité détermine la façon dont vous pouvez extraire l’enti
 
 ### <a name="learned-component"></a>Composant appris
 
-Le composant appris utilise les étiquettes d’entité avec lesquelles vous étiquetez vos énoncés pour entraîner un modèle issu du machine learning. Le modèle apprend à prédire l’emplacement de l’entité, en fonction du contexte dans l’énoncé. Vos étiquettes fournissent des exemples d’emplacement où l’entité doit être présente dans un énoncé, en fonction de la signification des mots qui l’entourent et des mots qui ont été étiquetés. Ce composant n’est défini que si vous ajoutez des étiquettes en étiquetant des énoncés pour l’entité. Si vous n’étiquetez pas d’énoncés avec l’entité, elle n’aura pas de composant appris.
+Le composant appris utilise les étiquettes d’entité avec lesquelles vous étiquetez vos énoncés pour entraîner un modèle issu du machine learning. Le modèle apprend à prédire l’emplacement de l’entité, en fonction du contexte dans l’énoncé. Vos étiquettes fournissent des exemples d’emplacement où l’entité doit être présente dans un énoncé, en fonction de la signification des mots qui l’entourent et des mots qui ont été étiquetés. Ce composant n’est défini que si vous ajoutez des étiquettes en étiquetant des énoncés pour l’entité. Si vous n’étiquetez aucun énoncé avec l’entité, celle-ci n’aura aucun composant appris.
 
 :::image type="content" source="../media/learned-component.png" alt-text="Capture d’écran montrant un exemple de composants appris pour des entités" lightbox="../media/learned-component.png":::
 

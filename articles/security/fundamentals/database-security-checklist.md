@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c462e4084cc1fd2e46d7eec268501402cee7c887
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595582"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342962"
 ---
 # <a name="azure-database-security-checklist"></a>Liste de contrôle de la sécurité des bases de données Azure
 
@@ -54,7 +54,7 @@ Nous vous recommandons de lire l’article [Azure Database Security Best Practic
 |<br>Accès aux applications| <ul><li>[Sécurité au niveau des lignes](/sql/relational-databases/security/row-level-security) (avec une stratégie de sécurité, tout en limitant l’accès au niveau des lignes selon l’identité des utilisateurs, leur rôle ou le contexte d’exécution).</li><li>[Masquage des données dynamiques](../../azure-sql/database/dynamic-data-masking-overview.md) (avec autorisation et stratégie, limite l’exposition des données sensibles en les masquant pour les utilisateurs sans privilège).</li></ul>|
 |**Surveillance proactive**||  
 | <br>Suivi et détection| <ul><li>L’[audit](../../azure-sql/database/auditing-overview.md) suit les événements de base de données et les écrit dans un journal d’audit ou d’activité dans votre [compte de stockage Azure](../../storage/common/storage-account-create.md).</li><li>Suivi de l’intégrité des bases de données Azure à l’aide des [journaux d’activité Azure Monitor](../../azure-monitor/essentials/platform-logs-overview.md).</li><li>La [détection des menaces](../../azure-sql/database/threat-detection-configure.md) permet de détecter les activités base de données anormales indiquant la présence potentielle de menaces de sécurité pour la base de données. </li></ul> |
-|<br>Azure Security Center| <ul><li>[Supervision des données](../../security-center/security-center-remediate-recommendations.md), avec Azure Security Center comme solution de supervision de la sécurité centralisée pour SQL et d’autres services Azure.</li></ul>|        
+|<br>Microsoft Defender pour le cloud| <ul><li>[Supervision des données](../../security-center/security-center-remediate-recommendations.md) : Utilisez Microsoft Defender pour le cloud comme solution centralisée de supervision de la sécurité pour SQL et d’autres services Azure.</li></ul>|        
 
 ## <a name="conclusion"></a>Conclusion
 Azure Database est une plateforme robuste de base de données, avec un éventail complet de fonctionnalités de sécurité qui répondent à de nombreuses exigences en matière de conformité réglementaire et organisationnelles. Vous pouvez facilement protéger les données en contrôlant l’accès physique à vos données et à l’aide de diverses options de sécurité des données au niveau des fichiers, des colonnes ou des lignes avec le chiffrement transparent des données, le chiffrement au niveau des cellules ou de la sécurité au niveau des lignes. Always Encrypted active également des opérations sur les données chiffrées, ce qui simplifie le processus des mises à jour d’application. À son tour, l’accès aux journaux d’activité d’audit de l’activité SQL Database vous offre les informations dont vous avez besoin, ce qui vous permet de savoir quand et comment les utilisateurs ont accédé aux données.

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ffdec82c7009ca696b04b4ee5fff31a92bd77d50
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3afe9135c620b808ad6853705c5886aa3628ab7a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440941"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370306"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importer des clés protégées par HSM dans un HSM managé (BYOK)
 
@@ -78,21 +78,21 @@ Pour plus d’informations sur les options de connexion par le biais de l’inte
 
 |Nom de clé|Type de clé|Taille de clé/Courbe|Origine|Description|
 |---|---|---|---|---|
-|Key Exchange Key (KEK)|RSA| 2 048 bits<br />3 072 bits<br />4 096 bits|HSM managé|Paire de clés RSA-HSM générée dans un HSM managé|
+|Key Exchange Key (KEK)|RSA-HSM| 2 048 bits<br />3 072 bits<br />4 096 bits|HSM managé|Paire de clés RSA-HSM générée dans un HSM managé|
 |Clé cible|
-||RSA|2 048 bits<br />3 072 bits<br />4 096 bits|HSM du fournisseur|La clé à transférer au HSM géré|
-||EC|P-256<br />P-384<br />P-521|HSM du fournisseur|La clé à transférer au HSM géré|
-||Clé symétrique (oct-HSM)|128 bits<br />192 bits<br />256 bits|HSM du fournisseur|La clé à transférer au HSM géré|
+||RSA-HSM|2 048 bits<br />3 072 bits<br />4 096 bits|HSM du fournisseur|La clé à transférer au HSM géré|
+||EC-HSM|P-256<br />P-384<br />P-521|HSM du fournisseur|La clé à transférer au HSM géré|
+||Clé symétrique (oct-hsm)|128 bits<br />192 bits<br />256 bits|HSM du fournisseur|La clé à transférer au HSM géré|
 ||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Générer et transférer votre clé vers le HSM managé
 
 Pour générer et transférer votre clé vers un HSM managé :
 
-* [Étape 1 : Générer une clé KEK](#step-1-generate-a-kek)
-* [Étape 2 : Télécharger la clé publique KEK](#step-2-download-the-kek-public-key)
-* [Étape 3 : Générer votre clé et la préparer pour le transfert](#step-3-generate-and-prepare-your-key-for-transfer)
-* [Étape 4 : Transférer votre clé vers le HSM géré](#step-4-transfer-your-key-to-managed-hsm)
-
+  - [Étape 1 : Générer une clé KEK](#step-1-generate-a-kek)
+  - [Étape 2 : Télécharger la clé publique KEK](#step-2-download-the-kek-public-key)
+  - [Étape 3 : Générer votre clé et la préparer pour le transfert](#step-3-generate-and-prepare-your-key-for-transfer)
+  - [Étape 4 : Transférer votre clé vers le HSM géré](#step-4-transfer-your-key-to-managed-hsm) 
+   
 ### <a name="step-1-generate-a-kek"></a>Étape 1 : Générer une clé KEK
 
 Une KEK est une clé RSA générée dans un HSM managé. La KEK est utilisée pour chiffrer la clé que vous souhaitez importer (clé *cible*).

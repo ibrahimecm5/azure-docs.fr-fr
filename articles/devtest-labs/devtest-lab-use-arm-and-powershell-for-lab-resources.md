@@ -1,18 +1,18 @@
 ---
 title: Créer ou modifier des laboratoires à l’aide de modèles de Azure Resource Manager
-description: Découvrez comment utiliser des modèles Azure Resource Manager avec PowerShell pour créer ou modifier des laboratoires automatiquement dans un DevTest Lab
+description: Découvrez comment utiliser des modèles Azure Resource Manager avec PowerShell pour créer ou modifier des laboratoires automatiquement.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: dac336902588655bc78bc593c408a10cfdf0b8af
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 61f605e5b6c65c57caf37bdc5178143e0304f02d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591555"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398532"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Créer ou modifier des laboratoires automatiquement à l’aide de modèles Azure Resource Manager et PowerShell
 
-DevTest Labs fournit de nombreux modèles Azure Resource Manager et scripts PowerShell qui peuvent vous aider à créer rapidement et automatiquement de nouveaux laboratoires ou à modifier des laboratoires existants, puis à déployer ces ressources.
+Azure DevTest Labs fournit de nombreux modèles de Azure Resource Manager et scripts PowerShell. Ces modèles et scripts peuvent vous aider à créer, modifier et déployer rapidement et automatiquement des laboratoires et des ressources de laboratoire.
 
 Cet article vous guide dans le processus d’utilisation de ces modèles et scripts pour automatiser la création, la modification et le déploiement de vos laboratoires. Il vous montre également où trouver des informations supplémentaires sur l’utilisation de PowerShell pour effectuer certaines tâches courantes dans DevTest Labs.
 
@@ -22,7 +22,7 @@ Des [modèles Azure Resource Manager](https://github.com/Azure/azure-devtestlab/
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>Étape 2 : modifier votre modèle Azure Resource Manager
 Si vous n’avez jamais créé de modèle, reportez-vous à la procédure [Créer votre premier modèle Azure Resource Manager](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-En outre, les [Bonnes pratiques de création de modèles Azure Resource Manager](../azure-resource-manager/templates/best-practices.md) contiennent de nombreuses directives et suggestions pour vous aider à créer des modèles Azure Resource Manager fiables et faciles à utiliser. En règle générale, vous utilisez l’une des variantes des approches ou exemples fournis et modifiez votre modèle en fonction de vos besoins.
+Les [Bonnes pratiques de création de modèles Azure Resource Manager](../azure-resource-manager/templates/best-practices.md) contiennent de nombreuses directives et suggestions pour vous aider à créer des modèles Azure Resource Manager fiables et faciles à utiliser. Vous pouvez utiliser l’une des variantes des approches ou exemples fournis et modifiez votre modèle en fonction de vos besoins.
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>Étape 3 : déployer des ressources avec PowerShell
 Après avoir personnalisé vos modèle et scripts, suivez les étapes nécessaires pour [Déployer des ressources à l’aide de modèles Resource Manager et d’Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Cet article fournit des informations générales sur l’utilisation d’Azure PowerShell avec des modèles Azure Resource Manager pour déployer vos ressources sur Azure.

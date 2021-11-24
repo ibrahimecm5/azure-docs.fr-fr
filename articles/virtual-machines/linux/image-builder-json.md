@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47de9f252e70b7281b8499612718cbd4b23365a1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d4e8832222cb1fc0a4ec431f1eeedcdcda0c5a11
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131444589"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400962"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Créer un modèle de générateur d’images Azure 
 
@@ -34,7 +34,6 @@ Voici le format de modèle de base :
       "<name>": "<value>"
     },
     "identity": {},          
-    "dependsOn": [], 
     "properties": { 
       "buildTimeoutInMinutes": <minutes>, 
       "vmProfile": {
@@ -93,7 +92,7 @@ La distribution prend en charge la redondance de zone, les disques durs virtuels
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
-Par défaut, Image Builder utilise une machine virtuelle de build « Standard_D1_v2 », qui est créée à partir de l’image que vous spécifiez dans la `source`. Vous pouvez contourner cette règle, notamment pour les raisons suivantes :
+Par défaut, Image Builder utilise une machine virtuelle de build « Standard_D1_v2 » pour les images Gen1 et une machine virtuelle de build « Standard_D2ds_v4 » pour les images Gen2, construite à partir de l’image spécifiée dans `source`. Vous pouvez contourner cette règle, notamment pour les raisons suivantes :
 1. Personnalisations nécessitant davantage de mémoire, une augmentation de la capacité du processeur et la gestion de fichiers volumineux (Go)
 2. Exécution de builds Windows nécessitant l’utilisation de « Standard_D2_v2 » ou d’une taille de machine virtuelle équivalente.
 3. Exigence d'[isolement de la machine virtuelle](../isolation.md)
@@ -124,16 +123,6 @@ Si vous ne spécifiez pas de propriétés de réseau virtuel, le générateur d�
 ## <a name="tags"></a>Balises
 
 Il s’agit de paires clé/valeur que vous pouvez spécifier pour l’image générée.
-
-## <a name="depends-on-optional"></a>Dépend de (facultatif)
-
-Cette section facultative peut être utilisée pour s’assurer que les dépendances sont terminées avant de continuer. 
-
-```json
-    "dependsOn": [],
-```
-
-Pour plus d’informations, consultez [Définir les dépendances des ressources](../../azure-resource-manager/templates/resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identité
 
@@ -180,7 +169,7 @@ Azure Image Builder prend en charge les images Windows Server et client, ainsi q
             "offer": "UbuntuServer",
             "sku": "18.04-LTS",
             "version": "latest"
-        },
+        },  
 ```
 
 
@@ -651,7 +640,7 @@ Vous pouvez générer sur un disque dur virtuel. Vous pouvez ensuite copier le d
 { 
     "type": "VHD",
     "runOutputName": "<VHD name>",
-    "tags": {
+    "artifactTags": {
         "<name>": "<value>",
         "<name>": "<value>"
     }

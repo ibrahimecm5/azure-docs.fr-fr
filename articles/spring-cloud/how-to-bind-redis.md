@@ -1,20 +1,20 @@
 ---
-title: Lier Azure Cache for Redis à votre application Azure Spring Cloud
-description: Découvrez comment lier Cache Azure pour Redis à votre application Azure Spring Cloud
+title: Lier Azure Cache pour Redis à votre application dans Azure Spring Cloud
+description: Découvrez comment lier Azure Cache pour Redis à votre application dans Azure Spring Cloud.
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 31cb033bad3a6b356b447754670fd88bf0ee4663
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9f357526b64b34d7348114ce71840a5f4aafc394
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532958"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492494"
 ---
-# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Lier Azure Cache for Redis à votre application Azure Spring Cloud
+# <a name="bind-azure-cache-for-redis-to-your-application-in-azure-spring-cloud"></a>Lier Azure Cache pour Redis à votre application dans Azure Spring Cloud
 
 **Cet article s’applique à :** ✔️ Java
 
@@ -133,4 +133,4 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez découvert comment lier votre application Azure Spring Cloud à Azure Cache pour Redis. Pour en savoir plus sur la liaison de services à votre application, consultez [Lier à une instance Azure Database pour MySQL](./how-to-bind-mysql.md).
+Dans cet article, vous avez découvert comment lier votre application dans Azure Spring Cloud à Azure Cache pour Redis. Pour en savoir plus sur la liaison de services à votre application, consultez [Lier à une instance Azure Database pour MySQL](./how-to-bind-mysql.md).

@@ -10,12 +10,12 @@ ms.subservice: automl
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 10/21/2021
-ms.openlocfilehash: 3469b316b48c876965fb1aaec9bfd5feed33909e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 45c8f82729bd4cb16e0d0d36d9a9e70b66a7dbe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131561780"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345346"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Configurer AutoML pour effectuer l’apprentissage d’un modèle de prévision de série chronologique avec Python
 
@@ -145,8 +145,8 @@ Ces paramètres supplémentaires sont résumés dans le tableau suivant. Consult
 |-------|-------|-------|
 |`time_column_name`|Permet de spécifier la colonne DateHeure dans les données d’entrée utilisées pour la génération de la série chronologique et la déduction de sa fréquence.|✓|
 |`forecast_horizon`|Définit le nombre de périodes à venir que vous souhaitez prévoir. L’horizon est exprimé en unités de fréquence de série chronologique. Les unités sont basées sur l’intervalle de temps de vos données d’apprentissage (par exemple mensuelles ou hebdomadaires) que l’analyste doit prévoir.|✓|
-|`enable_dnn`|[Activez les DNN de prévisions]().||
-|`time_series_id_column_names`|La ou les noms de colonne utilisés pour identifier de manière unique la série chronologique dans des données qui ont plusieurs lignes avec le même horodatage. Si les identificateurs de série chronologique ne sont pas définis, le jeu de données est supposé être une série chronologique. Pour en savoir plus sur les séries chronologiques uniques, consultez [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
+|`enable_dnn`|[Activez les DNN de prévisions](#enable-deep-learning).||
+|`time_series_id_column_names`|La ou les noms de colonne utilisés pour identifier de manière unique la série chronologique dans des données qui ont plusieurs lignes avec le même horodatage. Si les identificateurs de série chronologique ne sont pas définis, le jeu de données est supposé être une série chronologique. Pour en savoir plus sur les séries chronologiques uniques, consultez [energy_demand_notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).||
 |`freq`| Fréquence du jeu de données de série chronologique. Ce paramètre représente la fréquence attendue des événements, par exemple tous les jours, toutes les semaines, tous les ans, etc. Elle doit constituer un [alias de décalage Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects). En savoir plus sur la [fréquence].(#frequency--target-data-aggregation)||
 |`target_lags`|Nombre de lignes selon lequel décaler les valeurs cibles en fonction de la fréquence des données. Le décalage est représenté sous la forme d’une liste ou d’un entier unique. Un décalage est nécessaire en l’absence de correspondance ou de corrélation par défaut des relations entre les variables indépendantes et la variable dépendante. ||
 |`feature_lags`| Les fonctionnalités à décaler seront automatiquement déterminées par Machine Learning automatisé lorsque `target_lags` sont définis et `feature_lags` est défini sur `auto`. L’activation des décalages de fonctionnalités peut contribuer à améliorer l’exactitude. Les décalages de fonctionnalités sont désactivés par défaut. ||
@@ -309,7 +309,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Pour activer DNN pour une expérience AutoML créée dans le studio Azure Machine Learning, consultez les [paramètres de type de tâche dans la procédure Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Pour obtenir un exemple de code détaillé utilisant des DNN, consultez [Beverage Production Forecasting notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
+Pour obtenir un exemple de code détaillé utilisant des DNN, consultez [Beverage Production Forecasting notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
 ### <a name="target-rolling-window-aggregation"></a>Agrégation de fenêtres dynamiques cibles
 La dernière valeur de la cible constitue souvent la meilleure information dont un prédicteur peut disposer.  Les agrégations de fenêtres dynamiques cibles permettent d’ajouter une agrégation dynamique de valeurs de données comme caractéristiques. Le fait de générer ces caractéristiques et de les utiliser comme données contextuelles supplémentaires contribue à la précision du modèle d’apprentissage.
@@ -320,7 +320,7 @@ Le tableau montre l’ingénierie de caractéristiques obtenue qui se produit lo
 
 ![Fenêtre dynamique cible](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Consultez un exemple de code Python tirant parti de la [caractéristique d’agrégation de fenêtres dynamiques cibles](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
+Consultez un exemple de code Python tirant parti de la [caractéristique d’agrégation de fenêtres dynamiques cibles](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
 
 ### <a name="short-series-handling"></a>Gestion des séries courtes
 
@@ -505,13 +505,13 @@ hts_parameters = HTSTrainParameters(
 
 ## <a name="example-notebooks"></a>Exemples de notebooks
 
-Consultez les [exemples de notebooks de prévision](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) pour obtenir des exemples de code détaillés de la configuration de prévision avancée, notamment :
+Consultez les [exemples de notebooks de prévision](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml) pour obtenir des exemples de code détaillés de la configuration de prévision avancée, notamment :
 
-* [Détection et personnalisation de congé](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [Validation croisée d’origine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [Décalages configurables](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [Caractéristiques des agrégations des périodes mobiles](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+* [Détection et personnalisation de congé](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [Validation croisée d’origine](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [Décalages configurables](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [Caractéristiques des agrégations des périodes mobiles](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

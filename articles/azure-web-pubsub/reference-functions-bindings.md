@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: 981160fe8d0778d122dd7dbd92c0c27c468ff34a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 40904b087d58ee6a07ca7acecdd2b2927348799e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997891"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493245"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Déclencheur et liaisons Azure Web PubSub pour Azure Functions
 
@@ -22,8 +22,8 @@ Web PubSub est un service managé Azure qui aide les développeurs à créer fac
 | Action | Type |
 |---------|---------|
 | Exécuter une fonction lorsque les messages proviennent du service | [Liaison de déclencheur](#trigger-binding) |
-| Retourner l’URL du point de terminaison de service et le jeton d’accès | [Liaison d’entrée](#input-binding)
-| Envoyer des messages Web PubSub |[Liaison de sortie](#output-binding) |
+| Lier la demande à l’objet cible sous le déclencheur HTTP pour la négociation et les demandes en amont | [Liaison d’entrée](#input-binding)
+| Appeler le service pour effectuer des actions | [Liaison de sortie](#output-binding) |
 
 [Code source](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/webpubsub/) |
 [Package](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub) |
@@ -38,16 +38,18 @@ Pour utiliser le déclencheur et les liaisons, vous devez référencer le packag
 | Langage                                        | Ajouter via...                                   | Notes 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | Installation du [package NuGet], préversion | |
-| Script C#, JavaScript, Python, PowerShell       | [Installer des extensions de manière explicite]                    | Il est recommandé d’utiliser l’[extension Azure Tools] avec Visual Studio Code. |
+| Script C#, JavaScript, Python, PowerShell       | [Installer des extensions de manière explicite], [Utiliser des packs d’extension] | Il est recommandé d’utiliser l’[extension Azure Tools] avec Visual Studio Code. |
 | Script C# (en ligne uniquement dans le portail Azure)         | Ajout d’une liaison                                   | Pour mettre à jour des extensions de liaison existantes sans avoir à republier votre application de fonction, consultez [Mettre à jour vos extensions]. |
 
-Installez la bibliothèque de client depuis [NuGet](https://www.nuget.org/) avec le package et la version spécifiés.
-
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-```
+> [!NOTE]
+> Installez la bibliothèque de client depuis [NuGet](https://www.nuget.org/) avec le package et la version spécifiés.
+> 
+> ```bash
+> func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+> ```
 
 [Package NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub
+[Utiliser les packs d’extensions]: ../azure-functions/functions-bindings-register.md#extension-bundles
 [Installer des extensions de manière explicite]: ../azure-functions/functions-bindings-register.md#explicitly-install-extensions 
 [Extension Azure Tools]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 [Mettre à jour vos extensions]: ../azure-functions/functions-bindings-register.md
@@ -58,7 +60,7 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 (1)-(2) liaison d’entrée `WebPubSubConnection` avec HttpTrigger pour générer une connexion cliente.
 
-(3)-(4) liaison de déclencheur `WebPubSubTrigger` ou liaison d’entrée `WebPubSubRequest` avec HttpTrigger pour gérer la requête de service.
+(3)-(4) liaison de déclencheur `WebPubSubTrigger` ou liaison d’entrée `WebPubSubContext` avec HttpTrigger pour gérer la requête de service.
 
 (5)-(6) liaison de sortie `WebPubSub` pour demander au service d’effectuer une opération.
 
@@ -66,11 +68,13 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 Utilisez le déclencheur de fonction pour gérer les requêtes du service Azure Web PubSub. 
 
-`WebPubSubTrigger` est utilisé lorsque vous devez gérer des requêtes côté service. Le modèle de point de terminaison du déclencheur devrait ressembler à ceci et être défini du côté service Web PubSub (portail : paramètres -> gestionnaire d’événements -> modèle d’URL). Dans le modèle de point de terminaison, la partie requête `code=<API_KEY>` est **OBLIGATOIRE** lorsque vous utilisez Azure Function App pour des raisons de [sécurité](../azure-functions/security-concepts.md#system-key). La clé est disponible dans le **Portail Azure**. Localisez votre ressource d’application de fonction et accédez à **Fonctions** -> **Clés d’application** -> **Clés système** -> **webpubsub_extension** après avoir déployé l’application de fonction sur Azure. Toutefois, cette clé n’est pas nécessaire lorsque vous utilisez des fonctions locales.
+`WebPubSubTrigger` est utilisé lorsque vous devez gérer des requêtes côté service. Le modèle de point de terminaison du déclencheur devrait ressembler à ceci et être défini du côté service Web PubSub (portail : paramètres -> gestionnaire d’événements -> modèle d’URL). Dans le modèle de point de terminaison, la partie requête `code=<API_KEY>` est **OBLIGATOIRE** lorsque vous utilisez Azure Function App pour des raisons de [sécurité](../azure-functions/security-concepts.md#system-key). La clé est accessible dans le **portail Azure**. Localisez votre ressource d’application de fonction et accédez à **Fonctions** -> **Clés d’application** -> **Clés système** -> **webpubsub_extension** après avoir déployé l’application de fonction sur Azure. Toutefois, cette clé n’est pas nécessaire lorsque vous utilisez des fonctions locales.
 
 ```
 <Function_App_Url>/runtime/webhooks/webpubsub?code=<API_KEY>
 ```
+
+:::image type="content" source="media/quickstart-serverless/func-keys.png" alt-text="Capture d’écran des clés système d’obtention de la clé.":::
 
 ### <a name="example"></a>Exemple
 
@@ -80,31 +84,33 @@ Utilisez le déclencheur de fonction pour gérer les requêtes du service Azure 
 ```cs
 [FunctionName("WebPubSubTrigger")]
 public static void Run(
-    [WebPubSubTrigger("<hub>", "message", EventType.User)] 
-    ConnectionContext context,
-    string message,
-    MessageDataType dataType)
+    [WebPubSubTrigger("<hub>", "message", EventType.User)]
+    UserEventRequest request,
+    WebPubSubConnectionContext context,
+    string data,
+    WebPubSubDataType dataType)
 {
     Console.WriteLine($"Request from: {context.userId}");
-    Console.WriteLine($"Request message: {message}");
-    Console.WriteLine($"Request message DataType: {dataType}");
+    Console.WriteLine($"Request message data: {data}");
+    Console.WriteLine($"Request message dataType: {dataType}");
 }
 ```
 
-La liaison `WebPubSubTrigger` prend également en charge la valeur de retour dans certains scénarios, par exemple, les événements `Connect`, `Message`, lorsque le serveur peut vérifier et refuser la requête du client, ou envoyer directement le message au client de la requête. L’événement `Connect` respecte `ConnectResponse` et `ErrorResponse`, et l’événement `Message` respecte `MessageResponse` et `ErrorResponse`, les types REST ne correspondant pas au scénario actuel seront ignorés. Et si `ErrorResponse` est retourné, le service supprimera la connexion client.
+La liaison `WebPubSubTrigger` prend également en charge la valeur renvoyée dans les scénarios de synchronisation, par exemple, l’événement utilisateur et `Connect` système, lorsque le serveur peut vérifier et refuser la requête du client ou envoyer directement les messages à l’appelant. L’événement `Connect` respecte `ConnectEventResponse` et `EventErrorResponse`, l’événement utilisateur respecte `UserEventResponse` et `EventErrorResponse` et les types REST ne correspondant pas au scénario actuel seront ignorés. Et si `EventErrorResponse` est retourné, le service supprimera la connexion client.
 
 ```cs
 [FunctionName("WebPubSubTriggerReturnValue")]
 public static MessageResponse Run(
-    [WebPubSubTrigger("<hub>", "message", EventType.User)] 
+    [WebPubSubTrigger("<hub>", "message", EventType.User)]
+    UserEventRequest request,
     ConnectionContext context,
-    string message,
-    MessageDataType dataType)
+    string data,
+    WebPubSubDataType dataType)
 {
-    return new MessageResponse
+    return new UserEventResponse
     {
-        Message = BinaryData.FromString("ack"),
-        DataType = MessageDataType.Text
+        Data = BinaryData.FromString("ack"),
+        DataType = WebPubSubDataType.Text
     };
 }
 ```
@@ -120,7 +126,7 @@ Définissez la liaison de déclencheur dans `function.json`.
     {
       "type": "webPubSubTrigger",
       "direction": "in",
-      "name": "message",
+      "name": "data",
       "hub": "<hub>",
       "eventName": "message",
       "eventType": "user"
@@ -132,19 +138,19 @@ Définissez la liaison de déclencheur dans `function.json`.
 Définissez la fonction dans `index.js`.
 
 ```js
-module.exports = function (context, message) {
-  console.log('Request from: ', context.userId);
-  console.log('Request message: ', message);
-  console.log('Request message dataType: ', context.bindingData.dataType);
+module.exports = function (context, data) {
+  console.log('Request from: ', context.bindingData.request.connectionContext.userId);
+  console.log('Request message data: ', data);
+  console.log('Request message dataType: ', context.bindingData.request.dataType);
 }
 ```
 
-La liaison `WebPubSubTrigger` prend également en charge la valeur de retour dans certains scénarios, par exemple, les événements `Connect`, `Message`. Lorsque le serveur peut vérifier et refuser la requête du client, ou envoyer directement le message au client de la requête. En langage sans type JavaScript, il sera désérialisé en ce qui concerne les clés d’objet. Et `ErrorResponse` aura la priorité la plus élevée par rapport aux objets REST, de sorte que si `code` est retourné, il sera analysé sur `ErrorResponse` et la connexion client sera abandonnée.
+La liaison `WebPubSubTrigger` prend également en charge la valeur renvoyée dans les scénarios de synchronisation, par exemple, l’événement utilisateur et `Connect` système, lorsque le serveur peut vérifier et refuser la requête du client ou envoyer directement le message au client de la requête. En langage JavaScript faiblement typé, il sera désérialisé en ce qui concerne les clés d’objet. Et `EventErrorResponse` aura la priorité la plus élevée par rapport aux objets REST, de sorte que si `code` est retourné, il sera analysé sur `EventErrorResponse` et la connexion client sera abandonnée.
 
 ```js
 module.exports = async function (context) {
   return { 
-    "message": "ack",
+    "data": "ack",
     "dataType" : "text"
   };
 }
@@ -161,8 +167,8 @@ Voici un attribut `WebPubSubTrigger` dans une signature de méthode :
 
 ```csharp
 [FunctionName("WebPubSubTrigger")]
-public static void Run([WebPubSubTrigger("<hub>", "<eventName>", <eventType>)] 
-ConnectionContext context, ILogger log)
+public static void Run([WebPubSubTrigger("<hub>", "<event-Name>", <WebPubSubEventType>)] 
+WebPubSubConnectionContext context, ILogger log)
 {
     ...
 }
@@ -181,35 +187,37 @@ Le tableau suivant décrit les propriétés de configuration de liaison que vous
 | **name** | n/a | Obligatoire : nom de variable utilisé dans le code de fonction pour le paramètre qui reçoit les données de l’événement. |
 | **hub** | Hub | Obligatoire : la valeur doit être définie sur le nom du hub Web PubSub pour que la fonction soit déclenchée. Nous pouvons définir la valeur dans l’attribut comme une priorité plus élevée, ou elle peut être définie dans les paramètres de l'application comme une valeur globale. |
 | **eventType** | Type d’événement | Obligatoire : la valeur doit être définie comme le type d'événement des messages pour que la fonction soit déclenchée. La valeur doit être `user` ou `system`. |
-| **eventName** | EventName | Obligatoire : la valeur doit être définie comme l’événement des messages pour que la fonction soit déclenchée. </br> Pour le type d’événement `system`, le nom d’événement doit être dans `connect`, `connected`, `disconnect`. </br> Pour le sous-protocole `json.webpubsub.azure.v1.` pris en charge par le système, le nom d’événement est défini par l’utilisateur. </br> Pour les sous-protocoles définis par l’utilisateur, le nom d’événement est `message`. |
+| **eventName** | EventName | Obligatoire : la valeur doit être définie comme l’événement des messages pour que la fonction soit déclenchée. </br> Pour le type d’événement `system`, le nom d’événement doit être dans `connect`, `connected`, `disconnected`. </br> Pour les sous-protocoles définis par l’utilisateur, le nom d’événement est `message`. </br> Pour le sous-protocole `json.webpubsub.azure.v1.` pris en charge par le système, le nom d’événement est défini par l’utilisateur. |
+| **connection** | Connexion | Facultatif : Nom d’un regroupement de paramètres d’application ou de paramètres qui spécifie le service Azure Web PubSub en amont. La valeur sera utilisée pour la validation de la signature. La valeur sera automatiquement résolue avec les paramètres d’application « WebPubSubConnectionString » par défaut. La valeur `null` signifie que la validation n’est pas nécessaire et qu’elle réussira toujours. |
 
 ### <a name="usages"></a>Utilisations
 
-En C#, `ConnectionContext` est un paramètre de liaison reconnu par type, les paramètres REST sont liés par le nom du paramètre. Vérifiez le tableau ci-dessous répertoriant les paramètres et types disponibles.
+En C#, `WebPubSubEventRequest` est un paramètre de liaison reconnu par type, les paramètres REST sont liés par le nom du paramètre. Vérifiez le tableau ci-dessous répertoriant les paramètres et types disponibles.
 
-Dans un langage sans type comme JavaScript, `name` dans `function.json`sera utilisé pour lier l’objet déclencheur en fonction de la table de mappage ci-dessous. Et respectera `dataType` dans `function.json` pour convertir le message en conséquence lorsque `name` est défini sur `message` comme l’objet de liaison pour l’entrée de déclenchement. Tous les paramètres peuvent être lus à partir de `context.bindingData.<BindingName>` et seront convertis `JObject`. 
+Dans un langage faiblement typé comme JavaScript, `name` dans `function.json` sera utilisé pour lier l’objet déclencheur en fonction de la table de mappage ci-dessous. Et respectera `dataType` dans `function.json` pour convertir le message en conséquence lorsque `name` est défini sur `data` comme l’objet de liaison pour l’entrée de déclenchement. Tous les paramètres peuvent être lus à partir de `context.bindingData.<BindingName>` et seront convertis `JObject`. 
 
 | Nom de la liaison | Type de liaison | Description | Propriétés |
 |---------|---------|---------|---------|
-|connectionContext|`ConnectionContext`|Informations de requête courantes| EventType, EventName, Hub, ConnectionId, UserId, Headers, Signature |
-|message|`BinaryData`,`string`,`Stream`,`byte[]`| Message de requête du client | -|
-|dataType|`MessageDataType`| Type de données du message de requête, prend en charge `binary`, `text`, `json` | -|
-|réclamations|`IDictionary<string, string[]>`|Revendications de l’utilisateur dans la requête `connect` | -|
-|query|`IDictionary<string, string[]>`|Requête de l’utilisateur dans la requête `connect` | -|
-|sous-protocoles|`string[]`|Sous-protocoles disponibles dans la requête `connect` | -|
-|clientCertificates|`ClientCertificate[]`|Une liste d’empreintes de certificat provenant des clients dans la requête `connect`|-|
-|reason|`string`|Raison de la requête de déconnexion|-|
+|request|`WebPubSubEventRequest`|Décrit la requête en amont|La propriété diffère selon les différents types d’événements, notamment les classes dérivées `ConnectEventRequest`, `ConnectedEventRequest`, `UserEventRequest` et `DisconnectedEventRequest` |
+|connectionContext|`WebPubSubConnectionContext`|Informations de requête courantes| EventType, EventName, Hub, ConnectionId, UserId, Headers, Origin, Signature, States |
+|data|`BinaryData`,`string`,`Stream`,`byte[]`| Demande les données de message au client dans l’événement `message` utilisateur | -|
+|dataType|`WebPubSubDataType`| Type de données du message de requête, prend en charge `binary`, `text`, `json` | -|
+|réclamations|`IDictionary<string, string[]>`|Revendications de l’utilisateur dans la requête `connect` système | -|
+|query|`IDictionary<string, string[]>`|Requête de l’utilisateur dans la requête `connect` système | -|
+|sous-protocoles|`IList<string>`|Sous-protocoles disponibles dans la requête `connect` système | -|
+|clientCertificates|`IList<ClientCertificate>`|Une liste d’empreintes de certificat provenant des clients dans la requête `connect` système|-|
+|reason|`string`|Motif dans la requête `disconnected` système|-|
 
 ### <a name="return-response"></a> Return response
 
-`WebPubSubTrigger` respecte la réponse renvoyée par le client pour les événements synchrones de `connect` et l’événement utilisateur `message`. Seule la réponse correspondante sera renvoyée au service ; sinon, elle sera ignorée. 
+`WebPubSubTrigger` respecte la réponse renvoyée par le client pour les événements synchrones de `connect` et l’événement utilisateur. Seule la réponse correspondante sera renvoyée au service ; sinon, elle sera ignorée. En outre, l’objet renvoyée `WebPubSubTrigger` prend en charge les utilisateurs dans `SetState()` et `ClearStates()` pour gérer les métadonnées de la connexion. L’extension fusionnera les résultats de la valeur renvoyée avec les résultats d’origine de la demande `WebPubSubConnectionContext.States`. La valeur dans la clé existante sera remplacée et celle dans la nouvelle clé sera ajoutée.
 
 | Type de retour | Description | Propriétés |
 |---------|---------|---------|
-|`ConnectResponse`| Réponse pour l’événement `connect` | Groupes, Rôles, UserId, Sous-protocole |
-|`MessageResponse`| Réponse pour l’événement utilisateur | DataType, Message |
-|`ErrorResponse`| Réponse d’erreur pour l’événement de synchronisation | Code, ErrorMessage |
-|`ServiceResponse`| Type de réponse de base des éléments pris en charge utilisés pour les cas de retour incertains | - |
+|`ConnectEventResponse`| Réponse pour l’événement `connect` | Groupes, Rôles, UserId, Sous-protocole |
+|`UserEventResponse`| Réponse pour l’événement utilisateur | DataType, Data |
+|`EventErrorResponse`| Réponse d’erreur pour l’événement de synchronisation | Code, ErrorMessage |
+|`*WebPubSubEventResponse`| Type de réponse de base des éléments pris en charge utilisés pour les cas de retour incertains | - |
 
 ## <a name="input-binding"></a>Liaison d’entrée
 
@@ -219,14 +227,14 @@ Notre extension fournit deux liaisons d’entrée ciblant différents besoins.
 
   Pour qu’un client puisse se connecter au service Azure Web PubSub, il doit connaître l’URL du point de terminaison de service et avoir un jeton d’accès valide. La liaison d’entrée `WebPubSubConnection` génère les informations requises, le client n’a donc pas besoin de gérer cette génération de jeton lui-même. Étant donné que le jeton est limité dans le temps et peut être utilisé pour authentifier un utilisateur spécifique sur une connexion, ne le mettez pas en cache et ne le partagez pas entre plusieurs clients. Un déclencheur HTTP qui utilise cette liaison d’entrée peut être utilisé pour permettre aux clients de récupérer les informations de connexion.
 
-- `WebPubSubRequest`
+- `WebPubSubContext`
 
-  Lors de l’utilisation de Static Web Apps, `HttpTrigger` est le seul déclencheur pris en charge et, sous le scénario Web PubSub, nous fournissons la liaison d’entrée `WebPubSubRequest` qui aide les utilisateurs à désérialiser la requête HTTP en amont du côté service sous les protocoles Web PubSub. Les clients peuvent ainsi obtenir des résultats similaires en comparaison à `WebPubSubTrigger` pour une gestion facile dans les fonctions. Consultez les [exemples](#example---webpubsubrequest) ci-dessous.
-  Lorsqu’il est utilisé avec `HttpTrigger`, le client doit configurer l’URL exposée par HttpTrigger en amont en conséquence.
+  Lors de l’utilisation de Static Web Apps, `HttpTrigger` est le seul déclencheur pris en charge et, sous le scénario Web PubSub, nous fournissons la liaison d’entrée `WebPubSubContext` qui aide les utilisateurs à désérialiser la requête HTTP en amont du côté service sous les protocoles Web PubSub. Les clients peuvent ainsi obtenir des résultats similaires en comparaison à `WebPubSubTrigger` pour une gestion facile dans les fonctions. Consultez les [exemples](#example---webpubsubcontext) ci-dessous.
+  Lorsqu’il est utilisé avec `HttpTrigger`, le client doit configurer l’URL exposée par HttpTrigger dans le gestionnaire d’événements en conséquence.
 
 ### <a name="example---webpubsubconnection"></a>Exemple : `WebPubSubConnection`
 
-L’exemple suivant montre une fonction C# qui acquiert des informations de connexion Web PubSub à l’aide de la liaison d’entrée et les renvoie via HTTP.
+L’exemple suivant montre une fonction C# qui acquiert des informations de connexion Web PubSub à l’aide de la liaison d’entrée et les renvoie via HTTP. Dans l’exemple ci-dessous, l’élément `UserId` est transmis par la partie requête de la demande du client, comme `?userid={User-A}`.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -301,26 +309,26 @@ public static WebPubSubConnection Run(
 }
 ```
 
-### <a name="example---webpubsubrequest"></a>Exemple : `WebPubSubRequest`
+### <a name="example---webpubsubcontext"></a>Exemple : `WebPubSubContext`
 
-L’exemple suivant montre une fonction C# qui acquiert des informations de requête Web PubSub à l’aide de la liaison d’entrée sous le type d’événement de connexion et les renvoie via HTTP.
+L’exemple suivant montre une fonction C# qui acquiert des informations de requête Web PubSub en amont à l’aide de la liaison d’entrée sous le type d’événement `connect` et les renvoie via HTTP.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
-[FunctionName("WebPubSubRequestInputBinding")]
+[FunctionName("WebPubSubContextInputBinding")]
 public static object Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req,
-    [WebPubSubRequest] WebPubSubRequest wpsReq)
+    [WebPubSubContext] WebPubSubContext wpsContext)
 {
-    if (wpsReq.Request.IsValidationRequest || !wpsReq.Request.Valid)
+    if (wpsContext.IsPreflight || !wpsContext.HasError)
     {
         return wpsReq.Response;
     }
     var request = wpsReq.Request as ConnectEventRequest;
-    var response = new ConnectResponse
+    var response = new ConnectEventResponse
     {
-        UserId = wpsReq.ConnectionContext.UserId
+        UserId = wpsContext.Request.ConnectionContext.UserId
     };
     return response;
 }
@@ -347,8 +355,8 @@ Définissez des liaisons d’entrée dans `function.json`.
       "name": "$return"
     },
     {
-      "type": "webPubSubRequest",
-      "name": "wpsReq",
+      "type": "webPubSubContext",
+      "name": "wpsContext",
       "direction": "in"
     }
   ]
@@ -358,14 +366,14 @@ Définissez des liaisons d’entrée dans `function.json`.
 Définissez la fonction dans `index.js`.
 
 ```js
-module.exports = async function (context, req, wpsReq) {
-  if (!wpsReq.request.valid || wpsReq.request.isValidationRequest)
+module.exports = async function (context, req, wpsContext) {
+  if (!wpsContext.hasError || wpsContext.isPreflight)
   {
-    console.log(`invalid request: ${wpsReq.response.message}.`);
+    console.log(`invalid request: ${wpsContext.response.message}.`);
     return wpsReq.response;
   }
-  console.log(`user: ${context.bindings.wpsReq.connectionContext.userId} is connecting.`);
-  return { body: {"userId": context.bindings.wpsReq.connectionContext.userId} };
+  console.log(`user: ${wpsContext.connectionContext.userId} is connecting.`);
+  return { body: {"userId": wpsContext.connectionContext.userId} };
 };
 ```
 
@@ -382,62 +390,93 @@ Le tableau suivant décrit les propriétés de configuration de liaison que vous
 | **type** | n/a | Il doit être défini sur `webPubSubConnection` |
 | **direction** | n/a | Il doit être défini sur `in` |
 | **name** | n/a | Nom de variable utilisé dans le code de fonction pour l’objet de liaison de connexion d’entrée. |
-| **hub** | Hub | La valeur doit être définie sur le nom du hub Web PubSub pour que la fonction soit déclenchée. Nous pouvons définir la valeur dans l’attribut comme une priorité plus élevée, ou elle peut être définie dans les paramètres de l'application comme une valeur globale. |
+| **hub** | Hub | Obligatoire : La valeur doit être définie sur le nom du hub Web PubSub pour que la fonction soit déclenchée. Nous pouvons définir la valeur dans l’attribut comme une priorité plus élevée, ou elle peut être définie dans les paramètres de l'application comme une valeur globale. |
 | **userId** | UserId | Facultatif : la valeur de la revendication de l’identificateur d’utilisateur à définir dans le jeton de clé d’accès. |
-| **connectionStringSetting** | ConnectionStringSetting | Nom du paramètre d’application contenant la chaîne de connexion du service Web PubSub (« WebPubSubConnectionString » par défaut) |
+| **connection** | Connexion | Obligatoire : Nom du paramètre d’application contenant la chaîne de connexion du service Web PubSub (« WebPubSubConnectionString » par défaut). |
 
-#### <a name="webpubsubrequest"></a>WebPubSubRequest
+#### <a name="webpubsubcontext"></a>WebPubSubContext
 
-Le tableau suivant décrit les propriétés de configuration de liaison que vous définissez dans le fichier functions.json et l’attribut `WebPubSubRequest`.
+Le tableau suivant décrit les propriétés de configuration de liaison que vous définissez dans le fichier functions.json et l’attribut `WebPubSubContext`.
 
 | Propriété function.json | Propriété d’attribut | Description |
 |---------|---------|---------|
-| **type** | n/a | Il doit être défini sur `webPubSubRequest` |
-| **direction** | n/a | Il doit être défini sur `in` |
+| **type** | n/a | Cette propriété doit être définie sur `webPubSubContext`. |
+| **direction** | n/a | Cette propriété doit être définie sur `in`. |
 | **name** | n/a | Nom de variable utilisé dans le code de fonction pour la requête Web PubSub d’entrée. |
+| **connection** | Connexion | Facultatif : Nom d’un regroupement de paramètres d’application ou de paramètres qui spécifie le service Azure Web PubSub en amont. Cette valeur sera utilisée pour la [protection contre les abus](https://github.com/cloudevents/spec/blob/v1.0.1/http-webhook.md#4-abuse-protection) et la validation de la signature. La valeur sera automatiquement résolue avec « WebPubSubConnectionString » par défaut. La valeur `null` signifie que la validation n’est pas nécessaire et qu’elle réussira toujours. |
 
 ### <a name="usage"></a>Utilisation
 
 #### <a name="webpubsubconnection"></a>WebPubSubConnection
 
+# <a name="c"></a>[C#](#tab/csharp)
+
 `WebPubSubConnection` fournit les propriétés ci-dessous.
 
-Nom de la liaison | Type de liaison | Description
----------|---------|---------
-BaseUrl | string | URL de connexion du client Web PubSub
-Url | string | URI absolu de la connexion Web PubSub, contenant `AccessToken` généré sur base de la requête
-AccessToken | string | `AccessToken` généré sur base des informations de service et d’UserId de la requête
+| Nom de la liaison | Type de liaison | Description |
+|---------|---------|---------|
+| BaseUri | Uri | URI de connexion du client Web PubSub. |
+| Uri | Uri | URI absolu de la connexion Web PubSub, contenant `AccessToken` généré en fonction de la requête. |
+| AccessToken | string | `AccessToken` généré en fonction des informations de service et d’UserId de la requête. |
 
-#### <a name="webpubsubrequest"></a>WebPubSubRequest
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`WebPubSubRequest` fournit les propriétés ci-dessous.
+`WebPubSubConnection` fournit les propriétés ci-dessous.
 
-Nom de la liaison | Type de liaison | Description | Propriétés
----------|---------|---------|---------
-connectionContext | `ConnectionContext` | Informations de requête courantes| EventType, EventName, Hub, ConnectionId, UserId, Headers, Signature
-request | `ServiceRequest` | Requête du client, voir le tableau ci-dessous pour plus d’informations | IsValidationRequest, Valid, Unauthorized, BadRequest, ErrorMessage, Name, etc.
-réponse | `HttpResponseMessage` | L’extension crée une réponse essentiellement pour `AbuseProtection` et les cas d’erreur | -
+| Nom de la liaison | Description |
+|---------|---------|
+| baseUrl | URI de connexion du client Web PubSub. |
+| url | URI absolu de la connexion Web PubSub, contenant `AccessToken` généré en fonction de la requête. |
+| accessToken | `AccessToken` généré en fonction des informations de service et d’UserId de la requête. |
 
-Pour `ServiceRequest`, elle est désérialisée en différentes classes qui fournissent différentes informations sur le scénario de requête. Pour `ValidationRequest` ou `InvalidRequest`, il est conseillé de renvoyer la réponse générée par le système `WebPubSubRequest.Response` directement, ou le client peut consigner des erreurs au besoin. Dans différents scénarios, le client peut lire les propriétés de la requête comme indiqué ci-dessous.
+---
 
-Classe dérivée | Description | Propriétés
---|--|--
-`ValidationRequest` | Utilisé dans `AbuseProtection` lorsque `IsValidationRequest` est **true** | -
-`ConnectEventRequest` | Utilisé dans le type d’événement `Connect` | Revendications, Requête, Sous-protocoles, ClientCertificates
-`ConnectedEventRequest` | Utilisé dans le type d’événement `Connected` | -
-`MessageEventRequest` | Utilisé dans le type d’événement utilisateur | Message, DataType
-`DisconnectedEventRequest` | Utilisé dans le type d’événement `Disconnected` | Motif
-`InvalidRequest` | Utilisé lorsque la requête n’est pas valide | -
+#### <a name="webpubsubcontext"></a>WebPubSubContext
+
+`WebPubSubContext` fournit les propriétés ci-dessous.
+
+| Nom de la liaison | Type de liaison | Description | Propriétés |
+|---------|---------|---------|---------|
+| request | `WebPubSubEventRequest` | Requête du client, voir le tableau ci-dessous pour plus d’informations. | `WebPubSubConnectionContext` de l’en-tête de demande et les autres propriétés désérialisées du corps de la demande décrivent la requête, par exemple `Reason` pour `DisconnectedEventRequest`. |
+| réponse | `HttpResponseMessage` | L’extension crée une réponse essentiellement pour `AbuseProtection` et les cas d’erreur. | - |
+| errorMessage | string | Décrit les détails de l’erreur lors du traitement de la requête en amont. | - |
+| hasError | bool | Indicateur qui spécifie s’il s’agit d’une requête Web PubSub en amont valide. | - |
+| isPreflight | bool | Indicateur qui spécifie s’il s’agit d’une requête préliminaire de `AbuseProtection`. | - |
+
+Pour `WebPubSubEventRequest`, elle est désérialisée en différentes classes qui fournissent différentes informations sur le scénario de requête. Pour `PreflightRequest` ou les cas non valides, l’utilisateur peut vérifier les indicateurs `IsPreflight` et `HasError` pour savoir. Il est conseillé de renvoyer la réponse générée par le système `WebPubSubContext.Response` directement, ou le client peut consigner des erreurs à la demande. Dans différents scénarios, le client peut lire les propriétés de la requête comme indiqué ci-dessous.
+
+| Classe dérivée | Description | Propriétés |
+| -- | -- | -- |
+| `PreflightRequest` | Utilisée dans `AbuseProtection` lorsque `IsPreflight` est **true** | - |
+| `ConnectEventRequest` | Utilisée dans le type d’événement `Connect` système | Revendications, Requête, Sous-protocoles, ClientCertificates |
+| `ConnectedEventRequest` | Utilisée dans le type d’événement `Connected` système | - |
+| `UserEventRequest` | Utilisée dans le type d’événement utilisateur | Data, DataType |
+| `DisconnectedEventRequest` | Utilisée dans le type d’événement `Disconnected` système | Motif |
+
+> [!NOTE]
+> Bien que `WebPubSubContext` soit une liaison d’entrée qui fournit une méthode de désérialisation des requêtes similaire à celle de `HttpTrigger` par rapport à `WebPubSubTrigger`, il existe des limites, c’est-à-dire que l’état de connexion après fusion n’est pas pris en charge. La réponse de retour sera toujours respectée par le service, mais les utilisateurs doivent construire la réponse eux-mêmes. Si les utilisateurs ont besoin de définir la réponse à l’événement, vous devriez renvoyer un `HttpResponseMessage` contenant `ConnectEventResponse` ou des messages pour l’événement utilisateur en tant que **corps de la réponse** et placer l’état de connexion avec la clé `ce-connectionstate` dans l’**en-tête de réponse**.
 
 ## <a name="output-binding"></a>Liaison de sortie
 
-Utilisez la liaison de sortie Web PubSub pour envoyer un ou plusieurs messages à l’aide du service Azure Web PubSub. Vous pouvez diffuser un message aux clients suivants :
+Utilisez la liaison de sortie Web PubSub pour appeler le service Azure Web PubSub afin d’effectuer une opération. Vous pouvez diffuser un message aux clients suivants :
 
 * Tous les clients connectés
 * Clients connectés authentifiés auprès d’un utilisateur spécifique
 * Clients connectés joints dans un groupe spécifique
+* Une connexion client spécifique
 
-La liaison de sortie vous permet également de gérer des groupes et d’octroyer/révoquer des autorisations ciblant un connectionId spécifique avec un groupe.
+La liaison de sortie vous permet également de gérer les clients et les groupes, ainsi que d’accorder ou de révoquer des autorisations ciblant une connectionId spécifique avec un groupe.
+
+* Ajouter une connexion au groupe
+* Ajouter un utilisateur à un groupe
+* Supprimer une connexion d’un groupe
+* Supprimer un utilisateur d’un groupe
+* Supprimer un utilisateur de tous les groupes
+* Fermer toutes les connexions clientes
+* Fermer une connexion cliente spécifique
+* Fermer les connexions d’un groupe
+* Accorder l’autorisation d’une connexion
+* Révoquer l’autorisation d’une connexion
 
 Pour plus d’informations sur les détails d’installation et de configuration, consultez la vue d’ensemble.
 
@@ -449,13 +488,9 @@ Pour plus d’informations sur les détails d’installation et de configuration
 [FunctionName("WebPubSubOutputBinding")]
 public static async Task RunAsync(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req,
-    [WebPubSub(Hub = "<hub>")] IAsyncCollector<WebPubSubOperation> operations)
+    [WebPubSub(Hub = "<hub>")] IAsyncCollector<WebPubSubAction> actions)
 {
-    await operations.AddAsync(new SendToAll
-    {
-        Message = BinaryData.FromString("Hello Web PubSub"),
-        DataType = MessageDataType.Text
-    });
+    await actions.AddAsync(WebPubSubAction.CreateSendToAllAction("Hello Web PubSub!", WebPubSubDataType.Text));
 }
 ```
 
@@ -469,7 +504,7 @@ Définissez des liaisons dans `functions.json`.
   "bindings": [
     {
       "type": "webPubSub",
-      "name": "webPubSubOperation",
+      "name": "actions",
       "hub": "<hub>",
       "direction": "out"
     }
@@ -481,9 +516,9 @@ Définissez la fonction dans `index.js`.
 
 ```js
 module.exports = async function (context) {
-  context.bindings.webPubSubOperation = {
-    "operationKind": "sendToAll",
-    "message": "hello",
+  context.bindings.actions = {
+    "actionName": "sendToAll",
+    "data": "hello",
     "dataType": "text"
   };
   context.done();
@@ -492,24 +527,58 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="webpubsuboperation"></a>WebPubSubOperation 
+### <a name="webpubsubaction"></a>WebPubSubAction 
 
-`WebPubSubOperation` est le type abstrait de base des liaisons de sortie. Les types dérivés représentent le serveur d’opération qui doit être invoqué par les services. Dans un langage sans type comme `javascript`, `OperationKind` est le paramètre clé pour résoudre le type. Et dans un langage de type fort comme `csharp`, l’utilisateur pourrait créer directement le type d’opération cible et la valeur `OperationKind` attribuée par le client serait ignorée.
+`WebPubSubAction` est le type abstrait de base des liaisons de sortie. Les types dérivés représentent le serveur d’action qui doit être appelé par les services. 
 
-Classe dérivée|Propriétés
---|--
-`SendToAll`|Message, DataType, Excluded
-`SendToGroup`|Group, Message, DataType, Excluded
-`SendToUser`|UserId, Message, DataType
-`SendToConnection`|ConnectionId, Message, DataType
-`AddUserToGroup`|UserId, Group
-`RemoveUserFromGroup`|UserId, Group
-`RemoveUserFromAllGroups`|UserId
-`AddConnectionToGroup`|ConnectionId, Group
-`RemoveConnectionFromGroup`|ConnectionId, Group
-`CloseClientConnection`|ConnectionId, Reason
-`GrantGroupPermission`|ConnectionId, Group, Permission, TargetName
-`RevokeGroupPermission`|ConnectionId, Group, Permission, TargetName
+# <a name="c"></a>[C#](#tab/csharp)
+
+En langage C#, nous fournissons quelques méthodes statiques sous `WebPubSubAction` pour vous aider à découvrir les actions disponibles. Par exemple, l’utilisateur peut créer l’action `SendToAllAction` en appelant `WebPubSubAction.CreateSendToAllAction()`.
+
+| Classe dérivée | Propriétés |
+| -- | -- |
+| `SendToAllAction`|Data, DataType, Excluded |
+| `SendToGroupAction`|Group, Data, DataType, Excluded |
+| `SendToUserAction`|UserId, Data, DataType |
+| `SendToConnectionAction`|ConnectionId, Data, DataType |
+| `AddUserToGroupAction`|UserId, Group |
+| `RemoveUserFromGroupAction`|UserId, Group |
+| `RemoveUserFromAllGroupsAction`|UserId |
+| `AddConnectionToGroupAction`|ConnectionId, Group |
+| `RemoveConnectionFromGroupAction`|ConnectionId, Group |
+| `CloseAllConnectionsAction`|Excluded, Reason |
+| `CloseClientConnectionAction`|ConnectionId, Reason |
+| `CloseGroupConnectionsAction`|Group, Excluded, Reason |
+| `GrantPermissionAction`|ConnectionId, Permission, TargetName |
+| `RevokePermissionAction`|ConnectionId, Permission, TargetName |
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Dans un langage faiblement typé comme `javascript`, **`actionName`** est le paramètre clé pour résoudre le type ; les actions disponibles sont répertoriées comme ci-dessous.
+
+| ActionName | Propriétés |
+| -- | -- |
+| `SendToAll`|Data, DataType, Excluded |
+| `SendToGroup`|Group, Data, DataType, Excluded |
+| `SendToUser`|UserId, Data, DataType |
+| `SendToConnection`|ConnectionId, Data, DataType |
+| `AddUserToGroup`|UserId, Group |
+| `RemoveUserFromGroup`|UserId, Group |
+| `RemoveUserFromAllGroups`|UserId |
+| `AddConnectionToGroup`|ConnectionId, Group |
+| `RemoveConnectionFromGroup`|ConnectionId, Group |
+| `CloseAllConnections`|Excluded, Reason |
+| `CloseClientConnection`|ConnectionId, Reason |
+| `CloseGroupConnections`|Group, Excluded, Reason |
+| `GrantPermission`|ConnectionId, Permission, TargetName |
+| `RevokePermission`|ConnectionId, Permission, TargetName |
+
+> [!IMPORTANT]
+> La propriété des données du message dans les actions liées à l’envoi de messages doit être `string` si le type de données est défini sur `json` ou `text` afin d’éviter toute ambiguïté dans la conversion des données. Utilisez `JSON.stringify()` pour convertir l’objet JSON le cas échéant. Cela s’applique à n’importe quel emplacement à l’aide de la propriété de message, par exemple, `UserEventResponse.Data` fonctionnant avec `WebPubSubTrigger`. 
+> 
+> Quand le type de données est défini sur `binary`, il est permis d’exploiter la liaison naturellement prise en charge par `dataType` en tant que `binary`, configurée dans le fichier `function.json`. Consultez [Définitions de liaisons et de déclencheurs](/azure/azure-functions/functions-triggers-bindings?tabs=csharp#trigger-and-binding-definitions) pour plus d’informations.
+
+---
 
 ### <a name="configuration"></a>Configuration
 
@@ -523,7 +592,7 @@ Le tableau suivant décrit les propriétés de configuration de liaison que vous
 | **direction** | n/a | Il doit être défini sur `out` |
 | **name** | n/a | Nom de variable utilisé dans le code de fonction pour l’objet liaison de sortie. |
 | **hub** | Hub | La valeur doit être définie sur le nom du hub Web PubSub pour que la fonction soit déclenchée. Nous pouvons définir la valeur dans l’attribut comme une priorité plus élevée, ou elle peut être définie dans les paramètres de l'application comme une valeur globale. |
-| **connectionStringSetting** | ConnectionStringSetting | Nom du paramètre d’application contenant la chaîne de connexion du service Web PubSub (« WebPubSubConnectionString » par défaut) |
+| **connection** | Connexion | Nom du paramètre d’application contenant la chaîne de connexion du service Web PubSub (« WebPubSubConnectionString » par défaut). |
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 

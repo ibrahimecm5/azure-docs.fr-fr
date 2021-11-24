@@ -1,16 +1,16 @@
 ---
 title: Agents de sécurité
-description: Prenez un bon départ avec la compréhension, la configuration, le déploiement et l’utilisation des agents du service de sécurité Azure Defender pour IoT sur vos appareils IoT.
+description: Prenez en main la compréhension, la configuration, le déploiement et l’utilisation des agents du service de sécurité Microsoft Defender pour IoT sur vos appareils IoT.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: d25adad695e12d7ee104fdf9af616baefb98150c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 86c0295726989d142e10e01e8f4950cfcf385126
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015193"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331544"
 ---
-# <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Bien démarrer avec les micro-agents d’appareils Azure Defender pour IoT
+# <a name="get-started-with-microsoft-defender-for-iot-device-micro-agents"></a>Prendre en main les micro-agents d’appareils Microsoft Defender pour IoT
 
 Les agents de sécurité Defender pour IoT offrent des fonctionnalités de sécurité améliorées, telles que la surveillance des meilleures pratiques en matière de configuration du système d’exploitation. Prenez le contrôle de la protection de l’appareil contre les menaces et de la posture de sécurité avec un seul service.
 

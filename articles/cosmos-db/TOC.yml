@@ -98,6 +98,8 @@
               href: continuous-backup-restore-frequently-asked-questions.yml
             - name: Sauvegarde continue - Modèle de ressource
               href: continuous-backup-restore-resource-model.md
+            - name: Dernier horodatage pouvant être restauré
+              href: latest-restore-timestamp-continuous-backup.md
     - name: "Optimiser votre coût Azure Cosmos\_DB"
       items:
         - name: Prévoir et gérer les coûts
@@ -1495,6 +1497,8 @@
               href: continuous-backup-restore-permissions.md
             - name: "Provisionner un compte \_– Sauvegarde continue"
               href: provision-account-continuous-backup.md
+            - name: Obtenir le dernier horodatage restauré
+              href: get-latest-restore-timestamp.md
             - name: "Restaurer un compte\_– Sauvegarde continue"
               href: restore-account-continuous-backup.md
             - name: Migrer vers la sauvegarde continue

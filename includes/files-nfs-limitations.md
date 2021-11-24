@@ -1,5 +1,5 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: inclure fichier
 services: storage
 author: roygara
@@ -8,14 +8,11 @@ ms.topic: include
 ms.date: 06/30/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 112daf900c3a7447dc5279ea9704ea94eb8ec9ea
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 3bc611aae09bc94bd00f76c0d526f5b6b7d52a0e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225248"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519423"
 ---
-En préversion, les partages de fichiers Azure NFS présentent les limitations suivantes :
-
-- Disponible uniquement pour le niveau Premium.
-- Si un compte de stockage a été créé avant d’être inscrit pour la fonctionnalité NFS, les partages de fichiers NFS ne peuvent pas être créés dans ce compte de stockage. Les partages de fichiers NFS ne peuvent être créés que dans les comptes de stockage créés après l’inscription pour la fonctionnalité NFS.
+Les partages de fichiers Azure NFS sont uniquement disponibles pour le niveau Premium.

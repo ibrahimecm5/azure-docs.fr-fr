@@ -8,12 +8,12 @@ ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 0a084e6bad7530c4d506728b17227de13f1f86a1
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: a4a941d114d233e723d853d12386cb42834d3e19
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579288"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493790"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exporter des données IoT vers des destinations cloud à l'aide des fonctionnalités d'exportation de données
 
@@ -49,7 +49,13 @@ Votre destination d’exportation doit exister avant la configuration de l’exp
 
 ### <a name="connection-options"></a>Options de connexion
 
-Pour les destinations du service Azure, vous pouvez choisir de configurer la connexion à l’aide d’une *chaîne de connexion* ou d’une [identité managée](../../active-directory/managed-identities-azure-resources/overview.md). L’utilisation d’une identité gérée est plus sécurisée, car vous n’avez pas besoin de stocker les informations d’identification pour la destination dans votre application IoT Central. IoT Central utilise actuellement des [identités managées affectées par le système](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
+Pour les destinations du service Azure, vous pouvez choisir de configurer la connexion à l’aide d’une *chaîne de connexion* ou d’une [identité managée](../../active-directory/managed-identities-azure-resources/overview.md). Les identités managées sont plus sécurisées, car :
+
+- Vous ne stockez pas les informations d’identification de votre ressource dans une chaîne de connexion de votre application IoT Central.
+- Les informations d’identification sont automatiquement liées à la durée de vie de votre application IoT Central.
+- Les identités managées effectuent automatiquement une rotation régulière de leurs clés de sécurité.
+
+IoT Central utilise actuellement des [identités managées affectées par le système](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 Quand vous configurez une identité managée, la configuration comprend une *étendue* et un *rôle* :
 
@@ -170,9 +176,9 @@ En l’absence de compte de stockage Azure vers lequel exporter, suivez ces éta
 
     |Niveau de performances|Type de compte|
     |-|-|
-    |Standard|Usage général v2|
-    |Standard|Usage général v1|
-    |Standard|Stockage d'objets blob|
+    |standard|Usage général v2|
+    |standard|Usage général v1|
+    |standard|Stockage d'objets blob|
     |Premium|Stockage d’objets blob de blocs|
 
 1. Pour créer un conteneur sur votre compte de stockage, accédez à celui-ci. Sous **Service blob**, sélectionnez **Parcourir les objets blob**. Sélectionnez **+ Conteneur**, en haut, pour créer un conteneur.
@@ -187,9 +193,9 @@ En l’absence de compte de stockage Azure vers lequel exporter, suivez ces éta
 
     |Niveau de performances|Type de compte|
     |-|-|
-    |Standard|Usage général v2|
-    |Standard|Usage général v1|
-    |Standard|Stockage d'objets blob|
+    |standard|Usage général v2|
+    |standard|Usage général v1|
+    |standard|Stockage d'objets blob|
     |Premium|Stockage d’objets blob de blocs|
 
 1. Pour créer un conteneur sur votre compte de stockage, accédez à celui-ci. Sous **Service blob**, sélectionnez **Parcourir les objets blob**. Sélectionnez **+ Conteneur**, en haut, pour créer un conteneur.

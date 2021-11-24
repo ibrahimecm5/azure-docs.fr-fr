@@ -431,7 +431,7 @@
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: S’authentifier avec Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: S’authentifier auprès d’un fournisseur OpenID Connect (préversion)
+            - name: S’authentifier avec un fournisseur OpenID Connect
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: S’authentifier en utilisant Se connecter avec Apple (préversion)
               href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json

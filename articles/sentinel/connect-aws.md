@@ -1,48 +1,48 @@
 ---
-title: Connecter AWS CloudTrail à Azure Sentinel | Microsoft Docs
-description: Utilisez le connecteur AWS pour déléguer l’accès à Azure Sentinel à vos journaux de ressources AWS, créant une relation d’approbation entre AWS CloudTrail et Azure Sentinel.
+title: Connecter AWS CloudTrail à Microsoft Sentinel | Microsoft Docs
+description: Utilisez le connecteur AWS pour déléguer l’accès à Microsoft Sentinel à vos journaux de ressources AWS, créant une relation de confiance entre AWS CloudTrail et Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 86be5f6a7a777b40d85531100a4ef2d5d0dc99c5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3475ac35692f793a40380993640069e42070883c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009469"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517061"
 ---
-# <a name="connect-aws-cloudtrail-to-azure-sentinel"></a>Connecter AWS CloudTrail à Azure Sentinel
+# <a name="connect-aws-cloudtrail-to-microsoft-sentinel"></a>Connecter AWS CloudTrail à Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Utilisez le connecteur AWS pour diffuser tous vos événements AWS CloudTrail vers Azure Sentinel. Ce processus de connexion délègue l’accès pour Azure Sentinel à vos journaux de ressources AWS, créant une relation d’approbation entre AWS CloudTrail et Azure Sentinel. Pour ce faire, un rôle est créé sur AWS, qui autorise Azure Sentinel à accéder à vos journaux d’activité AWS.
+Utilisez le connecteur AWS pour transmettre en continu vos événements de gestion AWS CloudTrail à Microsoft Sentinel. Ce processus de connexion délègue l’accès de Microsoft Sentinel à vos journaux de ressources AWS, créant une relation de confiance entre AWS CloudTrail et Microsoft Sentinel. Pour ce faire, un rôle est créé sur AWS, qui autorise Microsoft Sentinel à accéder à vos journaux AWS.
 
 > [!NOTE]
 > AWS CloudTrail dispose de [limitations intégrées](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) dans son API LookupEvents. Il n'autorise pas plus de deux transactions par seconde (TPS) par compte, et chaque requête peut renvoyer un maximum de 50 enregistrements. Par conséquent, si un seul locataire génère constamment plus de 100 enregistrements par seconde dans une région, des backlogs et des retards d'ingestion des données en résulteront.
-> Actuellement, vous pouvez uniquement connecter votre AWS Commercial CloudTrail à Azure Sentinel et non à AWS GovCloud CloudTrail.
+> Actuellement, vous pouvez uniquement connecter votre instance AWS Commercial CloudTrail à Microsoft Sentinel, et non l’instance AWS GovCloud CloudTrail.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Vous devez disposer de l’autorisation d’écriture sur l’espace de travail Azure Sentinel.
+Vous devez disposer de l’autorisation d’accès en écriture sur l’espace de travail Microsoft Sentinel.
 
 > [!NOTE]
-> Azure Sentinel collecte les événements de gestion CloudTrail de toutes les régions. Il vous est conseillé de ne pas diffuser les événements d’une région à une autre.
+> Microsoft Sentinel collecte les événements de gestion CloudTrail de toutes les régions. Il vous est conseillé de ne pas diffuser les événements d’une région à une autre.
 
 ## <a name="connect-aws"></a>Connecter AWS 
 
 
-1. Dans Azure Sentinel, sélectionnez **Connecteurs de données**, puis la ligne **Amazon Web Services** dans la table et dans le volet AWS de droite, cliquez sur **Ouvrir la page du connecteur**.
+1. Dans Microsoft Sentinel, sélectionnez **Connecteurs de données**, puis la ligne **Amazon Web Services** dans la table. Dans le volet AWS de droite, sélectionnez **Ouvrir la page du connecteur**.
 
 1. Suivez les instructions sous **Configuration** en procédant comme suit.
  
@@ -54,11 +54,11 @@ Vous devez disposer de l’autorisation d’écriture sur l’espace de travail 
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-1.  Choisissez **Another AWS account** (Autre compte AWS). Dans le champ **Account ID** (ID de compte), entrez l’**ID de compte Microsoft** (**123412341234**) que vous trouverez dans la page du connecteur AWS dans le portail Azure Sentinel.
+1.  Choisissez **Another AWS account** (Autre compte AWS). Dans le champ **Account ID** (ID de compte), entrez l’**ID de compte Microsoft** (**123412341234**) que vous trouverez dans la page du connecteur AWS dans le portail Microsoft Sentinel.
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-1.  Assurez-vous que l’option **Require External ID** (Exiger un ID externe) est sélectionnée, puis entrez l’ID externe (ID d’espace de travail) que vous trouverez dans la page du connecteur AWS dans le portail Azure Sentinel.
+1.  Assurez-vous que l’option **Require External ID** (Exiger un ID externe) est sélectionnée, puis entrez l’ID externe (ID d’espace de travail) que vous trouverez dans la page du connecteur AWS dans le portail Microsoft Sentinel.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
@@ -78,7 +78,7 @@ Vous devez disposer de l’autorisation d’écriture sur l’espace de travail 
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-1.  Copiez **Role ARN** (ARN du rôle). Sur le portail Azure Sentinel, dans l'écran du connecteur Amazon Web Services, collez-le dans le champ **Rôle à ajouter**, puis cliquez sur **Ajouter**.
+1.  Copiez **Role ARN** (ARN du rôle). Sur le portail Microsoft Sentinel, dans l’écran du connecteur Amazon Web Services, collez-le dans le champ **Rôle à ajouter**, puis sélectionnez **Ajouter**.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
@@ -88,7 +88,7 @@ Vous devez disposer de l’autorisation d’écriture sur l’espace de travail 
     > À compter du 1er décembre 2020, le champ **AwsRequestId** a été remplacé par le champ **AwsRequestId_** (remarquez l’ajout du trait de soulignement). Les données de l’ancien champ **AwsRequestId** seront conservées jusqu’à la fin de la période spécifiée de rétention des données du client.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris à connecter AWS CloudTrail à Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à connecter AWS CloudTrail à Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](detect-threats-built-in.md).
 - [Utilisez des classeurs](monitor-your-data.md) pour superviser vos données.

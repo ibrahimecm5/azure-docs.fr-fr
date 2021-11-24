@@ -3,12 +3,12 @@ title: Gestion des extensions de machine virtuelle avec des serveurs activés pa
 description: Les serveurs activés par Azure Arc peuvent gérer le déploiement d’extensions de machine virtuelle qui permettent d’effectuer des tâches d’automatisation et de configuration post-déploiement sur des machines virtuelles non Azure.
 ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: e652b7c520345ad56a28a718448ac520af8237e3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d853317fad2da9d8d7f27cece4fd7d219cdc42dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447357"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294178"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Gestion des extensions de machine virtuelle avec des serveurs activés par Azure Arc
 
@@ -58,7 +58,7 @@ Les serveurs compatibles avec les arcs prennent en charge le déplacement des ma
 
 |Extension |Serveur de publication |Type |Informations supplémentaires |
 |----------|----------|-----|-----------------------|
-|Analyseur de vulnérabilité intégré à Azure Defender |Qualys |WindowsAgent.AzureSecurityCenter |[Solution intégrée d'évaluation des vulnérabilités d'Azure Defender pour les machines Azure et hybrides](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Analyseur de vulnérabilités intégré à Microsoft Defender pour le cloud |Qualys |WindowsAgent.AzureSecurityCenter |[Solution intégrée d’évaluation des vulnérabilités de Microsoft Defender pour le cloud pour les machines Azure et hybrides](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Extension Microsoft Antimalware |Microsoft.Azure.Security |IaaSAntimalware |[Extension Microsoft Antimalware pour Windows](../../virtual-machines/extensions/iaas-antimalware-windows.md) |
 |Extension de script personnalisé |Microsoft.Compute | CustomScriptExtension |[Extension de script personnalisée Windows](../../virtual-machines/extensions/custom-script-windows.md)|
 |Agent Log Analytics |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Extension de machine virtuelle Log Analytics pour Windows](../../virtual-machines/extensions/oms-windows.md)|
@@ -71,7 +71,7 @@ Les serveurs compatibles avec les arcs prennent en charge le déplacement des ma
 
 |Extension |Serveur de publication |Type |Informations supplémentaires |
 |----------|----------|-----|-----------------------|
-|Analyseur de vulnérabilité intégré à Azure Defender |Qualys |LinuxAgent.AzureSecurityCenter |[Solution intégrée d'évaluation des vulnérabilités d'Azure Defender pour les machines Azure et hybrides](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Analyseur de vulnérabilités intégré à Microsoft Defender pour le cloud |Qualys |LinuxAgent.AzureSecurityCenter |[Solution intégrée d’évaluation des vulnérabilités de Microsoft Defender pour le cloud pour les machines Azure et hybrides](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Extension de script personnalisé |Microsoft.Azure.Extensions |CustomScript |[Extension de script personnalisé Linux version 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |Agent Log Analytics |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Extension de machine virtuelle Log Analytics pour Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor pour machines virtuelles (insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[Extension de machine virtuelle Dependency Agent pour Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |

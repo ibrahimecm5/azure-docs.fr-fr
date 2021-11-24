@@ -1,18 +1,18 @@
 ---
 title: Stratégies de déploiement bleu-vert dans Azure Spring Cloud
 description: Cette rubrique décrit deux approches de déploiements bleu-vert dans Azure Spring Cloud.
-author: barbkess
-ms.author: barbkess
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 11/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 8b019c5cc8e7e7a8ed132cc6adbf0d4c7d0495a4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056565"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486261"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Stratégies de déploiement bleu-vert dans Azure Spring Cloud
 
@@ -95,7 +95,7 @@ Toutefois, il existe également des inconvénients, comme décrit dans la sectio
 
 #### <a name="deployment-pipeline-failures"></a>Échecs du pipeline de déploiement
 
-Entre le moment où un déploiement démarre et le moment où le déploiement de préproduction est supprimé, toutes les tentatives supplémentaires d’exécution du pipeline de déploiement échouent. Le pipeline tente de créer un nouveau déploiement, ce qui génère une erreur, car seuls deux déploiements sont autorisés par application Azure Spring Cloud.
+Entre le moment où un déploiement démarre et le moment où le déploiement de préproduction est supprimé, toutes les tentatives supplémentaires d’exécution du pipeline de déploiement échouent. Le pipeline tente de créer un nouveau déploiement, ce qui génère une erreur, car seuls deux déploiements sont autorisés par application dans Azure Spring Cloud.
 
 C’est pourquoi l’orchestration de déploiement doit avoir le moyen de réessayer ultérieurement un processus de déploiement qui a échoué, ou le moyen de s’assurer que les flux de déploiement pour chaque version restent en file d’attente jusqu’à ce que le flux soit terminé pour toutes les versions précédentes.
 

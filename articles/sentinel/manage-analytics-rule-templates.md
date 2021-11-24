@@ -1,28 +1,28 @@
 ---
-title: Gérer des versions de modèles pour vos règles d’analyse planifiée dans Azure Sentinel
+title: Gérer des versions de modèles pour vos règles d’analyse planifiée dans Microsoft Sentinel
 description: Apprenez à gérer la relation entre vos modèles de règle d’analyse planifiée et les règles créées à partir de ces modèles. Fusionnez les mises à jour des modèles dans vos règles et rétablissez les modifications apportées aux règles dans le modèle d’origine.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 27e6a78ec66b3427aa911abba5d7f4cdda20d876
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5845dfd88e3377eacff5b1d27ab927df422e4556
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023079"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522951"
 ---
-# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-azure-sentinel"></a>Gérer des versions de modèles pour vos règles d’analyse planifiée dans Azure Sentinel
+# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-microsoft-sentinel"></a>Gérer des versions de modèles pour vos règles d’analyse planifiée dans Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131023079"
 
 ## <a name="introduction"></a>Introduction
 
-Azure Sentinel est fourni avec les [modèles de règle d’analyse](detect-threats-built-in.md) que vous transformez en règles actives en en créant une copie, ce qui se produit lorsque vous créez une règle à partir d’un modèle. Toutefois, à ce stade, la règle active n’est plus connectée au modèle. Si des modifications sont apportées à un modèle de règle par des ingénieurs Microsoft ou toute autre personne, les règles créées à partir de ce modèle ne sont ***pas*** mises à jour de manière dynamique pour correspondre au nouveau modèle.
+Microsoft Sentinel est fourni avec des [modèles de règle d’analyse](detect-threats-built-in.md) que vous transformez en règles actives en en créant une copie, ce qui se produit lorsque vous créez une règle à partir d’un modèle. Toutefois, à ce stade, la règle active n’est plus connectée au modèle. Si des modifications sont apportées à un modèle de règle par des ingénieurs Microsoft ou toute autre personne, les règles créées à partir de ce modèle ne sont ***pas*** mises à jour de manière dynamique pour correspondre au nouveau modèle.
 
 Toutefois, les règles créées à partir de modèles ***se souviennent*** des modèles dont elles sont issues, ce qui présente deux avantages :
 
@@ -71,7 +71,7 @@ Avec l’implémentation de la gestion de version de modèle, vous pouvez affich
 
     > [!NOTE]
     > Les images 2 et 3 ci-dessus montrent deux exemples de règles créées à partir de modèles, où le modèle n’a pas été mis à jour.
-    > - L’image 2 affiche une règle qui a un numéro de version pour son modèle actuel. Cela signale que la règle a été créée après la mise en œuvre initiale du contrôle de version de modèle d’Azure Sentinel en octobre 2021.
+    > - L’image 2 affiche une règle qui a un numéro de version pour son modèle actuel. Cela indique que la règle a été créée après l’implémentation initiale de la gestion de version des modèles par Microsoft Sentinel en octobre 2021.
     > - L’image 3 affiche une règle qui n’a pas de version de modèle actuelle. Cela indique que la règle a été créée avant octobre 2021. Si la version de modèle la plus récente est disponible, il s’agit probablement d’une version plus récente du modèle que celle utilisée pour créer la règle.
 
 ## <a name="compare-your-active-rule-with-its-template"></a>Comparer votre règle active à son modèle
@@ -88,6 +88,7 @@ Sous cet onglet, vous verrez une comparaison côte à côte entre les représent
 
 > [!NOTE]
 > La mise à jour de cette règle remplace votre règle existante par la version la plus récente du modèle.
+
 Toute étape ou logique d’automatisation qui fait référence à la règle existante doit être vérifiée, au cas où les noms référencés auraient changé. En outre, toutes les personnalisations effectuées lors de la création de la règle d’origine (modifications apportées à la requête, à la planification, au regroupement ou à d’autres paramètres) peuvent être remplacées.
 
 ### <a name="update-your-rule-with-the-new-template-version"></a>Mettre votre règle à jour avec la nouvelle version du modèle
@@ -121,7 +122,7 @@ Toute étape ou logique d’automatisation qui fait référence à la règle exi
 ---
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris à assurer le suivi des versions de vos modèles de règle d’analyse Azure Sentinel et à rétablir les versions de modèle existantes des règles actives, ou à les mettre à jour. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à assurer le suivi des versions de vos modèles de règle d’analyse Microsoft Sentinel et à rétablir les versions de modèle existantes des règles actives ou à les mettre à jour. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - En savoir plus sur les [règles d’analyse](detect-threats-built-in.md).
 - Détails supplémentaires sur l'[Assistant Règle d’analyse](detect-threats-custom.md).

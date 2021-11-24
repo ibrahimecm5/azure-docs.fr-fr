@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6ca47916dff0973ac5c28afce737055cba80a7d1
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d7d11ea059128c8d2623ae3b9613acb57c97e1c1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566946"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549505"
 ---
 # <a name="split-data-component"></a>Composant Fractionner des données
 
@@ -58,9 +58,9 @@ Ce composant est utile quand vous devez séparer des données en jeux d’entra�
   
 1. Sélectionnez l'option **Fractionnement aléatoire** si vous souhaitez rendre aléatoire la sélection de données dans les deux groupes. Cette option est recommandée quand vous créez des jeux de données d’entraînement et de test.
 
-1. **Valeur de départ aléatoire** : Entrez une valeur entière positive pour démarrer la séquence pseudoaléatoire d’instances à utiliser. Cette valeur de départ par défaut est utilisée dans tous les composants qui génèrent des nombres aléatoires. 
+1. **Random Seed** : Ce paramètre sera ignoré si le paramètre **fractionnement aléatoire** est réglé sur faux. Sinon, entrez une valeur entière non négative pour commencer la séquence pseudo-aléatoire d'instances à utiliser. Cette valeur de départ par défaut est utilisée dans tous les composants qui génèrent des nombres aléatoires. 
 
-   La spécification d’une valeur de départ rend les résultats reproductibles. Pour répéter les résultats d’une opération de fractionnement, vous devez spécifier une valeur de départ pour le générateur de nombres aléatoires. Sinon, la valeur de départ aléatoire est définie sur **0** par défaut, ce qui signifie qu’elle est obtenue à partir de l’horloge système. Dès lors, la répartition des données peut légèrement varier chaque fois que vous effectuez un fractionnement. 
+   La spécification d’une valeur de départ rend les résultats reproductibles. Si vous devez répéter les résultats d'une opération de fractionnement, vous devez spécifier le même numéro de départ pour le générateur de nombres aléatoires. 
 
 1. **Fractionnement stratifié** : Définissez cette option sur **True** pour vous assurer que les deux jeux de données de sortie contiennent un échantillon représentatif des valeurs dans la *colonne de strate* ou la *colonne clé de stratification*. 
 

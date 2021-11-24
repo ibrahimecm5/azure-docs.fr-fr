@@ -1,31 +1,29 @@
 ---
-title: Guide d’utilisation d’un processus isolé .NET pour .NET 5.0 dans Azure Functions
-description: Apprenez à utiliser un processus isolé .NET pour exécuter vos fonctions C# sur .NET 5.0 hors processus dans Azure.
+title: Guide pour l’exécution d’Azure Functions C# dans un processus isolé
+description: Apprenez à utiliser un processus isolé .NET pour exécuter vos fonctions C# dans Azure, qui prend en charge .NET 5.0 et les versions ultérieures.
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: b427d0b4d94497039f5949115246b7920b0e0116
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: b12841b83e4c2f6f2756ddffdd4adc7bde77e73a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829396"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401266"
 ---
-# <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide d’exécution des fonctions sur .NET 5.0 dans Azure
+# <a name="guide-for-running-c-azure-functions-in-an-isolated-process"></a>Guide pour l’exécution d’Azure Functions C# dans un processus isolé
 
-Cet article présente l’utilisation de C# pour développer des fonctions de processus isolé .NET s’exécutant hors processus dans Azure Functions. L’exécution hors processus vous permet de découpler le code de votre fonction à partir du runtime Azure Functions. Elle permet également de créer et d’exécuter des fonctions ciblant la version .NET 5.0 actuelle. 
+Cet article présente l’utilisation de C# pour développer des fonctions de processus isolé .NET s’exécutant hors processus dans Azure Functions. L’exécution hors processus vous permet de découpler le code de votre fonction à partir du runtime Azure Functions. Les fonctions de processus isolé C# s’exécutent à la fois sur .NET 5.0 et .NET 6.0. [Les fonctions de la bibliothèque de classes C# in-process](functions-dotnet-class-library.md) ne sont pas prises en charge sur .NET 5.0. 
 
 | Prise en main | Concepts| Exemples |
 |--|--|--| 
 | <ul><li>[Utilisation de Visual Studio Code](create-first-function-vs-code-csharp.md?tabs=isolated-process)</li><li>[Utilisation d’outils en ligne de commande](create-first-function-cli-csharp.md?tabs=isolated-process)</li><li>[Utilisation de Visual Studio](functions-create-your-first-function-visual-studio.md?tabs=isolated-process)</li></ul> | <ul><li>[Options d’hébergement](functions-scale.md)</li><li>[Surveillance](functions-monitoring.md)</li> | <ul><li>[Exemples de référence](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
-Si vous n’êtes pas tenu de prendre en charge .NET 5.0 ou d’exécuter vos fonctions hors processus, vous souhaiterez peut-être [développer des fonctions de la bibliothèque de classes C#](functions-dotnet-class-library.md).
-
 ## <a name="why-net-isolated-process"></a>Pourquoi le processus isolé .NET ?
 
-Jusqu’ici, Azure Functions prenait uniquement en charge un mode étroitement intégré pour les fonctions .NET s’exécutant [en tant que bibliothèque de classes](functions-dotnet-class-library.md) dans le même processus que l’hôte. Ce mode offre une intégration étroite entre le processus hôte et les fonctions. Par exemple, les fonctions de bibliothèque de classes .NET peuvent partager des API et des types de liaison. Toutefois, cette intégration requiert également un couplage plus étroit entre le processus hôte et la fonction .NET. Par exemple, les fonctions .NET exécutées in-process doivent être exécutées sur la même version .NET que le runtime Functions. Pour une exécution en dehors de ces contraintes, vous pouvez désormais opter pour une exécution dans un processus isolé. En outre, cette isolation du processus vous permet de développer des fonctions utilisant les versions .NET actuelles (telles que .NET 5.0), non prises en charge en mode natif par le runtime Functions.
+Jusqu’ici, Azure Functions prenait uniquement en charge un mode étroitement intégré pour les fonctions .NET s’exécutant [en tant que bibliothèque de classes](functions-dotnet-class-library.md) dans le même processus que l’hôte. Ce mode offre une intégration étroite entre le processus hôte et les fonctions. Par exemple, les fonctions de bibliothèque de classes .NET peuvent partager des API et des types de liaison. Toutefois, cette intégration requiert également un couplage plus étroit entre le processus hôte et la fonction .NET. Par exemple, les fonctions .NET exécutées in-process doivent être exécutées sur la même version .NET que le runtime Functions. Pour une exécution en dehors de ces contraintes, vous pouvez désormais opter pour une exécution dans un processus isolé. En outre, cette isolation du processus vous permet de développer des fonctions utilisant les versions .NET actuelles (telles que .NET 5.0), non prises en charge en mode natif par le runtime Functions. Le processus isolé et les fonctions de la bibliothèque de classes C# in-process s’exécutent sur .NET 6.0. Pour en savoir plus, consultez [Versions prises en charge](#supported-versions). 
 
 Ces fonctions s’exécutant dans un processus distinct, il existe certaines [différences de fonctionnalités](#differences-with-net-class-library-functions) entre les applications de fonctions isolées .NET et les applications de fonctions de la bibliothèque de classes .NET.
 
@@ -41,7 +39,7 @@ Exécutées hors processus, vos fonctions .NET peuvent tirer parti des avantages
 
 ## <a name="net-isolated-project"></a>Projet isolé .NET
 
-Un projet de fonction isolé .NET est essentiellement un projet d’application de console .NET ciblant .NET 5.0. Voici les fichiers de base requis dans un projet isolé .NET :
+Un projet de fonction isolé .NET est essentiellement un projet d’application de console .NET ciblant un runtime .NET pris en charge. Voici les fichiers de base requis dans un projet isolé .NET :
 
 + Fichier [host.json](functions-host-json.md).
 + Fichier [local.settings.json](functions-develop-local.md#local-settings-file).
@@ -178,11 +176,11 @@ Un [ILogger] est également fourni lors de l’utilisation de l'[injection de d�
 
 ## <a name="differences-with-net-class-library-functions"></a>Différences par rapport aux fonctions de la bibliothèque de classes .NET
 
-Cette section décrit l’état actuel des différences fonctionnelles et comportementales s’exécutant sur .NET 5.0 hors processus par rapport aux fonctions de la bibliothèque de classes .NET s’exécutant in-process :
+Cette section décrit l’état actuel des différences fonctionnelles et comportementales s’exécutant sur une instance hors processus par rapport aux fonctions de la bibliothèque de classes .NET s’exécutant in-process :
 
-| Fonctionnalité/Comportement |  In-process (.NET Core 3.1) | Hors processus (.NET 5.0) |
+| Fonctionnalité/Comportement |  In-process | Out-of-process  |
 | ---- | ---- | ---- |
-| Versions .NET | LTS (.NET Core 3.1) | Actuellement (.NET 5.0) |
+| Versions .NET | .NET Core 3.1<br/>.NET 6.0 | .NET 5.0<br/>.NET 6.0 |
 | Packages principaux | [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
 | Packages d’extension de liaison | [Microsoft.Azure.WebJobs.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | Sous [Microsoft.Azure.Functions.Worker.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
 | Journalisation | [ILogger] transmis à la fonction | [ILogger] obtenu à partir de [FunctionContext] |
@@ -198,11 +196,7 @@ Cette section décrit l’état actuel des différences fonctionnelles et compor
 | Injection de dépendances | [Pris en charge](functions-dotnet-dependency-injection.md)  | [Pris en charge](#dependency-injection) |
 | Middleware | Non pris en charge | Prise en charge |
 | Heures de démarrage froid | Standard | Délai plus long en raison du démarrage juste-à-temps. Exécution sur Linux plutôt que Windows pour limiter les possibles retards. |
-| ReadyToRun | [Pris en charge](functions-dotnet-class-library.md#readytorun) | _TBD_ |
-
-## <a name="known-issues"></a>Problèmes connus
-
-Pour plus d’informations sur les solutions de contournement des problèmes d’exécution des fonctions de processus isolé .NET, consultez [cette page relative aux problèmes connus](https://aka.ms/AAbh18e). Pour signaler des problèmes, [créez un problème dans ce référentiel GitHub](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose).  
+| ReadyToRun | [Pris en charge](functions-dotnet-class-library.md#readytorun) | _TBD_ | 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 1a87a2f0d52895b97efdbe79ba3a53082efeccb2
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e950667e1132c8eba350a5ffcada5e5d667a1288
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525371"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485637"
 ---
 # <a name="use-a-managed-identity-to-connect-azure-sql-database-to-an-azure-spring-cloud-app"></a>Utiliser une identité managée pour connecter Azure SQL Database à une application Azure Spring Cloud
 
@@ -60,6 +60,6 @@ Régénérez l’application et déployez-la sur l’application Azure Spring Cl
 ## <a name="next-steps"></a>Étapes suivantes
 
 * [Comment accéder à un objet blob de stockage avec une identité managée dans Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Comment activer une identité managée affectée par le système pour une application Azure Spring Cloud](./how-to-enable-system-assigned-managed-identity.md)
+* [Activer une identité managée affectée par le système pour des applications dans Azure Spring Cloud](./how-to-enable-system-assigned-managed-identity.md)
 * [En savoir plus sur les identités managées pour les ressources Azure](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Authentifier Azure Spring Cloud auprès de Key Vault dans GitHub Actions](./github-actions-key-vault.md)

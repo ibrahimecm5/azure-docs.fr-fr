@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7439263f15a99a7b717bac1dc48e06a77bb66b
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d136272f97a203d78a3c508d7c7ccd3770e0f216
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257133"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371735"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Changer les rôles de ressources pour un package d’accès dans la gestion des droits d’utilisation d’Azure Active Directory
 
@@ -77,6 +77,7 @@ Vous pouvez sélectionner n’importe quel [groupe de sécurité Azure AD ou gro
 - Si un utilisateur, y compris un invité, est ajouté en tant que membre à un groupe ou à une équipe, il peut voir tous les autres membres de ce groupe ou de cette équipe.
 - Azure AD ne peut pas modifier l'appartenance d'un groupe qui a été synchronisé à partir de Windows Server Active Directory à l’aide d’Azure AD Connect ou a été créé dans Exchange Online en tant que groupe de distribution.  
 - L'adhésion à des groupes dynamiques ne peut pas être mise à jour par l'ajout ou la suppression d'un membre, de sorte que l'adhésion à des groupes dynamiques ne convient pas pour la gestion des droits d'utilisation.
+- Les groupes M365 ont des contraintes supplémentaires, décrites dans la [présentation de Groupes Microsoft 365 pour les administrateurs](/microsoft-365/admin/create-groups/office-365-groups), notamment une limite de 100 propriétaires par groupe, des limites sur le nombre de membres pouvant accéder simultanément aux conversations de groupe et une limite de 7 000 groupes par membre.
 
 Pour plus d’informations, consultez [Comparer les groupes](/office365/admin/create-groups/compare-groups) et [Groupes Microsoft 365 et Microsoft Teams](/microsoftteams/office-365-groups).
 

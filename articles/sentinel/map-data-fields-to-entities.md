@@ -1,28 +1,28 @@
 ---
-title: Mapper des champs de données à des entités Azure Sentinel | Microsoft Docs
-description: Mappez des champs de données dans des tables à des entités Azure Sentinel dans des règles analytiques afin d’obtenir de meilleures informations sur les incidents.
+title: Mapper des champs de données à des entités Microsoft Sentinel | Microsoft Docs
+description: Mappez des champs de données dans des tables à des entités Microsoft Sentinel dans des règles d’analyse afin d’obtenir de meilleures informations sur les incidents.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e380676a99a74b9a9849322e8a1e611c14db2c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 48c08771fef5b18445d0a1b5268ea5ea2c535abf
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023060"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523426"
 ---
-# <a name="map-data-fields-to-entities-in-azure-sentinel"></a>Mapper des champs de données à des entités dans Azure Sentinel 
+# <a name="map-data-fields-to-entities-in-microsoft-sentinel"></a>Mapper des champs de données à des entités dans Microsoft Sentinel 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -42,7 +42,7 @@ La procédure détaillée ci-dessous fait partie de l’Assistant Création de r
 
 ## <a name="how-to-map-entities"></a>Comment mapper des entités ?
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analyse**.
 
 1. Sélectionnez une règle de requête planifiée, puis cliquez sur **Modifier**. Ou créez une règle en cliquant sur **Créer > Règle de requête planifiée** en haut de l’écran.
 
@@ -83,6 +83,6 @@ La procédure détaillée ci-dessous fait partie de l’Assistant Création de r
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez découvert comment mapper des champs de données à des entités dans des règles analytiques Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez découvert comment mapper des champs de données à des entités dans des règles d’analyse de Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Obtenez une vue d’ensemble complète des [règles analytiques de requête planifiée](detect-threats-custom.md).
-- Apprenez-en davantage sur les [entités d'Azure Sentinel](entities-in-azure-sentinel.md).
+- Apprenez-en davantage sur les [entités de Microsoft Sentinel](entities-in-azure-sentinel.md).

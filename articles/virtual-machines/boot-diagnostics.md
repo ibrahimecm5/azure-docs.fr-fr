@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: f0e8a9775fead0f2d54ccf131240f7d4cdefee4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fdb7b3bcaac2825e64111bdba4ad98554bfc02ae
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694419"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339254"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostics de démarrage Azure
 
@@ -28,7 +28,7 @@ Lorsque vous créez une machine virtuelle dans le portail Azure, les diagnostics
 
 Avec les diagnostics de démarrage, il est également possible d’utiliser un compte de stockage géré par l’utilisateur. Un utilisateur peut soit créer un autre compte de stockage, soit en utiliser un existant.
 > [!NOTE]
-> Les comptes de stockage gérés par l’utilisateur associés aux diagnostics de démarrage impliquent que le compte de stockage et les machines virtuelles associées résident dans le même abonnement. 
+> Les comptes de stockage gérés par l’utilisateur associés aux diagnostics de démarrage impliquent que le compte de stockage et les machines virtuelles associées résident dans la même région et le même abonnement. 
 
 
 
@@ -48,6 +48,9 @@ Lors de la création d’une machine virtuelle dans le portail Azure, le paramè
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Activer les diagnostics de démarrage managé à l’aide de l’interface de ligne de commande (CLI)
 Les diagnostics de démarrage avec un compte de stockage managé sont pris en charge dans Azure CLI 2.12.0 et versions ultérieures. Si vous n’entrez pas de nom ou d’URI pour un compte de stockage, un compte managé est utilisé. Pour plus d’informations et des exemples de code, consultez la [documentation de CLI pour les diagnostics de démarrage](/cli/azure/vm/boot-diagnostics).
+
+### <a name="enable-managed-boot-diagnostics-using-powershell"></a>Activer les diagnostics de démarrage managé à l’aide de PowerShell
+Les diagnostics de démarrage avec un compte de stockage managé sont pris en charge dans Azure PowerShell 6.6.0 et versions ultérieures. Si vous n’entrez pas de nom ou d’URI pour un compte de stockage, un compte managé est utilisé. Pour plus d’informations et des exemples de code, consultez la [documentation de PowerShell pour les diagnostics de démarrage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic?view=azps-6.6.0).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Activer les diagnostics de démarrage managé à l’aide de modèles Azure Resource Manager (modèles ARM)
 Tout ce qui est postérieur à l’API version 2020-06-01 prend en charge les diagnostics de démarrage managé. Pour plus d’informations, consultez [affichage d’instance de diagnostics de démarrage](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).

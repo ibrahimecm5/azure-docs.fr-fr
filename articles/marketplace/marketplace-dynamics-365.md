@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0d31c44a5daa21c16cd7c598f407501104dc53c6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866951"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546307"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Planifier une offre Microsoft Dynamics 365
 
@@ -24,7 +24,16 @@ Avant de commencer, créez un compte de marketplace commercial dans [Espace part
 
 Lorsque vous vous préparez à publier une nouvelle offre, vous devez choisir une option de licence. Cela détermine les informations supplémentaires que vous devrez fournir lors de la création de l’offre dans Espace partenaires.
 
-Voici les options de licence disponibles pour les offres Dynamics 365 :
+Voici les types de licence disponibles pour les offres Dynamics 365 :
+
+| Type d’offre | Option de référencement |
+| --- | --- |
+| Dynamics 365 for Operations | Me contacter |
+| Dynamics 365 Customer Engagement et Power Apps | Obtenir maintenant<br>Obtenez-en une maintenant (gratuit)<br>Essai gratuit (annonce)<br>Me contacter |
+| Dynamics 365 Business Central | Obtenez-en une maintenant (gratuit)<br>Essai gratuit (annonce)<br>Me contacter |
+|||
+
+Le tableau suivant décrit le processus de transaction de chaque option de liste.
 
 | Option de licence | Processus de transaction |
 | --- | --- |

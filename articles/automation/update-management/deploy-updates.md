@@ -3,14 +3,14 @@ title: Guide pratique pour créer des déploiements de mises à jour pour Azure 
 description: Cet article explique comment planifier des déploiements de mises à jour et vérifier leur état.
 services: automation
 ms.subservice: update-management
-ms.date: 08/25/2021
+ms.date: 11/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 993fcf45b983fef972a7201b4ffed60e8da99555
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6830c06de1fc687f8c408d438086f6c08550d9f0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715067"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551403"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Guide pratique pour déployer des mises à jour et voir les résultats
 
@@ -98,7 +98,7 @@ Pour planifier un nouveau déploiement de mises à jour, procédez comme suit. E
 
    * Si vous souhaitez uniquement installer une liste spécifique de mises à jour, vous ne devez pas sélectionner de **classifications de mises à jour** et fournir une liste des mises à jour à appliquer à l’aide de l’option **Inclure**.
 
-   * Si vous souhaitez installer uniquement les mises à jour de sécurité et critiques, ainsi qu’une ou plusieurs mises à jour de pilotes facultatives, vous devez sélectionner **Sécurité** et **Critique** dans **Classifications de mises à jour**. Ensuite, pour l’option **Inclure**, spécifiez les mises à jour de pilote.
+   * Si vous souhaitez installer uniquement les mises à jour de sécurité et critiques, ainsi qu’une ou plusieurs mises à jour facultatives, vous devez sélectionner **Sécurité** et **Critique** dans **Classifications de mises à jour**. Ensuite, pour l’option **Inclure**, spécifiez les KBID des mises à jour facultatives.
 
    * Si vous souhaitez installer uniquement les mises à jour de sécurité et critiques, mais ignorer une ou plusieurs mises à jour pour Python afin d’éviter d’arrêter votre application héritée, vous devez sélectionner **Sécurité** et **Critique** sous **Classifications de mises à jour**. Ensuite, pour l’option **Exclure**, ajoutez les packages Python à ignorer.
 

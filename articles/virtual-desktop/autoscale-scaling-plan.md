@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 88de9f363851d47fbefcdcf69060111d8fd64bbf
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a88c9ecef36786f67c930a22ecdd67d5890da92f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842375"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399064"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Mise à l’échelle automatique (préversion) pour les pools d’hôtes Azure Virtual Desktop
 
@@ -212,13 +212,13 @@ Pour créer ou modifier une planification :
         >[!NOTE]
         >La préférence d’équilibrage de charge que vous sélectionnez ici va remplacer celle que vous avez sélectionnée pour les paramètres de votre pool d’hôtes d’origine.
 
-    - Pour **Pourcentage minimal de machines virtuelles de l’hôte de session**, entrez la quantité de ressources de l’hôte de session que vous souhaitez utiliser pendant les heures d’augmentation et les heures de pointe. Par exemple, si vous choisissez **10 %** et que votre pool d’hôtes a 10 hôtes de session, la mise à l’échelle automatique va conserver un hôte de session disponible pour les connexions utilisateur à tout moment pendant les heures d’augmentation et les heures de pointe.
+    - Pour **Pourcentage minimal d’hôtes**, entrez le pourcentage d’hôtes de session que vous souhaitez toujours conserver dans cette phase. Si le pourcentage que vous entrez n’est pas un nombre entier, il est arrondi au nombre entier supérieur le plus proche. Par exemple, dans un pool d’hôtes de 7 hôtes de session, si le pourcentage minimal d’hôtes est de **10 %** pour les heures d’accélération, une machine virtuelle reste toujours active pendant les heures d’accélération et la fonctionnalité de mise à l’échelle automatique ne désactive pas cette machine virtuelle. 
     
-    - Pour **Seuil de capacité**, entrez le pourcentage d’utilisation du pool d’hôtes qui va déclencher le début des phases d’augmentation et de pointe. Par exemple, si vous choisissez **60 %** pour un pool d’hôtes qui peut gérer 100 sessions, la mise à l’échelle automatique va activer des hôtes supplémentaires seulement une fois que le pool d’hôtes dépasse 60 sessions.
+    - Pour **Seuil de capacité**, entrez le pourcentage de capacité du pool d’hôtes disponible qui doit déclencher une action de mise à l’échelle. Par exemple, si 2 hôtes de session dans le pool d’hôtes présentant une limite de session maximale de 20 sont activés, la capacité du pool d’hôtes disponible est 40. Si vous définissez le seuil de capacité sur **75 %** et que les hôtes de session possèdent plus de 30 sessions utilisateur, la fonctionnalité de mise à l’échelle automatique active un troisième hôte de session. Cela permet de modifier la capacité du pool d’hôtes disponible pour passer de 40 à 60.
 
 5. Sous l’onglet **Heures de pointe**, renseignez les champs suivants :
 
-    - Pour le champ **Heures de début**, entrez une heure de début pour la période où le taux d’utilisation est le plus élevé au cours de la journée. Veillez à ce que l’heure soit dans le même fuseau horaire que celui que vous avez spécifié pour votre plan de mise à l’échelle. Cette heure correspond également à l’heure de fin de votre phase d’augmentation.
+    - Pour le champ **Heures de début**, entrez une heure de début pour la période où le taux d’utilisation est le plus élevé au cours de la journée. Veillez à ce que l’heure soit dans le même fuseau horaire que celui que vous avez spécifié pour votre plan de mise à l’échelle. Cette heure correspond également à l’heure de fin de la phase d’augmentation.
 
     - Pour **Équilibrage de charge**, vous pouvez sélectionner l’équilibrage de charge en largeur d’abord ou l’équilibrage de charge en profondeur d’abord. L’équilibrage de charge en largeur d’abord répartit les nouvelles sessions utilisateur entre toutes les sessions disponibles dans le pool d’hôtes. L’équilibrage de charge en profondeur d’abord répartit les nouvelles sessions utilisateur sur un hôte de session disponible qui a le plus grand nombre de connexions sans avoir encore atteint sa limite maximale de sessions. Pour plus d’informations sur les types d’équilibrage de charge, consultez [Configurer la méthode d’équilibrage de charge d’Azure Virtual Desktop](configure-host-pool-load-balancing.md).
 
@@ -232,6 +232,9 @@ Pour créer ou modifier une planification :
       - Pourcentage minimal d’hôtes (%)
       - Seuil de capacité (%)
       - Forcer la déconnexion des utilisateurs
+
+    >[!IMPORTANT]
+    >Si vous avez activé la fonctionnalité de mise à l’échelle automatique pour forcer la déconnexion des utilisateurs lors du ralentissement, la fonctionnalité choisit d’arrêter l’hôte de session présentant le plus petit nombre de sessions utilisateur. La fonctionnalité de mise à l’échelle automatique met l’hôte de session en mode maintenance, envoie à toutes les sessions utilisateur actives une notification leur indiquant qu’elles vont être déconnectées, puis déconnecte tous les utilisateurs une fois le délai d’attente spécifié dépassé. Une fois que la fonctionnalité de mise à l’échelle automatique a déconnecté toutes les sessions utilisateur, elle libère la machine virtuelle. Si vous n’avez pas activé la déconnexion forcée lors du ralentissement, les hôtes de session sans sessions actives et les sessions déconnectées sont libérées.
 
     - De même, les **Heures creuses** fonctionnent comme **Heures de pointe** :
 

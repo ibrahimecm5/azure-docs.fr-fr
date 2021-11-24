@@ -74,6 +74,8 @@
       href: publish-apps-2019.md
     - name: "Configurer l’authentification multifacteur Azure\_AD"
       href: ../set-up-mfa.md
+    - name: Supprimer Azure Virtual Desktop classique
+      href: manual-delete.md
 - name: Concepts
   items:
     - name: Environnement Azure Virtual Desktop

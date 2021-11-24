@@ -2,13 +2,13 @@
 title: Installer l'agent C# sur un appareil Windows
 description: Découvrez comment installer l’agent Defender pour IoT sur les appareils Windows 32 bits ou 64 bits.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 1a9bab1f9e24fba6a2b04b6d0bb5d9f2560dcc1d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 1bd5017f7c5e6a59aac29dfd35834ef5768682e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643970"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306070"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Déploiement d’un agent de sécurité C# Defender pour IoT pour Windows
 
@@ -131,5 +131,5 @@ Pour activer la journalisation :
 * Lire la [vue d’ensemble](overview.md) du service Defender pour IoT
 * Pour en savoir plus sur Defender pour IoT, consultez [Présentation de la solution basée sur un agent pour les fabricants d’appareils](architecture-agent-based.md)
 * Activer le [service](quickstart-onboard-iot-hub.md)
-* Consulter le [Forum aux questions sur Azure Defender pour IoT](resources-agent-frequently-asked-questions.md)
+* Consultez le [Forum aux questions sur Microsoft Defender pour IoT](resources-agent-frequently-asked-questions.md)
 * Comprendre les [alertes](concept-security-alerts.md)

@@ -6,12 +6,12 @@ ms.author: sandeepshah
 ms.service: purview
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: bb5ba8386ab84f9ca4b3da6a34714a27fea38738
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214329"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301415"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Meilleures pratiques de déploiement d’Azure Purview
 
@@ -25,12 +25,12 @@ Un déploiement bien planifié d’une plateforme de gouvernance des données (t
 
 ## <a name="prerequisites"></a>Prérequis
 
-* Accès à Microsoft Azure avec un abonnement de développement ou de production.
-* Possibilité de créer des ressources Azure, dont Purview.
-* Accès à des sources de données telles qu’Azure Data Lake Storage ou Azure SQL dans des environnements de test, de développement ou de production :
-  * Pour Data Lake Storage, le rôle requis pour l’analyse est le rôle Lecteur.
-  * Pour SQL, l’identité doit être en mesure d’interroger des tables pour échantillonner des classifications.
-* Accès à Azure Security Center ou possibilité de collaborer avec l’administrateur de Security Center pour l’étiquetage des données.
+- Accès à Microsoft Azure avec un abonnement de développement ou de production.
+- Possibilité de créer des ressources Azure, dont Purview.
+- Accès à des sources de données telles qu’Azure Data Lake Storage ou Azure SQL dans des environnements de test, de développement ou de production :
+  - Pour Data Lake Storage, le rôle requis pour l’analyse est le rôle Lecteur.
+  - Pour SQL, l’identité doit être en mesure d’interroger des tables pour échantillonner des classifications.
+- Accès à Microsoft Defender pour le cloud ou possibilité de collaborer avec l’administrateur de Defender pour le cloud pour l’étiquetage des données.
 
 ## <a name="identify-objectives-and-goals"></a>Identifier les objectifs
 

@@ -4,15 +4,15 @@ description: Découvrez les plans pour les offres de la place de marché commerc
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 71efd629463f53519d98458afaa449c7a7f46ffb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: e91e85982bb021193224010e2bd51df301240c69
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062336"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277977"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Plans et tarification pour les offres de la place de marché commerciale
 
@@ -126,7 +126,7 @@ Les prix fixés en USD sont convertis dans la devise locale de tous les marchés
 
 ## <a name="plan-visibility"></a>Visibilité du plan
 
-Pour certains types d’offres, vous pouvez rendre des plans publiquement disponibles ou disponibles uniquement pour un public spécifique (privé). Les offres assorties de plans privés sont publiées sur le portail Azure. En savoir plus sur les offres privées dans les [offres du marketplace commercial de Microsoft](private-offers.md).
+Pour certains types d’offres, vous pouvez rendre des plans publiquement disponibles ou disponibles uniquement pour un public spécifique (privé). Les offres assorties de plans privés sont publiées sur le portail Azure. En savoir plus sur les offres privées dans les [plan du marketplace commercial de Microsoft](private-plans.md).
 
 Selon le type d’offre, vous définissez votre public privé à l’aide d’ID de locataire Azure ou d’ID d’abonnement Azure. Vous pouvez entrer jusqu’à 10 ID manuellement, ou importer jusqu’à 10 000 ID d’abonnement ou 20 000 ID de locataire (selon le cas) à l’aide d’un fichier. csv. Vous pouvez également définir des publics privés pour des services de conseil et des offres Dynamics 365 qui n’ont pas de plans associés.
 

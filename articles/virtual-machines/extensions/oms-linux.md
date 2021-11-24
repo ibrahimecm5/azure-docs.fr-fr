@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 11/02/2021
-ms.openlocfilehash: 3c857f01ba5a706c8b20289221badbee3aa3dccf
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5a65c30c9b1499441eae8bea51d90a49d0c4f390
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471627"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277141"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Extension de machine virtuelle Log Analytics pour Linux
 
@@ -58,9 +58,9 @@ Le tableau ci-après mappe la version de l’extension de machine virtuelle Log 
 | 1.3.127.7 | [1.3.5-127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)|
 | 1.3.18.7 | [1.3.4-15](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201704-v1.3.4-15)|  
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-Azure Security Center configure automatiquement l’agent Log Analytics et le connecte à l’espace de travail Log Analytics par défaut créé par ASC dans votre abonnement Azure. Si vous utilisez Azure Security Center, ne suivez pas la procédure de ce document. Si vous le faites, vous écrasez l’espace de travail configuré et interrompez la connexion à Azure Security Center.
+Microsoft Defender pour le cloud provisionne automatiquement l’agent Log Analytics et le connecte à un espace de travail Log Analytics par défaut créé par Defender pour le cloud dans votre abonnement Azure. Si vous utilisez Microsoft Defender pour le cloud, n’exécutez pas les étapes décrites dans ce document. Cela remplace l’espace de travail configuré et interrompt la connexion avec Microsoft Defender pour le cloud.
 
 ### <a name="internet-connectivity"></a>Connectivité Internet
 

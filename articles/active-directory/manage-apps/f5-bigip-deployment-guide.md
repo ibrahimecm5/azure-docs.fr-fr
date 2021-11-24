@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: 3e00bce1090a623efbab0c84722e4dbc46200f5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f5f1d631ad0fdcd484511987b1f79ce702e51fe9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039807"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339007"
 ---
-# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>Déployer une machine virtuelle F5 BIG-IP Virtual Edition sur Azure Active Directory
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure"></a>Déployer une machine virtuelle F5 BIG-IP Virtual Edition sur Azure
 
 Ce tutoriel vous guide tout au long du processus de déploiement de BIG-IP Virtual Edition (VE) dans Azure IaaS. À la fin de ce tutoriel, vous disposerez des éléments suivants :
 
@@ -251,7 +251,7 @@ Par défaut, les réseaux virtuels Azure et les sous-réseaux associés sont des
  |Adresses IP de destination|Liste séparée par des virgules de toutes les adresses IP privées secondaires de la machine virtuelle BIG-IP|
  |Ports de destination| 80,443|
  |Protocole| TCP |
- |Action| Autoriser|
+ |Action| Allow|
  |Priority|Valeur disponible la plus basse entre 100 et 4096|
  |Nom | Nom descriptif, par exemple : `BIG-IP-VM_Web_Services_80_443`|
 

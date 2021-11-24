@@ -1,38 +1,38 @@
 ---
-title: Utilisez les incidents Azure Sentinel dans plusieurs espaces de travail à la fois | Microsoft Docs
-description: Comment voir les incidents dans plusieurs espaces de travail simultanément dans Azure Sentinel.
+title: Utilisez les incidents Microsoft Sentinel dans plusieurs espaces de travail à la fois | Microsoft Docs
+description: Comment voir les incidents dans plusieurs espaces de travail simultanément dans Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c2063356b62a3b91bf3bf04453ea05f28788cab5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 05f0fcf96b9553648830b084d6fa5ec7f00a634d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009374"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520462"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Utiliser les incidents dans plusieurs espaces de travail simultanément 
 
  [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Pour tirer pleinement parti des fonctionnalités d’Azure Sentinel, Microsoft recommande l’utilisation d’un environnement avec un seul espace de travail. Toutefois, il existe certains cas qui nécessitent plusieurs espaces de travail, par exemple, dans le cas d’un[ fournisseur de services de sécurité gérés (MSSP)](./multiple-tenants-service-providers.md) et de ses clients, sur plusieurs locataires. **L’affichage de plusieurs espaces de travail** vous permet de voir et de travailler avec les incidents de sécurité sur plusieurs espaces de travail en même temps, même sur plusieurs locataires, ce qui vous permet de conserver une visibilité et un contrôle complets de la réactivité de la sécurité de votre organisation.
+Pour tirer pleinement parti des fonctionnalités de Microsoft Sentinel, Microsoft recommande l’utilisation d’un environnement avec un seul espace de travail. Toutefois, il existe certains cas qui nécessitent plusieurs espaces de travail, par exemple, dans le cas d’un[ fournisseur de services de sécurité gérés (MSSP)](./multiple-tenants-service-providers.md) et de ses clients, sur plusieurs locataires. **L’affichage de plusieurs espaces de travail** vous permet de voir et de travailler avec les incidents de sécurité sur plusieurs espaces de travail en même temps, même sur plusieurs locataires, ce qui vous permet de conserver une visibilité et un contrôle complets de la réactivité de la sécurité de votre organisation.
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="entering-multiple-workspace-view"></a>Accès à l’affichage de plusieurs espaces de travail
 
-Lorsque vous ouvrez Azure Sentinel, vous voyez s’afficher la liste de tous les espaces de travail pour lesquels vous avez des droits d’accès, sur l’ensemble des locataires et abonnements sélectionnés. À gauche de chaque nom d’espace de travail se trouve une case à cocher. Cliquez sur le nom d’un espace de travail pour afficher cet espace de travail. Pour choisir plusieurs espaces de travail, cliquez sur toutes les cases à cocher correspondantes, puis cliquez sur le bouton **Affichage de plusieurs espaces de travail** en haut de la page.
+Lorsque vous ouvrez Microsoft Sentinel, vous voyez s’afficher la liste de tous les espaces de travail pour lesquels vous avez des droits d’accès, sur l’ensemble des locataires et abonnements sélectionnés. À gauche de chaque nom d’espace de travail se trouve une case à cocher. Cliquez sur le nom d’un espace de travail pour afficher cet espace de travail. Pour choisir plusieurs espaces de travail, cliquez sur toutes les cases à cocher correspondantes, puis cliquez sur le bouton **Affichage de plusieurs espaces de travail** en haut de la page.
 
 > [!IMPORTANT]
 > L’affichage de plusieurs espaces de travail prend actuellement en charge un maximum de 10 espaces de travail affichés simultanément. 
@@ -58,6 +58,6 @@ Dans l’**affichage de plusieurs espaces de travail**, seul l’écran **Incide
 - Si vous choisissez un incident et que vous cliquez sur **Voir les détails complets** ou **Actions** > **Examiner**, vous vous trouverez à partir de là dans le contexte de données de l’espace de travail de cet incident et non des autres.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris comment consulter et utiliser les incidents dans plusieurs espaces de travail Azure Sentinel simultanément. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris comment consulter et utiliser les incidents dans plusieurs espaces de travail Microsoft Sentinel simultanément. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](detect-threats-built-in.md).

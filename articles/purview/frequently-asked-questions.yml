@@ -7,12 +7,12 @@ metadata:
   ms.service: purview
   ms.topic: conceptual
   ms.date: 05/08/2021
-  ms.openlocfilehash: cdde004521c6f99136bfa75f33359f3599b675df
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.openlocfilehash: 8ab2749a1a0134f90644e1af082006b414a9b91f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129213444"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301358"
 title: Forum Aux Questions (FAQ) sur Azure Purview
 summary: ''
 sections:
@@ -93,7 +93,7 @@ sections:
   - question: >
       Azure Purview analyse-t-il et classe-t-il les e-mails, les PDF, etc. dans mes instances de SharePoint et OneDrive ?
     answer: >
-      L'analyse des sites et bibliothèques SharePoint locaux est assurée par le scanneur Azure Information Protection. Le scanneur peut être utilisé dans le cadre de l’abonnement Microsoft 365 d’un client avec les références SKU suivantes : AIP P1, EMS E3 et Microsoft 365 E3. Si vous possédez l'une de ces références SKU, vous devez disposer des droits appropriés pour commencer à utiliser le scanneur Azure Information Protection.
+      Actuellement, Purview ne prend pas en charge l’analyse de SharePoint ni celle de OneDrive. L'analyse des sites et bibliothèques SharePoint locaux est assurée par le scanneur Azure Information Protection. Le scanneur peut être utilisé dans le cadre de l’abonnement Microsoft 365 d’un client avec les références SKU suivantes : AIP P1, EMS E3 et Microsoft 365 E3. Si vous possédez l'une de ces références SKU, vous devez disposer des droits appropriés pour commencer à utiliser le scanneur Azure Information Protection.
   - question: >
       Quel est le calcul utilisé pour l'analyse ?
     answer: >

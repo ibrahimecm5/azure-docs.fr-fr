@@ -4,25 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: eur
-ms.openlocfilehash: 07fa99c6183e98554f20af5c992d0c81734a1b63
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 642fa02cf8f40d7cc6a39a1951499cb7921ed100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506538"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252234"
 ---
-Trois SDK Speech sont disponibles pour les développements destinés à macOS.
+Lors du développement pour macOS, les kits de développement logiciel (SDK) Speech suivants sont disponibles.
 
-- Le SDK Speech Objective-C est disponible en natif sous forme de package CocoaPod
-- Le SDK Speech .NET peut être utilisé avec **Xamarin.Mac**, car il implémente .NET Standard 2.0
-- Le SDK Speech Python est disponible sous forme de module PyPI
-
-> [!TIP]
-> Pour plus d’informations sur l’utilisation du Kit de développement logiciel (SDK) Speech Objective-C avec Swift, consultez <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Importation d’Objective-C dans Swift</a>.
+- Le kit de développement logiciel (SDK) Objective-C/Swift est disponible en mode natif en tant que package CocoaPod pour les processeurs Mac x64 et ARM. Pour plus d’informations sur l’utilisation du kit de développement logiciel (SDK) Speech Objective-C avec Swift, consultez <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Importation d’Objective-C dans Swift</a>.
+- Le kit de développement logiciel (SDK) Speech .NET est disponible via le package NuGet et peut être utilisé avec les infrastructures d’application **Xamarin.Mac** et **Unity**.
+- Le kit de développement logiciel (SDK) Python Speech est disponible sous la forme d’un module PyPI pour les versions 3.7 et ultérieures de Python.
+- Le kit de développement logiciel (SDK) Speech Java est disponible via le référentiel Maven en tant que package JAR.
 
 ### <a name="system-requirements"></a>Configuration système requise
 
-- macOS version 10.13 ou ultérieure
+- macOS version 10.14 ou ultérieure
 
 # <a name="xcode"></a>[Xcode](#tab/mac-xcode)
 
@@ -39,7 +37,7 @@ Trois SDK Speech sont disponibles pour les développements destinés à macOS.
 :::row-end:::
 
 ```
-platform :ios, '9.3'
+platform :osx, 10.14
 use_frameworks!
 
 target 'MyApp' do

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7be8e6fdda7977c6cff389ee5886d1753cbe720b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f9f49cf1fa651f1e52c4abbb84e7f8f7840fbb9d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993166"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373229"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Activer VM Insights pour une machine virtuelle hybride
 Cet article explique comment activer VM Insights pour une machine virtuelle en dehors d’Azure, y compris des environnements locaux et autres clouds.
@@ -42,8 +42,8 @@ Vous pouvez télécharger le Dependency Agent à partir des emplacements suivant
 
 | Fichier | Système d''exploitation | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.11.17500 | 0883C9AC5A130EC662CB5C8ECDC4E3BD2B60AF2DECF58205C54F7E8588C5CA04  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.11.17500 | F6C72D7B72FB863CAB466E9BAF5EA3195762906165087E6CA8A3F9ACF570C7C3 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.12.18430 | 9CE3B53D3A67A2C3239E1162364BF94B772764B4ADD78C48559E56F46B98C484  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.12.18430 | 04BD3D2F449220B19DD1DA47A6995087123140B13E45747C743BAD79A312ACE6 |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Installer l’agent de dépendances sous Windows

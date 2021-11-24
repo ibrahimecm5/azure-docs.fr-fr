@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/20/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: ce71512e46f1b78ece832ec1fb1bad938edfcbf8
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 8ac93a42c4911a6694770ee320f84b88d6ea6aa5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058839"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547443"
 ---
-# <a name="home-realm-discovery-for-an-application-in-azure-active-directory"></a>Découverte du domaine d’accueil pour une application dans Azure Active Directory
+# <a name="home-realm-discovery-for-an-application"></a>Découverte de domaine d’accueil pour une application
 
 La découverte du domaine d’accueil est le processus qui permet à Azure AD d’identifier le fournisseur d’identité (« IdP ») avec lequel un utilisateur doit s’authentifier au moment de la connexion.  Quand un utilisateur se connecte à un locataire Azure AD pour accéder à une ressource ou à la page de connexion courante d’Azure AD, il tape un nom d’utilisateur (UPN). Azure AD l’utilise pour découvrir où l’utilisateur doit se connecter.
 

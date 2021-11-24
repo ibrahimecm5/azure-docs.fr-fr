@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: 0e62c64aa5e1aa3f29c58510bb53f092b9417bb6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5e0cac6f9ba6a245ec201666adb2c5cfeed79c38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478956"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343094"
 ---
 # <a name="end-to-end-tls-with-azure-front-door"></a>TLS de bout en bout avec Azure Front Door
 
@@ -54,6 +54,8 @@ Pour les connexions HTTPS, Azure Front Door s’attend à ce que votre back-end 
 
 Du point de vue de la sécurité, Microsoft ne recommande pas la vérification du nom d’objet du certificat. Dans certains cas d’usage, tels que pour les tests, par exemple, votre origine doit utiliser un certificat auto-signé. Pour résoudre les échecs de connexion HTTPS, vous pouvez désactiver la vérification du nom d’objet du certificat pour Azure Front Door. L’option de désactivation est présente sous les paramètres d’Azure Front Door dans le Portail Azure et dans BackendPoolsSettings dans l’API Azure Front Door. 
 
+## <a name="frontend-tls-connection-client-to-front-door"></a>Connexion TLS du serveur frontal (client à Front Door)
+
 Pour permettre au protocole HTTPS de distribuer le contenu de manière sécurisée sur un domaine personnalisé Azure Front Door, vous pouvez choisir d’utiliser un certificat managé par Azure Front Door ou votre propre certificat.  
 
 * Le certificat managé par Azure Front Door fournit un certificat TLS/SSL standard via DigiCert et est stocké dans le Key Vault d’Azure Front Door.   
@@ -62,11 +64,13 @@ Pour permettre au protocole HTTPS de distribuer le contenu de manière sécuris�
 
 * Les certificats auto-signés ne sont pas pris en charge. Découvrez  [comment activer le protocole HTTPS pour un domaine personnalisé](front-door-custom-domain-https.md).
 
-En ce qui concerne les certificats managés par Azure Front Door, les certificats sont managés par Azure Front Door et permutent de façon automatique dans un délai d’expiration de 90 jours. Si vous utilisez un certificat managé par Azure Front Door et que vous voyez que la date d’expiration du certificat est inférieure à 60 jours, envoyez un ticket de support. 
+### <a name="certificate-autorotation"></a>Rotation automatique des certificats
+
+En ce qui concerne l’option des certificats managés d’Azure Front Door, les certificats sont gérés par Azure Front Door et font l’objet d’une rotation automatique dans les 90 jours précédant leur date d’expiration. En ce qui concerne l’option des certificats managés d’Azure Front Door Standard/Premium, les certificats sont gérés par Azure Front Door et font l’objet d’une rotation automatique dans les 45 jours précédant leur date d’expiration. Si vous utilisez un certificat managé Azure Front Door et que vous voyez que la date d’expiration du certificat est inférieure à 60 jours (30 jours pour le SKU Standard/Premium), créez un ticket de support. 
 
 Pour votre propre certificat TLS/SSL personnalisé :
 
-1. Choisissez « La plus récente » comme version du secret.pour que le certificat soit permuté automatiquement quand une version plus récente est disponible dans votre coffre de clés. Pour les certificats personnalisés, le certificat est permuté automatiquement sous 1-2 jours avec une version plus récente du certificat, quel que soit le délai d’expiration du certificat.
+1. Choisissez « La plus récente » comme version du secret.pour que le certificat soit permuté automatiquement quand une version plus récente est disponible dans votre coffre de clés. Pour les certificats personnalisés, le certificat est renouvelé automatiquement dans un délai de 1 à 2 jours avec une version plus récente du certificat, quel que soit la date d’expiration du certificat.
 
 1. Si une version spécifique est sélectionnée, la rotation automatique n’est pas prise en charge. Vous devez resélectionner la nouvelle version manuellement pour faire pivoter le certificat. Le déploiement de la nouvelle version du certificat/secret peut prendre jusqu’à 24 heures.
 
@@ -74,7 +78,7 @@ Pour votre propre certificat TLS/SSL personnalisé :
 
 ## <a name="supported-cipher-suites"></a>Suites de chiffrement prises en charge
 
-### <a name="for-tls12-the-following-cipher-suites-are-supported"></a>Pour TLS 1.2, les suites de chiffrement suivantes sont prises en charge :
+Pour TLS 1.2, les suites de chiffrement suivantes sont prises en charge :
 
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -84,7 +88,7 @@ Pour votre propre certificat TLS/SSL personnalisé :
 > [!NOTE]
 > Pour Windows 10 et versions ultérieures, nous vous recommandons d’activer une, ou les deux, suites de chiffrement ECDHE pour une meilleure sécurité. Windows 8.1, 8 et 7 ne sont pas compatibles avec ces suites de chiffrement ECDHE. Les suites de chiffrement DHE ont été fournies pour la compatibilité avec ces systèmes d’exploitation.
 
-### <a name="using-custom-domains-with-tls1011-enabled-the-following-cipher-suites-are-supported"></a>Quand vous utilisez des domaines personnalisés avec TLS 1.0/1.1 activé, les suites de chiffrement suivantes sont prises en charge :
+Quand vous utilisez des domaines personnalisés avec TLS 1.0/1.1 activé, les suites de chiffrement suivantes sont prises en charge :
 
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -106,6 +110,8 @@ Pour votre propre certificat TLS/SSL personnalisé :
 * TLS_RSA_WITH_AES_128_CBC_SHA
 * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 * TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+
+Azure Front Door ne prend pas en charge la configuration de suites de chiffrement spécifiques. Vous pouvez obtenir votre certificat SSL/TLS personnalisé auprès de votre autorité de certification (par exemple : Verisign, Entrust ou DigiCert). Ensuite, les suites de chiffrement spécifiques sont marquées sur le certificat lors de sa génération. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

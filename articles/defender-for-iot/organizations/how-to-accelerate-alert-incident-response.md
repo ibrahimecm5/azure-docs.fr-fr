@@ -1,18 +1,18 @@
 ---
 title: Accélérer les workflows d’alerte
 description: Améliorez les workflows d’alerte et d’incident.
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: fa8e00fb8b3fdbb01d23aa7213c3bf21db7e9479
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e570cff67630a483d6926f6090165708a5ca17b4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017971"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283977"
 ---
 # <a name="accelerate-alert-workflows"></a>Accélérer les workflows d’alerte
 
-Cet article explique comment accélérer les workflows d’alerte en utilisant les commentaires d’alerte, les groupes d’alertes et les règles d’alerte personnalisées dans Azure Defender pour IoT.  Ces outils vous aident à :
+Cet article explique comment accélérer les workflows d’alerte en utilisant les commentaires d’alerte, les groupes d’alertes et les règles d’alerte personnalisées dans Microsoft Defender pour IoT.  Ces outils vous aident à :
 
 - Analyser et gérer le volume important d’événements d’alerte détectés sur votre réseau.
 
@@ -114,8 +114,7 @@ Vous pouvez ajouter des règles d’alerte personnalisées en fonction des élé
 - Une condition basée sur la catégorie choisie, par exemple une fonction associée à un protocole, un nom de fichier, un port ou un numéro de transport.
 - Une condition basée sur la référence de date et d’heure, par exemple si une détection a été effectuée à un jour spécifique ou à une certaine partie de la journée.
 
-Si le capteur détecte l’activité décrite dans la règle, l’alerte est envoyée.
-informations détectées par les capteurs individuels. Par exemple, définissez une règle qui demande à un capteur de déclencher une alerte basée sur une adresse IP source, une adresse IP de destination ou une commande (dans un protocole). Quand le capteur détecte le trafic défini dans la règle, une alerte ou un événement est généré.
+Si le capteur détecte l’activité décrite dans la règle, l’alerte est envoyée. informations détectées par les capteurs individuels. Par exemple, définissez une règle qui demande à un capteur de déclencher une alerte basée sur une adresse IP source, une adresse IP de destination ou une commande (dans un protocole). Quand le capteur détecte le trafic défini dans la règle, une alerte ou un événement est généré.
 
 Vous pouvez également utiliser des actions de règle d’alerte pour indiquer à Defender pour IoT d’effectuer les opérations suivantes :
 

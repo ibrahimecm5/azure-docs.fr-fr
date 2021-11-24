@@ -1,28 +1,28 @@
 ---
-title: Collecter des données dans des formats de journaux personnalisés vers Azure Sentinel | Microsoft Docs
-description: Collectez des données à partir de sources de données personnalisées et ingérez-les dans Azure Sentinel à l’aide de l’agent Log Analytics.
+title: Collecter des données dans des formats de journaux personnalisés vers Microsoft Sentinel | Microsoft Docs
+description: Collectez des données à partir de sources de données personnalisées et ingérez-les dans Microsoft Sentinel à l’aide de l’agent Log Analytics.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/17/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 94dbcf84f705aef7e8d723c6516c8a2d36e010ee
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a64f6e11abf8531c90968c2f24824f700ac73d9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023405"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524585"
 ---
-# <a name="collect-data-in-custom-log-formats-to-azure-sentinel-with-the-log-analytics-agent"></a>Collecter des données dans des formats de journaux personnalisés vers Azure Sentinel avec l’agent Log Analytics
+# <a name="collect-data-in-custom-log-formats-to-microsoft-sentinel-with-the-log-analytics-agent"></a>Collecter des données dans des formats de journaux personnalisés vers Microsoft Sentinel avec l’agent Log Analytics
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131023405"
 
 De nombreuses applications consignent des données dans des fichiers texte au lieu des services de journalisation standard comme le Journal des événements Windows ou Syslog. Vous pouvez utiliser l’agent Log Analytics pour collecter des données dans des fichiers texte de formats non standard à partir d’ordinateurs Windows et Linux. Une fois la collecte terminée, vous pouvez analyser les données dans des champs individuels au sein de vos requêtes ou extraire les données lors de la collecte vers des champs individuels.
 
-Cet article explique comment connecter vos sources de données à Azure Sentinel à l’aide de formats de journaux personnalisés. Pour plus d’informations sur les connecteurs de données pris en charge qui utilisent cette méthode, consultez [Informations de référence sur les connecteurs de données](data-connectors-reference.md).
+Cet article explique comment connecter vos sources de données à Microsoft Sentinel à l’aide de formats de journaux personnalisés. Pour plus d’informations sur les connecteurs de données pris en charge qui utilisent cette méthode, consultez [Informations de référence sur les connecteurs de données](data-connectors-reference.md).
 
 Apprenez-en davantage sur les [journaux personnalisés dans la documentation d’Azure Monitor](../azure-monitor/agents/data-sources-custom-logs.md).
 
@@ -40,7 +40,7 @@ Comme dans Syslog, il existe deux étapes pour la configuration de la collecte d
 
 - Configurez les paramètres de journalisation de votre application.
 
-- Configurez l’agent Log Analytics à partir d’Azure Sentinel.
+- Configurez l’agent Log Analytics à partir de Microsoft Sentinel.
 
 ## <a name="install-the-log-analytics-agent"></a>Installer l’agent Log Analytics
 
@@ -49,11 +49,11 @@ Installez l’agent Log Analytics sur la machine Linux ou Windows qui générera
 > [!NOTE]
 > Certains fournisseurs recommandent d’installer l’agent Log Analytics sur un serveur de journaux distinct plutôt que directement sur l’appareil. Consultez la section de votre produit dans la page des [informations de référence sur les connecteurs de données](data-connectors-reference.md) ou dans la documentation de votre produit.
 
-Sélectionnez l’onglet approprié ci-dessous, selon que votre connecteur a une page connecteur de données dans Azure Sentinel.
+Sélectionnez l’onglet approprié ci-dessous, selon que votre connecteur a une page connecteur de données dans Microsoft Sentinel.
 
 # <a name="from-a-specific-data-connector-page"></a>[À partir d’une page de connecteur de données spécifique](#tab/DCG)
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**.
 
 1. Sélectionnez votre type d’appareil, puis sélectionnez **Ouvrir la page du connecteur**.
 
@@ -68,7 +68,7 @@ Sélectionnez l’onglet approprié ci-dessous, selon que votre connecteur a une
 
 # <a name="other-data-sources"></a>[Autres sources de données](#tab/CUS)
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Paramètres**, puis l’onglet **Paramètres de l’espace de travail**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Paramètres**, puis l’onglet **Paramètres de l’espace de travail**.
 
 1. Installez et intégrez l’agent sur l’appareil qui génère les journaux. Choisissez Linux ou Windows, selon le cas.
 
@@ -81,15 +81,16 @@ Sélectionnez l’onglet approprié ci-dessous, selon que votre connecteur a une
 
 ## <a name="configure-the-logs-to-be-collected"></a>Configurer les journaux à collecter
 
-De nombreux types d’appareils ont des connecteurs de données propres qui s’affichent dans la page **Connecteurs de données** d’Azure Sentinel. Certains de ces connecteurs impliquent des instructions supplémentaires spéciales pour configurer correctement la collecte des journaux dans Azure Sentinel. Ces instructions peuvent inclure l’implémentation d’un analyseur basé sur une fonction Kusto. 
+De nombreux types d’appareils ont des connecteurs de données propres qui s’affichent dans la page **Connecteurs de données** de Microsoft Sentinel. Certains de ces connecteurs impliquent des instructions supplémentaires spéciales pour configurer correctement la collecte des journaux dans Microsoft Sentinel. Ces instructions peuvent inclure l’implémentation d’un analyseur basé sur une fonction Kusto. 
 
-Tous les connecteurs répertoriés dans Azure Sentinel affichent des instructions spécifiques sur leurs pages de connecteur respectives dans le portail, ainsi que dans leurs sections de la page [Informations de référence sur les connecteurs de données Azure Sentinel](data-connectors-reference.md).
+Tous les connecteurs répertoriés dans Microsoft Sentinel affichent des instructions spécifiques sur leurs pages de connecteur respectives dans le portail, ainsi que dans leurs sections de la page [Informations de référence sur les connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
 Si votre produit n’est pas répertorié dans la page **Connecteurs de données**, consultez la documentation de votre fournisseur pour obtenir des instructions sur la configuration de la journalisation de votre appareil.
 
 ## <a name="configure-the-log-analytics-agent"></a>Configurer l’agent Log Analytics
 
 1. Dans la page du connecteur, sélectionnez le lien **Ouvrir la configuration des journaux personnalisés de votre espace de travail**.
+
     Ou bien, dans le menu de navigation de l’espace de travail Log Analytics, sélectionnez **Journaux personnalisés**.
 
 1. Dans l’onglet **Tables personnalisées**, sélectionnez **Ajouter un journal personnalisé**.
@@ -110,7 +111,7 @@ Pour interroger les données de journaux personnalisés dans **Journaux**, tapez
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris comment collecter des données à partir de types de journaux personnalisés pour les ingérer dans Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris comment collecter des données à partir de types de journaux personnalisés pour les ingérer dans Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](detect-threats-built-in.md).
 - [Utilisez des classeurs](monitor-your-data.md) pour superviser vos données.

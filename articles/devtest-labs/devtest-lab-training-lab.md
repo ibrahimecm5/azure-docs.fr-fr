@@ -3,28 +3,28 @@ title: Utiliser Azure DevTest Labs à des fins de formation
 description: Cet article fournit des instructions détaillées que vous pouvez suivre pour configurer un lab de formation dans Azure DevTest Labs.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b7de17f89e5e7a23290e00402e13c7035df03578
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6809ee2a9d08e059184ccbcb98c20ac5ea2160fa
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228993"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398114"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Utiliser Azure DevTest Labs à des fins de formation
-Azure DevTest Labs peut être utilisé pour implémenter de nombreux scénarios clés en plus du développement et du test. Un de ces scénarios consiste à mettre en place un laboratoire à des fins de formation. Azure DevTest Labs vous permet de créer un laboratoire où vous pouvez fournir des modèles personnalisés utilisables par chaque participant pour créer des environnements de formation identiques et isolés. Vous pouvez appliquer des stratégies pour vous assurer que les environnements de formation sont à la disposition des participants uniquement lorsque ces derniers en ont besoin et qu’ils contiennent suffisamment de ressources (telles que des machines virtuelles) pour la formation. Enfin, vous pouvez facilement partager le laboratoire avec les participants, qui peuvent y accéder en un seul clic.
+Azure DevTest Labs permet d’implémenter de nombreux scénarios clés en plus du développement et du test. Un scénario consiste à configurer un labo de formation. Azure DevTest Labs vous permet de créer un labo qui fournit des modèles personnalisés pour chaque stagiaire afin de créer des environnements de formation identiques et isolés. Vous pouvez appliquer des stratégies pour vous assurer que les environnements de formation sont à la disposition des participants uniquement lorsque ces derniers en ont besoin et qu’ils contiennent suffisamment de ressources (telles que des machines virtuelles) pour la formation. Enfin, vous pouvez facilement partager le labo pour que les participants puissent y accéder en un clic.
 
 ![Utiliser DevTest Labs à des fins de formation](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Azure DevTest Labs remplit les exigences suivantes, indispensables pour diriger une formation dans n’importe quel environnement virtuel : 
+Azure DevTest Labs remplit les exigences suivantes pour diriger une formation dans n’importe quel environnement virtuel : 
 
 * Les participants ne voient pas les machines virtuelles créées par les autres participants.
 * Toutes les machines de formation sont identiques.
 * Les participants peuvent configurer rapidement leur environnement de formation.
-* Contrôlez les coûts en vous assurant que les participants ne peuvent pas obtenir plus de machines virtuelles que nécessaire et qu’ils arrêtent les machines virtuelles lorsqu’ils ne les utilisent pas.
-* Partagez facilement le laboratoire de formation avec chaque participant.
-* Réutilisez le laboratoire de formation à l’infini.
+* Contrôlez les coûts en vous assurant que les participants ne peuvent pas obtenir plus de machines virtuelles que nécessaire et arrêter les machines virtuelles lorsqu’ils ne les utilisent pas.
+* Partagez facilement le labo de formation avec chaque participant.
+* Réutilisez le labo de formation à l’infini.
 
-Cet article présente les différentes fonctionnalités d’Azure DevTest Labs qui peuvent être utilisées pour satisfaire les exigences de formation décrites précédemment et détaille la procédure à suivre pour mettre en place un laboratoire à des fins de formation.  
+Dans cet article, vous allez découvrir les différentes fonctionnalités de Azure DevTest Labs que vous pouvez utiliser pour répondre aux exigences de formation. Vous pouvez suivre les étapes détaillées pour configurer un labo de formation.  
 
 ## <a name="implementing-training-with-azure-devtest-labs"></a>Mise en œuvre de formations avec Azure DevTest Labs
 1. **Créer le laboratoire** 
@@ -38,7 +38,7 @@ Cet article présente les différentes fonctionnalités d’Azure DevTest Labs q
    | [Créer un laboratoire dans Azure DevTest Labs](devtest-lab-create-lab.md) |Découvrez comment créer un laboratoire dans Azure DevTest Labs à l’aide du portail Azure. |
 2. **Créer des machines virtuelles de formation en quelques minutes à l’aide d’images Marketplace prêtes à l’emploi et d’images personnalisées** 
    
-    Vous pouvez choisir des images prêtes à l’emploi parmi le large éventail d’images disponible dans Azure Marketplace et les mettre à disposition des participants dans le laboratoire. Si les images prêtes à l’emploi ne répondent pas à vos besoins, vous pouvez créer une image personnalisée de machine virtuelle de laboratoire en utilisant une image prête à l’emploi d’Azure Marketplace, en installant tous les logiciels dont vous avez besoin pour la formation et en enregistrant la machine virtuelle en tant qu’image personnalisée dans le laboratoire. 
+    Vous pouvez choisir des images prêtes à l’emploi parmi le large éventail d’images disponible dans Azure Marketplace et les mettre à disposition des participants dans le laboratoire. Si les images prêtes à l’emploi ne répondent pas à vos besoins, vous pouvez créer une image personnalisée. Vous créez une machine virtuelle Lab à l’aide d’une image prête à l’emploi à partir de la Place de marché Azure, vous installez les logiciels dont vous avez besoin pour la formation, puis vous enregistrez la machine virtuelle en tant qu’image personnalisée dans le labo. 
    
     Pour en savoir plus, cliquez sur les liens du tableau suivant :
    
@@ -57,9 +57,9 @@ Cet article présente les différentes fonctionnalités d’Azure DevTest Labs q
    | [Gérer les formules DevTest Labs pour créer des machines virtuelles](devtest-lab-manage-formulas.md) |Découvrez comment créer une formule en choisissant une image, une taille de machine virtuelle (une combinaison de puissance processeur et de RAM) et un réseau virtuel. |
 4. **Contrôle des coûts**
    
-    Azure DevTest Labs vous permet de mettre en place une stratégie dans le laboratoire pour spécifier le nombre maximal de machines virtuelles qui peuvent être créées par un participant. 
+    Azure DevTest Labs vous permet de mettre en place une stratégie dans le labo pour spécifier le nombre maximal de machines virtuelles qu’un participant peut créer dans un labo. 
    
-    Si vous dirigez une formation de plusieurs jours et souhaitez arrêter toutes les machines virtuelles à un moment précis de la journée, puis les redémarrer automatiquement le lendemain, vous pouvez facilement le faire en définissant des stratégies d’arrêt et de démarrage automatiques dans le laboratoire. 
+    Si vous effectuez une formation sur plusieurs jours, vous pouvez arrêter toutes les machines virtuelles à un moment précis de la journée, puis les redémarrer automatiquement le jour suivant. Si vous le souhaitez, définissez l’arrêt automatique et le démarrage automatique des stratégies dans le labo. 
    
     Enfin, une fois la formation terminée, vous pouvez supprimer toutes les machines virtuelles d’un coup en exécutant un simple script PowerShell. 
    

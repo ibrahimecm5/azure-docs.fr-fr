@@ -1,34 +1,34 @@
 ---
-title: Schéma de normalisation du réseau Azure Sentinel (Version héritée - Préversion publique) | Microsoft Docs
-description: Cet article présente le schéma de normalisation des données Azure Sentinel.
+title: Schéma de normalisation du réseau Microsoft Sentinel (Version héritée - Préversion publique) | Microsoft Docs
+description: Cet article présente le schéma de normalisation des données Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7442db85d7b6105278024c9fc23bca9eba20ab19
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5f88a7b5234e2a791d26ecc339e6750497ef6a9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064390"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522856"
 ---
-# <a name="azure-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Schéma de normalisation du réseau Azure Sentinel (Version héritée - Préversion publique)
+# <a name="microsoft-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Schéma de normalisation du réseau Microsoft Sentinel (Version héritée - Préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Le schéma de normalisation du réseau est utilisé pour décrire les événements réseau signalés et est utilisé par Azure Sentinel pour activer l’analytique indépendante de la source.
+Le schéma de normalisation du réseau est utilisé pour décrire les événements réseau signalés et est utilisé par Microsoft Sentinel pour activer l’analytique indépendante de la source.
 
-Pour plus d’informations, consultez [Normalisation et modèle ASIM (Azure Sentinel Information Model)](normalization.md).
+Pour plus d’informations, consultez [Normalisation et modèle d’informations SIEM avancé (ASIM)](normalization.md).
 
 > [!IMPORTANT]
 > Cet article se réfère à la version 0.1 du schéma de normalisation du réseau, qui a été publiée en préversion avant qu’ASIM ne soit disponible. La [version 0.2](network-normalization-schema.md) du schéma de normalisation du réseau est alignée avec ASIM et fournit d’autres améliorations.
@@ -38,11 +38,11 @@ Pour plus d’informations, consultez [Normalisation et modèle ASIM (Azure Sent
 
 ## <a name="terminology"></a>Terminologie
 
-La terminologie suivante est utilisée dans les schémas Azure Sentinel :
+La terminologie suivante est utilisée dans les schémas Microsoft Sentinel :
 
 | Terme | Définition |
 | ---- | ---------- |
-| **Périphérique de création de rapport** | Système envoyant les enregistrements à Azure Sentinel. Il peut ne pas s’agir du système de sujet de l’enregistrement. |
+| **Périphérique de création de rapport** | Système envoyant les enregistrements à Microsoft Sentinel. Il peut ne pas s’agir du système de sujet de l’enregistrement. |
 | **Enregistrement** | Unité de données envoyée à partir du périphérique de création de rapport. Cette unité de données est souvent appelée `log`, `event` ou `alert`, mais peut également avoir d’autres types.|
 |
 
@@ -88,13 +88,13 @@ Voici le schéma de la table de sessions réseau, version 1.0.0
 | **EventVendor** | String | Microsoft | Fournisseur du produit générant l’événement. | événement |
 | **EventResult** | Valeurs multiples : Réussite, Partiel, Échec, [Vide] (chaîne) | Succès | Résultat signalé pour l’activité. Valeur vide quand non applicable. | événement |
 | **EventResultDetails** | String | Mot de passe incorrect | Raison ou détails du résultat rapporté dans EventResult | événement |
-| **EventSchemaVersion** | Real | 0,1 | Version du schéma Azure Sentinel. Actuellement 0.1. | événement |
+| **EventSchemaVersion** | Real | 0,1 | Version du schéma Microsoft Sentinel. Actuellement 0.1. | événement |
 | **EventSeverity** | String | Faible | Si l’activité rapportée a un impact sur la sécurité, indique la gravité de l’impact. | événement |
 | **EventOriginalUid** | String | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | ID d’enregistrement du périphérique de création de rapport. | événement |
 | **EventStartTime** | Date/Heure | Consultez « types de données » | Heure à laquelle l’événement a été déclaré | événement |
 | **TimeGenerated** | Date/Heure | Consultez « types de données » | Heure à laquelle l’événement s’est produit, telle de rapportée par la source de création de rapport. | Champ personnalisé |
-| **EventTimeIngested** | Date/Heure | Consultez « types de données » | Heure à laquelle l’événement a été ingéré dans Azure Sentinel. Sera ajoutée par Azure Sentinel. | événement |
-| **EventUid** | Guid (chaîne) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Identificateur unique utilisé par Azure Sentinel pour marquer une ligne. | événement |
+| **EventTimeIngested** | Date/Heure | Consultez « types de données » | Heure à laquelle l’événement a été ingéré dans Microsoft Sentinel. Sera ajouté par Microsoft Sentinel. | événement |
+| **EventUid** | Guid (chaîne) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Identificateur unique utilisé par Microsoft Sentinel pour marquer une ligne. | événement |
 | **NetworkApplicationProtocol** | String | HTTPS | Protocole de couche Application utilisé par la connexion ou la session. | Réseau |
 | **DstBytes** | int | 32455 | Nombre d’octets envoyés de la destination à la source pour la connexion ou la session. | Destination |
 | **SrcBytes** | int | 46536 | Nombre d’octets envoyés de la source à la destination pour la connexion ou la session. | Source |
@@ -200,7 +200,7 @@ Voici le schéma de la table de sessions réseau, version 1.0.0
 
 ## <a name="differences-between-the-version-01-and-version-02"></a><a name="changes"></a>Différences entre la version 0.1 et la version 0.2
 
-La version d’origine du schéma de normalisation de la session réseau Azure Sentinel (version 0.1) a été publiée en préversion avant qu’ASIM ne soit disponible.
+La version d’origine du schéma de normalisation de la session réseau Microsoft Sentinel (version 0.1) a été publiée en préversion avant qu’ASIM ne soit disponible.
 
 Les différences entre la version 0.1, décrite dans cet article, et la [version 0.2](network-normalization-schema.md) sont les suivantes :
 
@@ -366,9 +366,9 @@ Les champs suivants existent dans la version 0.1 uniquement et ont été suppri
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Normalisation dans Azure Sentinel](normalization.md)
-- [Informations de référence sur le schéma de normalisation de l’authentification Azure Sentinel (préversion publique)](authentication-normalization-schema.md)
-- [Informations de référence de schéma de normalisation d’événement du fichier Azure Sentinel (préversion publique)](file-event-normalization-schema.md)
-- [Informations de référence de schéma de normalisation du DNS Azure Sentinel](dns-normalization-schema.md)
-- [Informations de référence du schéma de normalisation des événements de processus Azure Sentinel](process-events-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation des événements du registre Azure Sentinel (préversion publique)](registry-event-normalization-schema.md)
+- [Normalisation dans Microsoft Sentinel](normalization.md)
+- [Informations de référence sur le schéma de normalisation de l’authentification Microsoft Sentinel (préversion publique)](authentication-normalization-schema.md)
+- [Informations de référence de schéma de normalisation d’événement du fichier Microsoft Sentinel (préversion publique)](file-event-normalization-schema.md)
+- [Informations de référence de schéma de normalisation du DNS Microsoft Sentinel](dns-normalization-schema.md)
+- [Informations de référence du schéma de normalisation des événements de processus de Microsoft Sentinel](process-events-normalization-schema.md)
+- [Informations de référence de schéma de normalisation d’événement du registre Microsoft Sentinel (préversion publique)](registry-event-normalization-schema.md)

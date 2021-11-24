@@ -1,7 +1,6 @@
 ---
 title: Résoudre les problèmes d’écriture différée avec l’approvisionnement RH
-description: Découvrez comment résoudre les problèmes de mise à jour de gestionnaire avec l’approvisionnement RH
-services: active-directory
+description: Apprenez à résoudre les problèmes d’écriture différée avec l’approvisionnement RH.
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: ff6f9d291b52b7028fbccdc001bc10d60c8c1450
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1d40b2738e52866ebc47bbe43b673c52b774619f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479202"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324533"
 ---
 # <a name="troubleshoot-hr-write-back-issues"></a>Résoudre les problèmes d’écriture différée RH
 
@@ -25,7 +24,7 @@ ms.locfileid: "131479202"
 * Workday Writeback
 * Écriture différée de SAP SuccessFactors
 
-| | |
+| Résolution des problèmes | Détails |
 |-- | -- |
 | **Problème** | Vous avez correctement configuré l’application Writeback. Vous obtenez une valeur Null ou vide à partir de Azure AD. Vous vous attendez à ce que le service d’approvisionnement efface la valeur d’e-mail ou de numéro de téléphone correspondante dans l’application RH. Mais l'opération échoue. |
 | **Cause** | Le service d’approvisionnement n’a pas de logique par défaut pour le traitement des valeurs Null. Lorsque le service d’approvisionnement reçoit une chaîne vide de l’application source, il tente de transmettre la valeur telle quelle à l’application cible. Si Workday ou SuccessFactors ne peuvent pas traiter des valeurs vides, une erreur est retournée. |

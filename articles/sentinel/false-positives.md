@@ -1,24 +1,24 @@
 ---
-title: Gérer les faux positifs dans Azure Sentinel
-description: Découvrez comment résoudre les faux positifs dans Azure Sentinel en créant des règles d’automatisation ou en modifiant des règles analytiques pour spécifier des exceptions.
+title: Gérer les faux positifs dans Microsoft Azure Sentinel
+description: Découvrez comment résoudre les faux positifs dans Microsoft Sentinel en créant des règles d’automatisation ou en modifiant des règles d’analyse pour spécifier des exceptions.
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d14d4942f659be48b49615e6fe9addb2ffa34905
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 009cb9d66f4294bc72bafdcf515a68131d9b7e38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046885"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521156"
 ---
-# <a name="handle-false-positives-in-azure-sentinel"></a>Gérer les faux positifs dans Azure Sentinel
+# <a name="handle-false-positives-in-microsoft-sentinel"></a>Gérer les faux positifs dans Microsoft Azure Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Les [règles analytiques Azure Sentinel](detect-threats-built-in.md) vous avertissent lorsque quelque chose de suspect se produit sur votre réseau. Aucune règle analytique n’est parfaite et il est possible que vous receviez des faux positifs qu’il vous faudra gérer. Cet article explique comment gérer les faux positifs à l’aide de l’automatisation ou en modifiant les règles analytiques planifiées.
+Les [règles d’analyse de Microsoft Sentinel](detect-threats-built-in.md) vous avertissent lorsque quelque chose de suspect se produit sur votre réseau. Aucune règle analytique n’est parfaite et il est possible que vous receviez des faux positifs qu’il vous faudra gérer. Cet article explique comment gérer les faux positifs à l’aide de l’automatisation ou en modifiant les règles analytiques planifiées.
 
 ## <a name="false-positive-causes-and-prevention"></a>Causes et prévention des faux positifs
 
@@ -49,17 +49,17 @@ La façon la plus simple d’ajouter une exception consiste à [Ajouter une règ
 
 Pour ajouter une règle d’automatisation afin de gérer un faux positif :
 
-1. Dans Azure Sentinel, sous **Incidents**, sélectionnez l’incident pour lequel vous souhaitez créer une exception.
+1. Dans Microsoft Sentinel, sous **Incidents**, sélectionnez l’incident pour lequel vous souhaitez créer une exception.
 1. Sélectionnez **Créer une règle d’automatisation**.
 1. Dans la barre latérale **Créer une règle d’automatisation**, vous pouvez modifier le nom de la nouvelle règle plutôt que le nom de la règle d’alerte pour identifier l’exception.
 1. Sous **Conditions**, vous pouvez ajouter plusieurs **noms de règles analytiques** auxquelles ajouter l’exception.
 1. La barre latérale présente les entités spécifiques de l’incident susceptible d’avoir provoqué le faux positif. Conservez les suggestions automatiques ou modifiez-les pour affiner l’exception. Par exemple, vous pouvez modifier une condition sur une adresse IP à appliquer à un sous-réseau entier.
 
-   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Capture d’écran montrant comment créer une règle d’automatisation pour un incident dans Azure Sentinel.":::
+   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Capture d’écran montrant comment créer une règle d’automatisation pour un incident dans Microsoft Sentinel.":::
 
 1. Après avoir défini le déclencheur, vous pouvez continuer à définir l’objectif de la règle :
 
-   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Capture d’écran montrant comment terminer la création et l’application d’une règle d’automatisation dans Azure Sentinel.":::
+   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Capture d’écran montrant comment terminer la création et l’application d’une règle d’automatisation dans Microsoft Sentinel.":::
 
    - La règle est déjà configurée pour fermer un incident répondant aux critères de l’exception.
    - Vous pouvez ajouter un commentaire à l’incident automatiquement fermé expliquant l’exception. Par exemple, vous pouvez indiquer que l’incident est lié à une activité administrative connue.
@@ -68,7 +68,7 @@ Pour ajouter une règle d’automatisation afin de gérer un faux positif :
 1. Sélectionnez **Appliquer** pour activer l’exception.
 
 > [!TIP]
-> Vous pouvez également créer une règle d’automatisation de zéro, sans utiliser d’incident. Sélectionnez **Automatisation** dans le menu de navigation gauche d’Azure Sentinel, puis **Créer** > **Ajouter une nouvelle règle**.
+> Vous pouvez également créer une règle d’automatisation de zéro, sans utiliser d’incident. Sélectionnez **Automatisation** dans le menu de navigation gauche de Microsoft Sentinel, puis **Créer** > **Ajouter une nouvelle règle**.
 
 ## <a name="add-exceptions-by-modifying-analytics-rules"></a>Ajouter des exceptions en modifiant les règles analytiques
 
@@ -76,7 +76,7 @@ Pour implémenter des exceptions, une autre option consiste à modifier la requ�
 
 ### <a name="modify-the-query"></a>Modifier la requête
 
-Pour modifier des règles analytiques existantes, sélectionnez **Automatisation** dans le menu de navigation gauche d’Azure Sentinel. Sélectionnez la règle que vous souhaitez modifier, puis **Modifier** en bas à droite pour ouvrir l'**Assistant règles analytiques**.
+Pour modifier des règles d’analyse existantes, sélectionnez **Automatisation** dans le menu de navigation gauche de Microsoft Sentinel. Sélectionnez la règle que vous souhaitez modifier, puis **Modifier** en bas à droite pour ouvrir l'**Assistant règles analytiques**.
 
 Pour obtenir des instructions détaillées sur l’utilisation de l’**Assistant Règles analytiques** afin de créer et de modifier des règles analytiques, consultez [Créer des règles analytiques personnalisées pour détecter des menaces](detect-threats-custom.md).
 
@@ -150,6 +150,6 @@ let subnets = _GetWatchlist('subnetallowlist');
 
 Pour plus d'informations, consultez les pages suivantes :
 - [Utiliser les données UEBA pour analyser les faux positifs](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
-- [Automatiser la gestion des incidents dans Azure Sentinel à l’aide de règles d’automatisation](automate-incident-handling-with-automation-rules.md)
+- [Automatiser la gestion des incidents dans Microsoft Sentinel avec des règles d’automatisation](automate-incident-handling-with-automation-rules.md)
 - [Créer des règles d’analytique personnalisées pour détecter des menaces](detect-threats-custom.md)
-- [Utiliser les Watchlists Azure Sentinel](watchlists.md)
+- [Utiliser les listes de surveillance Microsoft Sentinel](watchlists.md)

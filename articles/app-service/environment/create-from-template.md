@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: fae859e0b762a36378819d48325dda0077407628
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 677703e455d985b91f77a71acce3f7809525b368
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012375"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519569"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Créer un ASE à l’aide d’un modèle Azure Resource Manager
 
@@ -26,12 +26,12 @@ Les environnements Azure App Service (ASE, App Service Environment) peuvent �
 Un ASE peut être créé à l’aide du portail Azure ou d’un modèle Azure Resource Manager. Cet article décrit les étapes et la syntaxe nécessaires pour créer un ASE externe ou un ASE ILB à l’aide de modèles Resource Manager. Pour découvrir comment créer un environnement ASE v2 sur le Portail Azure, consultez [Création d’un environnement ASE externe][MakeExternalASE] ou [Création d’un environnement ASE à équilibreur de charge interne][MakeILBASE].
 Pour découvrir comment créer un environnement ASE v3 sur le Portail Azure, consultez [Création d’un environnement ASE v3][Create ASEv3].
 
-Lorsque vous créez un ASE dans le portail Azure, vous pouvez créer votre réseau virtuel en même temps, ou choisir un réseau virtuel préexistant pour le déploiement. 
+Lorsque vous créez un environnement ASE dans le portail Azure, vous pouvez créer votre réseau virtuel en même temps ou choisir un réseau virtuel préexistant sur lequel le déployer. 
 
 Lorsque vous créez un ASE à partir d’un modèle, vous devez commencer avec : 
 
-* Un réseau virtuel Resource Manager.
-* Un sous-réseau de ce réseau virtuel. Pour le sous-réseau ASE, nous recommandons une taille de `/24` avec 256 adresses pour s’adapter à une croissance et une mise à l’échelle futures. Une fois l’ASE créé, vous ne pouvez plus en modifier la taille.
+* Un réseau virtuel Azure.
+* Un sous-réseau dans ce réseau virtuel. Pour le sous-réseau ASE, nous recommandons une taille de `/24` avec 256 adresses pour s’adapter à une croissance et une mise à l’échelle futures. Une fois l’ASE créé, vous ne pouvez plus en modifier la taille.
 * Lorsque vous créez un environnement ASE dans un réseau virtuel et un sous-réseau préexistants, le nom du groupe de ressources existant, celui du réseau virtuel et celui du sous-réseau sont requis.
 * L’abonnement vers lequel vous souhaitez procéder au déploiement.
 * L’emplacement dans lequel vous souhaitez procéder au déploiement.
@@ -52,17 +52,17 @@ Si vous souhaitez créer un environnement ASE, utilisez l’exemple de modèle R
 * *internalLoadBalancingMode* : obligatoire. Dans la plupart des cas, spécifiez la valeur 3 pour le trafic HTTP et HTTPS sur les ports 80 et 443. Si cette propriété a la valeur 0, le trafic HTTP/HTTPS reste sur l’adresse IP virtuelle publique.
 * *zoneRedundant* : obligatoire. Dans la plupart des cas, spécifiez la valeur false pour que l’environnement ASE ne soit pas déployé dans les Zones de disponibilité (AZ, Availability Zone). Les environnements ASE zonaux peuvent être déployés dans certaines régions (cf. [cette page][AZ Support for ASEv3]).
 * *dedicatedHostCount* : obligatoire. Dans la plupart des cas, spécifiez la valeur 0 pour que l’environnement ASE soit déployé normalement sans hôtes dédiés.
-* *useExistingVnetandSubnet* : obligatoire. Spécifiez la valeur true si vous utilisez un réseau virtuel et un sous-réseau existants. 
-* *vNetResourceGroupName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de groupe de ressources du réseau virtuel et du sous-réseau où se trouve l’environnement ASE.
-* *virtualNetworkName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de réseau virtuel du réseau virtuel et du sous-réseau où se trouve l’environnement ASE.
-* *subnetName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de sous-réseau du réseau virtuel et du sous-réseau où se trouve l’environnement ASE.
+* *useExistingVnetandSubnet* : obligatoire. Définissez la valeur sur true si vous utilisez un réseau et un sous-réseau virtuels existants. 
+* *vNetResourceGroupName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de groupe de ressources du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
+* *virtualNetworkName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de réseau virtuel du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
+* *subnetName* : obligatoire si vous utilisez un réseau virtuel et un sous-réseau existants. Ce paramètre définit le nom de sous-réseau du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
 * *createPrivateDNS* : spécifiez la valeur true si vous souhaitez créer une zone DNS privée une fois l’environnement ASE v3 créé. Pour un environnement ASE à équilibreur de charge interne, lorsque ce paramètre possède la valeur true, il crée une zone DNS privée comme nom ASE avec le suffixe DNS *appserviceenvironment.net*. 
 ### <a name="asev2-parameters"></a>Paramètres ASE v2
 * *aseName* : ce paramètre définit un nom d’environnement ASE unique.
 * *location* : ce paramètre définit l’emplacement de l’environnement ASE.
-* *existingVirtualNetworkName* : ce paramètre définit le nom de réseau virtuel du réseau virtuel et du sous-réseau existants où se trouve l’environnement ASE.
-* *existingVirtualNetworkResourceGroup* : ce paramètre définit le nom de groupe de ressources du réseau virtuel et du sous-réseau existants où se trouve l’environnement ASE.
-* *subnetName* : ce paramètre définit le nom de sous-réseau du réseau virtuel et du sous-réseau existants où se trouve l’environnement ASE.
+* *existingVirtualNetworkName* : ce paramètre définit le nom de réseau virtuel du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
+* *existingVirtualNetworkResourceGroup* : ce paramètre définit le nom de groupe de ressources du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
+* *subnetName* : ce paramètre définit le nom de sous-réseau du réseau virtuel et du sous-réseau existants dans lesquels l’environnement ASE résidera.
 * *internalLoadBalancingMode* : dans la plupart des cas, définissez ce paramètre sur 3, ce qui signifie que le trafic HTTP/HTTPS sur les ports 80/443 ainsi que les ports de canaux de contrôle/données écoutés par le service FTP sur l’ASE seront liés à une adresse interne du réseau virtuel allouée à l’ILB. Si ce paramètre est défini sur 2, seuls les ports associés au service FTP (canaux de contrôle et de données) sont liés à une adresse d’ILB. Si cette propriété a la valeur 0, le trafic HTTP/HTTPS reste sur l’adresse IP virtuelle publique.
 * *dnsSuffix* : ce paramètre définit le domaine racine par défaut affecté à l’ASE. Dans la version publique d’Azure App Service, le domaine racine par défaut pour toutes les applications web est *azurewebsites.net*. Étant donné qu’un ASE ILB est interne au réseau virtuel d’un client, il n’est pas pertinent d’utiliser le domaine racine par défaut du service public. Au lieu de cela, un ILB ASE doit avoir un domaine racine par défaut approprié pour une utilisation au sein du réseau virtuel interne d’une société. Par exemple, une société nommée Contoso Corporation peut utiliser le domaine racine par défaut *internal-contoso.com* pour les applications qui sont destinées à être résolues et accessibles uniquement au sein du réseau virtuel de Contoso. 
 * *ipSslAddressCount* : ce paramètre est automatiquement défini par défaut sur la valeur 0 dans le fichier *azuredeploy.json*, car les ASE ILB disposent d’une seule adresse d’ILB. Il n’existe pas d’adresse IP SSL explicite pour un ASE ILB. Par conséquent, le pool d’adresses IP SSL pour un ASE ILB doit être défini sur zéro. Autrement, une erreur d’approvisionnement se produit.

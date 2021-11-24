@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: db874b82a8d0c966dbe6cdbecd14cf3c5fe521d2
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 912299553e48bbaec6c815e44f91a6ac0b42441e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615730"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547466"
 ---
-# <a name="disable-auto-acceleration-sign-in-in-azure-active-directory"></a>Désactiver la connexion d’auto-accélération dans Azure Active Directory
+# <a name="disable-auto-acceleration-sign-in"></a>Désactiver la connexion d’auto-accélération
 
 La [stratégie Découverte de domaine d’accueil](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) offre aux administrateurs plusieurs moyens de contrôler le mode et l’emplacement d’authentification de leurs utilisateurs. La section `domainHintPolicy` de la stratégie HRD est utilisée pour faciliter la migration d’utilisateurs fédérés vers des informations d’identification managées dans le cloud telles que [FIDO](../authentication/howto-authentication-passwordless-security-key.md), en veillant à ce qu’ils visitent toujours la page de connexion à Azure AD et ne soient pas automatiquement accélérés vers un fournisseur d’identité fédéré en raison d’indications de domaine.
 

@@ -3,15 +3,15 @@ title: Étendre Azure DevTest Labs en utilisant Azure Functions
 description: Découvrez comment étendre Azure DevTest Labs à l’aide d’Azure Functions.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8a6200dbfce99ee7904dc1a65965e95d81e98471
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a3160335bc233d0873c6e9cae5d32aef4f494ab9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623643"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401114"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Utiliser Azure Functions pour étendre DevTest Labs
-Vous pouvez utiliser Azure Functions pour prendre en charge des scénarios en plus de ceux qui sont déjà pris en charge par DevTest Labs. Azure Functions permet d’étendre les fonctionnalités intégrées du service pour répondre à des besoins spécifiques de votre entreprise. La liste suivante présente certains des scénarios possibles. Cet article montre comment implémenter l’un de ces exemples de scénarios.
+Vous pouvez utiliser Azure Functions pour prendre en charge des scénarios en plus de ceux qui sont déjà pris en charge par DevTest Labs. Vous pouvez utiliser Azure Functions pour étendre les fonctionnalités intégrées du service en fonction des besoins spécifiques à votre entreprise. La liste suivante présente certains des scénarios possibles. Cet article montre comment implémenter l’un de ces exemples de scénarios.
 
 - Fournir une synthèse générale des machines virtuelles dans le labo
 - [Configurer un lab pour utiliser une passerelle Bureau à distance](configure-lab-remote-desktop-gateway.md)
@@ -38,7 +38,7 @@ Quand des utilisateurs sélectionnent la page de **Support interne** dans DevTes
 
 Lorsque vous sélectionnez le bouton **Cliquer ici pour actualiser**, la page appelle la première fonction Azure : **UpdateInternalSupportPage**. La fonction interroge DevTest Labs pour obtenir des informations, puis réécrit la page **Support interne** avec les nouvelles informations.
 
-Pour exécuter une autre action sur toutes les machines virtuelles auxquelles les artefacts Windows Update n’ont pas été appliqués récemment, un bouton permet d’appliquer des mises à jour Windows à la machine virtuelle. Lorsque vous sélectionnez le bouton ***Exécuter Windows Update** pour une machine virtuelle, la page appelle la deuxième fonction Azure : **ApplyWindowsUpdateArtifact**. Cette fonction vérifie si la machine virtuelle est en cours d’exécution et, si c’est le cas, applique directement l’artefact [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates).
+Vous pouvez effectuer une autre action. Pour les machines virtuelles sur lesquelles les artefacts Windows Update n’ont pas été appliqués récemment, un bouton vous permet d’appliquer des mises à jour Windows à la machine virtuelle. Lorsque vous sélectionnez le bouton ***Exécuter Windows Update** pour une machine virtuelle, la page appelle la deuxième fonction Azure : **ApplyWindowsUpdateArtifact**. Cette fonction vérifie si la machine virtuelle est en cours d’exécution et, si c’est le cas, applique directement l’artefact [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates).
 
 ## <a name="step-by-step-walkthrough"></a>Procédure pas à pas
 Cette section fournit des instructions pas à pas pour la configuration des ressources Azure nécessaires pour mettre à jour la page **Support interne**. Cette procédure pas à pas fournit un exemple d’extension de DevTest Labs. Vous pouvez utiliser ce modèle pour d’autres scénarios.
@@ -46,7 +46,7 @@ Cette section fournit des instructions pas à pas pour la configuration des ress
 ### <a name="step-1-create-a-service-principal"></a>Étape 1 : Créer un principal de service 
 La première étape consiste à obtenir un principal de service avec l’autorisation d’accès à l’abonnement contenant le labo. Le principal de service doit utiliser l’authentification par mot de passe. Cela est possible avec [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps) ou le [portail Azure](../active-directory/develop/howto-create-service-principal-portal.md). Si vous avez déjà un principal de service à utiliser, vous pouvez ignorer cette étape.
 
-Notez l’**ID d’application**, la **clé** et l’**ID de locataire** pour le principal de service. Vous en aurez besoin plus loin dans le cadre de cette procédure pas à pas. 
+Notez l’**ID d’application**, la **clé** et l’**ID de locataire** pour le principal de service. Vous en aurez besoin plus tard dans cette procédure pas à pas. 
 
 ### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>Étape 2 : Télécharger et ouvrir l’exemple dans Visual Studio 2019
 Téléchargez une copie de l’[Exemple Azure Functions C#](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) localement (en clonant le dépôt ou en le téléchargeant [à partir d’ici](https://github.com/Azure/azure-devtestlab/archive/master.zip)).  
@@ -74,7 +74,7 @@ Une fois les fonctions publiées, vous devez obtenir leurs URL à partir du port
     ![URL de fonctions Azure](./media/extend-devtest-labs-azure-functions/function-url.png)
 4. Copiez et enregistrez l’URL. Répétez ces étapes pour l’autre fonction Azure. 
 
-Vous aurez également besoin d’informations supplémentaires sur le principal de service, telles que l’ID d’application, la clé et l’ID de locataire.
+Vous aurez également besoin d’informations sur le principal de service, telles que l’ID d’application, la clé et l’ID de locataire.
 
 
 ### <a name="step-5--update-application-settings"></a>Étape 5 : Mettre à jour les paramètres d’application

@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 27b0841e601fb7d2eaa7712495b7440a0b886d7c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a1ae8cd56d705df0234425488029ca7073c6dfea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769252"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347705"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>Migrer une instance de cluster de basculement vers SQL Server sur machines virtuelles Azure
 
@@ -325,7 +325,7 @@ Une fois vos machines virtuelles migrées, reconfigurez le cluster. Suivez les �
    NumberofNodes | Facultatif | Spécifiez le nombre de nœuds dans votre instance de cluster de basculement. Ce paramètre est utilisé pour identifier la référence SKU appropriée pour les disques partagés à créer. Par défaut, le script suppose que le nombre de nœuds du cluster est 2.   
    DiskNamePrefix | Facultatif | Spécifiez le préfixe que vous souhaitez ajouter aux noms de vos disques partagés. 
    
-   ```powershell 
+   ```powershell
    ./Create-SharedDisks.ps1 -ResourceGroupName $resoucegroupname -NumberofNodes $nodesincluster -DiskNamePrefix $disknameprefix 
    ```
 
@@ -336,7 +336,7 @@ Une fois vos machines virtuelles migrées, reconfigurez le cluster. Suivez les �
    ResourceGroupName | Obligatoire | Spécifiez le nom du groupe de ressources contenant les serveurs migrés.
    StartingLunNumber | Facultatif |Spécifiez le numéro d’unité logique de départ qui est disponible pour les disques partagés à attacher. Par défaut, le script tente d’attacher des disques partagés au numéro d’unité logique à partir de 0.  
    
-   ```powershell 
+   ```powershell
    ./Attach-ShareDisks.ps1 -ResourceGroupName $resoucegroupname 
    ```
 
@@ -374,10 +374,10 @@ Votre instance de cluster de basculement SQL Server est prête.
     - Sécurisez les données en sauvegardant les machines virtuelles Azure avec le [service Sauvegarde Azure](../../../backup/quick-backup-vm-portal.md). 
     - Maintenez les charges de travail en cours d’exécution et disponibles en permanence en répliquant les machines virtuelles Azure vers une région secondaire avec [Site Recovery](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pour renforcer la sécurité :
-    - Verrouillez et limitez l’accès du trafic entrant avec l’[administration juste-à-temps d’Azure Security Center](../../../security-center/security-center-just-in-time.md).
+    - Verrouillez et limitez l’accès du trafic entrant grâce à l’[administration juste-à-temps de Microsoft Defender pour le cloud](../../../security-center/security-center-just-in-time.md).
     - Limitez le trafic réseau vers les points de terminaison de gestion avec des [groupes de sécurité réseau](../../../virtual-network/network-security-groups-overview.md).
     - Déployez [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) pour sécuriser les disques, et protégez les données contre le vol et les accès non autorisés.
-    - Découvrez plus d’informations sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) et visitez [Azure Security Center](https://azure.microsoft.com/services/security-center/).
+    - Pour en savoir plus sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), consultez le site [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/).
 - Pour la surveillance et la gestion :
     - Envisagez de déployer [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) pour surveiller l’utilisation et les coûts des ressources.
 

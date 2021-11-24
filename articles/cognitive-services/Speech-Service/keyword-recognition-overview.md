@@ -11,16 +11,18 @@ ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
 ms.custom: devx-track-csharp, ignite-fall-2021
-ms.openlocfilehash: d1fd3bd30b0778065101fb1d223c63421b5e8d67
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a91f3e6e59647d6817f05137e284fbee4400dbd8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131043677"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491783"
 ---
 # <a name="keyword-recognition"></a>Reconnaissance de mot clé
 
-La reconnaissance de mot clé fait référence à la technologie vocale qui permet de reconnaître l’existence d’un mot ou d’une expression dans un flux audio donné. Elle est souvent synonyme d’« identification de mot clé ». Le cas d’usage le plus courant de la reconnaissance de mot clé est l’activation vocale des assistants virtuels. Par exemple, « Hey Cortana » est le mot clé de l’assistant Cortana. Lors de la reconnaissance du mot clé, une action propre au scénario est effectuée. Pour les scénarios d’assistant virtuel, une action courante est la reconnaissance vocale de l’audio qui suit le mot clé.
+La reconnaissance de mot clé détecte un mot ou une phrase brève dans un flux de données audio. On parle également de détection de mot clé. 
+
+Le cas d’usage le plus courant de la reconnaissance de mot clé est l’activation vocale des assistants virtuels. Par exemple, « Hey Cortana » est le mot clé de l’assistant Cortana. Lors de la reconnaissance du mot clé, une action propre au scénario est effectuée. Pour les scénarios d’assistant virtuel, une action courante est la reconnaissance vocale de l’audio qui suit le mot clé.
 
 En règle générale, les assistants virtuels sont toujours en train d’écouter. La reconnaissance de mot clé joue le rôle d’une limite de confidentialité pour l’utilisateur. Une exigence de mot clé agit comme un obstacle qui empêche l’audio utilisateur non lié de traverser l’appareil local pour atteindre le cloud.
 
@@ -28,7 +30,7 @@ Pour trouver l’équilibre entre précision, latence et complexité de calcul, 
 
 Le système actuel est conçu avec plusieurs étapes qui couvrent la périphérie et le cloud :
 
-![Plusieurs étapes de reconnaissance de mot clé à la périphérie et dans le cloud.](media/custom-keyword/keyword-recognition-multi-stage.png)
+![Plusieurs étapes de reconnaissance de mot clé à la périphérie et dans le cloud.](media/custom-keyword/kw-recognition-multi-stage.png)
 
 La précision de la reconnaissance de mot clé se mesure à l’aide des métriques suivantes :
 * **Taux d’acceptations correctes** : mesure la capacité du système à reconnaître le mot clé quand il est prononcé par un utilisateur final. Cette métrique est également appelée taux de vrais positifs. 
@@ -46,12 +48,15 @@ Aucun coût n’est facturé pour l’utilisation du service Mot clé personnali
 
 ### <a name="types-of-models"></a>Types de modèles
 
-Le service Mot clé personnalisé vous permet de générer deux types de modèles sur appareil pour tout mot clé :
+Le service Mot clé personnalisé vous permet de générer deux types de modèles sur appareil pour tout mot clé.
 
 | Type de modèle | Description |
 | ---------- | ----------- |
 | De base | Adapté aux démonstrations ou prototypages rapides. Les modèles sont générés avec un modèle de base commun et peuvent nécessiter jusqu’à 15 minutes de préparation. Les caractéristiques de précision de ces modèles peuvent ne pas être optimales. |
 | Avancé | Adapté à l’intégration des produits. Les modèles sont générés avec adaptation d’un modèle de base commun à l’aide de données d’entraînement simulées pour améliorer les caractéristiques de précision. La préparation de ces modèles peut prendre jusqu’à 48 heures. |
+
+> [!NOTE]
+> Vous pouvez afficher la liste des régions qui prennent en charge le type de modèle **Avancé** dans la documentation de [prise en charge dans les régions de la reconnaissance de mot clé](keyword-recognition-region-support.md). 
 
 Aucun de ces types de modèles ne vous oblige à charger des données d’entraînement. Le service Mot clé personnalisé gère entièrement la génération de données et l’entraînement du modèle.
 
@@ -77,7 +82,7 @@ Le service Vérification du mot clé est toujours utilisé en combinaison avec l
 
 Le service Vérification du mot clé est toujours utilisé conjointement au service de reconnaissance vocale. Les deux services s’exécutent en parallèle. Cela signifie que l’audio est envoyé aux deux services à des fins de traitement simultané.
 
-![Traitement en parallèle des services Vérification du mot clé et Reconnaissance vocale.](media/custom-keyword/keyword-verification-parallel-processing.png)
+![Traitement en parallèle des services Vérification du mot clé et Reconnaissance vocale.](media/custom-keyword/kw-verification-parallel-processing.png)
 
 L’exécution en parallèle du service Vérification du mot clé et de la reconnaissance vocale offre les avantages suivants :
 * **Aucune latence supplémentaire sur les résultats de la reconnaissance vocale** : L’exécution en parallèle signifie que le service Vérification du mot clé n’ajoute aucune latence et que le client reçoit les résultats de la reconnaissance vocale aussi rapidement. Si le service Vérification du mot clé détermine que le mot clé n’était pas présent dans l’audio, le traitement de la reconnaissance vocale s’arrête, ce qui évite tout traitement de reconnaissance vocale inutile. Toutefois, le traitement du modèle cloud et du réseau augmente la latence de l’activation vocale perçue par l’utilisateur. Pour plus d’informations, consultez les [recommandations et instructions](keyword-recognition-guidelines.md).

@@ -4,12 +4,12 @@ description: Découvrez les concepts et techniques Azure Functions dont vous ave
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7aef7301207772711bcce7fbec4bde8937c94cf1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477057"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523445"
 ---
 # <a name="azure-functions-developer-guide"></a>Guide du développeur Azure Functions
 Dans Azure Functions, des fonctions spécifiques partagent quelques concepts techniques et composants de base, quels que soient le langage et la liaison que vous utilisez. Avant de passer à l'apprentissage des détails propres à un langage ou une liaison donnés, veillez à lire cette présentation qui s'applique à l’ensemble d’entre eux.
@@ -218,12 +218,16 @@ Pour utiliser une connexion basée sur une identité pour « AzureWebJobsStorag
 
 | Paramètre                       | Description                                | Valeur d'exemple                                        |
 |-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
-| `AzureWebJobsStorage__blobServiceUri`| URI de plan de données du service BLOB du compte de stockage. | <nom_compte_stockage>.blob.core.windows.net |
-| `AzureWebJobsStorage__queueServiceUri` | URI de plan de données du service de File d’attente du compte de stockage. | <nom_compte_stockage>.queue.core.windows.net |
+| `AzureWebJobsStorage__blobServiceUri`| URI de plan de données du service BLOB du compte de stockage, utilisant le schéma HTTPS. | https://<storage_account_name>.blob.core.windows.net |
+| `AzureWebJobsStorage__queueServiceUri` | URI de plan de données du service File d’attente du compte de stockage, utilisant le schéma HTTPS. | https://<storage_account_name>.queue.core.windows.net |
 
 Il est également possible de définir des [propriétés courantes pour les connexions basées sur une identité](#common-properties-for-identity-based-connections).
 
 Si vous utilisez un compte de stockage qui utilise le suffixe DNS et le nom de service par défaut pour Azure global, en respectant le format `https://<accountName>.blob/queue/file/table.core.windows.net`, vous pouvez à la place définir `AzureWebJobsStorage__accountName` sur le nom de votre compte de stockage. Les points de terminaison d’objet blob et de file d’attente seront déduits pour ce compte. Cela ne fonctionnera pas si le compte de stockage se trouve dans un cloud souverain ou s’il a un DNS personnalisé.
+
+| Paramètre                       | Description                                | Valeur d'exemple                                        |
+|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| `AzureWebJobsStorage__accountName` | Nom de compte d’un compte de stockage, valide uniquement si le compte n’est pas dans un cloud souverain et n’a pas de DNS personnalisé. | <storage_account_name> |
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 

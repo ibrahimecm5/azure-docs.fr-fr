@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d7bf32faabd6b0a9d2037ad5599a5b2cceb70053
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4c4188a04db444a153577ead82d79f32c9b137d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556252"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518239"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Configurer l’apprentissage AutoML sans code avec l’interface utilisateur de Studio 
 
@@ -122,7 +122,6 @@ Dans le cas contraire, vous verrez une liste de vos expériences récentes de ML
     
         Si le deep learning est activé, la validation est limitée à la _division train_validation_. [Découvrez-en plus sur les options de validation](how-to-configure-cross-validation-data-splits.md).
 
-
     1. Pour les **prévisions** : 
     
         1. Activez le deep learning.
@@ -139,13 +138,32 @@ Dans le cas contraire, vous verrez une liste de vos expériences récentes de ML
     Expliquer le meilleur modèle | Sélectionnez cette option pour activer ou désactiver l’affichage d’explications du meilleur modèle recommandé. <br> Cette fonctionnalité n’est actuellement pas disponible pour [certains algorithmes de prévision](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
     Algorithme bloqué| Sélectionnez les algorithmes que vous souhaitez exclure du travail de formation. <br><br> L’autorisation des algorithmes est disponible uniquement pour les [expériences SDK](how-to-configure-auto-train.md#supported-models). <br> Consultez les [modèles pris en charge pour chaque type de tâche](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels).
     Critère de sortie| Quand l’un de ces critères est satisfait, le travail d’entraînement s’arrête. <br> *Durée du travail de formation (heures)*  : Délai d'exécution du travail de formation. <br> *Seuil de score de métrique* :  Score de métrique minimal pour tous les pipelines. Ainsi, si vous avez défini une métrique cible que vous souhaitez atteindre, vous ne passez pas plus de temps sur le travail de formation que nécessaire.
-    Validation| Sélectionnez une des options de validation croisée à utiliser dans le travail de formation. <br> [En savoir plus sur la validation croisée](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Les prévisions prennent uniquement en charge la validation croisée k-fold.
     Accès concurrentiel| *Nombre maximal d'itérations simultanées* : Nombre maximal de pipelines (itérations) à tester dans le travail de formation. Le travail ne s'exécutera pas au-delà du nombre d’itérations spécifié. Apprenez-en davantage sur la manière dont le Machine Learning automatisé effectue [plusieurs exécutions enfants sur des clusters](how-to-configure-auto-train.md#multiple-child-runs-on-clusters).
 
 1. (Facultatif) Afficher les paramètres de caractérisation : si vous choisissez d’activer **Caractérisation automatique** dans le formulaire **Paramètres de configuration supplémentaires** formulaire, les techniques caractérisation par défaut sont appliquées. Dans **Afficher les paramètres de caractérisation**, vous pouvez modifier ces valeurs par défaut et les personnaliser en conséquence. Découvrez comment [personnaliser la caractérisation](#customize-featurization). 
 
     ![Capture d’écran représentant la boîte de dialogue Sélectionner le type de tâche dans laquelle l’option View featurization settings (Voir les paramètres de caractérisation) est affichée.](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
+
+1. Le formulaire de **validation et de test [facultatif]** vous permet d’effectuer les opérations suivantes. 
+
+    1. Spécifiez le type de validation à utiliser pour votre travail de formation. [En savoir plus sur la validation croisée](how-to-configure-cross-validation-data-splits.md#prerequisites). 
+    
+        1. Les tâches de prévision prennent uniquement en charge la validation croisée k-fold.
+    
+    1. Fournissez un jeu de données de test (version préliminaire) pour évaluer le modèle recommandé que l’AutoML génère automatiquement à la fin de votre expérience. Lorsque vous fournissez des données de test, une série de tests est déclenchée automatiquement à la fin de votre expérience. Cette série de tests est exécutée uniquement sur le meilleur modèle recommandé par l’AutoML. Découvrez comment obtenir les [résultats de la série de tests à distance](#view-remote-test-run-results-preview).
+    
+        >[!IMPORTANT]
+        > Fournir un jeu de données de test pour évaluer les modèles générés est une fonctionnalité en préversion. Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment.
+
+        1. Les données de test sont considérées comme un distinct de la formation et de la validation, afin de ne pas biaiser les résultats de la série de tests du modèle recommandé. [En savoir plus sur le décalage au cours de la validation du modèle](concept-automated-ml.md#training-validation-and-test-data).
+        1. Vous pouvez fournir votre propre jeu de données de test ou choisir d’utiliser un pourcentage de votre jeu de données d’apprentissage.          
+        1. Le schéma du jeu de données de test doit correspondre au jeu de données d’apprentissage. La colonne cible est facultative, mais si aucune colonne cible n’est indiquée, aucune mesure de test n’est calculée.
+        1. Le jeu de données de test ne doit pas être le même que le jeu de données d’apprentissage ou le jeu de données de validation.
+        1. Les exécutions de prévisions ne prennent pas en charge le fractionnement effectuer l'apprentissage/tester.
+        
+        ![Capture d’écran montrant le formulaire dans lequel sélectionner les données de validation et les données de test](media/how-to-use-automated-ml-for-ml-models/validate-test-form.png)
+        
 ## <a name="customize-featurization"></a>Personnaliser la caractérisation
 
 Dans le formulaire **Caractérisation**, vous pouvez activer/désactiver la caractérisation automatique et personnaliser les paramètres correspondants pour votre expérience. Pour ouvrir ce formulaire, reportez-vous à l’étape 10 de la section [Créer et exécuter une expérience](#create-and-run-experiment). 
@@ -192,6 +210,43 @@ Dans l’onglet Transformation des données, vous pouvez voir un diagramme des t
 
 ![Transformation des données](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
 
+## <a name="view-remote-test-run-results-preview"></a>Afficher les résultats de la série de tests distants (version préliminaire)
+
+Si vous avez spécifié un jeu de données de test ou si vous avez opté pour un fractionnement de formation/test au cours de votre installation d’expérimentation, dans le formulaire de **validation et de test** , l’autoML teste automatiquement le modèle recommandé par défaut. Par conséquent, l’autoML calcule les métriques de test pour déterminer la qualité du modèle recommandé et de ses prédictions. 
+
+>[!IMPORTANT]
+> Le test de vos modèles avec un jeu de données de test pour évaluer les modèles générés est une fonctionnalité en préversion. Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment.
+
+Pour afficher les métriques de série de tests du modèle recommandé,
+ 
+1. Accédez à la page **modèles** , puis sélectionnez le meilleur modèle. 
+1. Sélectionnez l’onglet **résultats des tests (** préversion). 
+1. Sélectionnez l’exécution de votre choix et affichez l’onglet **métriques** . ![Onglet résultats des tests du modèle testé automatiquement et recommandé](./media/how-to-use-automated-ml-for-ml-models/test-best-model-results.png)
+    
+Pour afficher les prédictions de test utilisées pour calculer les métriques de test, 
+
+1. Accédez au bas de la page et sélectionnez le lien sous le **jeu de données de sortie** pour ouvrir le jeu de données. 
+1. Dans la page **jeux de données**, sélectionnez l’onglet **Explorer** pour afficher les prédictions de la série de tests.
+    1. Vous pouvez également afficher ou télécharger le fichier de prédiction à partir de l’onglet **sorties + journaux**, puis développer le dossier **prédictions** pour localiser votre `predicted.csv` fichier.
+
+Vous pouvez également afficher ou télécharger le fichier de prédictions à partir de l’onglet sorties + journaux, développer le dossier prédictions pour localiser votre fichier predictions.csv.
+
+## <a name="test-an-existing-automated-ml-model-preview"></a>Tester un modèle d’AutoML existant (version préliminaire)
+
+Une fois votre expérimentation terminée, vous pouvez tester le ou les modèles générés automatiquement par ML. Si vous souhaitez tester un autre modèle automatisé ML généré, et non le modèle recommandé, vous pouvez le faire en procédant comme suit. 
+
+1. Sélectionnez une exécution de l’expérience ML automatisée existante.  
+1. Accédez à l’onglet **Modèles** de l’exécution et sélectionnez le modèle terminé que vous souhaitez tester.
+1. Sur la page **Détails** du modèle, sélectionnez le bouton **tester le modèle (version préliminaire)** pour ouvrir le volet **modèle de test** .
+1. Dans le volet **Modèle de test**, sélectionnez le cluster de calcul et un jeu de données de test que vous souhaitez utiliser pour votre série de tests. 
+1. Cliquez sur le bouton **Test**. Le schéma du jeu de données de test doit correspondre au jeu de données d’apprentissage, mais la **colonne cible** est facultative.
+1. En cas de création réussie d’une série de tests de modèle, la page **Détails** affiche un message de réussite. Sélectionnez l’onglet **Résultats des tests** pour afficher la progression de l’exécution.
+
+1. Pour afficher les résultats de la série de tests, ouvrez la page de **Détails** et suivez les étapes de la section [afficher les résultats de la série de tests distante](#view-remote-test-run-results-preview) . 
+
+    ![Formulaire de modèle de test](./media/how-to-use-automated-ml-for-ml-models/test-model-form.png)
+    
+
 ## <a name="model-explanations-preview"></a>Explications de modèle (préversion)
 
 Pour mieux comprendre votre modèle, vous pouvez regarder les caractéristiques des données (brutes ou traitées) qui ont influencé les prédictions du modèle avec le tableau de bord des explications de modèle. 
@@ -235,10 +290,10 @@ Machine Learning automatisé vous aide à déployer le modèle sans écrire de c
     ----|----
     Nom| Entrez un nom unique pour votre déploiement.
     Description| Entrez une description pour mieux identifier le but de ce déploiement.
-    Type de capacité de calcul| Sélectionnez le type de point de terminaison que vous voulez déployer : *Azure Kubernetes Service (AKS)* ou *Azure Container Instance (ACI)* .
+    Type de capacité de calcul| Sélectionnez le type de point de terminaison que vous souhaitez déployer : [*service Azure Kubernetes (AKS)*](../aks/intro-kubernetes.md) ou [*Azure Container instance (ACI)* ](../container-instances/container-instances-overview.md).
     Nom du calcul| *S’applique uniquement à AKS :* Sélectionnez le nom du cluster AKS sur lequel vous voulez effectuer le déploiement.
     Activer l’authentification | Sélectionnez cette option pour l’authentification basée sur des jetons ou sur des clés.
-    Utiliser les ressources d’un déploiement personnalisé| Activez cette fonctionnalité si vous voulez télécharger votre propre script de scoring et votre propre fichier d’environnement. [Découvrez plus d’informations sur les scripts de scoring](how-to-deploy-and-where.md).
+    Utiliser les ressources d’un déploiement personnalisé| Activez cette fonctionnalité si vous voulez télécharger votre propre script de scoring et votre propre fichier d’environnement. Dans le cas contraire, l’AutoML fournit ces ressources par défaut. [Découvrez plus d’informations sur les scripts de scoring](how-to-deploy-and-where.md).
 
     >[!Important]
     > Les noms de fichiers sont limités à 32 caractères et doivent commencer et se terminer par des caractères alphanumériques. Ils peuvent inclure des tirets, des traits de soulignement, des points et des caractères alphanumériques. Les espaces ne sont pas autorisés.

@@ -1,31 +1,37 @@
 ---
 title: Vue d’ensemble des index
 titleSuffix: Azure Cognitive Search
-description: Présente les concepts et les outils d’indexation dans Recherche cognitive Azure, notamment les définitions de schéma et la structure physique des données.
+description: Explique ce qu’est un index de recherche dans Recherche cognitive Azure et décrit le contenu, la construction, l’expression physique et le schéma d’index.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/08/2021
-ms.openlocfilehash: ab1106ef927829589934485c2022d353339d5089
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.date: 11/12/2021
+ms.openlocfilehash: 51b075dbce189370cf502bce6d46471da6c58348
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062811"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490532"
 ---
-# <a name="search-indexes-in-azure-cognitive-search"></a>Index de recherche dans Recherche cognitive Azure
+# <a name="indexes-in-azure-cognitive-search"></a>Index dans Recherche cognitive Azure
 
-Recherche cognitive Azure stocke le contenu pouvant faire l’objet d’une recherche utilisé pour le texte intégral et les requêtes filtrées dans un *index de recherche*. Un index est défini par un schéma et enregistré dans le service, l’importation des données se faisant dans un deuxième temps. 
+Dans Azure Recherche cognitive, un *index de recherche* est un contenu pouvant faire l’objet d’une recherche, accessible au moteur de recherche pour l’indexation, la recherche en texte intégral et les requêtes filtrées. Un index est défini par un schéma et enregistré dans le service de recherche, l’importation des données se faisant dans un deuxième temps. Ce contenu existe dans votre service de recherche, en dehors de vos magasins de données principaux, ce qui est nécessaire pour les temps de réponse de millisecondes attendus dans les applications modernes. À l’exception des scénarios d’indexation spécifiques, le service de recherche ne se connectera jamais à vos données locales et les interrogera.
 
-Cet article présente les index de recherche. Vous préférez commencer ? Consultez [Créer un index de recherche](search-how-to-create-search-index.md).
+Si vous créez et gérez un index de recherche, cet article vous aidera à comprendre ce qui suit :
 
-## <a name="whats-a-search-index"></a>Qu’est-ce qu’un index de recherche ?
++ Contenu (documents et schéma)
++ Représentation physique
++ Opérations de base
 
-Dans Recherche cognitive, les index contiennent des *documents de recherche*. Conceptuellement, un document correspond à une unité de données pouvant faire l’objet d’une recherche dans un index. Par exemple, un détaillant peut posséder un document pour chaque produit, un organisme de presse peut posséder un document par article, et ainsi de suite. Pour comparer avec des éléments de base de données plus familiers, un *index de recherche* correspond à une *table*, et les *documents* équivalent plus ou moins aux *lignes* d’une table.
+Vous préférez être pratique immédiatement ? Consultez [Créer un index de recherche](search-how-to-create-search-index.md) à la place.
 
-La structure physique d’un index est déterminée par le schéma. La collection « fields » correspond généralement à la majeure partie de l’index, dans laquelle chaque champ est nommé, se voit attribuer un [type de données](/rest/api/searchservice/Supported-data-types) et est pourvu de comportements autorisés qui déterminent son utilisation.
+## <a name="content-of-a-search-index"></a>Contenu d’un index de recherche
+
+Dans Recherche cognitive, les index contiennent des *documents de recherche*. Conceptuellement, un document correspond à une unité de données pouvant faire l’objet d’une recherche dans un index. Par exemple, un détaillant peut avoir un document pour chaque produit, une organisation de presse peut avoir un document pour chaque article, un site de voyage peut avoir un document pour chaque hôtel et destination, et ainsi de suite. Pour comparer avec des éléments de base de données plus familiers, un *index de recherche* correspond à une *table*, et les *documents* équivalent plus ou moins aux *lignes* d’une table.
+
+La structure d’un document est déterminée par le schéma d’index, comme illustré ci-dessous. La collection « fields » correspond généralement à la majeure partie de l’index, dans laquelle chaque champ est nommé, se voit attribuer un [type de données](/rest/api/searchservice/Supported-data-types) et est pourvu de comportements autorisés qui déterminent son utilisation.
 
 ```json
 {
@@ -59,21 +65,23 @@ La structure physique d’un index est déterminée par le schéma. La collectio
 }
 ```
 
-Parmi les autres éléments, citons les [suggesteurs](index-add-suggesters.md), les [profils de scoring](index-add-scoring-profiles.md), les [analyseurs utilisés](search-analyzers.md) pour traiter les chaînes en jetons selon des règles linguistiques ou d’autres caractéristiques prises en charge par l’analyseur et des paramètres [CORS (Cross-Origin Remote Scripting)](#corsoptions).
+D’autres éléments sont réduits par souci de concision, mais les liens suivants peuvent fournir les détails : 
 
-## <a name="field-definitions"></a>Définitions de champs
++ Les [générateurs de suggestions](index-add-suggesters.md) prennent en charge les requêtes de type anticipé comme la saisie semi-automatique
++ Les [profils de score](index-add-scoring-profiles.md) sont utilisés pour le paramétrage de la pertinence
++ Les [analyseurs](search-analyzers.md) sont utilisés pour traiter les chaînes en jetons en fonction des règles linguistiques ou d’autres caractéristiques prises en charge par l’analyseur
++ Les [scripts à distance Cross-Origin (CORS)](search-how-to-create-search-index.md#corsoptions) sont utilisés pour les applications qui délivrent des demandes de différents domaines
++ La [clé de chiffrement](search-security-manage-encryption-keys.md) est utilisée pour le double-chiffrement du contenu sensible dans l’index.
 
-Un document de recherche est défini par la collection `fields`. Vous aurez besoin de champs pour l’identification du document (clés), le stockage de texte pouvant faire l’objet d’une recherche et la prise en charge des filtres, facettes et tris. Il se peut également que vous ayez besoin de champs pour les données qu’un utilisateur ne voit jamais. Par exemple, il peut être utile de disposer de champs pour des marges bénéficiaires ou des promotions commerciales que vous pouvez utiliser pour modifier le rang de recherche.
+### <a name="field-definitions"></a>Définitions de champs
 
-Un champ de type Edm.String doit être désigné comme clé de document. Il est utilisé pour identifier de manière unique chaque document de recherche, et respecte la casse. Vous pouvez récupérer un document par sa clé pour remplir une page de détails.
+Un document de recherche est défini par la collection « fields ». Vous aurez besoin de champs pour l’identification du document (clés), le stockage de texte pouvant faire l’objet d’une recherche et la prise en charge des filtres, facettes et tris. Il se peut également que vous ayez besoin de champs pour les données qu’un utilisateur ne voit jamais. Par exemple, il peut être utile de disposer de champs pour des marges bénéficiaires ou des promotions commerciales que vous pouvez utiliser pour modifier le rang de recherche.
 
-Si les données entrantes sont de nature hiérarchique, attribuez le type de données [Type complexe](search-howto-complex-data-types.md) pour représenter les structures imbriquées. L’exemple de jeu de données intégré, Hotels, illustre des types complexes utilisant une adresse (contenant plusieurs sous-champs) qui entretient une relation un-à-un avec chaque hôtel, et une collection complexe Rooms, où plusieurs chambres sont associées à chaque hôtel. 
-
-Attribuez des analyseurs aux champs de type chaîne avant la création de l’index. Procédez de même pour les suggesteurs si vous souhaitez activer l’autocomplétion sur des champs spécifiques.
+Si les données entrantes sont hiérarchiques par nature, vous pouvez les représenter dans un index en tant que [type complexe](search-howto-complex-data-types.md), utilisé pour représenter des structures imbriquées. L’exemple de jeu de données intégré, Hotels, illustre des types complexes utilisant une adresse (contenant plusieurs sous-champs) qui entretient une relation un-à-un avec chaque hôtel, et une collection complexe Rooms, où plusieurs chambres sont associées à chaque hôtel. 
 
 <a name="index-attributes"></a>
 
-### <a name="attributes"></a>Attributs
+### <a name="field-attributes"></a>Attributs de champ
 
 Les attributs d’un champ déterminent son utilisation, par exemple s’il est utilisé dans la recherche en texte intégral, la navigation par facettes, les opérations de tri et ainsi de suite. 
 
@@ -95,36 +103,64 @@ Même si vous pouvez ajouter de nouveaux champs à tout moment, les définitions
 
 <a name="index-size"></a>
 
-## <a name="storage-implications-of-field-attributes"></a>Implications au niveau du stockage des attributs de champ
+## <a name="physical-representation"></a>Représentation physique
 
-La taille d’un index est déterminée par la taille des documents que vous chargez, plus la configuration de l’index, par exemple si vous incluez des suggesteurs, et la façon dont vous définissez des attributs sur des champs individuels. 
+Dans Azure Recherche cognitive, la structure physique d’un index est en grande partie une implémentation interne. Vous pouvez accéder à son schéma, interroger son contenu, surveiller sa taille et gérer la capacité, mais les clusters eux-mêmes (index, partitions et autres fichiers et dossiers) sont délimités et gérés en interne par Microsoft en votre nom.
 
-La capture d’écran suivante illustre les caractéristiques du stockage d’index résultant des différentes combinaisons d’attributs. L’index est basé sur l’**exemple d’index de biens immobiliers**, que vous pouvez créer facilement à l’aide de l’Assistant Importer des données. Bien que les schémas de l’index ne soient pas montrés, vous pouvez en déduire les attributs d’après le nom de l’index. Par exemple, pour l’index *realestate-searchable*, seul l’attribut « Possibilité de recherche » est sélectionné ; pour l’index *realestate-retrievable*, seul l’index « Récupérable » est sélectionné, et ainsi de suite.
+La taille d’un index est déterminée par les éléments suivants :
+
++ Quantité et composition de vos documents
++ Configuration de l’index (en particulier si vous incluez des générateurs de suggestions)
++ Attributs sur des champs individuels
+
+Vous pouvez surveiller la taille de l’index dans l’onglet Index de la Portail Azure ou en émettant une [requête GET INDEX](/rest/api/searchservice/get-index) sur votre service de recherche.
+
+### <a name="factors-influencing-index-size"></a>Facteurs influençant la taille de l’index
+
+La composition et la quantité des documents seront déterminées par ce que vous choisissez d’importer. N’oubliez pas qu’un index de recherche ne doit contenir que du contenu pouvant faire l’objet d’une recherche. Si les documents sources incluent des champs binaires, vous devez généralement omettre ces champs du schéma d’index (à moins que vous n’utilisiez l’enrichissement par IA pour craquer et analyser le contenu pour créer des informations de recherche de texte.)
+
+La configuration d’index peut inclure d’autres composants en dehors des documents, tels que des générateurs de suggestions, des analyseurs clients, des profils de score, des paramètres CORS et des informations de clé de chiffrement. Dans la liste ci-dessus, le seul composant qui est susceptible d’avoir un impact sur la taille de l’index est des générateurs de suggestions. Les [**générateurs de suggestions**](index-add-suggesters.md) sont des constructions qui prennent en charge les requêtes de type anticipé ou de saisie semi-automatique. Ainsi, lorsque vous incluez un générateur de suggestions, le processus d’indexation crée les structures de données nécessaires pour les correspondances de caractères textuels. Les générateurs de suggestions sont implémentés au niveau du champ. Par conséquent, choisissez uniquement les champs qui sont raisonnables pour le type.
+
+Les attributs de champ sont la troisième considération de la taille de l’index. Les attributs déterminent les comportements. Pour prendre en charge ces comportements, le processus d’indexation crée les structures de données de prise en charge. Par exemple, « recherchée » appelle la [recherche en texte intégral](search-lucene-query-architecture.md), qui analyse les index inversés pour le terme à jetons. En revanche, un attribut « filtrable » ou « triable » prend en charge l’itération sur des chaînes non modifiées.
+
+### <a name="example-demonstrating-the-storage-implications-of-attributes-and-suggesters"></a>Exemple illustrant les implications de stockage des attributs et des générateurs de suggestions
+
+La capture d’écran suivante illustre les caractéristiques du stockage d’index résultant des différentes combinaisons d’attributs. L’index est basé sur l’**exemple d’index de biens immobiliers**, que vous pouvez créer facilement à l’aide de l’Assistant Importer des données et les exemples de données intégrés. Bien que les schémas de l’index ne soient pas montrés, vous pouvez en déduire les attributs d’après le nom de l’index. Par exemple, pour l’index *realestate-searchable*, seul l’attribut « Possibilité de recherche » est sélectionné ; pour l’index *realestate-retrievable*, seul l’index « Récupérable » est sélectionné, et ainsi de suite.
 
 ![Taille de l’index en fonction de la sélection de l’attribut](./media/search-what-is-an-index/realestate-index-size.png "Taille de l’index en fonction de la sélection de l’attribut")
 
-Bien que ces variantes d’index soient artificielles, nous pouvons nous y reporter pour nous faire une idée de la façon dont les attributs affectent le stockage. Le paramètre « Récupérable » fait-il croître l’index ? Non. L’ajout de champs à un **suggesteur** fait-il croître l’index ? Oui. 
+Bien que ces variantes d’index soient plutôt artificielles, nous pouvons nous y reporter pour nous faire une idée de la façon dont les attributs affectent le stockage. Le paramètre « Récupérable » fait-il croître l’index ? Non. L’ajout de champs à un **suggesteur** fait-il croître l’index ? Oui. 
 
 Le fait de rendre un champ filtrable ou triable augmente également la consommation de stockage, car les champs filtrés et triés ne sont pas sous forme de jeton, de sorte que les séquences de caractères peuvent être mises en correspondance textuellement.
 
 L’impact des [analyseurs](search-analyzers.md) n’est pas non plus pris en compte dans le tableau ci-dessus. Si vous utilisez le générateur de jetons edgeNgram pour stocker des séquences de caractères verbatim (a, ab, abc, abcd), la taille de l’index sera supérieure à si vous avez utilisé un analyseur standard.
 
-> [!Note]
-> L’architecture de stockage est considérée comme un détail d’implémentation de Recherche cognitive Azure et est susceptible d’évoluer sans préavis. Il n’est pas garanti que le comportement actuel persistera dans l’avenir.
+## <a name="basic-operations"></a>Opérations de base
 
-<a name="corsoptions"></a>
+Maintenant que vous avez une meilleure idée de ce qu’est un index, cette section présente les opérations d’exécution d’index, notamment la connexion à et la sécurisation d’un index unique.
 
-## <a name="about-corsoptions"></a>À propos de `corsOptions`
+### <a name="index-isolation"></a>Isolation d’index
+  
+Dans Recherche cognitive, vous travaillerez avec un index à la fois, où toutes les opérations liées à l’index ciblent un index unique. Il n’existe aucun concept d’index associé ou de jointure d’index indépendants pour l’indexation et l’interrogation. 
 
-Les schémas d’index incluent une section pour la définition de `corsOptions`. Le code JavaScript côté client ne peut pas appeler d’API par défaut, car le navigateur empêche toutes les requêtes cross-origin. Pour autoriser les requêtes cross-origin dans l'index, activez CORS (partage des ressources cross-origin) en définissant l'attribut **corsOptions**. Pour des raisons de sécurité, seules les API de requête prennent en charge CORS. 
+Lors de la gestion d’un index, sachez qu’il n’existe pas de prise en charge de portail ou d’API pour le déplacement ou la copie d’un index. Au lieu de cela, les clients pointent généralement leur solution de déploiement d’applications sur un service de recherche différent (si vous utilisez le même nom d’index), ou modifient le nom pour créer une copie sur le service de recherche actuel, puis le générer.
 
-Les options suivantes peuvent être définies pour CORS :
+### <a name="continuously-available"></a>Disponible en continu
 
-+ **allowedOrigins** (obligatoire) : il s'agit de la liste des origines pouvant accéder à l’index. Cela signifie que le code JavaScript distribué à partir de ces origines est autorisé à interroger l’index (s'il fournit la bonne clé API). Chaque origine se présente généralement sous la forme `protocol://<fully-qualified-domain-name>:<port>`, bien que `<port>` soit souvent omis. Pour plus d'informations, voir [Partage des ressources cross-origin (Wikipédia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+Un index est disponible en continu, sans possibilité de suspension ou de mise hors connexion. Étant donné qu’il est conçu pour une opération continue, les mises à jour de son contenu, ou les ajouts à l’index lui-même, se produisent en temps réel. Par conséquent, les requêtes peuvent retourner temporairement des résultats incomplets si une demande coïncide avec une mise à jour de document.
 
-  Si vous voulez autoriser l'accès à toutes les origines, incluez uniquement l’élément `*` dans le tableau **allowedOrigins**. Si *cette pratique est déconseillée pour les services de recherche de production*, elle est souvent utile pour le développement et le débogage.
+Notez que la continuité des requêtes existe pour les opérations de document (actualisation ou suppression) et pour les modifications qui n’ont pas d’impact sur la structure et l’intégrité existantes de l’index actuel (comme l’ajout de nouveaux champs). Si vous devez effectuer des mises à jour structurelles (en modifiant des champs existants), elles sont généralement gérées à l’aide d’un flux de travail de suppression et de recréation dans un environnement de développement, ou en créant une nouvelle version de l’index sur le service de production.
 
-+ **maxAgeInSeconds** (facultatif) : les navigateurs utilisent cette valeur pour déterminer la durée (en secondes) de mise en cache des réponses CORS préliminaires. Il doit s'agir d'un entier non négatif. Plus cette valeur est importante, meilleures sont les performances, mais plus il faut de temps pour que les modifications apportées à la stratégie CORS prennent effet. Si la valeur n'est pas définie, une durée par défaut de 5 minutes est utilisée.
+Pour éviter la reconstruction, certains clients qui effectuent de petites modifications choisissent de « créer une version » d’un champ en en créant un nouveau qui coexiste avec une version précédente. Au fil du temps, cela se traduit par un contenu orphelin sous la forme de champs obsolètes ou de définitions d’analyseur personnalisé obsolètes, en particulier dans un index de production qui est coûteux à répliquer. Vous pouvez résoudre ces problèmes sur les mises à jour planifiées de l’index dans le cadre de la gestion du cycle de vie des index.
+
+### <a name="endpoint-connection-and-security"></a>Connexion de point de terminaison et sécurité
+
+Toutes les demandes d’indexation et de requête ciblent un index. Les points de terminaison sont généralement l’un des suivants :
+
+| Point de terminaison | Connexion et contrôle d’accès |
+|----------|-------------------------------|
+| `<your-service>.search.windows.net/indexes` | Cible la collection d’index. Utilisé lors de la création, de la liste ou de la suppression d’un index. Des droits d’administrateur sont nécessaires pour ces opérations, disponibles par le biais de clés d’API d’administration ou d’un rôle contributeur de recherche. |
+| `<your-service>.search.windows.net/indexes/<your-index>/docs` | Cible la collection documents d’un index unique. Utilisé lors de l’interrogation d’un index. Les droits de lecture sont suffisants et disponibles par le biais de clés API de requête ou d’un rôle de lecteur de données. |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

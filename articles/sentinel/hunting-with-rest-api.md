@@ -1,32 +1,32 @@
 ---
-title: Gérer les requêtes de chasse et de diffusion en continu dans Azure Sentinel à l’aide de l’API REST | Microsoft Docs
-description: Cet article explique comment les fonctionnalités de chasse Azure Sentinel vous permettent de tirer parti de l’API REST de Log Analytics pour gérer les requêtes de chasse et de diffusion en continu.
+title: Gérer les requêtes de chasse et de diffusion en continu dans Microsoft Sentinel à l’aide de l’API REST | Microsoft Docs
+description: Cet article explique comment les fonctionnalités de chasse Microsoft Sentinel vous permettent de tirer parti de l’API REST de Log Analytics pour gérer les requêtes de chasse et de diffusion en continu.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 264e99b15676807c54f400cb4431f53c06cae8bd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0c12c96e5a9cb8fb532cdd8ad462ff3d6a5f0bfc
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037109"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520500"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Gérer les requêtes de chasse et de diffusion en continu dans Azure Sentinel à l’aide de l’API REST
+# <a name="manage-hunting-and-livestream-queries-in-microsoft-sentinel-using-rest-api"></a>Gérer les requêtes de chasse et de diffusion en continu dans Microsoft Azure Sentinel à l’aide de l’API REST
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel, construit en partie sur Azure Monitor Log Analytics, vous permet d’utiliser l’API REST de Log Analytics pour gérer les requêtes de chasse et de diffusion en continu. Ce document explique les procédures de création et de gestion des requêtes de chasse à l’aide de l’API REST.  Les requêtes créées de cette façon sont affichées dans l’interface utilisateur d’Azure Sentinel.
+Microsoft Sentinel, construit en partie sur Azure Monitor Log Analytics, vous permet d’utiliser l’API REST de Log Analytics pour gérer les requêtes de chasse et de diffusion en continu. Ce document explique les procédures de création et de gestion des requêtes de chasse à l’aide de l’API REST.  Les requêtes créées de cette façon sont affichées dans l’interface utilisateur de Microsoft Sentinel.
 
 Consultez la référence de l’API REST définitive pour plus de détails sur les [API de recherche enregistrées](/rest/api/loganalytics/savedsearches).
 
@@ -48,7 +48,7 @@ Dans les exemples suivants, remplacez ces espaces réservés par l’élément d
 
 ### <a name="example-1"></a>Exemple 1
 
-Cet exemple explique la procédure de création ou de mise à jour d’une requête de chasse pour un espace de travail Azure Sentinel donné.  Pour une requête de diffusion en continu, remplacez *« Catégorie » : « requêtes de chasse »* par *« Catégorie » : « requêtes de diffusion en continu »* dans le **corps de la demande** : 
+Cet exemple explique la procédure de création ou de mise à jour d’une requête de chasse pour un espace de travail Microsoft Sentinel donné.  Pour une requête de diffusion en continu, remplacez *« Catégorie » : « requêtes de chasse »* par *« Catégorie » : « requêtes de diffusion en continu »* dans le **corps de la demande** : 
 
 #### <a name="request-header"></a>En-tête de requête
 
@@ -83,7 +83,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId} _
 
 ### <a name="example-2"></a>Exemple 2
 
-Cet exemple explique la procédure de suppression d’une requête de chasse ou de diffusion en continu pour un espace de travail Azure Sentinel donné :
+Cet exemple explique la procédure de suppression d’une requête de chasse ou de diffusion en continu pour un espace de travail Microsoft Sentinel donné :
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId} _
@@ -105,7 +105,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId} _
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez appris à gérer les requêtes de chasse et de diffusion en continu dans Azure Sentinel à l’aide de l’API Log Analytics. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans cet article, vous avez appris à gérer les requêtes de chasse et de diffusion en continu dans Microsoft Sentinel à l’aide de l’API Log Analytics. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - [Hunt for threats with in Azure Sentinel Preview](hunting.md) (Rechercher des menaces dans Azure Sentinel en préversion)
 - [Use notebooks to run automated hunting campaigns](notebooks.md) (Utiliser des notebooks pour exécuter des campagnes de repérage automatisées)

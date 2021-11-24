@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f21a2d4eb0742bc5e91298816f9648e325b1955
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592239"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335325"
 ---
 # <a name="start-virtual-machine-on-connect"></a>Démarrer une machine virtuelle lors de la connexion
 
@@ -38,20 +38,25 @@ Les clients Bureau à distance prenant en charge la fonctionnalité de démarrag
 
 Avant de pouvoir configurer la fonctionnalité de démarrage de machine virtuelle lors de la connexion, vous devez attribuer à votre machine virtuelle un rôle RBAC (contrôle d’accès en fonction du rôle) personnalisé. Ce rôle permet à Azure Virtual Desktop de gérer les machines virtuelles incluses dans votre abonnement. Vous pouvez également utiliser ce rôle pour activer des machines virtuelles, vérifier leur état et rapporter des informations de diagnostic. Pour en savoir plus sur ce que fait chaque rôle, consultez [Rôles personnalisés Azure](../role-based-access-control/custom-roles.md).
 
+>[!NOTE]
+>Si vos machines virtuelles et votre pool d’hôtes se trouvent dans des abonnements différents, le rôle RBAC doit être attribué à l’abonnement dans lequel se trouvent les machines virtuelles.
+
 ### <a name="use-the-azure-portal"></a>Utilisation du portail Azure
 
 Pour utiliser le portail Azure afin d’attribuer un rôle personnalisé pour démarrer un machine virtuelle lors de la connexion :
 
 1. Ouvrez le portail Azure et accédez à **Abonnements**.
 
-2. Accédez à **Contrôle d’accès (IAM)** , puis sélectionnez **Ajouter un rôle personnalisé**.
+2. Sélectionnez l’abonnement dans lequel se trouvent vos machines virtuelles.
+ 
+3. Accédez à **Contrôle d’accès (IAM)** , puis sélectionnez **Ajouter un rôle personnalisé**.
 
     > [!div class="mx-imgBorder"]
     > ![Capture d’écran du menu déroulant accessible via le bouton Ajouter dans Contrôle d’accès (IAM). L’option « Ajouter un rôle personnalisé » est mise en évidence en rouge.](media/add-custom-role.png)
 
-3. Ensuite, nommez le rôle personnalisé et ajoutez une description. Nous vous suggérons de le nommer « Démarrer une machine virtuelle lors de la connexion ».
+4. Ensuite, nommez le rôle personnalisé et ajoutez une description. Nous vous suggérons de le nommer « Démarrer une machine virtuelle lors de la connexion ».
 
-4. Sous l’onglet **Autorisations**, ajoutez l’un des deux ensembles d’autorisations suivants à l’abonnement auquel vous affectez le rôle : 
+5. Sous l’onglet **Autorisations**, ajoutez l’un des deux ensembles d’autorisations suivants à l’abonnement auquel vous affectez le rôle : 
  
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/read 
@@ -62,7 +67,7 @@ Pour utiliser le portail Azure afin d’attribuer un rôle personnalisé pour d�
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/*/read 
 
-5. Lorsque vous avez terminé, sélectionnez **OK**.
+6. Lorsque vous avez terminé, sélectionnez **OK**.
 
 Ensuite, vous devez attribuer le rôle pour accorder l’accès à Azure Virtual Desktop.
 

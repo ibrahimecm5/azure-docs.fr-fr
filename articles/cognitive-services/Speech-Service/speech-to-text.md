@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: reconnaissance vocale, logiciel de reconnaissance vocale
-ms.openlocfilehash: 02e9a0d78aa8d904be2c9ade4ba419ea4fefd40f
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: bf0d8c7ffdff3c936804583f03b42dbe1c5e2392
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989429"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488389"
 ---
 # <a name="what-is-speech-to-text"></a>Qu’est-ce que la reconnaissance vocale ?
 
@@ -43,7 +43,7 @@ Consultez le [guide de démarrage rapide](get-started-speech-to-text.md) pour d�
 
 ## <a name="sample-code"></a>Exemple de code
 
-Un exemple de code pour le SDK Speech est disponible sur GitHub. Ces exemples couvrent des scénarios courants tels que la lecture du signal audio d’un fichier ou d’un flux, la reconnaissance continue et ponctuelle, et l’utilisation de modèles personnalisés.
+Un exemple de code pour le SDK Speech est disponible sur GitHub. Ces exemples couvrent des scénarios courants tels que la lecture du contenu audio d’un fichier ou d’un flux, la reconnaissance au démarrage et continue et l’utilisation de modèles personnalisés.
 
 - [Exemples de reconnaissance vocale (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Exemples de transcription par lot (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

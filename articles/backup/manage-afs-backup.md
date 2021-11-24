@@ -6,12 +6,12 @@ ms.date: 11/03/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 021a24cbe5c1e2ba9f504ca99c149b135bc40fc4
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 465331a39f5fc05d81a4ff06cd58c3962b301831
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332038"
 ---
 # <a name="manage-azure-file-share-backups"></a>Gérer les sauvegardes de partage de fichiers Azure
 
@@ -32,6 +32,9 @@ Pour ouvrir la page **Travaux de sauvegarde** :
 1. Sélectionnez **Azure Files (Stockage Azure)** comme type de source de données et sélectionnez une ligne pour afficher les détails du travail en question.
 
    :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="Capture d’écran montrant la liste des travaux." lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
+   
+    >[!NOTE]
+    >Étant donné qu’aucune donnée n’est transférée vers le coffre, les données transférées en Mo sont égales à 0 pour les travaux de sauvegarde correspondant à Azure Files.
 
 ## <a name="monitor-using-azure-backup-reports"></a>Surveiller à l’aide des rapports de Sauvegarde Azure
 

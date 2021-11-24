@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 944a49b0c58d1c6e197d385fd6bd029aa29631c5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 45d8b3dea72555470059cb14b3268e4d9b4e9611
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251943"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319501"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Comprendre les tarifs Data Factory à travers des exemples
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Cet article explique et décrit le modèle tarifaire Azure Data Factory avec des exemples détaillés.
+Cet article explique et décrit le modèle tarifaire Azure Data Factory avec des exemples détaillés.  Vous pouvez également vous reporter à la [Calculatrice de tarification Azure](https://azure.microsoft.com/pricing/calculator/) pour obtenir des scénarios plus spécifiques et estimer vos coûts futurs d’utilisation du service.
 
 > [!NOTE]
 > Les prix mentionnés dans les exemples ci-dessous sont hypothétiques et ne sont pas destinés à indiquer la tarification réelle.

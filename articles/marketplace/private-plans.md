@@ -6,13 +6,14 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 10/26/2021
-ms.openlocfilehash: 22523b73847b21426eb1fa56af665274fc830b4b
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.reviewer: amhindma
+ms.date: 11/10/2021
+ms.openlocfilehash: d8f2435fe78465ee40e3cf6011db14d6daf7c04f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850999"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324647"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Plans privés dans la place de marché commerciale de Microsoft
 
@@ -57,7 +58,7 @@ Pour les *nouvelles offres qui comportent uniquement des plans privés*, les éd
 
 Avec les plans privés, qu’ils soient anciens ou nouveaux, les éditeurs ont la possibilité de cibler des clients avec leurs identificateurs d’abonnement. Pour les offres Azure Application et Services gérés, les éditeurs peuvent limiter la disponibilité d’un plan privé à des ID d’abonnement Azure individuels. Pour les offres SaaS, les éditeurs peuvent associer un ID de locataire Azure Active Directory pour limiter la disponibilité d’un plan privé. Pour les offres de machines virtuelles, les éditeurs peuvent attribuer le public qui aura accès à un plan privé à l’aide d’ID de locataire Azure, d’ID d’abonnement ou des deux. Pour chacun de ces types d’offre, jusqu’à 10 ID peuvent être ajoutés manuellement ou une feuille de calcul CSV peut être importée si plus de 10 ID sont requis.
 
-Une fois qu’une offre a été certifiée et publiée, il devient possible de mettre à jour ou de supprimer des clients du plan avec la fonctionnalité de synchronisation des abonnements privés. Cette capacité permet aux éditeurs de mettre à jour rapidement et facilement la liste des clients auxquels le plan privé est présenté, sans avoir à certifier ou publier de nouveau l’offre.
+Une fois qu’une offre a été certifiée et publiée, il devient possible de mettre à jour les clients ou de les supprimer du plan grâce à la fonctionnalité de synchronisation des audiences privées. Cette capacité permet aux éditeurs de mettre à jour rapidement et facilement la liste des clients auxquels le plan privé est présenté, sans avoir à certifier ou publier de nouveau l’offre.
 
 ## <a name="deploying-a-private-plan"></a>Déploiement d’un plan privé
 

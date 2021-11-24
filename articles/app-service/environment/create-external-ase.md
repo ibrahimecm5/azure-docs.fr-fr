@@ -1,20 +1,18 @@
 ---
 title: Créer un environnement ASE externe
 description: Découvrez comment créer un environnement App Service contenant une application ou un environnement ASE (vide) autonome.
-author: ccompy
-ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
+author: madsd
 ms.topic: article
 ms.date: 06/13/2017
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 118c91ec204a2e207b28343fe0535c67b89b03b7
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: madsd
+ms.openlocfilehash: 771bfd60fb3124a3cc827bd6b35ac0de1dceef04
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433343"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519683"
 ---
-# <a name="create-an-external-app-service-environment"></a>Créer un environnement App Service externe
+# <a name="create-an-external-app-service-environment"></a>Créer un environnement App Service Environment externe
 
 > [!NOTE]
 > Cet article concerne la fonctionnalité App Service Environment v2 qui est utilisée avec les plans App Service Isolé.

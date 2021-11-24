@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 7edd651e5c6a52f707cfebd87310e0a104fef0d4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858123"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401204"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Vue d’ensemble de la fonctionnalité Start/Stop VMs v2 (préversion)
 
@@ -49,9 +49,9 @@ Les fonctions de déclencheur basées sur la file d’attente sont requises pour
 
 - **Séquençage** : Les actions de démarrage et d’arrêt sont basées sur une planification ciblant les machines virtuelles avec des balises de séquencement prédéfinies. Seules deux balises nommées sont prises en charge : **sequencestart** et **sequencestop**. **ststv2_vms_Sequenced_start** et **ststv2_vms_Sequenced_stop** configurent le démarrage et l’arrêt séquencés. 
 
-    La façon correcte d’utiliser la fonctionnalité de séquence est de créer une balise nommée **sequencestart** sur chaque machine virtuelle que vous souhaitez démarrer dans une séquence. La valeur de balise doit être un entier compris entre 1 et N pour chaque machine virtuelle dans l’étendue respective. La balise est facultative et, si elle n’est pas présente, la machine virtuelle ne participera tout simplement pas au séquencement. Le même critère s’applique à l’arrêt des machines virtuelles, seul le nom de la balise est différent : utilisez **sequencestop** dans ce cas. Vous devez configurer les deux balises dans chaque machine virtuelle pour obtenir une action de démarrage et d’arrêt.
+    La façon correcte d’utiliser la fonctionnalité de séquence est de créer une balise nommée **sequencestart** sur chaque machine virtuelle que vous souhaitez démarrer dans une séquence. La valeur de balise doit être un entier compris entre 1 et N pour chaque machine virtuelle dans l’étendue respective. La balise est facultative et, si elle n’est pas présente, la machine virtuelle ne participera tout simplement pas au séquencement. Le même critère s’applique à l’arrêt des machines virtuelles, seul le nom de la balise est différent : utilisez **sequencestop** dans ce cas. Vous devez configurer les deux balises dans chaque machine virtuelle pour obtenir une action de démarrage et d’arrêt. Si deux machines virtuelles ou plus partagent la même valeur d’étiquette, ces machines virtuelles seront démarrées ou arrêtées en même temps.
 
-    Par exemple, le tableau suivant montre la manière dont deux machines virtuelles avec des séquences opposées finissent par s’exécuter dans le même ordre :
+    Par exemple, le tableau suivant montre que les actions de démarrage et d’arrêt sont traitées dans l’ordre croissant de la valeur de l’étiquette.
 
     :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="Tableau illustrant des exemples de balises de paramètres de séquence":::
 

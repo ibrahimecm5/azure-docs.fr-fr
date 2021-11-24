@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: 290065bb7410c42695cf2b0062cdd11cb02c9580
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8f056fd416b6bbb36296a57fca26906852eb3af8
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065529"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156574"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent Data Encryption Azure SQL avec une clé managée par le client
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -87,7 +87,7 @@ Les auditeurs peuvent utiliser Azure Monitor pour évaluer les journaux AuditEve
     - La protection contre le vidage peut être activée en utilisant [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) ou [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell). Lorsque la protection contre le vidage est activée, il n’est pas possible de vider un coffre ou un objet à l’état supprimé avant la fin de la période de conservation de 90 jours. La période de conservation par défaut est de 90 jours, mais elle peut être configurée entre 7 et 90 jours dans le portail Azure.   
 
 > [!IMPORTANT]
-> La suppression réversible et la protection contre le vidage doivent être toutes les deux activées sur le(s) coffre(s) de clés pour les serveurs en cours de configuration avec le TDE géré par le client et pour les serveurs existants utilisant le TDE géré par le client. Pour un serveur utilisant le TDE géré par le client, si la suppression réversible et la protection contre le vidage ne sont pas activées sur le coffre de clés associé, les actions, comme la création de base de données, la configuration de la géoréplication, la restauration de base de données ou la mise à jour du protecteur TDE, échoueront avec le message d’erreur suivant : *« L’URI Key Vault fourni n’est pas valide. Vérifiez que le coffre de clés a été configuré avec la suppression réversible et la protection contre le vidage. »*
+> La suppression réversible et la protection contre le vidage doivent être toutes les deux activées sur le(s) coffre(s) de clés pour les serveurs en cours de configuration avec le TDE géré par le client et pour les serveurs existants utilisant le TDE géré par le client.
 
 - Accordez au serveur ou à l’instance managée l’accès au coffre de clés (*get*, *wrapKey*, *unwrapKey*) à l’aide de son identité Azure Active Directory. Lors de l’utilisation du portail Azure, l’identité Azure AD est créée automatiquement en même temps que le serveur. En utilisant PowerShell ou Azure CLI, l’identité Azure AD doit être explicitement créée et vérifiée. Consultez [Configurer TDE avec BYOK](transparent-data-encryption-byok-configure.md) et [Configure TDE with BYOK for SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) (Configurer TDE avec BYOK pour SQL Managed Instance) pour obtenir des instructions détaillées lors de l’utilisation de PowerShell.
     - En fonction du modèle d’autorisation du coffre de clés (stratégie d’accès ou RBAC Azure), l’accès au coffre de clés peut être accordé en créant une stratégie d’accès sur le coffre de clés ou en créant une attribution de rôle Azure RBAC avec le rôle [Utilisateur du chiffrement du service de chiffrement Key Vault](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations).
@@ -146,9 +146,9 @@ Lorsque le chiffrement transparent des données est configuré pour utiliser une
 
 Une fois l’accès à la clé rétabli, la remise en ligne de la base de données nécessite un temps et des étapes supplémentaires, qui peuvent varier en fonction du temps écoulé sans accès à la clé et de la taille des données dans la base de données :
 
-- Si l’accès à la clé est rétabli dans les huit heures, la base de données sera automatiquement réparée dans l’heure qui suit.
+- Si l’accès à la clé est restauré dans les 30 minutes, la base de données sera automatiquement corrigée dans l’heure suivante.
 
-- Si l’accès à la clé est rétabli après plus de huit heures, la réparation automatique n’est pas possible, et le rétablissement de la base de données nécessite des étapes supplémentaires sur le portail et peut prendre un temps considérable en fonction de la taille de la base de données. Une fois la base de données de nouveau en ligne, les paramètres précédemment configurés au niveau du serveur, tels que la configuration du [groupe de basculement](auto-failover-group-overview.md), l’historique de la limite de restauration dans le temps ainsi que les balises **seront perdus**. Par conséquent, il est recommandé d’implémenter un système de notification qui vous permet d’identifier et de résoudre les problèmes d’accès aux clés sous-jacentes dans un délai de 8 heures.
+- Si l’accès à la clé est rétabli après plus de 30 minutes, la réparation automatique n’est pas possible, et le rétablissement de la base de données nécessite des étapes supplémentaires sur le portail et peut prendre un temps considérable en fonction de la taille de la base de données. Une fois la base de données de nouveau en ligne, les paramètres précédemment configurés au niveau du serveur, tels que la configuration du [groupe de basculement](auto-failover-group-overview.md), l’historique de la limite de restauration dans le temps ainsi que les balises **seront perdus**. Par conséquent, il est recommandé d’implémenter un système de notification qui vous permet d’identifier et de résoudre les problèmes d’accès aux clés sous-jacentes dans un délai de 30 minutes.
 
 Vous trouverez ci-dessous une vue des étapes supplémentaires requises sur le portail pour remettre en ligne une base de données inaccessible.
 

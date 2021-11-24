@@ -9,16 +9,16 @@ ms.subservice: terminate-notification
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 29466a1954e64b79614eec0afdd139e45a44df5b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 807ae8405ac8a4726a37329e5ef9ddda58714c3a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698261"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373291"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Notification d’arrêt des instances de groupe de machines virtuelles identiques Azure
 
-**S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes
+**S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes :heavy_check_mark: Groupes identiques flexibles
 
 Les instances de groupe identique peuvent choisir de recevoir des notifications d’arrêt de l’instance et de configurer un délai d’attente prédéfini pour l’opération d’arrêt. La notification d’arrêt est envoyée par le biais d’Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), qui fournit des notifications et un report des opérations ayant un impact, telles que le redémarrage et le redéploiement. La solution ajoute un autre événement (Terminate) à la liste de Scheduled Events, et le délai associé à l’événement d’arrêt dépend de la limite de délai spécifiée par les utilisateurs dans leurs configurations de modèle de groupe identique.
 
@@ -184,7 +184,7 @@ Vérifiez que chaque machine virtuelle du groupe identique n’approuve que l’
 Vous pouvez également vous reporter aux exemples de scripts pour l’interrogation et la réponse aux événements à l’aide de [Python](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Conseils et meilleures pratiques
--   Notifications d’arrêt uniquement sur les opérations de suppression : toutes les opérations de suppression (suppression manuelle ou scale-in lancé par la mise à l’échelle automatique) génèrent des événements Terminate si *scheduledEventsProfile* est activé sur votre groupe identique. Les autres opérations telles que le redémarrage, la réinitialisation, le redéploiement et l’arrêt/désallocation ne génèrent pas d’événements Terminate. Les notifications d’arrêt ne peuvent pas être activées pour les machines virtuelles de faible priorité.
+-   Notifications d’arrêt uniquement sur les opérations de suppression : toutes les opérations de suppression (suppression manuelle ou scale-in lancé par la mise à l’échelle automatique) génèrent des événements Terminate si *scheduledEventsProfile* est activé sur votre groupe identique. Les autres opérations telles que le redémarrage, la réinitialisation, le redéploiement et l’arrêt/désallocation ne génèrent pas d’événements Terminate. 
 -   Aucune attente obligatoire pour l’expiration : vous pouvez démarrer l’opération d’arrêt à tout moment après la réception de l’événement et avant l’expiration du délai *NotBefore*.
 -   Suppression obligatoire une fois le délai d’attente atteint : il n’existe aucune possibilité d’étendre la valeur du délai d’expiration après la génération d’un événement. Une fois le délai d’attente atteint, l’événement Terminate en attente est traité et la machine virtuelle est supprimée.
 -   Valeur de délai d’attente modifiable : vous pouvez modifier la valeur du délai d’attente à tout moment avant la suppression d’une instance, en modifiant la propriété *notBeforeTimeout* sur le modèle de groupe identique et en mettant à jour les instances de machine virtuelle vers le dernier modèle.

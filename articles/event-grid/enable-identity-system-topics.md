@@ -2,19 +2,20 @@
 title: Activer une identité managée sur la rubrique système Azure Event Grid
 description: Cet article explique comment activer une identité de service managée pour une rubrique système Azure Event Grid.
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: d5d8c15c818f1a9735b6cf32fe48276fb311e8ea
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 11/02/2021
+ms.openlocfilehash: 825b1d22568b110f22e596d424a2f781b65de625
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633562"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157135"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-system-topic"></a>Attribuer une identité managée par le système à une rubrique système Event Grid
-Dans cet article, vous allez apprendre à attribuer une identité attribuée par le système ou attribuée par l’utilisateur pour une rubrique système Event Grid existante. Pour découvrir les identités managées, consultez [Que sont les identités managées pour les ressources Azure ?](../active-directory/managed-identities-azure-resources/overview.md).  
+Dans cet article, vous allez apprendre à attribuer une identité attribuée par le système ou attribuée par l’utilisateur pour une rubrique système Event Grid. Pour découvrir les identités managées en général, consultez [Que sont les identités managées pour les ressources Azure ?](../active-directory/managed-identities-azure-resources/overview.md).  
 
-> [!IMPORTANT]
-> Vous pouvez activer l’identité attribuée par le système ou l’identité attribuée par l’utilisateur pour une rubrique système, mais pas les deux. Vous pouvez avoir au maximum deux identités attribuées par l’utilisateur attribuées à une rubrique du système. 
+> [!NOTE]
+> - Vous pouvez attribuer une identité managée par le système et jusqu’à deux identités attribuées par l’utilisateur à une rubrique système. 
+> - Vous ne pouvez pas activer les identités pour les rubriques système associées aux ressources Azure globales, telles que les abonnements Azure, groupes de ressources ou Azure Maps. Les rubriques système pour ces sources globales ne sont pas associées à une région spécifique.
 
 ## <a name="enable-managed-identity-for-an-existing-system-topic"></a>Activer l’identité managée pour une rubrique système existante
 Cette section vous montre comment activer une identité managée pour une rubrique système existante. 
@@ -22,7 +23,7 @@ Cette section vous montre comment activer une identité managée pour une rubriq
 1. Accédez au [portail Azure](https://portal.azure.com).
 2. Dans la barre de recherche en haut, recherchez **Rubriques système Event Grid**.
 3. Sélectionnez la **rubrique système** pour laquelle vous souhaitez activer l’identité managée. 
-4. Sélectionnez **Identité** dans le menu de gauche. Cette option ne s’affiche pas pour une rubrique système située dans l’emplacement global. 
+4. Sélectionnez **Identité** dans le menu de gauche.  
 
 ### <a name="enable-system-assigned-identity"></a>Activer l’identité attribuée par le système
 1. **Activez** le commutateur pour activer l’identité. 
@@ -41,9 +42,9 @@ Cette section vous montre comment activer une identité managée pour une rubriq
 1. Créez d’abord une identité attribuée par l’utilisateur en suivant les instructions de l’article [Gérer les identités managées attribuées par l’utilisateur](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md). 
 1. Dans la page **Identité**, basculez vers l’onglet **Attribué par l’utilisateur** dans le volet de droite, puis sélectionnez **+ Ajouter** dans la barre d’outils.
 
-    :::image type="content" source="./media/managed-service-identity/system-topic-user-identity-add-button.png" alt-text="Image qui montre le bouton Ajouter sélectionné dans l’onglet Attribué par l’utilisateur de la page Identité.":::
-1. Dans la fenêtre **Ajouter une identité managée de l’utilisateur**, procédez comme suit :
-    1. Sélectionnez l’**abonnement Azure** qui a l’identité attribuée par l’utilisateur. 
+    :::image type="content" source="./media/managed-service-identity/system-topic-user-identity-add-button.png" alt-text="Image montrant le bouton Ajouter sélectionné dans l’onglet Attribué par l’utilisateur de la page Identité.":::
+1. Dans la fenêtre **Ajouter une identité managée par l’utilisateur**, procédez comme suit :
+    1. Sélectionnez l’**abonnement Azure** doté de l’identité attribuée par l’utilisateur. 
     1. Sélectionnez l’**identité attribuée par l’utilisateur**. 
     1. Sélectionnez **Ajouter**. 
 1. Actualisez la liste dans l’onglet **Attribué par l’utilisateur** pour voir l’identité attribuée par l’utilisateur ajoutée.
@@ -67,19 +68,13 @@ Cette section vous montre comment activer une identité managée pour une rubriq
         
                 :::image type="content" source="./media/managed-service-identity/system-topic-creation-enable-user-identity.png" alt-text="Image montrant la capture d’écran de l’Assistant de création de la rubrique système avec l’option d’identité attribuée par l’utilisateur sélectionnée.":::            
             1. Dans la fenêtre **Ajouter une identité managée de l’utilisateur**, procédez comme suit :
-                1. Sélectionnez l’**abonnement Azure** qui a l’identité attribuée par l’utilisateur. 
+                1. Sélectionnez l’**abonnement Azure** doté de l’identité attribuée par l’utilisateur. 
                 1. Sélectionnez l’**identité attribuée par l’utilisateur**. 
                 1. Sélectionnez **Ajouter**.                         
 
 > [!NOTE]
-> Actuellement, vous ne pouvez pas activer une identité managée pour une nouvelle rubrique système lors de la création d’une souscription d’événements sur une ressource Azure qui prend en charge des rubriques système. 
-
-
-## <a name="global-azure-sources"></a>Sources Azure globales
-Vous pouvez activer l’identité managée par le système uniquement pour les ressources Azure régionales. Vous ne pouvez pas l’activer pour les rubriques système associées aux ressources Azure globales, telles que les abonnements Azure, groupes de ressources ou Azure Maps. De plus, les rubriques système pour ces sources globales ne sont pas associées à une région spécifique. Vous ne voyez pas la page **Identité** pour la rubrique système dont l’emplacement est défini sur **Global**. 
-
-:::image type="content" source="./media/managed-service-identity/system-topic-location-global.png" alt-text="Rubrique système avec emplacement défini sur Global"::: 
-
+> - Actuellement, le Portail Azure ne vous autorise pas à attribuer à la fois les identités attribuées par le système et les identités attribuées par l’utilisateur lors de la création d’une rubrique système. Vous pouvez attribuer les deux après la création de la rubrique système. 
+> - Actuellement, vous ne pouvez pas activer une identité managée pour une nouvelle rubrique système lors de la création d’une souscription d’événements sur une ressource Azure qui prend en charge des rubriques système. 
 
 
 ## <a name="next-steps"></a>Étapes suivantes
