@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d196fa6eabd0a6f9fc08b8d1b1d60e649d02ee1b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ca051199e6fcbfab9a8de9e4a03d845bfa03c454
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234962"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553740"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Application de bureau qui appelle des API web : Inscription d'application
 
@@ -41,6 +41,8 @@ Si votre application de bureau utilise l’authentification interactive, vous po
 Les URI de redirection à utiliser dans une application de bureau dépendent du flux que vous voulez utiliser.
 
 Spécifiez l’URI de redirection de votre application en [configurant les paramètres de plateforme](quickstart-register-app.md#add-a-redirect-uri) de l’application dans **Inscriptions d’applications** dans le portail Azure.
+
+- Pour les applications qui utilisent [Web Authentication Manager (WAM)](scenario-desktop-acquire-token-wam.md), les URI de redirection ne doivent pas être configurés dans MSAL, mais ils doivent être configurés dans l'[enregistrement de l'application](scenario-desktop-acquire-token-wam.md#redirect-uri).
 
 - Pour les applications qui utilisent l’authentification interactive :
 

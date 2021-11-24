@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: b87354ca6b7a079f60f8d64e2deae53b65cef167
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 444cbdc14d1d2d7d7237b79398b7d81ea43e8c80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543850"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325578"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Collecter les sources de données du journal des événements Windows avec l’agent Log Analytics
 Les journaux d’événements Windows sont les [sources de données](../agents/agent-data-sources.md) les plus courantes pour les agents Log Analytics sur Windows puisque de nombreuses applications écrivent dans le journal des événements Windows.  Vous pouvez collecter des événements à partir de journaux d’activité standard tels que Système et Application, ou spécifier des journaux d’activité personnalisés créés par les applications que vous souhaitez surveiller.
@@ -30,7 +30,7 @@ Lorsque vous tapez le nom d’un journal d’événements, Azure Monitor suggèr
 [![Configurer les événements Windows](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!IMPORTANT]
-> Vous ne pouvez pas configurer la collecte d’événements de sécurité à partir de l’espace de travail. Vous devez utiliser [Azure Security Center](../../security-center/security-center-enable-data-collection.md) ou [Azure Sentinel](../../sentinel/connect-windows-security-events.md) pour collecter des événements de sécurité.
+> Vous ne pouvez pas configurer la collecte d’événements de sécurité à partir de l’espace de travail. Vous devez utiliser [Microsoft Defender pour le cloud](../../security-center/security-center-enable-data-collection.md) ou [Microsoft Sentinel](../../sentinel/connect-windows-security-events.md) pour collecter des événements de sécurité.
 
 
 > [!NOTE]

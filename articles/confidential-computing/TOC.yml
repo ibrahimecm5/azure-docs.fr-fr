@@ -12,6 +12,12 @@
 - name: Démarrages rapides
   expanded: true
   items:
+    - name: Machines virtuelles confidentielles
+      items:
+        - name: Créer une machine virtuelle confidentielle avec Azure CLI
+          href: quick-create-confidential-vm-arm-amd.md
+        - name: Créer une machine virtuelle confidentielle avec le portail Azure
+          href: quick-create-confidential-vm-portal-amd.md
     - name: Machines virtuelles confidentielles avec enclaves
       items:
         - name: Déployer Intel SGX
@@ -33,20 +39,32 @@
       href: confidential-computing-deployment-models.md
     - name: Machines virtuelles confidentielles
       items:
-        - name: Créer avec des enclaves
+        - name: À propos des machines virtuelles confidentielles
+          href: confidential-vm-overview.md
+        - name: FAQ sur les machines virtuelles confidentielles AMD
+          href: confidential-vm-faq-amd.yml
+        - name: Options de processeur AMD pour les machines virtuelles confidentielles
+          href: virtual-machine-solutions-amd.md
+        - name: DCasv5 et DCadsv5-series
+          href: ../virtual-machines/dcasv5-dcadsv5-series.md
+        - name: ECasv5 et ECadsv5-series
+          href: ../virtual-machines/ecasv5-ecadsv5-series.md
+    - name: Créer avec des enclaves
+      items:
+        - name: Vue d’ensemble des enclaves
+          href: confidential-computing-enclaves.md
+        - name: Développement d’applications d’enclave
           items:
-            - name: Vue d’ensemble des enclaves
-              href: confidential-computing-enclaves.md
-            - name: Développement d’applications d’enclave
-              items:
-                - name: Vue d’ensemble du développement d’enclave
-                  href: application-development.md
-                - name: Projets open source pour le développement
-                  href: enclave-development-oss.md
-                - name: Attestation des enclaves d’application
-                  href: attestation.md
+            - name: Vue d’ensemble du développement d’enclave
+              href: application-development.md
+            - name: Projets open source pour le développement
+              href: enclave-development-oss.md
+            - name: Attestation des enclaves d’application
+              href: attestation.md
             - name: Déploiement de machines virtuelles Intel SGX
               href: virtual-machine-solutions-sgx.md
+            - name: Déploiement de machines virtuelles AMD
+              href: virtual-machine-solutions-amd.md
             - name: FAQ sur les machines virtuelles d’enclave d’application
               href: faq-application-enclaves.yml
     - name: Conteneurs confidentiels

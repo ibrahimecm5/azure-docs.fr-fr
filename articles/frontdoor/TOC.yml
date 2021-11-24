@@ -30,7 +30,7 @@
       href: front-door-quickstart-template-samples.md
 - name: Concepts
   items:
-    - name: Référence SKU Standard/Premium
+    - name: Niveau Standard/Premium
       href: standard-premium/overview.md
     - name: Mise en cache
       href: front-door-caching.md

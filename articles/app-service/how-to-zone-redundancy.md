@@ -3,21 +3,21 @@ title: Prise en charge des zones de disponibilité pour App Service mutualisé p
 description: Découvrez comment déployer votre App Service de façon à ce que vos applications soient redondantes dans une zone.
 author: seligj95
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 11/16/2021
 ms.author: jordanselig
 ms.custom: references_regions
-ms.openlocfilehash: 1fb6959ab6e47ad631ea3cac208a3dc52ca41e41
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e0388695708e8ab3c47ea8049038fb95384dabd2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832713"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551290"
 ---
 # <a name="availability-zone-support-for-public-multi-tenant-app-service"></a>Prise en charge des zones de disponibilité pour App Service mutualisé public
 
-Microsoft Azure App Service peut être déployé dans des [zones de disponibilité (AZ)](../availability-zones/az-overview.md) qui permettent [une haute disponibilité](https://en.wikipedia.org/wiki/High_availability) pour vos applications. Cette architecture est également appelée « redondance de zone ».
+Microsoft Azure App Service peut être déployé dans des [zones de disponibilité (AZ)](../availability-zones/az-overview.md) pour vous aider à assurer la résilience et la fiabilité de vos charges de travail vitales pour l’entreprise. Cette architecture est également appelée « redondance de zone ».
 
-Une application réside dans un plan App Service (ASP) qui existe dans une seule unité d’échelle. Quand un App Service est configuré pour être redondant dans une zone, la plateforme répartit automatiquement les instances de machine virtuelle dans le plan App Service entre les trois zones de la région sélectionnée. Si une capacité supérieure à trois est spécifiée et que le nombre d’instances est divisible par trois, les instances sont réparties uniformément. Dans le cas contraire, les instances au-delà de 3*N sont réparties entre les une ou deux zones restantes.
+Une application réside dans un plan App Service (ASP) qui existe dans une seule unité d’échelle. Quand un App Service est configuré pour être redondant dans une zone, la plateforme répartit automatiquement les instances de machine virtuelle dans le plan App Service entre les trois zones de la région sélectionnée. Si une capacité supérieure à trois est spécifiée et que le nombre d’instances est divisible par trois, les instances sont réparties uniformément. Dans le cas contraire, les instances au-delà de 3*N sont réparties entre les une ou deux zones restantes. Pour les services d’application qui ne sont pas configurés pour être redondants dans une zone, les instances de machine virtuelle sont placées dans une seule zone de la région sélectionnée.
 
 ## <a name="requirements"></a>Spécifications
 

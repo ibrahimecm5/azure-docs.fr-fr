@@ -1,28 +1,28 @@
 ---
-title: Détecter rapidement les menaces avec des règles d’analytique en quasi temps réel (NRT) dans Azure Sentinel | Microsoft Docs
-description: Cet article explique comment les nouvelles règles d’analytique en quasi temps réel (NRT, near-real-time) peuvent vous aider à détecter rapidement les menaces dans Azure Sentinel.
+title: Détecter rapidement les menaces avec des règles d’analyse en quasi-temps réel dans Microsoft Sentinel | Microsoft Docs
+description: Cet article explique de quelle manière les nouvelles règles d’analyse en quasi-temps réel peuvent vous aider à détecter rapidement les menaces dans Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f8b4b534cd6725f7c19ee4f3f77a6d7ed500889c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b46989647146d433f86b7e9698222900fb455dd
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096689"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518847"
 ---
-# <a name="detect-threats-quickly-with-near-real-time-nrt-analytics-rules-in-azure-sentinel"></a>Détecter rapidement les menaces avec des règles d’analytique en quasi temps réel (NRT) dans Azure Sentinel
+# <a name="detect-threats-quickly-with-near-real-time-nrt-analytics-rules-in-microsoft-sentinel"></a>Détecter rapidement les menaces avec des règles d’analyse en quasi-temps réel (NRT) dans Microsoft Sentinel
 
 > [!IMPORTANT]
 >
@@ -30,15 +30,15 @@ ms.locfileid: "131096689"
 
 ## <a name="what-are-near-real-time-nrt-analytics-rules"></a>Présentation des règles d’analytique NRT
 
-Quand vous êtes confronté à des menaces de sécurité, le temps et la vitesse sont vitaux. Vous devez être conscient des menaces au fur et à mesure de leur matérialisation afin de pouvoir les analyser et y répondre rapidement pour les contenir. Les règles d’analytique NRT d’Azure Sentinel offrent une détection plus rapide des menaces, plus proche de celle d’un dispositif SIEM local, et la possibilité de raccourcir les temps de réponse dans des scénarios spécifiques.
+Quand vous êtes confronté à des menaces de sécurité, le temps et la vitesse sont vitaux. Vous devez être conscient des menaces au fur et à mesure de leur matérialisation afin de pouvoir les analyser et y répondre rapidement pour les contenir. Les règles d’analyse en quasi-temps réel de Microsoft Sentinel offrent une détection plus rapide des menaces, plus proche de celle d’une solution SIEM locale, et la possibilité de raccourcir les temps de réponse dans des scénarios spécifiques.
 
-Les [règles d’analytique en quasi temps réel](detect-threats-built-in.md#nrt) d’Azure Sentinel fournissent une détection des menaces prête à l’emploi à la minute près. Ce type de règle a été conçu pour être très réactif en exécutant sa requête à des intervalles d’une minute seulement.
+Les [règles d’analyse en quasi-temps réel](detect-threats-built-in.md#nrt) de Microsoft Sentinel offrent une détection des menaces prête à l’emploi à la minute près. Ce type de règle a été conçu pour être très réactif en exécutant sa requête à des intervalles d’une minute seulement.
 
 ## <a name="how-do-they-work"></a>Comment elles fonctionnent ?
 
 Les règles NRT sont codées en dur pour s’exécuter une fois toutes les minutes et capturent les événements ingérés au cours de la minute précédente, afin de vous fournir, dans la mesure du possible, des informations à la minute près.
 
-Contrairement aux règles planifiées standard qui s’exécutent sur un délai de cinq minutes intégré pour tenir compte du délai d’ingestion, les règles NRT s’exécutent sur un délai de deux minutes seulement, ce qui permet de résoudre le problème de délai d’ingestion en interrogeant l’heure d’ingestion des événements au lieu de l’heure de leur génération à la source (champ TimeGenerated). La fréquence et la précision de vos détections s’en trouvent améliorées. (Pour mieux comprendre ce problème, consultez [Planification des requêtes et seuil d’alerte](detect-threats-custom.md#query-scheduling-and-alert-threshold) et l’article associé qui y est mentionné, [Gestion du délai d’ingestion dans les règles d’alerte planifiées Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851).)
+Contrairement aux règles planifiées standard qui s’exécutent sur un délai de cinq minutes intégré pour tenir compte du délai d’ingestion, les règles NRT s’exécutent sur un délai de deux minutes seulement, ce qui permet de résoudre le problème de délai d’ingestion en interrogeant l’heure d’ingestion des événements au lieu de l’heure de leur génération à la source (champ TimeGenerated). La fréquence et la précision de vos détections s’en trouvent améliorées. (Pour mieux comprendre ce problème, consultez [Planification des requêtes et seuil d’alerte](detect-threats-custom.md#query-scheduling-and-alert-threshold) et [Gestion du délai d’ingestion dans les règles d’analytique planifiée](ingestion-delay.md).)
 
 Les règles NRT ont de nombreuses fonctionnalités telles que les règles d’analytique planifiées. Le jeu complet de fonctionnalités d’enrichissement des alertes est disponible : vous pouvez mapper des entités, exposer des détails personnalisés et configurer le contenu dynamique des détails des alertes. Vous pouvez choisir la façon dont les alertes sont regroupées en incidents, supprimer temporairement l’exécution d’une requête une fois qu’elle a généré un résultat et définir des playbooks et des règles d’automatisation à exécuter en réponse aux alertes et incidents générés à partir de la règle.
 
@@ -65,7 +65,7 @@ Les limitations suivantes régissent l’utilisation des règles NRT :
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris comment fonctionnent les règles NRT dans Azure Sentinel.
+Dans ce document, vous avez appris le fonctionnement des règles d’analyse en quasi-temps réel dans Microsoft Sentinel.
 
 - Découvrez comment [créer des règles NRT](create-nrt-rules.md).
 - En savoir plus sur les [autres types de règles d’analyse](detect-threats-built-in.md).

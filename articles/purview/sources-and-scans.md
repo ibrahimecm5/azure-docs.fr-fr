@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3a06bf01ec9afa62a656eb5590a7ae283063ec88
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b29896a9ca047b05c3313b716b2a4df1b0e72f6c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074225"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517175"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Sources de données et types de fichiers pris en charge dans Azure Purview
 
@@ -29,7 +29,8 @@ Les types de fichiers suivants sont pris en charge pour l’analyse, ainsi que p
 
 - Formats de fichiers structurés pris en charge par l’extension : AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML, GZIP
  > [!Note]
- > * Pour les types de fichiers AVRO, ORC et PARQUET, l’analyseur Purview ne prend pas en charge les types de données complexes (par exemple MAP, LIST, STRUCT) pour l’extraction des schémas. 
+ > * L’analyseur Purview prend uniquement en charge l’extraction de schémas pour les types de fichiers structurés listés ci-dessus.
+ > * Pour les types de fichiers AVRO, ORC et PARQUET, l’analyseur Purview ne prend pas en charge l’extraction de schémas pour les fichiers contenant des types de données complexes (par exemple MAP, LIST, STRUCT). 
  > * L’analyseur Purview prend en charge l’analyse des types PARQUET compressés avec Snappy pour l’extraction et la classification des schémas. 
  > * Pour les types de fichiers GZIP, le fichier GZIP doit être mappé à un seul fichier CSV. 
  > Les fichiers Gzip sont soumis à des règles système et personnalisées de classification. Actuellement, nous ne prenons pas en charge l’analyse d’un fichier gzip mappé à plusieurs fichiers contenus, ou à n’importe quel autre type de fichier qui n’est pas csv. 

@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 2d8ab101b39412d9345fa470d3b6584036990581
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dc9611eebdce1e988e760fda3b000cb52d0ff95a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084964"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488271"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Gérer et superviser IoT Central à partir du portail Azure
 
@@ -74,7 +74,13 @@ Pour déplacer l’application vers un autre abonnement, sélectionnez **Modifie
 
 ## <a name="configure-a-managed-identity"></a>Configurer une identité managée
 
-Quand vous configurez une exportation de données dans votre application IoT Central, vous pouvez choisir de configurer la connexion à la destination à l’aide d’une *chaîne de connexion* ou d’une [identité gérée](../../active-directory/managed-identities-azure-resources/overview.md). L’utilisation d’une identité gérée est plus sécurisée, car vous n’avez pas besoin de stocker les informations d’identification pour la destination dans votre application IoT Central. IoT Central utilise actuellement des [identités managées affectées par le système](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Pour créer l’identité managée de votre application, utilisez le Portail Azure ou l’API REST.
+Quand vous configurez une exportation de données dans votre application IoT Central, vous pouvez choisir de configurer la connexion à la destination à l’aide d’une *chaîne de connexion* ou d’une [identité gérée](../../active-directory/managed-identities-azure-resources/overview.md). Les identités managées sont plus sécurisées, car :
+
+* Vous ne stockez pas les informations d’identification de votre ressource dans une chaîne de connexion de votre application IoT Central.
+* Les informations d’identification sont automatiquement liées à la durée de vie de votre application IoT Central.
+* Les identités managées effectuent automatiquement une rotation régulière de leurs clés de sécurité.
+
+IoT Central utilise actuellement des [identités managées affectées par le système](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Pour créer l’identité managée de votre application, utilisez le Portail Azure ou l’API REST.
 
 > [!NOTE]
 > Vous pouvez uniquement ajouter une identité managée à une application IoT Central qui a été créée dans une région. Toutes les nouvelles applications sont créées dans une région. Pour en savoir plus, consultez [Mises à jour](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/).

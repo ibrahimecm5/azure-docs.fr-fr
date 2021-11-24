@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: 395ca8022b0355ff79c200dfbe87bc78e29de089
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d17ae08067568098fffcdd443ba196c0023fbd42
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060855"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519342"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>Procédure pas à pas de peering Internet Azure pour services de communication
 
@@ -64,7 +64,7 @@ Veillez à sélectionner les options suivantes sur la page « Créer un peering
 
 Type de peering : **Direct**
 
-Réseau Microsoft : **8075**
+Réseau Microsoft  : **8075 (avec Voice)**
 
 Référence (SKU) : **Premium gratuit**
 

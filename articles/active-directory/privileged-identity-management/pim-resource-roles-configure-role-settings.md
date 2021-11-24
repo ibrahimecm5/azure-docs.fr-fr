@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/12/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b3707fd3b9b56131d24274555761f616991600
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 4f7db8546310fe5a55fabceed5a5613f2bbd8a78
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508737"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490000"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Configurer les paramètres des rôles de ressource Azure dans Privileged Identity Management
 
@@ -114,7 +114,7 @@ Pour plus d’informations, consultez [Authentification multifacteur et Privileg
 
 ## <a name="activation-maximum-duration"></a>Durée maximum d’activation
 
-Utilisez le curseur **Durée maximum d’activation** pour définir la durée maximale, en heures, pendant laquelle une attribution de rôle reste active avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
+Utilisez le curseur **Durée maximale d’activation** pour définir la durée maximale, en heures, pendant laquelle une demande d’activation pour une attribution de rôle reste active avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
 
 ## <a name="require-justification"></a>Demander une justification
 

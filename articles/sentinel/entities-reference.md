@@ -1,38 +1,38 @@
 ---
-title: Informations de référence sur les types d'entités Azure Sentinel | Microsoft Docs
-description: Cet article présente les types d'entités Azure Sentinel et les identificateurs requis pour ceux-ci.
+title: Informations de référence sur les types d’entités Microsoft Sentinel | Microsoft Docs
+description: Cet article présente les types d’entités Microsoft Sentinel et les identificateurs requis pour ceux-ci.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44f8eb527901f5457a4eddfab0bfdd8191f60d0f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5917011bd937e88811c9f0cffaed7f8c1c61f00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046828"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521203"
 ---
-# <a name="azure-sentinel-entity-types-reference"></a>Informations de référence sur les types d'entités Azure Sentinel
+# <a name="microsoft-sentinel-entity-types-reference"></a>Informations de référence sur les types d’entités Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="entity-types-and-identifiers"></a>Types d'entités et identificateurs
 
-Le tableau suivant présente les **types d'entités** actuellement disponibles pour le mappage dans Azure Sentinel, ainsi que les **attributs** disponibles en tant qu'**identificateurs** pour chaque type d'entité ; ceux-ci apparaissent dans la liste déroulante **Identificateurs** de la section [Mappage d'entités](map-data-fields-to-entities.md) de l'[Assistant de règle analytique](detect-threats-custom.md).
+Le tableau suivant présente les **types d’entités** actuellement disponibles pour le mappage dans Microsoft Sentinel, ainsi que les **attributs** disponibles en tant qu’**identificateurs** pour chaque type d’entité ; ceux-ci apparaissent dans la liste déroulante **Identificateurs** de la section [Mappage d’entités](map-data-fields-to-entities.md) de l’[Assistant de règle analytique](detect-threats-custom.md).
 
 Chacun des identificateurs de la colonne **Identificateurs requis** est nécessaire pour identifier l'entité correspondante. Cela dit, un identifiant requis peut ne pas suffire à lui seul à fournir une identification *unique*. Plus le nombre d'identifiants utilisés est élevé, plus la probabilité d'identification unique est grande. Vous pouvez utiliser trois identificateurs par mappage d'entités.
 
-Pour des résultats optimaux (et une identification unique garantie), utilisez de préférence les identificateurs de la colonne **Identificateurs les plus forts**. L'utilisation de plusieurs identificateurs forts permet d'établir une corrélation entre les identificateurs forts issus de sources de données et de schémas différents. Cela permet à Azure Sentinel de fournir des informations plus complètes sur une entité donnée.
+Pour des résultats optimaux (et une identification unique garantie), utilisez de préférence les identificateurs de la colonne **Identificateurs les plus forts**. L'utilisation de plusieurs identificateurs forts permet d'établir une corrélation entre les identificateurs forts issus de sources de données et de schémas différents. Cela permet à Microsoft Sentinel de fournir des informations plus complètes sur une entité donnée.
 
 | Type d'entité | Identificateurs | Identificateurs requis | Identificateurs les plus forts |
 | - | - | - | - |
@@ -141,7 +141,7 @@ Identificateurs faibles d'une entité Hôte :
 | ----- | ---- | ----------- |
 | Type | String | « ip » |
 | Adresse | String | Adresse IP sous forme de chaîne, par exemple 127.0.0.1 (dans IPv4 ou IPv6). |
-| Emplacement | GeoLocation | Contexte de géolocalisation joint à l'entité IP. <br><br>Pour plus d’informations, consultez également [Enrichir des entités dans Azure Sentinel avec des données de géolocalisation via l’API REST (préversion publique)](geolocation-data-api.md). |
+| Emplacement | GeoLocation | Contexte de géolocalisation joint à l'entité IP. <br><br>Pour plus d’informations, consultez également [Enrichir des entités dans Microsoft Sentinel avec des données de géolocalisation via l’API REST (préversion publique)](geolocation-data-api.md). |
 |
 
 Identificateurs forts d'une entité IP :
@@ -503,7 +503,7 @@ La liste suivante définit les identificateurs des applications cloud connues. L
 |17865|Ariba Inc|
 |18432|Zscaler|
 |19688|Xactly|
-|20595|Microsoft Cloud App Security|
+|20595|Microsoft Defender for Cloud Apps|
 |20892|Microsoft SharePoint Online|
 |20893|Microsoft Exchange Online|
 |20940|Active Directory|
@@ -542,6 +542,6 @@ La liste suivante définit les identificateurs des applications cloud connues. L
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Ce document vous a permis de vous familiariser avec la structure, les identificateurs et les schémas des entités dans Azure Sentinel.
+Ce document vous a permis de vous familiariser avec la structure, les identificateurs et les schémas des entités dans Microsoft Sentinel.
 
 Apprenez-en davantage sur les [entités](entities-in-azure-sentinel.md) et le [mappage des entités](map-data-fields-to-entities.md). 

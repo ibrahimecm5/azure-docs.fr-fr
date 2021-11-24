@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 06/09/2021
 ms.author: victorh
-ms.openlocfilehash: d7e0cc01d15e33e86f7e9446537fff6d43652256
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 09c184f9f3e62d8f26a2baaaa3fb31f06f4dbfca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892846"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292905"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Pare-feu d’applications web Azure sur Azure Front Door
 
@@ -102,7 +102,7 @@ Vous pouvez activer un ensemble de règles de protection des bots managées afin
 
 Trois catégories de bots sont prises en charge : Mauvais, Bon et Inconnu. Les signatures de bot sont gérées et mises à jour dynamiquement par la plateforme WAF.
 
-Les « mauvais » bots sont des bots provenant d’adresses IP malveillantes et des bots qui ont falsifié leur identité. Les adresses IP malveillantes proviennent du flux Microsoft Threat Intelligence et sont mises à jour toutes les heures. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente Microsoft Threat Intelligence et est utilisé par de nombreux services, notamment Azure Security Center.
+Les « mauvais » bots sont des bots provenant d’adresses IP malveillantes et des bots qui ont falsifié leur identité. Les adresses IP malveillantes proviennent du flux Microsoft Threat Intelligence et sont mises à jour toutes les heures. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente Microsoft Threat Intelligence et est utilisé par de nombreux services, notamment Microsoft Defender pour le cloud.
 
 Les Good Bots (Bons bots), incluent les moteurs de recherche validés. Les catégories « Inconnu » sont des groupes de bots supplémentaires qui se sont identifiés eux-mêmes comme bots. Par exemple, un analyseur de marché, des extracteurs de flux et des agents de collecte de données. 
 

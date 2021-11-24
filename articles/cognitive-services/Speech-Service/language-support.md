@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 67ac8e5cc3f7d555086ad6f643b82e8615168fa3
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 1ae10bb589816ae40a033487fb5548e1bc1abeba
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028113"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549524"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Prise en charge des langues et de la voix pour le service Speech
 
@@ -255,8 +255,8 @@ Les voix neurales peuvent être utilisées pour rendre les interactions avec les
 | Anglais (Tanzanie) | `en-TZ` | Female | `en-TZ-ImaniNeural` <sup>Nouveau</sup>  | Général |
 | Anglais (Tanzanie) | `en-TZ` | Male | `en-TZ-ElimuNeural` <sup>Nouveau</sup>  | Général |
 | Anglais (Royaume-Uni) | `en-GB` | Female | `en-GB-LibbyNeural` | Général |
-| Anglais (Royaume-Uni) | `en-GB` | Female | `en-GB-MiaNeural` <sup>Mise hors service le 30 octobre, voir ci-dessous</sup> | Général |
 | Anglais (Royaume-Uni) | `en-GB` | Female | `en-GB-SoniaNeural` | Général |
+| Anglais (Royaume-Uni) | `en-GB` | Female | `en-GB-MiaNeural` <sup>Mis hors service le 30 octobre 2021, voir ci-dessous</sup> | Général |
 | Anglais (Royaume-Uni) | `en-GB` | Male | `en-GB-RyanNeural` | Général |
 | Anglais (États-Unis) | `en-US` | Female | `en-US-AmberNeural` | Général |
 | Anglais (États-Unis) | `en-US` | Female | `en-US-AriaNeural` | Général, plusieurs styles de voix disponibles [à l’aide de SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
@@ -439,7 +439,7 @@ Les voix neurales peuvent être utilisées pour rendre les interactions avec les
 
 > [!IMPORTANT]
 > La voix en anglais (Royaume-Uni) `en-GB-MiaNeural` sera mise hors service le **30 octobre 2021**. Toutes les demandes de service adressées à `en-GB-MiaNeural` seront automatiquement redirigées vers `en-GB-SoniaNeural` après le **30 octobre 2021**.
-> Si vous utilisez la synthèse vocale neuronale de conteneur, [téléchargez](speech-container-howto.md#get-the-container-image-with-docker-pull) et déployez la dernière version avant le **30 octobre 2021**. Après le **30 octobre 2021**, toutes les demandes avec des versions précédentes seront rejetées.
+> Si vous utilisez le TTS neuronal de conteneur, [Télécharger](speech-container-howto.md#get-the-container-image-with-docker-pull) et déployez la version la plus récente, à partir du **30 octobre 2021**, toutes les demandes avec des versions précédentes seront rejetées.
 
 #### <a name="neural-voices-in-preview"></a>Voix neuronales en préversion
 

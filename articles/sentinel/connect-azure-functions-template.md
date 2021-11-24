@@ -1,50 +1,50 @@
 ---
-title: Utiliser Azure Functions pour connecter Azure Sentinel à votre source de données | Microsoft Docs
-description: Découvrez comment configurer des connecteurs de données qui utilisent Azure Functions pour obtenir des données à partir de sources de données dans Azure Sentinel.
+title: Utiliser Azure Functions pour connecter Microsoft Sentinel à votre source de données | Microsoft Docs
+description: Découvrez comment configurer des connecteurs de données qui utilisent Azure Functions pour obtenir des données à partir de sources de données dans Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/07/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7d921c1b1d44f8378a51fa6a419378cd199cd57d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c175df296f00a42fafff53c0488705f877bff4f9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037285"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521868"
 ---
-# <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Utiliser Azure Functions pour connecter Azure Sentinel à votre source de données
+# <a name="use-azure-functions-to-connect-microsoft-sentinel-to-your-data-source"></a>Utiliser Azure Functions pour connecter Microsoft Sentinel à votre source de données
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Vous pouvez utiliser [Azure Functions](../azure-functions/functions-overview.md), conjointement avec différents langages de codage tels que [PowerShell](../azure-functions/functions-reference-powershell.md) ou Python, pour créer un connecteur serverless pour les points de terminaison de l’API REST de vos sources de données compatibles. Des applications Azure Function vous permettent de connecter Azure Sentinel à l’API REST de votre source de données pour extraire des journaux.
+Vous pouvez utiliser [Azure Functions](../azure-functions/functions-overview.md), conjointement avec différents langages de codage tels que [PowerShell](../azure-functions/functions-reference-powershell.md) ou Python, pour créer un connecteur serverless pour les points de terminaison de l’API REST de vos sources de données compatibles. Des applications Azure Function vous permettent de connecter Microsoft Sentinel à l’API REST de votre source de données pour extraire des journaux.
 
-Cet article explique comment configurer Azure Sentinel pour l’utilisation des applications Azure Function. Vous devrez peut-être également configurer votre système source et les liens d’informations spécifiques au fournisseur et au produit dans chaque page du connecteur de données dans le portail, ou la section pour votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+Cet article explique comment configurer Microsoft Sentinel pour l’utilisation des applications Azure Function. Vous devrez peut-être également configurer votre système source et les liens d’informations spécifiques au fournisseur et au produit dans chaque page du connecteur de données dans le portail, ou la section pour votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
 
 
 
 > [!NOTE]
-> - Une fois qu’ils sont ingérés dans Azure Sentinel, les données sont stockées à l’emplacement géographique de l’espace de travail dans lequel vous exécutez Azure Sentinel.
+> - Une fois qu’ils sont ingérés dans Microsoft Sentinel, les données sont stockées à l’emplacement géographique de l’espace de travail dans lequel vous exécutez Microsoft Sentinel.
 >
 >     Pour une rétention à long terme, vous souhaiterez peut-être également stocker des données dans Azure Data Explorer. Pour plus d’informations, consultez [Intégrer Azure Data Explorer](store-logs-in-azure-data-explorer.md).
 >
-> - L’utilisation de Azure Functions pour ingérer de données dans Azure Sentinel peut entraîner des coûts d’ingestion de données supplémentaires. Pour plus d’informations, consultez la page [Tarification d’Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+> - L’utilisation de Azure Functions pour ingérer de données dans Microsoft Sentinel peut entraîner des coûts d’ingestion de données supplémentaires. Pour plus d’informations, consultez la page [Tarification d’Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 ## <a name="prerequisites"></a>Prérequis
 
-Vérifiez que vous disposez des autorisations et des informations d’identification suivantes avant d’utiliser Azure Functions pour connecter Azure Sentinel à votre source de données et extraire ses journaux dans Azure Sentinel :
+Vérifiez que vous disposez des autorisations et des informations d’identification suivantes avant d’utiliser Azure Functions pour connecter Microsoft Sentinel à votre source de données et extraire ses journaux dans Microsoft Sentinel :
 
-- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Azure Sentinel.
+- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Microsoft Sentinel.
 
 - Vous devez disposer d’autorisations de lecture sur les clés partagées pour accéder à l’espace de travail. [En savoir plus sur les clés d’espace de travail](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
@@ -52,21 +52,21 @@ Vérifiez que vous disposez des autorisations et des informations d’identifica
 
 - Vous aurez également besoin d’informations d’identification pour accéder à l’API du produit, qu’il s’agisse d’un nom d’utilisateur et d’un mot de passe, d’un jeton, d’une clé ou d’une autre combinaison. Vous pouvez également avoir besoin d’autres informations sur l’API, telles qu’un URI de point de terminaison.
 
-    Pour plus d’informations, consultez la documentation du service auquel vous vous connectez et la section de votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+    Pour plus d’informations, consultez la documentation du service auquel vous vous connectez et la section de votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
 ## <a name="configure-and-connect-your-data-source"></a>Configurer et connecter votre source de données
 
 > [!NOTE]
 > - Vous pouvez stocker en toute sécurité des clés ou des jetons d’autorisation de l’espace de travail et de l’API dans Azure Key Vault. Azure Key Vault fournit un mécanisme sécurisé pour stocker et récupérer des valeurs de clés. [Suivez ces instructions](../app-service/app-service-key-vault-references.md) pour utiliser Azure Key Vault avec une application Azure Function.
 >
-> - Certains connecteurs de données dépendent d’un analyseur basé sur une [fonction Kusto](/azure/data-explorer/kusto/query/functions/user-defined-functions) pour pouvoir fonctionner normalement. Consultez la section pour votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md) pour obtenir des liens vers des instructions permettant de créer la fonction et l’alias Kusto.
+> - Certains connecteurs de données dépendent d’un analyseur basé sur une [fonction Kusto](/azure/data-explorer/kusto/query/functions/user-defined-functions) pour pouvoir fonctionner normalement. Consultez la section pour votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md) pour obtenir des liens vers des instructions permettant de créer la fonction et l’alias Kusto.
 
 
 ### <a name="step-1---get-your-source-systems-api-credentials"></a>ÉTAPE 1 : obtenir les informations d’identification de l’API du système source
 
 Suivez les instructions de votre système source pour obtenir ses **informations d’identification d’API/jetons/clés d’autorisation**. Copiez-les et collez-les dans un fichier texte pour une utilisation ultérieure.
 
-Vous trouverez plus d’informations sur les informations d’identification dont vous avez besoin, ainsi que des liens vers les instructions de votre produit pour les trouver ou les créer, sur la page connecteur de données du portail et dans la section de votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+Vous trouverez plus d’informations sur les informations d’identification dont vous avez besoin, ainsi que des liens vers les instructions de votre produit pour les trouver ou les créer, sur la page connecteur de données du portail et dans la section de votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
 Vous devrez peut-être également configurer la journalisation ou d’autres paramètres sur votre système source. Vous trouverez les instructions pertinentes ainsi que celles du paragraphe précédent.
 ### <a name="step-2---deploy-the-connector-and-the-associated-azure-function-app"></a>ÉTAPE 2 : Déployer le connecteur et l’application Azure Function associée
@@ -77,9 +77,9 @@ Vous devrez peut-être également configurer la journalisation ou d’autres par
 
 Cette méthode fournit un déploiement automatisé de votre connecteur Azure Function à l’aide d’un modèle ARM.
 
-1. Dans le portail Azure Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
+1. Dans le portail Microsoft Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
 
-1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Azure Sentinel, puis mettez-les de côté.
+1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Microsoft Sentinel, puis mettez-les de côté.
 
 1. Sélectionnez **Déployer sur Azure**. (Vous devrez peut-être faire défiler l’écran pour trouver le bouton.)
 
@@ -88,12 +88,12 @@ Cette méthode fournit un déploiement automatisé de votre connecteur Azure Fun
 
     - Entrez les informations d’identification de l’API/clés d’autorisation/jetons que vous avez enregistrés à l' [étape 1](#step-1---get-your-source-systems-api-credentials) ci-dessus.
 
-    - Entrez votre **ID d’espace de travail** et votre **Clé d’espace de travail** (clé primaire) Azure Sentinel que vous avez copiés et mis de côté.
+    - Entrez votre **ID d’espace de travail** et votre **Clé d’espace de travail** (clé primaire) Microsoft Sentinel que vous avez copiés et mis de côté.
 
         > [!NOTE]
         > Si vous utilisez des secrets Azure Key Vault pour l’une des valeurs ci-dessus, utilisez le schéma `@Microsoft.KeyVault(SecretUri={Security Identifier})` à la place des valeurs de chaîne. Pour plus d’informations, reportez-vous à la documentation relative aux références de Key Vault.
 
-    - Complétez tous les autres champs du formulaire sur l’écran de **Déploiement personnalisé**. Consultez la page de votre connecteur de données dans le portail ou la section relative à votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+    - Complétez tous les autres champs du formulaire sur l’écran de **Déploiement personnalisé**. Consultez la page de votre connecteur de données dans le portail ou la section relative à votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
     - Sélectionnez **Revoir + créer**. Quand la validation est terminée, sélectionnez **Créer**.
 
@@ -101,9 +101,9 @@ Cette méthode fournit un déploiement automatisé de votre connecteur Azure Fun
 
 Utilisez les instructions pas à pas suivantes pour déployer manuellement des connecteurs basés sur Azure Functions qui utilisent des fonctions PowerShell.
 
-1. Dans le portail Azure Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
+1. Dans le portail Microsoft Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
 
-1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Azure Sentinel, puis mettez-les de côté.
+1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Microsoft Sentinel, puis mettez-les de côté.
 
 1. **Créer une Function App**
     1. À partir du portail Azure, recherchez et sélectionnez **Function App**.
@@ -138,7 +138,7 @@ Utilisez les instructions pas à pas suivantes pour déployer manuellement des c
 
     1. Lorsque la fonction a été créée, sélectionnez **Code + Test** dans le volet gauche.
 
-    1. Téléchargez le code Function App fourni par le fournisseur de votre système source, copiez-le et collez-le dans l’éditeur de *run.ps1***Function App**, en remplaçant ce qui est présent par défaut. Vous pouvez trouver le lien de téléchargement sur la page du connecteur ou dans la section relative à votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+    1. Téléchargez le code Function App fourni par le fournisseur de votre système source, copiez-le et collez-le dans l’éditeur de *run.ps1***Function App**, en remplaçant ce qui est présent par défaut. Vous pouvez trouver le lien de téléchargement sur la page du connecteur ou dans la section relative à votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
     1. Sélectionnez **Enregistrer**.
 
@@ -147,7 +147,7 @@ Utilisez les instructions pas à pas suivantes pour déployer manuellement des c
 
     1. Sous l’onglet **Paramètres d’application**, sélectionnez **+ Nouveau paramètre d’application**.
 
-    1. Ajoutez les paramètres d’application prescrits pour votre produit individuellement, avec leurs valeurs de chaîne respectant la casse respectives. Consultez la page de votre connecteur de données ou la section de votre produit de la section relative à votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+    1. Ajoutez les paramètres d’application prescrits pour votre produit individuellement, avec leurs valeurs de chaîne respectant la casse respectives. Consultez la page de votre connecteur de données ou la section de votre produit de la section relative à votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
         > [!TIP]
         > Le cas échéant, utilisez le paramètre d’application *logAnalyticsUri* pour remplacer le point de terminaison de l’API d’analytique des journaux d'activité si vous utilisez un Cloud dédié. Par exemple, si vous utilisez le cloud public, laissez la valeur vide. pour l’environnement cloud Azure GovUS, spécifiez la valeur au format suivant : `https://<CustomerId>.ods.opinsights.azure.us`.
@@ -157,16 +157,16 @@ Utilisez les instructions pas à pas suivantes pour déployer manuellement des c
 
 Utilisez les instructions pas à pas suivantes pour déployer manuellement des connecteurs basés sur Azure Functions qui utilisent des fonctions Python. Ce type de déploiement requiert Visual Studio Code.
 
-1. Dans le portail Azure Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
+1. Dans le portail Microsoft Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur Azure Functions dans la liste, puis **Ouvrez la page connecteur**.
 
-1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Azure Sentinel, puis mettez-les de côté.
+1. Sous **Configuration**, copiez **l’ID d’espace de travail** et la **clé primaire** Microsoft Sentinel, puis mettez-les de côté.
 
 1. **Déployer une Function App**
 
     > [!NOTE]
     > Vous devrez [préparer Visual Studio Code](../azure-functions/create-first-function-vs-code-python.md) (VS Code) pour le développement d’Azure Function.
 
-    1. Téléchargez le fichier Azure Function App à l’aide du lien fourni sur la page connecteur de données et dans la section de votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md). Extrayez l’archive sur votre ordinateur de développement local.
+    1. Téléchargez le fichier Azure Function App à l’aide du lien fourni sur la page connecteur de données et dans la section de votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md). Extrayez l’archive sur votre ordinateur de développement local.
 
     1. Démarrez VS Code. Dans la barre de menus, sélectionnez **Fichier > Ouvrir le dossier...** .
 
@@ -194,7 +194,7 @@ Utilisez les instructions pas à pas suivantes pour déployer manuellement des c
 
     1. Sous l’onglet **Paramètres d’application**, sélectionnez **+ Nouveau paramètre d’application**.
 
-    1. Ajoutez les paramètres d’application prescrits pour votre produit individuellement, avec leurs valeurs de chaîne respectant la casse respectives. Consultez la page de votre connecteur de données ou la section de votre service de la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md) pour les paramètre d'application à ajouter.
+    1. Ajoutez les paramètres d’application prescrits pour votre produit individuellement, avec leurs valeurs de chaîne respectant la casse respectives. Consultez la page de votre connecteur de données ou la section de votre service de la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md) pour les paramètres d'application à ajouter.
 
         - Le cas échéant, utilisez le paramètre d’application *logAnalyticsUri* pour remplacer le point de terminaison de l’API d’analytique des journaux d'activité si vous utilisez un Cloud dédié. Par exemple, si vous utilisez le cloud public, laissez la valeur vide. pour l’environnement cloud Azure GovUS, spécifiez la valeur au format suivant : `https://<CustomerId>.ods.opinsights.azure.us`.
 
@@ -202,7 +202,7 @@ Utilisez les instructions pas à pas suivantes pour déployer manuellement des c
 
 ## <a name="find-your-data"></a>Recherche de données
 
-Après l’établissement d’une connexion réussie, les données apparaissent dans les **Journaux** sous *CustomLogs*, dans les tables figurant dans la section de votre service dans la page de [référence des connecteurs de données Azure Sentinel](data-connectors-reference.md).
+Après l’établissement d’une connexion réussie, les données apparaissent dans les **Journaux** sous *CustomLogs*, dans les tables figurant dans la section de votre service dans la page de [référence des connecteurs de données Microsoft Sentinel](data-connectors-reference.md).
 
 Pour interroger des données, entrez l’un de ces noms de table (ou l’alias de fonction Kusto approprié) dans la fenêtre de requête.
 
@@ -214,8 +214,8 @@ Jusqu’à 20 minutes peuvent être nécessaires avant que vos journaux ne comm
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à connecter Azure Sentinel à votre source de données à l’aide de connecteurs Azure Functions. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à connecter Microsoft Sentinel à votre source de données à l’aide de connecteurs Azure Functions. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](./get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](./detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](./detect-threats-built-in.md).
 - [Utilisez des classeurs](./monitor-your-data.md) pour superviser vos données.

@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/15/2021
+ms.date: 11/09/2021
 ms.author: barclayn
-ms.openlocfilehash: b1dbdf7f7798458ec3ea3a7487f69a9dee244dda
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 400fe7d940a97ddf9fb885302edd93c8780491f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474285"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134800"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>Recommandations relatives aux meilleures pratiques liées aux identités managées
 
@@ -38,7 +38,6 @@ Comme les identités affectées par le système sont créées et supprimées en 
 Si votre infrastructure nécessite que plusieurs ressources aient accès aux mêmes ressources, une seule identité affectée par l’utilisateur peut leur être attribuée. La surcharge relative à l’administration sera moins importante, car il y a moins d’identités et d’attributions de rôle distinctes à gérer.
 
 Si vous avez besoin que chaque ressource ait sa propre identité ou si vous avez des ressources qui nécessitent un ensemble unique d’autorisations et que vous souhaitez que l’identité soit supprimée en même temps que la ressource, vous devez utiliser une identité affectée par le système.
-
 
 | Scénario| Recommandation|Notes|
 |---|---|---|
@@ -89,7 +88,7 @@ Lorsque vous accordez une identité, y compris une identité managée, aux servi
 
 ### <a name="consider-the-effect-of-assigning-managed-identities-to-azure-resources"></a>Considérez l’effet de l’attribution d’identités managées aux ressources Azure
 
-Il est important de noter que lorsqu’une ressource Azure, telle qu’une application logique Azure, une fonction Azure ou une machine virtuelle, etc. reçoit une identité managée, toutes les autorisations accordées à l’identité managée sont désormais disponibles pour la ressource Azure. Ceci est particulièrement important, car si un utilisateur a accès à l’installation ou à l’exécution de code sur cette ressource, il a accès à toutes les identités affectées/associées à la ressource Azure. L’objectif d’une identité managée est de permettre au code s’exécutant sur un accès aux ressources Azure d’accéder à d’autres ressources, sans que les développeurs aient besoin de gérer ou de placer directement les informations d’identification dans le code pour obtenir cet accès.
+Il est important de noter que lorsqu’une ressource Azure, telle qu’une application logique Azure, une fonction Azure ou une machine virtuelle, etc. reçoit une identité managée, toutes les autorisations accordées à l’identité managée sont désormais disponibles pour la ressource Azure. Ceci est important, car si un utilisateur a accès à l’installation ou à l’exécution de code sur cette ressource, il a accès à toutes les identités attribuées/associées à la ressource Azure. L’objectif d’une identité managée est de permettre au code s’exécutant sur un accès aux ressources Azure d’accéder à d’autres ressources, sans que les développeurs aient besoin de gérer ou de placer directement les informations d’identification dans le code pour obtenir cet accès.
 
 Par exemple, si une identité managée (ClientId = 1234) a reçu un accès en lecture/écriture à ***StorageAccount7755** _ et qu’elle a été attribuée à _*_LogicApp3388_*_, Alice, qui n’a pas d’autorisations directes sur l’identité managée ou le compte de stockage, mais qui a l’autorisation d’exécuter du code dans _*_LogicApp3388_*_ peut également lire/écrire des données vers/à partir de _ *_StorageAccount7755_** en exécutant le code utilisant l’identité managée.
 
@@ -109,3 +108,11 @@ Les attributions de rôle ne sont pas supprimées automatiquement lorsque les id
 Les attributions de rôle associées aux identités managées supprimées apparaissent avec le message « Identité introuvable » lorsqu’elles sont affichées dans le portail. [En savoir plus](../../role-based-access-control/troubleshooting.md#role-assignments-with-identity-not-found).
 
 :::image type="content" source="media/managed-identity-best-practice-recommendations/identity-not-found.png" alt-text="Identité introuvable pour l’attribution de rôle.":::
+
+## <a name="limitation-of-using-azure-ad-groups-with-managed-identities-for-authorization"></a>Limitation de l’utilisation de groupes Azure AD avec des identités managées pour l’autorisation
+
+L’utilisation de groupes Azure AD pour accorder l’accès aux services est un excellent moyen de simplifier le processus d’autorisation. L’idée est simple : accordez des autorisations à un groupe et ajoutez des identités au groupe afin qu’elles héritent des mêmes autorisations. Il s’agit d’un modèle bien établi provenant de différents systèmes locaux et qui fonctionne bien lorsque les identités représentent des utilisateurs. Toutefois, pour les identités non humaines, telles que les applications Azure AD et les identités managées, le mécanisme exact n’est pas bien adapté aujourd’hui. L’implémentation actuelle avec Azure AD et Azure Role Based Access Control (Azure RBAC), utilise des jetons d'accès émis par Azure AD pour l'authentification de chaque identité. Toutefois, si l’identité est ajoutée à un groupe, son appartenance à un groupe est exprimée sous la forme d’une revendication dans le jeton d’accès émis par Azure AD. Azure RBAC utilise cette revendication pour évaluer plus en détail les règles d’autorisation afin d’autoriser ou de refuser l’accès.  
+
+Étant donné que l’appartenance au groupe est une revendication dans le jeton d’accès, les modifications d’appartenance aux groupes ne prennent pas effet tant que le jeton n’est pas actualisé. Un utilisateur humain peut acquérir un nouveau jeton d’accès en se déconnectant et en se reconnectant ensuite. Les jetons d’identité managée sont mis en cache par l’infrastructure Azure sous-jacente à des fins de performances et de résilience. Cela signifie que les modifications apportées à l’appartenance au groupe d’une identité managée peuvent prendre plusieurs heures. Aujourd’hui, il n’est pas possible de forcer l’actualisation du jeton d’une identité managée avant son expiration. Si vous modifiez l’appartenance à un groupe d’une identité managée pour ajouter ou supprimer des autorisations, il se peut donc que vous deviez attendre plusieurs heures pour que la ressource Azure utilisant l’identité dispose de l’accès adéquat, alors que cela ne prendrait que quelques minutes si vous deviez ajouter ou supprimer des autorisations directement sur l’identité.
+
+Pour que les modifications apportées aux autorisations des identités managées prennent effet rapidement, nous vous recommandons de regrouper les ressources Azure à l’aide d’une [identité managée attribuée par l’utilisateur](how-manage-user-assigned-managed-identities.md?pivots=identity-mi-methods-azcli) avec des autorisations appliquées directement à l’identité, au lieu d’ajouter ou de supprimer des identités managées d’un groupe Azure AD disposant d’autorisations. Une identité managée attribuée par l'utilisateur peut être utilisée comme un groupe, car elle peut être attribuée à une ou plusieurs ressources Azure pour l’utiliser. L’opération d’assignation peut être contrôlée à l’aide du [Contributeur d’identité managée](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) et [Rôle opérateur d’identité managée](../../role-based-access-control/built-in-roles.md#managed-identity-operator).

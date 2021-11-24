@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 814ed1001c39b48a5aa93162cb54ec520050eb66
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 7d56a9747627bd81e9bc0cc72fce804a64af91e4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457560"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398076"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe des requêtes pour le routage des messages IoT Hub
 
@@ -149,10 +149,9 @@ deviceClient.sendEvent(message, (err, res) => {
 > [!NOTE] 
 > Cet exemple montre comment gérer l’encodage du corps en JavaScript. Si vous voulez voir un exemple en C#, téléchargez les [exemples C# Azure IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip). Décompressez le fichier master.zip. Le fichier Program.cs de la solution Visual Studio *SimulatedDevice* montre comment encoder et envoyer des messages à un hub IoT. Il s’agit du même exemple que celui utilisé pour tester le routage des messages, comme expliqué dans le [tutoriel Routage des messages](tutorial-routing.md). En bas de Program.cs, il a également une méthode pour lire l’un des fichiers encodés, le décoder et le réécrire au format ASCII afin que vous puissiez le lire. 
 
-
 ### <a name="query-expressions"></a>Expressions de requête
 
-Une requête sur le corps de message doit avoir pour préfixe `$body`. Vous pouvez utiliser une référence au corps, une référence au tableau du corps ou plusieurs références au corps dans l’expression de requête. Votre expression de requête peut également combiner une référence au corps avec une référence aux propriétés système de message, et aux propriétés de l’application de messagerie. Par exemple, toutes les expressions de requête suivantes sont valides : 
+Une requête sur le corps de message doit avoir pour préfixe `$body`. Vous pouvez utiliser une référence au corps, une référence au tableau du corps ou plusieurs références au corps dans l’expression de requête. Votre expression de requête peut également combiner une référence au corps avec une référence aux propriétés système de message, et aux propriétés de l’application de messagerie. Par exemple, toutes les expressions de requête suivantes sont valides :
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -170,9 +169,16 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-> [!NOTE] 
+> [!NOTE]
+> Pour filtrer une charge utile de notification de jumeau numérique sur la base de ce qui a été modifié, exécutez votre requête sur le corps du message :
+>
+> ```sql
+> $body.properties.desired.telemetryConfig.sendFrequency
+> ```
+
+> [!NOTE]
 > Vous pouvez exécuter des requêtes et des fonctions uniquement sur les propriétés dans la référence de corps. Vous ne pouvez pas exécuter de requêtes ou de fonctions sur l’ensemble de la référence de corps. Par exemple, la requête suivante n’est *pas* prise en charge et sera renvoyée `undefined` :
-> 
+>
 > ```sql
 > $body[0] = 'Feb'
 > ```

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 61716993bc4c9f3da4ad606789f050a280a94817
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ae07694e72f910945fbb213a448bfd910fef9786
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754642"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132483863"
 ---
 # <a name="get-started-with-the-azure-virtual-desktop-agent"></a>Bien démarrer avec l’agent Azure Virtual Desktop
 
@@ -42,7 +42,7 @@ Autres éléments importants à prendre en compte :
 - La mise à jour de l’agent n’est pas connectée aux mises à jour de version de l’infrastructure Azure Virtual Desktop. La mise à jour de l’infrastructure Azure Virtual Desktop ne signifie pas que l’agent a été mis à jour en même temps.
 - Étant donné que les machines virtuelles de votre pool d’hôtes peuvent recevoir des mises à jour de l’agent à des moments différents, vous devez être en mesure de déterminer la différence entre les problèmes de distribution de version d’évaluation et les mises à jour d’agent qui ont échoué. Si vous accédez aux journaux des événements de votre machine virtuelle dans **Observateur d’événements** > **Journaux Windows** > **Application** et que vous voyez un événement intitulé « ID 3277 », cela signifie que la mise à jour de l’agent n’a pas fonctionné. Si vous ne voyez pas cet événement, cela signifie que la machine virtuelle se trouve dans un autre mode Flighting et sera mise à jour ultérieurement.
 - Lorsque l’agent de surveillance Geneva est mis à jour vers la dernière version, l’ancienne tâche GenevaTask est localisée et désactivée avant la création d’une tâche pour le nouvel agent de surveillance. La version antérieure de l’agent de surveillance n’est pas supprimée si la version la plus récente de l’agent de surveillance rencontre un problème nécessitant de revenir à la version antérieure pour effectuer une correction. Si la dernière version rencontre un problème, l’ancien agent de surveillance est réactivé pour continuer à fournir des données de surveillance. Toutes les versions du moniteur antérieures à la dernière que vous avez installée avant la mise à jour seront supprimées de votre machine virtuelle.
-- Votre machine virtuelle conserve trois versions de la pile côte à côte à la fois. Cela permet une récupération rapide en cas de problème avec la mise à jour. La version la plus ancienne de la pile est supprimée de la machine virtuelle à chaque mise à jour de la pile.
+- Votre machine virtuelle conserve trois versions de l’agent et de la pile côte à côte à la fois. Cela permet une récupération rapide en cas de problème avec la mise à jour. La version la plus ancienne de l’agent ou de la pile est supprimée de la machine virtuelle à chaque mise à jour de l’agent ou de la pile. Si vous supprimez ces composants prématurément et que l’agent ou la pile rencontre un échec, l’agent ou la pile ne pourra pas revenir à une version antérieure, ce qui placera votre machine virtuelle dans un état d’indisponibilité.
 
 La mise à jour de l’agent dure normalement 2-3 minutes sur une nouvelle machine virtuelle et ne doit pas entraîner de perte de connexion ou d’arrêt de votre machine virtuelle. Ce processus de mise à jour s’applique tant à la version classique qu’à la dernière version d’Azure Virtual Desktop avec Azure Resource Manager.
 

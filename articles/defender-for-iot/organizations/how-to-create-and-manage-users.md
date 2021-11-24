@@ -1,18 +1,18 @@
 ---
 title: Créer et gérer des utilisateurs
 description: Créer et gérer des utilisateurs de capteurs et de la console de gestion locale. Les utilisateurs peuvent se voir attribuer le rôle d’administrateur, d’analyste de sécurité ou d’utilisateur en lecture seule.
-ms.date: 05/20/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 73e08c7cdca6e57445566a99cb779a322306f944
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434031"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318937"
 ---
 # <a name="about-defender-for-iot-console-users"></a>À propos des utilisateurs de la console Defender pour IoT
 
-Cet article présente comment créer et gérer des utilisateurs de capteurs et de la console de gestion locale. Les rôles d’utilisateur sont ceux d’administrateur, d’analyste de sécurité ou d’utilisateur en lecture seule. Chaque rôle est associé à une plage d’autorisations pour les outils du capteur ou la console de gestion locale. Les rôles sont conçus pour faciliter un accès granulaire et sécurisé à Azure Defender pour IoT.
+Cet article présente comment créer et gérer des utilisateurs de capteurs et de la console de gestion locale. Les rôles d’utilisateur sont ceux d’administrateur, d’analyste de sécurité ou d’utilisateur en lecture seule. Chaque rôle est associé à une plage d’autorisations pour les outils du capteur ou la console de gestion locale. Les rôles sont conçus pour faciliter un accès granulaire et sécurisé à Microsoft Defender pour IoT.
 
 Certaines fonctionnalités sont également disponibles pour suivre les activités des utilisateurs et activer la connexion Active Directory.
 

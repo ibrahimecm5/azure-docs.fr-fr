@@ -13,14 +13,14 @@ ms.date: 04/04/2019
 ms.author: davidmu
 ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886defd9362d1001a32d3076623ffd87ce718fe3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d67c54ceb5d99c19e862e9140223f98d20de2f5b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617584"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550322"
 ---
-# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Gérer des certificats pour l’authentification unique fédérée sur Azure Active Directory
+# <a name="manage-certificates-for-federated-single-sign-on"></a>Gestion des certificats pour l'authentification unique fédérée
 
 Dans cet article, nous abordons les questions et informations relatives aux certificats créés par Azure Active Directory (Azure AD) pour établir une authentification unique fédérée vers vos applications Software as a service (SaaS). Ajoutez des applications à partir de la galerie d’applications Azure AD ou à l’aide de modèle d’applications ne figurant pas dans la galerie. Configurez l’application à l’aide de l’option d’authentification unique fédérée.
 

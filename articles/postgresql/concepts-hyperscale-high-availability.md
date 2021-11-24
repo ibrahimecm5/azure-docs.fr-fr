@@ -6,17 +6,21 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 406b4f2ada665d65ee0452579e24744d1f7cfc63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/15/2021
+ms.openlocfilehash: d708bb832673d424b1737ad0bea00716f1f3f278
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91314851"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524851"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Haute disponibilité dans Azure Database pour PostgreSQL - Hyperscale (Citus)
 
 La haute disponibilité évite les temps d’arrêt des bases de données en conservant des réplicas de secours de chaque nœud dans un groupe de serveurs. Si un nœud devient inactif, Hyperscale (Citus) bascule les connexions entrantes du nœud défaillant vers son nœud de secours. Le basculement se produit en quelques minutes, et les nœuds promus disposent toujours de données actualisées par le biais de la réplication en streaming synchrone PostgreSQL.
+
+Même si la haute disponibilité est activée, chaque nœud hyperscale (Citus) a son propre stockage localement redondant (LRS) avec trois réplicas synchrones gérés par le service stockage Azure.  En cas d’échec d’un seul réplica, il est détecté par stockage Azure service et est recréé de manière transparente. Pour la durabilité du stockage LRS, consultez les mesures [sur cette page](../storage/common/storage-redundancy.md#summary-of-redundancy-options).
+
+Quand la haute disponibilité *est* activée, Hyperscale (CITUS) exécute un nœud de secours pour chaque nœud principal du groupe de serveurs. Le réplica principal et le serveur de secours utilisent la réplication PostgreSQL synchrone. Cette réplication permet aux clients d’avoir des temps d’arrêt prévisibles en cas de défaillance d’un nœud principal. En résumé, notre service détecte une défaillance sur les nœuds principaux et bascule sur les nœuds de secours sans aucune perte de données.
 
 Pour tirer parti de la haute disponibilité sur le nœud coordinateur, les applications de base de données doivent détecter et retenter les connexions abandonnées et les transactions ayant échoué. Le coordinateur nouvellement promu sera accessible avec la même chaîne de connexion.
 

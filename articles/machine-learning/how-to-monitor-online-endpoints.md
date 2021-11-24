@@ -8,12 +8,12 @@ ms.subservice: mlops
 ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: ecde110225ef42ace6b19e54930ee9f4152acec6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c704af7d5249ca1a24da554e7789d3c92a360861
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558627"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519455"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>Superviser des points de terminaison en ligne managés (préversion)
 
@@ -54,6 +54,13 @@ Les métriques affichées varient en fonction de la ressource que vous sélectio
 - Latence des demandes P90 (latence des demandes au 90e centile)
 - Latence des demandes P95 (latence des demandes au 95e centile)
 - Requêtes par minute
+- Nouvelles connexions par seconde
+- Nombre de connexions actives
+- Octets réseau
+
+> ![NOTE] La bande passante sera limitée si les limites sont dépassées (consultez la section relative aux points de terminaison en ligne managés dans [Gérer et augmenter les quotas pour les ressources avec Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)). Pour déterminer si les demandes sont limitées :
+> - Surveiller la métrique « Octets réseau »
+> - Les en-têtes de réponse comporteront les champs suivants : `ms-azureml-bandwidth-request-delay-ms` et `ms-azureml-bandwidth-response-delay-ms`. Les valeurs des champs sont les retards, en millisecondes, de la limitation de bande passante.
 
 Division dans les dimensions suivantes :
 
@@ -63,14 +70,14 @@ Division dans les dimensions suivantes :
 
 ### <a name="metrics-at-deployment-scope"></a>Métriques dans l’étendue du déploiement
 
-- Utilisation du processeur
+- Pourcentage d’utilisation de l’UC
 - Capacité de déploiement (nombre d’instances du type d’instance demandé)
 - Utilisation du disque
 - Utilisation de la mémoire du GPU (applicable uniquement aux instances de GPU)
 - Utilisation du GPU (applicable uniquement aux instances de GPU)
-- Utilisation de la mémoire
+- Pourcentage d’utilisation de la mémoire
 
-Division dans la dimension suivante :
+Division sur la dimension suivante :
 
 - InstanceId
 

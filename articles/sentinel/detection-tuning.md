@@ -1,32 +1,32 @@
 ---
-title: Obtenir des recommandations de réglage précis pour vos règles d’analyse dans Azure Sentinel
-description: Apprenez à affiner vos règles de détection des menaces dans Azure Sentinel, en utilisant des recommandations générées automatiquement, afin de réduire les faux positifs tout en conservant la couverture de la détection des menaces.
+title: Obtenir des recommandations de paramétrage précis pour vos règles d’analyse dans Microsoft Sentinel
+description: Apprenez à affiner vos règles de détection des menaces dans Microsoft Sentinel en utilisant des recommandations générées automatiquement afin de réduire les faux positifs tout en conservant la couverture de la détection des menaces.
 author: yelevin
 ms.author: yelevin
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a302a325ff3bd510298f0d4b70b62f27af060a4e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b1d71f2c8a6a5f74d68d9480b918743a707cc83
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098091"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521507"
 ---
-# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-azure-sentinel"></a>Obtenir des recommandations de réglage précis pour vos règles d’analyse dans Azure Sentinel
+# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-microsoft-sentinel"></a>Obtenir des recommandations de paramétrage précis pour vos règles d’analyse dans Microsoft Sentinel
 
 > [!IMPORTANT]
 >
 > Le réglage de la da détection de menaces est actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
-Le réglage des règles de détection des menaces dans votre SIEM peut être un processus difficile, délicat et continu afin d’arriver à un équilibre entre l’optimisation de la couverture de détection des menaces et la réduction du taux de faux positifs. Azure Sentinel simplifie et optimise ce processus avec l’apprentissage automatique pour analyser les milliards de signaux de vos sources de données, ainsi que vos réponses aux incidents au fil du temps, afin d’en déduire des modèles et de vous fournir des recommandations et des informations exploitables qui réduisent considérablement le temps de paramétrage et vous permettent de vous concentrer sur la détection et la réaction face aux menaces réelles.
+Le réglage des règles de détection des menaces dans votre SIEM peut être un processus difficile, délicat et continu afin d’arriver à un équilibre entre l’optimisation de la couverture de détection des menaces et la réduction du taux de faux positifs. Microsoft Sentinel simplifie et optimise ce processus grâce au Machine Learning pour analyser les milliards de signaux de vos sources de données, ainsi que vos réponses aux incidents au fil du temps, afin d’en déduire des modèles et de vous fournir des recommandations et des informations exploitables qui réduisent considérablement le temps de paramétrage et vous permettent de vous concentrer sur la détection des menaces réelles et la réponse à ces dernières.
 
 Les recommandations et les informations de paramétrage sont désormais intégrées à vos règles d’analyse. Cet article explique ce que ces informations présentent et comment vous pouvez mettre en œuvre les recommandations.
 
 ## <a name="view-rule-insights-and-tuning-recommendations"></a>Afficher les informations et les recommandations de réglage
 
-Pour voir si Azure Sentinel propose des recommandations de paramétrage pour l’une de vos règles d’analyse, sélectionnez **Analyse** dans le menu de navigation d’Azure Sentinel.
+Pour voir si Microsoft Sentinel propose des recommandations de paramétrage pour l’une de vos règles d’analyse, sélectionnez **Analyse** dans le menu de navigation de Microsoft Sentinel.
 
 Toutes les règles qui comportent des recommandations affichent une icône d’ampoule, comme illustré ici :
 
@@ -61,6 +61,6 @@ L’affichage des **informations de paramétrage** est constitué de plusieurs v
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d'informations, consultez les pages suivantes :
-- [Gérer les faux positifs dans Azure Sentinel](false-positives.md)
+- [Gérer les faux positifs dans Microsoft Azure Sentinel](false-positives.md)
 - [Utiliser les données UEBA pour analyser les faux positifs](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [Créer des règles d’analytique personnalisées pour détecter des menaces](detect-threats-custom.md)

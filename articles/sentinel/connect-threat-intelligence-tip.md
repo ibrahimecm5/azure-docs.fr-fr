@@ -1,54 +1,54 @@
 ---
-title: Connecter votre plateforme de renseignement sur les menaces (TIP) à Azure Sentinel | Microsoft Docs
-description: Apprenez à connecter votre plateforme de renseignement sur les menaces (TIP) ou votre flux personnalisé à Azure Sentinel et à envoyer des indicateurs de menace.
+title: Connecter votre plateforme de renseignement sur les menaces à Microsoft Sentinel | Microsoft Docs
+description: Apprenez à connecter votre plateforme de renseignement sur les menaces (TIP) ou votre flux personnalisé à Microsoft Sentinel et à envoyer des indicateurs de menace.
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dae86dee7843f6e763d343ffab025161762cc8cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1490e7b1b0364918ec63bf39ad5e1c70120549ec
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004375"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523065"
 ---
-# <a name="connect-your-threat-intelligence-platform-to-azure-sentinel"></a>Connecter votre plateforme de renseignement sur les menaces (TIP) à Azure Sentinel
+# <a name="connect-your-threat-intelligence-platform-to-microsoft-sentinel"></a>Connecter votre plateforme de renseignement sur les menaces à Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-**Voir aussi** : [Connecter Azure Sentinel aux flux de renseignement sur les menaces STIX/TAXII](connect-threat-intelligence-taxii.md)
+**Voir aussi** : [Connecter Microsoft Sentinel aux flux de renseignement sur les menaces STIX/TAXII](connect-threat-intelligence-taxii.md)
 
-De nombreuses organisations utilisent des solutions de plateforme Threat Intelligence (TIP) pour agréger les flux d’indicateurs de menace provenant de diverses sources, organiser les données au sein de la plateforme, puis choisir les indicateurs de menace à appliquer à différentes solutions de sécurité, comme les appareils réseau, les solutions EDR/XDR ou les solutions SIEM comme Azure Sentinel. Le **connecteur de données des plateformes Threat Intelligence** vous permet d’utiliser ces solutions pour importer des indicateurs de menace dans Azure Sentinel. 
+De nombreuses organisations utilisent des solutions de plateforme de renseignement sur les menaces (TIP) pour agréger les flux d’indicateurs de menace provenant de diverses sources, organiser les données au sein de la plateforme, puis choisir les indicateurs de menace à appliquer à différentes solutions de sécurité, comme les appareils réseau, les solutions EDR/XDR ou les solutions SIEM comme Microsoft Sentinel. Le **connecteur de données Plateformes de renseignement sur les menaces** vous permet d’utiliser ces solutions pour importer des indicateurs de menace dans Microsoft Sentinel. 
 
-Étant donné que le connecteur de données TIP fonctionne avec l’[API Microsoft Graph Security tiIndicators](/graph/api/resources/tiindicator) pour effectuer cette opération, vous pouvez utiliser le connecteur pour envoyer des indicateurs à Azure Sentinel (et à d’autres solutions de sécurité Microsoft comme Microsoft 365 Defender) à partir de toute autre plateforme personnalisée de renseignement sur les menaces qui peut communiquer avec cette API.
+Étant donné que le connecteur de données TIP fonctionne avec l’[API Microsoft Graph Security tiIndicators](/graph/api/resources/tiindicator) pour effectuer cette opération, vous pouvez utiliser le connecteur pour envoyer des indicateurs à Microsoft Sentinel (et à d’autres solutions de sécurité Microsoft comme Microsoft 365 Defender) à partir de toute autre plateforme personnalisée de renseignement sur les menaces qui peut communiquer avec cette API.
 
 :::image type="content" source="media/connect-threat-intelligence-tip/threat-intel-import-path.png" alt-text="Chemin d’importation du renseignement sur les menaces":::
 
-En savoir plus sur le [renseignement sur les menaces](understand-threat-intelligence.md) dans Azure Sentinel, et plus particulièrement sur les [produits de plateforme de renseignements sur les menaces](threat-intelligence-integration.md#integrated-threat-intelligence-platform-products) qui peuvent être intégrés à Azure Sentinel.
+En savoir plus sur le [renseignement sur les menaces](understand-threat-intelligence.md) dans Microsoft Sentinel, et plus particulièrement sur les [plateformes de renseignement sur les menaces](threat-intelligence-integration.md#integrated-threat-intelligence-platform-products) qui peuvent être intégrées à Microsoft Sentinel.
 
 ## <a name="prerequisites"></a>Configuration requise  
 
 - Vous devez disposer du rôle **Administrateur général** ou du rôle **Administrateur de la sécurité** Azure AD pour accorder des autorisations à votre produit TIP ou à toute autre application personnalisée qui utilise une intégration directe avec l’API Microsoft Graph Security tiIndicators.
 
-- Vous devez disposer d’autorisations en lecture et en écriture sur l’espace de travail Azure Sentinel pour stocker vos indicateurs de menace.
+- Vous devez disposer d’autorisations en lecture et en écriture sur l’espace de travail Microsoft Sentinel pour stocker vos indicateurs de menace.
 
 ## <a name="instructions"></a>Instructions
 
-Effectuez les étapes suivantes pour importer des indicateurs de menace dans Azure Sentinel à partir de votre solution de plateforme Threat Intelligence (TIP) intégrée ou de renseignement sur les menaces personnalisée :
+Effectuez les étapes suivantes pour importer des indicateurs de menace dans Microsoft Sentinel à partir de votre TIP intégrée ou de votre solution personnalisée de renseignement sur les menaces :
 1.  Obtenir un ID d’application et un secret client à partir de votre instance Azure Active Directory
 2.  Entrer ces informations dans votre solution de plateforme Threat Intelligence (TIP) ou votre application personnalisée
-3.  Activer le connecteur de données Plateformes Threat Intelligence dans Azure Sentinel
+3.  Activer le connecteur de données Plateformes de renseignement sur les menaces dans Microsoft Sentinel
 
 ### <a name="sign-up-for-an-application-id-and-client-secret-from-your-azure-active-directory"></a>S’incrire pour obtenir un ID d’application et un secret client à partir de votre instance Azure Active Directory
 
@@ -72,7 +72,7 @@ Vous pouvez extraire ces informations de Azure Active Directory par le biais d�
 
     :::image type="content" source="media/connect-threat-intelligence-tip/threat-intel-register-application.png" alt-text="Inscrire une application":::
 
-1. Dans l’écran qui s’affiche, copiez les valeurs **ID d’application (client)** et **ID de l’annuaire (locataire)** . Ce sont les deux premières informations dont vous aurez besoin ultérieurement pour configurer votre solution de plateforme Threat Intelligence (TIP) ou votre solution personnalisée afin d’envoyer des indicateurs de menace à Azure Sentinel. La troisième, **Clé secrète client**, vient ensuite.
+1. Dans l’écran qui s’affiche, copiez les valeurs **ID d’application (client)** et **ID de l’annuaire (locataire)** . Ce sont les deux premières informations dont vous aurez besoin ultérieurement pour configurer votre TIP ou votre solution personnalisée afin d’envoyer des indicateurs de menace à Microsoft Sentinel. La troisième, **Clé secrète client**, vient ensuite.
 
 #### <a name="specify-the-permissions-required-by-the-application"></a>Spécifier les autorisations exigées par l’application
 
@@ -115,7 +115,7 @@ Maintenant que votre application a été inscrite et que des autorisations ont �
 
 ### <a name="input-this-information-into-your-tip-solution-or-custom-application"></a>Entrer ces informations dans votre solution de plateforme Threat Intelligence (TIP) ou votre application personnalisée
 
-Vous avez maintenant les trois informations dont vous avez besoin pour configurer votre solution de plateforme Threat Intelligence (TIP) ou votre solution personnalisée afin d’envoyer des indicateurs de menace à Azure Sentinel.
+Vous avez maintenant les trois informations dont vous avez besoin pour configurer votre TIP ou votre solution personnalisée afin d’envoyer des indicateurs de menace à Microsoft Sentinel.
 
 - ID d’application (client)
 - ID de l’annuaire (locataire)
@@ -123,17 +123,17 @@ Vous avez maintenant les trois informations dont vous avez besoin pour configure
 
 1. Entrez ces valeurs dans la configuration de votre solution de plateforme Threat Intelligence ou votre solution personnalisée, si nécessaire.
 
-1. Pour le produit cible, spécifiez **Azure Sentinel**.
+1. Pour le produit cible, spécifiez **Microsoft Sentinel**.
 
 1. Pour l’action, spécifiez **alerte**.
 
-Une fois cette configuration terminée, les indicateurs de menace sont envoyés à partir de votre solution TIP ou personnalisée par le biais de l’**API Microsoft Graph tiIndicators** ciblée sur Azure Sentinel.
+Une fois cette configuration terminée, les indicateurs de menace sont envoyés à partir de votre TIP ou de votre solution personnalisée, par le biais de l’**API Microsoft Graph tiIndicators**, à destination de Microsoft Sentinel.
 
-### <a name="enable-the-threat-intelligence-platforms-data-connector-in-azure-sentinel"></a>Activer le connecteur de données Plateformes Threat Intelligence dans Azure Sentinel
+### <a name="enable-the-threat-intelligence-platforms-data-connector-in-microsoft-sentinel"></a>Activer le connecteur de données Plateformes de renseignement sur les menaces dans Microsoft Sentinel
 
-La dernière étape du processus d’intégration consiste à activer le **connecteur de données Plateformes Threat Intelligence** dans Azure Sentinel. L’activation du connecteur est ce qui permet à Azure Sentinel de recevoir les indicateurs de menace envoyés par votre plateforme TIP ou votre solution personnalisée. Ces indicateurs sont disponibles pour tous les espaces de travail Azure Sentinel de votre organisation. Effectuez les étapes suivantes pour activer le connecteur de données Plateformes Threat Intelligence pour chaque espace de travail :
+La dernière étape du processus d’intégration consiste à activer le **connecteur de données Plateformes de renseignement sur les menaces** dans Microsoft Sentinel. L’activation du connecteur est ce qui permet à Microsoft Sentinel de recevoir les indicateurs de menace envoyés par votre TIP ou votre solution personnalisée. Ces indicateurs sont disponibles pour tous les espaces de travail Microsoft Sentinel de votre organisation. Effectuez les étapes suivantes pour activer le connecteur de données Plateformes Threat Intelligence pour chaque espace de travail :
 
-1. Depuis le Portail Azure, accédez au service **Azure Sentinel**.
+1. Depuis le portail Azure, accédez au service **Microsoft Sentinel**.
 
 1. Choisissez l’**espace de travail** dans lequel vous voulez importer les indicateurs de menace envoyés à partir de votre solution de plateforme Threat Intelligence (TIP) ou votre solution personnalisée.
 
@@ -141,11 +141,11 @@ La dernière étape du processus d’intégration consiste à activer le **conne
 
 1. Comme vous avez déjà effectué l’inscription de l’application et configuré votre solution de plateforme Threat Intelligence (TIP) ou votre solution personnalisée pour envoyer des indicateurs de menace, il ne vous reste plus qu’à cliquer sur le bouton **Se connecter**.
 
-Après quelques minutes, les indicateurs de menace doivent commencer à circuler dans cet espace de travail Azure Sentinel. Vous pouvez trouver les nouveaux indicateurs dans le panneau **Renseignement sur les menaces**, accessible depuis le menu de navigation d’Azure Sentinel.
+Après quelques minutes, les indicateurs de menace doivent commencer à circuler dans cet espace de travail Microsoft Sentinel. Vous pouvez trouver les nouveaux indicateurs dans le panneau **Renseignement sur les menaces**, accessible depuis le menu de navigation de Microsoft Sentinel.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à connecter votre plateforme de renseignement sur les menaces à Azure Sentinel. Pour en savoir plus sur Azure Sentinel, consultez les articles suivants.
+Dans ce document, vous avez appris à connecter votre plateforme de renseignement sur les menaces à Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](./detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](./detect-threats-built-in.md).

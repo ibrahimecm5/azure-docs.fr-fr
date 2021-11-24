@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 878bead652cf9962febc7622ef98ade0abc6cce5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129454959"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399690"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Déployer Start/Stop VMs v2 (préversion)
 
@@ -196,7 +196,7 @@ Pour chaque scénario, vous pouvez cibler l’action sur un ou plusieurs abonnem
 
 ## <a name="sequenced-start-and-stop-scenario"></a>Scénario de démarrage et d’arrêt séquencés
 
-Dans un environnement comprenant deux composants ou plus sur plusieurs machines virtuelles Azure Resource Manager dans une architecture d’application distribuée, il est important de prendre en charge l’ordre de démarrage et d’arrêt des composants.
+Dans un environnement comprenant deux composants ou plus sur plusieurs machines virtuelles Azure Resource Manager dans une architecture d’application distribuée, il est important de prendre en charge l’ordre de démarrage et d’arrêt des composants. Assurez-vous d’avoir appliqué les étiquettes **sequencestart** et **sequencestop** aux machines virtuelles cibles, comme décrit dans la [page Vue d’ensemble](../../azure-functions/start-stop-vms/overview.md#overview) avant de configurer ce scénario.
 
 1. Dans la liste des applications logiques, sélectionnez **ststv2_vms_Sequenced_start** pour configurer le démarrage séquencé. Pour configurer l’arrêt séquencé, sélectionnez **ststv2_vms_Sequenced_stop**.
 

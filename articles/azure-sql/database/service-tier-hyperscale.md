@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 9/9/2021
-ms.openlocfilehash: f5cc4321f49a2cee75f8111bd975f750f075680f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 12f445c1b532ff3989010ca2a4b747ca0c241aef
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094176"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546484"
 ---
 # <a name="hyperscale-service-tier"></a>Niveau de service Hyperscale
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,6 +33,10 @@ Le niveau de service Hyperscale dans Azure SQL Database est le tout nouveau nive
 >
 > - Pour en savoir plus sur les niveaux de service Usage général et Critique pour l’entreprise du modèle d’achat vCore, consultez les niveaux de service [Usage général](service-tier-general-purpose.md) et [Critique pour l’entreprise](service-tier-business-critical.md). Pour obtenir une comparaison du modèle d’achat vCore avec le modèle d’achat DTU, consultez [Ressources et modèles d’achat Azure SQL Database](purchasing-models.md).
 > - Le niveau de service Hyperscale n'est actuellement disponible que pour Azure SQL Database, et non pour Azure SQL Managed Instance.
+
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Présentation des fonctionnalités Hyperscale
 

@@ -4,16 +4,19 @@ description: Cet article explique comment résoudre les problèmes du service Az
 ms.topic: troubleshooting
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 26d4675274d05500b54bbc43ecb84838b114f0c9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3760b17d71dc3526d9a16283084095174d7bb724
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554694"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398399"
 ---
 # <a name="troubleshoot-azure-video-analyzer-service"></a>Résoudre les problèmes du service Azure Video Analyzer
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![icône du cloud](media/env-icon/cloud.png)  
+Vous pouvez également consulter la [résolution des problèmes en périphérie](../edge/troubleshoot.md).
+
+---
 
 Cet article décrit les étapes de résolution des problèmes pour les scénarios d’erreur courants lors de l’utilisation du service.
 

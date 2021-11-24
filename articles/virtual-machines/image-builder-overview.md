@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 07481838f5fca77d7e634003e04169a95d944117
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 702a4b624041a20c925bfc65d92542788f381800
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452069"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551309"
 ---
 # <a name="azure-image-builder-overview"></a>Vue d’ensemble du Générateur d’images Azure
 
@@ -114,12 +114,12 @@ Nous vous facturons des coûts de calcul, de mise en réseau et de stockage lors
 
 Pendant le processus de création d’image, les fichiers sont téléchargés et stockés dans le groupe de ressources `IT_<DestinationResourceGroup>_<TemplateName>`, ce qui implique des coûts de stockage modiques. Si vous ne souhaitez pas conserver ces ressources, supprimez le **modèle d’image** une fois l’image générée.
  
-Le Générateur d’images crée une machine virtuelle de taille D1v2, ainsi que le stockage et la mise en réseau nécessaires pour la machine virtuelle. Ces ressources durent pendant le temps d’exécution du processus de génération, puis sont supprimées une fois l’image créée par le Générateur d’images. 
+Image Builder crée une machine virtuelle en utilisant la taille par défaut D1v2 pour les images Gen1 et D2ds V4 pour les images Gen2, ainsi que le stockage et le réseau nécessaires à la machine virtuelle. Ces ressources durent le temps du processus de génération et sont supprimées une fois qu’Image Builder a fini de créer l’image. 
  
 Le Générateur d’images Azure distribue l’image aux régions choisies, ce qui peut occasionner des frais de sortie de réseau.
 
 ## <a name="hyper-v-generation"></a>Hyper-V Génération
-Image Builder ne prend actuellement en charge que la création d’images Hyper-V de génération 1 (Gen1) dans Azure Compute Gallery. 
+Image Builder prend actuellement en charge la création d’images Hyper-V Gen1 et Gen2 dans Azure Compute Gallery. 
  
 ## <a name="next-steps"></a>Étapes suivantes 
  

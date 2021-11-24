@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 313532b6292cb3a6799b3c14df69c39d92ba3c03
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a10d5f1e21f741382ad0d82c06c3f60b19e2c1c4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227508"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519322"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>Opérations de sécurité pour les comptes privilégiés
 
@@ -46,13 +46,13 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV (valeurs séparées par des virgules) ou JSON (JavaScript Object Notation). Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
-* [Azure Sentinel](../../sentinel/overview.md) : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d'événements SIEM (Security Information and Event Management). 
+* [Microsoft Sentinel](../../sentinel/overview.md) : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d’événements (SIEM, Security Information and Event Management). 
 
 * [Azure Monitor](../../azure-monitor/overview.md) : permet un monitoring et des alertes automatisés de divers états. Peut créer ou utiliser des classeurs pour combiner des données provenant de différentes sources.
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) avec intégration SIEM[ : permet de transmettre les journaux Azure AD à d’autres systèmes SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic grâce à l’intégration Azure Event Hub.
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
+* [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
 
 * Microsoft Graph : vous pouvez exporter les données et utiliser MS Graph pour effectuer d’autres analyses. Pour plus d’informations sur MS Graph, consultez [Kit de développement logiciel (SDK) Microsoft Graph PowerShell et Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md). 
 
@@ -62,7 +62,7 @@ Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et l
 
    * Connexions risquées : contient des informations concernant le contexte d’une connexion potentiellement suspecte. Pour plus d’informations sur l’investigation des informations de ce rapport, consultez [Procédure : Examiner les risques](../identity-protection/howto-identity-protection-investigate-risk.md). 
 
-   * Détection de risque : contient des informations sur les risques supplémentaires qui sont engendrés lorsqu’un risque est détecté, ainsi que d’autres informations pertinentes, telles que l’emplacement de connexion et les détails relatifs à Microsoft Cloud App Security (MCAS).
+   * Détections de risques : contient des informations sur les autres risques déclenchés lorsqu’un risque est détecté et d’autres informations pertinentes, telles que l’emplacement de connexion et les détails de Microsoft Defender for Cloud Apps.
 
  
 
@@ -140,7 +140,7 @@ Vous pouvez surveiller les événements de connexion à un compte privilégié d
 | Comptes privilégiés qui ne suivent pas la stratégie d’affectation de noms.| | Abonnement Azure | [Répertorier les attribution de rôle Azure à l’aide du portail Azure – Azure RBAC](../../role-based-access-control/role-assignments-list-portal.md)| Répertoriez les attributions de rôles pour les abonnements et envoyez des alertes lorsque le nom de connexion ne correspond pas au format de votre organisation. Par exemple, ADM_ en tant que préfixe. |
 | Interruption |  Élevé/Moyen | Connexions Azure AD | État = Interrompu<br>-et-<br>Code d’erreur = 50074<br>-et-<br>Raison de l’échec = authentification forte requise<br>État = Interrompu<br>-et-<br>Code d’erreur = 500121<br>Raison de l’échec = échec de l’authentification lors d’une requête d’authentification forte. | Cela peut indiquer qu’un attaquant a le mot de passe du compte, mais ne peut pas réussir la stimulation MFA. | 
 | Comptes privilégiés qui ne suivent pas la stratégie d’affectation de noms.| Élevé | Annuaire Azure AD | [Répertorier les attributions de rôle Azure AD](../roles/view-assignments.md)| Répertoriez les attributions de rôles Azure AD et signalez les rôles dont l’UPN ne correspond pas au format de votre organisation. Par exemple, ADM_ en tant que préfixe. |
-| Détectez les comptes privilégiés non inscrits à MFA. | Élevé | API Graph Azure AD| Exécutez la requête IsMFARegistered = false pour les comptes administrateur. [Lister credentialUserRegistrationDetails - Microsoft Graph version bêta](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | Auditez et vérifiez si c’est intentionnel ou si c’est un oubli. |
+| Détectez les comptes privilégiés non inscrits à MFA. | Élevé | API Microsoft Graph| Exécutez la requête IsMFARegistered = false pour les comptes administrateur. [Lister credentialUserRegistrationDetails - Microsoft Graph version bêta](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | Auditez et vérifiez si c’est intentionnel ou si c’est un oubli. |
 | Verrouillage de compte | Élevé | Journal de connexions Azure AD | État = échec<br>-et-<br>Code d’erreur = 50053 | Définissez un seuil de ligne de base, puis surveillez et ajustez-le pour l’adapter aux comportements de votre organisation et limiter la génération de fausses alertes. |
 | Compte désactivé/bloqué pour les connexions | Faible | Journal de connexions Azure AD | État = échec<br>-et-<br>Cible = UPN de l’utilisateur<br>-et-<br>Code d’erreur = 50057 | Cela peut indiquer qu’un utilisateur tente d’accéder à un compte une fois qu’il a quitté une organisation. Même si le compte est bloqué, il est important d’enregistrer et de signaler cette activité. |
 | Alerte de fraude MFA/bloquer | Élevé | Journal des connexions Azure AD/Azure Log Analytics | Connexions>Détails de l’authentification Détails des résultats = MFA refusé, code fraude entré | L’utilisateur privilégié a indiqué qu’il n’a pas provoqué l’invite MFA et peut indiquer qu’un attaquant a le mot de passe du compte. |
@@ -181,7 +181,7 @@ Examinez les modifications apportées aux privilèges et règles d’authentific
 | - | - | - | - | - |
 | Création d’un compte privilégié.| Moyenne| Journaux d’audit Azure AD| Service = répertoire principal<br>-et-<br>Catégorie = gestion des utilisateurs<br>-et-<br>Type d’activité = Ajouter un utilisateur<br>-corrélation avec –<br>Type de catégorie = gestion des rôles<br>-et-<br>Type d’activité = ajout d’un membre au rôle<br>-et-<br>Propriétés modifiées = Role.DisplayName| Surveillez la création de comptes privilégiés. Recherchez la corrélation entre la création et la suppression de comptes. |
 | Modifications apportées aux méthodes d’authentification.| Élevé| Journaux d’audit Azure AD| Service = méthode d’authentification<br>-et-<br>Type d’activité = informations de sécurité inscrites par l’utilisateur<br>-et-<br>Catégorie = gestion des utilisateurs| Cela peut être le cas d’une personne malveillante qui ajoute une méthode d’authentification au compte afin d’obtenir un accès en continu. |
-| Signalez les modifications apportées aux autorisations de compte privilégié.| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent)<br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible)<br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Cela est particulièrement vrai pour les comptes auxquels les rôles attribués sont inconnus ou en dehors de leurs responsabilités normales. |
+| Signalez les modifications apportées aux autorisations de compte privilégié.| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent)<br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible)<br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Cela est particulièrement vrai pour les comptes auxquels les rôles attribués sont inconnus ou en dehors de leurs responsabilités normales. |
 | Comptes privilégiés inutilisés.| Moyenne| Révisions d’accès Azure AD| | Passez en revue tous les mois les comptes d’utilisateurs privilégiés inactifs. |
 | Comptes exemptés de l’accès conditionnel| Élevé| Journaux Azure Monitor<br>-ou-<br>Révisions d’accès| Insights et rapports sur l’accès conditionnel| Tout compte exempté de l’autorité de certification contourne probablement les contrôles de sécurité et est plus vulnérable à la compromission. Les comptes de secours sont exemptés. Consultez les informations sur la façon de surveiller les comptes de secours dans une section ultérieure de cet article.|
 

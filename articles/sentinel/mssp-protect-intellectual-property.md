@@ -1,33 +1,33 @@
 ---
-title: Protection de la propriété intellectuelle des fournisseurs de services de sécurité gérée (MSSP) dans Azure Sentinel | Microsoft Docs
-description: Découvrez la façon dont les fournisseurs de services de sécurité gérée (MSSP) peuvent protéger la propriété intellectuelle qu’ils ont créée dans Azure Sentinel.
+title: Protection de la propriété intellectuelle des fournisseurs de services de sécurité gérés (MSSP) dans Microsoft Sentinel | Microsoft Docs
+description: Découvrez la façon dont les fournisseurs de services de sécurité gérés (MSSP) peuvent protéger la propriété intellectuelle qu’ils ont créée dans Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: b21bb010755e8f618cba2ae40db14d12aa3b28df
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 11ee855d2606376ab893d581a091afeca3dd6713
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023022"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518866"
 ---
-# <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Protection de la propriété intellectuelle des MSSP dans Azure Sentinel
+# <a name="protecting-mssp-intellectual-property-in-microsoft-sentinel"></a>Protection de la propriété intellectuelle des MSSP dans Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article décrit les méthodes que les fournisseurs de services de sécurité gérée (MSSP) peuvent utiliser pour protéger la propriété intellectuelle qu’ils ont développée dans Azure Sentinel, par exemple les règles d’analyse, les requêtes de chasse, les playbooks et les classeurs d’Azure Sentinel.
+Cet article décrit les méthodes que les fournisseurs de services de sécurité gérés (MSSP) peuvent utiliser pour protéger la propriété intellectuelle qu’ils ont développée dans Microsoft Sentinel, par exemple les règles d’analyse, les requêtes de chasse, les playbooks et les classeurs de Microsoft Sentinel.
 
 La méthode que vous choisissez dépend de la manière dont chacun de vos clients achète Azure : si vous agissez en tant que [fournisseur de solutions Cloud (CSP)](#cloud-solutions-providers-csp) ou si le client dispose d’un compte [Contrat Entreprise (EA)/Paiement à l’utilisation (PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg). Les sections ci-dessous décrivent chacune de ces méthodes séparément.
 
@@ -41,21 +41,21 @@ Si vous devez fournir aux utilisateurs clients un accès à l’environnement Az
 
 Par exemple :
 
-- Vous pouvez accorder au client l’accès à plusieurs groupes de ressources où se trouvent ses applications, tout en gardant l’espace de travail Azure Sentinel dans un groupe de ressources distinct, auquel le client n’a pas accès.
+- Vous pouvez accorder au client l’accès à plusieurs groupes de ressources où se trouvent ses applications, tout en gardant l’espace de travail Microsoft Sentinel dans un groupe de ressources distinct, auquel le client n’a pas accès.
 
 - Utilisez cette méthode pour permettre aux clients d’afficher certains classeurs et playbooks, qui sont des ressources distinctes pouvant résider dans leur propre groupe de ressources.
 
-Même en accordant l’accès au niveau du groupe de ressources, les clients auront toujours accès aux données de journal pour les ressources auxquelles ils peuvent accéder, par exemple les journaux d’une machine virtuelle, même sans accès à Azure Sentinel. Pour plus d’informations, consultez [Gérer l’accès aux données d’Azure Sentinel par ressource](resource-context-rbac.md).
+Même en accordant l’accès au niveau du groupe de ressources, les clients auront toujours accès aux données de journal des ressources auxquelles ils peuvent accéder, par exemple les journaux d’une machine virtuelle, même sans accès à Microsoft Sentinel. Pour plus d’informations, consultez [Gérer l’accès aux données de Microsoft Sentinel par ressource](resource-context-rbac.md).
 
 > [!TIP]
 > Si vous devez fournir à vos clients un accès à l’ensemble de l’abonnement, vous pouvez consulter l’aide dans [Contrats Entreprise (EA)/Paiement à l’utilisation (PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg).
 >
 
-### <a name="sample-azure-sentinel-csp-architecture"></a>Exemple d’architecture CSP d’Azure Sentinel
+### <a name="sample-microsoft-sentinel-csp-architecture"></a>Exemple d’architecture CSP Microsoft Sentinel
 
 L’image suivante illustre le fonctionnement des autorisations décrites dans la [section précédente](#cloud-solutions-providers-csp) lorsque vous fournissez un accès aux clients CSP :
 
-:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="Protégez votre propriété intellectuelle Azure Sentinel avec les clients CSP.":::
+:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="Protégez votre propriété intellectuelle Microsoft Sentinel à l’aide de clients CSP.":::
 
 Dans cette image :
 
@@ -63,7 +63,7 @@ Dans cette image :
 - D’autres groupes du MSSP ont accès à l’environnement du client via Azure Lighthouse.
 - L’accès des clients aux ressources Azure est géré par Azure RBAC au niveau du groupe de ressources.
 
-    Cela permet aux MSSP de masquer les composants Azure Sentinel le cas échéant, comme les règles d’analyse et les requêtes de chasse.
+    Cela permet aux MSSP de masquer les composants Microsoft Sentinel le cas échéant, comme les règles d’analyse et les requêtes de chasse.
 
 Pour plus d’informations, consultez également la [documentation d’Azure Lighthouse](../lighthouse/concepts/cloud-solution-provider.md).
 
@@ -71,15 +71,15 @@ Pour plus d’informations, consultez également la [documentation d’Azure Lig
 
 Si votre client achète directement auprès de Microsoft, il a déjà un accès complet à l’environnement Azure, et vous ne pouvez pas masquer quoi que ce soit qui se trouve dans l’abonnement Azure du client.
 
-Au lieu de cela, protégez la propriété intellectuelle que vous avez développée dans Azure Sentinel comme suit, selon le type de ressource que vous devez protéger :
+Au lieu de cela, protégez la propriété intellectuelle que vous avez développée dans Microsoft Sentinel comme suit, selon le type de ressource que vous devez protéger :
 
 ### <a name="analytics-rules-and-hunting-queries"></a>Règles d’analyse et requêtes de chasse
 
-Les règles d’analyse et les requêtes de chasse sont contenues dans Azure Sentinel et ne peuvent donc pas être séparées de l’espace de travail Azure Sentinel.
+Les règles d’analyse et les requêtes de chasse sont contenues dans Microsoft Sentinel et ne peuvent donc pas être séparées de l’espace de travail Microsoft Sentinel.
 
-Même si un utilisateur dispose uniquement des autorisations Lecteur Azure Sentinel, il peut toujours afficher la requête. Dans ce cas, nous vous recommandons d’héberger vos règles d’analyse et vos requêtes de chasse dans votre propre locataire MSSP, au lieu du locataire du client.
+Même si un utilisateur dispose uniquement des autorisations Lecteur Microsoft Sentinel, il peut toujours visualiser la requête. Dans ce cas, nous vous recommandons d’héberger vos règles d’analyse et vos requêtes de chasse dans votre propre locataire MSSP, au lieu du locataire du client.
 
-Pour ce faire, vous avez besoin d’un espace de travail dans votre propre locataire avec Azure Sentinel activé, et vous devez également voir l’espace de travail du client via [Azure Lighthouse](multiple-tenants-service-providers.md).
+Pour ce faire, vous avez besoin d’un espace de travail dans votre propre locataire pour lequel Microsoft Sentinel est activé, et vous devez également voir l’espace de travail du client via [Azure Lighthouse](multiple-tenants-service-providers.md).
 
 Pour créer une règle d’analyse ou une requête de chasse dans le locataire MSSP qui fait référence aux données dans le locataire du client, vous devez utiliser l’instruction `workspace` comme suit :
 
@@ -94,7 +94,7 @@ Lorsque vous ajoutez une instruction `workspace` à vos règles d’analyse, ten
 
 - **Créer des alertes distinctes pour chaque client**. Lorsque vous utilisez cette méthode, nous vous recommandons également d’utiliser des règles d’alerte distinctes pour chaque client et chaque détection, car l’instruction workspace sera différente dans chaque cas.
 
-    Vous pouvez ajouter le nom du client au nom de la règle d’alerte pour identifier facilement le client où l’alerte est déclenchée. Des alertes distinctes peuvent donner lieu à un grand nombre de règles, que vous pouvez gérer à l’aide de scripts ou d’[Azure Sentinel en tant que code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928).
+    Vous pouvez ajouter le nom du client au nom de la règle d’alerte pour identifier facilement le client où l’alerte est déclenchée. Des alertes distinctes peuvent donner lieu à un grand nombre de règles, que vous pouvez gérer à l’aide de scripts ou de [Microsoft Sentinel en tant que code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928).
 
     Par exemple :
 
@@ -114,7 +114,7 @@ Lorsque vous ajoutez une instruction `workspace` à vos règles d’analyse, ten
 
 ### <a name="workbooks"></a>Classeurs
 
-Si vous avez développé un classeur Azure Sentinel que vous ne souhaitez pas que votre client copie, hébergez le classeur dans votre locataire MSSP. Assurez-vous d’avoir accès aux espaces de travail de votre client via Azure Lighthouse, puis veillez à modifier le classeur pour utiliser ces espaces de travail.
+Si vous avez développé un classeur Microsoft Sentinel que vous ne souhaitez pas que votre client copie, hébergez le classeur dans le locataire de votre MSSP. Assurez-vous d’avoir accès aux espaces de travail de votre client via Azure Lighthouse, puis veillez à modifier le classeur pour utiliser ces espaces de travail.
 
 Par exemple :
 
@@ -160,8 +160,8 @@ Toutefois, si le playbook doit accéder à des ressources non Azure dans le loca
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Playbook technique Azure Sentinel pour MSSP](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
-- [Gérer plusieurs locataires dans Azure Sentinel en tant que MSSP](multiple-tenants-service-providers.md)
-- [Étendre Azure Sentinel dans les espaces de travail et les locataires](extend-sentinel-across-workspaces-tenants.md)
+- [Playbook technique Microsoft Sentinel pour MSSP](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
+- [Gérer plusieurs locataires dans Microsoft Sentinel en tant que MSSP](multiple-tenants-service-providers.md)
+- [Étendre Microsoft Sentinel dans les espaces de travail et les locataires](extend-sentinel-across-workspaces-tenants.md)
 - [Visualiser et superviser vos données](monitor-your-data.md)
-- [Tutoriel : Configurer des réponses automatisées aux menaces dans Azure Sentinel](tutorial-respond-threats-playbook.md)
+- [Tutoriel : Configurer des réponses automatisées aux menaces dans Microsoft Sentinel](tutorial-respond-threats-playbook.md)

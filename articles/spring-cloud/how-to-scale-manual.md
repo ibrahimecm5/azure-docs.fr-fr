@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 22bae9cd5a626f6a90427bd7522f2b99fa08ca0c
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: ca0a783b5bba849e27b04050327f7c9e7bc82189
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525480"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492565"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Mettre à l’échelle une application dans Azure Spring Cloud
 
@@ -68,7 +68,7 @@ Si vous êtes au niveau De base et limité par une ou plusieurs de ces [restrict
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Cet exemple vous a montré comment mettre à l’échelle manuellement une application Azure Spring Cloud. Pour savoir comment superviser une application en configurant des alertes, consultez [Configurer la mise à l’échelle automatique](./how-to-setup-autoscale.md).
+Cet exemple vous a montré comment mettre à l’échelle une application manuellement dans Azure Spring Cloud. Pour savoir comment superviser une application en configurant des alertes, consultez [Configurer la mise à l’échelle automatique](./how-to-setup-autoscale.md).
 
 > [!div class="nextstepaction"]
 > [Découvrir comment configurer des alertes](./tutorial-alerts-action-groups.md)

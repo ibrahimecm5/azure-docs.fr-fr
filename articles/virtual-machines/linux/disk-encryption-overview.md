@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 564593dd6c3fe7e30d1e3a362f4c11c52adbc82c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8fa9941d068b6062e8e0350aa9d711aa29808ee5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689717"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342658"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pour les machines virtuelles Linux
 
@@ -24,9 +24,9 @@ Azure Disk Encryption vous aide à protéger et à préserver vos données de fa
 
 Azure Disk Encryption est résilient aux zones, de la même manière que les machines virtuelles. Pour plus d’informations, consultez [Services Azure prenant en charge les zones de disponibilité](../../availability-zones/az-region.md).
 
-Si vous utilisez [Azure Security Center](../../security-center/index.yml), vous recevez une alerte dès lors que certaines de vos machines virtuelles ne sont pas chiffrées. Les alertes indiquent un niveau de gravité élevé et recommandent de chiffrer ces machines virtuelles.
+Si vous utilisez [Microsoft Defender pour le cloud](../../security-center/index.yml), vous recevez une alerte dès lors que certaines de vos machines virtuelles ne sont pas chiffrées. Les alertes indiquent un niveau de gravité élevé et recommandent de chiffrer ces machines virtuelles.
 
-![Alerte de chiffrement de disque Azure Security Center](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Alerte relative au chiffrement de disque de Microsoft Defender pour le cloud](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - Si vous avez déjà utilisé Azure Disk Encryption avec Azure AD pour chiffrer une machine virtuelle, vous devez continuer à utiliser cette option pour chiffrer votre machine virtuelle. Pour plus d’informations, consultez [Azure Disk Encryption avec Azure AD (version précédente)](disk-encryption-overview-aad.md). 

@@ -1,5 +1,5 @@
 ---
-title: Visibilité et contrôle des applications avec Microsoft Cloud App Security
+title: Visibilité et contrôle des applications avec Microsoft Defender pour les applications cloud
 titleSuffix: Azure AD
 description: Découvrez des façons d’identifier les niveaux de risque des applications, stopper les violations et les fuites en temps réel et utiliser des connecteurs d’application pour tirer parti d’API de fournisseurs favorisant la visibilité et la gouvernance.
 services: active-directory
@@ -13,14 +13,14 @@ ms.date: 07/29/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: bokacevi, dacurwin
-ms.openlocfilehash: 52c17d521ca1a3a4e191c4a4a82d37a98371f879
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e1cc07606664d39b6cc6e1c030935323d868b2a9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619839"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549087"
 ---
-# <a name="cloud-app-visibility-and-control-in-azure-active-directory"></a>Visibilité et contrôle des applications cloud dans Azure Active Directory
+# <a name="cloud-app-visibility-and-control"></a>Visibilité et contrôle des applications cloud
 
 Pour tirer pleinement parti des applications et des services cloud, une équipe informatique doit trouver le bon équilibre entre faciliter l’accès et garder le contrôle de façon à protéger les données critiques. Microsoft Cloud App Security offre une visibilité complète, un contrôle sur le déplacement des données et des capacités analytiques sophistiquées pour identifier et combattre les cybermenaces dans l’ensemble de vos services Microsoft et tiers.
 
@@ -39,13 +39,13 @@ Microsoft Cloud App Discovery (fonctionnalité Azure Active Directory Premium P1
 ### <a name="learn-more"></a>En savoir plus
 
 - [Découvrir et gérer le Shadow IT dans votre réseau](/cloud-app-security/tutorial-shadow-it)
-- [Applications découvertes avec Cloud App Security](/cloud-app-security/discovered-apps)
+- [Applications découvertes avec Defender pour les applications Cloud](/cloud-app-security/discovered-apps)
 
 ## <a name="user-session-visibility-and-control"></a>Visibilité et contrôle de session utilisateur
 
-Dans l’espace de travail d’aujourd’hui, il ne suffit pas de savoir ce qu’il se passe dans votre environnement cloud après que les faits se sont produits. Les violations et les fuites doivent être arrêtées en temps réel avant que les employés exposent de façon intentionnelle ou involontaire les données et l’organisation à des risques. De concert avec Azure Active Directory (Azure AD), Microsoft Cloud App Security permet cela à travers une expérience globale et intégrée au moyen du contrôle d’application par accès conditionnel.
+Dans l’espace de travail d’aujourd’hui, il ne suffit pas de savoir ce qu’il se passe dans votre environnement cloud après que les faits se sont produits. Les violations et les fuites doivent être arrêtées en temps réel avant que les employés exposent de façon intentionnelle ou involontaire les données et l’organisation à des risques. De concert avec Azure Active Directory (Azure AD), Microsoft Defender pour les applications cloud permet cela à travers une expérience globale et intégrée au moyen du contrôle d’application par accès conditionnel.
 
-Le contrôle de session utilise une architecture de proxy inverse et est intégré de manière unique à l’accès conditionnel Azure AD. L’accès conditionnel Azure AD vous permet d’appliquer des contrôles d’accès aux applications de votre organisation en fonction de certaines conditions. Les conditions définissent à qui (utilisateur ou groupe d’utilisateurs), à quoi (quelles applications cloud) et où (quels emplacements et réseaux) s’applique une stratégie d’accès conditionnel. Une fois que vous avez défini les conditions, vous pouvez router les utilisateurs vers Cloud App Security où vous pouvez protéger les données en temps réel.  
+Le contrôle de session utilise une architecture de proxy inverse et est intégré de manière unique à l’accès conditionnel Azure AD. L’accès conditionnel Azure AD vous permet d’appliquer des contrôles d’accès aux applications de votre organisation en fonction de certaines conditions. Les conditions définissent à qui (utilisateur ou groupe d’utilisateurs), à quoi (quelles applications cloud) et où (quels emplacements et réseaux) s’applique une stratégie d’accès conditionnel. Une fois que vous avez défini les conditions, vous pouvez router les utilisateurs vers Defender pour les applications cloud pour les applications cloud où vous pouvez protéger les données en temps réel.  
 
 Ce contrôle vous offre les possibilités suivantes :
 
@@ -56,20 +56,20 @@ Ce contrôle vous offre les possibilités suivantes :
 
 ### <a name="learn-more"></a>En savoir plus
 
-- [Protéger les applications avec le contrôle de session dans Cloud App Security](/cloud-app-security/proxy-intro-aad)
+- [Protéger les applications avec le contrôle de session dans Defender pour les applications cloud](/cloud-app-security/proxy-intro-aad)
 
 ## <a name="advanced-app-visibility-and-controls"></a>Visibilité et contrôle avancés des applications
 
-Les connecteurs d’applications utilisent les API de fournisseurs d’applications pour que Microsoft Cloud App Security bénéficie d’une plus grande visibilité et d’un plus grand contrôle sur les applications auxquelles vous vous connectez.
-Cloud App Security exploite les API fournies par le fournisseur de cloud. L’infrastructure et les API propres à chaque service ont des limitations, notamment en matière de bande passante, de limites d’API, de fenêtres d’API de décalage temporel dynamique, etc. L’équipe du produit Cloud App Security a collaboré avec les fournisseurs de ces services pour optimiser l’utilisation des API et assurer le meilleur niveau de performance. En prenant en compte les différentes limitations que les services imposent à leurs API, les moteurs Cloud App Security utilisent leur capacité maximale autorisée. Étant donné que certaines opérations, comme l’analyse de l’ensemble des fichiers d’un locataire, exigent de nombreux appels d’API, elles sont étendues sur une plus longue période. Plusieurs heures ou jours peuvent être nécessaires à l’exécution de certaines stratégies.
+Les connecteurs d’applications utilisent les API de fournisseurs d’applications pour que Microsoft Defender pour les applications cloud bénéficie d’une plus grande visibilité et d’un plus grand contrôle sur les applications auxquelles vous vous connectez.
+Defender pour les applications cloud exploite les API fournies par le fournisseur de cloud. L’infrastructure et les API propres à chaque service ont des limitations, notamment en matière de bande passante, de limites d’API, de fenêtres d’API de décalage temporel dynamique, etc. L’équipe du produit Defender pour les applications cloud a collaboré avec les fournisseurs de ces services pour optimiser l’utilisation des API et assurer le meilleur niveau de performance. En prenant en compte les différentes limitations que les services imposent à leurs API, les moteurs Defender pour les applications cloud utilisent leur capacité maximale autorisée. Étant donné que certaines opérations, comme l’analyse de l’ensemble des fichiers d’un locataire, exigent de nombreux appels d’API, elles sont étendues sur une plus longue période. Plusieurs heures ou jours peuvent être nécessaires à l’exécution de certaines stratégies.
 
 ### <a name="learn-more"></a>En savoir plus
 
-- [Connecter les applications dans Cloud App Security](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Connecter des applications dans Defender pour les applications Cloud](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 - [Découvrir et gérer le Shadow IT dans votre réseau](/cloud-app-security/tutorial-shadow-it)
-- [Applications découvertes avec Cloud App Security](/cloud-app-security/discovered-apps)
-- [Protéger les applications avec le contrôle de session dans Cloud App Security](/cloud-app-security/proxy-intro-aad)
-- [Connecter les applications dans Cloud App Security](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Applications découvertes avec Defender pour les applications Cloud](/cloud-app-security/discovered-apps)
+- [Protéger les applications avec le contrôle de session dans Defender pour les applications cloud](/cloud-app-security/proxy-intro-aad)
+- [Connecter des applications dans Defender pour les applications Cloud](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

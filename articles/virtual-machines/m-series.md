@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 33ef1ecd96c416cb500ff9be241bc99d0ee699e2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: f575f5c45bff85cd0f9ae514e5ba18cc3151524a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071755"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402444"
 ---
 # <a name="m-series"></a>Série M
 
@@ -31,6 +31,7 @@ Les machines virtuelles de la série M sont dotées de la technologie Hyper-Thre
 [Accélérateur d’écriture](./how-to-enable-write-accelerator.md) : Pris(e) en charge<br>
 [Performances réseau accélérées](../virtual-network/create-vm-accelerated-networking-cli.md) : Pris en charge<br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit du disque non mis en cache max. : IOPS/Mbits/s | Nombre max de cartes réseau|Bande passante réseau attendue (Mbit/s) |

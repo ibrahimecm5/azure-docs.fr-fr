@@ -1,24 +1,24 @@
 ---
-title: Configurer les paramètres de démarrage automatique pour une machine virtuelle
-description: Découvrez comment configurer les paramètres de démarrage automatique pour les machines virtuelles dans un laboratoire. Ce paramètre permet aux machines virtuelles du laboratoire de démarrer automatiquement selon une planification.
+title: Configurer les paramètres de démarrage automatique d’une machine virtuelle
+description: Découvrez comment configurer les paramètres de démarrage automatique des machines virtuelles dans un laboratoire. Ce paramètre permet aux machines virtuelles du laboratoire de démarrer automatiquement selon une planification.
 ms.topic: how-to
 ms.date: 10/21/2021
-ms.openlocfilehash: 8493a5037c01741c11f89ec5df84adac2d2d70c3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ea4220af8a3d7ade997b9e64b7164757edfc165a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255021"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286713"
 ---
-# <a name="auto-startup-lab-virtual-machines"></a>Démarrer automatiquement des machines virtuelles de laboratoire
+# <a name="start-up-lab-virtual-machines-automatically"></a>Démarrer automatiquement des machines virtuelles de laboratoire
 
-Le démarrage automatique vous permet de démarrer automatiquement les machines virtuelles d’un lab à une heure planifiée chaque jour. Vous devez d’abord créer une stratégie de démarrage automatique. Ensuite, vous devez sélectionner les machines virtuelles qui doivent suivre la stratégie. L’étape supplémentaire qui vise à confirmer la sélection des machines virtuelles à démarrer automatiquement a pour but d’empêcher tout démarrage non intentionnel des machines virtuelles pouvant entraîner des coûts accrus.
+Le démarrage automatique vous permet de démarrer automatiquement les machines virtuelles d’un laboratoire à une heure planifiée chaque jour. Vous devez d’abord créer une stratégie de démarrage automatique. Ensuite, vous devez sélectionner les machines virtuelles qui doivent suivre la stratégie. L’étape supplémentaire qui vise à confirmer la sélection des machines virtuelles à démarrer automatiquement a pour but d’empêcher tout démarrage involontaire de machines virtuelles qui entraînent une augmentation des coûts.
 
-Cet article explique comment configurer une stratégie de démarrage automatique pour un lab. Pour plus d’informations sur la configuration des paramètres d’arrêt automatique, consultez [Gérer toutes les stratégies d’arrêt automatique d’un lab dans Azure DevTest Labs](devtest-lab-auto-shutdown.md). 
+Cet article explique comment configurer une stratégie de démarrage automatique pour un laboratoire. Pour plus d’informations sur la configuration des paramètres d’arrêt automatique, consultez [Gérer les stratégies d’arrêt automatique d’un laboratoire dans Azure DevTest Labs](devtest-lab-auto-shutdown.md). 
 
-## <a name="configure-auto-start-settings-for-a-lab"></a>Configurer les paramètres de démarrage automatique pour un lab 
+## <a name="configure-auto-start-settings-for-a-lab"></a>Configurer les paramètres de démarrage automatique pour un laboratoire 
 
-La stratégie n’applique pas automatiquement le démarrage automatique aux machines virtuelles du lab. Après avoir configuré la stratégie, suivez les étapes de la section [Activer le démarrage automatique pour une machine virtuelle du lab](#enable-auto-start-for-a-vm-in-the-lab).
+La stratégie n’applique pas automatiquement le démarrage automatique aux machines virtuelles du laboratoire. Après avoir configuré la stratégie, suivez les étapes de la section [Activer le démarrage automatique d’une machine virtuelle du laboratoire](#enable-auto start-for-a-vm-in-the-lab).
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
 
@@ -46,7 +46,7 @@ La stratégie n’applique pas automatiquement le démarrage automatique aux mac
 
 1. Sélectionnez **Enregistrer**. 
 
-## <a name="enable-auto-start-for-a-vm-in-the-lab"></a>Activer le démarrage automatique pour une machine virtuelle du lab
+## <a name="enable-auto-start-for-a-vm-in-the-lab"></a>Activer le démarrage automatique d’une machine virtuelle du laboratoire
 
 Ces étapes font suite à la section précédente. Maintenant qu’une stratégie de démarrage automatique a été créée, sélectionnez les machines virtuelles auxquelles appliquer cette stratégie.
 
@@ -64,4 +64,4 @@ Ces étapes font suite à la section précédente. Maintenant qu’une stratégi
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour en savoir plus sur la configuration de la stratégie d’arrêt automatique pour un laboratoire, consultez [Gérer toutes les stratégies d’arrêt automatique d’un laboratoire dans Azure DevTest Labs](devtest-lab-auto-shutdown.md).
+- [Gérer les stratégies d’arrêt automatique d’un laboratoire dans Azure DevTest Labs](devtest-lab-auto-shutdown.md)

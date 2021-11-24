@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: f5dc1ad57b745ee26f9edb1b9c31091a1aaec42c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9814c90a60aaa67ff6c1914c28568fb478bd0f87
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069973"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488541"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Exportation des données de l’espace de travail Log Analytics dans Azure Monitor (préversion)
 L’exportation des données de l’espace de travail Log Analytics dans Azure Monitor vous permet d’exporter en continu des données de tables sélectionnées dans votre espace de travail Log Analytics vers un compte de stockage Azure ou Azure Event Hubs à mesure qu’elles sont collectées. Cet article fournit des informations détaillées sur cette fonctionnalité et les étapes à suivre pour configurer l’exportation de données dans vos espaces de travail.
@@ -38,14 +38,14 @@ L’exportation des données d’espace de travail Log Analytics exporte en cont
 - Les tables existantes de journaux personnalisés ne seront pas prises en charge lors de l’exportation. Une nouvelle version du journal personnalisé disponible en mars 2022 sera prise en charge.
 - Si la règle d’exportation de données comprend une table non prise en charge, l’opération réussit, mais aucune donnée n’est exportée pour cette table jusqu’à ce que celle-ci soit prise en charge. 
 - Si la règle d’exportation de données comprend une table qui n’existe pas, elle échoue avec l’erreur `Table <tableName> does not exist in the workspace`.
-- Vous pouvez définir l'activation d'un maximum de 10 règles dans votre espace de travail. Des règles supplémentaires sont autorisées lorsqu’elles sont désactivées. 
+- Vous pouvez définir l'activation d'un maximum de 10 règles dans votre espace de travail. Des règles supplémentaires sont autorisées quand elles sont désactivées. 
 - La destination doit être unique pour toutes les règles d’exportation de votre espace de travail.
 - Les destinations doivent se trouver dans la même région que l’espace de travail Log Analytics.
 - Les noms de tables ne peuvent pas dépasser 60 caractères lors de l’exportation vers le compte de stockage et 47 caractères vers l’Event Hub. Les tables avec des noms plus longs ne seront pas exportées.
 - L’exportation des données sera disponible dans toutes les régions, mais elle est actuellement prises en charge dans les régions suivantes : 
     - Centre de l’Australie
     - Australie Est
-    - Australie Sud-Est
+    - Sud-Australie Est
     - Brésil Sud
     - Centre du Canada
     - Inde centrale
@@ -73,7 +73,7 @@ L’exportation des données d’espace de travail Log Analytics exporte en cont
     - USA Ouest 2
 
 ## <a name="data-completeness"></a>Exhaustivité des données
-L’exportation de données continuera de réessayer d’envoyer des données pendant 30 minutes au cas où la destination est indisponible. Si elle n’est toujours pas disponible après 30 minutes, les données seront ignorées jusqu’à ce que la destination devienne disponible.
+L’exportation de données est optimisée pour le transfert d’un grand volume de données vers vos destinations et, dans certaines conditions de nouvelle tentative, peut inclure une fraction des enregistrements dupliqués. L’opération d’exportation vers votre destination peut échouer lorsque les limites d’entrée sont atteintes. Pour plus d’informations, consultez les détails sous [Créer ou mettre à jour une règle d’exportation de données](#create-or-update-data-export-rule). Les tentatives d’exportation peuvent durer jusqu’à 30 minutes. Si la destination n’est pas disponible, les données sont ignorées jusqu’à ce que la destination devienne disponible.
 
 ## <a name="cost"></a>Coût
 Il n’y a actuellement pas de frais supplémentaires pour la fonctionnalité d’exportation de données. La tarification de l’exportation des données sera annoncée à l’avenir et un avis sera envoyé avant le début de la facturation. Si vous choisissez de continuer à utiliser l’exportation de données après la période de préavis, vous serez facturé au tarif applicable.
@@ -84,7 +84,7 @@ La destination d’exportation de données doit être créée avant la création
 
 ### <a name="storage-account"></a>Compte de stockage
 
-Vous devez disposer des autorisations d’écriture sur l’espace de travail et la destination pour configurer la règle d’exportation de données. Vous ne devez pas utiliser un compte de stockage existant qui contient d’autres données de non-supervision. Cela vous permettra de mieux contrôler l’accès aux données et de ne pas atteindre le seuil de limitation et la limite du taux d’ingestion du stockage. 
+Vous devez disposer des autorisations d’écriture sur l’espace de travail et la destination pour configurer la règle d’exportation de données. N’utilisez pas un compte de stockage existant contenant d’autres données de non-supervision. Cela vous permettra de mieux contrôler l’accès aux données et de ne pas atteindre le seuil de limitation et la limite du taux d’ingestion du stockage. 
 
 Pour envoyer les données dans l’espace de stockage immuable, définissez la stratégie d’immuabilité du compte de stockage, comme décrit dans [Définir et gérer des stratégies d’immuabilité pour le stockage Blob](../../storage/blobs/immutable-policy-configure-version-scope.md). Vous devez suivre toutes les étapes décrites dans cet article, y compris l’activation des écritures protégées d'objets blob d'ajout.
 
@@ -95,7 +95,7 @@ Les données sont envoyées aux comptes de stockage à mesure qu’elles atteign
 > [!NOTE]
 > Il est recommandé d’utiliser un compte de stockage distinct pour une allocation de taux d’entrée appropriée et de réduire les événements de limitation, d’échecs et de latence.
 
-À compter du 15 octobre 2021, les objets blob sont stockés dans des dossiers de cinq minutes dans la structure de chemin suivante : *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json*. Étant donné que les objets Blob d’ajout sont limités à 50 000 écritures dans le stockage, le nombre d’objets Blob exportés peut s’étendre si le nombre d’ajouts est élevé. Dans ce cas, le modèle de nommage pour les objets blob serait PT05M_#.json*, où # est le nombre d’objets blob incrémenté.
+Depuis le 15 octobre 2021, les objets blob sont stockés dans des dossiers de 5 minutes dans la structure de chemin suivante : *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json*. Étant donné que les objets Blob d’ajout sont limités à 50 000 écritures dans le stockage, le nombre de blobs exportés peut s’étendre si le nombre d’ajouts est élevé. Dans ce cas, le modèle de nommage pour les objets blob serait PT05M_#.json*, où # est le nombre d’objets blob incrémenté.
 
 Le format des données du compte de stockage est en [lignes JSON](../essentials/resource-logs-blob-format.md). Cela signifie que chaque enregistrement est délimité par une nouvelle ligne, sans tableau d’enregistrements extérieurs ni virgule entre les enregistrements JSON. 
 
@@ -148,34 +148,34 @@ La règle d’exportation de données définit les tables pour lesquelles les do
 
 Les destinations d’exportation de données ont des limites et doivent être surveillées pour réduire les limitations d’exportation, les défaillances et la latence. Consultez les informations sur la [scalabilité des comptes de stockage](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) et le [quota d’espace de noms Event Hub](../../event-hubs/event-hubs-quotas.md).
 
-#### <a name="recommendations-for-storage-account"></a>Recommandations pour le compte de stockage 
+#### <a name="monitoring-storage-account"></a>Surveillance d’un compte de stockage
 
 1. Utiliser un compte de stockage distinct pour l’exportation
-1. Configurez l’alerte sur la métrique ci-dessous avec les paramètres suivants : 
+1. Configurez une alerte sur la métrique ci-dessous : 
 
     | Étendue | Espace de noms de métrique | Métrique | Agrégation | Seuil |
     |:---|:---|:---|:---|:---|
-    | storage-name | Compte | Entrée | Sum | 80% du taux d’entrée de stockage maximal. Par exemple : 60 Gbps pour Usage général v2 dans la région USA Ouest |
+    | storage-name | Compte | Entrée | Sum | 80% de l’entrée maximale par période d’évaluation des alertes. Par exemple, la limite est de 60 Gbps pour Usage général v2 dans la région USA Ouest. Le seuil est de 14400 Go par période d’évaluation de 5 minutes |
   
 1. Actions de correction des alertes
     - Utiliser un compte de stockage distinct pour l’exportation
     - Les comptes standard Stockage Azure prennent en charge une limite d’entrée supérieure par demande. Pour demander une augmentation, contactez le [Support Azure](https://azure.microsoft.com/support/faq/).
     - Fractionner des tables entre des comptes de stockage supplémentaires
 
-#### <a name="recommendations-for-event-hub"></a>Recommandations pour Event Hub
+#### <a name="monitoring-event-hub"></a>Surveillance d’Event Hub
 
-1. Configurer les [alertes de métriques](../../event-hubs/monitor-event-hubs-reference.md) :
+1. Configurez des alertes sur les [métriques](../../event-hubs/monitor-event-hubs-reference.md) ci-dessous :
   
     | Étendue | Espace de noms de métrique | Métrique | Agrégation | Seuil |
     |:---|:---|:---|:---|:---|
-    | namespaces-name | Métriques standard du Event Hub | Octets entrants | Sum | 80 % de l’entrée maximale par 5 minutes. Par exemple, il s’agit de 1 Mo/s par unité (TU ou PU) |
-    | namespaces-name | Métriques standard du Event Hub | Requêtes entrantes | Count | 80 % du nombre maximal d’événements par 5 minutes. Par exemple, il s’agit de 1 000/s par unité (TU ou PU) |
-    | namespaces-name | Métriques standard du Event Hub | Erreurs de dépassement de quota | Count | Entre 1 % et 5 % de la demande |
+    | namespaces-name | Métriques standard du Event Hub | Octets entrants | Sum | 80% de l’entrée maximale par période d’évaluation des alertes. Par exemple, la limite est de 1 Mo/s par unité (TU ou PU) et 5 unités utilisées. Le seuil est de 1200 Go par période d’évaluation de 5 minutes. |
+    | namespaces-name | Métriques standard du Event Hub | Requêtes entrantes | Count | 80% du nombre maximal d’événements par période d’évaluation des alertes. Par exemple, la limite est de 1000 Mo/s par unité (TU ou PU) et 5 unités utilisées. Le seuil est de 1 200 000 par période d’évaluation de 5 minutes. |
+    | namespaces-name | Métriques standard du Event Hub | Erreurs de dépassement de quota | Count | 1% de la demande. Par exemple, les demandes par 5 minutes sont au nombre de 600 000. Le seuil est de 6 000 par période d’évaluation de 5 minutes. |
 
 1. Actions de correction des alertes
    - Configurez la fonctionnalité de [majoration automatique](../../event-hubs/event-hubs-auto-inflate.md) pour augmenter ou diminuer automatiquement le nombre d’unités de débit pour répondre aux besoins d’utilisation.
    - Vérifier l’augmentation des unités de débit pour s’adapter à la charge
-   - Fractionner des tables entre des espaces de noms supplémentaires
+   - Fractionner des tables entre d’autres espaces de noms
    - Utiliser des niveaux « Premium » ou « Dédié » pour un débit plus élevé
 
 La règle d’exportation doit inclure les tables que vous avez dans votre espace de travail. Exécutez cette requête pour obtenir la liste des tables disponibles dans votre espace de travail.
@@ -633,7 +633,7 @@ Si la règle d’exportation de données inclut une table qui n’existe pas, el
 
 
 ## <a name="supported-tables"></a>Tables prises en charge
-Les tables prises en charge sont actuellement limitées à celles spécifiées ci-dessous. Toutes les données de la table sont exportées, sauf si des restrictions sont spécifiées. Cette liste est mise à jour à mesure que des tables supplémentaires sont ajoutées.
+Les tables prises en charge sont actuellement limitées à celles spécifiées ci-dessous. Toutes les données de la table sont exportées, sauf si des restrictions sont spécifiées. Cette liste est mise à jour à mesure que d’autres tables sont ajoutées.
 
 | Table de charge de travail | Limites |
 |:---|:---|

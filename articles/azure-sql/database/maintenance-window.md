@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 10/15/2021
-ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: cea06c5731fd17b05987e2c070264588f5428345
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026048"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491371"
 ---
 # <a name="maintenance-window-preview"></a>Fenêtre de maintenance (préversion)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,7 +38,7 @@ La fenêtre de maintenance peut être configurée pour des ressources Azure SQL
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Obtenir davantage de prévisibilité avec une fenêtre de maintenance
 
-Par défaut, la stratégie de maintenance Azure SQL bloque les mises à jour à fort impact de **8 h 00 à 17 h 00 tous les jours (heure locale)** pour éviter toute interruption pendant les heures de pointe habituelles. L’heure locale est déterminée par la localisation de la [région Azure](https://azure.microsoft.com/global-infrastructure/geographies/) qui héberge la ressource et peut respecter l’heure d’été en fonction du fuseau horaire local. 
+Par défaut, la stratégie de maintenance d’Azure SQL bloque les mises à jour les plus importantes entre **8 h à 17 h (heure locale) tous les jours** afin d’éviter toute interruption pendant les heures d’ouverture habituelles. L’heure locale est déterminée par la localisation de la [région Azure](https://azure.microsoft.com/global-infrastructure/geographies/) qui héberge la ressource et peut respecter l’heure d’été en fonction du fuseau horaire local. 
 
 Pour les mises à jour de maintenance, vous pouvez choisir une heure adaptée à vos ressources Azure SQL en choisissant parmi deux créneaux de fenêtres de maintenance supplémentaires :
  

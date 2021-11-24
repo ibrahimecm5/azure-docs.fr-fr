@@ -1,34 +1,34 @@
 ---
-title: Informations de référence du schéma de normalisation DHCP Azure Sentinel | Microsoft Docs
-description: Cet article décrit le schéma de normalisation DHCP Azure Sentinel.
+title: Informations de référence du schéma de normalisation DHCP Microsoft Sentinel | Microsoft Docs
+description: Cet article décrit le schéma de normalisation DHCP Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: aa633024754c82e1a9879f79c9410e6948405eeb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f0287e6f116e8d63c0b20aa970974e48a31524c2
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004001"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521450"
 ---
-# <a name="azure-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Informations de référence du schéma de normalisation DHCP Azure Sentinel (préversion publique)
+# <a name="microsoft-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Informations de référence du schéma de normalisation DHCP Microsoft Sentinel (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Le modèle d’informations DHCP sert à décrire les événements signalés par un serveur DHCP. Azure Sentinel l’utilise pour activer l’analytique indépendante de la source.
+Le modèle CIM DHCP sert à décrire les événements signalés par un serveur DHCP. Microsoft Sentinel l’utilise pour permettre une analyse indépendante de la source.
 
-Pour plus d’informations, consultez [Normalisation et modèle ASIM (Azure Sentinel Information Model)](normalization.md).
+Pour plus d’informations, consultez [Normalisation et modèle d’informations SIEM avancé (ASIM)](normalization.md).
 
 > [!IMPORTANT]
 > Le schéma de normalisation DHCP est actuellement en PRÉVERSION. Cette fonctionnalité est fournie sans contrat de niveau de service et n’est pas recommandée pour des charges de travail de production.
@@ -146,6 +146,6 @@ Les champs ci-dessous sont spécifiques des événements DHCP, mais sont similai
 Pour plus d'informations, consultez les pages suivantes :
 
 - Regardez le [webinaire sur ASIM](https://www.youtube.com/watch?v=WoGD-JeC7ng) ou passez en revue les [diapositives](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG)
-- [Schémas du modèle Azure Sentinel Information Model](normalization-about-schemas.md)
-- [Analyseurs du modèle Azure Sentinel Information Model](normalization-about-parsers.md)
-- [Contenu du modèle Azure Sentinel Information Model](normalization-content.md)
+- [Schémas du modèle d’informations SIEM avancé](normalization-about-schemas.md)
+- [Analyseurs de modèle d’informations SIEM avancé](normalization-about-parsers.md)
+- [Contenu du modèle d’informations SIEM avancé](normalization-content.md)

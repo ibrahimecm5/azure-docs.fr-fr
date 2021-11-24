@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 5c8a6974778e76afc6f2ca7018e034ad5655690c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 42eaec619097d673c77b6b233a2f2316605971b6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262524"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348423"
 ---
 # <a name="security-recommendations-for-app-service"></a>Suggestions en matière de sécurité pour App Service
 
@@ -56,7 +56,7 @@ Cet article contient des recommandations de sécurité pour Azure App Service. M
 
 | Recommandation | Commentaires |
 |-|-|
-|Utilisez Azure Defender du Centre de sécurité Azure pour le Service App | [Azure Defender pour le Service App](../security-center/defender-for-app-service-introduction.md) est intégré en mode natif au Service App Azure. Le centre de sécurité évalue les ressources couvertes par le plan de votre Service App et génère des suggestions de sécurité en fonction de ses résultats. Utilisez les instructions détaillées dans [ces recommandations](). ../security-center/recommendations-reference.md#appservices-recommendations) pour renforcer les ressources de votre Service App. Azure Defender fournit également une protection contre les menaces et peut détecter une multitude de menaces couvrant presque la liste complète des tactiques MITRE ATT&CK, de la pré-attaque à la commande et au contrôle. Pour obtenir la liste complète des alertes du Service App Azure, consultez [Azure Defender pour les alertes du Service App](../security-center/alerts-reference.md#alerts-azureappserv).|
+|Utilisez Microsoft Defender pour Microsoft Defender pour App Service dans le Cloud | [Microsoft Defender pour App Service](../security-center/defender-for-app-service-introduction.md) est intégré en mode natif Azure App Service. Defender pour le Cloud évalue les ressources couvertes par votre App Service et génère des suggestions de sécurité en fonction de ses résultats. Utilisez les instructions détaillées dans [ces recommandations](). ../security-center/recommendations-reference.md#appservices-recommendations) pour renforcer les ressources de votre Service App. Microsoft Defender pour le Cloud fournit également une protection contre les menaces et peut détecter une multitude de menaces couvrant presque la liste complète des tactiques MITRE ATT&CK, de la pré-attaque à la commande en passant par le contrôle. Pour obtenir la liste complète des alertes d’Azure App Service, consultez [Azure Defender pour les alertes App Service](../security-center/alerts-reference.md#alerts-azureappserv).|
 
 ## <a name="next-steps"></a>Étapes suivantes
 

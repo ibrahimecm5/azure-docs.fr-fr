@@ -2,59 +2,55 @@
 title: Intégrer des environnements dans des Pipelines Azure
 description: Découvrez comment intégrer des environnements Azure DevTest Labs à vos pipelines d’intégration continue et de livraison continue (CI/CD) Azure DevOps.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 4f205fb70978a667df8a8fe82beea38e492828a0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/15/2021
+ms.openlocfilehash: b3478242dddd7141100f05ae44a09902a2546ffd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651117"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488112"
 ---
-# <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Intégrer des environnements à vos pipelines CI/CD Azure DevOps
-Vous pouvez utiliser l’extension Azure DevTest Labs Tasks installée dans Azure DevOps Services (anciennement Visual Studio Team Services) pour intégrer facilement votre pipeline de build et mise en production d’intégration continue (CI) et de livraison continue (CD) dans Azure DevTest Labs. Ces extensions facilitent le déploiement rapide d’un [environnement](devtest-lab-test-env.md) pour une tâche de test spécifique, ainsi que la suppression du déploiement une fois le test terminé. 
+# <a name="integrate-environments-into-your-cicd-pipelines"></a>Intégrer des environnements dans vos pipelines CI/CD 
+Dans cet article, vous apprendrez à créer et à déployer un environnement, puis à le supprimer, le tout dans un seul et même pipeline. Vous pouvez utiliser cet environnement pour intégrer vos pipelines de mise en production d’intégration continue (CI)/de livraison continue (CD) à Azure DevTest Labs. Pour l’intégration, vous utiliserez l’extension Azure DevTest Labs Tasks dans Azure DevOps Services. Ces extensions facilitent le déploiement rapide d’un [environnement](devtest-lab-test-env.md) pour une tâche de test spécifique, ainsi que la suppression de l’environnement une fois le test terminé. 
 
-Cet article explique comment créer et déployer un environnement, puis supprimer l’environnement, le tout dans un seul pipeline complet. Normalement, vous effectuez chacune de ces tâches individuellement dans votre pipeline personnalisé de build-test-déploiement. Les extensions utilisées dans cet article s’ajoutent à ces [tâches de machine virtuelle DTL créer/supprimer](devtest-lab-integrate-ci-cd.md) :
+Normalement, vous effectuez chacune de ces tâches individuellement dans votre pipeline personnalisé de build-test-déploiement. Les extensions utilisées dans cet article s’ajoutent à ces [tâches de machine virtuelle DTL créer/supprimer](devtest-lab-integrate-ci-cd.md) :
 
 - Créer un environnement
 - Supprimer un environnement
 
-## <a name="before-you-begin"></a>Avant de commencer
-Pour pouvoir intégrer votre pipeline CI/CD à Azure DevTest Labs, installez l’extension [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) à partir de Visual Studio Marketplace. 
+## <a name="prerequisites"></a>Prérequis
+Avant de pouvoir intégrer votre pipeline CI/CD à Azure DevTest Labs, vous devez : 
+1. Installer l’extension [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) à partir de Visual Studio Marketplace. 
+1. [Créer un laboratoire](devtest-lab-create-lab.md) et vous assurer qu’il est configuré pour utiliser **Environnement public**, qui est activé par défaut.
 
-## <a name="create-and-configure-the-lab-for-environments"></a>Créer et configurer le lab pour les environnements
-Cette section décrit comment créer et configurer un lab dans lequel déployer l’environnement Azure.
+## <a name="create-a-release-definition--environment"></a>Créer une définition de mise en production et un environnement
+Pour créer la définition de mise en production, procédez comme suit :
 
-1. [Créez un lab](devtest-lab-create-lab.md) si vous n’en avez pas déjà. 
-2. Configurez le laboratoire et créez un modèle d’environnement en suivant les instructions de l’article suivant : [Créer des environnements de plusieurs machines virtuelles et des ressources PaaS avec les modèles Azure Resource Manager](devtest-lab-create-environment-from-arm.md).
-3. Pour cet exemple, utilisez un modèle de démarrage rapide Azure existant : [https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database](https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database).
-4. Copiez le dossier **web-app-redis-cache-sql-database** dans le dossier **ArmTemplate** du référentiel configuré à l’étape 2.
+1. Dans votre projet Azure DevOps, sélectionnez **Mises en production** sous la section **Pipelines**.
+1. Sous l’onglet **Mises en production**, sélectionnez **Nouveau pipeline**.  Dans la fenêtre **Sélectionner un modèle** à droite, vous trouverez la liste des modèles proposés pour les modèles de déploiement courants. 
+1. Pour ce pipeline, sélectionnez **Travail vide** pour commencer à créer l’environnement à utiliser à des fins de développement ou de test.
+1. Dans le travail vide, sélectionnez **Tâches** dans la barre d’outils, puis sélectionnez **Étape 1**.
 
-## <a name="create-a-release-definition"></a>Création d’une définition de version
-Pour créer la définition de mise en production, effectuez les étapes suivantes :
+   :::image type="content" source="./media/integrate-environments-devops-pipeline/new-release-pipeline-stage.png" alt-text="Capture d’écran montrant l’ouverture de l’étape de mise en production du pipeline.":::
 
-1.  Sous l’onglet **Mises en production** du **hub Build et mise en production**, sélectionnez le bouton **+ (signe plus)**.
-2.  Dans la fenêtre **Créer une définition de mise en production**, sélectionnez le modèle **Vide**, puis sélectionnez **Suivant**.
-3.  Sélectionnez **Choisir plus tard**, puis sélectionnez **Créer** pour créer une définition de mise en production avec un environnement par défaut et aucun artefact lié.
-4.  Pour ouvrir le menu contextuel, dans la nouvelle définition de mise en production, sélectionnez les **points de suspension (...)** à côté du nom de l’environnement, puis sélectionnez **Configurer les variables**.
-5.  Dans la fenêtre **Configurer l’environnement**, pour les variables que vous utilisez dans les tâches de définition de mise en production, entrez les valeurs suivantes :
-1.  Pour **administratorLogin**, entrez le nom de connexion de l’administrateur SQL.
-2.  Pour **administratorLoginPassword**, entrez le mot de passe à utiliser avec la connexion de l’administrateur SQL. Utilisez l’icône en forme de cadenas pour masquer et sécuriser le mot de passe.
-3.  Pour **databaseName**, entrez le nom de la base de données SQL.
-4.  Ces variables s’appliquent aux exemples d’environnements de cet article. Elles peuvent être différentes dans d’autres environnements.
+1. Pour ajouter des tâches à l’étape, sélectionnez le signe plus (+) dans la section **Travail de l’agent**. Une liste de tâches disponibles pouvant faire l’objet d’une recherche s’affiche. 
+1. Dans la fenêtre **Ajouter une tâche**, recherchez `Azure DevTest Labs Create Environment`.
+1. Sélectionnez la tâche `Azure DevTest Labs Create Environment` dans les résultats, puis sélectionnez **Ajouter**.
+1. Sélectionnez la tâche que vous venez d’ajouter. La fenêtre **Créer un environnement Azure DevTest Labs (préversion)** s’affiche.
 
-## <a name="create-an-environment"></a>Créer un environnement
-L’étape suivante du déploiement consiste à créer l’environnement nécessaire pour le développement ou les tests.
+   :::image type="content" source="./media/integrate-environments-devops-pipeline/new-release-pipeline-environment.png" alt-text="Capture d’écran montrant les champs nécessaires pour l’environnement Azure Pipelines pour Azure DevTest Labs.":::
 
-1. Dans la définition de mise en production, sélectionnez **Ajouter des tâches**.
-2. Sous l’onglet **Tâches**, ajoutez une tâche Azure DevTest Labs - Créer un environnement. Configurez la tâche comme indiqué ci-dessous :
-    1. Pour **Abonnement RM Azure**, sélectionnez une connexion dans la liste **Connexions au service Azure disponibles**, ou créez une connexion d’autorisations plus limitée à votre abonnement Azure. Pour plus d’informations, consultez [Point de terminaison de service Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).
-2. Pour **Nom du lab**, sélectionnez le nom de l’instance que vous avez créée précédemment*.
-3. Pour **Nom du dépôt**, sélectionnez le dépôt dans lequel a été mis le modèle Resource Manager (201)*.
-4. Pour **Nom du modèle**, sélectionnez le nom de l’environnement que vous avez enregistré dans votre dépôt de code source*. 
-5. **Nom du lab**, **Nom du dépôt** et **Nom du modèle** sont les représentations conviviales des ID de ressources Azure. Pour éviter les erreurs provoquées par la saisie manuelle des noms conviviaux, sélectionnez les noms dans les listes déroulantes.
-6. Pour **Nom de l’environnement**, entrez un nom qui identifie de façon unique l’instance de l’environnement dans le lab.  Ce nom doit être unique dans le lab.
-7. Avec les variables **Fichier de paramètres** et **Paramètres**, vous pouvez passer des paramètres personnalisés à l’environnement. Utilisez-en une, ou les deux, pour définir les valeurs des paramètres. Cet exemple utilise la section Paramètres. Utilisez les noms des variables que vous avez définies dans l’environnement, par exemple : `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. Les informations contenues dans le modèle d’environnement peuvent être passées à la section de sortie du modèle. Cochez **Créer les variables de sortie à partir de la sortie du modèle d’environnement** afin que d’autres tâches puissent utiliser les données. Suivez ce format : `$(Reference name.Output Name)`. Par exemple, si le nom de la référence était DTL et que le nom de la sortie dans le modèle était location, nous aurions la variable `$(DTL.location)`.
+2. Sous l’onglet **Tâches**, configurez l’environnement comme suit :
+
+   |Champ|Description|
+   |-----|-----------|
+   |**Abonnement Azure RM**|Il s’agit de l’abonnement Azure Resource Manager à configurer avant de l’exécuter. Sélectionnez une connexion dans la liste **Connexions au service Azure disponibles**, ou créez une connexion d’autorisations plus limitée à votre abonnement Azure. Pour plus d’informations, consultez [Point de terminaison de service Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).|
+   |**Nom du labo**|Sélectionnez le nom d’un laboratoire que vous avez créé précédemment (voir Prérequis). En pratique, vous devez sélectionner le laboratoire sur lequel vous souhaitez effectuer le déploiement. La ressource est créée dans ce laboratoire.  Vous pouvez également utiliser des variables, par exemple `$(labName)`.  Pour éviter les erreurs provoquées par la saisie manuelle des noms conviviaux, sélectionnez les noms dans les listes déroulantes.|
+   |**Nom de l’environnement**|Nom de l’environnement à créer dans le laboratoire sélectionné.|
+   |**Nom du dépôt**|Nom du référentiel de code source contenant le modèle. Vous pouvez choisir le référentiel par défaut, `Public Environment Repo`, ou un autre référentiel contenant le modèle que vous souhaitez utiliser. Les référentiels sont conçus dans les stratégies de laboratoire.  Pour éviter les erreurs provoquées par la saisie manuelle des noms conviviaux, sélectionnez les noms dans les listes déroulantes.|
+   |**Nom du modèle**|Nom du modèle à utiliser pour créer l’environnement. Sélectionnez le nom du modèle d’environnement. Pour éviter les erreurs provoquées par la saisie manuelle des noms conviviaux, sélectionnez les noms dans les listes déroulantes.| 
+   |**Nom de l’environnement**|Entrez un nom qui identifie de façon unique l’instance d’environnement dans le laboratoire.  Ce nom doit être unique dans le lab.|
+   |**Fichier de paramètres** & **Remplacements de paramètres**|Utilisez-le pour transmettre des paramètres personnalisés à l’environnement. Utilisez-en une, ou les deux, pour définir les valeurs des paramètres. Par exemple, vous pouvez utiliser ces champs pour transmettre le mot de passe chiffré. Vous pouvez également utiliser des variables pour éviter de transmettre des informations confidentielles dans les journaux et même les raccorder à Azure Key Vault.|
 
 ## <a name="delete-the-environment"></a>Supprimer l’environnement
 La dernière étape consiste à supprimer l’environnement que vous avez déployé dans votre instance Azure DevTest Labs. Normalement, vous supprimez l’environnement après avoir exécuté les tâches de développement ou de test nécessaires sur les ressources déployées.

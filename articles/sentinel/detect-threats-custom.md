@@ -1,48 +1,47 @@
 ---
-title: Créer des règles d’analytique personnalisées pour détecter des menaces avec Azure Sentinel | Microsoft Docs
-description: Découvrez comment créer des règles d’analytique personnalisées pour détecter des menaces de sécurité avec Azure Sentinel. Profitez des avantages du regroupement des événements, du regroupement des alertes et de l'enrichissement des alertes, et découvrez à quoi correspond le préfixe AUTO DISABLED (Désactivée automatiquement).
+title: Créer des règles d’analyse personnalisées pour détecter les menaces avec Microsoft Sentinel | Microsoft Docs
+description: Découvrez comment créer des règles d’analyse personnalisées pour détecter des menaces de sécurité avec Microsoft Sentinel. Profitez des avantages du regroupement des événements, du regroupement des alertes et de l'enrichissement des alertes, et découvrez à quoi correspond le préfixe AUTO DISABLED (Désactivée automatiquement).
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d1290d5d89c4e48c8e2e875bae5e64959f6f2c36
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 66ccebb9154285c7f387b7ef51424cbfb177fa04
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037223"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521564"
 ---
 # <a name="create-custom-analytics-rules-to-detect-threats"></a>Créer des règles d’analytique personnalisées pour détecter des menaces
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Une fois que vous avez [connecté vos sources de données](quickstart-onboard.md) à Azure Sentinel, créez des règles d'analytique personnalisées pour faciliter la détection des menaces et comportements anormaux au sein de votre environnement.
+Une fois que vous avez [connecté vos sources de données](quickstart-onboard.md) à Microsoft Sentinel, créez des règles d’analyse personnalisées pour faciliter la détection des menaces et comportements anormaux au sein de votre environnement.
 
 Les règles d’analytique recherchent des événements ou des ensembles d'événements spécifiques au sein de votre environnement, vous préviennent lorsque certains seuils ou conditions d'événements sont atteints, génèrent des incidents que votre centre des opérations de sécurité (SOC) doit trier et examiner et répondent aux menaces grâce à des processus de suivi et de correction automatisés.
 
 > [!TIP]
 > Lorsque vous créez des règles personnalisées, utilisez des règles existantes en tant que modèles ou références. L’utilisation de règles existantes en tant que ligne de base permet de générer la majeure partie de la logique avant d’apporter les modifications nécessaires.
-> 
 
 > [!div class="checklist"]
-> * Créer des règles d’analytique
-> * Définir le mode de traitement des événements et des alertes
-> * Définir le mode de génération des alertes et des incidents
-> * Choisir des réponses automatisées aux menaces pour vos règles
+> - Créer des règles d’analytique
+> - Définir le mode de traitement des événements et des alertes
+> - Définir le mode de génération des alertes et des incidents
+> - Choisir des réponses automatisées aux menaces pour vos règles
 
 ## <a name="create-a-custom-analytics-rule-with-a-scheduled-query"></a>Créer une règle d’analytique personnalisée avec une requête planifiée
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analyse**.
 
 1. Sur la barre d'action du haut de l'écran, sélectionnez **+Créer**, puis **Règle de requête planifiée**. Cela entraîne l’ouverture de l’**Assistant de règle analytique**.
 
@@ -50,11 +49,11 @@ Les règles d’analytique recherchent des événements ou des ensembles d'évé
 
 ### <a name="analytics-rule-wizard---general-tab"></a>Assistant de règle analytique - Onglet Général
 
-- Entrez un **Nom** unique et une **Description**. 
+- Entrez un **Nom** unique et une **Description**.
 
 - Dans le champ **Tactique**, vous pouvez choisir les catégories d’attaque en fonction desquelles la règle doit être classifiée. Celles-ci reposent sur les tactiques du framework [MITRE ATT&CK](https://attack.mitre.org/).
 
-- Choisissez la **Gravité** d'alerte qui convient. 
+- Choisissez la **Gravité** d'alerte qui convient.
 
 - Quand vous créez la règle, son **État** est **Activé** par défaut. Cela signifie qu’elle va s’exécuter dès que vous aurez fini de la créer. Si vous ne souhaitez pas qu’elle s’exécute immédiatement, sélectionnez **Désactivé**. Dans ce cas, la règle est ajoutée à votre onglet **Règles actives**, à partir duquel vous pouvez l’activer quand vous en avez besoin.
 
@@ -80,7 +79,8 @@ Sous l'onglet **Définir la logique de la règle**, vous pouvez soit écrire une
     ```
 
     > [!NOTE]
-    > **Meilleures pratiques en matière de requête de règle** : 
+    > **Meilleures pratiques en matière de requête de règle** :
+    >
     > - La requête doit comporter 1 à 10 000 caractères, et ne doit pas contenir « `search *` » ou « `union *` ». Vous pouvez utiliser des [fonctions définies par l’utilisateur](/azure/data-explorer/kusto/query/functions/user-defined-functions) pour surmonter la limite de longueur de requête.
     >
     > - L’utilisation de fonctions ADX pour créer des requêtes Azure Data Explorer à l’intérieur de la fenêtre de requête Log Analytics **n’est pas prise en charge**.
@@ -93,11 +93,11 @@ Sous l'onglet **Définir la logique de la règle**, vous pouvez soit écrire une
 > [!IMPORTANT]
 > Les fonctionnalités d'enrichissement des alertes sont actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
-- Utilisez la section de configuration **Mappage d'entités** pour mapper les paramètres de vos résultats de requête avec des entités reconnues par Azure Sentinel. Les entités enrichissent les résultats des règles (alertes et incidents) avec des informations essentielles qui constituent la base de tout processus d'investigation et des actions correctives ultérieures. Il s'agit également des critères qui vous permettent de regrouper les alertes en incidents sous l’onglet **Paramètres des incidents**.
+- Utilisez la section de configuration **Mappage d’entités** pour mapper les paramètres de vos résultats de requête à des entités reconnues par Microsoft Sentinel. Les entités enrichissent les résultats des règles (alertes et incidents) avec des informations essentielles qui constituent la base de tout processus d'investigation et des actions correctives ultérieures. Il s'agit également des critères qui vous permettent de regrouper les alertes en incidents sous l’onglet **Paramètres des incidents**.
 
-    Apprenez-en davantage sur les [entités d'Azure Sentinel](entities-in-azure-sentinel.md).
+    Apprenez-en davantage sur les [entités de Microsoft Sentinel](entities-in-azure-sentinel.md).
 
-    Consultez [Mapper des champs de données avec des entités dans Azure Sentinel](map-data-fields-to-entities.md) pour obtenir des instructions complètes sur le mappage des entités, ainsi que des informations importantes sur la [compatibilité descendante](map-data-fields-to-entities.md#notes-on-the-new-version).
+    Consultez [Mapper des champs de données à des entités dans Microsoft Sentinel](map-data-fields-to-entities.md) pour obtenir des instructions complètes sur le mappage des entités, ainsi que des informations importantes sur la [compatibilité descendante](map-data-fields-to-entities.md#notes-on-the-new-version).
 
 - Utilisez la section de configuration **Détails personnalisés** pour extraire les éléments des données d'événement de votre requête et les faire apparaître dans les alertes produites par cette règle, ce qui vous donne une visibilité immédiate sur le contenu des événements dans vos alertes et incidents.
 
@@ -113,26 +113,26 @@ Sous l'onglet **Définir la logique de la règle**, vous pouvez soit écrire une
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-2.png" alt-text="Définir la planification de requête et le regroupement d’événements" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-2-new.png":::
 
-    - Définissez le paramètre **Exécuter la requête tou(te)s les** pour définir la fréquence d'exécution de la requête (au maximum, toutes les 5 minutes ou au minimum, tous les 14 jours).
+  - Définissez le paramètre **Exécuter la requête tou(te)s les** pour définir la fréquence d'exécution de la requête (au maximum, toutes les 5 minutes ou au minimum, tous les 14 jours).
 
-    - Définissez le paramètre **Rechercher les données des derniers** pour déterminer la période des données couvertes par la requête. Par exemple, l’interrogation peut porter sur les 10 dernières minutes de données ou sur les 6 dernières heures de données. Le maximum est de 14 jours.
+  - Définissez le paramètre **Rechercher les données des derniers** pour déterminer la période des données couvertes par la requête. Par exemple, l’interrogation peut porter sur les 10 dernières minutes de données ou sur les 6 dernières heures de données. Le maximum est de 14 jours.
 
-        > [!NOTE]
-        > **Intervalles entre les requêtes et période de recherche arrière**
-        >
-        >  Ces deux paramètres sont indépendants l’un de l’autre, jusqu’à un certain point. Vous pouvez exécuter une requête sur un court intervalle qui couvre une période plus longue que l’intervalle (en ayant en fait des requêtes qui se chevauchent), mais vous ne pouvez pas exécuter une requête sur un intervalle qui dépasse la période de couverture, sinon vous avez des écarts dans la couverture globale des requêtes.
+    > [!NOTE]
+    > **Intervalles entre les requêtes et période de recherche arrière**
+    >
+    >  Ces deux paramètres sont indépendants l’un de l’autre, jusqu’à un certain point. Vous pouvez exécuter une requête sur un court intervalle qui couvre une période plus longue que l’intervalle (en ayant en fait des requêtes qui se chevauchent), mais vous ne pouvez pas exécuter une requête sur un intervalle qui dépasse la période de couverture, sinon vous avez des écarts dans la couverture globale des requêtes.
         >
         > **Délai d'ingestion**
         >
-        > Pour tenir compte de la **latence** qui peut se produire entre la génération d'un événement à la source et son ingestion dans Azure Sentinel, et pour assurer une couverture complète sans duplication de données, Azure Sentinel exécute les règles d'analytique planifiées avec un **décalage de cinq minutes** par rapport à l'heure planifiée.
+        > Pour tenir compte de la **latence** qui peut se produire entre la génération d’un événement à la source et son ingestion dans Microsoft Sentinel et pour assurer une couverture complète sans duplication de données, Microsoft Sentinel exécute les règles d’analyse planifiées avec un **retard de cinq minutes** par rapport à l’heure planifiée.
         >
-        > Pour savoir pourquoi ce délai est nécessaire et comment il permet de résoudre ce problème, consultez l'excellent billet de blog de Ron Marsiano, « [Gestion du délai d'ingestion dans les règles d'alerte planifiées d'Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851) ».
+        > Pour plus d’informations, consultez [Gérer le délai d’ingestion dans les règles d’analyse planifiée](ingestion-delay.md).
 
 - Utilisez la section **Seuil d'alerte** pour définir le niveau de sensibilité de la règle. Par exemple, affectez la valeur **Est supérieur à** au paramètre **Générer une alerte quand le nombre de résultats de la requête**, puis entrez le nombre 1000 pour que la règle génère une alerte uniquement si la requête retourne plus de 1000 résultats à chaque exécution. Ce champ est obligatoire. Par conséquent, si vous ne souhaitez pas définir de seuil (en d'autres termes, si vous souhaitez que votre alerte enregistre chaque événement), entrez 0 dans le champ numérique.
 
 ### <a name="results-simulation"></a>Simulation des résultats
 
-Dans la zone **Simulation des résultats**, sur la partie droite de l'Assistant, sélectionnez **Tester avec les données actuelles**. Azure Sentinel affiche le graphique des résultats (événements de journal) qui seraient générés par la requête en fonction de la planification actuellement définie sur la base des 50 dernières exécutions. Si vous modifiez la requête, resélectionnez **Tester avec les données actuelles** pour mettre le graphe à jour. Le graphe montre le nombre de résultats sur la période définie, laquelle est déterminée par les paramètres de la section **Planification de la requête**.
+Dans la zone **Simulation des résultats**, sur la partie droite de l’Assistant, sélectionnez **Tester avec les données actuelles**. Microsoft Sentinel affiche le graphique des résultats (événements de journal) qui seraient générés par la requête en fonction de la planification actuellement définie sur la base des 50 dernières exécutions. Si vous modifiez la requête, resélectionnez **Tester avec les données actuelles** pour mettre le graphe à jour. Le graphe montre le nombre de résultats sur la période définie, laquelle est déterminée par les paramètres de la section **Planification de la requête**.
 
 Voici à quoi peut ressembler la simulation des résultats pour la requête de la capture d’écran ci-dessus. Le côté gauche est l’affichage par défaut, et le côté droit est ce que vous voyez lorsque vous pointez sur un point dans le temps sur le graphe.
 
@@ -145,40 +145,39 @@ Si vous constatez que votre requête déclenche un trop grand nombre d'alertes o
 > [!IMPORTANT]
 > La fonctionnalité de regroupement des événements est actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
-- Sous **Regroupement d’événements**, choisissez l’une des deux façons de gérer le regroupement d’**événements** dans **alertes** : 
+- Sous **Regroupement d’événements**, choisissez l’une des deux façons de gérer le regroupement d’**événements** dans **alertes** :
 
-    - **Regrouper tous les événements dans une seule alerte** (paramètre par défaut). La règle génère une alerte à chaque exécution, tant que la requête retourne plus de résultats que le **seuil d’alerte** spécifié au-dessus. L’alerte comprend un résumé de tous les événements retournés dans les résultats. 
+  - **Regrouper tous les événements dans une seule alerte** (paramètre par défaut). La règle génère une alerte à chaque exécution, tant que la requête retourne plus de résultats que le **seuil d’alerte** spécifié au-dessus. L’alerte comprend un résumé de tous les événements retournés dans les résultats.
 
-    - **Déclencher une alerte pour chaque événement**. La règle génère une alerte pour chaque événement renvoyé par la requête. Cela est utile si vous souhaitez que les événements s’affichent individuellement ou si vous souhaitez les regrouper selon certains paramètres (par utilisateur, nom d’hôte ou autre chose). Vous pouvez définir ces paramètres dans la requête.
+  - **Déclencher une alerte pour chaque événement**. La règle génère une alerte pour chaque événement renvoyé par la requête. Cela est utile si vous souhaitez que les événements s’affichent individuellement ou si vous souhaitez les regrouper selon certains paramètres (par utilisateur, nom d’hôte ou autre chose). Vous pouvez définir ces paramètres dans la requête.
 
-        Actuellement, le nombre d’alertes qu’une règle peut générer est plafonné à 20. Si, dans une règle particulière, l'option **Regroupement des événements** est définie sur **Déclencher une alerte pour chaque événement**, et si la requête de la règle renvoie plus de 20 événements, les 19 premiers événements génèrent chacun une alerte unique, et la 20e alerte résume l'ensemble des événements renvoyés. En d'autres termes, la 20e alerte correspond à ce qui serait généré sous l'option **Regrouper tous les événements dans une seule alerte**.
+    Actuellement, le nombre d’alertes qu’une règle peut générer est plafonné à 20. Si, dans une règle particulière, l'option **Regroupement des événements** est définie sur **Déclencher une alerte pour chaque événement**, et si la requête de la règle renvoie plus de 20 événements, les 19 premiers événements génèrent chacun une alerte unique, et la 20e alerte résume l'ensemble des événements renvoyés. En d'autres termes, la 20e alerte correspond à ce qui serait généré sous l'option **Regrouper tous les événements dans une seule alerte**.
 
-        Si vous choisissez cette option, Azure Sentinel ajoute un nouveau champ, **OriginalQuery**, aux résultats de la requête. Voici une comparaison entre le champ de **Query** existant et le nouveau champ :
+    Si vous choisissez cette option, Microsoft Sentinel ajoute un nouveau champ, **OriginalQuery**, aux résultats de la requête. Voici une comparaison entre le champ de **Query** existant et le nouveau champ :
 
-        | Nom du champ | Contient | L’exécution de la requête dans ce champ<br>a pour résultat… |
-        | - | :-: | :-: |
-        | **Requête** | L’enregistrement compressé de l’événement qui a généré cette instance de l’alerte | L’événement qui a généré cette instance de l’alerte |
-        | **OriginalQuery** | La requête d’origine telle qu’elle est écrite dans la règle&nbsp;analytique | L’événement le plus récent dans la période d’exécution de la requête, qui correspond aux paramètres définis par la requête |
-        |
+    | Nom du champ | Contient | L’exécution de la requête dans ce champ<br>a pour résultat… |
+    | - | :-: | :-: |
+    | **Requête** | L’enregistrement compressé de l’événement qui a généré cette instance de l’alerte | L’événement qui a généré cette instance de l’alerte |
+    | **OriginalQuery** | La requête d’origine telle qu’elle est écrite dans la règle&nbsp;analytique | L’événement le plus récent dans la période d’exécution de la requête, qui correspond aux paramètres définis par la requête |
 
-        En d’autres termes, le champ **OriginalQuery** se comporte comme le champ **Query** se comporte en règle générale. L’intérêt de ce champ supplémentaire est qu’il résout le problème décrit par le premier élément de la section [Résolution des problèmes](#troubleshooting) ci-dessous.
- 
-    > [!NOTE]
-    > Quelle est la différence entre les **événements** et les **alertes** ?
-    >
-    > - Un **événement** est une description d'une occurrence unique d'une action. Par exemple, une entrée unique dans un fichier journal peut être comptabilisée en tant qu’événement. Dans ce contexte, un événement fait référence à un résultat unique retourné par une requête dans une règle d’analytique.
-    >
-    > - Une **alerte** est un ensemble d’événements qui, pris ensemble, sont significatifs du point de vue de la sécurité. Une alerte peut contenir un événement unique si l’événement a des implications significatives en matière de sécurité, par exemple, une connexion administrative en provenance d’un pays étranger en dehors des heures de bureau.
-    >
-    > - Au fait, que sont les **incidents** ? La logique interne d’Azure Sentinel crée des **incidents** à partir d’**alertes** ou de groupes d’alertes. La file d'attente des incidents est le point central du travail des analystes du SOC : triage, investigation et correction.
-    > 
-    > Azure Sentinel ingère des événements bruts de certaines sources de données, et des alertes déjà traitées d’autres sources. Il est important de noter la source dont il s’agit à tout moment.
+    En d’autres termes, le champ **OriginalQuery** se comporte comme le champ **Query** se comporte en règle générale. L’intérêt de ce champ supplémentaire est qu’il résout le problème décrit par le premier élément de la section [Résolution des problèmes](#troubleshooting) ci-dessous.
+
+  > [!NOTE]
+  > Quelle est la différence entre les **événements** et les **alertes** ?
+  >
+  > - Un **événement** est une description d'une occurrence unique d'une action. Par exemple, une entrée unique dans un fichier journal peut être comptabilisée en tant qu’événement. Dans ce contexte, un événement fait référence à un résultat unique retourné par une requête dans une règle d’analytique.
+  >
+  > - Une **alerte** est un ensemble d’événements qui, pris ensemble, sont significatifs du point de vue de la sécurité. Une alerte peut contenir un événement unique si l’événement a des implications significatives en matière de sécurité, par exemple, une connexion administrative en provenance d’un pays étranger en dehors des heures de bureau.
+  >
+  > - Au fait, que sont les **incidents** ? La logique interne de Microsoft Sentinel crée des **incidents** à partir d’**alertes** ou de groupes d’alertes. La file d'attente des incidents est le point central du travail des analystes du SOC : triage, investigation et correction.
+  >
+  > Microsoft Sentinel ingère des événements bruts de certaines sources de données et des alertes déjà traitées d’autres sources. Il est important de noter la source dont il s’agit à tout moment.
 
 - Dans la section **Suppression**, vous pouvez activer le paramètre **Arrêter l’exécution de la requête une fois l’alerte générée** en choisissant **Activé** si, une fois que vous recevez une alerte, vous souhaitez interrompre l’exécution de cette règle pendant une période supérieure à l’intervalle d’interrogation. Si vous activez cette option, vous devez affecter au paramètre **Arrêter l’exécution de la requête pendant** la valeur correspondant à la durée d’arrêt de la requête, à savoir 24 heures au maximum.
 
 ## <a name="configure-the-incident-creation-settings"></a>Configurer les paramètres de création d’incident
 
-Sous l’onglet **Incident Settings**, vous pouvez choisir si et comment Azure Sentinel doit transformer les alertes en incidents actionnables. Si vous ne changez pas cet onglet, Azure Sentinel crée un seul incident distinct à partir de chaque alerte. Vous pouvez choisir de ne pas créer d’incident ou de regrouper plusieurs alertes en un seul incident en changeant les paramètres de cet onglet.
+Sous l’onglet **Paramètres des incidents**, vous pouvez choisir si et comment Microsoft Sentinel doit transformer les alertes en incidents actionnables. Si vous ne changez pas cet onglet, Microsoft Sentinel crée un seul incident distinct à partir de chaque alerte. Vous pouvez choisir de ne pas créer d’incident ou de regrouper plusieurs alertes en un seul incident en changeant les paramètres de cet onglet.
 
 > [!IMPORTANT]
 > L'onglet Paramètres des incidents est actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
@@ -189,7 +188,7 @@ Par exemple :
 
 ### <a name="incident-settings"></a>Paramètres de l’incident
 
-Dans la section **Paramètres des incidents**, le paramètre **Créer des incidents à partir d'alertes déclenchées par cette règle analytique** est **Activé** par défaut, ce qui signifie qu'Azure Sentinel crée un incident distinct à partir de chaque alerte déclenchée par la règle.
+Dans la section **Paramètres des incidents**, le paramètre **Créer des incidents à partir d’alertes déclenchées par cette règle analytique** est **Activé** par défaut, ce qui signifie que Microsoft Sentinel crée un incident distinct à partir de chaque alerte déclenchée par la règle.
 
 - Si vous ne souhaitez pas que cette règle entraîne la création d’incidents (par exemple, si cette règle vise uniquement à collecter des informations pour une analyse future), affectez-lui la valeur **Désactivé**.
 
@@ -198,7 +197,6 @@ Dans la section **Paramètres des incidents**, le paramètre **Créer des incide
 ### <a name="alert-grouping"></a>Regroupement des alertes
 
 Dans la section **Regroupement des alertes**, si vous souhaitez qu’un seul incident soit généré à partir d’un groupe de jusqu’à 150 alertes similaires ou récurrentes, définissez l’option **Regrouper les alertes déclenchées par cette règle analytique en un seul incident par** sur **Activé**, puis définissez les paramètres suivants.
-
 
 - **Limiter le groupe aux alertes créées dans la période de temps sélectionnée** : Déterminez le délai d’exécution dans lequel les alertes similaires ou récurrentes vont être regroupées. Toutes les alertes correspondantes dans ce délai d’exécution génèrent collectivement un incident ou un ensemble d’incidents (en fonction des paramètres de regroupement ci-dessous). Les alertes situées en dehors de ce délai d’exécution génèrent un incident ou un ensemble d’incidents distinct.
 
@@ -212,7 +210,7 @@ Dans la section **Regroupement des alertes**, si vous souhaitez qu’un seul inc
     |
 
 - **Rouvrir les incidents correspondants fermés** : Si un incident a été résolu et fermé et que, par la suite, une autre alerte est générée, qui devrait être associée à cet incident, définissez ce paramètre sur **Activé** si vous voulez que l’incident fermé soit rouvert, ou laissez-le défini sur **Désactivé** si vous voulez que l’alerte crée un autre incident.
-    
+
     > [!NOTE]
     > **150 alertes** peuvent être regroupées au sein d'un même incident. Si plus de 150 alertes sont générées par une règle qui les regroupe dans un incident unique, un nouvel incident est généré avec les mêmes détails que l’incident d’origine, et les alertes excédentaires sont regroupées dans le nouvel incident.
 
@@ -222,7 +220,7 @@ Dans la section **Regroupement des alertes**, si vous souhaitez qu’un seul inc
     - Pour l’automatisation basée sur les alertes, sélectionnez dans la liste déroulante sous **Automatisation de l’alerte** tous les playbooks que vous souhaitez exécuter automatiquement lors de la génération d’une alerte.
     - Pour l’automatisation basée sur un incident, sélectionnez ou créez une règle d’automatisation sous **Automatisation de l’incident (préversion)** . Vous pouvez appeler des playbooks (ceux basés sur le **déclencheur d’incident**) à partir de ces règles d’automatisation, ainsi qu’automatiser le triage, l’assignation et la fermeture.
     - Pour plus d’informations et pour obtenir des instructions sur la création de playbooks et de règles d’automatisation, consultez [Automatisation des réponses aux menaces](tutorial-respond-threats-playbook.md#automate-threat-responses).
-    - Pour plus d’informations sur quand utiliser le **déclencheur d’alerte** ou le **déclencheur d’incident**, consultez [Utilisation des déclencheurs et actions dans les playbooks Azure Sentinel](playbook-triggers-actions.md#azure-sentinel-triggers-summary).
+    - Pour plus d’informations sur les cas où il convient d’utiliser le **déclencheur d’alerte** ou le **déclencheur d’incident**, consultez [Utiliser des déclencheurs et actions dans les playbooks Microsoft Sentinel](playbook-triggers-actions.md#microsoft-sentinel-triggers-summary).
 
     :::image type="content" source="media/tutorial-detect-threats-custom/automated-response-tab.png" alt-text="Définir les paramètres de réponse automatisée":::
 
@@ -236,10 +234,10 @@ Dans la section **Regroupement des alertes**, si vous souhaitez qu’un seul inc
 
 - Pour voir les résultats de vos règles d’alerte, accédez à la page **Incidents**, où vous pouvez ensuite trier, [examiner les incidents](investigate-cases.md) et corriger les menaces.
 
-- Vous pouvez mettre à jour la requête de règle pour exclure les faux positifs. Pour plus d’informations, consultez [Gérer les faux positifs dans Azure Sentinel](false-positives.md).
+- Vous pouvez mettre à jour la requête de règle pour exclure les faux positifs. Pour plus d’informations, consultez [Gérer les faux positifs dans Microsoft Sentinel](false-positives.md).
 
 > [!NOTE]
-> Les alertes générées dans Azure Sentinel sont disponibles via [Microsoft Graph Security](/graph/security-concept-overview). Pour plus d’informations, consultez la [documentation sur les alertes Microsoft Graph Security](/graph/api/resources/security-api-overview).
+> Les alertes générées dans Microsoft Sentinel sont disponibles via [Microsoft Graph Security](/graph/security-concept-overview). Pour plus d’informations, consultez la [documentation sur les alertes Microsoft Graph Security](/graph/api/resources/security-api-overview).
 
 ## <a name="export-the-rule-to-an-arm-template"></a>Exporter la règle vers un modèle ARM
 
@@ -249,7 +247,7 @@ Si vous souhaitez empaqueter votre règle pour qu’elle soit gérée et déploy
 
 ### <a name="issue-no-events-appear-in-query-results"></a>Problème : Aucun événement ne s’affiche dans les résultats de la requête
 
-Si le **regroupement d’événements** a la valeur **Déclencher une alerte pour chaque événement**, dans certains scénarios, lorsque vous affichez les résultats de la requête ultérieurement (par exemple, en cas de retour aux alertes d’un incident), il est possible qu’aucun résultat de requête ne s’affiche. Cela est dû au fait que la connexion de l’événement à l’alerte est effectuée par le hachage des informations de l’événement particulier et l’inclusion du hachage dans la requête. Si les résultats de la requête ont changé depuis la génération de l’alerte, le hachage n’est plus valide et aucun résultat ne s’affiche. 
+Si le **regroupement d’événements** a la valeur **Déclencher une alerte pour chaque événement**, dans certains scénarios, lorsque vous affichez les résultats de la requête ultérieurement (par exemple, en cas de retour aux alertes d’un incident), il est possible qu’aucun résultat de requête ne s’affiche. Cela est dû au fait que la connexion de l’événement à l’alerte est effectuée par le hachage des informations de l’événement particulier et l’inclusion du hachage dans la requête. Si les résultats de la requête ont changé depuis la génération de l’alerte, le hachage n’est plus valide et aucun résultat ne s’affiche.
 
 Pour afficher les événements, supprimez manuellement la ligne avec le hachage de la requête de la règle, puis exécutez la requête.
 
@@ -258,17 +256,17 @@ Pour afficher les événements, supprimez manuellement la ligne avec le hachage 
 
 ### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Problème : Une règle planifiée n'a pas été exécutée, ou le préfixe AUTO DISABLED (Désactivée automatiquement) a été ajouté à son nom
 
-Bien que cela soit rare, une règle de requête planifiée peut échouer. Azure Sentinel classe les échecs comme passagers ou permanents, en fonction de leur type et des circonstances qui y ont conduit.
+Bien que cela soit rare, une règle de requête planifiée peut échouer. Microsoft Sentinel classe les échecs comme passagers ou permanents, en fonction de leur type et des circonstances qui y ont conduit.
 
 #### <a name="transient-failure"></a>Échec passager
 
-Un échec passager se produit en raison d'une circonstance temporaire. Dès que la situation redevient normale, la règle est exécutée. Voici quelques exemples d'échecs classés comme passagers par Azure Sentinel :
+Un échec passager se produit en raison d'une circonstance temporaire. Dès que la situation redevient normale, la règle est exécutée. Voici quelques exemples d’échecs classés comme passagers par Microsoft Sentinel :
 
 - La requête d'une règle met trop de temps à s'exécuter et expire.
-- Problèmes de connectivité entre les sources de données et Log Analytics, ou entre Log Analytics et Azure Sentinel.
+- Problèmes de connectivité entre les sources de données et Log Analytics, ou entre Log Analytics et Microsoft Sentinel.
 - Tous les autres échecs nouveaux et inconnus sont considérés comme passagers.
 
-En cas d'échec passager, Azure Sentinel essaie à nouveau d'exécuter la règle à intervalles prédéterminés et toujours croissants, jusqu'à un certain stade. Passé ce stade, la règle ne se réexécute qu'à la prochaine heure planifiée. Un échec passager ne provoque jamais la désactivation automatique de la règle.
+En cas d’échec passager, Microsoft Sentinel essaie à nouveau d’exécuter la règle à intervalles prédéterminés et toujours croissants, jusqu’à un certain point. Passé ce stade, la règle ne se réexécute qu'à la prochaine heure planifiée. Un échec passager ne provoque jamais la désactivation automatique de la règle.
 
 #### <a name="permanent-failure---rule-auto-disabled"></a>Échec permanent - désactivation automatique de la règle
 
@@ -276,12 +274,12 @@ Un échec permanent se produit suite à une modification des conditions qui perm
 
 - L'espace de travail cible (sur lequel la requête de la règle était exécutée) a été supprimé.
 - La table cible (sur laquelle la requête de la règle était exécutée) a été supprimée.
-- Azure Sentinel a été supprimé de l'espace de travail cible.
+- Microsoft Sentinel a été supprimé de l’espace de travail cible.
 - Une fonction utilisée par la requête de la règle n'est plus valide ; elle a été modifiée ou supprimée.
 - Les autorisations d'accès à l'une des sources de données de la requête de la règle ont été modifiées.
 - Une des sources de données de la requête de la règle a été supprimée ou déconnectée.
 
-**Dans le cas d'un nombre prédéterminé d'échecs permanents consécutifs, du même type et sur la même règle,** Azure Sentinel cesse d'essayer d'exécuter la règle et effectue ce qui suit :
+**Dans le cas d’un nombre prédéterminé d’échecs permanents consécutifs, du même type et sur la même règle**, Microsoft Sentinel cesse d’essayer d’exécuter la règle et effectue ce qui suit :
 
 - Il désactive la règle.
 - Il ajoute le préfixe **« AUTO DISABLED »** (Désactivée automatiquement) au nom de la règle.
@@ -293,16 +291,16 @@ Les gestionnaires SOC doivent régulièrement rechercher la présence de règles
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Lorsque vous utilisez des règles d’analytique pour détecter les menaces d’Azure Sentinel, veillez à activer toutes les règles associées à vos sources de données connectées afin de garantir une protection complète de votre environnement. La méthode la plus efficace pour activer les règles d’analytique est directement à partir de la page connecteur de données, qui répertorie toutes les règles associées. Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md).
+Lorsque vous utilisez des règles d’analyse pour détecter les menaces de Microsoft Sentinel, veillez à activer toutes les règles associées à vos sources de données connectées afin de garantir une couverture de sécurité complète de votre environnement. La méthode la plus efficace pour activer les règles analytiques est directement à partir de la page du connecteur de données, qui liste toutes les règles associées. Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md).
 
-Vous pouvez également transmettre des règles à Azure Sentinel via l’[API](/rest/api/securityinsights/) et [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0), bien que cela demande davantage d’effort. Lorsque vous utilisez l’API ou PowerShell, vous devez d’abord exporter les règles vers JSON avant de les activer. L’API ou PowerShell peut être utile lors de l’activation de règles dans plusieurs instances d’Azure Sentinel avec des paramètres identiques dans chaque instance.
-
-Pour plus d'informations, consultez les pages suivantes :
+Vous pouvez également envoyer des règles à Microsoft Sentinel via l’[API](/rest/api/securityinsights/) et [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0), même si cela demande davantage d’effort. Lorsque vous utilisez l’API ou PowerShell, vous devez d’abord exporter les règles vers JSON avant de les activer. L’API ou PowerShell peuvent être utiles lors de l’activation de règles dans plusieurs instances de Microsoft Sentinel avec des paramètres identiques dans chaque instance.
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Tutoriel : Examiner les incidents avec Azure Sentinel](investigate-cases.md)
-- [Classer et analyser les données à l'aide d'entités dans Azure Sentinel](entities-in-azure-sentinel.md)
-- [Didacticiel : utiliser des règles d’automatisation dans Azure Sentinel](tutorial-respond-threats-playbook.md)
+Pour plus d'informations, consultez les pages suivantes :
+
+- [Tutoriel : Examiner les incidents avec Microsoft Sentinel](investigate-cases.md)
+- [Classer et analyser les données à l’aide d’entités dans Microsoft Sentinel](entities-in-azure-sentinel.md)
+- [Didacticiel : utiliser des règles d’automatisation dans Microsoft Sentinel](tutorial-respond-threats-playbook.md)
 
 De même, apprenez à partir de l’exemple comment utiliser les règles d’analytique lors de la [supervision Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) avec un [connecteur personnalisé](create-custom-connector.md).

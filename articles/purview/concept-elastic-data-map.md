@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd667abab0802d6d11fc855a620bf51f8419b978
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607067"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555761"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Mappage de données élastique dans Azure Purview
 
@@ -117,6 +117,38 @@ Sélectionnez **Limites du service et des abonnements (quota)** et suivez les in
 :::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="Capture d’écran montrant la création d’un cas de support, avec les options d’augmentation de la limite sélectionnées.":::
 
 Dans la description, fournissez autant d’informations pertinentes que vous le pouvez concernant votre environnement et la capacité supplémentaire que vous souhaitez demander.
+
+## <a name="monitoring-the-elastic-data-map"></a>Surveillance de la carte de données élastique
+
+Les unités de _capacité_ de la carte de données de métriques et la taille de stockage de la _carte de données_ peuvent être surveillées pour comprendre la taille de l’espace de données et la facturation.
+
+1. Allez sur le [portail Azure](https://portal.azure.com) et accédez à la page des **comptes Purview** et sélectionnez votre _compte Azure Purview_
+
+2. Cliquez sur **Vue d'ensemble** et faites défiler vers le bas pour observer la section **Surveillance** des unités de _capacité de carte de données_ et de la _taille de stockage de carte de données_ sur différentes périodes de temps
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-metrics.png" alt-text="Capture d’écran du menu montrant la page de vue d’ensemble des métriques de carte de données élastique.":::
+
+3. Pour obtenir des paramètres supplémentaires, accédez à **Analyse--> Mesures** pour observer les **unités de capacité de la carte de données** et la **Taille du Stockage de mappage des données**.
+
+    :::image type="content" source="./media/concept-elastic-data-map/elastic-data-map-metrics.png" alt-text="Capture d’écran du menu montrant les mesures.":::
+
+4. Cliquez sur **Unités de capacité de la carte de données** pour afficher l’utilisation de l’unité de capacité de mappage de données au cours des dernières 24 heures. Notez que le fait de pointer la souris sur le graphique linéaire indique les unités de capacité de la carte de données consommées à ce moment précis, le jour précis.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-default.png" alt-text="Capture d’écran du menu montrant les unités de capacité de la carte de données consommées sur 24 heures.":::
+
+5. Cliquez sur **Heure locale : 24 dernières heures (automatique-1 heure)** en haut à droite de l’écran pour modifier l’intervalle de temps affiché pour le graphique.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-custom.png" alt-text="Capture d’écran du menu montrant les unités de capacité de la carte de données consommées sur une plage horaire personnalisée.":::
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-time-range.png" alt-text="Capture d’écran du menu montrant les unités de capacité de la carte de données consommées sur une plage horaire de 3 jours.":::
+
+6. Personnalisez le type de graphique en cliquant sur l’option comme indiqué ci-dessous.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-graph-type.png" alt-text="Capture d’écran du menu montrant les options permettant de modifier le type de graphique.":::
+
+7. Cliquez sur le **nouveau graphique** pour ajouter le graphique du tableau de taille du stockage de la carte de données.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-storage-size.png" alt-text="Capture d’écran du menu montrant la taille de stockage de la carte de données utilisée.":::
 
 ## <a name="summary"></a>Résumé
 

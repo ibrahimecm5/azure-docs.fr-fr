@@ -3,12 +3,12 @@ title: Configurer une stratégie d’arrêt automatique pour les labs et les mac
 description: Découvrez comment définir, chaque jour à un moment donné, des planifications et des stratégies d’arrêt automatique des machines virtuelles pour Azure DevTest Labs ou pour des machines virtuelles individuelles.
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: b795ab8baaec5ea84823d4741f1bfcc48c990204
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 622d9c2da013ad9eb8c3a0eef46a21999f54ee76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503317"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286732"
 ---
 # <a name="configure-auto-shutdown-for-labs-and-vms-in-devtest-labs"></a>Configurer un arrêt automatique pour des labs et des machines virtuelles dans DevTest Labs
 
@@ -38,7 +38,7 @@ Par défaut, cette planification s’applique à toutes les machines virtuelles 
 
 ## <a name="configure-lab-auto-shutdown-policy"></a>Configurer une stratégie d’arrêt automatique de lab
 
-En tant que propriétaire de lab, vous pouvez contrôler le coût et réduire le gaspillage inhérent à vos labs en gérant les paramètres de stratégie d’arrêt automatique de vos labs. Pour voir comment définir les stratégies de tous les labs, consultez [Définir des stratégies de lab dans Azure DevTest Labs](devtest-lab-set-lab-policy.md). 
+En tant que propriétaire de lab, vous pouvez contrôler le coût et réduire le gaspillage inhérent à vos labs en gérant les paramètres de stratégie d’arrêt automatique de vos labs. Pour voir comment définir les stratégies de tous les labs, consultez [Définir des stratégies de lab dans Azure DevTest Labs](devtest-lab-set-lab-policy.md).
 
 > [!IMPORTANT]
 > Les modifications apportées aux stratégies d’arrêt automatique s’appliquent uniquement aux nouvelles machines virtuelles créées dans le lab et non pas aux machines virtuelles déjà existantes.
@@ -217,9 +217,9 @@ Ensuite, configurez le modèle intégré.
 
    ![Capture d’écran représentant l’option Envoyer un e-mail (V2).](media/devtest-lab-auto-shutdown/select-send-email.png)
 
-1. Dans le formulaire **Envoyer un e-mail (V2)** , renseignez les champs **À**, **Objet** et **Corps**. 
+1. Dans le formulaire **Envoyer un e-mail (V2)** , renseignez les champs **À**, **Objet** et **Corps**.
 
-   Sélectionnez **Ajouter du contenu dynamique** pour remplir automatiquement la notification avec les valeurs utilisées par l’application et les connecteurs. Par exemple, pour **À**, sélectionnez **propriétaire**. Renseignez l’**objet** avec **vmName** et **labName**. Ajoutez du contenu comme **skipUrl** et **delayUrl** au corps du message.
+   Sélectionnez **Ajouter du contenu dynamique** pour remplir automatiquement la notification avec les valeurs utilisées par l’application et les connecteurs. Par exemple, pour **À**, sélectionnez **propriétaire**. Renseignez l’**objet** avec **vmName** et **labName**. Ajoutez du contenu comme les valeurs **skipUrl** et **delayUrl** au corps du message.
 
    ![Capture d’écran montrant un exemple d’e-mail de notification.](media/devtest-lab-auto-shutdown/email-options.png)
 

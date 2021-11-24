@@ -3,12 +3,12 @@ title: Accéder à un registre ayant un accès réseau restreint à l’aide du 
 description: Activer une instance de service Azure de confiance pour accéder en toute sécurité à un registre de conteneurs ayant un accès réseau restreint pour tirer (pull) ou envoyer (push) des images
 ms.topic: article
 ms.date: 05/19/2021
-ms.openlocfilehash: da22d525bbe86403f26daf7c3505c5dadffe4b81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d4379c8ea9935c366c94828e58bc236d9e4310f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654145"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327364"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Permettre à des services de confiance d’accéder en toute sécurité à un registre de conteneurs ayant un accès réseau restreint (préversion)
 
@@ -42,7 +42,7 @@ Lorsque cela est indiqué, l’accès par le service approuvé requiert une conf
 
 |Service approuvé  |Scénarios d’utilisation pris en charge  | Configurer une identité gérée avec le rôle RBAC
 |---------|---------|------|
-| Azure Security Center | Analyse des vulnérabilités par [Azure Defender pour les registres de conteneurs](scan-images-defender.md) | No |
+| Microsoft Defender pour le cloud | Analyse des vulnérabilités par [Microsoft Defender pour les registres de conteneurs](scan-images-defender.md) | No |
 |ACR Tasks     | [Accéder au registre parent ou à un registre différent à partir d’une tâche ACR](container-registry-tasks-cross-registry-authentication.md)       | Yes |
 |Machine Learning | [Déployer](../machine-learning/how-to-deploy-custom-container.md) un modèle ou [effectuer son apprentissage](../machine-learning/how-to-train-with-custom-image.md) dans un espace de travail Machine Learning à l’aide d’une image conteneur Docker personnalisée | Yes |
 |Azure Container Registry | [Importer des images](container-registry-import-images.md) vers ou depuis un registre de conteneurs Azure avec des restrictions réseau | No |

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e1ccf10041c36b26b70bf5c4e5a107c0f6bf19ac
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 83b8867ae750fe85bc848e339ddb0409cba85093
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021616"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400601"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Créer et utiliser une identité managée pour votre ressource Form Recognizer
 
@@ -29,6 +29,10 @@ L’identité managée Azure est un principal de service qui crée une identité
 L’identité managée prend en charge les comptes de stockage Blob Azure accessibles en privé et publiquement.  Pour les comptes de stockage avec accès public, vous pouvez choisir d’utiliser une signature d’accès partagé (SAS) pour accorder un accès limité.   Dans cet article, vous allez apprendre à activer une identité managée affectée par le système pour votre instance Form Recognizer.
 
 ## <a name="private-storage-account-access"></a>Accès aux comptes de stockage privé
+> [!NOTE]
+>
+> Actuellement, Form Recognizer ne prend en charge que les identités managées affectées par le système. Les identités managées affectées par l’utilisateur figurent sur la feuille de route et seront activées dans un avenir proche. 
+
 
  L’accès et l’authentification des comptes de stockage Azure privé sont pris en charge par les [identités managées pour les ressources Azure](../../active-directory/managed-identities-azure-resources/overview.md). Si vous avez un compte de stockage Azure protégé par un réseau virtuel ou un pare-feu ou si vous avez activé l’option BYOS (bring-your-own-storage), Form Recognizer ne peut pas accéder directement aux données de votre compte de stockage. Toutefois, une fois qu’une identité managée est activée, le service Form Recognizer peut accéder à votre compte de stockage à l’aide des informations d’identification d’une identité managée attribuée.
 

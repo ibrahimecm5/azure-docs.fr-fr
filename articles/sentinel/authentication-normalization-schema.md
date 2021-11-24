@@ -1,38 +1,38 @@
 ---
-title: Informations de référence sur le schéma de normalisation de l’authentification Azure Sentinel | Microsoft Docs
-description: Cet article décrit le schéma de normalisation de l’authentification Azure Sentinel.
+title: Informations de référence sur le schéma de normalisation de l’authentification Microsoft Sentinel | Microsoft Docs
+description: Cet article décrit le schéma de normalisation de l’authentification Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9b692046f0e812b903570ecd6e788ba83db6b96b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 62bf35c4638433cc4e9820f8d0bb7e2592bcebf5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075407"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517574"
 ---
-# <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Informations de référence sur le schéma de normalisation de l’authentification Azure Sentinel (préversion publique)
+# <a name="microsoft-sentinel-authentication-normalization-schema-reference-public-preview"></a>Informations de référence sur le schéma de normalisation de l’authentification Microsoft Sentinel (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Le modèle d’informations de l’authentification est utilisé pour décrire les événements liés à l’authentification des utilisateurs, à la connexion et à la déconnexion. Les événements d’authentification sont envoyés par de nombreux appareils de création de rapports, généralement dans le cadre du flux d’événements en même temps que d’autres événements.
 
-Par exemple, Windows envoie plusieurs événements d’authentification avec d’autres événements d’activité du système d’exploitation. Ainsi, dans la plupart des cas, les événements d’authentification sont stockés dans différentes tables Azure Sentinel et sont normalisés avec une fonction KQL, qui filtre également uniquement les événements d’authentification appropriés.
+Par exemple, Windows envoie plusieurs événements d’authentification avec d’autres événements d’activité du système d’exploitation. Ainsi, dans la plupart des cas, les événements d’authentification sont stockés dans différentes tables Microsoft Sentinel et sont normalisés avec une fonction KQL, qui filtre également uniquement les événements d’authentification appropriés.
 
 Les événements d’authentification incluent les événements des systèmes qui se concentrent sur l’authentification, tels que les passerelles VPN ou les contrôleurs de domaine, et l’authentification directe sur un système final, tel qu’un ordinateur ou un pare-feu.
 
-Pour plus d’informations sur la normalisation dans Azure Sentinel, consultez [Normalisation et le modèle d’informations Azure Sentinel (ASIM)](normalization.md).
+Pour plus d’informations sur la normalisation dans Microsoft Sentinel, consultez [Normalisation et modèle ASIM (Advanced SIEM Information Model)](normalization.md).
 
 > [!IMPORTANT]
 > Le schéma de normalisation de l’authentification est en préversion. Cette fonctionnalité est fournie sans contrat de niveau de service et n’est pas recommandée pour des charges de travail de production.
@@ -42,7 +42,7 @@ Pour plus d’informations sur la normalisation dans Azure Sentinel, consultez [
 
 ## <a name="parsers"></a>Analyseurs
 
-Azure Sentinel fournit les analyseurs d’événements d’authentification intégrés suivants, spécifiques aux produits : 
+Microsoft Sentinel fournit les analyseurs d’événements d’authentification intégrés suivants, spécifiques aux produits : 
 
 - **Connexions Windows** signalées en tant qu’événements de sécurité (4624, 4625, 4634 et 4647), collectées avec l’agent Log Analytics ou l’agent Azure Monitor.
 - **Connexions Windows** signalées par Microsoft 365 Defender pour point de terminaison, collectées avec le connecteur Microsoft 365 Defender.
@@ -52,13 +52,13 @@ Azure Sentinel fournit les analyseurs d’événements d’authentification int�
 
 Pour utiliser l’analyseur indépendant de la source, qui unifie tous les analyseurs listés, vous assurant ainsi d’analyser les données dans toutes les sources configurées, utilisez **imAuthentication** comme nom de table dans votre requête.
 
-Déployez les [analyseurs indépendants de la source et spécifiques de la source](normalization-about-parsers.md) à partir du [dépôt GitHub Azure Sentinel](https://aka.ms/AzSentinelAuth).
+Déployez les [analyseurs indépendants de la source et spécifiques de la source](normalization-about-parsers.md) à partir du [référentiel GitHub Microsoft Sentinel](https://aka.ms/AzSentinelAuth).
 
 
 
 ## <a name="normalized-content"></a>Contenu normalisé
 
-La prise en charge du schéma ASIM de l’authentification comprend également la prise en charge des règles d’analytique intégrées suivantes avec des analyseurs d’authentification normalisés. Outre au travers des liens vers le dépôt GitHub Azure Sentinel fournis ci-dessous comme référence, vous pouvez trouver ces règles dans la [galerie de règles Azure Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées pour les règles listées.
+La prise en charge du schéma ASIM de l’authentification comprend également la prise en charge des règles d’analytique intégrées suivantes avec des analyseurs d’authentification normalisés. Outre au travers des liens vers le référentiel GitHub Microsoft Sentinel fournis ci-dessous comme référence, vous pouvez trouver ces règles dans la [galerie de règles Microsoft Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées pour les règles listées.
 
 - [Attaque par pulvérisation de mot de passe potentielle (utilise la normalisation de l’authentification)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthPasswordSpray.yaml)
  - [Attaque par force brute contre les informations d’identification de l’utilisateur (utilise la normalisation de l’authentification)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
@@ -66,7 +66,7 @@ La prise en charge du schéma ASIM de l’authentification comprend également l
  - [Connexions à partir d’adresses IP qui tentent de se connecter à des comptes désactivés (utilise la normalisation de l’authentification)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imSigninAttemptsByIPviaDisabledAccounts.yaml)
 
 
-Les règles d’analytique d’authentification normalisée sont uniques, car elles détectent les attaques entre les sources. Ainsi, par exemple, si un utilisateur s’est connecté à des systèmes différents et non liés, à partir de différents pays, Azure Sentinel détecte désormais cette menace.
+Les règles d’analytique d’authentification normalisée sont uniques, car elles détectent les attaques entre les sources. Ainsi, si un utilisateur s’est connecté à des systèmes différents et non liés, à partir de différents pays, Microsoft Sentinel détecte désormais cette menace.
 
 ## <a name="schema-details"></a>Détails du schéma
 
@@ -192,8 +192,8 @@ Un intervenant (**Actor**), exécutant une *application agissante* (**ActingApp*
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Normalisation dans Azure Sentinel](normalization.md)
-- [Informations de référence sur le schéma de normalisation du DNS Azure Sentinel](dns-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation des événements de fichier Azure Sentinel (préversion publique)](file-event-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation du réseau Azure Sentinel](./network-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation des événements de processus Azure Sentinel (préversion publique)](process-events-normalization-schema.md)
+- [Normalisation dans Microsoft Sentinel](normalization.md)
+- [Informations de référence de schéma de normalisation du DNS Microsoft Sentinel](dns-normalization-schema.md)
+- [Informations de référence de schéma de normalisation d’événement du fichier Microsoft Sentinel (préversion publique)](file-event-normalization-schema.md)
+- [Informations de référence sur le schéma de normalisation du réseau Microsoft Sentinel](./network-normalization-schema.md)
+- [Informations de référence sur le schéma de normalisation des événements de processus Microsoft Sentinel (préversion publique)](process-events-normalization-schema.md)

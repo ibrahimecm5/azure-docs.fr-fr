@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aee712f22bd4110670a93dc5f7a9709689f2f96
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b437a88ca30907c097f33ef2065702db4f8945b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440801"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342544"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Configurer la stratégie d’expiration pour les groupes Microsoft 365
 
@@ -127,7 +127,7 @@ Quand un groupe expire et est supprimé, les données du groupe issues des appli
 
 ## <a name="how-microsoft-365-group-expiration-works-with-retention-policy"></a>Fonctionnement de l’expiration des groupes Microsoft 365 avec la stratégie de conservation
 
-La stratégie de conservation est configurée dans le Centre de conformité et de sécurité. Si vous avez configuré une stratégie de conservation pour des groupes Microsoft 365, lorsqu’un groupe expire et est supprimé, les conversations de groupe situées dans la boîte aux lettres de groupe et les fichiers situés dans le site de groupe sont conservés dans le conteneur de conservation pendant le nombre de jours défini dans la stratégie de conservation. Les utilisateurs ne verront pas le groupe et son contenu après son expiration. Toutefois, ils peuvent récupérer les données de site et de boîte aux lettres via découverte électronique.
+La stratégie de rétention est configurée par le biais de Centre de conformité et de sécurité. Si vous avez configuré une stratégie de conservation pour des groupes Microsoft 365, lorsqu’un groupe expire et est supprimé, les conversations de groupe situées dans la boîte aux lettres de groupe et les fichiers situés dans le site de groupe sont conservés dans le conteneur de conservation pendant le nombre de jours défini dans la stratégie de conservation. Les utilisateurs ne verront pas le groupe et son contenu après son expiration. Toutefois, ils peuvent récupérer les données de site et de boîte aux lettres via découverte électronique.
 
 ## <a name="powershell-examples"></a>Exemples PowerShell
 

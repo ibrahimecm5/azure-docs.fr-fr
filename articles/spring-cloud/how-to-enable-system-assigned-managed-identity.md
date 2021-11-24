@@ -1,5 +1,5 @@
 ---
-title: Activer une identité managée affectée par le système pour une application Azure Spring Cloud
+title: Activer une identité managée affectée par le système pour une application dans Azure Spring Cloud
 description: Activer une identité managée affectée par le système pour une application
 author: karlerickson
 ms.author: karler
@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6e600a4634bf2aff23301fe2eb1f9084e181a416
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: da455b6ad4d68d94654c66d073c8a5a0ba093da9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122533005"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490418"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Activer une identité managée affectée par le système pour une application Azure Spring Cloud
+# <a name="how-to-enable-system-assigned-managed-identity-for-applications-in-azure-spring-cloud"></a>Activer une identité managée affectée par le système pour une application dans Azure Spring Cloud
 
 **Cet article s’applique à :** ✔️ Java ✔️ C#
 
-Les identités managées pour les ressources Azure fournissent une identité automatiquement managée dans Azure Active Directory à une ressource Azure telle que votre application Azure Spring Cloud. Vous pouvez utiliser cette identité pour vous authentifier sur n’importe quel service prenant en charge l’authentification Azure AD, sans avoir d’informations d’identification dans votre code.
+Les identités managées pour les ressources Azure fournissent une identité automatiquement managée dans Azure Active Directory à une ressource Azure telle que votre application dans Azure Spring Cloud. Vous pouvez utiliser cette identité pour vous authentifier sur n’importe quel service prenant en charge l’authentification Azure AD, sans avoir d’informations d’identification dans votre code.
 
 Cet article explique comment activer et désactiver les identités managées affectées par le système pour une application Azure Spring Cloud, à l'aide du portail Azure et de l'interface CLI (disponible à partir de la version 0.2.4).
 

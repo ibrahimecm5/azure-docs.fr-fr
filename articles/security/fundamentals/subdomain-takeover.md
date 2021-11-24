@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b815914d4a34d50e2bb566097620ee29e15f957
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 665cb2c8db360f061023294d563082321aae70e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677523"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305804"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Prévention des entrées DNS non résolues et de l’acquisition de sous-domaine
 
@@ -144,15 +144,15 @@ Il est crucial, dans le cadre du programme de sécurité d’une organisation, d
 
 Certains services Azure offrent des fonctionnalités pour vous aider à mettre en place des mesures préventives. Ils sont détaillés ci-dessous. D’autres méthodes pour éviter ce problème doivent être établies par le biais des meilleures pratiques de votre organisation ou de procédures d’exploitation standard.
 
-### <a name="enable-azure-defender-for-app-service"></a>Activer Azure Defender pour App Service
+### <a name="enable-microsoft-defender-for-app-service"></a>Activer Microsoft Defender pour App Service
 
-La plateforme de protection de charge de travail cloud intégrée de Security Center, Azure Defender, offre une série de plans pour protéger vos ressources et charges de travail Azure hybrides et multi-cloud.
+La plateforme de protection des charges de travail cloud intégrée (CWPP), Microsoft Defender pour le cloud, propose une gamme de plans pour protéger vos ressources et charges de travail Azure, hybrides et multi-cloud.
 
-Le plan **Azure Defender pour App Service** comprend la détection de DNS non résolu. Avec ce plan activé, vous recevez des alertes de sécurité si vous désactivez un site web App Service, mais ne supprimez pas son domaine personnalisé de votre bureau d’enregistrement DNS.
+Le plan **Microsoft Defender pour App Service** comprend la détection de DNS non résolu. Avec ce plan activé, vous recevez des alertes de sécurité si vous désactivez un site web App Service, mais ne supprimez pas son domaine personnalisé de votre bureau d’enregistrement DNS.
 
-La protection de DNS non résolu d’Azure Defender est disponible pour les domaines gérés avec Azure DNS ou un bureau d’enregistrement de domaine externe. Elle s’applique à App Service tant sur Windows que sur Linux.
+La protection de DNS non résolu de Microsoft Defender pour le cloud est disponible pour les domaines gérés avec Azure DNS ou un bureau d’enregistrement de domaine externe. Elle s’applique à App Service tant sur Windows que sur Linux.
 
-Pour en savoir plus sur ce sujet et d’autres avantages de ce plan Azure Defender, consultez [Présentation d’Azure Defender pour App Service](../../security-center/defender-for-app-service-introduction.md).
+Pour en savoir plus sur ce sujet et d’autres avantages de ce plan Microsoft Defender, consultez [Présentation de Microsoft Defender pour App Service](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Enregistrements d’alias Azure DNS
 
@@ -211,7 +211,7 @@ Il incombe souvent aux développeurs et aux équipes d’exploitation d’exécu
 
 Pour plus d’informations sur les services connexes et les fonctionnalités Azure que vous pouvez utiliser pour vous défendre contre l’acquisition de sous-domaine, consultez les pages suivantes.
 
-- [Activer Azure Defender pour App Service](../../security-center/defender-for-app-service-introduction.md) pour recevoir des alertes lorsque des entrées DNS non résolues sont détectées
+- [Activer Microsoft Defender pour App Service](../../security-center/defender-for-app-service-introduction.md) pour recevoir des alertes lorsque des entrées DNS non résolues sont détectées
 
 - [Empêcher les enregistrements DNS non résolus avec Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
