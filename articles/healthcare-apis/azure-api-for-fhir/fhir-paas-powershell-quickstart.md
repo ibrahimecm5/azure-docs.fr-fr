@@ -8,13 +8,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: zxue
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 58f2c9e9528c679e20fff51edba5fadb14f5ff00
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 4c0e0467d2a5381f9cb562a93c9e709f6c845101
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783852"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133071808"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>Démarrage rapide : Déployer l’API Azure pour FHIR à l’aide de PowerShell
 

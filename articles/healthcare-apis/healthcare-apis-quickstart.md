@@ -7,12 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 07/12/2021
 ms.author: ginle
-ms.openlocfilehash: 1b77b05f5780f41a9b4c573d117b18f2493b635a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: mode-portal
+ms.openlocfilehash: 89be6d8bab9ef544ffa62a85f0b87afb15fab013
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783924"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061567"
 ---
 # <a name="deploy-healthcare-apis-preview-workspace-using-azure-portal"></a>Déployer un espace de travail API de santé (préversion) à l’aide de Portail Azure
 
@@ -80,4 +81,3 @@ Maintenant que l’espace de travail est créé, vous pouvez :
 
 >[!div class="nextstepaction"]
 >[Vue d’ensemble de l’espace de travail](workspace-overview.md)
-

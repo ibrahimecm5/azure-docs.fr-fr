@@ -7,12 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 5d55af3165991c8a6d16596ae9d4e8f9f4e8e3e9
-ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
+ms.custom: mode-portal
+ms.openlocfilehash: 8323d2026bc45c3c357ad0055cc7da37c5a345b8
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/19/2021
-ms.locfileid: "132812349"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061592"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Déployer IoT Connector dans le Portail Azure
 

@@ -1,18 +1,18 @@
 ---
 title: projets de GitHub associés pour le connecteur IoT-api de santé Azure
-description: répertorier tous les référentiels open source (GitHub) pour le connecteur IoT
+description: IoT connector dispose d’une bibliothèque open source robuste (GitHub) permettant d’ingérer des messages d’appareil à partir d’appareils mobiles populaires.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/28/2021
+ms.date: 11/23/2021
 ms.author: jasteppe
-ms.openlocfilehash: 76bf145ea76ea44d65e2c5dc3873cb51707840a5
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: c7b80efbb032315bfca36511cf07e1f5a1f3b8a4
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132309844"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061464"
 ---
 # <a name="open-source-projects"></a>Projets open source
 
@@ -20,15 +20,15 @@ consultez nos projets open source sur GitHub qui fournissent du code source et d
 
 ## <a name="iot-connector-github-projects"></a>projets de GitHub du connecteur IoT
 
-#### <a name="fhir-integration"></a>Intégration de FHIR
+### <a name="fhir-integration"></a>Intégration de FHIR
 
-* [Microsoft/IoMT-fhir](https://github.com/microsoft/iomt-fhir): version open source du service administré des API Azure Healthcare pour le connecteur IOT. Peut être utilisé avec n’importe quel service FHIR&#174; (Fast Healthcare Interoperability Resources) qui prend en charge [FHIR R7&#174;](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
+* [Microsoft/IoMT-fhir](https://github.com/microsoft/iomt-fhir): version open source du service administré des API Azure Healthcare pour le connecteur IOT. Peut être utilisé avec n’importe quel service FHIR&#174; (Fast Healthcare Interoperability Resources) qui prend en charge [FHIR R4&#174;](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
 
-#### <a name="device-and-fhir-destination-mappings"></a>Mappages de destination des appareils et FHIR
+### <a name="device-and-fhir-destination-mappings"></a>Mappages de destination des appareils et FHIR
 
 * [Mappeur de données du connecteur IoMT](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper): outil pour la modification, le test et la résolution des problèmes des mappages de destination FHIR et des appareils IOT Connector. Exportez les mappages pour le chargement vers le connecteur IoT dans le Portail Azure ou utilisez avec la version open source.
 
-#### <a name="wearables-integration"></a>Intégration d’un portable
+### <a name="wearables-integration"></a>Intégration d’un portable
 
 Fitbit
 
