@@ -1,36 +1,36 @@
 ---
-title: Ressources pour la création de connecteurs Azure Sentinel personnalisés | Microsoft Docs
-description: En savoir plus sur les ressources disponibles pour la création de connecteurs personnalisés pour Azure Sentinel. Les méthodes incluent l’agent et l’API Log Analytics, Logstash, Logic Apps, PowerShell et Azure Functions.
+title: Ressources pour la création de connecteurs Microsoft Sentinel personnalisés | Microsoft Docs
+description: En savoir plus sur les ressources disponibles pour la création de connecteurs personnalisés pour Microsoft Sentinel. Les méthodes incluent l’agent et l’API Log Analytics, Logstash, Logic Apps, PowerShell et Azure Functions.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: df33492b544a9d8875d6996b89acf225f3ace4f4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4c1d4f5dcbb0a707f0ec6ff728ddb72a27ab1e0d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449276"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521735"
 ---
-# <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Ressources pour la création de connecteurs Azure Sentinel personnalisés
+# <a name="resources-for-creating-microsoft-sentinel-custom-connectors"></a>Ressources pour la création de connecteurs Microsoft Sentinel personnalisés
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel propose une large gamme de [connecteurs intégrés pour les services Azure et les solutions externes](connect-data-sources.md) et prend également en charge l’ingestion de données provenant de certaines sources sans un connecteur dédié.
+Microsoft Sentinel propose une large gamme de [connecteurs intégrés pour les solutions externes et les services Azure](connect-data-sources.md) et prend également en charge l’ingestion de données provenant de certaines sources sans un connecteur dédié.
 
-Si vous ne parvenez pas à connecter votre source de données à Azure Sentinel en utilisant l’une des solutions existantes disponibles, envisagez de créer votre propre connecteur de source de données.
+Si vous ne parvenez pas à connecter votre source de données à Microsoft Sentinel en utilisant l’une des solutions existantes disponibles, envisagez de créer votre propre connecteur de source de données.
 
-Pour obtenir la liste complète des connecteurs pris en charge, consultez le billet de post [Azure Sentinel : Les grands connecteurs (CEF, Syslog, agent direct, personnalisé, et plus encore)](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-the-connectors-grand-cef-syslog-direct-agent/ba-p/803891).
+Pour obtenir la liste complète des connecteurs pris en charge, consultez le billet de blog [Microsoft Sentinel : les grands connecteurs (CEF, Syslog, direct, agent, personnalisé, etc.)](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-the-connectors-grand-cef-syslog-direct-agent/ba-p/803891).
 
 ## <a name="compare-custom-connector-methods"></a>Comparer les méthodes de connecteur personnalisé
 
@@ -48,10 +48,10 @@ Le tableau suivant compare les détails essentiels de chaque méthode de créati
 
 > [!TIP]
 > Pour comparer l’utilisation de Logic Apps et d’Azure Functions pour le même connecteur, consultez :
-> 
-> - [Ingérer rapidement les journaux de Web Application Firewall dans Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-fastly-web-application-firewall-logs-into-azure-sentinel/ba-p/1238804)
-> - Office 365 (communauté GitHub pour Azure Sentinel) : [connecteur Logic App](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Get-O365Data) | [connecteur Azure Function](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data)
-> 
+>
+> - [Ingérer rapidement les journaux Web Application Firewall dans Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-fastly-web-application-firewall-logs-into-azure-sentinel/ba-p/1238804)
+> - Office 365 (communauté Microsoft Sentinel GitHub) : [Connecteur d’applications logique](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Get-O365Data) | [Connecteur de fonction Azure](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data)
+>
 
 ## <a name="connect-with-the-log-analytics-agent"></a>Se connecter avec l’agent Log Analytics
 
@@ -63,14 +63,14 @@ Si votre source de données livre des événements dans des fichiers, nous vous 
 
 ## <a name="connect-with-logstash"></a>Se connecter avec Logstash
 
-Si vous connaissez [Logstash](https://www.elastic.co/logstash), vous pouvez utiliser Logstash avec le [plug-in de sortie Logstash pour Azure Sentinel](connect-logstash.md) afin de créer votre connecteur personnalisé.
+Si vous connaissez [Logstash](https://www.elastic.co/logstash), vous pouvez utiliser cette solution avec le [plug-in de sortie Logstash pour Microsoft Sentinel](connect-logstash.md) afin de créer votre connecteur personnalisé.
 
-Grâce au plug-in de sortie Logstash pour Azure Sentinel, vous pouvez utiliser n’importe quel plug-in d’entrée et de filtrage Logstash et configurer Azure Sentinel comme sortie pour un pipeline Logstash. Logstash dispose d’une vaste bibliothèque de plug-ins qui permettent l’entrée de diverses sources, telles qu’Event Hubs, Apache Kafka, des fichiers, des bases de données et des services Cloud. Utilisez les plug-ins de filtrage pour analyser les événements, filtrer les événements inutiles, obfusquer les valeurs et bien plus encore.
+Grâce au plug-in de sortie Logstash pour Microsoft Sentinel, vous pouvez utiliser n’importe quel plug-in d’entrée et de filtrage Logstash et configurer Microsoft Sentinel comme sortie pour un pipeline Logstash. Logstash dispose d’une vaste bibliothèque de plug-ins qui permettent l’entrée de diverses sources, telles qu’Event Hubs, Apache Kafka, des fichiers, des bases de données et des services Cloud. Utilisez les plug-ins de filtrage pour analyser les événements, filtrer les événements inutiles, obfusquer les valeurs et bien plus encore.
 
 Pour obtenir des exemples d’utilisation de Logstash en tant que connecteur personnalisé, consultez :
 
-- [Chasse aux TTP de violation Capital One dans les journaux AWS à l’aide d’Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/hunting-for-capital-one-breach-ttps-in-aws-logs-using-azure/ba-p/1019767) (blog)
-- [Guide d’implémentation d’Azure Sentinel de Radware](https://support.radware.com/ci/okcsFattach/get/1025459_3)
+- [Chasse aux TTP de violation Capital One dans les journaux AWS à l’aide de Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/hunting-for-capital-one-breach-ttps-in-aws-logs-using-azure/ba-p/1019767) (blog)
+- [Guide d’implémentation Microsoft Sentinel Radware](https://support.radware.com/ci/okcsFattach/get/1025459_3)
 
 Pour obtenir des exemples de plug-ins Logstash utiles, consultez :
 
@@ -85,7 +85,7 @@ Pour obtenir des exemples de plug-ins Logstash utiles, consultez :
 
 ## <a name="connect-with-logic-apps"></a>Se connecter avec Logic Apps
 
-Utilisez [Azure Logic Apps](../logic-apps/index.yml) pour créer un connecteur personnalisé serverless pour Azure Sentinel.
+Utilisez [Azure Logic Apps](../logic-apps/index.yml) pour créer un connecteur personnalisé serverless pour Microsoft Sentinel.
 
 > [!NOTE]
 > Si la création de connecteurs serverless à l’aide de Logic Apps peut être pratique, l’utilisation de Logic Apps pour vos connecteurs peut s’avérer coûteuse pour des volumes importants de données.
@@ -122,18 +122,18 @@ Utilisez [Azure Logic Apps](../logic-apps/index.yml) pour créer un connecteur p
 
     Pour plus d’informations, consultez la documentation [Collecteur de données Azure Log Analytics](/connectors/azureloganalyticsdatacollector/).
 
-Pour obtenir des exemples sur la façon dont vous pouvez créer un connecteur personnalisé pour Azure Sentinel à l’aide de Logic Apps, consultez :
+Pour obtenir des exemples sur la façon dont vous pouvez créer un connecteur personnalisé pour Microsoft Sentinel à l’aide de Logic Apps, consultez :
 
 - [Créer un pipeline de données avec l’API Collecte de données](/connectors/azureloganalyticsdatacollector/)
-- [Connecteur d’application logique Palo Alto Prisma utilisant un webhook](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Ingest-Prisma) (communauté GitHub pour Azure Sentinel)
+- [Connecteur d’application logique Palo Alto Prisma utilisant un webhook](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Ingest-Prisma) (communauté GitHub Microsoft Sentinel)
 - [Sécuriser les appels Microsoft Teams grâce à l’activation planifiée](https://techcommunity.microsoft.com/t5/azure-sentinel/secure-your-calls-monitoring-microsoft-teams-callrecords/ba-p/1574600) (blog)
-- [Ingestion d’indicateurs de menace AlienVault OTX dans Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-alien-vault-otx-threat-indicators-into-azure-sentinel/ba-p/1086566) (blog)
+- [Ingestion d’indicateurs de menace AlienVault OTX dans Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-alien-vault-otx-threat-indicators-into-azure-sentinel/ba-p/1086566) (blog)
 
 ## <a name="connect-with-powershell"></a>Se connecter avec PowerShell
 
-Le [script PowerShell Upload-AzMonitorLog](https://www.powershellgallery.com/packages/Upload-AzMonitorLog/) vous permet d’utiliser PowerShell pour diffuser en continu des événements ou des informations contextuelles à Azure Sentinel depuis la ligne de commande. Cette diffusion en continu crée un connecteur personnalisé entre votre source de données et Azure Sentinel.
+Le [script PowerShell Upload-AzMonitorLog](https://www.powershellgallery.com/packages/Upload-AzMonitorLog/) vous permet d’utiliser PowerShell pour diffuser en continu des événements ou des informations contextuelles sur Microsoft Sentinel depuis la ligne de commande. Cette diffusion en continu crée un connecteur personnalisé entre votre source de données et Microsoft Sentinel.
 
-Par exemple, le script suivant charge un fichier CSV dans Azure Sentinel :
+Par exemple, le script suivant charge un fichier CSV dans Microsoft Sentinel :
 
 ``` PowerShell
 Import-Csv .\testcsv.csv
@@ -150,8 +150,8 @@ Le [script PowerShell Upload-AzMonitorLog](https://www.powershellgallery.com/pac
 
 |Paramètre  |Description  |
 |---------|---------|
-|**WorkspaceId**     |   ID de votre espace de travail Azure Sentinel où vous stockerez vos données.  [Trouver l’ID et la clé de votre espace de travail](#find-your-workspace-id-and-key).  |
-|**WorkspaceKey**     |   Clé primaire ou secondaire de l’espace de travail Azure Sentinel dans lequel vous stockerez vos données. [Trouver l’ID et la clé de votre espace de travail](#find-your-workspace-id-and-key).  |
+|**WorkspaceId**     |   ID de l’espace de travail Microsoft Sentinel où vous stockerez vos données.  [Trouver l’ID et la clé de votre espace de travail](#find-your-workspace-id-and-key).  |
+|**WorkspaceKey**     |   Clé primaire ou secondaire de l’espace de travail Microsoft Sentinel dans lequel vous stockerez vos données. [Trouver l’ID et la clé de votre espace de travail](#find-your-workspace-id-and-key).  |
 |**LogTypeName**     |    Nom de la table de journal personnalisée dans laquelle vous souhaitez stocker les données. Un suffixe **_CL** est automatiquement ajouté à la fin du nom de votre table.  |
 |**AddComputerName**     |   Lorsque ce paramètre existe, le script ajoute le nom de l’ordinateur actuel à chaque enregistrement de journal, dans un champ nommé **Computer**.      |
 |**TaggedAzureResourceId**     | Lorsque ce paramètre existe, le script associe tous les enregistrements de journal chargés à la ressource Azure spécifiée. <br><br>Cette association permet de charger des enregistrements de journal pour les requêtes en contexte de ressources et adhère à un contrôle d’accès centré sur les ressources et basé sur les rôles.       |
@@ -161,16 +161,17 @@ Le [script PowerShell Upload-AzMonitorLog](https://www.powershellgallery.com/pac
 
 ### <a name="find-your-workspace-id-and-key"></a>Trouver l’ID et la clé de votre espace de travail
 
-Vous trouverez les détails des paramètres **WorkspaceID** et **WorkspaceKey** dans Azure Sentinel :
+Vous trouverez les détails des paramètres **WorkspaceID** et **WorkspaceKey** dans Microsoft Sentinel :
 
-1. Dans Azure Sentinel, sélectionnez **Paramètres** sur la gauche, puis sélectionnez l’onglet **Paramètres de l’espace de travail**.
+1. Dans Microsoft Sentinel, sélectionnez **Paramètres** sur la gauche, puis sélectionnez l’onglet **Paramètres de l’espace de travail**.
 
 1. Sous **Prise en main de Log Analytics** > **1 Connecter une source de données**, sélectionnez **Gestion des agents Windows et Linux**.
 
 1. Recherchez l’ID de votre espace de travail, la clé primaire et la clé secondaire dans les onglets **Serveurs Windows**.
+
 ## <a name="connect-with-the-log-analytics-api"></a>Se connecter avec l’API Log Analytics
 
-Vous pouvez diffuser en continu des événements vers Azure Sentinel en utilisant l’API de collecteur de données Log Analytics pour appeler directement un point de terminaison RESTful.
+Vous pouvez diffuser en continu des événements sur Microsoft Sentinel en utilisant l’API de collecteur de données Log Analytics pour appeler directement un point de terminaison RESTful.
 
 Bien que l’appel d’un point de terminaison RESTful nécessite directement davantage de programmation, il offre également plus de flexibilité.
 
@@ -185,35 +186,35 @@ Utilisez Azure Functions avec une API RESTful et divers langages de codage, tels
 
 Pour voir des exemples de cette méthode, consultez :
 
-- [Connecter VMware Carbon Black Cloud Endpoint Standard à Azure Sentinel avec Azure Functions](./data-connectors-reference.md#vmware-carbon-black-endpoint-standard-preview)
-- [Connecter votre Okta Single Sign-On à Azure Sentinel avec Azure Functions](./data-connectors-reference.md#okta-single-sign-on-preview)
-- [Connecter votre solution Proofpoint TAP à l’aide d’Azure Functions](./data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)
-- [Connecter votre solution Qualys VM à Azure Sentinel à l’aide d’Azure Functions](./data-connectors-reference.md#qualys-vulnerability-management-vm-preview)
+- [Connecter votre instance VMware Carbon Black Cloud Endpoint Standard à Microsoft Sentinel avec Azure Functions](./data-connectors-reference.md#vmware-carbon-black-endpoint-standard-preview)
+- [Connecter votre instance Okta Single Sign-On à Microsoft Sentinel avec Azure Functions](./data-connectors-reference.md#okta-single-sign-on-preview)
+- [Connecter votre solution Proofpoint TAP à Microsoft Sentinel avec Azure Functions](./data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)
+- [Connecter votre solution Qualys VM à Microsoft Sentinel avec Azure Functions](./data-connectors-reference.md#qualys-vulnerability-management-vm-preview)
 - [Ingestion de données aux formats XML, CSV ou autres](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
-- [Surveiller Zoom avec Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blog)
-- [Déployer une application de fonction permettant de transférer les données de l’API de gestion d’Office 365 dans Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (communauté GitHub pour Azure Sentinel)
+- [Surveiller Zoom à l’aide de Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blog)
+- [Déployer une application de fonction permettant de transférer les données de l’API de gestion d’Office 365 dans Microsoft Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (communauté GitHub Microsoft Sentinel)
 
 ## <a name="parse-your-custom-connector-data"></a>Analyser les données de votre connecteur personnalisé
 
-Vous pouvez utiliser la technique d’analyse intégrée de votre connecteur personnalisé pour extraire les informations pertinentes et remplir les champs correspondants dans Azure Sentinel.
+Vous pouvez utiliser la technique d’analyse intégrée de votre connecteur personnalisé pour extraire les informations pertinentes et remplir les champs correspondants dans Microsoft Sentinel.
 
 Par exemple :
 
 - **Si vous avez utilisé Logstash**, utilisez le plug-in de filtre [Grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) pour analyser vos données.
 - **Si vous avez utilisé une fonction Azure**, analysez vos données à l’aide du code.
 
-Azure Sentinel prend en charge l’analyse au moment de la requête. L’analyse au moment de la requête vous permet d’envoyer (push) des données dans le format d’origine, puis de les analyser à la demande, le cas échéant. 
+Microsoft Sentinel prend en charge l’analyse au moment de la requête. L’analyse au moment de la requête vous permet d’envoyer (push) des données dans le format d’origine, puis de les analyser à la demande, le cas échéant.
 
 L’analyse au moment de la requête signifie également que vous n’avez pas besoin de connaître la structure exacte de vos données à l’avance, lorsque vous créez votre connecteur personnalisé, ni même les informations que vous devez extraire. Au lieu de cela, analysez vos données à tout moment, même pendant une investigation.
 
 Pour plus d’informations sur l’analyse au moment de la requête, consultez [Analyseurs](normalization-about-parsers.md).
 
 > [!NOTE]
-> La mise à jour de votre analyseur s’applique également aux données que vous avez déjà ingérées dans Azure Sentinel.
+> La mise à jour de votre analyseur s’applique également aux données que vous avez déjà ingérées dans Microsoft Sentinel.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Utilisez les données ingérées dans Azure Sentinel pour sécuriser votre environnement à l’aide de l’un des processus suivants :
+Utilisez les données ingérées dans Microsoft Sentinel pour sécuriser votre environnement à l’aide de l’un des processus suivants :
 
 - [Obtenir une visibilité des alertes](get-visibility.md)
 - [Visualiser et superviser vos données](monitor-your-data.md)
@@ -222,4 +223,4 @@ Utilisez les données ingérées dans Azure Sentinel pour sécuriser votre envir
 - [Automatiser la prévention des menaces](tutorial-respond-threats-playbook.md)
 - [Être à l’affût des menaces](hunting.md)
 
-Découvrez également un exemple de création d’un connecteur personnalisé pour surveiller Zoom : [Surveiller Zoom avec Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516).
+Découvrez également un exemple de création de connecteurs personnalisé pour la surveillance Zoom : [Surveiller Zoom à l’aide de Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516).

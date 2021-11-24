@@ -8,25 +8,25 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 82ede0faff91b74f329d9555b6df90152d9fbf8b
-ms.sourcegitcommit: 3a063c59bb9396ce1d4b9a3565b194edf30393a2
+ms.openlocfilehash: 090c051195559458314e89b47f3a0e4fcb6a838c
+ms.sourcegitcommit: 1aeff9f012cfd868104ef0159c5204e402d75696
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2021
-ms.locfileid: "132964893"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133030898"
 ---
 # <a name="iot-connector-data-flow"></a>Workflow de données du connecteur IoT
 
 > [!IMPORTANT]
 > Les API Azure Healthcare sont actuellement en version préliminaire. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
 
-Cet article fournit une vue d’ensemble du processus de données du connecteur IoT. Vous en apprendrez plus sur les différentes étapes de traitement des données dans IoT Connector qui transforment les données des appareils en ressources d' [observation](https://www.hl7.org/fhir/observation.html) FHIR&#174;) rapides.
+Cet article fournit une vue d’ensemble du processus de données du connecteur IoT. Vous en apprendrez davantage sur les différentes étapes de traitement des données dans IoT Connector qui transforment les données des appareils en ressources d' [observation](https://www.hl7.org/fhir/observation.html) FHIR&#174;) rapides.
 
-Les données des appareils liés à l’intégrité ou des appareils médicaux circulent dans un chemin d’accès dans lequel le connecteur IoT transforme les données en FHIR, puis les données sont stockées et accessibles depuis le service FHIR. Le chemin d’accès aux données d’intégrité suit ces étapes dans l’ordre suivant : ingérer, normaliser, grouper, transformer et conserver. Dans ce workflow, les données d’intégrité sont récupérées à partir de l’appareil lors de la première étape de l’ingestion. Une fois les données reçues, elles sont traitées ou normalisées par des modèles de schéma sélectionnés par l’utilisateur ou par l’utilisateur, de sorte que les données d’intégrité sont plus simples à traiter et peuvent être regroupées. Les données d’intégrité sont regroupées en trois paramètres de fonctionnement. Une fois les données d’intégrité normalisées et regroupées, elles peuvent être traitées ou transformées par le biais de mappages de destination FHIR, puis enregistrées ou rendues persistantes sur le service FHIR.
+Les données des appareils liés à l’intégrité ou des appareils médicaux circulent dans un chemin d’accès dans lequel le connecteur IoT transforme les données en FHIR, puis les données sont stockées et accessibles depuis le service FHIR. Le chemin d’accès aux données d’intégrité suit ces étapes dans l’ordre suivant : ingérer, normaliser, grouper, transformer et conserver. Dans ce workflow, les données d’intégrité sont récupérées à partir de l’appareil lors de la première étape de l’ingestion. Une fois les données reçues, elles sont traitées ou normalisées selon les modèles de schéma sélectionnés par l’utilisateur ou par l’utilisateur, afin que les données d’intégrité soient plus simples à traiter et puissent être regroupées. Les données d’intégrité sont regroupées en trois paramètres de fonctionnement. Une fois les données d’intégrité normalisées et regroupées, elles peuvent être traitées ou transformées par le biais de mappages de destination FHIR, puis enregistrées ou rendues persistantes sur le service FHIR.
 
 Cet article présente plus en détail chaque étape du Workflow. Les étapes suivantes [expliquent comment déployer un connecteur IOT](deploy-iot-connector-in-azure.md) à l’aide de mappages d’appareils (étape de normalisation) et de mappages de destination FHIR (étape de transformation).
 
-Les sections suivantes décrivent les étapes que les données IoMT (Internet of Medical Things) passent une fois reçues d’un Event Hub au connecteur IoT.
+Les sections suivantes décrivent les étapes que les données IoMT (Internet of Medical Things) passent une fois reçues d’un Event Hub et d’un connecteur IoT.
 
 :::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT les flux de données des appareils IoT dans un Event Hub. Les données IoMT sont ingérées par le connecteur IoT, car elles sont normalisées, regroupées, transformées et conservées dans le service FHIR." lightbox="media/iot-data-flow/iot-data-flow.png":::
 

@@ -1,35 +1,35 @@
 ---
-title: Connecter des sources de données à Azure Sentinel via Logstash | Microsoft Docs
-description: Apprenez à utiliser Logstash pour transférer des journaux issus de sources de données externes vers Azure Sentinel.
+title: Connecter des sources de données à Microsoft Sentinel via Logstash | Microsoft Docs
+description: Apprenez à utiliser Logstash pour transférer des journaux provenant de sources de données externes vers Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 11002a4d66728373e674c1b1522fbc9122bb3bfd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1bb2d8c60fd8962363277a7f530db7d84394498e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014103"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521811"
 ---
-# <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Utiliser Logstash pour connecter des sources de données à Azure Sentinel
+# <a name="use-logstash-to-connect-data-sources-to-microsoft-sentinel"></a>Utiliser Logstash pour connecter des sources de données à Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 > La fonctionnalité d'ingestion de données à l'aide du plug-in de sortie Logstash est actuellement en préversion publique. Cette fonctionnalité est fournie sans contrat de niveau de service et est déconseillée pour les charges de travail de production. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Le plug-in de sortie d’Azure Sentinel dédié au **moteur de collecte de données Logstash** permet d’utiliser Logstash pour envoyer tout type de journal à votre espace de travail Log Analytics dans Azure Sentinel. Vos journaux seront envoyés à une table personnalisée que vous définirez à l'aide du plug-in de sortie.
+Le plug-in de sortie Microsoft Sentinel dédié au **moteur de collecte de données Logstash** permet d’utiliser Logstash pour envoyer tout type de journaux à votre espace de travail Log Analytics dans Microsoft Sentinel. Vos journaux seront envoyés à une table personnalisée que vous définirez à l'aide du plug-in de sortie.
 
 Pour en savoir plus sur l'utilisation du moteur de collecte de données Logstash, consultez [Prise en main de Logstash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
@@ -46,22 +46,22 @@ Le moteur Logstash est constitué de trois composants :
 - Plug-ins de sortie : envoi personnalisé des données collectées et traitées vers diverses destinations.
 
 > [!NOTE]
-> - Microsoft prend en charge uniquement le plug-in de sortie Logstash fourni par Azure Sentinel abordé ici. La version actuelle de ce plug-in est v1.0.0, publiée le 25/08/2020. Vous pouvez [ouvrir un ticket de support](https://ms.portal.azure.com/#create/Microsoft.Support) pour tous les problèmes concernant le plug-in de sortie.
+> - Microsoft prend en charge uniquement le plug-in de sortie Logstash fourni par Microsoft Sentinel abordé ici. La version actuelle de ce plug-in est v1.0.0, publiée le 25/08/2020. Vous pouvez [ouvrir un ticket de support](https://ms.portal.azure.com/#create/Microsoft.Support) pour tous les problèmes concernant le plug-in de sortie.
 >
-> - Microsoft ne prend pas en charge les plug-ins de sortie Logstash tiers pour Azure Sentinel, ni aucun autre plug-in Logstash de quelque type que ce soit.
+> - Microsoft ne prend pas en charge les plug-ins de sortie Logstash tiers pour Microsoft Sentinel, ni aucun autre plug-in Logstash de quelque type que ce soit.
 >
-> - Le plug-in de sortie Logstash d’Azure Sentinel prend en charge uniquement les **versions Logstash de 7.0 à 7.15**.
+> - Le plug-in de sortie Logstash de Microsoft Sentinel prend en charge uniquement les **versions 7.0 à 7.15 de Logstash**.
 
-Le plug-in de sortie Azure Sentinel pour Logstash envoie des données au format JSON à votre espace de travail Log Analytics, en utilisant l'API REST du collecteur de données HTTP de Log Analytics. Les données sont ingérées dans des journaux personnalisés.
+Le plug-in de sortie Microsoft Sentinel pour Logstash envoie des données au format JSON à votre espace de travail Log Analytics, en utilisant l’API REST du collecteur de données HTTP de Log Analytics. Les données sont ingérées dans des journaux personnalisés.
 
 - Apprenez-en davantage sur l’[API REST Log Analytics](/rest/api/loganalytics/create-request).
 - Apprenez-en davantage sur les [journaux personnalisés](../azure-monitor/agents/data-sources-custom-logs.md).
 
-## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Déployer le plug-in de sortie Azure Sentinel dans Logstash
+## <a name="deploy-the-microsoft-sentinel-output-plugin-in-logstash"></a>Déployer le plug-in de sortie Microsoft Sentinel dans Logstash
 
 ### <a name="step-1-installation"></a>Étape 1 : Installation
 
-Le plug-in de sortie Azure Sentinel est disponible dans la collection Logstash.
+Le plug-in de sortie Microsoft Sentinel est disponible dans la collection Logstash.
 
 - Suivez les instructions du document Logstash [Utilisation des plug-ins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) pour installer le plug-in ***[microsoft-logstash-output-azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)***.
    
@@ -69,13 +69,13 @@ Le plug-in de sortie Azure Sentinel est disponible dans la collection Logstash.
 
 ### <a name="step-2-configuration"></a>Étape 2 : Configuration
 
-Utilisez les informations du document Logstash [Structure d’un fichier de configuration](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) et ajoutez le plug-in de sortie Azure Sentinel à la configuration avec les clés et valeurs suivantes. (La syntaxe appropriée du fichier de configuration est indiquée après le tableau.)
+Utilisez les informations du document [Structure d’un fichier de configuration](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) de Logstash et ajoutez le plug-in de sortie Microsoft Sentinel à la configuration avec les clés et valeurs suivantes. (La syntaxe appropriée du fichier de configuration est indiquée après le tableau.)
 
 | Nom du champ | Type de données | Description |
 |----------------|---------------|-----------------|
 | `workspace_id` | string | Entrez le GUID de l’ID de votre espace de travail (voir les conseils). |
 | `workspace_key` | string | Entrez le GUID de la clé primaire de votre espace de travail (voir les conseils). |
-| `custom_log_table_name` | string | Définissez le nom de la table dans laquelle les journaux seront ingérés. Vous ne pouvez configurer qu'un seul nom de table par plug-in de sortie. La table des journaux apparaîtra dans Azure Sentinel sous **Journaux**, dans **Tables**, catégorie **Journaux personnalisés**, avec le suffixe `_CL`. |
+| `custom_log_table_name` | string | Définissez le nom de la table dans laquelle les journaux seront ingérés. Vous ne pouvez configurer qu'un seul nom de table par plug-in de sortie. La table des journaux apparaîtra dans Microsoft Sentinel sous **Journaux**, dans **Tables**, catégorie **Journaux personnalisés**, avec le suffixe `_CL`. |
 | `endpoint` | string | Champ facultatif. Par défaut, il s'agit du point de terminaison Log Analytics. Utilisez ce champ pour définir un autre point de terminaison. |
 | `time_generated_field` | string | Champ facultatif. Cette propriété remplace le champ par défaut **TimeGenerated** dans Log Analytics. Entrez le nom du champ d'horodatage dans la source de données. Les données du champ doivent être conformes au format ISO 8601 (`YYYY-MM-DDThh:mm:ssZ`) |
 | `key_names` | tableau | Entrez une liste de champs de schéma de sortie Log Analytics. Chaque élément de la liste doit être placé entre guillemets simples et les éléments séparés par des virgules, et toute la liste doit être placée entre crochets. Voir l'exemple ci-dessous. |
@@ -162,11 +162,11 @@ Voici quelques exemples de configurations qui utilisent des options différentes
 
 ### <a name="step-3-restart-logstash"></a>Étape 3 : Redémarrer Logstash
 
-### <a name="step-4-view-incoming-logs-in-azure-sentinel"></a>Étape 4 : Afficher les journaux entrants dans Azure Sentinel
+### <a name="step-4-view-incoming-logs-in-microsoft-sentinel"></a>Étape 4 : Afficher les journaux entrants dans Microsoft Sentinel
 
 1. Vérifiez que les messages sont envoyés au plug-in de sortie.
 
-1. Dans le menu de navigation d'Azure Sentinel, cliquez sur **Journaux**. Sous l'en-tête **Tables**, développez la catégorie **Journaux personnalisés**. Recherchez et cliquez sur le nom de la table que vous avez spécifiée (avec le suffixe `_CL`) dans la configuration.
+1. Dans le menu de navigation de Microsoft Sentinel, cliquez sur **Journaux**. Sous l'en-tête **Tables**, développez la catégorie **Journaux personnalisés**. Recherchez et cliquez sur le nom de la table que vous avez spécifiée (avec le suffixe `_CL`) dans la configuration.
 
    :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Capture d’écran des journaux personnalisés Logstash.":::
 
@@ -176,12 +176,12 @@ Voici quelques exemples de configurations qui utilisent des options différentes
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Surveiller les journaux d'audit du plug-in de sortie
 
-Pour surveiller la connectivité et l'activité du plug-in de sortie Azure Sentinel, activez le fichier journal Logstash approprié. Consultez le document [Structure des répertoires Logstash](https://www.elastic.co/guide/en/logstash/current/dir-layout.html#dir-layout) pour connaître l’emplacement du fichier journal.
+Pour surveiller la connectivité et l’activité du plug-in de sortie Microsoft Sentinel, activez le fichier journal Logstash approprié. Consultez le document [Structure des répertoires Logstash](https://www.elastic.co/guide/en/logstash/current/dir-layout.html#dir-layout) pour connaître l’emplacement du fichier journal.
 
-Si vous ne voyez aucune donnée dans ce fichier journal, générez et envoyez des événements localement (via les plug-ins d'entrée et de filtrage) pour vous assurer que le plug-in de sortie reçoit des données. Azure Sentinel prendra uniquement en charge les problèmes liés au plug-in de sortie.
+Si vous ne voyez aucune donnée dans ce fichier journal, générez et envoyez des événements localement (via les plug-ins d'entrée et de filtrage) pour vous assurer que le plug-in de sortie reçoit des données. Microsoft Sentinel prendra uniquement en charge les problèmes liés au plug-in de sortie.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à utiliser Logstash pour connecter des sources de données externes à Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à utiliser Logstash pour connecter des sources de données externes à Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Commencez à détecter les menaces avec Azure Sentinel à l’aide de règles [intégrées](detect-threats-built-in.md) ou [personnalisées](detect-threats-custom.md).
+- Commencez à détecter les menaces avec Microsoft Sentinel à l’aide de règles [intégrées](detect-threats-built-in.md) ou [personnalisées](detect-threats-custom.md).

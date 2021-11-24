@@ -1,39 +1,39 @@
 ---
-title: Contenu du modèle Azure Sentinel Information Model (ASIM) | Microsoft Docs
-description: Cet article décrit le contenu Azure Sentinel qui a utilisé le modèle d’informations Azure Sentinel (ASIM)
+title: Contenu ASIM (Advanced SIEM Information Model) | Microsoft Docs
+description: Cet article décrit le contenu Microsoft Sentinel qui utilisait ASIM (Advanced SIEM Information Model)
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 49711b1d056ecc57b64544374461c1f2963b88d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 78b8615a959a5913b171b8f52b5f6ee0caa85578
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064446"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517479"
 ---
-# <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Contenu de sécurité d’Azure Sentinel Information Model (ASIM) (préversion publique)
+# <a name="advanced-siem-information-model-asim-security-content--public-preview"></a>Contenu de sécurité ASIM (Advanced SIEM Information Model) (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Le contenu de sécurité normalisé dans Azure Sentinel comprend des règles d’analyse, des requêtes de chasse et des classeurs qui fonctionnent avec des analyseurs de normalisation indépendantes du code source.
+Le contenu de sécurité normalisé dans Microsoft Sentinel comprend des règles d’analyse, des requêtes de chasse et des classeurs qui fonctionnent avec des analyseurs de normalisation indépendants du code source.
 
-<a name="builtin"></a>Vous pouvez trouver du contenu normalisé et intégré dans les galeries et les [solutions](sentinel-solutions-catalog.md) Azure Sentinel, créer votre propre contenu normalisé ou modifier le contenu existant pour utiliser des données normalisées.
+<a name="builtin"></a>Vous pouvez trouver du contenu normalisé et intégré dans les galeries et les [solutions](sentinel-solutions-catalog.md)Microsoft Sentinel, créer votre propre contenu normalisé ou modifier le contenu existant pour utiliser des données normalisées.
 
-Cet article répertorie les contenus Azure Sentinel intégrés qui ont été configurés pour prendre en charge ASIM.  Alors que des liens vers le référentiel GitHub Azure Sentinel sont fournis ci-dessous comme référence, vous pouvez également trouver ces règles dans la [galerie de règles Azure Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées.
+Cet article répertorie les contenus Microsoft Sentinel intégrés qui ont été configurés pour prendre en charge ASIM.  Vous pouvez trouver ces règles à partir des liens vers le référentiel GitHub Microsoft Sentinel fourni ci-dessous comme référence, mais également dans la [galerie de règles Microsoft Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées.
 
 > [!TIP]
-> Regardez également le [webinaire de formation approfondie sur la normalisation des analyseurs et le contenu normalisé Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) ou passez en revue les [diapositives](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM). Pour plus d’informations, consultez [Étapes suivantes](#next-steps).
+> Regardez également le [webinaire de formation approfondie sur la normalisation des analyseurs et le contenu normalisé Microsoft Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) ou passez en revue les [diapositives](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM). Pour plus d’informations, consultez [Étapes suivantes](#next-steps).
 >
 
 > [!IMPORTANT]
@@ -196,11 +196,11 @@ imDns
 
 ## <a name="next-steps"></a><a name="next-steps"></a>Étapes suivantes
 
-Cet article présente le contenu du modèle ASIM (Azure Sentinel Information Model).
+Cet article présente le contenu du modèle ASIM (Advanced SIEM Information Model).
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- Regardez également le [webinaire de formation approfondie sur la normalisation des analyseurs et le contenu normalisé Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) ou passez en revue les [diapositives](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM).
-- [Vue d’ensemble du modèle Azure Sentinel Information Model](normalization.md)
-- [Schémas du modèle Azure Sentinel Information Model](normalization-about-schemas.md)
-- [Analyseurs du modèle Azure Sentinel Information Model](normalization-about-parsers.md)
+- Regardez le [webinaire de formation approfondie sur la normalisation des analyseurs et le contenu normalisé Microsoft Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) ou passez en revue les [diapositives](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)
+- [Présentation du modèle ASIM](normalization.md)
+- [Schémas relatifs au modèle ASIM](normalization-about-schemas.md)
+- [Analyseurs de modèle ASIM](normalization-about-parsers.md)
