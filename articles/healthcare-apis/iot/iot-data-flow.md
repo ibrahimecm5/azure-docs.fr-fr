@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: e442cad97c01c4cd15c931dea45a849cc723cb76
-ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
+ms.openlocfilehash: 82ede0faff91b74f329d9555b6df90152d9fbf8b
+ms.sourcegitcommit: 3a063c59bb9396ce1d4b9a3565b194edf30393a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/23/2021
-ms.locfileid: "132954261"
+ms.locfileid: "132964893"
 ---
 # <a name="iot-connector-data-flow"></a>Workflow de données du connecteur IoT
 
@@ -28,7 +28,7 @@ Cet article présente plus en détail chaque étape du Workflow. Les étapes sui
 
 Les sections suivantes décrivent les étapes que les données IoMT (Internet of Medical Things) passent une fois reçues d’un Event Hub au connecteur IoT.
 
-:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT le passage de données à partir d’appareils IoT dans un Event Hub. Les données IoMT ingérées par le connecteur IoT sont normalisées, groupées, transformées et rendues persistantes dans un service FHIR." lightbox="media/iot-data-flow/iot-data-flow.png":::
+:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT les flux de données des appareils IoT dans un Event Hub. Les données IoMT sont ingérées par le connecteur IoT, car elles sont normalisées, regroupées, transformées et conservées dans le service FHIR." lightbox="media/iot-data-flow/iot-data-flow.png":::
 
 ## <a name="ingest"></a>Ingérer
 La réception est la première étape où les données de l’appareil sont reçues dans le connecteur IoT. Le point de terminaison d’ingestion pour les données de l’appareil est hébergé sur un [Event hubs Azure](../../event-hubs/index.yml). La plateforme Azure Event Hubs prend en charge une grande échelle et un débit élevé, avec la possibilité de recevoir et de traiter des millions de messages par seconde. Il permet également au connecteur IoT de consommer les messages de manière asynchrone, ce qui évite d’avoir à attendre que les données des appareils soient traitées.
