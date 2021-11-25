@@ -3,12 +3,12 @@ title: Verrouiller des images
 description: Définissez des attributs pour une image conteneur ou un référentiel afin qu’il ne puisse pas être supprimé ou remplacé dans un registre de conteneurs Azure.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b2cdd770233833e45c84bea1916ddf7f6e1e317
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772340"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494544"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Verrouiller une image dans un registre de conteneurs Azure
 
@@ -53,37 +53,37 @@ Pour afficher les attributs actuels d’une balise, exécutez la commande [az ac
 
 ```azurecli
 az acr repository show \
-    --name myregistry --image image:tag \
+    --name myregistry --image myimage:tag \
     --output jsonc
 ```
 
 ### <a name="lock-an-image-by-tag"></a>Verrouiller une image par balise
 
-Pour verrouiller l’image *myrepo/myimage:tag* dans *myregistry*, exécutez la commande [az acr repository update][az-acr-repository-update] suivante :
+Pour verrouiller l’image *myimage:tag* dans *myregistry*, exécutez la commande [az acr repository update][az-acr-repository-update] suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --write-enabled false
 ```
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Verrouiller une image par code de hachage du manifeste
 
-Pour verrouiller une image *myrepo/myimage* identifiée par le code de hachage du manifeste (hachage SHA-256, représenté sous la forme `sha256:...`), exécutez la commande suivante. (Pour connaître le code de hachage du manifeste associé à une ou plusieurs balises d’image, exécutez la commande [az acr repository show-manifests][az-acr-repository-show-manifests].)
+Pour verrouiller une image *myimage* identifiée par le code de hachage du manifeste (hachage SHA-256, représenté sous la forme `sha256:...`), exécutez la commande suivante. (Pour connaître le code de hachage du manifeste associé à une ou plusieurs balises d’image, exécutez la commande [az acr repository show-manifests][az-acr-repository-show-manifests].)
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage@sha256:123456abcdefg \
+    --name myregistry --image myimage@sha256:123456abcdefg \
     --write-enabled false
 ```
 
 ### <a name="lock-a-repository"></a>Verrouiller un référentiel
 
-Pour verrouiller le référentiel *myrepo/myimage* et toutes les images qu’il contient, exécutez la commande suivante :
+Pour verrouiller le référentiel *myimage* et toutes les images qu’il contient, exécutez la commande suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --write-enabled false
 ```
 
@@ -91,31 +91,31 @@ az acr repository update \
 
 ### <a name="protect-an-image-from-deletion"></a>Protéger une image contre la suppression
 
-Pour autoriser la mise à jour de l’image *myrepo/myimage:tag* tout en empêchant sa suppression, exécutez la commande suivante :
+Pour autoriser la mise à jour de l’image *myimage:tag* tout en empêchant sa suppression, exécutez la commande suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled false --write-enabled true
 ```
 
 ### <a name="protect-a-repository-from-deletion"></a>Protéger un référentiel contre la suppression
 
-La commande suivante configure le référentiel *myrepo/myimage* afin qu’il ne puisse pas être supprimé. Les différentes images peuvent toujours être mises à jour ou supprimées.
+La commande suivante configure le référentiel *myimage* afin qu’il ne puisse pas être supprimé. Les différentes images peuvent toujours être mises à jour ou supprimées.
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled false --write-enabled true
 ```
 
 ## <a name="prevent-read-operations-on-an-image-or-repository"></a>Empêcher les opérations de lecture sur une image ou un référentiel
 
-Pour empêcher les opérations de lecture (pull) sur l’image *myrepo/myimage:tag*, exécutez la commande suivante :
+Pour empêcher les opérations de lecture (pull) sur l’image *myimage:tag*, exécutez la commande suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --read-enabled false
 ```
 
@@ -123,25 +123,25 @@ Pour empêcher les opérations de lecture sur toutes les images dans le référe
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --read-enabled false
 ```
 
 ## <a name="unlock-an-image-or-repository"></a>Déverrouiller une image ou un référentiel
 
-Pour restaurer le comportement par défaut de l’image *myrepo/myimage:tag* afin qu’elle puisse être supprimée et mise à jour, exécutez la commande suivante :
+Pour restaurer le comportement par défaut de l’image *myimage:tag* afin qu’elle puisse être supprimée et mise à jour, exécutez la commande suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled true --write-enabled true
 ```
 
-Pour restaurer le comportement par défaut du référentiel et de toutes les images *myrepo/myimage* afin qu’ils puissent être supprimés et mis à jour, exécutez la commande suivante :
+Pour restaurer le comportement par défaut du référentiel et de toutes les images *myrepo* afin qu’ils puissent être supprimés et mis à jour, exécutez la commande suivante :
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled true --write-enabled true
 ```
 

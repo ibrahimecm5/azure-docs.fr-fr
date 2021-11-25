@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 40c68a77a3e432c5ff03da2a99e93255719e8898
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8be0dc33d580314fd6b5e6472ed1cf41c5be2d4e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163418"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158438"
 ---
 # <a name="hadr-configuration-best-practices-sql-server-on-azure-vms"></a>Bonnes pratiques de configuration de la HADR (SQL Server sur des machines virtuelles Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,13 +36,14 @@ Consultez la check-list suivante pour obtenir une vue d’ensemble des bonnes pr
 
 Pour votre cluster Windows, prenez en compte les meilleures pratiques suivantes : 
 
+* Déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux quand cela est possible afin d’éviter de dépendre d’Azure Load Balancer ou d’un nom de réseau distribué (DNN) pour acheminer le trafic vers votre solution HADR. 
 * Définissez des paramètres moins agressifs pour le cluster afin d’éviter les pannes inattendues dues à des défaillances momentanées du réseau ou à la maintenance de la plateforme Azure. Pour plus d’informations, consultez les [paramètres de pulsation et de seuil](#heartbeat-and-threshold). Pour Windows Server 2012 ou version ultérieure, utilisez les valeurs recommandées suivantes : 
    - **SameSubnetDelay** : 1 seconde
    - **SameSubnetThreshold** : 40 pulsations
    - **CrossSubnetDelay** : 1 seconde
    - **CrossSubnetThreshold** : 40 pulsations.
 * Placez vos machines virtuelles dans un groupe à haute disponibilité ou dans différentes zones de disponibilité.  Pour plus d’informations, consultez les [paramètres de disponibilité des machines virtuelles](#vm-availability-settings). 
-* Utilisez une seule carte réseau par nœud de cluster et un seul sous-réseau. 
+* Utilisez une seule carte réseau par nœud de cluster. 
 * Configurez le [vote de quorum](#quorum-voting) du cluster pour utiliser trois votes ou plus (toujours par nombre impair). N’attribuez pas de votes à des régions de récupération d’urgence. 
 * Surveillez attentivement les [limites de ressources](#resource-limits) pour éviter les redémarrages ou les basculements inattendus dus à des contraintes de ressources.
    - Assurez-vous que le système d’exploitation, les pilotes et SQL Server disposent de la version la plus récente. 
@@ -58,7 +59,7 @@ Pour votre groupe de disponibilité SQL Server ou votre instance de cluster de 
    `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.   
    Commencez par 40 secondes. Si vous utilisez les valeurs assouplies de `SameSubnetThreshold` et `SameSubnetDelay` qui ont été recommandées précédemment, ne dépassez pas 80 secondes pour la valeur du délai d’expiration du bail.   
    - **Nombre maximal d’échecs au cours d’une période spécifiée** : Définissez cette valeur sur 6. 
-* Lorsque vous utilisez le nom de réseau virtuel (VNN) pour vous connecter à votre solution HADR, spécifiez `MultiSubnetFailover = true` dans la chaîne de connexion, même si votre cluster s’étend sur un seul sous-réseau. 
+* Quand vous utilisez le nom de réseau virtuel (VNN) et Azure Load Balancer pour vous connecter à votre solution HADR, spécifiez `MultiSubnetFailover = true` dans la chaîne de connexion, même si votre cluster s’étend sur un seul sous-réseau. 
    - Si le client ne prend pas en charge `MultiSubnetFailover = True`, vous devrez peut-être définir `RegisterAllProvidersIP = 0` et `HostRecordTTL = 300` pour mettre en cache les informations d’identification du client pour des durées plus courtes. Toutefois, cela peut entraîner des requêtes supplémentaires sur le serveur DNS. 
 - Pour vous connecter à votre solution HADR à l’aide du nom de réseau distribué (DNN), tenez compte des points suivants :
    - Vous devez utiliser un pilote client qui prend en charge `MultiSubnetFailover = True`, et ce paramètre doit figurer dans la chaîne de connexion. 
@@ -115,15 +116,20 @@ Lors de la modification des paramètres de vote de nœud, suivez ces instruction
 
 ## <a name="connectivity"></a>Connectivité
 
+Pour correspondre à l’expérience locale de connexion à votre écouteur de groupe de disponibilité ou instance de cluster de basculement, déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux au sein du même réseau virtuel. Quand vous avez plusieurs réseaux, vous n’avez pas besoin d’une dépendance supplémentaire sur Azure Load Balancer ni d’un nom de réseau distribué pour acheminer votre trafic vers votre écouteur.  
 
-Il est possible de configurer un nom de réseau virtuel (VNN, virtual network name) ou, à partir de SQL Server 2019, un nom de réseau distribué (DNN, distributed network name) pour les instances de cluster de basculement et les écouteurs de groupe de disponibilité. 
+Pour simplifier votre solution HADR, déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux quand cela est possible.  Pour plus d’informations, consultez [Groupe de disponibilité à plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) et [Instance de cluster de basculement à plusieurs sous-réseaux](failover-cluster-instance-prepare-vm.md#subnets). 
+
+Si vos machines virtuelles SQL Server se trouvent dans un seul sous-réseau, il est possible de configurer un nom de réseau virtuel (VNN) et Azure Load Balancer, ou un nom de réseau distribué (DNN) à la fois pour les instances de cluster de basculement et les écouteurs de groupe de disponibilité. 
 
 Le nom de réseau distribué est l’option de connectivité recommandée quand elle est disponible : 
 - La solution de bout en bout est plus robuste, car vous n’avez plus à gérer la ressource d’équilibreur de charge. 
 - L’élimination des sondes de l’équilibreur de charge réduit la durée du basculement. 
 - Le DNN simplifie l’approvisionnement et la gestion de l’instance de cluster de basculement ou de l’écouteur de groupe de disponibilité avec SQL Server sur des machines virtuelles Azure. 
 
-Si vous utilisez un DNN ou un groupe de disponibilité ou une FCI s’étendant sur plusieurs sous-réseaux, vous devez utiliser un pilote client qui prend en charge le paramètre MultiSubnetFailover et spécifier MultiSubnetFailover=True dans la chaîne de connexion. Pour les groupes de disponibilité, la chaîne de connexion doit contenir le numéro de port de DNN (non requis pour la FCI). 
+Tenez compte des limitations suivantes : 
+- Le pilote client doit prendre en charge le paramètre `MultiSubnetFailover=True`. 
+- La fonctionnalité DNN est disponible à partir de [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31), [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) et [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) sur Windows Server 2016 et versions ultérieures.
 
 Pour en savoir plus, consultez [Vue d’ensemble du cluster de basculement Windows Server](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn). 
 
@@ -134,7 +140,7 @@ Pour configurer la connectivité, consultez les articles suivants :
 La plupart des fonctionnalités SQL Server fonctionnent de manière transparente avec les FCI et les groupes de disponibilité lors de l’utilisation du DNN, mais certaines fonctionnalités peuvent nécessiter une attention particulière. Pour en savoir plus, consultez [Interopérabilité FCI et DNN](failover-cluster-instance-dnn-interoperability.md) et [Interopérabilité AG et DNN](availability-group-dnn-interoperability.md). 
 
 >[!TIP]
-> Définissez le paramètre MultiSubnetFailover = true dans la chaîne de connexion même pour les solutions HADR qui couvrent un seul sous-réseau afin de prendre en charge la répartition future des sous-réseaux sans avoir à mettre à jour les chaînes de connexion.  
+> Définissez le paramètre MultiSubnetFailover sur = true dans la chaîne de connexion, même pour les solutions HADR qui s’étendent sur un seul sous-réseau afin de prendre en charge la répartition ultérieure de sous-réseaux sans qu’il soit nécessaire de mettre à jour les chaînes de connexion.  
 
 ## <a name="heartbeat-and-threshold"></a>Pulsation et seuil 
 
@@ -285,6 +291,8 @@ Les limites de machine virtuelle ou de disque peuvent entraîner un goulot d’�
 
 ## <a name="networking"></a>Mise en réseau
 
+Déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux quand cela est possible afin d’éviter de dépendre d’Azure Load Balancer ou d’un nom de réseau distribué (DNN) pour acheminer le trafic vers votre solution HADR.
+
 Utilisez une seule carte réseau (NIC) par serveur (nœud de cluster). Les réseaux Azure intègrent une redondance physique, ce qui rend inutiles les cartes réseau supplémentaires sur un cluster invité de machine virtuelle Azure. Le rapport de validation du cluster vous avertit que les nœuds sont accessibles uniquement sur un seul réseau. Vous pouvez ignorer cet avertissement sur les clusters de basculement invités de machines virtuelles Azure. 
 
 Les limites de bande passante pour une machine virtuelle particulière sont partagées entre les cartes réseau et l’ajout d’une carte réseau supplémentaire n’améliore pas les performances des groupes de disponibilité pour SQL Server sur les machines virtuelles Azure. Par conséquent, il n’est pas nécessaire d’ajouter une deuxième carte réseau. 
@@ -300,10 +308,7 @@ Examinez le scénario où un cluster à deux nœuds est créé et mis en ligne 
 5. Quand NODE2 tente d’établir la connexion avec NODE1, les paquets dirigés vers NODE1 ne quittent jamais NODE2, car il résout l’adresse IP de NODE1 en lui-même. NODE2 ne peut pas établir la connexion avec NODE1, puis perd le quorum et arrête le cluster.
 6. NODE1 peut envoyer des paquets à NODE2, mais NODE2 ne peut pas répondre. NODE1 perd le quorum et arrête le cluster.
 
-Vous pouvez éviter ce scénario en affectant une adresse IP statique inutilisée au nom réseau du cluster afin de mettre le nom réseau de cluster en ligne. Par exemple, vous pouvez utiliser une adresse IP Link Local comme 169.254.1.1. Pour simplifier ce processus, consultez la section [Configuration d’un cluster de basculement Windows dans Azure pour les groupes de disponibilité](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
-
-Pour plus d’informations, consultez la section [Configurer des groupes de disponibilité dans Azure (GUI)](./availability-group-quickstart-template-configure.md).
-
+Vous pouvez éviter ce scénario en affectant une adresse IP statique inutilisée au nom réseau du cluster afin de mettre le nom réseau de cluster en ligne et d’ajouter l’adresse IP à [Azure Load Balancer](availability-group-load-balancer-portal-configure.md).
 
 ## <a name="known-issues"></a>Problèmes connus
 

@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272eaf3a21992cb5fecf1c02e5ab1000af149bcc
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 65f123208e9a6199134a9f033007332dc032ff8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687836"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309583"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planification du déploiement de la réinitialisation de mot de passe en libre-service Azure Active Directory
 
@@ -316,7 +316,7 @@ Vous pouvez utiliser les rapports prédéfinis du portail Azure pour mesurer les
 > [!NOTE]
 >  Vous devez être [administrateur général](../roles/permissions-reference.md), et devez accepter que ces données soient collectées pour votre organisation. Pour cela, vous devez consulter l'onglet Rapports ou les journaux d'audit du portail Azure au moins une fois. Tant que cela ne sera pas fait, les données ne seront pas collectées.
 
-Les journaux d’audit pour l’inscription et la réinitialisation de mot de passe sont disponibles pendant 30 jours. Si l'audit de sécurité de votre entreprise requiert une conservation plus longue, les journaux doivent être exportés et utilisés dans un outil SIEM comme [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk ou ArcSight.
+Les journaux d’audit pour l’inscription et la réinitialisation de mot de passe sont disponibles pendant 30 jours. Si l’audit de sécurité de votre entreprise requiert une rétention plus longue, les journaux doivent être exportés et utilisés dans un outil SIEM comme [Microsoft Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk ou ArcSight.
 
 ![Capture d'écran de rapport SSPR](./media/howto-sspr-deployment/sspr-reporting.png)
 

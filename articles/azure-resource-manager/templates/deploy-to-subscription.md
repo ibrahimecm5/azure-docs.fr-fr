@@ -4,12 +4,12 @@ description: Décrit comment créer un groupe de ressources dans un modèle Azur
 ms.topic: conceptual
 ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8d171bde22bce1aac94e21c412b6773e6a4f39c5
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 0fd0bc94c899cf47e3e0b06f6acd9f9e9bd5d3c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310145"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Déploiements d’abonnements avec des modèles ARM
 
@@ -424,6 +424,6 @@ L’exemple suivant crée un groupe de ressources, lui applique un verrou et att
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Azure Security Center, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Microsoft Defender pour le cloud, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Vous trouverez des exemples de modèles dans [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments).
 * Vous pouvez également déployer des modèles au [niveau du groupe de gestion](deploy-to-management-group.md) et au [niveau du locataire](deploy-to-tenant.md).

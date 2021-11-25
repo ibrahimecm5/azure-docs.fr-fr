@@ -1,6 +1,6 @@
 ---
 title: Qu’est-ce qu’un degré de sécurisation Identity Secure Score ? - Azure Active Directory
-description: Procédure d’utilisation du degré de sécurisation Identity Secure Score pour améliorer la méthode de sécurité de votre répertoire
+description: Découvrez comment utiliser le score d’identité sécurisée pour améliorer la posture de sécurité de votre répertoire.
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 322643d443aac7cb0ec1aac06b46535114c8d340
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409916"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309507"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Qu’est-ce que le degré de sécurisation Identity Secure Score dans Azure Active Directory ?
 
@@ -95,7 +95,7 @@ Le degré de sécurisation est calculé une fois par jour (vers 1 h PST). Si vou
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>Mon degré de sécurisation a changé. Comment savoir pourquoi ?
 
-Rendez-vous dans le [Centre de sécurité Microsoft 365](https://security.microsoft.com/) pour y retrouver votre score sécurisé Microsoft complet. L’onglet Historique permet de consulter aisément toutes les modifications apportées en profondeur à votre score sécurisé.
+Rendez-vous dans le [portail Microsoft 365 Defender](https://security.microsoft.com/) pour y retrouver votre score sécurisé Microsoft complet. L’onglet Historique permet de consulter aisément toutes les modifications apportées en profondeur à votre score sécurisé.
 
 ### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Le degré de sécurisation mesure-t-il le risque de violation ?
 
@@ -105,7 +105,7 @@ Non. Le degré de sécurisation ne fournit pas une mesure absolue de la probabil
 
 Votre score s’améliore lorsque vous configurez des fonctionnalités de sécurité suggérées ou mettez en œuvre des tâches liées à la sécurité (par exemple, la lecture de rapports). Certaines actions sont évaluées dans le cadre d’une mise en œuvre partielle, par exemple lorsque vous activez l’authentification multifacteur (MFA) pour vos utilisateurs. Votre degré de sécurisation représente de façon directe les services de sécurité Microsoft que vous utilisez. N’oubliez pas que vous devez trouver le juste équilibre entre sécurité et facilité d’utilisation. Tous les contrôles de sécurité ont une forme d’impact sur l’utilisateur. Les contrôles ayant un faible impact sur l’utilisateur doivent avoir peu d’effet (voire aucun) sur les opérations quotidiennes de vos utilisateurs.
 
-Pour consulter votre historique de score, rendez-vous dans le [Centre de sécurité Microsoft 365](https://security.microsoft.com/) et passez en revue votre score sécurisé Microsoft global. Vous pouvez examiner les modifications apportées à votre score sécurisé global en cliquant sur Afficher l’historique. Choisissez une date spécifique pour déterminer les contrôles qui ont été activés ce jour et les points que vous avez gagnés pour chacun d’eux.
+Pour consulter votre historique de score, rendez-vous dans le [portail Microsoft 365 Defender](https://security.microsoft.com/) et passez en revue votre score sécurisé Microsoft global. Vous pouvez examiner les modifications apportées à votre score sécurisé global en cliquant sur Afficher l’historique. Choisissez une date spécifique pour déterminer les contrôles qui ont été activés ce jour et les points que vous avez gagnés pour chacun d’eux.
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>Quel est le lien entre les degrés de sécurisation Identity Secure Score et Microsoft 365 Secure Score ?
 

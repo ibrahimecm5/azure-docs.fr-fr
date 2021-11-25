@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: eur
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 6d5d88ba1629dce89acb0345d727896c49680cbe
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 94b3056f6766be37451a5d309243592eb31256dd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505003"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488427"
 ---
 # <a name="how-to-use-language-identification"></a>Guide pratique pour utiliser l’identification de la langue
 
@@ -32,18 +32,18 @@ Cet article part du principe que vous avez un abonnement Azure et une ressource 
 
 ## <a name="language-identification-with-speech-to-text"></a>Identification de la langue avec reconnaissance vocale
 
-L’identification de la langue est actuellement limitée à **quatre langues** pour une reconnaissance unique et à **10 langues** pour une reconnaissance continue. Gardez cette limite à l’esprit lors de la construction de votre objet `AutoDetectSourceLanguageConfig`. Dans les exemples ci-dessous, vous utilisez `AutoDetectSourceLanguageConfig` pour définir la liste des langues possibles à identifier, puis vous référencez ces langues lors de l’exécution de la reconnaissance vocale.
+L’identification de la langue est actuellement limitée à **4 langues** pour une reconnaissance au démarrage et à **10 langues** pour une reconnaissance continue. Gardez cette limite à l’esprit lors de la construction de votre objet `AutoDetectSourceLanguageConfig`. Dans les exemples ci-dessous, vous utilisez `AutoDetectSourceLanguageConfig` pour définir la liste des langues possibles à identifier, puis vous référencez ces langues lors de l’exécution de la reconnaissance vocale.
 
 > [!IMPORTANT]
 > L’identification de la langue en continu est prise en charge uniquement en C#, C++ et Python.
 
 ::: zone pivot="programming-language-csharp"
 
-L’exemple suivant exécute une reconnaissance unique, en donnant la priorité à `Latency`. Cette propriété peut également avoir la valeur `Accuracy` selon la priorité définie pour votre cas d’usage. `Latency` constitue la meilleure option à utiliser si vous avez besoin d’un résultat à faible latence (par exemple, pour les scénarios de streaming en direct), mais que vous ne connaissez pas la langue de l’échantillon audio. 
+L’exemple suivant exécute une reconnaissance au démarrage, en donnant la priorité à `Latency`. Cette propriété peut également avoir la valeur `Accuracy` selon la priorité définie pour votre cas d’usage. `Latency` constitue la meilleure option à utiliser si vous avez besoin d’un résultat à faible latence (par exemple, pour les scénarios de streaming en direct), mais que vous ne connaissez pas la langue de l’échantillon audio. 
 
 `Accuracy` doit être utilisé dans les scénarios où la qualité audio peut être médiocre et une latence plus élevée acceptable. Par exemple, une messagerie vocale peut inclure un bruit de fond, ou un temps de silence au début, si bien que permettre au moteur de prendre plus de temps va améliorer les résultats de la reconnaissance.
 
-Dans les deux cas, il est préférable de **ne pas utiliser** une reconnaissance unique, comme illustrée ci-dessous, pour des scénarios où la langue est susceptible de changer au sein même de l’échantillon audio. Voyez ci-après pour plus d’informations sur une reconnaissance continue pour ces types de scénarios.
+Dans les deux cas, il est préférable de **ne pas utiliser** la reconnaissance au démarrage, comme illustrée ci-dessous, pour des scénarios où la langue est susceptible de changer au sein d’un même échantillon audio. Voyez ci-après pour plus d’informations sur une reconnaissance continue pour ces types de scénarios.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -163,11 +163,11 @@ using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.w
 
 ::: zone pivot="programming-language-cpp"
 
-L’exemple suivant exécute une reconnaissance unique, en donnant la priorité à `Latency`. Cette propriété peut également avoir la valeur `Accuracy` selon la priorité définie pour votre cas d’usage. `Latency` constitue la meilleure option à utiliser si vous avez besoin d’un résultat à faible latence (par exemple, en cas de streaming en direct), mais que vous ne connaissez pas la langue de l’échantillon audio. 
+L’exemple suivant exécute une reconnaissance au démarrage, en donnant la priorité à `Latency`. Cette propriété peut également avoir la valeur `Accuracy` selon la priorité définie pour votre cas d’usage. `Latency` constitue la meilleure option à utiliser si vous avez besoin d’un résultat à faible latence (par exemple, en cas de streaming en direct), mais que vous ne connaissez pas la langue de l’échantillon audio. 
 
 `Accuracy` doit être utilisé dans les scénarios où la qualité audio peut être médiocre et une latence plus élevée acceptable. Par exemple, une messagerie vocale peut inclure un bruit de fond, ou un temps de silence au début, si bien que permettre au moteur de prendre plus de temps va améliorer les résultats de la reconnaissance.
 
-Dans les deux cas, il est préférable de **ne pas utiliser** une reconnaissance unique, comme illustrée ci-dessous, pour des scénarios où la langue est susceptible de changer au sein même de l’échantillon audio. Voyez ci-après pour plus d’informations sur une reconnaissance continue pour ces types de scénarios.
+Dans les deux cas, il est préférable de **ne pas utiliser** la reconnaissance au démarrage, comme illustrée ci-dessous, pour des scénarios où la langue est susceptible de changer au sein d’un même échantillon audio. Voyez ci-après pour plus d’informations sur une reconnaissance continue pour ces types de scénarios.
 
 ```cpp
 using namespace std;

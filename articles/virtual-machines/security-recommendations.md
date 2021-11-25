@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 167d46b96853c372790002bdb0d9609581970426
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: afdd3928207dbe82afe1e55e16d9c2677741022d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690197"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345109"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Recommandations de sécurité pour les machines virtuelles dans Azure
 
@@ -23,13 +23,13 @@ ms.locfileid: "122690197"
 
 Cet article contient des recommandations de sécurité pour les Machines virtuelles Azure. Suivez ces recommandations pour respecter plus facilement les obligations de sécurité décrites dans notre modèle de responsabilité partagée. Ces recommandations vous aideront également à améliorer la sécurité globale de vos solutions d’application web. Pour plus d’informations sur les mesures prises par Microsoft pour assumer ses responsabilités de fournisseur de services, consultez [Responsabilités partagées pour le cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
-Certaines recommandations de cet article peuvent être mises en œuvre automatiquement par Azure Security Center. Azure Security Center est la première ligne de défense de vos ressources dans Azure. Il analyse régulièrement l’état de sécurité de vos ressources Azure pour identifier les vulnérabilités potentielles. Puis, il fournit des recommandations sur la façon de les corriger. Pour plus d’informations, consultez les [recommandations de sécurité dans Azure Security Center](../security-center/security-center-recommendations.md).
+Certaines recommandations de cet article peuvent être mises en œuvre automatiquement par Microsoft Defender pour le cloud. Microsoft Defender pour le cloud est la première ligne de défense de vos ressources dans Azure. Il analyse régulièrement l’état de sécurité de vos ressources Azure pour identifier les vulnérabilités potentielles. Puis, il fournit des recommandations sur la façon de les corriger. Pour plus d’informations, consultez [Recommandations de sécurité dans Microsoft Defender pour le cloud](../security-center/security-center-recommendations.md).
 
-Pour obtenir des informations générales sur Azure Security Center, consultez [Qu’est-ce qu’Azure Security Center ?](../security-center/security-center-introduction.md).
+Pour obtenir des informations générales sur Microsoft Defender pour le cloud, consultez [Qu’est-ce que Microsoft Defender pour le cloud ?](../security-center/security-center-introduction.md)
 
 ## <a name="general"></a>Général
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Quand vous créez des images de machine virtuelle personnalisées, appliquez les dernières mises à jour. | Avant de créer des images, installez les dernières mises à jour du système d’exploitation et de toutes les applications qui feront partie de votre image.  | - |
 | veiller à ce que les machines virtuelles soient toujours à jour. | Vous pouvez utiliser la solution [Update Management](../automation/update-management/overview.md) dans Azure Automation pour gérer les mises à jour de vos systèmes d’exploitation Windows et Linux dans Azure. | [Oui](../security-center/asset-inventory.md) |
@@ -39,7 +39,7 @@ Pour obtenir des informations générales sur Azure Security Center, consultez [
 
 ## <a name="data-security"></a>Sécurité des données
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Chiffrez les disques de système d’exploitation. | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) vous permet de chiffrer vos disques de machines virtuelles IaaS Windows et Linux. Sans les clés nécessaires, le contenu des disques chiffrés est illisible. Le chiffrement des disques protège les données stockées contre tout accès non autorisé qui serait rendu possible par la copie du disque.| [Oui](../security-center/asset-inventory.md) |
 | Chiffrez les disques de données. | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) vous permet de chiffrer vos disques de machines virtuelles IaaS Windows et Linux. Sans les clés nécessaires, le contenu des disques chiffrés est illisible. Le chiffrement des disques protège les données stockées contre tout accès non autorisé qui serait rendu possible par la copie du disque.| -  |
@@ -49,19 +49,19 @@ Pour obtenir des informations générales sur Azure Security Center, consultez [
 
 ## <a name="identity-and-access-management"></a>Gestion de l’identité et de l’accès 
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Centralisez l’authentification des machines virtuelles. | Vous pouvez centraliser l’authentification de vos machines virtuelles Windows et Linux à l’aide de l’[authentification Azure Active Directory](../active-directory/develop/authentication-vs-authorization.md). | - |
 
 ## <a name="monitoring"></a>Surveillance
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Supervisez vos machines virtuelles. | Vous pouvez utiliser [Azure Monitor pour machines virtuelles](../azure-monitor/vm/vminsights-overview.md) pour superviser l’état des machines virtuelles et des groupes de machines virtuelles identiques Azure. Une machine virtuelle insuffisamment performante peut entraîner une interruption de service, réduisant ainsi la disponibilité. | - |
 
 ## <a name="networking"></a>Mise en réseau
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Limitez l’accès aux ports de gestion. | Les attaquants analysent les plages d’adresses IP de cloud public pour détecter les ports de gestion ouverts et tenter des attaques « faciles », en utilisant des mots de passe courants ou en exploitant des vulnérabilités non corrigées connues. Vous pouvez utiliser l’[accès juste-à-temps (JAT) aux machines virtuelles](../security-center/security-center-just-in-time.md) pour verrouiller le trafic entrant vers vos machines virtuelles Azure, ce qui réduit l’exposition aux attaques et facilite la connexion aux machines virtuelles en cas de besoin. | - |
 | Limitez l’accès réseau. | Les groupes de sécurité réseau vous permettent de restreindre l’accès réseau et de contrôler le nombre de points de terminaison exposés. Pour plus d’informations, consultez [Créer, changer ou supprimer un groupe de sécurité réseau](../virtual-network/manage-network-security-group.md). | - |

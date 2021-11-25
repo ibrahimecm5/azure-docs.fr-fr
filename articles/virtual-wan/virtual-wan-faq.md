@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 65b39c7cae553663cc4b482ff98a4be3c2e03876
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: e28d5c9358077e072c31026bdc164a9b2037a40a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026042"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492471"
 ---
 # <a name="virtual-wan-faq"></a>FAQ sur Virtual WAN
 
@@ -247,6 +247,10 @@ Un hub virtuel peut propager un itinéraire par défaut appris à une connexion 
 
 L’itinéraire par défaut ne provient pas du hub Virtual WAN ; il est propagé s’il est déjà appris par le hub Virtual WAN suite au déploiement d’un pare-feu dans le hub, ou si le tunneling forcé est activé sur un autre site connecté. Une route par défaut ne se propage pas entre les hubs (inter-hub).
 
+### <a name="is-it-possible-to-create-multiple-virtual-wan-hubs-in-the-same-region"></a>Est-il possible de créer plusieurs hubs Virtual WAN dans la même région ?
+Oui. Les clients peuvent désormais créer plusieurs hubs dans la même région pour la même instance Azure Virtual WAN. 
+
+
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Comment le hub virtuel d’une instance Virtual WAN sélectionne-t-il le meilleur chemin pour une route à partir de plusieurs hubs ?
 
 Si un hub virtuel apprend la même route à partir de plusieurs hubs distants, l’ordre dans lequel il prend sa décision est le suivant :
@@ -321,7 +325,7 @@ Oui. Pour obtenir la liste des solutions de fournisseurs de services managés (M
 
 Azure Route Server fournit un service d’appairage BGP (Border Gateway Protocol) qui peut être utilisé par les appliances virtuelles réseau pour apprendre des routes auprès du serveur de routage dans un réseau virtuel de hub créé par vous-même. Le routage Virtual WAN offre plusieurs fonctionnalités, notamment le routage de transit de réseau virtuel à réseau virtuel, le routage personnalisé, l’association et la propagation de routes personnalisées ainsi qu’un service de concentrateur entièrement maillé sans contact avec les services de connectivité d’ExpressRoute, le VPN de site, le VPN P2S utilisateur distant/à grande échelle et le hub sécurisé (Pare-feu Azure). Quand vous établissez un appairage BGP entre votre appliance virtuelle réseau et Azure Route Server, vous pouvez publier les adresses IP de votre appliance virtuelle réseau sur votre réseau virtuel. Pour toutes les fonctionnalités de routage avancées, comme le routage de transit, le routage personnalisé, etc., vous pouvez utiliser le routage Virtual WAN.
 
-### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Si j’utilise un fournisseur de sécurité tiers (ZScalar, iBoss ou Checkpoint) pour sécuriser mon trafic Internet, pourquoi ne puis-je pas voir le site VPN associé au fournisseur de sécurité tiers dans le portail Azure ?
+### <a name="if-i-am-using-a-third-party-security-provider-zscaler-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Si j’utilise un fournisseur de sécurité tiers (Zscaler, iBoss ou Check Point) pour sécuriser mon trafic Internet, pourquoi ne puis-je pas voir le site VPN associé au fournisseur de sécurité tiers dans le portail Azure ?
 
 Lorsque vous choisissez de déployer un fournisseur partenaire de sécurité pour protéger l’accès à Internet pour vos utilisateurs, le fournisseur de sécurité tiers crée un site VPN en votre nom. Étant donné que le fournisseur de sécurité tiers est créé automatiquement par le fournisseur et que ce n’est pas un site VPN créé par l’utilisateur, ce site VPN n’apparaîtra pas dans le portail Azure.
 

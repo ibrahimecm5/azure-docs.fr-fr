@@ -3,14 +3,14 @@ title: Historique de déploiement
 description: Décrit comment afficher les opérations de déploiement d’Azure Resource Manager avec le portail, PowerShell, la CLI Azure et l’API REST.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: eeb56665d7287b8239ad309fd0f7de5b539e1ed2
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 60bc06ab15e7f36a5c67ff5fc4de9da8bad28f88
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752100"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310218"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Afficher l’historique des déploiements avec Azure Resource Manager
 
@@ -18,7 +18,7 @@ Azure Resource Manager vous permet de voir l’historique de votre déploiement.
 
 L’historique de déploiement de chaque groupe de ressources est limité à 800 déploiements. Quand vous vous approchez de la limite, les déploiements sont automatiquement supprimés de l’historique. Pour plus d’informations, consultez [Suppressions automatiques de l’historique de déploiement](deployment-history-deletions.md).
 
-Pour obtenir de l’aide afin de résoudre des erreurs de déploiement spécifiques, consultez [Résoudre les erreurs courantes lors du déploiement de ressources sur Azure avec Azure Resource Manager](common-deployment-errors.md).
+Pour obtenir de l’aide sur la résolution d’erreurs de déploiement spécifiques, consultez [Résoudre les erreurs courantes de déploiement Azure](common-deployment-errors.md).
 
 ## <a name="get-deployments-and-correlation-id"></a>Récupérer des déploiements et l’ID de corrélation
 
@@ -30,15 +30,15 @@ Vous pouvez afficher les détails d’un déploiement via le Portail Azure, Powe
 
 1. Sélectionnez le lien sous **Déploiements**.
 
-   ![Sélectionner l’historique des déploiements](./media/deployment-history/select-deployment-history.png)
+   :::image type="content" source="media/deployment-history/select-deployment-history.png" alt-text="Capture d’écran de la vue d’ensemble du groupe de ressources qui montre un déploiement réussi.":::
 
 1. Sélectionnez un des déploiements dans l’historique des déploiements.
 
-   ![Sélectionner un déploiement](./media/deployment-history/select-details.png)
+   :::image type="content" source="media/deployment-history/select-details.png" alt-text="Capture d’écran du lien mis en évidence pour un déploiement de ressources.":::
 
 1. Un résumé du déploiement s’affiche, y compris l’ID de corrélation.
 
-    ![Résumé du déploiement](./media/deployment-history/show-correlation-id.png)
+   :::image type="content" source="media/deployment-history/show-correlation-id.png" alt-text="Capture d’écran de l’historique de déploiement qui met en évidence l’ID de corrélation.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -48,7 +48,7 @@ Pour répertorier tous les déploiements d’un groupe de ressources, utilisez l
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Pour obtenir un déploiement spécifique à partir d’un groupe de ressources, ajoutez le paramètre **DeploymentName**.
+Pour obtenir un déploiement spécifique à partir d’un groupe de ressources, ajoutez le paramètre `DeploymentName`.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
@@ -62,13 +62,13 @@ Pour obtenir l’ID de corrélation, utilisez :
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pour lister le déploiement pour un groupe de ressources, utilisez [az deployment group list](/cli/azure/group/deployment#az_deployment_group_list).
+Pour répertorier tous les déploiements d’un groupe de ressources, utilisez [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list).
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Pour obtenir un déploiement spécifique, utilisez [az deployment group show](/cli/azure/group/deployment#az_deployment_group_show).
+Pour obtenir un déploiement spécifique, utilisez [az deployment group show](/cli/azure/deployment/group#az_deployment_group_show).
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -104,7 +104,7 @@ La réponse inclut l’ID de corrélation.
    "provisioningState": "Failed",
    "timestamp": "2019-11-26T14:18:36.4518358Z",
    "duration": "PT26.2091817S",
-   "correlationId": "47ff4228-bf2e-4ee5-a008-0b07da681230",
+   "correlationId": "11111111-1111-1111-1111-111111111111",
    ...
  }
 }
@@ -120,35 +120,35 @@ Chaque déploiement peut comprendre plusieurs opérations. Pour plus d’informa
 
 1. Dans le résumé d’un déploiement, sélectionnez **Détails des opérations**.
 
-    ![Sélectionner les détails des opérations](./media/deployment-history/get-operation-details.png)
+   :::image type="content" source="media/deployment-history/get-operation-details.png" alt-text="Capture d’écran de l’échec du déploiement qui met en évidence le lien pour accéder aux détails de l’opération.":::
 
 1. Vous voyez les détails de cette étape du déploiement. Lorsqu’une erreur se produit, les détails incluent le message d’erreur.
 
-    ![Afficher les détails de l’opération](./media/deployment-history/see-operation-details.png)
+   :::image type="content" source="media/deployment-history/see-operation-details.png" alt-text="Capture d’écran des détails de l’opération du déploiement ayant échoué.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pour afficher les opérations de déploiement relatives au déploiement vers un groupe de ressources, utilisez la commande [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation).
+Pour afficher les opérations de déploiement relatives au déploiement vers un groupe de ressources, utilisez la commande [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation).
 
 ```azurepowershell-interactive
-Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 ```
 
 Pour afficher les opérations ayant échoué, filtrez les opérations à l’aide de l’état **Échec**.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }
 ```
 
 Pour obtenir le message d’état d’opérations ayant échoué, utilisez la commande suivante :
 
 ```azurepowershell-interactive
-((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
+(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }).StatusMessage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pour afficher les opérations de déploiement relatives au déploiement vers un groupe de ressources, utilisez la commande [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list). Vous devez disposer d’Azure CLI 2.6.0 ou version ultérieure.
+Pour afficher les opérations de déploiement relatives au déploiement vers un groupe de ressources, utilisez la commande [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list). Vous devez disposer d’Azure CLI 2.6.0 ou version ultérieure.
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -157,13 +157,13 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 Pour afficher les opérations ayant échoué, filtrez les opérations à l’aide de l’état **Échec**.
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed']"
 ```
 
 Pour obtenir le message d’état d’opérations ayant échoué, utilisez la commande suivante :
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -180,15 +180,15 @@ La réponse comprend un message d’erreur.
 {
   "value": [
     {
-      "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeploy/operations/13EFD9907103D640",
-      "operationId": "13EFD9907103D640",
+      "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeployment/operations/1234567890ABCDEF",
+      "operationId": "1234567890ABCDEF",
       "properties": {
         "provisioningOperation": "Create",
         "provisioningState": "Failed",
         "timestamp": "2019-11-26T14:18:36.3177613Z",
         "duration": "PT21.0580179S",
-        "trackingId": "9d3cdac4-54f8-486c-94bd-10c20867b8bc",
-        "serviceRequestId": "01a9d0fe-896b-4c94-a30f-60b70a8f1ad9",
+        "trackingId": "11111111-1111-1111-1111-111111111111",
+        "serviceRequestId": "11111111-1111-1111-1111-111111111111",
         "statusCode": "BadRequest",
         "statusMessage": {
           "error": {
@@ -197,9 +197,9 @@ La réponse comprend un message d’erreur.
           }
         },
         "targetResource": {
-          "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storageq2czadzfgizc2",
+          "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storage",
           "resourceType": "Microsoft.Storage/storageAccounts",
-          "resourceName": "storageq2czadzfgizc2"
+          "resourceName": "storage"
         }
       }
     },
@@ -212,6 +212,6 @@ La réponse comprend un message d’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Pour obtenir de l’aide afin de résoudre des erreurs de déploiement spécifiques, consultez [Résoudre les erreurs courantes lors du déploiement de ressources sur Azure avec Azure Resource Manager](common-deployment-errors.md).
-* Pour en savoir plus sur la gestion des déploiements dans l’historique, consultez [Suppressions automatiques de l’historique de déploiement](deployment-history-deletions.md).
-* Pour valider votre déploiement avant son exécution, consultez [Déployer un groupe de ressources avec le modèle Azure Resource Manager](deploy-powershell.md).
+- Pour obtenir de l’aide sur la résolution d’erreurs de déploiement spécifiques, consultez [Résoudre les erreurs courantes de déploiement Azure](common-deployment-errors.md).
+- Pour en savoir plus sur la gestion des déploiements dans l’historique, consultez [Suppressions automatiques de l’historique de déploiement](deployment-history-deletions.md).
+- Pour afficher un aperçu des modifications qu’apportera un modèle avant de le déployer, consultez [Opération de simulation de déploiement de modèle ARM](deploy-what-if.md).

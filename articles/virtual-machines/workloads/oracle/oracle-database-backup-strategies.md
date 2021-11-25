@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 2a61ed8f32fb85c3500ebf191c8bd53808b75eb9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5be1a70ecd9a5eefdd1df29a5305747cee09ddaa
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696885"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523749"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Oracle Database dans les stratégies de sauvegarde de machine virtuelle Linux Azure
 
@@ -59,11 +59,11 @@ La possibilité d’accéder à un stockage de sauvegarde dans plusieurs région
 
 #### <a name="blob-storage-and-file-storage"></a>Stockage Blob et Stockage Fichier
 
-Lorsque vous utilisez Azure Files avec les protocoles SMB ou NFS 4.1 (préversion) pour monter un stockage de sauvegarde, notez qu’Azure Files ne prend pas en charge le stockage géo-redondant avec accès en lecture (RA-GRS) et le stockage géo-redondant interzone avec accès en lecture (RA-GZRS). 
+Lorsque vous utilisez Azure Files avec les protocoles SMB ou NFS 4.1 pour monter un stockage de sauvegarde, notez qu’Azure Files ne prend pas en charge le stockage géo-redondant avec accès en lecture (RA-GRS) ni le stockage géo-redondant interzone avec accès en lecture (RA-GZRS). 
 
 En outre, si l’exigence de stockage de sauvegarde est supérieure à 5 Tio, Azure Files nécessite que la [fonctionnalité de partage de fichiers volumineux](../../../storage/files/storage-files-planning.md) soit activée. Celle-ci ne prend pas en charge la redondance GRS ou GZRS mais uniquement le stockage localement redondant (LRS). 
 
-Un Blob Azure monté à l’aide du protocole NFS 3.0 (préversion) ne prend actuellement en charge que les redondances LRS et ZRS.  
+Un Blob Azure monté à l’aide du protocole NFS 3.0 ne prend actuellement en charge que les redondances LRS et ZRS.  
 
 Un Blob Azure configuré avec n’importe quelle option de redondance peut être monté à l’aide de Blobfuse.
 
@@ -84,14 +84,9 @@ Un Stockage Blob Azure est un service de stockage cloud éminemment économique,
 
 Bien que Blobfuse soit omniprésent dans toutes les régions Azure et fonctionne avec tous les types de comptes de stockage, dont v1/v2 à usage général et Azure Data Lake Store Gen2, les performances qu’il offre sont inférieures à celles d’autres protocoles tels que SMB ou NFS. Pour un support de sauvegarde de base de données, nous vous recommandons d’utiliser les protocoles SMB ou [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md) pour monter le Stockage Blob Azure. 
 
-#### <a name="azure-blob-nfs-v30-preview"></a>Azure BLOB NFS v3.0 (préversion)
+#### <a name="azure-blob-nfs-v30"></a>Azure Blob NFS v3.0
 
-Le support Azure pour le protocole NFS (Network File System) v3.0 est actuellement en préversion. La prise en charge du protocole [NFS](../../../storage/blobs/network-file-system-protocol-support.md) permet à des clients Windows et Linux de monter un conteneur de stockage d’objets blob sur une machine virtuelle Azure. 
-
-La préversion publique du protocole NFS 3.0 prend en charge les comptes de stockage GPV2 offrant des performances de niveau standard dans les régions suivantes : 
-- Australie Est
-- Centre de la Corée
-- USA Centre Sud. 
+Le support Azure pour le protocole NFS v3.0 est désormais disponible. La prise en charge du protocole [NFS](../../../storage/blobs/network-file-system-protocol-support.md) permet à des clients Windows et Linux de monter un conteneur de stockage d’objets blob sur une machine virtuelle Azure. 
 
 Pour garantir la sécurité du réseau, le compte de stockage utilisé pour le montage NFS doit être contenu dans un réseau virtuel. La sécurité et les listes de contrôle d’accès (ACL) d’Azure Active Directory (AD) ne sont pas encore prises en charge dans les comptes sur lesquels la prise en charge du protocole NFS 3.0 est activée.
 
@@ -99,22 +94,15 @@ Pour garantir la sécurité du réseau, le compte de stockage utilisé pour le m
 
 [Azure Files](../../../storage/files/storage-files-introduction.md) est un système de fichiers distribué complètement managé basé sur le cloud, qui peut être monté sur des clients Windows, Linux ou macOS locaux ou dans le cloud.
 
-Azure Files offre des partages de fichiers multiplateformes complètement managés dans le cloud, qui sont accessibles via les protocoles SMB (Server Message Block) et NFS (Network File System, en préversion). Actuellement, Azure Files ne prend pas en charge l’accès multiprotocole, de sorte qu’un partage ne peut être qu’un partage NFS ou un partage SMB. Nous vous recommandons de déterminer quel protocole correspond le mieux à vos besoins avant de créer des partages de fichiers Azure.
+Azure Files offre des partages de fichiers multiplateformes complètement managés dans le cloud, qui sont accessibles via les protocoles SMB et NFS. Actuellement, Azure Files ne prend pas en charge l’accès multiprotocole, de sorte qu’un partage ne peut être qu’un partage NFS ou un partage SMB. Nous vous recommandons de déterminer quel protocole correspond le mieux à vos besoins avant de créer des partages de fichiers Azure.
 
 Vous pouvez également protéger des partages de fichiers Azure via le service Sauvegarde Azure dans le coffre Recovery Services, ce qui a pour effet de fournir une couche supplémentaire de protection aux sauvegardes RMAN Oracle.
 
-#### <a name="azure-files-nfs-v41-preview"></a>Azure Files NFS v4.1 (préversion)
+#### <a name="azure-files-nfs-v41"></a>Azure Files NFS v4.1
 
-Vous pouvez monter des partages de fichiers Azure dans des distributions Linux à l’aide du protocole NFS (Network File System) v4.1. En préversion, il existe un certain nombre de limitations aux fonctionnalités prises en charge. Pour obtenir davantage d’informations, voir [Monter un partage de fichiers Azure NFS (préversion)](../../../storage/files/storage-files-how-to-mount-nfs-shares.md). 
+Vous pouvez monter des partages de fichiers Azure dans des distributions Linux à l’aide du protocole NFS (Network File System) v4.1. Il existe un certain nombre de limitations aux fonctionnalités prises en charge. Pour plus d’informations, consultez [Prise en charge des fonctionnalités de Stockage Azure](../../../storage/files/files-nfs-protocol.md#support-for-azure-storage-features). 
 
-En préversion, Azure Files NFS v4.1 est également limité aux [régions suivantes](../../../storage/files/storage-files-how-to-mount-nfs-shares.md) :
-- USA Est (LRS et ZRS)
-- USA Est 2
-- USA Ouest 2
-- Europe Ouest
-- Asie Sud-Est
-- Sud du Royaume-Uni
-- Australie Est
+[!INCLUDE [files-nfs-regional-availability](../../../../includes/files-nfs-regional-availability.md)]
 
 #### <a name="azure-files-smb-30"></a>Azure Files SMB 3.0
 

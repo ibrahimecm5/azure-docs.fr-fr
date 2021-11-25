@@ -1459,6 +1459,8 @@ items:
         href: /rest/api/synapse/
       - name: Utilitaires Microsoft Spark
         href: ./spark/microsoft-spark-utilities.md
+      - name: API de montage/démontage de fichiers dans Synapse
+        href: ./spark/synapse-file-mount-api.md
       - name: Exemples
         href: 'https://github.com/Azure-Samples/Synapse'
       - name: Vues système

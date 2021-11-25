@@ -2,25 +2,30 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 03/18/2021
+ms.date: 11/12/2021
 ms.author: parkerra
-ms.openlocfilehash: 1c2eb0b4350f24ed1b7c4d0f662c7afec3feffeb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 81dffe5fd5e5788538a0d263f305186933ee2574
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669596"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490488"
 ---
-Le kit de développement logiciel (SDK) Azure Spatial Anchors pour la version 2.9 ou ultérieure doit être configuré dans [Unity 2020.3 (LTS)](https://unity3d.com/unity/whats-new/2020.3.0) avec l’[Unity XR Plug-in Framework](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) en utilisant les packages suivants :
+Lorsque vous démarrez un nouveau projet Unity, vous pouvez choisir entre l'[infrastructure de plug-in Unity XR](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) et la XR intégrée existante.
 
-- AR Foundation : [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/manual/index.html)
-- Plug-in Windows XR (pour la prise en charge des appareils HoloLens) : [4.4.1](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr@4.4/manual/index.html)
-- Plug-in ARCore XR (pour la prise en charge des appareils Android) : [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.0/manual/index.html)
-- Plug-in ARKit XR (pour la prise en charge des appareils iOS) : [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.0/manual/index.html)
+### <a name="xr-plug-in-framework"></a>[Infrastructure de plug-in XR](#tab/xr-plugin-framework)
 
-Les versions 2.8 ou antérieures du kit de développement logiciel (SDK) Azure Spatial Anchors ne prennent pas en charge l’[Unity XR Plug-in Framework](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) et doivent être configurées dans [Unity 2019.4 (LTS)](https://unity.com/releases/2019-lts) à l’aide des packages suivants :
+L’infrastructure de plug-in XR est uniquement prise en charge dans le kit de développement logiciel (SDK) ASA version 2.9.0 ou ultérieure. Pour cibler l’infrastructure de plug-in XR, utilisez Unity [2020.3 (LTS)](https://unity3d.com/unity/whats-new/2020.3.0)et AR Foundation [4.1.7](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.1/manual/index.html) avec les packages suivants, en fonction de votre plateforme :
+> [!IMPORTANT]
+> Le plug-in OpenXR de réalité mixte est uniquement pris en charge sur le SDK ASA version 2.10.0 ou ultérieure
+- Plug-in OpenXR de la réalité mixte : [1.1.2](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)
+- Plug-in XR Windows : [4.5.0](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr@4.5/manual/index.html)
+- Plug-in XR ARCore : [4.1.7](https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html)
+- Plug-in XR ARKit : [4.1.7](https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.1/manual/index.html)
 
-- AR Foundation : [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.1/manual/index.html)
-- Windows Mixed Reality (pour la prise en charge des appareils HoloLens) : [4.2.1](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr.metro@4.2/manual/index.html)
-- Plug-in ARCore XR (pour la prise en charge des appareils Android) : [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arcore@3.1/manual/index.html)
-- Plug-in ARKit XR (pour la prise en charge des appareils iOS) : [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arkit@3.1/manual/index.html)
+### <a name="legacy-built-in-xr"></a>[XR intégré hérité](#tab/legacy-built-in-xr)
+
+Le XR intégré hérité est pris en charge uniquement sur le SDK ASA version 2.8.1 ou antérieure. Pour cibler le XR intégré hérité, utilisez Unity [2019.4 (LTS)](https://unity.com/releases/2019-lts)et AR Foundation [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.1/manual/index.html) avec les packages suivants, en fonction de votre plateforme :
+- Windows Mixed Reality : [4.2.1](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr.metro@4.2/manual/index.html)
+- Plug-in XR ARCore : [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arcore@3.1/manual/index.html)
+- Plug-in XR ARKit : [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arkit@3.1/manual/index.html)

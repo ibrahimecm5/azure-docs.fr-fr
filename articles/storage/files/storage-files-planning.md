@@ -8,17 +8,17 @@ ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1d3688e4051f2883c5316a13e59f5629481799e2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 407d3c8d14cec2a55a9a33d58dfa1af77b8266b7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864559"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522837"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planification d’un déploiement Azure Files
 Le service [Azure Files](storage-files-introduction.md) peut être déployé principalement de deux façons : en montant directement les partages de fichiers Azure serverless, ou en mettant en cache les partages de fichiers Azure en local avec Azure File Sync. L'option de déploiement que vous choisissez détermine les éléments à prendre en compte lors de la planification de votre déploiement. 
 
-- **Montage direct d’un partage de fichiers Azure** : étant donné qu’Azure Files fournit un accès SMB ou NFS, vous pouvez monter des partages de fichiers Azure localement ou dans le cloud à l’aide des clients SMB ou NFS standard (en préversion) qui sont disponibles dans votre système d’exploitation. Dans la mesure où les partages de fichiers Azure sont serverless, vous n'avez aucun serveur de fichiers ou appareil NAS à gérer lors des déploiements liés à des scénarios de production. Concrètement, cela signifie que vous n'avez aucun correctif logiciel à appliquer ni aucun disque physique à remplacer. 
+- **Montage direct d'un partage de fichiers Azure** : Étant donné qu’Azure Files fournit un accès SMB (Server Message Block) ou NFS (Network File System), vous pouvez monter des partages de fichiers Azure localement ou dans le cloud à l’aide des clients SMB ou NFS standard disponibles dans votre système d’exploitation. Dans la mesure où les partages de fichiers Azure sont serverless, vous n'avez aucun serveur de fichiers ou appareil NAS à gérer lors des déploiements liés à des scénarios de production. Concrètement, cela signifie que vous n'avez aucun correctif logiciel à appliquer ni aucun disque physique à remplacer. 
 
 - **Mise en cache d'un partage de fichiers Azure localement à l'aide d'Azure File Sync** : Azure File Sync vous permet de centraliser les partages de fichiers de votre organisation dans Azure Files, tout en conservant la flexibilité, le niveau de performance et la compatibilité d'un serveur de fichiers local. Azure File Sync transforme une instance Windows Server locale (ou cloud) en un cache rapide de votre partage de fichiers SMB Azure. 
 
@@ -29,7 +29,7 @@ Azure Files propose deux protocoles standard pour le montage d’un partage de
 
 Avec les partages de fichiers SMB et NFS, Azure Files propose des partages de fichiers d’entreprise qui peuvent être mis à l’échelle pour répondre à vos besoins de stockage et qui permettent l’accès simultané de milliers de clients.
 
-| Fonctionnalité | SMB | NFS (préversion) |
+| Fonctionnalité | SMB | NFS |
 |---------|-----|---------------|
 | Versions des protocoles prises en charge | SMB 3.1.1, SMB 3.0, SMB 2.1 | NFS 4.1 |
 | Système d’exploitation recommandé | <ul><li>Windows 10, version 21H1+</li><li>Windows Server 2019+</li><li>Noyau Linux version 5.3+</li></ul> | Noyau Linux version 4.3+ |
@@ -40,12 +40,12 @@ Avec les partages de fichiers SMB et NFS, Azure Files propose des partages de
 | Authentification | Authentification basée sur l’identité (Kerberos), authentification par clé partagée (NTLMv2) | Authentification basée sur l’hôte |
 | Autorisation | Listes de contrôle d’accès de type Win32 | Autorisations de style UNIX |
 | Respect de la casse | Non sensible à la casse, casse conservée | Respect de la casse |
-| Suppression ou modification de fichiers ouverts | Avec verrou uniquement | Oui |
+| Suppression ou modification de fichiers ouverts | Avec verrou uniquement | Yes |
 | Partage de fichiers | [Mode de partage Windows](/windows/win32/fileio/creating-and-opening-files) | Gestionnaire conseil de verrouillage réseau de plage d’octets |
 | Prise en charge des liens physiques | Non prise en charge | Pris en charge |
 | Prise en charge des liens symboliques | Non prise en charge | Pris en charge |
-| Accessible par Internet (facultatif) | Oui (SMB 3.0+ uniquement) | Non |
-| Prend en charge FileREST | Oui | Sous-ensemble : <br /><ul><li>[Opérations sur `FileService`](/rest/api/storageservices/operations-on-the-account--file-service-)</li><li>[Opérations sur `FileShares`](/rest/api/storageservices/operations-on-shares--file-service-)</li><li>[Opérations sur `Directories`](/rest/api/storageservices/operations-on-directories)</li><li>[Opérations sur `Files`](/rest/api/storageservices/operations-on-files)</li></ul> |
+| Accessible par Internet (facultatif) | Oui (SMB 3.0+ uniquement) | No |
+| Prend en charge FileREST | Yes | Sous-ensemble : <br /><ul><li>[Opérations sur `FileService`](/rest/api/storageservices/operations-on-the-account--file-service-)</li><li>[Opérations sur `FileShares`](/rest/api/storageservices/operations-on-shares--file-service-)</li><li>[Opérations sur `Directories`](/rest/api/storageservices/operations-on-directories)</li><li>[Opérations sur `Files`](/rest/api/storageservices/operations-on-files)</li></ul> |
 
 ## <a name="management-concepts"></a>Concepts de gestion
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -126,8 +126,8 @@ Sauvegarde Azure vous permet d’effectuer des restaurations au niveau élément
 
 Pour plus d’informations sur la sauvegarde, consultez [À propos de la sauvegarde des partages de fichiers Azure](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="azure-defender-for-azure-files"></a>Azure Defender pour Azure Files 
-Azure Defender pour Azure Files (anciennement Advanced Threat Protection pour Stockage Azure) fournit une couche supplémentaire de renseignement sur la sécurité, qui génère des alertes quand elle détecte une activité anormale sur votre compte de stockage, par exemple, des tentatives inhabituelles d’accès. Il exécute également une analyse de réputation du hachage de programme malveillant et déclenche une alerte concernant les programmes malveillants connus. Vous pouvez configurer Azure Defender au niveau d’un abonnement ou d’un compte de stockage via Azure Security Center. 
+### <a name="protect-azure-files-with-microsoft-defender-for-storage"></a>Protéger Azure Files avec Microsoft defender pour Stockage
+Microsoft Defender for Stockage fournit une couche supplémentaire d’intelligence de sécurité qui génère des alertes lorsqu’il détecte une activité anormale sur votre compte de stockage, par exemple des tentatives d’accès inhabituelles. Il exécute également une analyse de réputation du hachage de programme malveillant et déclenche une alerte concernant les programmes malveillants connus. Vous pouvez configurer Microsoft Defender pour Stockage au niveau de l’abonnement ou du compte de stockage via Microsoft Defender pour le Cloud.
 
 Pour plus d’informations, consultez [Présentation d’Azure Defender pour le Stockage](../../security-center/defender-for-storage-introduction.md).
 

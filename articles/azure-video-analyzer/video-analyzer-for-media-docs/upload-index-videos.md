@@ -3,14 +3,14 @@ title: Charger et indexer les vidéos avec Azure Video Analyzer for Media (ancie
 description: Cette rubrique montre comment utiliser des API pour charger et indexer vos vidéos avec Azure Video Analyzer for Media (anciennement Video Indexer).
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.date: 05/12/2021
+ms.date: 11/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e92a83f2c8f9f0a21368808b57b1fadc1b64d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2a9aa291937afcb55739cfdb4532d0a59f2bc9f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071683"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519588"
 ---
 # <a name="upload-and-index-your-videos"></a>Charger et indexer vos vidéos  
 
@@ -317,13 +317,13 @@ public class AccountContractSlim
 
 ### <a name="arm-account"></a>[Compte ARM](#tab/with-arm-account-account/)
 
-Après avoir copié ce projet C# dans votre plateforme de développement, vous devrez effectuer les étapes suivantes : 
+Après avoir copié ce projet C# dans votre plateforme de développement, vous devez effectuer les étapes suivantes : 
 1. Accédez à Program.cs et renseignez ```SubscriptionId``` avec votre ID d’abonnement.
 2. Accédez à Program.cs et renseignez ```ResourceGroup``` avec votre groupe de ressources.
 3. Accédez à Program.cs et renseignez ```AccountName``` avec votre nom de compte.
 4. Accédez à Program.cs et renseignez ```VideoUrl``` avec l’URL de votre vidéo.
-5. Vérifiez que dotnet 6.0 est installé. Si ce n’est pas le cas, cliquez [ici](https://dotnet.microsoft.com/download/dotnet/6.0) pour l’installer.
-6. Vérifiez qu’Azure CLI est installé. Si ce n’est pas le cas, cliquez [ici](/cli/azure/install-azure-cli) pour l’installer.
+5. Vérifiez que dotnet 6.0 est installé. Si ce n’est pas le cas, [installez-le](https://dotnet.microsoft.com/download/dotnet/6.0).
+6. Vérifiez qu’Azure CLI est installé. Si ce n’est pas le cas, [installez-le](/cli/azure/install-azure-cli).
 7. Ouvrez votre terminal et accédez au dossier VideoIndexerArm.
 8. Connectez-vous à Azure : ```az login --use-device```
 9. Générez le projet : ```dotnet build```

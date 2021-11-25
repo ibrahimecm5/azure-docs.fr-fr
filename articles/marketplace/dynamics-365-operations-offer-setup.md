@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: eadbeee57960577f12f880b4582e820eddb63e3c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7b155c07edebf80ee45467829c57024d0ad2845f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234373"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552277"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Créer une offre Dynamics 365 for Operations
 
@@ -28,11 +28,11 @@ Examinez [Planifier une offre Dynamics 365](marketplace-dynamics-365.md). Cet a
 
 [!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
 
-#### <a name="workspaces-view"></a>[Vue des espaces de travail](#tab/workspaces-view)
+#### <a name="workspaces-view"></a>[Vues d’espaces de travail](#tab/workspaces-view)
 
 1. Connectez-vous à l’[Espace partenaires](https://go.microsoft.com/fwlink/?linkid=2166002).
 
-1. Sur la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
+1. Dans la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
 
     [ ![Illustre la vignette Offres de la Place de marché sur la page d’accueil de l’Espace partenaires.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
@@ -77,15 +77,9 @@ Entrez un nom descriptif que nous utiliserons pour faire référence à cette of
 
 ## <a name="setup-details"></a>Détails de la configuration
 
-Pour **Comment voulez-vous qu’interagissent les clients avec l’offre de liste ?** , sélectionnez l’option que vous souhaitez utiliser pour cette offre.
+Pour **Comment voulez-vous qu’interagissent les clients avec l’offre de liste ?** , sélectionnez **Me contacter**.
 
-- **Obtenez-en une maintenant (gratuit)**  : référencez votre offre gratuitement pour les clients.
-- **Essai gratuit (annonce)**  : référencez votre offre pour les clients avec un lien vers un essai gratuit. Les versions d’évaluation gratuites sont créées, gérées et configurées par votre service et n’ont pas d’abonnements gérés par Microsoft.
-
-    > [!NOTE]
-    > Les jetons que votre application recevra via votre lien d’évaluation peuvent uniquement être utilisés pour obtenir des informations utilisateur par le biais de Azure Active Directory (Azure AD) pour automatiser la création de comptes dans votre application. Les comptes Microsoft ne sont pas pris en charge pour l’authentification à l’aide de ce jeton.
-
-- **Me contacter** : collectez des informations de contact client en connectant votre système de gestion de la relation client (CRM). Le client devra autoriser le partage de ses informations. Ces informations client, ainsi que le nom de l’offre, son ID et la place de marché sur laquelle il a trouvé votre offre, seront envoyées au système CRM que vous avez configuré. Pour plus d’informations sur la configuration de votre CRM, consultez [Prospects](#customer-leads).
+Collectez des informations de contact client en connectant votre système de gestion de la relation client (CRM). Le client devra autoriser le partage de ses informations. Ces informations client, ainsi que le nom de l’offre, son ID et la place de marché sur laquelle le client a trouvé votre offre, seront envoyées au système CRM que vous avez configuré. Pour plus d’informations sur la configuration de votre CRM, consultez [Prospects](#customer-leads).
 
 ## <a name="test-drive"></a>Test drive
 

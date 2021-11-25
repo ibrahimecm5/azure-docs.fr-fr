@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e6bfa172624ba65c161abcba6dfd97b557fb8d91
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 79c8fadfc7662438f5820e92cfd0c71a9b346ba9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950464"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326870"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bonnes pratiques pour Azure Operational Security
 Cet article fournit un ensemble de meilleures pratiques opérationnelles pour protéger vos données, applications et autres ressources dans Azure.
@@ -90,39 +90,39 @@ Vous devez superviser en permanence les services de stockage utilisés par votre
 [Azure Storage Analytics](../../storage/common/storage-analytics.md) effectue la journalisation et fournit les données de métriques d’un compte de stockage Azure. Nous vous recommandons d’utiliser ces données pour suivre les requêtes, analyser les tendances d’utilisation et diagnostiquer les problèmes liés à votre compte de stockage.
 
 ## <a name="prevent-detect-and-respond-to-threats"></a>Prévenir, détecter et traiter les menaces
-[Azure Security Center](../../security-center/security-center-introduction.md) vous aide à prévenir, détecter et résoudre les menaces grâce à une visibilité et un contrôle accrus de la sécurité de vos ressources Azure. Il fournit une supervision de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste ensemble de solutions de sécurité.
+[Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md) vous aide à prévenir, détecter et traiter les menaces en offrant une visibilité accrue (et un contrôle accru) de la sécurité de vos ressources Azure. Il fournit une supervision de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste ensemble de solutions de sécurité.
 
-Le niveau Gratuit de Security Center offre une sécurité limitée pour vos ressources Azure uniquement. Le niveau Standard étend ces fonctions aux ressources locales et à d’autres clouds. Security Center Standard aide à rechercher et à corriger les failles de sécurité, appliquer des contrôles d’accès et d’application pour bloquer les activités malveillantes, détecter les menaces à l’aide de l’analytique et de l’analyse décisionnelle et à répondre rapidement en cas d’attaque. Vous pouvez essayer Security Center Standard gratuitement pendant 60 jours. Nous vous recommandons de [mettre à niveau votre abonnement Azure sur Security Center Standard](../../security-center/security-center-get-started.md).
+Le niveau Gratuit de Defender pour le cloud offre une sécurité limitée pour vos ressources Azure uniquement. Le niveau Standard étend ces fonctions aux ressources locales et à d’autres clouds. Defender pour le cloud Standard vous aide à rechercher et à corriger les vulnérabilités de sécurité, à appliquer des contrôles d’accès et d’application pour bloquer les activités malveillantes, à détecter les menaces à l’aide de l’analytique et de l’analyse décisionnelle et à répondre rapidement en cas d’attaque. Vous pouvez essayer Defender pour le cloud Standard gratuitement les 60 premiers jours. Nous vous recommandons de [mettre à niveau votre abonnement Azure sur Defender sur le cloud Standard](../../security-center/security-center-get-started.md).
 
-Utilisez Security Center pour obtenir une vue centralisée de l’état de sécurité de toutes vos ressources Azure. Vérifiez d’un coup d’œil que les contrôles de sécurité appropriés sont en place et configurés correctement, et identifiez rapidement les ressources nécessitant votre attention.
+Utilisez Defender pour le cloud pour obtenir une vue centralisée de l’état de sécurité de toutes vos ressources Azure. Vérifiez d’un coup d’œil que les contrôles de sécurité appropriés sont en place et configurés correctement, et identifiez rapidement les ressources nécessitant votre attention.
 
-Security Center s’intègre également à [Microsoft Defender ATP (Advanced Threat Protection)](../../security-center/security-center-wdatp.md), qui fournit des fonctionnalités complètes de protection évolutive des points de terminaison (PEPT). L’intégration de Microsoft Defender ATP vous permet de repérer les anomalies. Vous pouvez également détecter les attaques avancées sur les points de terminaison de serveur surveillés par Security Center et y répondre.
+Defender pour le cloud s’intègre également à [Microsoft Defender ATP (Advanced Threat Protection)](../../security-center/security-center-wdatp.md), qui fournit des fonctionnalités complètes de protection évolutive des points de terminaison (EDR). L’intégration de Microsoft Defender ATP vous permet de repérer les anomalies. Vous pouvez également détecter et traiter les attaques avancées sur les points de terminaison de serveur supervisés par Defender pour le cloud.
 
 Presque toutes les organisations d’entreprises ont un système Security Information and Event Management (SIEM) pour aider à identifier les menaces émergentes en consolidant les informations de journaux à partir de divers appareils de collecte de signaux. Les journaux sont ensuite analysés par un système d’analytique de données pour déterminer ce qui est « intéressant » à partir du bruit inévitable dans toutes les solutions d’analytique et de collecte de données.
 
-[Azure Sentinel](../../sentinel/overview.md) est une solution native cloud et évolutive de type SIEM (Security Information and Event Management) et SOAR (Security Orchestrated Automated Response). Azure Sentinel assure une analyse de sécurité intelligente et fournit des informations sur les menaces via la détection des alertes, la visibilité des menaces, la recherche proactive et la réponse automatisée face aux menaces.
+[Microsoft Sentinel](../../sentinel/overview.md) est une solution native cloud et évolutive de type SIEM (Security Information and Event Management) et SOAR (Security Orchestrated Automated Response). Microsoft Sentinel fournit une analytique de sécurité intelligente et le renseignement sur les menaces via la détection des alertes, la visibilité des menaces, la chasse proactive et la réponse automatisée face aux menaces.
 
 Voici quelques meilleures pratiques pour prévenir, détecter et répondre aux menaces :
 
 **Bonne pratique** : augmentez la vitesse et l’évolutivité de votre solution SIEM en optant pour une solution cloud.   
-**Détail** : examinez les fonctionnalités et capacités [d’Azure Sentinel](../../sentinel/overview.md) et comparez-les avec les capacités de ce que vous utilisez actuellement en local. Envisagez d’adopter Azure Sentinel si cette solution répond aux exigences SIEM de votre organisation.
+**Détails** : examinez les fonctionnalités et capacités de [Microsoft Sentinel](../../sentinel/overview.md) et comparez-les avec les capacités de votre solution actuelle locale. Envisagez d’adopter Microsoft Sentinel si cette solution répond aux exigences SIEM de votre organisation.
 
 **Bonne pratique** : recherchez les vulnérabilités de sécurité les plus graves afin de définir les priorités d’investigation.   
-**Détail** : examinez votre [degré de sécurisation Azure](../../security-center/secure-score-security-controls.md) pour afficher les recommandations résultant des stratégies Azure et des initiatives intégrées à Azure Security Center. Ces recommandations peuvent aider à résoudre les principaux risques tels que les mises à jour de sécurité, la protection de point de terminaison, le chiffrement, les configurations de sécurité, le WAF manquant, les machines virtuelles connectées à Internet et bien plus encore.
+**Détails** : examinez votre [degré de sécurisation Azure](../../security-center/secure-score-security-controls.md) pour consulter les recommandations résultant des stratégies Azure et des initiatives intégrées à Microsoft Defender pour le cloud. Ces recommandations peuvent aider à résoudre les principaux risques tels que les mises à jour de sécurité, la protection de point de terminaison, le chiffrement, les configurations de sécurité, le WAF manquant, les machines virtuelles connectées à Internet et bien plus encore.
 
 Le degré de sécurisation, qui est basé sur les contrôles du Center for Internet Security (CIS), vous permet d’évaluer la sécurité Azure de votre organisation par rapport à des sources externes. Une validation externe permet de confirmer et d’enrichir la stratégie de sécurité de votre équipe.
 
 **Bonne pratique** : surveillez la posture de sécurité des machines, réseaux, services de stockage et de données, et des applications pour découvrir d’éventuels problèmes de sécurité et les classer par ordre de priorité.  
-**Détail** : suivez les [recommandations de sécurité](../../security-center/security-center-recommendations.md) de Security Center en commençant par les éléments avec la priorité la plus élevée.
+**Détails** : suivez les [recommandations de sécurité](../../security-center/security-center-recommendations.md) de Defender pour le cloud en commençant par les éléments ayant la priorité la plus élevée.
 
-**Bonne pratique** : intégrez des alertes de Security Center dans votre solution SIEM.   
-**Détail** : la plupart des organisations avec une solution SIEM l’utilisent comme un centre d’échanges central pour les alertes de sécurité qui nécessitent la réponse d’un analyste. Les événements traités produits par Security Center sont publiés dans le journal d’activité Azure, l’un des types de journaux disponibles avec Azure Monitor. Azure Monitor offre un pipeline centralisé pour router les données de monitoring dans un outil SIEM. Consultez [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](../../security-center/export-to-siem.md) pour obtenir des instructions. Si vous utilisez Azure Sentinel, consultez [Connect data from Azure Security Center](../../sentinel/connect-azure-security-center.md) (Connecter des données à partir d’Azure Security Center).
+**Meilleure pratique** : intégrez des alertes Defender pour le cloud dans votre solution SIEM (Security Information and Event Management).   
+**Détail** : la plupart des organisations avec une solution SIEM l’utilisent comme un centre d’échanges central pour les alertes de sécurité qui nécessitent la réponse d’un analyste. Les événements traités produits par Defender pour le cloud sont publiés dans le journal d’activité Azure, l’un des types de journaux disponibles avec Azure Monitor. Azure Monitor offre un pipeline centralisé pour router les données de monitoring dans un outil SIEM. Consultez [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](../../security-center/export-to-siem.md) pour obtenir des instructions. Si vous utilisez Microsoft Sentinel, consultez [Connecter Microsoft Defender pour le cloud](../../sentinel/connect-azure-security-center.md).
 
 **Bonne pratique** : intégrez les journaux Azure à votre solution SIEM.   
-**Détail** : utilisez [Azure Monitor pour collecter et exporter des données](../../azure-monitor/overview.md#integrate-and-export-data). Cette pratique est critique pour permettre d’investiguer sur des incidents de sécurité, et la rétention des journaux en ligne est limitée. Si vous utilisez Azure Sentinel, consultez [Connecter des sources de données](../../sentinel/connect-data-sources.md).
+**Détail** : utilisez [Azure Monitor pour collecter et exporter des données](../../azure-monitor/overview.md#integrate-and-export-data). Cette pratique est critique pour permettre d’investiguer sur des incidents de sécurité, et la rétention des journaux en ligne est limitée. Si vous utilisez Microsoft Sentinel, consultez [Connecter des sources de données](../../sentinel/connect-data-sources.md).
 
 **Bonne pratique** : accélérez vos processus d’investigation et de recherche et réduisez les faux positifs en intégrant des fonctionnalités de détection de point de terminaison et de réponse (EDR) dans votre examen de l’attaque.   
-**Détail** : [Activer l’intégration de Microsoft Defender for Endpoint](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) par le biais de votre stratégie de sécurité Security Center. Envisagez d’utiliser Azure Sentinel pour rechercher les menaces et répondre aux incidents.
+**Détails** : [activez l’intégration de Microsoft Defender pour point de terminaison](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) par le biais de votre stratégie de sécurité Defender pour le cloud. Envisagez d’utiliser Microsoft Sentinel pour la chasse aux menaces et répondre aux incidents.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Superviser le réseau selon un scénario de bout en bout
 Les clients créent un réseau de bout en bout dans Azure en combinant des ressources réseau comme un réseau virtuel, ExpressRoute, Application Gateway et des équilibreurs de charge. La surveillance est disponible sur chacune des ressources réseau.
