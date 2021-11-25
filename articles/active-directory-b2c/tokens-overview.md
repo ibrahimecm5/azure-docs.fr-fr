@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 10/1/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 954b206d0256a62940a4c2561cd18a69298afa9a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: ab1dfac449bd37fb88f533a824d35eb52e83ccb0
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131036216"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517593"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Vue d’ensemble des jetons dans Azure Active Directory B2C
 
@@ -137,6 +138,8 @@ https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.w
 ```
 
 Afin de déterminer la stratégie utilisée pour signer un jeton (et l’emplacement à partir duquel demander les métadonnées), deux options sont possibles. Tout d’abord, le nom de la stratégie est inclus dans la revendication `tfp` (par défaut) ou `acr` (configurée) dans le jeton. Vous pouvez analyser les revendications contenues dans le corps du jeton JWT par le biais d’un décodage base-64 du corps et la désérialisation de la chaîne JSON résultante. La revendication `tfp` ou `acr` est le nom de la stratégie qui a été utilisée pour émettre le jeton. L’autre option consiste à coder la stratégie dans la valeur du paramètre `state` lors de l’émission de la requête, puis à la décoder pour déterminer la stratégie qui a été utilisée. Les 2 méthodes sont valides.
+
+Azure AD B2C utilise l’algorithme RS256, qui est basé sur la spécification [RFC 3447](https://www.rfc-editor.org/rfc/rfc3447#section-3.1). La clé publique se compose de deux composants : le module RSA (`n`) et l’exposant public RSA (`e`). Vous pouvez convertir par programmation les valeurs `n` et `e` en un format de certificat pour la validation des jetons.
 
 Ce document ne contient pas la description de la procédure de validation de la signature. De nombreuses bibliothèques open source sont disponibles pour vous aider à valider un jeton.
 

@@ -3,12 +3,12 @@ title: Créer un registre privé pour le module Bicep
 description: Découvrez comment configurer un registre de conteneurs Azure pour les modules Bicep privés
 ms.topic: conceptual
 ms.date: 10/22/2021
-ms.openlocfilehash: f09b4d65c43cbd0f73543322488e56985a16aa9e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b667a80a155355ea206c4804d6eb98200491e3f8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470316"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551365"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Créer un registre privé pour les modules Bicep (préversion)
 
@@ -42,7 +42,7 @@ Un registre Bicep est hébergé sur [Azure Container Registry (ACR)](../../conta
 
 - Pour publier des modules dans un registre, vous devez avoir l’autorisation **d’envoyer (push)** une image. Pour déployer un module à partir d’un registre, vous devez avoir l’autorisation de **tirer (pull)** l’image. Pour plus d’informations sur les rôles qui accordent l’accès approprié, consultez [Rôles et autorisations Azure Container Registry](../../container-registry/container-registry-roles.md).
 
-- Selon le type de compte que vous utilisez pour déployer le module, vous devrez peut-être personnaliser les informations d’identification qui sont utilisées. Ces informations d’identification sont nécessaires pour récupérer les modules à partir du registre. Par défaut, les informations d’identification sont obtenues à partir d’Azure CLI ou d’Azure PowerShell. Vous pouvez personnaliser la priorité d’obtention des informations d’identification dans le fichier **bicepconfig.json**. Pour plus d’informations, consultez [Informations d’identification pour la restauration des modules](bicep-config.md#credentials-for-restoring-modules).
+- Selon le type de compte que vous utilisez pour déployer le module, vous devrez peut-être personnaliser les informations d’identification qui sont utilisées. Ces informations d’identification sont nécessaires pour récupérer les modules à partir du registre. Par défaut, les informations d’identification sont obtenues à partir d’Azure CLI ou d’Azure PowerShell. Vous pouvez personnaliser la priorité d’obtention des informations d’identification dans le fichier **bicepconfig.json**. Pour plus d’informations, consultez [Informations d’identification pour la restauration des modules](bicep-config-modules.md#credentials-for-restoring-modules).
 
 - Pour plus de sécurité, vous pouvez demander l’accès via un point de terminaison privé. Pour plus d’informations, consultez [Connexion privée à un registre de conteneurs Azure à l’aide de Azure Private Link](../../container-registry/container-registry-private-link.md).
 
@@ -73,5 +73,5 @@ Vous êtes maintenant prêt à référencer le fichier dans le registre à parti
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour en savoir plus sur les modules, consultez [Modules Bicep](modules.md).
-* Pour configurer des alias pour un registre de module, consultez [Ajouter des paramètres personnalisés dans le fichier de configuration Bicep](bicep-config.md).
+* Pour configurer des alias pour un registre de modules, consultez [Ajouter des paramètres de module dans le fichier config Bicep](bicep-config-modules.md).
 * Pour plus d’informations sur la publication et la restauration des modules, consultez [Commandes CLI Bicep](bicep-cli.md).

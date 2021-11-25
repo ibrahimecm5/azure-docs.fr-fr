@@ -5,12 +5,12 @@ description: Découvrir les meilleures pratiques de l’opérateur relatives à 
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 73c9ac0780c6a1217e58f40b4e64f290e8904457
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453319"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492433"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Meilleures pratiques relatives aux mises à jour et à la sécurité du cluster dans Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Cet article est dédié à la sécurisation de votre cluster AKS. Vous allez app
 
 Vous pouvez également consulter les meilleures pratiques relatives à la [gestion des images conteneur][best-practices-container-image-management] et à la [sécurité du pod][best-practices-pod-security].
 
-Vous pouvez également utiliser [Intégration des services Azure Kubernetes avec Security Center][security-center-aks] pour détecter les menaces et afficher des recommandations pour sécuriser vos clusters AKS.
+Vous pouvez également utiliser l’[intégration des services Azure Kubernetes à Defender pour le cloud][security-center-aks] pour détecter les menaces et afficher des recommandations pour sécuriser vos clusters AKS.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Sécuriser l’accès aux nœuds de cluster et au serveur d’API
 
@@ -285,7 +285,7 @@ Chaque soir, les nœuds Linux dans AKS obtiennent les correctifs de sécurité p
 
 ### <a name="node-image-upgrades"></a>Mises à niveau d’images de nœud
 
-Les mises à niveau sans assistance appliquent les mises à jour au système d'exploitation du nœud Linux, mais l'image utilisée pour créer les nœuds de votre cluster reste inchangée. Si un nouveau nœud Linux est ajouté à votre cluster, l'image d'origine est utilisée pour créer le nœud. Ce nouveau nœud recevra toutes les mises à jour de sécurité et du noyau disponibles lors de la vérification automatique chaque nuit, mais restera non corrigé jusqu'à ce que toutes les vérifications et tous les redémarrages soient terminés. Vous pouvez utiliser la mise à niveau des images de nœud pour rechercher et mettre à jour les images de nœud utilisées par votre cluster. Pour plus d'informations sur la mise à niveau des images de nœud, consultez [Mise à niveau des images de nœud Azure Kubernetes Service (AKS)][node-image-upgrade].
+Les mises à niveau sans assistance appliquent les mises à jour au système d’exploitation des nœuds Linux, mais l’image utilisée pour créer les nœuds de votre cluster reste inchangée. Si un nouveau nœud Linux est ajouté à votre cluster, l’image d’origine est utilisée pour créer ce nœud. Ce nouveau nœud recevra toutes les mises à jour de sécurité et de noyau disponibles au cours de la vérification automatique chaque nuit, mais restera non corrigé jusqu’à ce que toutes les vérifications et tous les redémarrages soient terminés. Vous pouvez utiliser la mise à niveau des images de nœud pour rechercher et mettre à jour les images de nœud utilisées par votre cluster. Pour plus d'informations sur la mise à niveau des images de nœud, consultez [Mise à niveau des images de nœud Azure Kubernetes Service (AKS)][node-image-upgrade].
 
 ## <a name="process-windows-server-node-updates"></a>Traiter les mises à jour des nœuds Windows Server
 
@@ -310,5 +310,5 @@ Pour les nœuds Windows Server, effectuez régulièrement une opération de mise
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md
+[security-center-aks]: ../defender-for-cloud/defender-for-kubernetes-introduction.md
 [node-image-upgrade]: node-image-upgrade.md

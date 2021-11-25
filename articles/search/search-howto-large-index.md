@@ -2,18 +2,18 @@
 title: Indexer des grands jeux de données avec des indexeurs intégrés
 titleSuffix: Azure Cognitive Search
 description: Stratégies pour l’indexation de grands volumes de données ou pour l’indexation gourmande en ressources via le mode de traitement par lots, la gestion des ressources, et des techniques d’indexation planifiée, parallèle et distribuée.
-manager: liamca
+manager: nitinme
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: c754c47bda03987c00b763d39c608f9de3d84deb
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 11/12/2021
+ms.openlocfilehash: 0c7dccdc484a99e751a7676729a760499b501672
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558810"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487978"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Comment indexer des grands ensembles de données dans la Recherche cognitive Azure
 
@@ -27,7 +27,7 @@ Les sections suivantes décrivent des techniques d’indexation de grandes quant
 
 ## <a name="use-the-push-api"></a>Utiliser l’API Push
 
-Lors de l’envoi de données dans un index à l’aide de l’[API REST Ajouter des documents](/rest/api/searchservice/addupdate-or-delete-documents) ou de la [méthode IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments), diverses considérations importantes affectent la vitesse d’indexation. Ces facteurs sont décrits dans la section ci-dessous, et vont de la définition de la capacité de service aux optimisations du code.
+Lors de l’envoi de données dans un index à l’aide de l’[API REST Ajouter des documents](/rest/api/searchservice/addupdate-or-delete-documents) ou de la [méthode IndexDocuments (.NET)](/dotnet/api/azure.search.documents.searchclient.indexdocuments), diverses considérations importantes ont un impact sur la vitesse d’indexation. Ces facteurs sont décrits dans la section ci-dessous, et vont de la définition de la capacité de service aux optimisations du code.
 
 Pour plus d’informations et des exemples de code illustrant l’indexation de modèle d’émission, consultez [Tutoriel : Optimiser les vitesses d’indexation](tutorial-optimize-indexing-push-api.md).
 

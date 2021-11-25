@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: a63eaf3047dec956755616e06e1c250d88825772
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f44bf2610096db94b1c846dcab1eeacbf121a07
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609780"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494821"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Connecteur Azure Monitor Logs pour Logic Apps et Power Automate
 [Azure Logic Apps](../../logic-apps/index.yml) et [Power Automate](https://flow.microsoft.com) vous permettent de créer des workflows automatisés utilisant des centaines d’actions pour divers services. Le connecteur Azure Monitor Logs vous permet de générer des workflows qui récupèrent des données à partir d’un espace de travail Log Analytics ou d’une application Application Insights dans Azure Monitor. Cet article décrit les actions incluses dans le connecteur et montre pas à pas comment générer un workflow utilisant ces données.

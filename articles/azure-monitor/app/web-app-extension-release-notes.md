@@ -3,12 +3,12 @@ title: Notes de publication pour l’extension d’application web Azure - Appli
 description: Publie des notes pour l’extension de Web Apps Azure pour l’instrumentation du runtime avec Application Insights.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 84d01a2bcc4e371ca03610f2d002eaaf73159b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828816"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316030"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Notes de publication pour l’extension d’application web Azure pour Application Insights
 
@@ -25,6 +25,26 @@ Apprenez-en davantage sur l’[extension d’application web Azure pour Applicat
     - Désinstallez les extensions de site privé, car elles ne sont plus prises en charge.
 
 ## <a name="release-notes"></a>Notes de publication
+
+### <a name="2842"></a>2.8.42
+
+- Extension JAVA : mise à niveau vers l’[agent Java 3.2.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0) à partir de la version 2.5.1.
+- Extension Node.js : mise à jour du Kit de développement logiciel (SDK) IA vers la version [2.1.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.8) à partir de la version 2.1.7. Ajout de la prise en charge des identités managées AAD affectées par l’utilisateur et le système.
+- .NET Core : ajout de déploiements autonomes et prise en charge de .NET 6.0 à l’aide d’un [crochet de démarrage .NET](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md).
+
+### <a name="2841"></a>2.8.41
+
+- Extension Node.js : mise à jour du Kit de développement logiciel (SDK) IA vers la version [2.1.7](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.7) à partir de la version 2.1.3.
+- .NET Core : suppression des versions hors support (2.1). Les versions prises en charge sont les versions 3.1 et 5.0.
+
+### <a name="2840"></a>2.8.40
+
+- Extension JAVA : mise à niveau vers l’[agent Java 3.1.1 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.1) à partir de la version 3.0.2.
+- Extension Node.js : mise à jour du Kit de développement logiciel (SDK) IA vers la version [2.1.3](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.3) à partir de la version 1.8.8.
+
+### <a name="2839"></a>2.8.39
+
+- .NET Core : ajout de la prise en charge de .NET Core 5.0.
 
 ### <a name="2838"></a>2.8.38
 

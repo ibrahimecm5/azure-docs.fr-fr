@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 526a1bf1c39ad503a2f0585999247a8e91b4c727
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82204668"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529738"
 ---
 Le tableau suivant répertorie les limites associées aux différents niveaux de service (S1, S2, S3 et F1). Pour en savoir plus sur le coût de chaque *unité* dans chaque couche, consultez [la tarification relative à Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -48,7 +48,7 @@ Le tableau suivant répertorie les limites qui s’appliquent aux ressources IoT
 | Taille maximale de la charge utile de la méthode directe | 128 Ko |
 | Conservation maximale de l’historique des travaux | 30 jours |
 | Nombre maximal de travaux simultanés | 10 (pour S3), 5 pour (S2), 1 (pour S1) |
-| Nombre maximal de points de terminaison supplémentaires | 10 (pour S1, S2 et S3) |
+| Nombre maximal de points de terminaison supplémentaires (au-delà des [points de terminaison intégrés](../articles/iot-hub/iot-hub-devguide-endpoints.md)) | 10 (pour S1, S2 et S3) |
 | Nombre maximal de règles de routage de messages | 100 (pour S1, S2 et S3) |
 | Nombre maximal de flux d’appareils connectés simultanément | 50 (pour S1, S2, S3 et F1 uniquement) |
 | Transfert de données de flux d’appareil maximal | 300 Mo par jour (pour S1, S2, S3 et F1 uniquement) |

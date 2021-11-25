@@ -4,12 +4,12 @@ description: Empêchez les utilisateurs de mettre à jour ou de supprimer des re
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 62581028b58001c51721b79149ad2c75dacc86a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 324aed15446e83e0853f4b590c7d679a7f598abe
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642393"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491390"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Verrouiller les ressources pour empêcher les modifications inattendues
 
@@ -97,9 +97,9 @@ Pour supprimer tous les éléments associés au service, y compris le groupe de 
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-### <a name="arm-template"></a>Modèle ARM
+### <a name="template"></a>Modèle
 
-Quand vous utilisez un modèle Azure Resource Manager pour déployer un verrou, vous devez connaître l’étendue du verrou et celle du déploiement. Pour appliquer un verrou au niveau de l’étendue du déploiement, tel que le verrouillage d’un groupe de ressources ou d’un abonnement, ne définissez pas la propriété d’étendue. Lors du verrouillage d’une ressource dans l’étendue du déploiement, définissez la propriété d’étendue.
+Lorsque vous utilisez un modèle Azure Resource Manager (modèle ARM) ou un fichier Bicep pour déployer un verrou, vous devez connaître l’étendue du verrou et celle du déploiement. Pour appliquer un verrou au niveau de l’étendue du déploiement, tel que le verrouillage d’un groupe de ressources ou d’un abonnement, ne définissez pas la propriété d’étendue. Lors du verrouillage d’une ressource dans l’étendue du déploiement, définissez la propriété d’étendue.
 
 Le modèle suivant applique un verrou au groupe de ressources sur lequel il est déployé. Notez qu’il n’existe pas de propriété d’étendue sur la ressource de verrou, car l’étendue du verrou correspond à celle du déploiement. Ce modèle est déployé au niveau du groupe de ressources.
 

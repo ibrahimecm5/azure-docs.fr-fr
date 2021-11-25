@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: d6a43a64cbe24bc547ef1c6e61d4c0e3c340d76f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.date: 11/10/2021
+ms.openlocfilehash: 90e0703313db99bee1a7d06e9c1bc9d0efac135f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067266"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372963"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Modèles de mesure de l’utilisation, de facturation et de tarification pour Azure Logic Apps
 
@@ -73,10 +73,10 @@ Pour vous aider à estimer plus précisément les coûts de consommation, consul
 
 Dans Azure Logic Apps monolocataire, une application logique et ses flux de travail suivent le plan [**Standard**](https://azure.microsoft.com/pricing/details/logic-apps/) pour la tarification et la facturation. Vous créez de telles applications logiques de différentes manières, par exemple, lorsque vous choisissez le type de ressource **Logic App (Standard)** ou que vous utilisez l’extension **Azure Logic Apps (Standard)** dans Visual Studio Code. Ce modèle tarifaire exige que les applications logiques utilisent un plan d’hébergement et un niveau tarifaire, ce qui diffère du plan Consommation en ce sens que la capacité de réserve et les ressources dédiées vous sont facturées, que vous les utilisiez ou non.
 
+Lorsque vous créez ou déployez des applications logiques avec le type de ressource **Logic App (Standard)** , vous pouvez utiliser le plan d’hébergement Workflow standard dans toutes les régions Azure. Vous avez également la possibilité de sélectionner une ressource **App Service Environment v3** existante comme emplacement de déploiement, mais vous ne pouvez utiliser que le plan App Service avec cette option. Si vous choisissez cette option, vous êtes facturé pour les instances utilisées par le plan App Service et pour l’exécution des flux de travail de vos applications logiques. Aucuns autres frais ne s’appliquent.
+
 > [!IMPORTANT]
-> Lorsque vous créez ou déployez des applications logiques avec le type de ressource **Logic App (Standard)** , vous pouvez utiliser le plan d’hébergement Workflow standard dans toutes les régions Azure. Vous pouvez utiliser un plan d’hébergement App Service *uniquement* si vous utilisez une ressource **App service Environment v3 (ASEv3)** existante comme région où vous créez et déployez votre ressource d’application logique.
->
-> Les options suivantes ne sont plus disponibles ou prises en charge avec la version publique du type de ressource **Application logique (Standard)** dans les régions Azure : plan Functions Premium, App Service Environment v1 et App Service Environment v2. Le plan App Service n’est pas disponible et n’est pas pris en charge, sauf avec ASEv3.
+> Les plans et ressources suivants ne sont plus disponibles ni pris en charge avec la version publique du type de ressource **Application logique (Standard)** dans les régions Azure : plan Functions Premium, App Service Environment v1 et App Service Environment v2. À l’exception d’ASEv3, le plan App Service n’est ni disponible ni pris en charge.
 
 Le tableau suivant résume la façon dont le modèle Standard gère la mesure et la facturation des composants suivants lorsqu’il est utilisé avec une application logique et un flux de travail dans Azure Logic Apps monolocataire :
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 11/11/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: ecec077db8ca0b9b1a5285256eabb67791d461f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 209fc857296556124cb5fa2003fb0c578dfe3317
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123116318"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397563"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Kit de développement logiciel (SDK) Java Async Azure Cosmos DB pour API SQL : Notes de publication et ressources
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "123116318"
 > * [SDK .NET Change Feed v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.JS](sql-api-sdk-node.md)
 > * [Kit SDK Java v4](sql-api-sdk-java-v4.md)
-> * [SDK Java Async v2](sql-api-sdk-async-java.md)
+> * [Kit SDK Java asynchrone v2](sql-api-sdk-async-java.md)
 > * [SDK Java Sync v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
@@ -60,6 +60,9 @@ Le Kit de développement logiciel (SDK) Java Async de l’API SQL est différent
 | **Conseils sur les performances**| [Fichier Readme de GitHub](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **Runtime minimal pris en charge**|[JDK 8](/java/azure/jdk/) | 
 
+## <a name="release-history"></a>Historique des mises en production
+
+L’historique des versions est conservé dans le référentiel source du Kit de développement logiciel (SDK) Java Azure Cosmos DB. Pour obtenir une liste détaillée des mises en production de fonctionnalités et des bogues résolus dans chaque version, consultez la [Documentation du journal des modifications du SDK](https://github.com/Azure/azure-cosmosdb-java/blob/master/changelog/README.md)
 
 ## <a name="faq"></a>Questions fréquentes (FAQ)
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

@@ -1,7 +1,7 @@
 ---
 title: Recommandations concernant les transcriptions étiquetées à la main – Service Speech
 titleSuffix: Azure Cognitive Services
-description: Pour améliorer la précision de la reconnaissance vocale, par exemple lorsque des mots sont supprimés ou remplacés de manière incorrecte, vous pouvez utiliser des transcriptions étiquetées à la main avec vos données audio. Les transcriptions étiquetées à la main sont des transcriptions mot pour mot et littérales d’un fichier audio.
+description: Pour améliorer l’exactitude de la reconnaissance vocale, vous utilisez des transcriptions étiquetées à la main avec vos données audio. Cela est particulièrement utile lorsque des mots sont supprimés ou remplacés de manière incorrecte.
 services: cognitive-services
 author: eric-urban
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: eur
-ms.openlocfilehash: 35cb9d2ea9f370043639f1c80b2cf901c6bcc510
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 913d8e0ef9a0ae74db2530167e99cefc92e75bb5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508266"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397241"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Comment créer des transcriptions étiquetées à la main
 
-Si vous cherchez à améliorer la précision de la reconnaissance, en particulier les problèmes liés à la suppression de mots ou à leur substitution inappropriée, vous pouvez utiliser des transcriptions étiquetées à la main avec vos données audio. En quoi consistent les transcriptions étiquetées à la main ? Il s’agit tout simplement de transcriptions textuelles, mot par mot, d’un fichier audio.
+Les transcriptions étiquetées à la main sont des transcriptions mot pour mot d’un fichier audio. Vous utilisez des transcriptions étiquetées à la main pour améliorer l’exactitude de la reconnaissance, en particulier lorsque les mots sont supprimés ou remplacés de manière incorrecte.
 
-Sachant que l’amélioration de la reconnaissance nécessite un échantillon volumineux de données de transcription, nous vous conseillons de fournir entre 1 et 20 heures de données. Le service Speech utilisera jusqu’à 20 heures d’audio pour l’apprentissage. Dans cette page, nous allons passer en revue les principes à respecter pour créer des transcriptions de grande qualité. Ce guide est divisé par paramètres régionaux, avec des sections pour l’anglais des États-Unis, le chinois mandarin et l’allemand.
+Un grand échantillon de données de transcription est nécessaire pour améliorer la reconnaissance. Nous vous suggérons de fournir entre 1 et 20 heures de données de transcription. Le service Speech utilisera jusqu’à 20 heures d’audio pour l’apprentissage. Dans cette page, nous allons passer en revue les principes à respecter pour créer des transcriptions de grande qualité. Ce guide est divisé par paramètres régionaux, avec des sections pour l’anglais des États-Unis, le chinois mandarin et l’allemand.
 
 > [!NOTE]
 > Tous les modèles de base ne prennent pas en charge la personnalisation avec les fichiers audio. Si un modèle de base ne prend pas cela en charge, l’apprentissage utilise simplement le texte des transcriptions, comme lors de l’utilisation du texte associé. Pour obtenir la liste des modèles de base prenant en charge l’entraînement avec des données audio, consultez les informations relatives à la [prise en charge des langues](language-support.md#speech-to-text).
@@ -41,7 +41,7 @@ Voici quelques exemples :
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | Les guillemets typographiques ouvrants et fermants ont été substitués par des caractères ASCII appropriés. |
 | John’s day | John's day | L’apostrophe a été substituée par le caractère ASCII approprié. |
-| it was good—no, it was great! | it was good--no, it was great! | Le tiret cadratin a été substitué par deux traits d’union. |
+| It was good—no, it was great! | it was good--no, it was great! | Le tiret cadratin a été substitué par deux traits d’union. |
 
 ### <a name="text-normalization-for-us-english"></a>Normalisation du texte pour l’anglais des États-Unis
 
@@ -57,7 +57,7 @@ La normalisation du texte consiste à transformer les mots dans un format cohér
 
 Voici quelques exemples de normalisation à effectuer au niveau de la transcription :
 
-| Texte d’origine               | Texte après la normalisation              |
+| Texte d’origine               | Texte après la normalisation (à la main)      |
 | --------------------------- | ------------------------------------- |
 | Dr. Bruce Banner            | Docteur Bruce Banner                   |
 | James Bond, 007             | James Bond, double oh seven           |
@@ -68,6 +68,7 @@ Voici quelques exemples de normalisation à effectuer au niveau de la transcript
 | Water is H20                | Water is H 2 O                        |
 | Play OU812 by Van Halen     | Play O U 8 1 2 by Van Halen           |
 | UTF-8 with BOM              | U T F 8 with BOM                      |
+| It costs \$3.14             | It costs three fourteen               |
 
 Les règles de normalisation suivantes sont automatiquement appliquées aux transcriptions :
 
@@ -77,7 +78,7 @@ Les règles de normalisation suivantes sont automatiquement appliquées aux tran
 
 Voici quelques exemples de normalisation effectuée automatiquement au niveau de la transcription :
 
-| Texte d’origine                          | Texte après la normalisation          |
+| Texte d’origine                          | Texte après la normalisation (automatique) |
 | -------------------------------------- | --------------------------------- |
 | "Holy cow!" said Batman.               | holy cow said batman              |
 | "What?" said Batman’s sidekick, Robin. | what said batman’s sidekick robin |
@@ -86,7 +87,6 @@ Voici quelques exemples de normalisation effectuée automatiquement au niveau de
 | 104 Elm Street                         | one oh four Elm street            |
 | Tune to 102.7                          | tune to one oh two point seven    |
 | Pi is about 3.14                       | pi is about three point one four  |
-| It costs \$3.14                        | it costs three fourteen           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin chinois (zh-CN)
 
@@ -120,7 +120,7 @@ Les règles de normalisation suivantes sont automatiquement appliquées aux tran
 - Conversion des lettres à pleine chasse en lettres à demi-chasse
 - Utilisation de lettres majuscules pour tous les mots anglais
 
-Voici quelques exemples de normalisation effectuée automatiquement au niveau de la transcription :
+Voici quelques exemples de normalisation automatique de la transcription :
 
 | Texte d’origine | Texte après la normalisation |
 | ------------- | ------------------------ |
@@ -170,7 +170,7 @@ Voici quelques exemples de normalisation effectuée automatiquement au niveau de
 | ---------------- | ------------------------ |
 | Frankfurter Ring | frankfurter ring         |
 | ¡Eine Frage!     | eine frage               |
-| wir, haben       | wir haben                |
+| Wir, haben       | wir haben                |
 
 ### <a name="text-normalization-for-japanese"></a>Normalisation du texte pour le japonais
 

@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 11/16/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 833bec745be68131709a78df1e52ed2ff782b167
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851455"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548080"
 ---
 # <a name="azure-firewall-premium-features"></a>Fonctionnalités du Pare-feu Azure Premium
 
 :::image type="content" source="media/premium-features/icsa-cert-firewall-small.png" alt-text="Logo de certification ICSA" border="false"::::::image type="content" source="media/premium-features/pci-logo.png" alt-text="Logo de certification PCI" border="false":::
 
+Le pare-feu Azure Premium offre une protection avancée contre les menaces qui répond aux besoins des environnements hautement sensibles et réglementés, tels que les secteurs des paiements et des soins de santé. 
 
- Pare-feu Azure Premium est un pare-feu de nouvelle génération dont les capacités sont requises pour les environnements hautement sensibles et réglementés.
+Les organisations peuvent tirer parti des fonctionnalités Premium de référence SKU telles que les inspections IDPS et TLS pour empêcher les programmes malveillants et les virus de se répandre sur les réseaux dans des directions transversales et horizontales. Pour répondre aux demandes de performances accrues de fournisseurs et de l’inspection TLS, le pare-feu Azure Premium utilise une référence SKU de machine virtuelle plus puissante. À l’instar de la référence SKU Standard, la référence SKU Premium peut évoluer en toute transparence jusqu’à 30 Gbit/s et s’intégrer avec les zones de disponibilité pour prendre en charge le contrat de niveau de service (SLA) de 99,99 %. La référence SKU Premium est conforme aux besoins de l’environnement PCI DSS (Payment Card Industry Data Security Standard).
 
 :::image type="content" source="media/premium-features/premium-overview.png" alt-text="Diagramme de vue d’ensemble du Pare-feu Azure Premium":::
-
-Le Pare-feu Azure Premium utilise une stratégie de pare-feu, une ressource globale qui peut être utilisée pour gérer de manière centralisée vos pare-feu à l’aide d’Azure Firewall Manager. À partir de cette version, toutes les nouvelles fonctionnalités sont configurables via la stratégie de pare-feu uniquement. Les règles de pare-feu (classiques) continuent à être prises en charge et peuvent être utilisées pour configurer les fonctionnalités existantes du pare-feu standard.  La stratégie de pare-feu peut être gérée indépendamment ou avec Azure Firewall Manager. Une stratégie de pare-feu associée à un seul pare-feu n’est pas facturée.
 
 Le Pare-feu Azure Premium inclut les fonctionnalités suivantes :
 
@@ -32,7 +31,6 @@ Le Pare-feu Azure Premium inclut les fonctionnalités suivantes :
 - **IDPS** : un système IDPS (Intrusion Detection and Prevention System) vous permet de surveiller les activités malveillantes, de consigner des informations sur ces activités, de les signaler, voire de les bloquer.
 - **Filtrage d’URL** : étend la fonctionnalité de filtrage de nom de domaine complet du Pare-feu Azure pour prendre en compte une URL entière. Par exemple, `www.contoso.com/a/c` plutôt que `www.contoso.com`.
 - **Catégories web** : permettent aux administrateurs d’autoriser ou de refuser aux utilisateurs l’accès aux catégories de sites web telles que les sites web de jeux d’argent, les sites web de réseaux sociaux, etc.
-
 
 ## <a name="tls-inspection"></a>Inspection TLS
 
@@ -60,7 +58,16 @@ Le système IDPS vous permet de détecter les attaques dans tous les ports et pr
 
 La liste de contournement IDPS vous permet de ne pas filtrer le trafic vers les adresses IP, les plages et les sous-réseaux spécifiés dans cette liste.
 
-Vous pouvez également utiliser des règles de signature lorsque le mode IDPS est défini sur **Alerte**, mais que vous souhaitez bloquer une ou plusieurs signatures spécifiques, avec le trafic associé. Dans ce cas, vous pouvez ajouter de nouvelles règles de signature en définissant le mode d’inspection TLS sur **refuser**.
+Les règles de signature IDPS (préversion) vous permettent d’effectuer les opérations suivantes :
+
+- Personnalisez une ou plusieurs signatures et changer leur mode en *Désactiver*, *Alerter* ou *Alerter et refuser*. 
+
+   Par exemple, si vous recevez un faux positif dans lequel une demande légitime est bloquée par le Pare-feu Azure en raison d’une signature défectueuse, vous pouvez utiliser l’ID de signature issu des journaux des règles d’application et définir son mode IDPS sur OFF. La signature « défectueuse » est ainsi ignorée et le problème de faux positif est résolu.
+- Vous pouvez appliquer la même procédure de réglage aux signatures qui créent un trop grand nombre d’alertes de faible priorité et, par conséquent, empêchent de voir des alertes de haute priorité.
+- Obtenir une vue holistique de l’intégralité des 55 000 signatures
+- Recherche intelligente
+
+   Vous permet d’effectuer des recherches dans l’ensemble de la base de données de signatures par n’importe quel type d’attribut. Par exemple, vous pouvez rechercher un identifiant CVE-ID spécifique pour découvrir quelles signatures prennent en charge cette CVE en tapant simplement l’ID dans la barre de recherche.
 
 
 ## <a name="url-filtering"></a>Un filtrage des URL
@@ -173,6 +180,7 @@ Certificats signés par le client non approuvés|Les certificats signés par le 
 |Propagation du certificat|Après l’application d’un certificat d’autorité de certification sur le pare-feu, la prise en compte du certificat peut prendre de 5 à 10 minutes.|Un correctif est en cours d’étude.|
 |Prise en charge du protocole TLS 1.3|Le protocole TLS 1.3 est partiellement pris en charge. Le tunnel TLS entre le client et le pare-feu est basé sur le protocole TLS 1.2, et celui entre le pare-feu et le serveur web externe est basé sur le protocole TLS 1.3.|Des mises à jour sont à l’étude.|
 |Point de terminaison privé Key Vault|Key Vault prend en charge l’accès au point de terminaison privé pour limiter son exposition réseau. Les services Azure approuvés peuvent contourner cette limitation si une exception est configurée comme décrit dans la [documentation de Key Vault](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services). Le Pare-feu Azure n’est pas répertorié actuellement comme un service approuvé et ne peut pas accéder au Key Vault.|Un correctif est en cours d’étude.|
+|Liste de contournement IDPS|La liste de contournement IDPS ne prend pas en charge les groupes IP.|Un correctif est en cours d’étude.|
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -1,33 +1,33 @@
 ---
-title: Déployer et surveiller des honeytokens Azure Key Vault avec Azure Sentinel | Microsoft Docs
-description: Introduisez des clés et secrets honeytoken Azure Key Vault et surveillez-les avec Azure Sentinel.
+title: Déployer et surveiller des honeytokens Azure Key Vault avec Microsoft Sentinel
+description: Introduisez des clés et secrets honeytoken Azure Key Vault et surveillez-les avec Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 160abcf739cbece61d34cd3db4118fd9f2f0ed9f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d63dd9b3b8f7b81b5955ce431cd5477d9e63ea1a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479449"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517023"
 ---
-# <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel-public-preview"></a>Déployer et surveiller des honeytokens Azure Key Vault avec Azure Sentinel (préversion publique)
+# <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-microsoft-sentinel-public-preview"></a>Déployer et surveiller des honeytokens Azure Key Vault avec Microsoft Sentinel (préversion publique)
 
 > [!IMPORTANT]
-> La solution Azure Sentinel Deception (Honey Tokens) est actuellement en PRÉVERSION. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
+> La solution Microsoft Sentinel Deception (Honey Tokens) est actuellement en PRÉVERSION. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
 >
 
-Cet article explique comment utiliser la **solution Azure Sentinel Deception (Honey Tokens)** pour introduire des clés et secrets leurres [Azure Key Vault](/azure/key-vault/), appelés *honeytokens*, dans des charges de travail existantes.
+Cet article explique comment utiliser la solution **Microsoft Sentinel Deception (Honey Tokens)** pour introduire des clés et secrets [Azure Key Vault](/azure/key-vault/) leurres, appelés *honeytokens*, dans des charges de travail existantes.
 
 Utilisez les [règles d’analyse](detect-threats-built-in.md), [watchlists](watchlists.md) et [classeurs](monitor-your-data.md) fournis par la solution pour surveiller l’accès aux honeytokens déployés.
 
@@ -35,28 +35,28 @@ Lorsque vous utilisez des honeytokens dans votre système, les principes de dét
 
 ## <a name="before-you-begin"></a>Avant de commencer
 
-Pour commencer à utiliser la solution **Azure Sentinel Deception (Honey Tokens)** , assurez-vous de disposer des éléments suivants :
+Pour commencer à utiliser la solution **Microsoft Sentinel Deception (Honey Tokens)** , assurez-vous de disposer des éléments suivants :
 
-- **Rôles requis** : pour installer la solution **Azure Sentinel Deception (Honey Tokens)** , vous devez être un administrateur de locataire. Une fois la solution installée, vous pouvez partager le classeur avec les propriétaires du coffre de clés afin qu’ils puissent déployer leurs propres honeytokens.
+- **Rôles requis** : pour installer la solution **Microsoft Sentinel Deception (Honey Tokens)** , vous devez être un administrateur de locataire. Une fois la solution installée, vous pouvez partager le classeur avec les propriétaires du coffre de clés afin qu’ils puissent déployer leurs propres honeytokens.
 
 - **Connecteurs de données requis**: assurez-vous que vous avez déployé l’[Azure Key Vault](data-connectors-reference.md#azure-key-vault) et les connecteurs de données d’[activité Azure](data-connectors-reference.md#azure-activity) dans votre espace de travail, et qu’ils sont connectés.
 
-    Vérifiez que le routage des données a réussi et que les données **KeyVault** et **AzureActivity** circulent dans Azure Sentinel. Pour plus d'informations, consultez les pages suivantes :
+  Vérifiez que le routage des données a réussi et que les données **KeyVault** et **AzureActivity** sont transmises à Microsoft Sentinel. Pour plus d'informations, consultez les pages suivantes :
 
-    - [Connecter Azure Sentinel aux services Azure, Windows, Microsoft et Amazon](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)
-    - [Rechercher votre connecteur de données Azure Sentinel](data-connectors-reference.md)
+  - [Connecter Microsoft Sentinel aux services Azure, Windows, Microsoft et Amazon](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)
+  - [Rechercher votre connecteur de données Microsoft Sentinel](data-connectors-reference.md)
 
 ## <a name="install-the-solution"></a>Installer la solution
 
-Installez la solution **Azure Sentinel Deception (Honey Tokens)** comme vous installeriez d’[autres solutions](monitor-key-vault-honeytokens.md). Sur la page solution de **Azure Sentinel Deception**, sélectionnez **Démarrer** pour commencer.
+Installez la solution **Microsoft Sentinel Deception (Honey Tokens)** comme vous installeriez d’[autres solutions](sentinel-solutions-deploy.md). Sur la page solution de **Azure Sentinel Deception**, sélectionnez **Démarrer** pour commencer.
 
 :::image type="content" source="media/monitor-key-vault-honeytokens/honeytoken-create-solution.png" alt-text="Capture d’écran de la page de création de solution.":::
 
 **Pour installer la solution Deception** :
 
-Les étapes suivantes décrivent les actions spécifiques requises pour la solution **Azure Sentinel Deception (Honey Tokens)** .
+Les étapes suivantes décrivent les actions spécifiques requises pour la solution **Microsoft Sentinel Deception (Honey Tokens)** .
 
-1. Sous l’onglet **De base**, sélectionnez le groupe de ressources dans lequel se trouve votre espace de travail Azure Sentinel.
+1. Sous l’onglet **De base**, sélectionnez le groupe de ressources dans lequel se trouve votre espace de travail Microsoft Sentinel.
 
 1. Sous l’onglet **Composants requis**, dans le champ **Nom d’application de fonction**, entrez un nom explicite pour l’application de fonction Azure qui créera des honeytokens dans vos coffres de clés.
 
@@ -66,7 +66,7 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/prerequisites.png" alt-text="Capture d’écran de l’onglet Composants requis montrant la commande curl mise à jour.":::
 
-1. Sélectionnez **Cliquez ici pour ouvrir un interpréteur de commandes cloud** afin d’ouvrir un onglet Cloud Shell. Connectez-vous si vous y êtes invité, puis exécutez la commande affichée. 
+1. Sélectionnez **Cliquez ici pour ouvrir un interpréteur de commandes cloud** afin d’ouvrir un onglet Cloud Shell. Connectez-vous si vous y êtes invité, puis exécutez la commande affichée.
 
     Le script que vous exécutez crée une application de fonction Azure AD (AAD) qui déploie vos honeytokens.    Par exemple :
 
@@ -82,7 +82,7 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
     maria@Azure:~$curl -sL https://aka.ms/sentinelhoneytokensappcreate | bash -s HoneyTokenFunctionApp
     ```
 
-     La sortie du script inclut l’ID et le secret d’application AAD. Par exemple :
+    La sortie du script inclut l’ID et le secret d’application AAD. Par exemple :
 
     ```bash
     WARNING: The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
@@ -92,7 +92,7 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
     maria@Azure:~$
     ```
 
-1. De retour dans Azure Sentinel, en bas de l’onglet **Composants requis**, entrez l’ID et le secret d’application AAD dans les champs appropriés. Par exemple :
+1. De retour dans Microsoft Sentinel, en bas de l’onglet **Composants requis**, entrez l’ID et le secret d’application AAD dans les champs appropriés. Par exemple :
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/client-app-secret-values.png" alt-text="Capture d’écran montrant l’application cliente de l’application de fonction et les valeurs de secret ajoutées.":::
 
@@ -104,11 +104,10 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
 
     Pour plus d’informations, consultez [Accorder le consentement administrateur dans les inscriptions d’applications](/azure/active-directory/manage-apps/grant-admin-consent).
 
-1. De retour dans Azure Sentinel, sous les onglets **Classeurs**, **Analytique**, **Watchlists** et **Règles**, notez le contenu de sécurité qui sera créé et modifiez les noms si nécessaire.
+1. De retour dans Microsoft Sentinel, sous les onglets **Classeurs**, **Analyse**, **Listes de surveillance** et **Playbooks**, notez le contenu de sécurité qui sera créé et modifiez les noms le cas échéant.
 
     > [!NOTE]
     > D’autres instructions dans cet article font référence aux classeurs **HoneyTokensIncidents** et **SOCHTManagement**. Si vous modifiez les noms de ces classeurs, veillez à noter les nouveaux noms pour votre propre référence, et utilisez-les au besoin à la place des noms par défaut.
-    >
 
 1. Sous l’onglet **Azure Functions** , définissez les valeurs suivantes :
 
@@ -138,9 +137,9 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
 
     - Un lien vers votre classeur **SOCHTManagement**. Vous avez peut-être modifié ce nom sous l’onglet **Classeurs** précédemment dans cette procédure.
 
-    - URL d’un modèle ARM personnalisé. Vous pouvez utiliser ce modèle ARM pour déployer une initiative Azure Policy connectée à une recommandation personnalisée d’Azure Security Center, qui distribue le classeur **SOCHTManagement** aux propriétaires de Keyvault dans votre organisation.
+    - URL d’un modèle ARM personnalisé. Vous pouvez utiliser ce modèle ARM pour déployer une initiative Azure Policy connectée à une recommandation personnalisée de Microsoft Defender pour le cloud, qui distribue le classeur **SOCHTManagement** aux propriétaires de coffres de clés dans votre organisation.
 
-1. L’onglet **Étapes de post-déploiement** indique que vous pouvez utiliser les informations affichées dans la sortie du déploiement pour distribuer la recommandation personnalisée d’Azure Security Center à tous les propriétaires de coffres de clés dans votre organisation, en vous recommandant de déployer des honeytokens dans leurs coffres de clés.
+1. L’onglet **Étapes de post-déploiement** indique que vous pouvez utiliser les informations affichées dans la sortie du déploiement pour distribuer la recommandation personnalisée de Microsoft Defender pour le cloud à tous les propriétaires de coffres de clés dans votre organisation, en vous recommandant de déployer des honeytokens dans leurs coffres de clés.
 
     Utilisez l’[URL de modèle ARM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2faka.ms%2fsentinelhoneytokenspolicy) personnalisée indiquée dans la sortie d’installation pour ouvrir la page **Déploiement personnalisé** du modèle lié.
 
@@ -148,13 +147,13 @@ Les étapes suivantes décrivent les actions spécifiques requises pour la solut
 
 ## <a name="deploy-your-honeytokens"></a>Déployer vos honeytokens
 
-Après avoir installé la solution **Azure Sentinel Deception (Honey Tokens)** , vous êtes prêt à commencer le déploiement des honeytokens dans vos coffres de clés en procédant de la manière décrite dans le classeur **SOCHTManagement**.
+Après avoir installé la solution **Microsoft Sentinel Deception (Honey Tokens)** , vous êtes prêt à commencer le déploiement des honeytokens dans vos coffres de clés en procédant de la manière décrite dans le classeur **SOCHTManagement**.
 
 Nous vous recommandons de partager le classeur **SOCHTManagement** avec les propriétaires de coffres de clés dans votre organisation afin qu’ils puissent créer leurs propres honeytokens dans leurs coffres de clés. Vous avez peut-être renommé ce classeur lors de l’[installation de la solution](#install-the-solution). Lors du partage, veillez à accorder uniquement des autorisations de lecture.
 
 **Déployez des honeytokens dans vos coffres de clés** :
 
-1. Dans Azure Sentinel, accédez à **Classeurs > Mes classeurs**, puis ouvrez le classeur **SOCHTManagement**. Vous avez peut-être modifié son nom lors du déploiement de la solution.
+1. Dans Microsoft Sentinel, accédez à **Classeurs > Mes classeurs**, puis ouvrez le classeur **SOCHTManagement**. Vous avez peut-être modifié son nom lors du déploiement de la solution.
 
 1. Sélectionnez **Afficher le classeur enregistré** > **Ajouter comme approuvé**. Par exemple :
 
@@ -167,7 +166,6 @@ Nous vous recommandons de partager le classeur **SOCHTManagement** avec les prop
     Dans la colonne **Est surveillé par SOC**, une coche verte :::image type="icon" source="media/monitor-key-vault-honeytokens/checkmark.png" border="false"::: indique que le coffre de clés contient déjà des honeytokens. Un x rouge :::image type="icon" source="media/monitor-key-vault-honeytokens/xmark.png" border="false"::: indique que le coffre de clés ne contient pas encore de honeytoken. Par exemple :
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/honeytokens-deployed.png" alt-text="Capture d’écran des classeurs SOCHTManagement montrant des honeytokens déployés.":::
-
 
 1. Faites défiler la page du classeur, puis suivez les instructions et les liens figurant dans la section **Prendre une mesure** pour déployer des honeytokens dans tous les coffres de clés à grande échelle, ou déployez-les manuellement un à un.
 
@@ -187,7 +185,7 @@ Nous vous recommandons de partager le classeur **SOCHTManagement** avec les prop
 
         En bas de la page, sélectionnez **Créer** pour déployer votre modèle ARM, puis attendez de voir s’afficher la page de confirmation de la réussite du déploiement.
 
-    1. De retour dans Azure Sentinel, dans votre classeur **SOCHTManagement** > **Prendre une mesure** > **Déployer à grande échelle**, sélectionnez le lien **Cliquez pour déployer** afin d’ajouter des honeytokens à tous les coffres de clés auxquels vous avez accès dans l’abonnement sélectionné.
+    1. De retour dans Microsoft Sentinel, dans votre classeur **SOCHTManagement** > **Effectuer une action** > **Déployer à grande échelle**, sélectionnez le lien **Cliquez pour déployer** afin d’ajouter des honeytokens à tous les coffres de clés auxquels vous avez accès dans l’abonnement sélectionné.
 
         Une fois l’opération terminée, les résultats de votre déploiement de honeytokens s’affichent dans une table sous un nouvel onglet.
 
@@ -195,7 +193,7 @@ Nous vous recommandons de partager le classeur **SOCHTManagement** avec les prop
 
     # <a name="deploy-a-single-honeytoken"></a>[Déployer un honeytoken unique](#tab/deploy-a-single-honeytoken)
 
-    **Pour déployer un honeytoken manuellement** :
+    **Pour déployer un seul honeytoken manuellement** :
 
     1. Dans le tableau en haut de la page, sélectionnez le coffre de clés dans lequel vous souhaitez déployer votre honeytoken. La section **Déployer sur un coffre de clés spécifique** s’affiche au bas de la page.
 
@@ -224,7 +222,7 @@ Nous vous recommandons de partager le classeur **SOCHTManagement** avec les prop
 
     1. Dans le tableau **Opérations**, développez la section **Supprimer un honeytoken**, puis sélectionnez chaque nom de tâche pour suivre les étapes requises. Si vous y êtes invité, connectez-vous.
 
-        - Sélectionnez **Cliquez pour supprimer l’honeytoken du coffre de clés** afin d’ouvrir Azure Key Vault à la page où vous pouvez supprimer votre honeytoken. 
+        - Sélectionnez **Cliquez pour supprimer l’honeytoken du coffre de clés** afin d’ouvrir Azure Key Vault à la page où vous pouvez supprimer votre honeytoken.
         - Sélectionnez **Envoyer un e-mail pour mettre à jour le SOC**. Un e-mail est ouvert dans votre client de courrier par défaut pour le SOC (centre des opérations de sécurité), qui vous recommande de supprimer la surveillance d’honeytoken pour le coffre de clés sélectionné.
 
     > [!TIP]
@@ -237,34 +235,32 @@ Il se peut que vous deviez patienter quelques minutes pendant le remplissage des
 
 ## <a name="test-the-solution-functionality"></a>Tester la fonctionnalité de la solution
 
-**Pour tester que vous êtes alerté de tout accès à vos honeytokens** :
+**Pour vérifier que vous êtes alerté de toute tentative d’accès à vos honeytokens** :
 
-1. Dans la page **Watchlists** d’Azure Sentinel, sélectionnez l’onglet **Mes watchlists**, puis la watchlist **HoneyTokens**.
+1. Dans la page **Listes de surveillance** de Microsoft Sentinel, sélectionnez l’onglet **Mes listes de surveillance**, puis la liste de surveillance **HoneyTokens**.
 
     Sélectionnez **Afficher dans log Analytics** pour afficher la liste des valeurs de honeytoken actuelles trouvées. Dans la page **Journaux**, les éléments de votre watchlist sont automatiquement extraits pour votre requête. Par exemple :
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/honeytokens-watchlist.png" alt-text="Capture d’écran des valeurs de la watchlist de honeytokens dans Log Analytics." lightbox="media/monitor-key-vault-honeytokens/honeytokens-watchlist.png":::
 
-
-    Pour plus d’informations, consultez [Utilisation des watchlists Azure Sentinel](watchlists.md).
+    Pour plus d’informations, consultez [Utiliser les listes de surveillance Microsoft Sentinel](watchlists.md).
 
 1. Dans la liste dans Log Analytics, choisissez une valeur de honeytoken à tester.
 
     Ensuite, accédez à Azure Key Vault et téléchargez la clé publique ou affichez le secret pour votre honeytoken choisi.
 
-    Par exemple, sélectionnez votre honeytoken, puis choisissez **Télécharger la clé publique**. Cette action crée un journal `KeyGet` ou `SecretGet` qui déclenche une alerte dans Azure Sentinel.
+    Par exemple, sélectionnez votre honeytoken, puis choisissez **Télécharger la clé publique**. Cette action crée un journal `KeyGet` ou `SecretGet` qui déclenche une alerte dans Microsoft Sentinel.
 
     Pour plus d’informations, consultez la [documentation relative à Key Vault](/azure/key-vault/).
 
-1. De retour dans Azure Sentinel, accédez à la page **Incidents**. Il se peut que vous deviez patienter cinq minutes, mais vous devriez voir s’afficher un nouvel incident nommé, par exemple **HoneyTokens : accès à une clé HoneyToken de KeyVault**.
+1. De retour dans Microsoft Sentinel, accédez à la page **Incidents**. Il se peut que vous deviez patienter cinq minutes, mais vous devriez voir s’afficher un nouvel incident nommé, par exemple **HoneyTokens : accès à une clé HoneyToken de KeyVault**.
 
     Sélectionnez l’incident pour afficher ses détails, tels que l’opération de clé effectuée, l’utilisateur qui a accédé à la clé honeytoken et le nom du coffre de clés compromis.
 
     > [!TIP]
-    > Tout accès ou opération avec les clés et les secrets honeytoken génère des incidents sur lesquels vous pouvez enquêter dans Azure Sentinel. Étant donné qu’il n’y a aucune raison d’utiliser réellement les clés et les secrets honeytoken, toute activité similaire dans votre espace de travail peut être malveillante et doit être examinée.
-    >
+    > Tout accès ou toute opération avec les clés et les secrets honeytoken génère des incidents sur lesquels vous pouvez enquêter dans Microsoft Sentinel. Étant donné qu’il n’y a aucune raison d’utiliser réellement les clés et les secrets honeytoken, toute activité similaire dans votre espace de travail peut être malveillante et doit être examinée.
 
-1. Affichez l’activité de honeytoken dans le classeur **HoneyTokensIncident**. Dans la page **Classeurs** d’Azure Sentinel, recherchez et ouvrez le classeur **HoneyTokensIncident**.
+1. Affichez l’activité de honeytoken dans le classeur **HoneyTokensIncident**. Dans la page **Classeurs** de Microsoft Sentinel, recherchez et ouvrez le classeur **HoneyTokensIncident**.
 
     Ce classeur affiche tous les incidents liés à des honeytokens, les entités associées, les coffres de clés compromis, les opérations de clé effectuées et les honeytokens ayant fait l’objet d’un accès.
 
@@ -276,7 +272,7 @@ Nous vous recommandons de déployer des honeytokens dans le plus grand nombre po
 
 Toutefois, de nombreuses équipes de SOC n’ont pas accès aux coffres de clés. Pour combler cette lacune, distribuez le classeur **SOCHTManagement** à tous les propriétaires de coffres de clés de votre locataire, afin que vos équipes de SOC puissent déployer leurs propres honeytokens. Vous avez peut-être modifié le nom de ce classeur lors de l’[installation de la solution](#install-the-solution).
 
-Vous pouvez toujours partager le lien direct du classeur. Cette procédure décrit également comment utiliser un modèle ARM pour déployer une initiative Azure Policy connectée à une recommandation personnalisée d’Azure Security Center, qui distribue le classeur **SOCHTManagement** aux propriétaires de coffres de clés dans votre organisation.
+Vous pouvez toujours partager le lien direct du classeur. Cette procédure décrit également comment utiliser un modèle ARM pour déployer une initiative Azure Policy connectée à une recommandation personnalisée de Microsoft Defender pour le cloud, qui distribue le classeur **SOCHTManagement** aux propriétaires de coffres de clés dans votre organisation.
 
 > [!NOTE]
 > Chaque fois que vous distribuez le classeur, veillez à accorder uniquement l’accès en lecture.
@@ -301,7 +297,7 @@ Vous pouvez toujours partager le lien direct du classeur. Cette procédure décr
 
 1. Sous l’onglet **Classeur Administration**, collez le lien vers votre classeur **SOCHTManagement**.
 
-    Le lien du classeur figure dans le classeur **SOCHTManagement** dans Azure Sentinel, ainsi que sous l’onglet **Sortie** du déploiement de la solution.
+    Le lien du classeur figure dans le classeur **SOCHTManagement** dans Microsoft Sentinel, ainsi que sous l’onglet **Sortie** du déploiement de la solution.
 
     Par exemple, pour trouver le lien dans le classeur, sélectionnez **Classeurs** > **Mes classeurs** > **SOCHTManagement**, puis **Copier le lien** dans la barre d’outils.
 
@@ -331,19 +327,17 @@ Vous pouvez toujours partager le lien direct du classeur. Cette procédure décr
 
 Une recommandation d’audit avec un lien vers le classeur **SOCHTManagement** est ajoutée à tous les coffres de clés figurant dans l’étendue sélectionnée. Vous avez peut-être modifié le nom de ce classeur lors de l’[installation de la solution](#install-the-solution).
 
-Pour plus d’informations, consultez la [documentation Azure Security Center](/azure/security-center/security-center-recommendations).
-
+Pour plus d’informations, consultez la [documentation de Microsoft Defender pour le cloud](/azure/security-center/security-center-recommendations).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [À propos des solutions Azure Sentinel](sentinel-solutions.md)
-- [Découvrir et déployer des solutions Azure Sentinel](monitor-key-vault-honeytokens.md)
-- [Catalogue de solutions Azure Sentinel](sentinel-solutions-catalog.md)
+- [À propos des solutions Microsoft Sentinel](sentinel-solutions.md)
+- [Découvrir et déployer les solutions Microsoft Sentinel](sentinel-solutions-deploy.md)
+- [Catalogue de solutions Microsoft Sentinel](sentinel-solutions-catalog.md)
 - [Détection des menaces prête à l’emploi](detect-threats-built-in.md)
-- [Classeurs Azure Sentinel courants](top-workbooks.md)
-
+- [Classeurs Microsoft Sentinel couramment utilisés](top-workbooks.md)
 
 <!-- The following section is used to store references to external images and links to reduce maintenance overhead and enable tooltips -->
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: danlep
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 950684fdbaa1553447b818c0751b13f4a8e26f34
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e5eda2df72afd7fa82a63dcd31adbf117d58bfe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031762"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340340"
 ---
 # <a name="api-management-policies"></a>Stratégies API Management
 Cette section est une ressource de référence au sujet des stratégies Gestion des API suivantes. Pour plus d'informations sur l'ajout et la configuration des stratégies, consultez la page [Stratégies dans Gestion des API](api-management-howto-policies.md).
@@ -26,7 +26,7 @@ Cette section est une ressource de référence au sujet des stratégies Gestion 
 ##  <a name="policies"></a><a name="ProxyPolicies"></a> Stratégies
 
 -   [Stratégies de restriction des accès](api-management-access-restriction-policies.md#AccessRestrictionPolicies)
-    -   [Check HTTP header](api-management-access-restriction-policies.md#CheckHTTPHeader) : applique l’existence et/ou la valeur d’un en-tête HTTP.
+    -   [Check HTTP header](api-management-access-restriction-policies.md#CheckHTTPHeader) : applique l’existence ou la valeur d’un en-tête HTTP.
     -   [Limit call rate by subscription](api-management-access-restriction-policies.md#LimitCallRate) : empêche les pics d’utilisation de l’API en limitant le débit d’appels par abonnement.
     -   [Limit call rate by key](api-management-access-restriction-policies.md#LimitCallRateByKey) : empêche les pics d’utilisation de l’API en limitant le débit d’appels par clé.
     -   [Restrict caller IPs](api-management-access-restriction-policies.md#RestrictCallerIPs) : filtre (autorise/rejette) les appels de certaines adresses IP spécifiques et/ou de certaines plages d’adresses.

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/08/2021
 ms.author: mahender
-ms.openlocfilehash: 67cb10ee9fb41596880e800a1c42cf2d93fe0d82
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 965a2abb8a56894efc700cea75097526daf4e544
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992728"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132529923"
 ---
 ## <a name="connections"></a>Connexions
 
@@ -30,13 +30,13 @@ Si le nom du paramètre d’application commence par « AzureWebJobs », vous 
 
 ### <a name="identity-based-connections"></a>Connexions basées sur l’identité
 
-Si vous utilisez la [version 5.x ou une version ultérieure de l’extension](../articles/azure-functions/functions-bindings-storage-queue.md#storage-extension-5x-and-higher), au lieu d’utiliser une chaîne de connexion avec un secret, l’application peut utiliser une [identité Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md). Pour ce faire, vous devez définir les paramètres sous un préfixe commun qui correspond à la propriété `connection` dans le déclencheur et la configuration de liaison.
+Si vous utilisez [la version 5.x ou une version ultérieure de l’extension](../articles/azure-functions/functions-bindings-storage-queue.md#storage-extension-5x-and-higher), au lieu d’utiliser une chaîne de connexion avec un secret, vous pouvez faire en sorte que l’application utilise une [identité Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md). Pour ce faire, vous devez définir les paramètres sous un préfixe commun qui correspond à la propriété `connection` dans le déclencheur et la configuration de liaison.
 
 Dans ce mode, l’extension nécessite les propriétés suivantes :
 
 | Propriété                  | Modèle de variable d’environnement                       |Description                                | Valeur d'exemple |
 |---------------------------|-----------------------------------------------------|--------------------------------------------|---------|
-| URI du service de file d’attente | `<CONNECTION_NAME_PREFIX>__queueServiceUri`<sup>1</sup>  | URI du plan de données du service de file d’attente auquel vous vous connectez. | <nom_compte_stockage>.queue.core.windows.net |
+| URI du service de file d’attente | `<CONNECTION_NAME_PREFIX>__queueServiceUri`<sup>1</sup>  | URI du plan de données du service de file d’attente auquel vous vous connectez, à l’aide du même schéma HTTPS. | https://<storage_account_name>.queue.core.windows.net |
 
 <sup>1</sup> `<CONNECTION_NAME_PREFIX>__serviceUri` peut être utilisé comme alias. Si les deux formes sont fournies, la forme `queueServiceUri` est utilisée. La forme `serviceUri` ne peut pas être utilisée lorsque la configuration globale de la connexion doit être utilisée sur des objets blob, des files d’attente et/ou des tables.
 

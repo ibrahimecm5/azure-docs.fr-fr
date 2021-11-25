@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a6b2fb04ea4d0c35a0e1d3de5c9befd3ba06c1f4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 4c652a9292caf8e7ac198ac6922b11b78a85781e
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072686"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401418"
 ---
 # <a name="fsv2-series"></a>Série Fsv2
 
@@ -30,6 +30,7 @@ Machines virtuelles de la série Fsv2 dotées de la technologie Hyper-Threading 
 [Prise en charge de la génération de machine virtuelle](generation-2.md) : Générations 1 et 2<br>
 [Performances réseau accélérées](../virtual-network/create-vm-accelerated-networking-cli.md) : Pris en charge <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit du disque non mis en cache max. : IOPS/Mbits/s |  Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> |Nombre max de cartes réseau|Bande passante réseau attendue (Mbit/s) |

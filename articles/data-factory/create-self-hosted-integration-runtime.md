@@ -9,12 +9,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8e0a2110458f57fb5485d982b6114574ac220eb5
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820022"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373362"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Créer et configurer un runtime d’intégration auto-hébergé
 
@@ -74,7 +74,7 @@ L’installation du runtime d’intégration auto-hébergé sur un contrôleur d
 - L’activité de copie s’exécute selon une fréquence spécifique. L'utilisation du processeur et de la RAM sur la machine suit le même modèle avec des périodes de pointe et d’inactivité. L'utilisation des ressources dépend également en grande partie de la quantité de données déplacées. Lorsque plusieurs travaux sont en cours, vous constaterez une augmentation des ressources utilisées pendant les heures de pointe.
 - Les tâches peuvent échouer lors de l’extraction de données aux formats Parquet, ORC ou Avro. Pour plus d'informations sur Parquet, reportez-vous à [Parquet format in Azure Data Factory](./format-parquet.md#using-self-hosted-integration-runtime). La création de fichiers s’exécute sur la machine d’intégration auto-hébergée. Pour fonctionner comme prévu, la création de fichiers requiert les conditions préalables suivantes :
   - Package [redistribuable Visual C++ 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) (x64)
-  - Java Runtime Environment (JRE) version 8 provenant d’un fournisseur JRE comme [Adopt OpenJDK](https://adoptopenjdk.net/). Assurez-vous que la variable d’environnement `JAVA_HOME` est définie sur le dossier JRE (et pas seulement sur le dossier JDK).
+  - Java Runtime Environment (JRE) version 8 provenant d’un fournisseur JRE comme [Adopt OpenJDK](https://adoptopenjdk.net/). Assurez-vous que la variable d’environnement JAVA_HOME est définie sur le dossier JDK (et pas seulement sur le dossier JRE).
 
 >[!NOTE]
 >Si l’exécution a lieu dans un cloud gouvernemental, consultez [Connexion au cloud gouvernemental.](../azure-government/documentation-government-get-started-connect-with-ps.md)

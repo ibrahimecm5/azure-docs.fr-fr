@@ -2,14 +2,14 @@
 title: Fournisseurs et types de ressources
 description: Décrit les fournisseurs de ressources qui prennent en charge Azure Resource Manager. Il décrit leurs schémas, les versions d’API disponibles et les régions qui peuvent héberger les ressources.
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 11/15/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7e8ebf6217296b4792887dc0af2c40fc66a9dd85
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c048da5d7027885bf30b512d9e16e5851697c8b4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038953"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522647"
 ---
 # <a name="azure-resource-providers-and-types"></a>Fournisseurs et types de ressources Azure
 
@@ -39,7 +39,9 @@ Pour pouvoir utiliser un fournisseur de ressources, votre abonnement Azure doit 
 
 Certains fournisseurs de ressources sont inscrits par défaut. Pour obtenir la liste des fournisseurs de ressources inscrits par défaut, consultez [Fournisseurs de ressources pour les services Azure](azure-services-resource-providers.md).
 
-D’autres fournisseurs de ressources sont inscrits automatiquement lorsque vous effectuez certaines actions. Lorsque vous déployez un modèle Azure Resource Manager, tous les fournisseurs de ressources requis sont automatiquement inscrits. Lorsque vous créez une ressource via le portail, le fournisseur de ressources est généralement inscrit pour vous. Pour d’autres scénarios, il se peut que vous deviez inscrire manuellement un fournisseur de ressources. 
+D’autres fournisseurs de ressources sont inscrits automatiquement lorsque vous effectuez certaines actions. Lorsque vous créez une ressource via le portail, le fournisseur de ressources est généralement inscrit pour vous. Lorsque vous déployez un modèle Azure Resource Manager ou un fichier Bicep, les fournisseurs de ressources définis dans le modèle sont inscrits automatiquement. Toutefois, si une ressource dans le modèle crée des ressources de prise en charge qui ne se trouvent pas dans le modèle, telles que des ressources de surveillance ou de sécurité, vous devez inscrire manuellement ces fournisseurs de ressources.
+
+Pour d’autres scénarios, il se peut que vous deviez inscrire manuellement un fournisseur de ressources.
 
 > [!IMPORTANT]
 > Votre code d’application **ne doit pas bloquer la création de ressources** pour un fournisseur de ressources qui est **en cours d’inscription**. Lorsque vous inscrivez le fournisseur de ressources, l’opération est effectuée individuellement pour chaque région prise en charge. Pour créer des ressources dans une région, l’inscription doit uniquement être effectuée dans cette région. En ne bloquant pas le fournisseur de ressources à l’état d’inscription en cours, votre application peut poursuivre beaucoup plus tôt qu’en attendant la fin de l’inscription pour toutes les régions.

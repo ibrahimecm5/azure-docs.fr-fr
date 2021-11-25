@@ -4,16 +4,16 @@ description: Découvrez les actions disponibles que vous pouvez utiliser avec Ch
 services: chaos-studio
 author: johnkemnetz
 ms.topic: article
-ms.date: 11/01/2021
+ms.date: 11/10/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 80d399ecb2b3d73b8014e3eebf8dbb8ea1de0436
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 60e9dd18d8c9357f2696ec79be08925cdd7e97da
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096512"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371008"
 ---
 # <a name="chaos-studio-fault-and-action-library"></a>Bibliothèque d’erreurs et d’actions Chaos Studio
 
@@ -58,7 +58,7 @@ Voici les erreurs utilisables aujourd’hui. Pour comprendre les types de ressou
 | URN | urn:csci:microsoft:agent:cpuPressure/1.0 |
 | Paramètres (clé, valeur)  |
 | pressureLevel | Entier compris entre 1 et 99 indiquant la sollicitation du processeur (%) appliquée à la machine virtuelle. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 ```json
@@ -103,7 +103,7 @@ Problèmes connus sur Linux :
 | URN | urn:csci:microsoft:agent:physicalMemoryPressure/1.0 |
 | Paramètres (clé, valeur) |  |
 | pressureLevel | Entier compris entre 1 et 99 indiquant la sollicitation de la mémoire physique (%) appliquée à la machine virtuelle. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -143,7 +143,7 @@ Problèmes connus sur Linux :
 | URN | urn:csci:microsoft:agent:virtualMemoryPressure/1.0 |
 | Paramètres (clé, valeur) |  |
 | pressureLevel | Entier compris entre 1 et 99 indiquant la sollicitation de la mémoire physique (%) appliquée à la machine virtuelle. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -183,7 +183,7 @@ Problèmes connus sur Linux :
 | URN | urn:csci:microsoft:agent:diskIOPressure/1.0 |
 | Paramètres (clé, valeur) |  |
 | pressureMode | Mode prédéfini de sollicitation du disque à ajouter au stockage principal de la machine virtuelle. Doit être l’un des PressureModes dans le tableau ci-dessous. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="pressure-modes"></a>Modes de pression
 
@@ -235,7 +235,7 @@ Problèmes connus sur Linux :
 | workerCount | Nombre de processus Worker à exécuter. La définition de cette valeur sur 0 génère autant de processus Worker qu’il y a de processeurs. |
 | fileSizePerWorker | Taille du fichier temporaire sur lequel un Worker effectue des opérations d’E/S. Entier plus une unité exprimé en octets (b), kilo-octets (k), mégaoctets (m) ou gigaoctets (g) (par exemple, 4m pour 4 mégaoctets, 256g pour 256 gigaoctets) |
 | blockSize | Taille de bloc à utiliser pour les opérations d’E/S disque, limitée à 4 mégaoctets. Entier plus une unité exprimé en octets (b), kilo-octets (k) ou mégaoctets (m) (par exemple, 512k pour 512 kilo-octets) |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -322,7 +322,7 @@ Problèmes connus sur Linux :
 | URN | urn:csci:microsoft:agent:stopService/1.0 |
 | Paramètres (clé, valeur) |  |
 | serviceName | Nom du service Windows que vous souhaitez arrêter. Vous pouvez exécuter `sc.exe query` dans une invite de commandes pour explorer les noms de service. Les noms conviviaux des services Windows ne sont pas pris en charge. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -362,7 +362,7 @@ Problèmes connus sur Linux :
 | URN | urn:csci:microsoft:agent:timeChange/1.0 |
 | Paramètres (clé, valeur) |  |
 | dateTime | Chaîne DateTime au [format ISO8601](https://www.cryptosys.net/pki/manpki/pki_iso8601datetime.html). Si les valeurs AAAA-MM-JJ sont manquantes, elles sont définies par défaut sur le jour actuel lors de l’exécution de l’expérience. Si les valeurs Thh:mm:ss sont manquantes, la valeur par défaut est 12:00:00. Si une année à 2 chiffres est fournie (AA), elle est convertie en année à 4 chiffres (AAAA) en fonction du siècle actuel. Si la valeur \<Z\> est manquante, elle est définie par défaut sur le décalage du fuseau horaire local. \<Z\> doit toujours inclure un symbole de signe (négatif ou positif). |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -403,7 +403,7 @@ Problèmes connus sur Linux :
 | Paramètres (clé, valeur) |  |
 | processName | Nom d’un processus en cours d’exécution sur une machine virtuelle (sans l’extension .exe) |
 | killIntervalInMilliseconds | Durée d’attente de l’erreur entre des tentatives d’arrêt successives, exprimée en millisecondes. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -448,7 +448,7 @@ Problèmes connus sur Linux :
 | Paramètres (clé, valeur) |  |
 | hôtes | Tableau JSON délimité de noms d’hôtes pour lesquels la demande de recherche DNS doit échouer. |
 | dnsFailureReturnCode | Code d’erreur DNS à retourner au client pour l’échec de recherche (FormErr, ServFail, NXDomain, NotImp, Refused, XDomain, YXRRSet, NXRRSet, NotAuth, NotZone). Pour plus d’informations sur les codes de retour DNS, visitez [le site web IANA](https://www.iana.org/assignments/dns-parameters/dns-parameters.xml#dns-parameters-6). |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -502,7 +502,7 @@ Problèmes connus sur Linux :
 | subnetMask | Masque de sous-réseau pour la plage d’adresses IP. |
 | portLow | (Facultatif) Numéro de port du début de la plage de ports. |
 | portHigh | (Facultatif) Numéro de port de la fin de la plage de ports. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -550,7 +550,7 @@ Problèmes connus sur Linux :
 | subnetMask | Masque de sous-réseau pour la plage d’adresses IP. |
 | portLow | (Facultatif) Numéro de port du début de la plage de ports. |
 | portHigh | (Facultatif) Numéro de port de la fin de la plage de ports. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -597,7 +597,7 @@ Problèmes connus sur Linux :
 | subnetMask | Masque de sous-réseau pour la plage d’adresses IP. |
 | portLow | (Facultatif) Numéro de port du début de la plage de ports. |
 | portHigh | (Facultatif) Numéro de port de la fin de la plage de ports. |
-| virtualMachineScaleSetInstances | (Facultatif) Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques |
+| virtualMachineScaleSetInstances | Tableau d’ID d’instance lors de l’application de cette erreur à un groupe de machines virtuelles identiques. Nécessaire pour les groupes de machines virtuelles identiques. |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -666,7 +666,7 @@ Problèmes connus sur Linux :
 | Nom de fonctionnalité | Shutdown-1.0 |
 | Type cible | Microsoft-VirtualMachineScaleSet |
 | Types de systèmes d’exploitation pris en charge | Windows, Linux |
-| Description | Arrête une instance de groupe de machines virtuelles identiques pendant la durée de l’erreur, et redémarre éventuellement la machine virtuelle à la fin de la durée de l’erreur ou en cas d’annulation de l’expérience. |
+| Description | Arrête ou supprime une instance de groupe de machines virtuelles identiques pendant la durée de l’erreur, et redémarre éventuellement la machine virtuelle à la fin de la durée de l’erreur ou si l’expérience est annulée. |
 | Prérequis | Aucun. |
 | URN | urn:csci:microsoft:virtualMachineScaleSet:shutdown/1.0 |
 | Paramètres (clé, valeur) |  |
@@ -737,13 +737,13 @@ Problèmes connus sur Linux :
 
 | Propriété | Value |
 |-|-|
-| Nom de fonctionnalité | NetworkChaos-1.0 |
+| Nom de fonctionnalité | NetworkChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Provoque l’exécution d’une erreur réseau disponible via [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/networkchaos_experiment) sur votre cluster AKS. Utile pour recréer des incidents AKS suite à des pannes de réseau, des retards, des duplications, des pertes et des altérations. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/1.0 |
+| Description | Provoque l’exécution d’une erreur réseau disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents AKS suite à des pannes de réseau, des retards, des duplications, des pertes et des altérations. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre NetworkChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/networkchaos_experiment). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON, le réduire et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type NetworkChaos](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/#create-experiments-using-the-yaml-files). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON, le réduire et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -753,11 +753,11 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"delay\",\"delay\":{\"latency\":\"30s\"},\"duration\":\"30s\",\"mode\":\"one\",\"scheduler\":{\"cron\":\"@every 60s\"},\"selector\":{\"labelSelectors\":{\"app\":\"web-show\"}}}"
+            "value": "{\"action\":\"delay\",\"mode\":\"one\",\"selector\":{\"namespaces\":[\"default\"],\"labelSelectors\":{\"app\":\"web-show\"}},\"delay\":{\"latency\":\"10ms\",\"correlation\":\"100\",\"jitter\":\"0ms\"}}"
         }
     ],
       "duration": "PT10M",
@@ -771,13 +771,13 @@ Problèmes connus sur Linux :
 
 | Propriété | Value |
 |-|-|
-| Nom de fonctionnalité | PodChaos-1.0 |
+| Nom de fonctionnalité | PodChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Provoque l’exécution d’une erreur de pod disponible via [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/podchaos_experiment) sur votre cluster AKS. Utile pour recréer des incidents AKS qui résultent de défaillances de pod ou de problèmes de conteneur. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/1.0 |
+| Description | Provoque l’exécution d’une erreur de pod disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents AKS qui résultent de défaillances de pod ou de problèmes de conteneur. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre PodChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/podchaos_experiment#pod-failure-configuration-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type PodChaos](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/#create-experiments-using-yaml-configuration-files). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -787,11 +787,11 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"pod-failure\",\"mode\":\"one\",\"value\":\"\",\"duration\":\"30s\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"tikv\"}},\"scheduler\":{\"cron\":\"@every 2m\"}}"
+            "value": "{\"action\":\"pod-failure\",\"mode\":\"one\",\"duration\":\"30s\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"tikv\"}}}"
         }
     ],
       "duration": "PT10M",
@@ -805,13 +805,13 @@ Problèmes connus sur Linux :
 
 | Propriété | Value |
 |-|-|
-| Nom de fonctionnalité | StressChaos-1.0 |
+| Nom de fonctionnalité | StressChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Provoque l’exécution d’une erreur de contrainte disponible via [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/stresschaos_experiment) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant de contraintes sur une collection de pods, par exemple, en raison d’une utilisation élevée du processeur ou de la mémoire. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/1.0 |
+| Description | Provoque l’exécution d’une erreur de contrainte disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant de contraintes sur une collection de pods, par exemple, en raison d’une utilisation élevée du processeur ou de la mémoire. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre StressChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/stresschaos_experiment#configuration). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type StressChaos](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/#create-experiments-using-the-yaml-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -821,11 +821,11 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"mode\":\"one\",\"selector\":{\"namespaces\":[\"tidb-cluster-demo\"]},\"stressors\":{\"cpu\":{\"workers\":1}},\"duration\":\"30s\",\"scheduler\":{\"cron\":\"@every 2m\"}}"
+            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"app1\"}},\"stressors\":{\"memory\":{\"workers\":4,\"size\":\"256MB\"}}}"
         }
     ],
       "duration": "PT10M",
@@ -839,13 +839,13 @@ Problèmes connus sur Linux :
 
 | Propriété | Value |
 |-|-|
-| Nom de fonctionnalité | IOChaos-1.0 |
+| Nom de fonctionnalité | IOChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Provoque l’exécution d’une erreur d’E/S disponible via [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/iochaos_experiment) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant de retards d’E/S et des défaillances de lecture/écriture lors de l’utilisation d’appels de système d’E/S tels que `open`, `read` et `write`. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/1.0 |
+| Description | Provoque l’exécution d’une erreur d’E/S disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-io-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant de retards d’E/S et des défaillances de lecture/écriture lors de l’utilisation d’appels de système d’E/S tels que `open`, `read` et `write`. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre IOChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/iochaos_experiment#configuration-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type IOChaos](https://chaos-mesh.org/docs/simulate-io-chaos-on-kubernetes/#create-experiments-using-the-yaml-files). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -855,11 +855,11 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"latency\",\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"etcd\"}},\"volumePath\":\"\/var\/run\/etcd\",\"path\":\"\/var\/run\/etcd\/**\/*\",\"delay\":\"100ms\",\"percent\":50,\"duration\":\"400s\",\"scheduler\":{\"cron\":\"@every 10m\"}}"
+            "value": "{\"action\":\"latency\",\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"etcd\"}},\"volumePath\":\"\/var\/run\/etcd\",\"path\":\"\/var\/run\/etcd\/**\/*\",\"delay\":\"100ms\",\"percent\":50,\"duration\":\"400s\"}"
         }
     ],
       "duration": "PT10M",
@@ -873,13 +873,13 @@ Problèmes connus sur Linux :
 
 | Property | Value |
 |-|-|
-| Nom de fonctionnalité | TimeChaos-1.0 |
+| Nom de fonctionnalité | TimeChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Entraîne une modification de l’horloge système sur votre cluster AKS à l’aide de [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/timechaos_experiment). Utile pour recréer des incidents AKS résultant d’un échec de synchronisation de systèmes distribués, d’une logique d’année bissextile ou de seconde intercalaire, et bien plus encore. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/1.0 |
+| Description | Entraîne une modification de l’horloge système sur votre cluster AKS à l’aide de [Chaos Mesh](https://chaos-mesh.org/docs/simulate-time-chaos-on-kubernetes/). Utile pour recréer des incidents AKS résultant d’un échec de synchronisation de systèmes distribués, d’une logique d’année bissextile ou de seconde intercalaire, et bien plus encore. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre TimeChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/timechaos_experiment#configuration-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type TimeChaos](https://chaos-mesh.org/docs/simulate-time-chaos-on-kubernetes/#create-experiments-using-the-yaml-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -889,11 +889,11 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"pd\"}},\"timeOffset\":\"-10m100ns\",\"clockIds\":[\"CLOCK_REALTIME\"],\"containerNames\":[\"pd\"],\"duration\":\"10s\",\"scheduler\":{\"cron\":\"@every 15s\"}}"
+            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"app1\"}},\"timeOffset\":\"-10m100ns\"}"
         }
     ],
       "duration": "PT10M",
@@ -907,13 +907,13 @@ Problèmes connus sur Linux :
 
 | Propriété | Value |
 |-|-|
-| Nom de fonctionnalité | KernelChaos-1.0 |
+| Nom de fonctionnalité | KernelChaos-2.1 |
 | Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
-| Description | Provoque l’exécution d’une erreur de noyau disponible via [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/kernelchaos_experiment) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant d’erreurs au niveau du noyau Linux, telles qu’un échec de montage ou la non-allocation de mémoire. |
-| Prérequis | Le cluster AKS doit [avoir la version 1.2.3 ou une version antérieure de Chaos Mesh déployée et AAD géré par AKS désactivé](chaos-studio-tutorial-aks.md). |
-| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/1.0 |
+| Description | Provoque l’exécution d’une erreur de noyau disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-kernel-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents AKS résultant d’erreurs au niveau du noyau Linux, telles qu’un échec de montage ou la non-allocation de mémoire. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/2.1 |
 | Paramètres (clé, valeur) |  |
-| jsonSpec | [Spécification Chaos Mesh](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file) au format JSON et placée dans une séquence d’échappement, qui utilise le [genre KernelChaos](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/kernelchaos_experiment#configuration-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type KernelChaos](https://chaos-mesh.org/docs/simulate-kernel-chaos-on-kubernetes/#configuration-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
 
 ### <a name="sample-json"></a>Exemple de code JSON
 
@@ -923,11 +923,79 @@ Problèmes connus sur Linux :
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
             "value": "{\"mode\":\"one\",\"selector\":{\"namespaces\":[\"chaos-mount\"]},\"failKernRequest\":{\"callchain\":[{\"funcname\":\"__x64_sys_mount\"}],\"failtype\":0}}"
+        }
+    ],
+      "duration": "PT10M",
+      "selectorid": "myResources"
+    }
+  ]
+}
+```
+
+## <a name="aks-chaos-mesh-http-faults"></a>Erreurs HTTP AKS Chaos Mesh
+
+| Propriété | Value |
+|-|-|
+| Nom de fonctionnalité | HTTPChaos-2.1 |
+| Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
+| Description | Provoque l’exécution d’une erreur HTTP disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-http-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents dus à des échecs de traitement de requête et de réponse HTTP, comme des réponses retardées ou incorrectes. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS. |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:httpChaos/2.1 |
+| Paramètres (clé, valeur) |  |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type HTTPChaos](https://chaos-mesh.org/docs/simulate-http-chaos-on-kubernetes/#create-experiments). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+
+### <a name="sample-json"></a>Exemple de code JSON
+
+```json
+{
+  "name": "branchOne",
+  "actions": [
+    {
+      "type": "continuous",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:httpChaos/2.1",
+      "parameters": [
+        {
+            "key": "jsonSpec",
+            "value": "{\"mode\":\"all\",\"selector\":{\"labelSelectors\":{\"app\":\"nginx\"}},\"target\":\"Request\",\"port\":80,\"method\":\"GET\",\"path\":\"\/api\",\"abort\":true,\"duration\":\"5m\",\"scheduler\":{\"cron\":\"@every 10m\"}}"
+        }
+    ],
+      "duration": "PT10M",
+      "selectorid": "myResources"
+    }
+  ]
+}
+```
+
+## <a name="aks-chaos-mesh-dns-faults"></a>Erreurs DNS AKS Chaos Mesh
+
+| Propriété | Value |
+|-|-|
+| Nom de fonctionnalité | DNSChaos-2.1 |
+| Type cible | Microsoft-AzureKubernetesServiceChaosMesh |
+| Description | Provoque l’exécution d’une erreur DNS disponible via [Chaos Mesh](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/) sur votre cluster AKS. Utile pour recréer des incidents dus à des défaillances DNS. |
+| Prérequis | [Chaos Mesh](chaos-studio-tutorial-aks-portal.md) doit être déployé sur le cluster AKS et le [service DNS doit être installé](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/#deploy-chaos-dns-service). |
+| URN | urn:csci:microsoft:azureKubernetesServiceChaosMesh:dnsChaos/2.1 |
+| Paramètres (clé, valeur) |  |
+| jsonSpec | Spécification Chaos Mesh au format JSON et, si créée via un modèle ARM, l’API REST ou l’interface Azure CLI, dans une séquence d’échappement JSON de [type DNSChaos](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/#create-experiments-using-the-yaml-file). Vous pouvez utiliser un [convertisseur YAML-JSON comme celui-ci](https://www.convertjson.com/yaml-to-json.htm) pour convertir le fichier YAML Chaos Mesh en fichier JSON et le réduire, et utiliser un [outil d’échappement de chaîne JSON comme celui-ci](https://www.freeformatter.com/json-escape.html) pour échapper la spécification JSON. Incluez uniquement le YAML sous la propriété « jsonSpec » (n’incluez pas de métadonnées, de genre, etc.). |
+
+### <a name="sample-json"></a>Exemple de code JSON
+
+```json
+{
+  "name": "branchOne",
+  "actions": [
+    {
+      "type": "continuous",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:dnsChaos/2.1",
+      "parameters": [
+        {
+            "key": "jsonSpec",
+            "value": "{\"action\":\"random\",\"mode\":\"all\",\"patterns\":[\"google.com\",\"chaos-mesh.*\",\"github.?om\"],\"selector\":{\"namespaces\":[\"busybox\"]}}"
         }
     ],
       "duration": "PT10M",

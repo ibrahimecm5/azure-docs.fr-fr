@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 11/15/2021
 ms.author: rolyon
-ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 947645848fd60a6d2864a1715ddc32424a683ce8
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555555"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524832"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Meilleures pratiques pour Azure RBAC
 
@@ -34,7 +34,7 @@ Pour obtenir des informations sur la procédure d’attribution de rôles, consu
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Limiter le nombre de propriétaires d’abonnements
 
-Vous devez disposer d'un maximum de trois propriétaires d’abonnement afin de réduire le risque de violation par un propriétaire compromis. Cette recommandation peut être supervisée dans Azure Security Center. Pour obtenir d’autres recommandations relatives aux identités et aux accès dans Security Center, consultez [Recommandations de sécurité - Guide de référence](../security-center/recommendations-reference.md).
+Vous devez disposer d'un maximum de trois propriétaires d’abonnement afin de réduire le risque de violation par un propriétaire compromis. Cette recommandation peut être surveillée dans Microsoft Defender pour le Cloud. Pour obtenir d’autres recommandations relatives aux identités et aux accès dans Security Center, consultez [Recommandations de sécurité - Guide de référence](../security-center/recommendations-reference.md).
 
 ## <a name="use-azure-ad-privileged-identity-management"></a>Utiliser Azure AD Privileged Identity Management
 
@@ -44,7 +44,18 @@ Pour plus d’informations, consultez [Qu’est-ce qu’Azure AD Privileged Iden
 
 ## <a name="assign-roles-to-groups-not-users"></a>Attribuer des rôles à des groupes et non à des utilisateurs
 
-Pour faciliter la gestion des attributions de rôles, évitez d’attribuer des rôles directement aux utilisateurs. Attribuez plutôt des rôles à des groupes. L’attribution de rôles à des groupes plutôt qu’à des utilisateurs permet également de réduire le nombre d’attributions de rôles, dont la limite est de [2 000 attributions de rôles par abonnement](troubleshooting.md#azure-role-assignments-limit). 
+Pour faciliter la gestion des attributions de rôles, évitez d’attribuer des rôles directement aux utilisateurs. Attribuez plutôt des rôles à des groupes. L'attribution de rôles à des groupes plutôt qu'à des utilisateurs permet également de minimiser le nombre d'attributions de rôles, qui est [limité à un nombre d'attributions de rôles par abonnement](troubleshooting.md#azure-role-assignments-limit).
+
+## <a name="assign-roles-using-the-unique-role-id-instead-of-the-role-name"></a>Affecter des rôles à l’aide de l’ID de rôle unique à la place du nom de rôle
+
+Un nom de rôle peut changer dans certaines circonstances, par exemple :
+
+- Vous utilisez vos propres rôles personnalisés et vous décidez d’en modifier le nom.
+- Vous utilisez un rôle en préversion dont le nom contient **(préversion)** . Lorsque le rôle est publié, le rôle est renommé.
+
+Même si un rôle est renommé, l’ID de rôle ne change pas. Si vous utilisez des scripts ou une automatisation pour créer vos attributions de rôles, il est recommandé d’utiliser l’ID de rôle unique au lieu du nom de rôle. Par conséquent, si un rôle est renommé, vos scripts sont plus susceptibles de fonctionner.
+
+Pour plus d’informations, consultez [affecter un rôle à l’aide de l’ID de rôle unique et Azure PowerShell](role-assignments-powershell.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope) et [affecter un rôle à l’aide de l’ID de rôle unique et Azure CLI](role-assignments-cli.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -3,16 +3,16 @@ title: Utilisation de Azure DevTest Labs dans plusieurs laboratoires et abonne
 description: Découvrez comment rendre compte de l’utilisation d’Azure DevTest Labs dans plusieurs labos et abonnements.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 671941e259bd1329dab3e30c1c95eb77ed3091f9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d2bf6954b629c3a9fc28569a86df4aa61f5dc94f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642830"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401038"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rendre compte de l’utilisation d’Azure DevTest Labs dans plusieurs labos et abonnements
 
-La plupart des grandes organisations veulent suivre l’usage des ressources afin d’exploiter celles-i plus efficacement en visualisant les tendances et les anomalies d’utilisation. Selon l’utilisation des ressources, les propriétaires ou administrateurs de labos peuvent personnaliser ceux-ci pour [améliorer l’utilisation et les coûts des ressources](../cost-management-billing/cost-management-billing-overview.md). Avec Azure DevTest Labs, vous pouvez télécharger l’utilisation des ressources par labo qui vous permet d’avoir une vision historique plus approfondie des modèles d’utilisation. Ces modèles d’utilisation peuvent vous aider à épingler des modifications pour améliorer l’efficacité. La plupart des organisations veulent pouvoir choisir entre une utilisation en labo individuel et une utilisation globale dans [plusieurs labos et abonnements](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+La plupart des grandes organisations veulent suivre l’utilisation des ressources afin de mieux visualiser les tendances et les anomalies. Selon l’utilisation des ressources, les propriétaires ou managers de laboratoires peuvent personnaliser ceux-ci pour [améliorer l’utilisation et les coûts des ressources](../cost-management-billing/cost-management-billing-overview.md). Grâce à Azure DevTest Labs, vous pouvez télécharger l’utilisation des ressources par laboratoire, ce qui vous permet d’avoir une vision historique plus approfondie des modèles d’utilisation. Ces modèles d’utilisation permettent d’identifier les modifications à apporter pour améliorer l’efficacité. La plupart des organisations veulent pouvoir choisir entre une utilisation en labo individuel et une utilisation globale dans [plusieurs labos et abonnements](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 Cet article explique comment gérer les informations sur l’utilisation des ressources de plusieurs labos et abonnements.
 
@@ -22,7 +22,7 @@ Cet article explique comment gérer les informations sur l’utilisation des res
 
 Cette section explique comment exporter l’utilisation des ressources pour un labo.
 
-Avant de pouvoir exporter l’utilisation des ressources de DevTest Labs, vous devez configurer un compte Stockage Azure pour stocker les différents fichiers contenant les données d’utilisation. Les deux méthodes couramment utilisées pour exporter des données sont les suivantes :
+Avant de pouvoir exporter l’utilisation des ressources DevTest Labs, vous devez configurer un compte Stockage Azure pour les fichiers qui contiennent les données d’utilisation. Il existe deux façons courantes d’exécuter l’exportation de données :
 
 * [API REST DevTest Labs](/rest/api/dtl/labs/exportresourceusage) 
 * Le module PowerShell AZ.Resource [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) avec l’action de `exportResourceUsage`, l’ID de ressource de labo et les paramètres nécessaires. 
@@ -39,21 +39,21 @@ Ces fichiers CSV sont actuellement au nombre de deux :
 * *virtualmachines.csv* : contient des informations sur les machines virtuelles du labo
 * *disks.csv* : contient des informations sur les différents disques utilisés dans le cadre du labo 
 
-Ces fichiers sont stockés dans le conteneur d’objets blob *labresourceusage* sous le nom du labo, l’ID unique du labo, la date d’exécution et soit la date de début complète, soit la date de début définie dans la demande d’exportation. Voici un exemple de structure blob :
+Ces fichiers sont stockés dans le conteneur de blobs *labresourceusage*. Les fichiers se trouvent sous le nom du laboratoire, l’ID unique du laboratoire, la date d’exécution et soit `full`, soit la date de début de la demande d’exportation. Voici un exemple de structure de blob :
 
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD26-MM6-2019YYYY/full/virtualmachines.csv`
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD-MM-YYYY/26-6-2019/20-6-2019<Start>DD-MM-YYYY/virtualmachines.csv`
 
 ## <a name="exporting-usage-for-all-labs"></a>Exportation de l’utilisation pour tous les labos
 
-Pour exporter les informations d’utilisation de plusieurs labos, vous pouvez utiliser : 
+Pour exporter les informations d’utilisation de plusieurs laboratoires, vous pouvez utiliser : 
 
 * [Azure Functions](../azure-functions/index.yml), disponible dans de nombreux langages, dont PowerShell, ou 
 * [Runbook Azure Automation](../automation/index.yml), PowerShell, Python ou un concepteur graphique personnalisé pour écrire le code d’exportation.
 
 Ces technologies vous permettent d’exécuter les exportations de labo individuelles de tous les labos à une date et une heure spécifiques. 
 
-Votre fonction Azure doit envoyer les données au stockage à long terme. L’exportation de données pour plusieurs labos peut prendre un certain temps. Pour améliorer les performances et réduire la probabilité d’une duplication d’informations, nous vous recommandons d’exécuter les labos en parallèle. Pour obtenir ce parallélisme, exécutez Azure Functions de façon asynchrone. Tirez également parti du déclencheur de minuteur intégré dans Azure Functions.
+Votre fonction Azure doit envoyer les données au stockage à long terme. Lorsque vous exportez des données pour plusieurs laboratoires, l’exportation peut prendre un certain temps. Pour améliorer les performances et réduire la probabilité d’une duplication d’informations, nous vous recommandons d’exécuter chaque laboratoire en parallèle. Pour obtenir ce parallélisme, exécutez Azure Functions de façon asynchrone. Exploitez également le déclencheur de minuteur qu’offre Azure Functions.
 
 ## <a name="using-a-long-term-storage"></a>Utilisation d’un stockage à long terme
 
@@ -61,11 +61,11 @@ Un stockage à long terme consolide les informations d’exportation de différe
 
 Vous pouvez utiliser un stockage à long terme pour effectuer toute manipulation de texte, par exemple : 
 
-* ajout de noms conviviaux ;
-* création de regroupements complexes ;
-* agrégation des données.
+* Ajout de noms conviviaux
+* Création de regroupements complexes
+* Agrégation des données
 
-Voici quelques solutions de stockage courantes : [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) et [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Le choix de la solution de stockage à long terme dépend de vos préférences. Vous pouvez envisager de choisir l’outil en fonction de ce qu’il offre en termes de possibilité d’interaction lors de la visualisation des données.
+Voici quelques solutions de stockage courantes : [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) et [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). La solution de stockage à long terme que vous choisissez dépend de vos préférences. Vous pouvez envisager de choisir l’outil en fonction de ce qu’il offre comme possibilité d’interaction lors de la visualisation des données.
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Visualisation des données et collecte d’informations
 
@@ -75,7 +75,7 @@ Utilisez l’outil de visualisation de données de votre choix pour vous connect
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois le système configuré et les données déplacées vers le stockage à long terme, l’étape suivante consiste à trouver les questions auxquelles les données doivent répondre. Par exemple : 
+Une fois que vous avez configuré le système et que les données sont transférées vers le stockage à long terme, l’étape suivante consiste à trouver les questions auxquelles les données doivent répondre. Par exemple : 
 
 -   Quelle est la taille de machine virtuelle utilisée ?
 

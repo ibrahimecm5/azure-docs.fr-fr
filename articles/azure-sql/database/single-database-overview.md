@@ -11,20 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 334ca6aadf43756985c7d187b460b625c5588525
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: fb607461e446ee44a92cee8e6dff60e8c2e6dd45
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693044"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546485"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Qu'est-ce qu'une base de données unique dans Azure SQL Database ?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Le type de ressource Base de données unique crée dans Azure SQL Database une base de données dotée de ses propres ressources, et celle-ci est gérée par le biais d'un [serveur](logical-servers.md). Avec une seule base de données, chaque base de données est isolée et portable. Chacune a son propre niveau de service au sein du [modèle d’achat DTU](service-tiers-dtu.md) ou du [modèle d’achat vCore](service-tiers-vcore.md), ainsi qu’une taille de calcul garantie.
 
-> [!IMPORTANT]
-> Une base de données unique est des deux types de ressources d'Azure SQL Database. Le deuxième est [pools élastiques](elastic-pool-overview.md).
+Une base de données unique est un modèle de déploiement pour Azure SQL Database. Le deuxième est [pools élastiques](elastic-pool-overview.md).
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
+
 
 ## <a name="dynamic-scalability"></a>Évolutivité dynamique
 

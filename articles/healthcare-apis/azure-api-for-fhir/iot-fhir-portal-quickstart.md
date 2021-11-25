@@ -8,12 +8,13 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/10/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 6eca34979b1be4abc6985492bcace04072f4135d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: mode-portal
+ms.openlocfilehash: 6feeb319d96b74b2f7dac82236274f587ae75445
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748866"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061532"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Démarrage rapide : Déployer le connecteur Azure IoT pour FHIR (préversion) à l’aide du portail Azure
 

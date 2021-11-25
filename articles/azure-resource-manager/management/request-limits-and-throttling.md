@@ -2,14 +2,14 @@
 title: Limites des demandes et limitation
 description: Décrit comment utiliser la limitation avec des requêtes Azure Resource Manager lorsque les limites d’abonnement ont été atteintes.
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 11/15/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: cb562d6f6489ff30c6b940963a20974eb987b031
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 781c958e1a75e87c3f042e80282909e132730978
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322182"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523385"
 ---
 # <a name="throttling-resource-manager-requests"></a>Limitation des requêtes de Resource Manager
 
@@ -36,6 +36,8 @@ Les limites de limitation par heure par défaut sont indiquées dans le tableau 
 Ces limites sont définies d’après le principal de sécurité (utilisateur ou application) qui effectue les requêtes et l’ID d’abonnement ou l’ID du locataire. Si vos requêtes proviennent de plusieurs principaux de sécurité, votre limite dans l’abonnement ou le locataire est supérieure à 12 000 et 1200 par heure.
 
 Ces limites s’appliquent à chaque instance Azure Resource Manager. Chaque région Azure comporte plusieurs instances, et Azure Resource Manager est déployé dans toutes les régions Azure.  Par conséquent, dans la pratique, les limites sont supérieures à ces limites. Les demandes d’un utilisateur sont généralement gérées par des instances différentes d’Azure Resource Manager.
+
+Les demandes restantes sont renvoyées dans les [valeurs d’en-tête de réponse](#remaining-requests).
 
 ## <a name="resource-provider-limits"></a>Limites de fournisseur de ressources
 
@@ -93,6 +95,7 @@ Vous pouvez déterminer le nombre de requêtes restantes en examinant les en-tê
 
 | En-tête de réponse | Description |
 | --- | --- |
+| x-ms-ratelimit-remaining-subscription-deletes |Requêtes de suppression restantes étendues à l’abonnement. Cette valeur est renvoyée pour les opérations de suppression. |
 | x-ms-ratelimit-remaining-subscription-reads |Requêtes de lecture restantes étendues à l’abonnement. Cette valeur est renvoyée pour les opérations de lecture. |
 | x-ms-ratelimit-remaining-subscription-writes |Requêtes d’écriture restantes étendues à l’abonnement. Cette valeur est renvoyée pour les opérations d’écriture. |
 | x-ms-ratelimit-remaining-tenant-reads |Requêtes de lecture restantes étendues au locataire |

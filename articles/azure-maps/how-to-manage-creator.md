@@ -3,20 +3,20 @@ title: Gérer Microsoft Azure Maps Creator
 description: Cet article explique comment gérer Microsoft Azure Maps Creator.
 author: stevemunk
 ms.author: v-munksteve
-ms.date: 10/08/2021
+ms.date: 11/11/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 09a70e55d796e0eb16d0806fb9a0726ff67ea812
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 124b75aa0a80f84299fd0e113f2d4d7f1a427213
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729764"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400203"
 ---
 # <a name="manage-azure-maps-creator"></a>Gérer le Créateur Azure Maps
 
-Vous pouvez utiliser Azure Maps Creator pour créer des données cartographiques d’intérieur privées. L’API Azure Maps et le module Cartes d’intérieur vous permettent de développer des applications web de carte d’intérieur interactives et dynamiques. Pour plus d’informations sur la tarification, consultez [Choix du bon niveau tarifaire dans Azure Maps](choose-pricing-tier.md).
+Vous pouvez utiliser Azure Maps Creator pour créer des données cartographiques d’intérieur privées. L’API Azure Maps et le module Cartes d’intérieur vous permettent de développer des applications web de carte d’intérieur interactives et dynamiques. Pour plus d’informations sur la tarification, consultez la section *Creator* dans [Tarification d’Azure Maps](https://aka.ms/CreatorPricing).
 
 Cet article vous guide tout au long des étapes de création et de suppression d’une ressource de Créateur dans un compte Azure Maps.
 
@@ -59,7 +59,7 @@ Pour supprimer une ressource Creator :
 2. Sélectionnez **Supprimer**.
 
     >[!WARNING]
-    >Lorsque vous supprimez la ressource Creator de votre compte Azure Maps, vous supprimez également les conversions, jeux de données, tilesets et statesets de caractéristiques créés à l’aide des services Creator.
+    >Lorsque vous supprimez la ressource Creator de votre compte Azure Maps, vous supprimez également les conversions, jeux de données, tilesets et statesets de caractéristiques créés à l’aide des services Creator. Une fois qu’une ressource Creator est supprimée, il est impossible de la rétablir.
 
      :::image type="content" source="./media/how-to-manage-creator/creator-delete.png" alt-text="Page Créateur avec le bouton Supprimer":::
 

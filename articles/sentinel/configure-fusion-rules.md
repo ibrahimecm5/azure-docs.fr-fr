@@ -1,43 +1,43 @@
 ---
-title: Configurer des règles (Fusion) de détection avancée des attaques en plusieurs étapes dans Azure Sentinel
-description: Créez et configurez des règles de détection des attaques basées sur la technologie Fusion dans Azure Sentinel.
+title: Configurer des règles de détection des attaques multiphases (Fusion) dans Microsoft Sentinel
+description: Créez et configurez des règles de détection des attaques basées sur la technologie Fusion dans Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bf84d969b8ca60c56ec172dbd9befeaaacd8a5dc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4c4ea2e5c8376a6dd1c7281251805dfa06c0169c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097858"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519702"
 ---
-# <a name="configure-multistage-attack-detection-fusion-rules-in-azure-sentinel"></a>Configurer des règles (Fusion) de détection avancée des attaques en plusieurs étapes dans Azure Sentinel
+# <a name="configure-multistage-attack-detection-fusion-rules-in-microsoft-sentinel"></a>Configurer des règles de détection des attaques multiphases (Fusion) dans Microsoft Sentinel
 
 > [!IMPORTANT]
 > La nouvelle version de la règle d’analyse Fusion est actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel utilise Fusion, un moteur de corrélation basé sur des algorithmes évolutifs d’apprentissage automatique pour détecter automatiquement des attaques en plusieurs étapes en identifiant des combinaisons de comportements anormaux et d’activités suspectes observés à divers stades de la chaîne de destruction. Sur la base de ces découvertes, Azure Sentinel génère des incidents qui seraient autrement difficiles à intercepter. Ces incidents comprennent au moins deux alertes ou activités. Le système est conçu de façon à ce que ces incidents soient peu volumineux, soient détectés avec une haute fidélité, et présentent un niveau de gravité élevé.
+Microsoft Sentinel utilise Fusion, un moteur de corrélation basé sur des algorithmes évolutifs d’apprentissage automatique pour détecter automatiquement des attaques multiphases en identifiant des combinaisons de comportements anormaux et d’activités suspectes observés à différents stades de la chaîne de destruction. Sur la base de ces découvertes, Microsoft Sentinel génère des incidents qui seraient autrement difficiles à intercepter. Ces incidents comprennent au moins deux alertes ou activités. Le système est conçu de façon à ce que ces incidents soient peu volumineux, soient détectés avec une haute fidélité, et présentent un niveau de gravité élevé.
 
 Personnalisée pour votre environnement, cette technologie de détection, en plus de réduire la fréquence de [faux positifs](false-positives.md), peut détecter des attaques même si les informations sont limitées ou si certaines informations sont manquantes.
 
 ## <a name="configure-fusion-rules"></a>Configurer des règles Fusion
 
-Cette détection est activée par défaut dans Azure Sentinel. Pour vérifier ou modifier son état, suivez les instructions ci-dessous :
+Cette détection est activée par défaut dans Microsoft Sentinel. Pour vérifier ou modifier son état, suivez les instructions ci-dessous :
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com) et entrez **Azure Sentinel**.
+1. Connectez-vous au [portail Azure](https://portal.azure.com) et entrez **Microsoft Sentinel**.
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analyse**.
 
 1. Sélectionnez l’onglet **Règles actives**, puis, dans la colonne **Nom**, cherchez **Détection avancée des attaques multiphases** en filtrant la liste pour le type de règle **Fusion**. Consultez la colonne **État** pour vérifier si cette détection est activée ou désactivée.
 
@@ -47,7 +47,8 @@ Cette détection est activée par défaut dans Azure Sentinel. Pour vérifier ou
 
 1. Sous l’onglet **Général** de l’**Assistant Règle d’analyse**, notez l’état (Activé/Désactivé) ou modifiez-le si vous le souhaitez.
 
-    Si vous avez modifié l’état et n’avez pas d’autres modifications à apporter, sélectionnez l’onglet **Vérifier et mettre à jour**, puis choisissez **Enregistrer**. 
+    Si vous avez modifié l’état et n’avez pas d’autres modifications à apporter, sélectionnez l’onglet **Vérifier et mettre à jour**, puis choisissez **Enregistrer**.
+
     Pour configurer la règle de détection Fusion, cliquez sur **Suivant : Configurer Fusion**.
 
     :::image type="content" source="media/configure-fusion-rules/configure-fusion-rule.png" alt-text="Capture d’écran de la configuration de règle Fusion." lightbox="media/configure-fusion-rules/configure-fusion-rule.png":::
@@ -98,7 +99,7 @@ Cette détection est activée par défaut dans Azure Sentinel. Pour vérifier ou
 
 
 > [!NOTE]
-> Azure Sentinel utilise actuellement 30 jours de données historiques pour former les systèmes de Machine Learning. Ces données sont toujours chiffrées à l’aide des clés de Microsoft à mesure qu’elles passent par le pipeline de Machine Learning. Cependant, les données de formation ne sont pas chiffrées à l’aide de [clés gérées par le client (CMK)](customer-managed-keys.md) si vous avez activé CMK dans votre espace de travail Azure Sentinel. Pour désactiver Fusion, accédez à **Azure Sentinel** \> **Configuration** \> **Analyse \> Règles actives**, faites un clic droit sur la règle **Détection des attaques multiphases avancées** et sélectionnez **Désactiver**.
+> Microsoft Sentinel utilise actuellement 30 jours de données historiques pour effectuer l’apprentissage des systèmes de Machine Learning. Ces données sont toujours chiffrées à l’aide des clés de Microsoft à mesure qu’elles passent par le pipeline de Machine Learning. Cependant, les données de formation ne sont pas chiffrées à l’aide de [clés gérées par le client (CMK)](customer-managed-keys.md) si vous avez activé CMK dans votre espace de travail Microsoft Sentinel. Pour désactiver Fusion, accédez à **Microsoft Sentinel** \> **Configuration** \> **Analyse \> Règles actives**, faites un clic droit sur la règle **Détection des attaques multiphases avancées** et sélectionnez **Désactiver**.
 
 ## <a name="configure-scheduled-analytics-rules-for-fusion-detections"></a>Configurer des règles d’analyse planifiée pour les détections Fusion
 
@@ -106,11 +107,11 @@ Cette détection est activée par défaut dans Azure Sentinel. Pour vérifier ou
 >
 > - La détection basée sur Fusion à l’aide d’alertes de règles analytiques est actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
-**Fusion** peut détecter des attaques en plusieurs étapes, ainsi que des menaces émergentes, basées sur un scénario en utilisant des alertes générées par des [règles d’analyse planifiée](detect-threats-custom.md). Nous vous recommandons de suivre les étapes ci-dessous pour configurer et activer ces règles afin de tirer le meilleur parti des fonctionnalités de fusion d’Azure Sentinel.
+**Fusion** peut détecter des attaques en plusieurs étapes, ainsi que des menaces émergentes, basées sur un scénario en utilisant des alertes générées par des [règles d’analyse planifiée](detect-threats-custom.md). Nous vous recommandons de suivre les étapes ci-dessous pour configurer et activer ces règles, afin de tirer le meilleur parti des capacités Fusion de Microsoft Sentinel.
 
 1. Fusion pour les menaces émergentes peut utiliser des alertes générées par toute règle d’analyse planifiée, tant [intégrée](detect-threats-built-in.md#scheduled) que [créée par vos analystes de sécurité](detect-threats-custom.md), contenant des informations sur la chaîne de destruction (tactique) et le mappage d’entité. Pour vous assurer que la sortie d’une règle d’analyse peut être utilisée par Fusion pour détecter des menaces émergentes :
 
-    - Vérifiez le **mappage d’entités** pour ces règles planifiées. Utilisez la [section de configuration du mappage d'entités](map-data-fields-to-entities.md) pour mapper les paramètres de vos résultats de requête avec des entités reconnues par Azure Sentinel. Étant donné que Fusion met en corrélation des alertes basées sur des entités (par exemple, un *compte d’utilisateur* ou une *adresse IP*), ses algorithmes d’apprentissage automatique ne peuvent pas effectuer de mise en correspondance d’alerte sans les informations d’entité.
+    - Vérifiez le **mappage d’entités** pour ces règles planifiées. Utilisez la [section de configuration du mappage d’entités](map-data-fields-to-entities.md) pour mapper les paramètres des résultats de votre requête à des entités reconnues par Microsoft Sentinel. Étant donné que Fusion met en corrélation des alertes basées sur des entités (par exemple, un *compte d’utilisateur* ou une *adresse IP*), ses algorithmes d’apprentissage automatique ne peuvent pas effectuer de mise en correspondance d’alerte sans les informations d’entité.
 
     - Passez en revue les **tactiques** dans les détails de votre règle analytique. L’algorithme d’apprentissage automatique Fusion utilise les informations de tactique [MITRE ATT&CK](https://attack.mitre.org/) pour détecter les attaques en plusieurs étapes, et les tactiques avec lesquelles vous étiquetez les règles d’analyse sont affichées dans les incidents obtenus. Les calculs Fusion peuvent être affectés si les alertes entrantes ne contiennent pas d’informations de tactique.
 
@@ -129,10 +130,10 @@ Cette détection est activée par défaut dans Azure Sentinel. Pour vérifier ou
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Apprenez-en davantage sur les [Détections Fusion dans Azure Sentinel](fusion.md).
+En savoir plus sur les [détections Fusion dans Microsoft Sentinel](fusion.md).
 
 Apprenez-en davantage sur les nombreuses [Détections Fusion basées sur un scénario](fusion-scenario-reference.md).
 
-Maintenant que vous en savez plus sur la détection avancée des attaques multiphases, il peut vous être utile de suivre le guide de démarrage suivant pour savoir comment bénéficier d’une visibilité sur vos données et sur les menaces potentielles : [Bien démarrer avec Azure Sentinel](get-visibility.md).
+Maintenant que vous en savez plus sur la détection des attaques multiphases avancées, il peut vous être utile de suivre le démarrage rapide suivant pour savoir comment bénéficier d’une visibilité sur vos données et sur les menaces : [Prendre en main Microsoft Sentinel](get-visibility.md).
 
-Si vous êtes prêt à examiner les incidents créés pour vous, consultez le tutoriel suivant : [Examiner les incidents avec Azure Sentinel](investigate-cases.md).
+Si vous êtes prêt à examiner les incidents créés pour vous, consultez le tutoriel suivant : [Examiner les incidents avec Microsoft Sentinel](investigate-cases.md).

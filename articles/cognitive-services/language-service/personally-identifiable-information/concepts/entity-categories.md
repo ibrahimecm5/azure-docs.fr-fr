@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: article
-ms.date: 11/02/2021
+ms.date: 11/15/2021
 ms.author: aahi
 ms.custom: language-service-pii, ignite-fall-2021
-ms.openlocfilehash: 49db4778dcdb2f4cbe3bff2ac07fc16ece2883f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 099926359944c1f9e9a673f3c754019c761e6220
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096487"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519531"
 ---
 # <a name="supported-personally-identifiable-information-pii-entity-categories"></a>Catégories d’entités de données personnelles prises en charge
 
@@ -47,7 +47,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Noms des personnes. Également retourné avec `domain=phi`.
+        Noms des personnes. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `Person` au `pii-categories` paramètre. `Person`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -104,7 +104,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Numéros de téléphone (Numéros de téléphone américains et européens uniquement). Également retourné avec `domain=phi`.
+        Numéros de téléphone (Numéros de téléphone américains et européens uniquement). Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `PhoneNumber` au `pii-categories` paramètre. `PhoneNumber`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -134,7 +134,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Sociétés, partis politiques, groupes de musique, clubs de sport, organismes gouvernementaux et organisations publiques. Les nationalités et les religions ne sont pas incluses dans ce type d’entité. Également retourné avec `domain=phi`.
+        Sociétés, partis politiques, groupes de musique, clubs de sport, organismes gouvernementaux et organisations publiques. Les nationalités et les religions ne sont pas incluses dans ce type d’entité. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `Organization` au `pii-categories` paramètre. `Organization`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -235,7 +235,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Adresse postale complète. Également retourné avec `domain=phi`.
+        Adresse postale complète. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `Address` au `pii-categories` paramètre. `Address`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -264,9 +264,9 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Adresses e-mail. Également retourné avec `domain=phi`.
+        Adresses e-mail. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
       
-        Pour accéder à cette catégorie d’entité, ajoutez `Email` au `pii-categories` paramètre. `Email` est retourné dans la réponse de l’API si elle est détectée.
+        Pour accéder à cette catégorie d’entité, ajoutez `Email` au `pii-categories` paramètre. `Email`  est retourné dans la réponse de l’API si elle est détectée.
 
     :::column-end:::
     :::column span="":::
@@ -292,7 +292,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        URL vers des sites web. Également retourné avec `domain=phi`.
+        URL vers des sites web. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `URL` au `pii-categories` paramètre. `URL`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -321,7 +321,7 @@ Cette catégorie contient l’entité suivante :
     :::column span="2":::
         **Détails**
 
-        Adresses IP du réseau. Également retourné avec `domain=phi`.
+        Adresses IP du réseau. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `IP` au `pii-categories` paramètre. `IP`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -376,7 +376,7 @@ L’entité de cette catégorie peut contenir les sous-catégories suivantes.
     :::column span="2":::
         **Détails**
 
-        Dates du calendrier. Également retourné avec `domain=phi`.
+        Dates du calendrier. Renvoyée à la fois en tant qu’informations d’identification personnelle et en tant qu’informations médicales protégées.
 
         Pour accéder à cette catégorie d’entité, ajoutez `Date` au `pii-categories` paramètre. `Date`  est retourné dans la réponse de l’API si elle est détectée.
       
@@ -432,7 +432,7 @@ L’entité de cette catégorie peut contenir les sous-catégories suivantes.
 
         Ages. 
 
-        Pour accéder à cette catégorie d’entité, ajoutez `Age` au `pii-categories` paramètre. `Age` est retourné dans la réponse de l’API si elle est détectée.
+        Pour accéder à cette catégorie d’entité, ajoutez `Age` au `pii-categories` paramètre. `Age`  est retourné dans la réponse de l’API si elle est détectée.
       
     :::column-end:::
     :::column span="2":::
@@ -445,7 +445,7 @@ L’entité de cette catégorie peut contenir les sous-catégories suivantes.
 
 ### <a name="azure-information"></a>Informations Azure
 
-Ces catégories d’entités englobent les informations Azure identifiables, notamment les informations d’authentification et les chaînes de connexion. Non retourné avec le paramètre `domain=phi`.
+Ces catégories d’entités englobent les informations Azure identifiables, notamment les informations d’authentification et les chaînes de connexion. Non renvoyée en tant qu’informations médicales protégées.
 
 :::row:::
     :::column span="":::
@@ -459,7 +459,7 @@ Ces catégories d’entités englobent les informations Azure identifiables, not
 
         Clé d’autorisation d’un serveur Azure CosmosDB.   
 
-        Pour accéder à cette catégorie d’entité, ajoutez `AzureDocumentDBAuthKey` au `pii-categories` paramètre. `AzureDocumentDBAuthKey` est retourné dans la réponse de l’API si elle est détectée.
+        Pour accéder à cette catégorie d’entité, ajoutez `AzureDocumentDBAuthKey` au `pii-categories` paramètre. `AzureDocumentDBAuthKey`  est retourné dans la réponse de l’API si elle est détectée.
       
     :::column-end:::
     :::column span="":::

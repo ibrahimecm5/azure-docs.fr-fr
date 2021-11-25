@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 96223db4d9087395f6771a4922694592a9e51b5e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 558eebf12179b04fb9a76c3db0195c4e812e956c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037337"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335439"
 ---
 # <a name="securing-paas-deployments"></a>Sécurisation des déploiements PaaS
 
@@ -53,7 +53,7 @@ En haut de l'infrastructure (gouvernance des données et gestion des droits), vo
 
 La plateforme Azure offre également une protection contre le DDoS renforcée à travers diverses technologies de réseau. Toutefois, tous les types de méthodes de protection contre le déni de service distribué (DDoS) basée sur le réseau ont leurs limites par lien et par centre de données. Afin d’éviter l’impact des attaques DDoS de grande envergure, vous pouvez tirer parti des capacités de cloud de base d’Azure qui permettent d'effectuer un scale-out rapidement et de vous défendre contre les attaques DDoS. Nous aborderons la procédure plus en détail dans les articles sur les pratiques recommandées.
 
-## <a name="modernizing-the-defenders-mindset"></a>Une nouvelle mentalité pour la défense
+## <a name="modernizing-the-defender-for-clouds-mindset"></a>Moderniser l’état d’esprit de Defender pour le cloud
 Avec les déploiements PaaS, votre approche globale de la sécurité évolue. Vous n'avez pas besoin de tout contrôler vous-même et partagez la responsabilité avec Microsoft.
 
 Une autre différence importante entre les déploiements PaaS et les déploiements locaux traditionnels est une nouvelle définition du périmètre de sécurité principal. Historiquement, le périmètre de sécurité local principal était votre réseau et la plupart des conceptions de sécurité locales utilisent le réseau en tant que pivot de sécurité principal. Pour les déploiements PaaS, il est préférable de tenir compte de l’identité comme périmètre de sécurité principal.
@@ -125,7 +125,7 @@ Voici les bonnes pratiques relatives à l’utilisation d’App Service.
 **Détail** : [App Service Environment](../../app-service/environment/intro.md) propose une fonctionnalité d’intégration de réseau virtuel qui vous permet de limiter les adresses IP sources entrantes par le biais de groupes de sécurité réseau. Les réseaux virtuels vous permettent de placer des ressources Azure dans un réseau routable non-Internet auquel vous contrôlez l’accès. Pour en savoir plus, consultez [Intégrer une application à un réseau virtuel Azure](../../app-service/overview-vnet-integration.md).
 
 **Bonne pratique** : supervisez l’état de sécurité de vos environnements App Service.   
-**Détail** : utilisez Azure Security Center pour superviser vos environnements App Service. Lorsque Security Center identifie des failles de sécurité potentielles, il crée des [recommandations](../../security-center/asset-inventory.md) qui vous guident tout au long du processus de configuration des contrôles nécessaires.
+**Détail** : utilisez Microsoft Defender pour le cloud pour surveiller vos environnements App Service. Lorsque Defender pour le cloud identifie des failles de sécurité potentielles, il crée des [recommandations](../../security-center/asset-inventory.md) qui vous guident tout au long du processus de configuration des contrôles nécessaires.
 
 ## <a name="azure-cloud-services"></a>Services cloud Azure
 [Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) est un exemple de PaaS. Tout comme Azure App Service, cette technologie est conçue pour prendre en charge des applications évolutives, fiables et dont l’exploitation est peu coûteuse. Comme App Service, Azure Cloud Services est hébergé sur des machines virtuelles. Toutefois, vous avez davantage de contrôle sur les machines virtuelles. Vous pouvez installer votre propre logiciel sur des machines virtuelles utilisant Azure Cloud Services, et y accéder à distance.

@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb824f9527619033467594a98310663c1113fdc
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 6c584b1815fbb17488acf75e0bc4f93c6e06620a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620732"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549106"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application-in-azure-active-directory"></a>Erreur inattendue lors de l’exécution d’un consentement pour une application dans Azure Active Directory
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Erreur inattendue lors du consentement à une application
 
 Cet article traite des erreurs qui peuvent se produire durant le processus de consentement à une application. Si vous rencontrez des invites de consentement inattendues qui ne contiennent aucun message d’erreur, consultez [Scénarios d’authentification pour Azure AD](../develop/authentication-vs-authorization.md) pour résoudre le problème.
 

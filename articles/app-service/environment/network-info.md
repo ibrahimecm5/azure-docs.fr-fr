@@ -1,28 +1,26 @@
 ---
 title: Mise en réseau - Éléments à prendre en compte
 description: Découvrez le trafic réseau ASE et comment définir des groupes de sécurité réseau et des routes définies par l’utilisateur avec votre environnement ASE.
-author: ccompy
-ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
+author: madsd
 ms.topic: article
-ms.date: 07/27/2020
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: bb404aa41b02ef44bba1931b8251948ce97a8e5a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: b742ba4218307b4ba87c4d524f692f329ab9440b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236539"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524129"
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>Considérations relatives à la mise en réseau pour un environnement App Service Environment #
+# <a name="networking-considerations-for-an-app-service-environment-v2"></a>Considérations relatives à la mise en réseau d’un environnement App Service v2
 
 > [!NOTE]
 > Cet article concerne la fonctionnalité App Service Environment v2 qui est utilisée avec les plans App Service Isolé.
 > 
 
-## <a name="overview"></a>Vue d’ensemble ##
+## <a name="overview"></a>Vue d’ensemble
 
- [App Service Environment Azure][Intro] est un déploiement d’Azure App Service dans un sous-réseau d’un réseau virtuel Azure (VNet). Il existe deux types de déploiement pour un environnement App Service (ASE) :
+ [App Service Environment Azure][Intro] est un déploiement d’Azure App Service dans un sous-réseau d’un réseau virtuel Azure. Il existe deux types de déploiement pour un environnement App Service (ASE) :
 
 - **ASE externe** : expose les applications hébergées dans l’ASE sur une adresse IP accessible via Internet. Pour plus d’informations, consultez [Créer un App Service Environment externe][MakeExternalASE].
 - **ASE ILB** : expose les applications hébergées dans l’ASE sur une adresse IP à l’intérieur de votre réseau virtuel. Le point de terminaison interne est un équilibreur de charge interne (ILB), d’où cette appellation d’ASE ILB. Pour plus d’informations, consultez [Créer et utiliser un ASE ILB][MakeILBASE].
@@ -42,7 +40,7 @@ Si vous avez un ASE externe, l’adresse IP virtuelle publique est également le
 
 Si vous possédez un ASE ILB, l’adresse de l’équilibreur de charge interne est le point de terminaison pour les protocoles HTTP/S et FTP/S, le déploiement web et le débogage à distance.
 
-## <a name="ase-subnet-size"></a>Taille du sous-réseau de l’ASE ##
+## <a name="ase-subnet-size"></a>Taille du sous-réseau de l’ASE
 
 La taille du sous-réseau utilisé pour héberger un ASE ne peut pas être modifiée une fois l’ASE déployé.  L’ASE utilise une adresse pour chaque rôle d’infrastructure, ainsi que pour chaque instance de plan App Service Isolé.  De plus, cinq adresses sont utilisées par Azure Networking pour chaque sous-réseau créé.  Un ASE sans aucun plan App Service utilise 12 adresses avant la création d’une application.  S’il s’agit d’un ASE ILB, il utilise 13 adresses avant la création d’une application dans cet environnement. Lorsque vous effectuez un scale-out de votre ASE, les rôles d’infrastructure sont ajoutés à chaque fois que les instances de votre plan App Service sont multipliées par 15 ou 20.
 
@@ -51,9 +49,9 @@ La taille du sous-réseau utilisé pour héberger un ASE ne peut pas être modif
 
 Lorsque vous montez ou descendez en puissance, de nouveaux rôles (de taille correspondante) sont ajoutés, puis vos charges de travail sont migrées depuis la taille actuelle vers la taille cible. Les machines virtuelles d’origine sont supprimées uniquement une fois que les charges de travail ont été migrées. Si vous disposiez d’un ASE comportant 100 instances ASP, vous devez doubler le nombre de machines virtuelles pendant une certaine période.  C’est pourquoi nous vous recommandons d’utiliser « /24 » pour prendre en compte toutes les potentielles modifications.  
 
-## <a name="ase-dependencies"></a>Dépendances d’un ASE ##
+## <a name="ase-dependencies"></a>Dépendances d’un ASE
 
-### <a name="ase-inbound-dependencies"></a>Dépendances entrantes d’un ASE ###
+### <a name="ase-inbound-dependencies"></a>Dépendances entrantes d’un ASE
 
 Pour que l’ASE puisse fonctionner, les ports suivants doivent être ouverts :
 
@@ -82,7 +80,7 @@ Les autres ports dont vous devez vous préoccuper sont les ports d’application
 
 Si vous bloquez les ports d’applications, votre ASE peut continuer de fonctionner, mais votre application risque de ne plus être fonctionnelle.  Si vous utilisez des adresses IP affectées par l’application avec un ASE externe, vous devez autoriser le trafic entre les adresses IP affectées à vos applications au sous-réseau ASE sur les ports répertoriés dans le portail ASE, sur la page relative aux adresses IP.
 
-### <a name="ase-outbound-dependencies"></a>Dépendances sortantes d’un ASE ###
+### <a name="ase-outbound-dependencies"></a>Dépendances sortantes d’un ASE
 
 Pour l’accès sortant, un ASE dépend de plusieurs systèmes externes. Nombre de ces dépendances système sont définies avec des noms DNS et ne sont pas mappées à un ensemble fixe d’adresses IP. Par conséquent, l’ASE requiert un accès sortant vers toutes les adresses IP sur divers ports à partir de son sous-réseau. 
 
@@ -102,13 +100,16 @@ La liste des dépendances sortantes est disponible dans le document portant sur 
 
 Si le réseau virtuel est configuré avec un serveur DNS défini par un client, les charges de travail du client l’utilisent. L’ASE utilise Azure DNS à des fins de gestion. Si le réseau virtuel est configuré avec un serveur DNS sélectionné par le client, le serveur DNS doit être accessible à partir du sous-réseau contenant l’ASE.
 
+   > [!NOTE]
+   > Les extractions de Stockage ou d’images conteneur dans ASEv2 ne peuvent pas utiliser le DNS du client défini dans le réseau virtuel ou via le paramètre `WEBSITE_DNS_SERVER` de l'application.
+
 Pour tester la résolution DNS de votre application web, vous pouvez utiliser la commande de console *nameresolver*. Accédez à la fenêtre de débogage du site scm de votre application ou accédez à l’application dans le portail, puis sélectionnez la console. À partir de l’invite de l’interpréteur de commandes, vous pouvez émettre la commande *nameresolver*, avec le nom DNS que vous souhaitez rechercher. Le résultat que vous obtenez est identique à celui qu’obtiendrait l’application pour la même recherche. Si vous utilisez nslookup, vous effectuez plutôt une recherche à l’aide d’Azure DNS.
 
-Si vous modifiez le paramètre DNS du réseau virtuel dans lequel figure votre environnement ASE, vous devrez redémarrer l’ASE. Pour éviter de redémarrer l’ASE, il est vivement recommandé de configurer les paramètres DNS de votre réseau virtuel avant de créer l’ASE.  
+Si vous modifiez le paramètre DNS du réseau virtuel dans lequel figure votre environnement ASE, vous devrez redémarrer l’ASE. Pour éviter de redémarrer l’ASE, il est vivement recommandé de configurer les paramètres DNS de votre réseau virtuel avant de créer l’ASE.
 
 <a name="portaldep"></a>
 
-## <a name="portal-dependencies"></a>Dépendances du portail ##
+## <a name="portal-dependencies"></a>Dépendances du portail
 
 Outre les dépendances fonctionnelles que présente un ASE, il existe quelques éléments supplémentaires liés à l’utilisation du portail. Certaines des fonctionnalités du portail Azure dépendent d’un accès direct au _site du Gestionnaire de contrôle des services (SCM)_ . Pour chaque application dans Azure App Service, il existe deux URL. La première URL sert à accéder à votre application. La seconde permet d’accéder au site SCM, également désigné sous le nom de _console Kudu_. Voici quelques-unes des fonctionnalités qui utilisent le site SCM :
 

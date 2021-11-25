@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 442bf95401f4816a192940191c3bee96aed4aa97
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d3ce22128b209a65d5f9036b0943f2425e2c5de3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827328"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401247"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory-or-synapse-analytics"></a>Copier des données vers ou à partir d’IBM Informix à l’aide d’Azure Data Factory ou de Synapse Analytics
 
@@ -37,7 +37,7 @@ Vous pouvez copier des données d’une source Informix vers tout magasin de don
 Pour utiliser ce connecteur Informix, vous devez :
 
 - Configurer un Runtime d’intégration autohébergé. Pour plus d’informations, consultez l’article [Runtime d’intégration autohébergé](create-self-hosted-integration-runtime.md).
-- Installez le pilote ODBC Informix pour le magasin de données sur la machine exécutant le runtime d’intégration. Pour plus d’informations sur l’installation et la configuration du pilote, consultez le [Guide du pilote ODBC Informix](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm) dans IBM Knowledge Center, ou contactez l’équipe de support d’IBM afin d’obtenir des instructions pour l’installation du pilote.
+- Téléchargez le Kit de développement logiciel (SDK) client 64 bits pour Informix afin de créer une connexion ODBC pour le magasin de données sur la machine Integration Runtime. Pour télécharger et configurer le Kit de développement logiciel (SDK), consultez cet [article](https://www.ibm.com/support/pages/informix-client-software-development-kit-client-sdk-and-informix-connect-system-requirements) pour plus d’informations ou contactez l’équipe du support technique d’IBM pour obtenir une aide à l’installation du pilote.
 
 ## <a name="getting-started"></a>Prise en main
 

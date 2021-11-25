@@ -1,28 +1,28 @@
 ---
-title: Connecter Azure Sentinel à des services Azure, Windows et Microsoft
-description: Découvrez comment connecter Azure Sentinel aux services cloud Azure et Microsoft 365, ainsi qu’aux journaux des événements Windows Server.
+title: Connecter Microsoft Sentinel à des services Azure, Windows et Microsoft
+description: Découvrez comment connecter Microsoft Sentinel aux services cloud Azure et Microsoft 365, ainsi qu’aux journaux des événements Windows Server.
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: fab632ae17f71829ddfb36ced149253e124c9851
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 79007f7716a8a24350bbfa6083b9891c425c120e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456895"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523027"
 ---
-# <a name="connect-azure-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Connecter Azure Sentinel aux services Azure, Windows, Microsoft et Amazon
+# <a name="connect-microsoft-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Connecter Microsoft Sentinel à des services Azure, Windows, Microsoft et Amazon
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel utilise la fondation Azure afin de fournir une prise en charge intégrée de service à service pour l’ingestion de données à partir de nombreux services Azure et Microsoft 365, d’Amazon Web Services et de divers services Windows Server. Plusieurs méthodes permettent d’établir ces connexions et cet article explique comment procéder.
+Microsoft Sentinel se base sur Azure afin de fournir une prise en charge service à service intégrée de l’ingestion de données à partir de nombreux services Azure et Microsoft 365, d’Amazon Web Services et de divers services Windows Server. Plusieurs méthodes permettent d’établir ces connexions et cet article explique comment procéder.
 
 Cet article décrit les types de connecteurs suivants :
 
@@ -35,26 +35,25 @@ Cet article présente des informations communes aux groupes de connecteurs. Pour
 Les intégrations suivantes sont à la fois plus uniques et plus populaires, et sont traitées individuellement avec leurs propres articles :
 
 - [Microsoft 365 Defender](connect-microsoft-365-defender.md)
-- [Azure Defender](connect-azure-security-center.md)
+- [Microsoft Defender pour le cloud](connect-azure-security-center.md)
 - [Azure Active Directory](connect-azure-active-directory.md)
 - [Événements de sécurité Windows](connect-windows-security-events.md)
 - [Amazon Web Services (AWS) CloudTrail](connect-aws.md)
-
 
 ## <a name="api-based-connections"></a>Connexions basées sur une API
 
 ### <a name="prerequisites"></a>Configuration requise
 
 - Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Log Analytics.
-- Vous devez disposer du rôle Administrateur général ou Administrateur de la sécurité sur le locataire de votre espace de travail Azure Sentinel.
+- Vous devez disposer du rôle Administrateur général ou Administrateur de la sécurité sur le locataire de votre espace de travail Microsoft Sentinel.
 
 ### <a name="instructions"></a>Instructions
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**.
 
 1. Sélectionnez votre service dans la galerie de connecteurs de données, puis sélectionnez **Ouvrir la page du connecteur** dans le volet de visualisation.
 
-1. Sélectionnez **Connecter** pour démarrer la diffusion en continu d’événements ou d’alertes à partir de votre service dans Azure Sentinel.
+1. Sélectionnez **Connexion** pour démarrer la diffusion en continu d’événements ou d’alertes à partir de votre service dans Microsoft Sentinel.
 
 1. Si la page du connecteur contient une section intitulée **Créer des incidents (recommandé)** , sélectionnez **Activer** si vous souhaitez créer automatiquement des incidents à partir d’alertes.
 
@@ -68,13 +67,13 @@ La configuration de certains connecteurs de ce type est gérée par Azure Policy
 
 ### <a name="prerequisites"></a>Prérequis
 
-Pour ingérer des données dans Azure Sentinel :
+Pour ingérer des données dans Microsoft Sentinel :
 
-- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Azure Sentinel.
+- Vous devez disposer d’autorisations d’accès en lecture et en écriture dans l’espace de travail Microsoft Sentinel.
 
 ### <a name="instructions"></a>Instructions
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**.
 
 1. Sélectionnez votre type de ressource dans la galerie de connecteurs de données, puis choisissez **Ouvrir la page du connecteur** dans le volet de visualisation.
 
@@ -88,7 +87,7 @@ Pour ingérer des données dans Azure Sentinel :
 
 1. Dans l’écran **Paramètres de diagnostic**, entrez un nom dans le champ **Nom des paramètres de diagnostic**.
 
-    Activez la case à cocher **Envoyer à Log Analytics**. Deux nouveaux champs s’affichent sous celle-ci. Choisissez l’**Abonnement** approprié et l’**Espace de travail Log Analytics** (où se trouve Azure Sentinel).
+    Activez la case à cocher **Envoyer à Log Analytics**. Deux nouveaux champs s’affichent sous celle-ci. Choisissez les valeurs **Abonnement** et **Espace de travail Log Analytics** appropriées (où se trouve Microsoft Sentinel).
 
 1. Activez les cases à cocher des types de journaux et de métriques que vous souhaitez collecter. Consultez nos choix recommandés pour chaque type de ressource dans la section pour le connecteur de la ressource dans la page [Référence des connecteurs de données](data-connectors-reference.md).
 
@@ -98,9 +97,9 @@ Pour ingérer des données dans Azure Sentinel :
 
 ### <a name="prerequisites"></a>Prérequis
 
-Pour ingérer des données dans Azure Sentinel :
+Pour ingérer des données dans Microsoft Sentinel :
 
-- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Azure Sentinel.
+- Vous devez disposer d’autorisations d’accès en lecture et en écriture dans l’espace de travail Microsoft Sentinel.
 
 - Pour utiliser Azure Policy afin d’appliquer une stratégie de streaming de journaux à vos ressources, vous devez avoir le rôle Propriétaire pour l’étendue d’attribution de stratégie.
 
@@ -108,7 +107,7 @@ Pour ingérer des données dans Azure Sentinel :
 
 Les connecteurs de ce type utilisent Azure Policy pour appliquer une configuration de paramètres de diagnostic unique à une collection de ressources d’un type unique, définie en tant qu’étendue. Vous pouvez voir les types de journaux ingérés à partir d’un type de ressource donné sur le côté gauche de la page du connecteur pour cette ressource, sous **Types de données**.
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**.
 
 1. Sélectionnez votre type de ressource dans la galerie de connecteurs de données, puis choisissez **Ouvrir la page du connecteur** dans le volet de visualisation.
 
@@ -121,7 +120,7 @@ Les connecteurs de ce type utilisent Azure Policy pour appliquer une configurati
     1. Dans l’onglet **Paramètres** :
        - Désactivez la case à cocher **Afficher uniquement les paramètres nécessitant une entrée**.
        - Si **Effet** figure dans des champs **Nom du paramètre**, laissez ceux-ci tels quels.
-       - Choisissez votre espace de travail Azure Sentinel dans la liste déroulante **Espace de travail Log Analytics**.
+       - Choisissez votre espace de travail Microsoft Sentinel dans la liste déroulante **Espace de travail Log Analytics**.
        - Les champs de liste déroulante restants représentent les types de journaux de diagnostic disponibles. Conservez la valeur « True » pour tous les types de journaux que vous souhaitez ingérer.
 
     1. La stratégie sera appliquée aux ressources ajoutées à l’avenir. Pour appliquer la stratégie également à vos ressources existantes, sélectionnez l’onglet **Correction** et cochez la case **Créer une tâche de correction**.
@@ -154,19 +153,19 @@ Voir ci-dessous comment créer des règles de collecte de données.
 
 ### <a name="prerequisites"></a>Prérequis
 
-- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Azure Sentinel.
+- Vous devez disposer d’autorisations d’accès en lecture et en écriture dans l’espace de travail Microsoft Sentinel.
 
 - Pour collecter des événements à partir d’un système qui n’est pas une machine virtuelle Azure, il faut qu’[**Azure Arc**](../azure-monitor/agents/azure-monitor-agent-install.md) soit installé et activé sur le système *avant* d’activer le connecteur basé sur l’agent Azure Monitor.
 
-   notamment :
-   
-    - Les serveurs Windows installés sur des machines physiques
-    - Les serveurs Windows installés sur des machines virtuelles locales
-    - Les serveurs Windows installés sur des machines virtuelles dans des clouds non-Azure
+  notamment :
+
+  - Les serveurs Windows installés sur des machines physiques
+  - Les serveurs Windows installés sur des machines virtuelles locales
+  - Les serveurs Windows installés sur des machines virtuelles dans des clouds non-Azure
 
 ### <a name="instructions"></a>Instructions
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur dans la liste, puis sélectionnez **Ouvrir la page du connecteur** dans le volet de détails. Suivez ensuite les instructions à l’écran sous l’onglet **Instructions**, comme décrit dans le reste de cette section.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**. Sélectionnez votre connecteur dans la liste, puis sélectionnez **Ouvrir la page du connecteur** dans le volet de détails. Suivez ensuite les instructions à l’écran sous l’onglet **Instructions**, comme décrit dans le reste de cette section.
 
 1. Vérifiez que vous disposez des autorisations appropriées, comme décrit dans la section **Prérequis** sur la page du connecteur.
 
@@ -181,6 +180,7 @@ Voir ci-dessous comment créer des règles de collecte de données.
     Apprenez-en davantage sur les [Règles de collecte de données](../azure-monitor/agents/data-collection-rule-overview.md#create-a-dcr), dans la documentation Azure Monitor.
 
     > [!NOTE]
+    >
     > - Le connecteur Événements de sécurité Windows propose deux autres [**jeux d’événements prédéfinis**](windows-security-event-id-reference.md) que vous pouvez choisir de collecter : **Courant** et **Minimal**.
     >
     > - L’agent Azure Monitor prend en charge les requêtes XPath pour **[XPath version 1.0](/windows/win32/wes/consuming-events#xpath-10-limitations) uniquement**.
@@ -193,10 +193,12 @@ Vous verrez toutes vos règles de collecte de données (y compris celles créée
 
 > [!TIP]
 > Utilisez l’applet de commande PowerShell **Get-WinEvent** avec le paramètre *-FilterXPath* pour tester la validité d’une requête XPath. Le script suivant donne un exemple :
+>
 > ```powershell
 > $XPath = '*[System[EventID=1035]]'
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
+>
 > - Si des événements sont retournés, la requête est valide.
 > - Si vous recevez le message « Aucun événement correspondant aux critères de sélection spécifiés n’a été trouvé », il se peut que la requête soit valide, mais qu’il n’existe aucun événement correspondant sur l’ordinateur local.
 > - Si vous recevez le message « La requête spécifiée n’est pas valide », la syntaxe de la requête n’est pas valide.
@@ -251,21 +253,19 @@ PUT https://management.azure.com/subscriptions/703362b3-f278-4e4b-9179-c76eaf41f
     }
 }
 ```
-Consultez cette [description complète des règles de collecte de données](../azure-monitor/agents/data-collection-rule-overview.md) dans la documentation Azure Monitor.
 
+Consultez cette [description complète des règles de collecte de données](../azure-monitor/agents/data-collection-rule-overview.md) dans la documentation Azure Monitor.
 
 # <a name="log-analytics-agent-legacy"></a>[Agent Log Analytics (hérité)](#tab/LAA)
 
 ### <a name="prerequisites"></a>Prérequis
 
 - Vous devez disposer d’autorisations de lecture et d’écriture sur l’espace de travail Log Analytics, ainsi que sur tout espace de travail contenant des machines dont vous souhaitez collecter les journaux.
-- Vous devez être titulaire du rôle **Contributeur Log Analytics** sur la solution SecurityInsights (Azure Sentinel) de ces espaces de travail, en plus des rôles Azure Sentinel.
+- Vous devez avoir le rôle **Contributeur Log Analytics** sur la solution SecurityInsights (Microsoft Sentinel) de ces espaces de travail, en plus des rôles Microsoft Sentinel.
 
 ### <a name="instructions"></a>Instructions
 
-#### <a name="install-the-agent"></a>Installer l’agent
-
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Connecteurs de données**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Connecteurs de données**.
 
 1. Sélectionnez votre service (**DNS** ou **Pare-feu Windows**), puis choisissez **Ouvrir la page du connecteur**.
 
@@ -279,7 +279,7 @@ Consultez cette [description complète des règles de collecte de données](../a
 
 > [!NOTE]
 >
-> Pour permettre aux systèmes Windows qui n’ont pas la connexion Internet nécessaire de diffuser en continu des événements vers Azure Sentinel, téléchargez et installez la **passerelle Log Analytics** sur un ordinateur distinct, en utilisant le lien **Télécharger la passerelle Log Analytics** dans la page **Gestion des agents**, pour l’utiliser en tant que proxy.  Vous devrez toujours installer l’agent Log Analytics sur chaque système Windows dont vous souhaitez collecter les événements.
+> Pour permettre aux systèmes Windows qui n’ont pas la connexion Internet nécessaire de continuer à transmettre des événements à Microsoft Sentinel, téléchargez et installez la **passerelle Log Analytics** sur un ordinateur distinct en utilisant le lien **Télécharger la passerelle Log Analytics** sur la page **Gestion des agents** afin de l’utiliser en tant que proxy.  Vous devez toujours installer l’agent Log Analytics sur chaque système Windows dont vous souhaitez collecter les événements.
 >
 > Pour plus d’informations sur ce scénario, consultez la documentation relative à la [**passerelle Log Analytics**](../azure-monitor/agents/gateway.md).
 
@@ -296,8 +296,8 @@ Vous pouvez rechercher et interroger les données de ces services à l’aide de
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à connecter des services Azure, Microsoft et Windows, ainsi qu’Amazon Web Services, à Azure Sentinel. 
-- Découvrez les [connecteurs de données Azure Sentinel](connect-data-sources.md) en général.
-- [Recherchez votre connecteur de données Azure Sentinel](data-connectors-reference.md).
+Dans ce document, vous avez appris à connecter des services Azure, Microsoft et Windows, ainsi qu’Amazon Web Services, à Microsoft Sentinel. 
+- Découvrez les [connecteurs de données Microsoft Sentinel](connect-data-sources.md) en général.
+- [Recherchez votre connecteur de données Microsoft Sentinel](data-connectors-reference.md).
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](detect-threats-built-in.md).

@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6b6444ef42e0ada42f374ed5d1e69aefd332a983
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 74a39ff953c1ef8e549dbace0c7fc495976fae2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438870"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325521"
 ---
 # <a name="join-a-teams-meeting"></a>Participer à une réunion Teams
 
@@ -36,7 +36,7 @@ Les applications personnalisées créées avec Azure Communication Services pour
 
 ## <a name="meeting-experience"></a>Expérience de réunion
 
-Comme avec l’accès anonyme aux réunions Teams, votre application doit disposer du lien de la réunion pour y accéder, qui peut être récupéré via l’API Graph ou à partir du calendrier dans Microsoft Teams. Le nom des utilisateurs BYOI affiché dans Teams est configurable par l’intermédiaire du Kit de développement logiciel (SDK) Appel de Communication Services, et ces utilisateurs sont étiquetés comme « externes » pour indiquer aux utilisateurs de Teams qu’ils n’ont pas été authentifiés à l’aide d’Azure Active Directory.
+Comme avec l’accès anonyme aux réunions Teams, votre application doit disposer du lien de la réunion pour y accéder, qui peut être récupéré via l’API Graph ou à partir du calendrier dans Microsoft Teams. Le nom des utilisateurs BYOI affiché dans Teams est configurable par l’intermédiaire du Kit de développement logiciel (SDK) Appel de Communication Services, et ces utilisateurs sont étiquetés comme « externes » pour indiquer aux utilisateurs de Teams qu’ils n’ont pas été authentifiés à l’aide d’Azure Active Directory. Lorsque le premier utilisateur ACS se joint à une réunion Teams, le client Teams affiche un message indiquant que certaines fonctionnalités peuvent ne pas être disponibles parce que l’un des participants utilise un client personnalisé.
 
 Lors d’une réunion, les utilisateurs de Communication Services pourront utiliser les principales fonctionnalités audio, vidéo, de partage d’écran et de conversation via les Kits de développement logiciel (SDK) d’Azure Communication Services. Lorsqu’un utilisateur de Communication Services quitte la réunion ou que la réunion se termine, il ne peut plus envoyer ni recevoir de nouveaux messages de conversation, mais il a accès aux messages envoyés et reçus pendant la réunion. Les utilisateurs anonymes de Communication Services ne peuvent pas ajouter/retirer d’autres participants à la réunion ni ne peuvent démarrer l’enregistrement ou la transcription de la réunion.
 

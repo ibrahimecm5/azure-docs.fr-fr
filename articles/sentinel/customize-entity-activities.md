@@ -1,26 +1,26 @@
 ---
-title: Personnaliser les activités sur les chronologies d’entité Azure Sentinel | Microsoft Docs
-description: Ajouter des activités personnalisées à ces pistes Azure Sentinel et à des affichages sur les chronologies de page d’entité
+title: Personnaliser les activités sur les chronologies d’entité Microsoft Sentinel | Microsoft Docs
+description: Ajoutez des activités personnalisées à celles que Microsoft Sentinel suit et affiche sur la chronologie des pages d’entité.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6fd6db5b75124552bff3f48a516cd352d817cf27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0483d839af7a8707aa3be632f9d168447488e768
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055214"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523616"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>Personnaliser les activités sur les chronologies de page d’entité
 
@@ -32,7 +32,7 @@ ms.locfileid: "131055214"
 
 ## <a name="introduction"></a>Introduction
 
-En plus des activités suivies et présentées dans la chronologie par le biais d’Azure Sentinel sans configuration supplémentaire, vous pouvez créer toutes autres activités dont vous souhaitez effectuer le suivi et les présenter également sur la chronologie. Vous pouvez créer des activités personnalisées basées sur des requêtes de données d’entité à partir de toutes les sources de données connectées. Les exemples suivants illustrent la façon dont vous pouvez utiliser cette fonctionnalité :
+En plus des activités suivies et présentées dans la chronologie par Microsoft Sentinel sans configuration supplémentaire, vous pouvez créer toutes autres activités dont vous souhaitez effectuer le suivi et les présenter également sur la chronologie. Vous pouvez créer des activités personnalisées basées sur des requêtes de données d’entité à partir de toutes les sources de données connectées. Les exemples suivants illustrent la façon dont vous pouvez utiliser cette fonctionnalité :
 
 - Ajoutez de nouvelles activités à la chronologie de l’entité en modifiant les modèles d’activité prêts à l’emploi existants.
 
@@ -40,7 +40,7 @@ En plus des activités suivies et présentées dans la chronologie par le biais 
 
 ## <a name="getting-started"></a>Bien démarrer
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Comportement des entités**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Comportement des entités**.
 
 1. Dans le panneau **Comportement des entités**, sélectionnez **Personnaliser la page d’entité** en haut de l’écran.
 
@@ -146,7 +146,7 @@ SecurityEvent
 
 Par souci pratique, vous pouvez déterminer comment l’activité est présentée dans la chronologie en ajoutant des paramètres dynamiques à la sortie de l’activité.
 
-Azure Sentinel fournit des paramètres intégrés que vous pouvez utiliser, et vous pouvez également en utiliser d’autres en fonction des champs que vous projetez dans la requête.
+Microsoft Sentinel fournit des paramètres intégrés que vous pouvez utiliser. Vous pouvez également en utiliser d’autres en fonction des champs que vous avez projetés dans la requête.
 
 Utilisez le format suivant pour vos paramètres : `{{ParameterName}}`
 
@@ -209,6 +209,6 @@ Vous pouvez également utiliser le filtre **Activités** pour présenter ou masq
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à créer des activités personnalisées pour vos chronologies de page d’entité. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à créer des activités personnalisées pour vos chronologies de page d’entité. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez les [pages d’entité](identify-threats-with-entity-behavior-analytics.md).
 - Consultez la liste complète des [entités et identificateurs](entities-reference.md).

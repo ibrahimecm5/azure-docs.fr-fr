@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 0b8d9b3beaf965cc8c5c745d243da429c0de10e4
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 57d529d74d5e320c8a41fdcf71ddd61d11e4379e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131561021"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519379"
 ---
 # <a name="set-up-automl-training-with-python"></a>Configurer l’apprentissage AutoML avec Python
 
@@ -91,7 +91,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Formation, validation et test des données
 
-Vous pouvez spécifier des **jeux de données d’apprentissage et de validation** distincts directement dans le constructeur `AutoMLConfig`. En savoir plus sur le [guide pratique pour configurer les fractionnements de données et la validation croisée](how-to-configure-cross-validation-data-splits.md) pour vos expériences AutoML. 
+Vous pouvez spécifier des **jeux de données d’apprentissage et de validation** distincts directement dans le constructeur `AutoMLConfig`. Découvrez [comment configurer la formation, la validation, la validation croisée et les données de test](how-to-configure-cross-validation-data-splits.md) pour vos expériences AutoML. 
 
 Si vous ne spécifiez pas explicitement un paramètre `validation_data` ou `n_cross_validation`, le Machine Learning automatisé applique les techniques par défaut pour déterminer la façon dont la validation est effectuée. Cette détermination dépend du nombre de lignes dans le jeu de données affecté à votre paramètre `training_data`. 
 
@@ -100,7 +100,15 @@ Si vous ne spécifiez pas explicitement un paramètre `validation_data` ou `n_cr
 |**Contient plus&nbsp;de&nbsp;20 000&nbsp;lignes**| Le fractionnement des données de formation/validation est appliqué. La valeur par défaut consiste à prendre 10 % du jeu de données d’apprentissage initial en tant que jeu de validation. Ce jeu de validation est ensuite utilisé pour le calcul des métriques.
 |**Contient moins&nbsp;de&nbsp;20 000&nbsp;lignes**| L’approche de validation croisée est appliquée. Le nombre de plis par défaut dépend du nombre de lignes. <br> **Si le jeu de données est inférieur à 1 000 lignes**, 10 plis sont utilisés. <br> **S’il y a entre 1 000 et 20 000 lignes**, trois plis sont utilisés.
 
-À ce stade, vous devez fournir vos propres **données de test** pour l’évaluation du modèle. Pour obtenir un exemple de code d’intégration de vos propres données de test pour l’évaluation du modèle, consultez la section **Test** de [ce notebook Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb).
+
+> [!TIP] 
+> Vous pouvez charger des **données de test (préversion)** pour évaluer les modèles que le ML automatisé a générés pour vous. Ces fonctionnalités sont des capacités d’évaluation [expérimentales](/python/api/overview/azure/ml/#stable-vs-experimental) susceptibles d’évoluer à tout moment.
+> Découvrez comment : 
+> * [Transmettre des données de test à votre objet AutoMLConfig](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview). 
+> * [Tester les modèles générés par le ML automatisé pour votre expérience](#test-models-preview).
+>  
+> Si vous préférez une expérience sans code, consultez l’[étape 11 dans Configurer l’AutoML avec l’interface utilisateur de Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+
 
 ### <a name="large-data"></a>Données volumineuses 
 
@@ -122,11 +130,11 @@ Utilisez les &nbsp;algorithmes&nbsp;de diffusion des données&nbsp;en continu <b
 
 Ensuite, l’endroit où le modèle doit être entraîné est déterminé. Une expérience de ML automatisé peut s’exécuter sur les options de calcul suivantes. Découvrez [les avantages et les inconvénients des options de calcul locales et distantes](concept-automated-ml.md#local-remote). 
 
-* Votre machine **locale**, comme un poste de travail local ou un ordinateur portable : en général, quand vous avez un petit jeu de données et que vous êtes toujours dans la phase d’exploration. Consultez [ce notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) pour un exemple de calcul local. 
+* Votre machine **locale**, comme un poste de travail local ou un ordinateur portable : en général, quand vous avez un petit jeu de données et que vous êtes toujours dans la phase d’exploration. Consultez [ce notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) pour un exemple de calcul local. 
  
 * Une machine **distante** dans le cloud : la [capacité de calcul managée Azure Machine Learning](concept-compute-target.md#amlcompute) est un service managé qui permet d’entraîner des modèles de machine learning sur des clusters de machines virtuelles Azure. L’instance de calcul est également prise en charge en tant que cible de calcul.
 
-    Consultez [ce notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) pour obtenir un exemple distant utilisant le calcul managé Azure Machine Learning. 
+    Consultez [ce notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) pour obtenir un exemple distant utilisant le calcul managé Azure Machine Learning. 
 
 * Un **cluster Azure Databricks** dans votre abonnement Azure. Pour plus de détails, consultez [Configurer un cluster Azure Databricks pour ML automatisé](how-to-configure-databricks-automl-environment.md). Consultez ce [site GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) pour voir des exemples de notebooks avec Azure Databricks.
 
@@ -508,9 +516,59 @@ RunDetails(run).show()
 
 ![Widget de notebook Jupyter pour le Machine Learning automatisé](./media/how-to-configure-auto-train/azure-machine-learning-auto-ml-widget.png)
 
+## <a name="test-models-preview"></a>Tester des modèles (préversion)
+
+>[!IMPORTANT]
+> Le test de vos modèles avec un jeu de données de test pour évaluer les modèles générés par le ML automatisé est une fonctionnalité d’évaluation. Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment.
+
+Lorsque vous transmettez des paramètres `test_data` ou `test_size` dans le `AutoMLConfig`, vous déclenchez automatiquement une série de tests à distance qui utilise les données de test fournies pour évaluer le meilleur modèle que le ML automatisé recommande à l’issue de l’expérience. Cette série de tests à distance est effectuée à la fin de l’expérience, une fois que le meilleur modèle est déterminé. Voir comment [transmettre des données de test dans votre `AutoMLConfig`](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview). 
+
+### <a name="get-test-run-results"></a>Obtenir les résultats de la série de tests 
+
+Vous pouvez obtenir les prédictions et les mesures de la série de tests à distance à partir d’[Azure Machine Learning studio](how-to-use-automated-ml-for-ml-models.md#view-remote-test-run-results-preview) ou avec le code suivant. 
+
+```python
+best_run, fitted_model = remote_run.get_output()
+test_run = next(best_run.get_children(type='automl.model_test'))
+test_run.wait_for_completion(show_output=False, wait_post_processing=True)
+
+# Get test metrics
+test_run_metrics = test_run.get_metrics()
+for name, value in test_run_metrics.items():
+    print(f"{name}: {value}")
+
+# Get test predictions as a Dataset
+test_run_details = test_run.get_details()
+dataset_id = test_run_details['outputDatasets'][0]['identifier']['savedId']
+test_run_predictions = Dataset.get_by_id(workspace, dataset_id)
+predictions_df = test_run_predictions.to_pandas_dataframe()
+
+# Alternatively, the test predictions can be retrieved via the run outputs.
+test_run.download_file("predictions/predictions.csv")
+predictions_df = pd.read_csv("predictions.csv")
+
+```
+
+### <a name="test-existing-automated-ml-model"></a>Tester le modèle de ML automatisé existant
+
+Pour tester d’autres modèles de ML automatisé créés, la meilleure exécution ou exécution enfant, utilisez [`ModelProxy()`](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy) pour tester un modèle une fois l’exécution principale d’AutoML terminée. `ModelProxy()` renvoie déjà les prédictions et les mesures et ne nécessite pas de traitement supplémentaire pour récupérer les sorties.
+
+> [!NOTE]
+> ModelProxy est une classe d’évaluation [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) susceptible d’évoluer à tout moment.
+
+Le code suivant montre comment tester un modèle à partir de n’importe quelle exécution à l’aide de la méthode [ModelProxy.test()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#test-test-data--azureml-data-abstract-dataset-abstractdataset--include-predictions-only--bool---false-----typing-tuple-azureml-data-abstract-dataset-abstractdataset--typing-dict-str--typing-any--). Dans la méthode test(), vous avez la possibilité de spécifier si vous souhaitez uniquement voir les prédictions de la série de tests avec le paramètre `include_predictions_only`. 
+
+```python
+from azureml.train.automl.model_proxy import ModelProxy
+
+model_proxy = ModelProxy(child_run=my_run, compute_target=cpu_cluster)
+predictions, metrics = model_proxy.test(test_data, include_predictions_only= True
+)
+```
+
 ## <a name="register-and-deploy-models"></a>Inscrire et déployer des modèles
 
-Vous pouvez enregistrer un modèle, afin de pouvoir y revenir pour une utilisation ultérieure. 
+Après avoir testé un modèle et confirmé que vous souhaitez l’utiliser en production, vous pouvez l’inscrire pour une utilisation ultérieure. 
 
 Pour enregistrer un modèle à partir d’une exécution de ML automatisé, utilisez la méthode [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-). 
 

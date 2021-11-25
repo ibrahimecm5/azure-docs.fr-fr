@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: 4e6ef102a4cf0a4528125e336e21ecf709bb37bc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6eb624fd132823afe25a91414c2a316f9dc7bab3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240012"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310335"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Surveiller les machines virtuelles avec Azure Monitor-configurer l’analyse
 Cet article fait partie du scénario [Surveiller les machines virtuelles et leurs charges de travail dans Azure Monitor](monitor-virtual-machine.md). Il décrit comment configurer la surveillance de vos machines virtuelles Azure et hybrides dans Azure Monitor.
@@ -41,14 +41,14 @@ Azure Monitor fournit un niveau de base de surveillance pour les machines virtue
 ## <a name="create-and-prepare-a-log-analytics-workspace"></a>Créer et préparer un espace de travail Log Analytics
 Vous avez besoin d’au moins un espace de travail Log Analytics pour prendre en charge VM insights et collecter les données de télémétrie auprès de l’agent Log Analytics. Il n’y a aucun coût pour l’espace de travail, mais vous encourez des coûts d’ingestion et de rétention lorsque vous collectez des données. Pour plus d’informations, consultez [Gérer l’utilisation et les coûts avec les journaux Azure Monitor](../logs/manage-cost-storage.md).
 
-De nombreux environnements utilisent un espace de travail unique pour toutes leurs machines virtuelles et d’autres ressources Azure qu’ils surveillent. Vous pouvez même partager un espace de travail utilisé par [Azure Security Center et Azure Sentinel](monitor-virtual-machine-security.md), bien que de nombreux clients choisissent de séparer leurs télémétries de disponibilité et de performances des données de sécurité. Si vous découvrez Azure Monitor, commencez avec un seul espace de travail et envisagez de créer des espaces de travail supplémentaires à métrique que vos besoins évoluent.
+De nombreux environnements utilisent un espace de travail unique pour toutes leurs machines virtuelles et d’autres ressources Azure qu’ils surveillent. Vous pouvez même partager un espace de travail utilisé par [Microsoft Defender pour le cloud et Microsoft Sentinel](monitor-virtual-machine-security.md), bien que de nombreux clients choisissent de séparer leurs télémétries de disponibilité et de performances des données de sécurité. Si vous découvrez Azure Monitor, commencez avec un seul espace de travail et envisagez de créer des espaces de travail supplémentaires à métrique que vos besoins évoluent.
 
 Voir [Conception de votre déploiement de journaux Azure Monitor](../logs/design-logs-deployment.md) pour plus de détails sur la logique que vous devez envisager lors de la conception d’une configuration d’espace de travail.
 
 ### <a name="multihoming-agents"></a>Agents à hébergement multiple
 L’hébergement multiple fait référence à une machine virtuelle qui se connecte à plusieurs espaces de travail. En règle générale, il y a peu de raisons pour les agents multirésidents pour Azure Monitor seul. Le fait de faire en sorte qu’un agent envoie des données à plusieurs espaces de travail crée très probablement des données en double dans chaque espace de travail, ce qui augmente le coût global. Vous pouvez combiner les données de plusieurs espaces de travail à l'aide de [requêtes](../logs/cross-workspace-query.md) et de [classeurs inter-espaces de travail](../visualizations/../visualize/workbooks-overview.md).
 
-Toutefois, vous pouvez envisager l’hébergement multiple, si vous avez un environnement avec Azure Security Center ou Azure Sentinel stocké dans un espace de travail distinct d’Azure Monitor. Une machine surveillée par chaque service doit envoyer des données à chaque espace de travail. L’agent de Windows prend en charge ce scénario, car il peut envoyer jusqu’à quatre espaces de travail. L’agent Linux ne peut actuellement envoyer qu’à un seul espace de travail. Si vous souhaitez que Azure Monitor et Azure Security Center ou Azure Sentinel surveille un ensemble commun de machines Linux, les services doivent partager le même espace de travail.
+Toutefois, vous pouvez envisager l’hébergement multiple si vous avez un environnement doté de Microsoft Defender pour le cloud ou Microsoft Sentinel stocké dans un espace de travail distinct d’Azure Monitor. Une machine surveillée par chaque service doit envoyer des données à chaque espace de travail. L’agent de Windows prend en charge ce scénario, car il peut envoyer jusqu’à quatre espaces de travail. L’agent Linux ne peut actuellement envoyer qu’à un seul espace de travail. Si vous souhaitez qu’Azure Monitor et Microsoft Defender pour le cloud ou Microsoft Sentinel surveille un ensemble commun de machines Linux, les services doivent partager le même espace de travail.
 
 Si vous utilisez un [modèle d’analyse hybride](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring), vous pouvez également avoir recours au multihébergement de vos agents. Dans ce modèle, vous utilisez Azure Monitor et Operations Manager ensemble pour surveiller les mêmes machines. L’agent de Log Analytics et Microsoft Management Agent pour les Operations Manager sont le même agent. Parfois, ils sont référencés avec des noms différents.
 
@@ -99,7 +99,7 @@ Pour connaître les différentes options permettant d’activer VM insights pour
 
 
 ## <a name="send-guest-performance-data-to-metrics"></a>Envoyer les données de performances de l’invité aux métriques
-[L’agent d’Azure Monitor](../agents/azure-monitor-agent-overview.md) remplace l’agent Log Analytics lorsqu’il prend entièrement en charge Azure Monitor, Azure Security Center et Azure Sentinel. Jusqu’à ce moment-là, il peut être installé avec l’agent Log Analytics pour envoyer des données de performances du système d’exploitation invité des machines vers les métriques Azure Monitor. Cette configuration vous permet d’évaluer ces données avec Metrics Explorer et d’utiliser des alertes de métriques.
+[L’agent d’Azure Monitor](../agents/azure-monitor-agent-overview.md) remplace l’agent Log Analytics lorsqu’il prend entièrement en charge Azure Monitor, Microsoft Defender pour le cloud et Microsoft Sentinel. Jusqu’à ce moment-là, il peut être installé avec l’agent Log Analytics pour envoyer des données de performances du système d’exploitation invité des machines vers les métriques Azure Monitor. Cette configuration vous permet d’évaluer ces données avec Metrics Explorer et d’utiliser des alertes de métriques.
 
 L’agent Azure Monitor nécessite au moins une règle de collecte de données (DCR) qui définit les données à collecter et l’emplacement où il doit envoyer ces données. Une seule DCR peut être utilisée par n’importe quelle machine du même groupe de ressources.
 

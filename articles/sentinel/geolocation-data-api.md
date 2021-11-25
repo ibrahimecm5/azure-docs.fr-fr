@@ -1,32 +1,32 @@
 ---
-title: Enrichir des entités avec des données de géolocalisation dans Azure Sentinel à l’aide d’une API REST | Microsoft Docs
-description: Cet article explique comment enrichir des entités dans Azure Sentinel avec des données de géolocalisation via une API REST.
+title: Enrichir des entités avec des données de géolocalisation dans Microsoft Sentinel à l’aide d’une API REST | Microsoft Docs
+description: Cet article explique comment enrichir des entités dans Microsoft Sentinel avec des données de géolocalisation via une API REST.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 223fa4bf0e62790e31ae8d872ef47c72a15b4634
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cce16ca2f0db3d4f44c4077e4760f599e565bae6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083864"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520595"
 ---
-# <a name="enrich-entities-in-azure-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Enrichir des entités dans Azure Sentinel avec des données de géolocalisation via une API REST (préversion publique)
+# <a name="enrich-entities-in-microsoft-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Enrichir des entités dans Microsoft Sentinel avec des données de géolocalisation via une API REST (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article explique comment enrichir des entités dans Azure Sentinel avec des données de géolocalisation à l’aide d’une API REST.
+Cet article explique comment enrichir des entités dans Microsoft Sentinel avec des données de géolocalisation à l’aide d’une API REST.
 
 > [!IMPORTANT]
 > Cette fonctionnalité est actuellement en PRÉVERSION. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
@@ -123,12 +123,12 @@ Cette API a une limite de 100 appels, par utilisateur, par heure.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - En savoir plus sur les entités :
 
-    - [Informations de référence sur les types d'entités Azure Sentinel](entities-reference.md)
-    - [Classer et analyser les données à l'aide d'entités dans Azure Sentinel](entities-in-azure-sentinel.md)
-    - [Mapper des champs de données à des entités dans Azure Sentinel](map-data-fields-to-entities.md)
+    - [Informations de référence sur les types d’entités Microsoft Sentinel](entities-reference.md)
+    - [Classer et analyser les données à l'aide d'entités dans Microsoft Sentinel](entities-in-azure-sentinel.md)
+    - [Mapper des champs de données à des entités dans Microsoft Sentinel](map-data-fields-to-entities.md)
 
-- Explorer d’autres utilisations de l’[API Azure Sentinel](/rest/api/securityinsights/)
+- Explorer d’autres utilisations de l’[API Microsoft Sentinel](/rest/api/securityinsights/)

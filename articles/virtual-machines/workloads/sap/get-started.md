@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/02/2021
+ms.date: 11/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c8d53392a48c821cb126e729f8e29bf7c686b3d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 73e1f58073c92ba8a0631d4ee7136de3bac5e114
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441074"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549543"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Utiliser Azure pour héberger et exécuter des scénarios de charge de travail SAP
 
@@ -80,7 +80,7 @@ Dans cette section, vous trouvez des informations sur la configuration de l’au
 Cette section contient des documents concernant l’intégration de Microsoft Power BI dans des sources de données SAP, ainsi que l’intégration d’Azure Data Factory dans SAP BW.
 
 ## <a name="change-log"></a>Journal des modifications
-- 
+- 16 novembre 2021 : Publication des guides de haute disponibilité pour SAP ASCS/ERS avec NFS sur fichiers Azure [HA pour SAP NW sur SLES avec NFS sur fichiers Azure](./high-availability-guide-suse-nfs-azure-files.md) et [HA pour SAP NW sur RHEL avec NFS sur fichiers Azure](./high-availability-guide-rhel-nfs-azure-files.md). 
 - 02 novembre 2021 : modification des [types de stockage Azure pour la charge de travail SAP](./planning-guide-storage.md) et le [déploiement SGBD de machines virtuelles Azure ASE SAP](./dbms_guide_sapase.md) afin de déclarer la prise en charge de ASE SAP pour NFS sur Azure NetApp Files.
 - 02 novembre 2021 : modification [des configurations de charge de travail SAP avec zones de disponibilité Azure](./sap-ha-availability-zones.md) pour déplacer Singapour Sud-Est vers les régions pour les configurations actives/actives
 - 02 novembre 2021 : modification de la [haute disponibilité de SAP HANA sur Machines virtuelles Azure sur Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md) pour mettre à jour les instructions dans la configuration active/active (lecture activée) scale-out HANA.

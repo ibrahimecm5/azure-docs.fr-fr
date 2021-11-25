@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 53af4de413739318a78f3ced65f64ffa89ba0545
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 75eccc45269218fa4af9dd8ccac9ed9509c84934
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131424681"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132492526"
 title: Forum aux questions sur les disques de machines virtuelles et les disques Premium gérés et non gérés Azure IaaS
 summary: Dans cet article, nous allons répondre à certaines questions fréquentes sur Azure Disques managés et les disques SSD Premium Azure.
 sections:
@@ -197,7 +197,7 @@ sections:
   - question: >
       La fonctionnalité Disques partagés est-elle prise en charge pour les disques non managés ou les objets blob de pages ?
     answer: >
-      Non, elle est prise en charge uniquement pour les disques Ultra et managés SSD Premium.
+      Non, elle n’est prise en charge que pour un sous-ensemble de types de disques managés. Pour plus d’informations, consultez l’[article conceptuel](disks-shared.md).
   - question: >
       Dans quelles régions les disques partagés sont pris en charge ?
     answer: >

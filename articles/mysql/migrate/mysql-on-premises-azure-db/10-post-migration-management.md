@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: 9894769ecd3d7144fa2cf4bb245575d397c60148
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5c7ef5f12cf4ec1f6776abbc405cf5145c27c0f9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823992"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297446"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>Migrer MySQL local vers Azure Database pour MySQL : gestion post-migration
 
@@ -28,7 +28,7 @@ ms.locfileid: "124823992"
 
 Une fois la migration terminée, la phase suivante permet de gérer les nouvelles ressources de charges de travail des données informatiques. Les opérations de gestion comprennent les activités du plan de contrôle et du plan de données. Les activités du plan de contrôle sont celles liées aux ressources Azure par opposition au plan de données, qui se trouve **à l’intérieur** de la ressource Azure (dans ce cas, MySQL).
 
-Azure Database pour MySQL offre la possibilité de surveiller ces deux types d’activités opérationnelles à l’aide d’outils Azure, par exemple [Azure Monitor](../../../azure-monitor/overview.md), [Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md) et [Azure Sentinel.](../../../sentinel/overview.md) Outre les outils basés sur Azure, les systèmes d’informations de sécurité et de gestion d’événements (SIEM) peuvent également être configurés pour consommer ces journaux.
+Azure Database pour MySQL offre la possibilité de surveiller ces deux types d’activités opérationnelles à l’aide d’outils Azure, par exemple [Azure Monitor](../../../azure-monitor/overview.md), [Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md) et [Microsoft Sentinel](../../../sentinel/overview.md). Outre les outils basés sur Azure, les systèmes d’informations de sécurité et de gestion d’événements (SIEM) peuvent également être configurés pour consommer ces journaux.
 
 Quel que soit l’outil utilisé pour surveiller les nouvelles charges de travail informatiques, des alertes doivent être créées pour avertir les administrateurs Azure et les Administrateurs de base de données de toute activité suspecte. Si un événement d’alerte particulier a un chemin de correction bien défini, les alertes peuvent déclencher des [runbooks Azure](../../../automation/learn/powershell-runbook-managed-identity.md) automatisés pour traiter l’événement.
 
@@ -102,7 +102,7 @@ La fonctionnalité [Notification de maintenance planifiée](../../concepts-monit
 
 ## <a name="wwi-scenario"></a>Scénario WWI
 
-La société WWI a décidé d’utiliser les journaux d’activité Azure et d’activer la journalisation MySQL pour les transmettre à un [espace de travail Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md). Cet espace de travail est configuré pour faire partie d’[Azure Sentinel](../../../sentinel/index.yml) de manière à ce que tous les événements d’[analyse des menaces](../../concepts-security.md#threat-protection) soient signalés et que des incidents soient créés.
+La société WWI a décidé d’utiliser les journaux d’activité Azure et d’activer la journalisation MySQL pour les transmettre à un [espace de travail Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md). Cet espace de travail est configuré pour faire partie de [Microsoft Sentinel](../../../sentinel/index.yml) de manière à ce que tous les événements d’[analyse des menaces](../../concepts-security.md#threat-protection) soient signalés et que des incidents soient créés.
 
 Les Administrateurs de base de données MySQL ont installé les [cmdlets Azure PowerShell](../../quickstart-create-mysql-server-database-using-azure-powershell.md) pour Azure Database pour MySQL afin d’automatiser la gestion du serveur MySQL au lieu de devoir se connecter au portail Azure à chaque fois.
 

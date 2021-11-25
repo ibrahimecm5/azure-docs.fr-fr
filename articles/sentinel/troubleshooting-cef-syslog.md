@@ -1,34 +1,34 @@
 ---
-title: Résoudre les problèmes de connexion entre Azure Sentinel et un connecteur de données CEF ou Syslog | Microsoft Docs
-description: Découvrez comment résoudre les problèmes liés à votre connecteur de données CEF ou Syslog Azure Sentinel.
+title: Résoudre les problèmes de connexion entre Microsoft Sentinel et un connecteur de données CEF ou Syslog | Microsoft Docs
+description: Découvrez comment résoudre les problèmes liés à votre connecteur de données CEF ou Syslog Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9d25b3e448fdf450001120d0c9fabf48f0e23b97
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 627660330493b2d26c003145fc41dbadaa780052
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022908"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517252"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>Résoudre les problèmes liés à votre connecteur de données CEF ou Syslog
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article décrit les méthodes courantes de vérification et de dépannage d’un connecteur de données CEF ou Syslog pour Azure Sentinel.
+Cet article décrit les méthodes courantes de vérification et de dépannage d’un connecteur de données CEF ou Syslog pour Microsoft Sentinel.
 
-Par exemple, si vos journaux ne s’affichent pas dans Azure Sentinel, que ce soit dans les tables Syslog ou du Journal de sécurité commune, votre source de données risque de ne pas se connecter ou il peut y avoir une autre raison pour laquelle vos données ne sont pas reçues.
+Par exemple, si vos journaux ne s’affichent pas dans Microsoft Sentinel, que ce soit dans les tables Syslog ou Common Security Log, votre source de données risque de ne pas se connecter ou il peut y avoir une autre raison pour laquelle vos données ne sont pas ingérées.
 
 D’autres symptômes d’un déploiement de connecteur défaillant inclus soit l’absence des fichiers **security_events.conf** ou **security-omsagent.config.conf** soit l’absence de réponse du serveur rsyslog sur le port 514.
 
@@ -46,7 +46,7 @@ Pour plus d’informations, consultez [Connecter votre solution externe à l’a
 
 ## <a name="validate-cef-connectivity"></a>Valider la connectivité CEF
 
-Une fois que vous avez [déployé votre redirecteur de journal ](connect-common-event-format.md) et [configuré votre solution de sécurité pour lui envoyer des messages CEF](./connect-common-event-format.md), suivez les étapes dans cette section pour vérifier la connectivité entre votre solution de sécurité et Azure Sentinel.
+Une fois que vous avez [déployé votre redirecteur de journal ](connect-common-event-format.md) et [configuré votre solution de sécurité pour lui envoyer des messages CEF](./connect-common-event-format.md), suivez les étapes dans cette section pour vérifier la connectivité entre votre solution de sécurité et Microsoft Sentinel.
 
 1. Assurez-vous que vous disposez des prérequis suivants :
 
@@ -56,13 +56,13 @@ Une fois que vous avez [déployé votre redirecteur de journal ](connect-common-
 
     - Vous pouvez avoir besoin de l’ID et de la clé primaire de l’espace de travail à un moment donné dans ce processus. Vous pouvez les trouver dans la ressource d’espace de travail, sous **Gestion des agents**.
 
-1. Dans le menu de navigation d’Azure Sentinel, ouvrez **Journaux**. Exécutez une requête à l’aide du schéma **CommonSecurityLog** pour voir si vous recevez les journaux de votre solution de sécurité.
+1. Dans le menu de navigation de Microsoft Sentinel, ouvrez **Journaux**. Exécutez une requête à l’aide du schéma **CommonSecurityLog** pour voir si vous recevez les journaux de votre solution de sécurité.
 
     Jusqu’à 20 minutes peuvent être nécessaires avant que vos journaux ne commencent à apparaître dans **Log Analytics**.
 
 1. Si vous ne voyez aucun résultat lors de la requête, vérifiez que des événements sont générés à partir de votre solution de sécurité, ou essayez d’en générer certains, et vérifiez qu’ils sont transférés vers la machine de redirection de syslog que vous avez désignée.
 
-1. Exécutez le script suivant sur le redirecteur de journal (en appliquant l’ID d’espace de travail à la place de l’espace réservé) pour vérifier la connectivité entre votre solution de sécurité, le redirecteur de journal et Azure Sentinel. Ce script vérifie que le démon écoute les ports appropriés, que le transfert est correctement configuré, et s’assure que rien ne bloque la communication entre le démon et l’agent Log Analytics. Il envoie également des messages fictifs « TestCommonEventFormat » pour vérifier la connectivité de bout en bout. <br>
+1. Exécutez le script suivant sur le redirecteur de journal (en appliquant l’ID d’espace de travail à la place de l’espace réservé) pour vérifier la connectivité entre votre solution de sécurité, le redirecteur de journal et Microsoft Sentinel. Ce script vérifie que le démon écoute les ports appropriés, que le transfert est correctement configuré, et s’assure que rien ne bloque la communication entre le démon et l’agent Log Analytics. Il envoie également des messages fictifs « TestCommonEventFormat » pour vérifier la connectivité de bout en bout. <br>
 
     ```bash
     sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
@@ -162,7 +162,7 @@ Le script de validation effectue les vérifications suivantes :
     sudo tcpdump -A -ni any port 25226 -vv
     ```
 
-1. Envoie des données fictives au port 514 sur localhost. Ces données doivent être observables dans l’espace de travail Azure Sentinel en exécutant la requête suivante :
+1. Envoie des données fictives au port 514 sur localhost. Ces données doivent être observables dans l’espace de travail Microsoft Sentinel en exécutant la requête suivante :
 
     ```kusto
     CommonSecurityLog
@@ -256,7 +256,7 @@ Le script de validation effectue les vérifications suivantes :
     sudo tcpdump -A -ni any port 25226 -vv
     ```
 
-1. Envoie des données fictives au port 514 sur localhost. Ces données doivent être observables dans l’espace de travail Azure Sentinel en exécutant la requête suivante :
+1. Envoie des données fictives au port 514 sur localhost. Ces données doivent être observables dans l’espace de travail Microsoft Sentinel en exécutant la requête suivante :
 
     ```kusto
     CommonSecurityLog
@@ -272,13 +272,13 @@ Utilisez les sections suivantes pour vérifier les prérequis pour votre connect
 
 Si vous utilisez une machine virtuelle Azure en tant que collecteur Syslog, vérifiez les éléments suivants :
 
-- Lorsque vous paramétrez votre connecteur de données Syslog, veillez à désactiver vos [paramètres de provisionnement automatique du Centre de sécurité Azure](../security-center/security-center-enable-data-collection.md) pour l’[agent MMA/OMS](connect-windows-security-events.md#connector-options).
+- Lorsque vous configurez votre connecteur de données Syslog, veillez à désactiver vos [paramètres d’approvisionnement automatique de Microsoft Defender pour le cloud](../security-center/security-center-enable-data-collection.md) pour l’[agent MMA/OMS](connect-windows-security-events.md#connector-options).
 
     Vous pouvez les réactiver une fois votre connecteur de données entièrement configuré.
 
 - Avant de déployer le [script Python du Connecteur de données au Format d’événement commun](./connect-log-forwarder.md), assurez-vous que votre Machine virtuelle n’est pas déjà connectée à un espace de travail Syslog existant. Vous pouvez trouver ces informations dans la liste des Machines virtuelles de l’espace de travail Log Analytics, où une machine virtuelle connectée à un espace de travail Syslog est répertoriée comme **connectée**.
 
-- Veillez à ce qu’Azure Sentinel soit connecté à l’espace de travail Syslog correct, avec la solution **SecurityInsights** installée.
+- Veillez à ce que Microsoft Sentinel soit connecté au bon espace de travail Syslog, avec la solution **SecurityInsights** installée.
 
     Pour plus d’informations, consultez [Etape 1: Déployer le redirecteur de journaux](./connect-log-forwarder.md).
 
@@ -289,7 +289,7 @@ Si vous utilisez une machine virtuelle Azure en tant que collecteur Syslog, vér
 Si vous utilisez une machine locale ou une machine virtuelle non-Azure pour votre connecteur de données, assurez-vous que vous avez exécuté le script d’installation sur une nouvelle installation d’un système d’exploitation Linux pris en charge :
 
 > [!TIP]
-> Vous pouvez également trouver ce script à partir de la page du connecteur de données **Format d’évènement commun** dans Azure Sentinel.
+> Vous pouvez également trouver ce script à partir de la page du connecteur de données **Common Event Format** dans Microsoft Sentinel.
 >
 
 ```cli
@@ -300,7 +300,7 @@ sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sent
 
 Le serveur Syslog, rsyslog ou syslog-ng, transfère toutes les données définies dans le fichier de configuration approprié, qui est automatiquement rempli par les paramètres définis dans votre espace de travail Log Analytics.
 
-Veillez à ajouter des informations sur les niveaux de journalisation de gravité et d’installation que vous souhaitez recevoir dans Azure Sentinel. Le processus de configuration peut prendre environ 20 minutes.
+Veillez à ajouter des informations sur les niveaux de journalisation de gravité et d’installation que vous souhaitez ingérer dans Microsoft Sentinel. Le processus de configuration peut prendre environ 20 minutes.
 
 Pour plus d’informations, consultez [Explication du script de déploiement](./connect-log-forwarder.md#deployment-script-explained) et [Configuration de Syslog dans le portail Azure](../azure-monitor/agents/data-sources-syslog.md).
 
@@ -396,7 +396,7 @@ Cette procédure décrit comment résoudre les problèmes qui sont certainement 
 Cette procédure décrit comment vérifier si SELinux est actuellement dans un état `permissive` ou s’il bloque une connexion vers l’agent OMS. Cette procédure s’applique lorsque votre système d’exploitation est une distribution à partir de RedHat ou de CentOS.
 
 > [!NOTE]
-> La prise en charge d’Azure Sentinel pour CEF et Syslog comprend uniquement le renforcement de la sécurité FIPS. D’autres méthodes de renforcement de la sécurité, telles que SELinux ou CIS, ne sont pas prises en charge actuellement.
+> La prise en charge de Microsoft Sentinel pour CEF et Syslog comprend uniquement le renforcement des normes FIPS (Federal Information Processing Standard). D’autres méthodes de renforcement de la sécurité, telles que SELinux ou CIS, ne sont pas prises en charge actuellement.
 >
 
 1. Exécutez :
@@ -407,8 +407,8 @@ Cette procédure décrit comment vérifier si SELinux est actuellement dans un �
 
     L’état peut afficher l'une des valeurs suivantes :
 
-    - `disabled`. Cette configuration est prise en charge pour votre connexion à Azure Sentinel.
-    - `permissive`. Cette configuration est prise en charge pour votre connexion à Azure Sentinel.
+    - `disabled`. Cette configuration est prise en charge pour votre connexion à Microsoft Sentinel.
+    - `permissive`. Cette configuration est prise en charge pour votre connexion à Microsoft Sentinel.
     - `enforced`. Cette configuration n’est pas prise en charge et vous devez soit désactiver l’état, soit lui affecter la valeur `permissive`.
 
 1. Si l’état est défini sur `enforced`, désactivez-le temporairement pour confirmer s’il s’agissait du bloqueur. Exécutez :
@@ -499,7 +499,7 @@ Cette procédure décrit comment vérifier si une stratégie de pare-feu bloque 
 
 ## <a name="linux-and-oms-agent-related-issues"></a>Problèmes liés aux agents Linux et OMS
 
-Si les étapes décrites plus haut dans cet article ne résolvent pas votre problème, il se peut que vous rencontriez un problème de connectivité entre l’agent OMS et l’espace de travail Azure Sentinel.
+Si les étapes décrites plus haut dans cet article ne résolvent pas votre problème, il se peut que vous rencontriez un problème de connectivité entre l’agent OMS et l’espace de travail Microsoft Sentinel.
 
 Dans ce cas, poursuivez la résolution des problèmes en vérifiant les éléments suivants :
 
@@ -527,11 +527,11 @@ Une entrée de journal est retournée si l’agent communique avec succès. Dans
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Si les étapes de dépannage décrites dans cet article n’ont pas contribué à résoudre votre problème, ouvrez un ticket de support ou utilisez les ressources de la communauté Azure Sentinel. Pour plus d’informations, consultez [Ressources utiles lorsque vous travaillez avec Azure Sentinel](resources.md).
+Si les étapes de dépannage décrites dans cet article n’ont pas contribué à résoudre votre problème, ouvrez un ticket de support ou utilisez les ressources de la communauté Microsoft Sentinel. Pour plus d’informations, consultez [Ressources utiles lorsque vous travaillez avec Microsoft Sentinel](resources.md).
 
-Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - Découvrez le [mappage de champs CEF et CommonSecurityLog](cef-name-mapping.md).
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](./detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](./detect-threats-built-in.md).
 - [Utilisez des classeurs](monitor-your-data.md) pour superviser vos données.

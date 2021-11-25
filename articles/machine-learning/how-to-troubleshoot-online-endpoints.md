@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 06c8c9c128528b3e50c49e9c29a0849c9640d7eb
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 02f65a5c07536afb1fb20c3f85c444f2376c9b34
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560679"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137570"
 ---
 # <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>Résolution des problèmes de déploiement et de scoring de points de terminaison en ligne (préversion)
 
@@ -96,86 +96,47 @@ Ajoutez `--help` et/ou `--debug` aux commandes pour voir plus d’informations. 
 
 Vous trouverez ci-dessous une liste des erreurs de déploiement courantes signalées, liées à l’état de l’opération de déploiement.
 
-### <a name="err_1100-not-enough-quota"></a>ERR_1100 : Quota insuffisant
+* [OutOfQuota](#error-outofquota)
+* [OutOfCapacity](#error-outofcapacity)
+* [BadArgument](#error-badargument)
+* [ResourceNotReady](#error-resourcenotready)
+* [ResourceNotFound](#error-resourcenotfound)
+* [OperationCancelled](#error-operationcancelled)
+* [InternalServerError](#error-internalservererror)
+
+### <a name="error-outofquota"></a>ERREUR : OutOfQuota
+
+Voici une liste des ressources courantes qui peuvent dépasser les quotas lors de l’utilisation des services Azure :
+
+* [UC](#cpu-quota)
+* [Affectations de rôle](#role-assignment-quota)
+* [Points de terminaison](#endpoint-quota)
+* [Kubernetes](#kubernetes-quota)
+* [Autres](#other-quota)
+
+#### <a name="cpu-quota"></a>Quota de processeur
 
 Avant de déployer un modèle, vous devez disposer d’un quota de calcul suffisant. Ce quota définit le nombre de vCores disponibles par abonnement, par espace de travail, par référence SKU et par région. Chaque déploiement puise dans le quota disponible (qu’il rétablit après la suppression) en fonction du type de référence SKU.
 
-Pour atténuer le risque de quota insuffisant, vous pouvez notamment vérifier s’il existe des déploiements inutilisés qui pourraient être supprimés. Vous pouvez également envoyer une [demande d’augmentation du quota](./how-to-manage-quotas.md).
+Pour atténuer le risque de quota insuffisant, vous pouvez notamment vérifier s’il existe des déploiements inutilisés qui pourraient être supprimés. Vous pouvez également envoyer une [demande d’augmentation du quota](how-to-manage-quotas.md#request-quota-increases).
 
-### <a name="err_1101-out-of-capacity"></a>ERR_1101 : capacité insuffisante
+#### <a name="role-assignment-quota"></a>Quota d’attribution de rôle
 
-La taille de machine virtuelle spécifiée n’a pas pu être approvisionnée en raison d’un manque de capacité Azure Machine Learning. Réessayez ultérieurement ou essayez d’effectuer le déploiement dans une autre région.
+Essayez de supprimer les attributions de rôle non utilisées dans cet abonnement. Vous pouvez vérifier toutes les attributions de rôle dans le portail Azure, dans le menu Contrôle d'accès.
 
-### <a name="err_1102-no-more-role-assignments"></a>ERR_1102 : plus aucune attribution de rôle
+#### <a name="endpoint-quota"></a>Quota de point de terminaison
 
-Supprimez les attributions de rôle non utilisées dans cet abonnement. Vous pouvez vérifier toutes les attributions de rôle dans le portail Azure, dans le menu Contrôle d'accès.
+Essayez de supprimer les points de terminaison non utilisés dans cet abonnement.
 
-### <a name="err_1103-endpoint-quota-reached"></a>ERR_1103 : quota de point de terminaison atteint
+#### <a name="kubernetes-quota"></a>Quota Kubernetes
 
-Supprimez les points de terminaison non utilisés dans cet abonnement.
+Ni le processeur ni la mémoire demandés ne peuvent être satisfaits. Ajustez votre demande ou le cluster.
 
-### <a name="err_1200-unable-to-download-user-container-image"></a>ERR_1200 : Impossible de télécharger l’image conteneur utilisateur
-
-Durant la création du déploiement, après le provisionnement du calcul, Azure tente de tirer l’image conteneur utilisateur du registre ACR (Azure Container Registry) privé de l’espace de travail. Deux problèmes peuvent survenir.
-
-- L’image conteneur utilisateur est introuvable.
-
-  Vérifiez que l’image conteneur est disponible dans le registre ACR de l’espace de travail.
-Par exemple, si l’image est `testacr.azurecr.io/azureml/azureml_92a029f831ce58d2ed011c3c42d35acb:latest`, vérifiez le dépôt avec `az acr repository show-tags -n testacr --repository azureml/azureml_92a029f831ce58d2ed011c3c42d35acb --orderby time_desc --output table`.
-
-- Il y a un problème d’autorisation d’accès au registre ACR.
-
-  Pour tirer l’image, Azure utilise des [identités managées](../active-directory/managed-identities-azure-resources/overview.md) afin d’accéder au registre ACR. 
-
-  - Si vous avez créé le point de terminaison associé avec SystemAssigned, l’autorisation RBAC (contrôle d’accès en fonction du rôle) Azure est accordée automatiquement et aucune autre autorisation n’est nécessaire.
-  - Si vous avez créé le point de terminaison associé avec UserAssigned, l’identité managée de l’utilisateur doit avoir l’autorisation AcrPull pour le registre ACR de l’espace de travail.
-
-Pour obtenir des informations plus détaillées sur cette erreur, exécutez :
-
-```azurecli
-az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
-```
-
-### <a name="err_1300-unable-to-download-user-modelcode-artifacts"></a>ERR_1300 : Impossible de télécharger les artefacts de modèle/code utilisateur
-
-Après avoir provisionné la ressource de calcul, durant la création du déploiement, Azure tente de monter les artefacts de modèle et de code utilisateur dans le conteneur utilisateur à partir du compte de stockage de l’espace de travail.
-
-- Artefacts de modèle/code utilisateur introuvables.
-
-  - Vérifiez que les artefacts de modèle et de code sont inscrits auprès du même espace de travail que le déploiement. Utilisez la commande `show` pour voir les détails d’un artefact de modèle ou de code dans un espace de travail. Par exemple : 
-  
-    ```azurecli
-    az ml model show --name <model-name>
-    az ml code show --name <code-name> --version <version>
-    ```
-
-  - Vous pouvez également vérifier si les blobs sont présents dans le compte de stockage de l’espace de travail.
-
-    Par exemple, si le blob est `https://foobar.blob.core.windows.net/210212154504-1517266419/WebUpload/210212154504-1517266419/GaussianNB.pkl` vous pouvez utiliser cette commande pour vérifier s’il existe : `az storage blob exists --account-name foobar --container-name 210212154504-1517266419 --name WebUpload/210212154504-1517266419/GaussianNB.pkl --subscription <sub-name>`
-
-- Problème d’autorisation d’accès au registre ACR.
-
-  Pour tirer les blobs, Azure utilise des [identités managées](../active-directory/managed-identities-azure-resources/overview.md) afin d’accéder au compte de stockage.
-
-  - Si vous avez créé le point de terminaison associé avec SystemAssigned, l’autorisation RBAC (contrôle d’accès en fonction du rôle) Azure est accordée automatiquement et aucune autre autorisation n’est nécessaire.
-
-  - Si vous avez créé le point de terminaison associé avec UserAssigned, l’identité managée de l’utilisateur doit disposer de l’autorisation Lecteur de données blob de stockage sur le compte de stockage de l’espace de travail.
-
-Pour obtenir des informations plus détaillées sur cette erreur, exécutez :
-
-```azurecli
-az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
-```
-
-### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350 : Impossible de télécharger le modèle utilisateur, espace insuffisant sur le disque
-
-Ce problème se produit lorsque la taille du modèle est supérieure à l’espace disque disponible. Essayez une référence SKU dotée de plus d’espace disque.
-
-### <a name="err_2100-unable-to-start-user-container"></a>ERR_2100 : Impossible de démarrer le conteneur utilisateur
+#### <a name="other-quota"></a>Autre quota
 
 Pour exécuter le code `score.py` fourni dans le cadre du déploiement, Azure crée un conteneur qui comprend toutes les ressources qui lui sont nécessaires, puis exécute le script de scoring sur ce conteneur.
 
-Cette erreur indique que ce conteneur n’a pas pu démarrer, ce qui signifie que le scoring n’a pas pu être effectué. Il se peut que le conteneur demande une quantité de ressources supérieure à celle prise en charge par `instance_type`. Si c’est le cas, envisagez de mettre à jour le `instance_type` du déploiement en ligne.
+Si votre conteneur n’a pas pu démarrer, cela signifie que le scoring n’a pas être effectué. Cela peut être dû au fait que le conteneur demande une quantité de ressources supérieure à celle prise en charge par `instance_type`. Si c’est le cas, envisagez de mettre à jour le `instance_type` du déploiement en ligne.
 
 Pour obtenir la raison exacte d’une erreur, exécutez : 
 
@@ -183,29 +144,96 @@ Pour obtenir la raison exacte d’une erreur, exécutez :
 az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
-### <a name="err_2101-kubernetes-unschedulable"></a>ERR_2101 : Kubernetes non planifiable
+### <a name="error-outofcapacity"></a>ERREUR : OutOfCapacity
 
-L’UC ou la mémoire demandé ne peut pas être satisfait. Ajustez votre demande ou le cluster.
+La taille de machine virtuelle spécifiée n’a pas pu être approvisionnée en raison d’un manque de capacité Azure Machine Learning. Réessayez ultérieurement ou essayez d’effectuer le déploiement dans une autre région.
 
-### <a name="err_2102-resources-requests-invalid"></a>ERR_2102 : demandes de ressources non valides
+### <a name="error-badargument"></a>ERREUR : BadArgument
+
+Vous trouverez ci-dessous une liste des causes possibles pour cette erreur :
+
+* [La demande de ressource était supérieure aux limites](#resource-requests-greater-than-limits)
+* [Impossible de télécharger les ressources](#unable-to-download-resources)
+
+#### <a name="resource-requests-greater-than-limits"></a>Demandes de ressource supérieures aux limites
 
 Les demandes de ressources doivent être inférieures ou égales aux limites. Si vous ne définissez pas de limites, nous définissons les valeurs par défaut lorsque vous associez votre calcul à un espace de travail Azure Machine Learning. Vous pouvez vérifier les limites dans le portail Azure ou à l’aide de la commande `az ml compute show`.
 
-### <a name="err_2200-user-container-has-crashedterminated"></a>ERR_2200 : Le conteneur utilisateur a planté/s’est terminé
+#### <a name="unable-to-download-resources"></a>Impossible de télécharger les ressources
 
-Pour exécuter le code `score.py` fourni dans le cadre du déploiement, Azure crée un conteneur qui comprend toutes les ressources qui lui sont nécessaires, puis exécute le script de scoring sur ce conteneur.  Dans ce scénario, l’erreur est la suivante : ce conteneur plante à l’exécution, ce qui signifie que le scoring n’a pas pu être effectué. Cette erreur se produit dans les cas suivants :
+Après avoir provisionné la ressource de calcul, lors de la création du déploiement, Azure essaie de tirer (pull) l’image conteneur de l’utilisateur à partir du registre ACR (Azure Container Registry) privé de l’espace de travail, puis monte les artefacts de modèle et de code utilisateur dans le conteneur utilisateur à partir du compte de stockage de l’espace de travail.
+
+Tout d’abord, vérifiez s’il existe un problème d’autorisation lors de l’accès au registre ACR.
+
+Pour tirer les blobs, Azure utilise des [identités managées](../active-directory/managed-identities-azure-resources/overview.md) afin d’accéder au compte de stockage.
+
+  - Si vous avez créé le point de terminaison associé avec SystemAssigned, l’autorisation RBAC (contrôle d’accès en fonction du rôle) Azure est accordée automatiquement et aucune autre autorisation n’est nécessaire.
+
+  - Si vous avez créé le point de terminaison associé avec UserAssigned, l’identité managée de l’utilisateur doit disposer de l’autorisation Lecteur de données blob de stockage sur le compte de stockage de l’espace de travail.
+
+Au cours de ce processus, vous pouvez rencontrer différents problèmes en fonction de l’étape à laquelle l’opération a échoué :
+
+* [Impossible de télécharger l’image conteneur utilisateur](#unable-to-download-user-container-image)
+* [Impossible de télécharger les artefacts de modèle ou de code utilisateur](#unable-to-download-user-model-or-code-artifacts)
+
+Pour obtenir plus de détails sur ces erreurs, exécutez :
+
+```azurecli
+az ml online-deployment get-logs -n <endpoint-name> --deployment <deployment-name> --l 100
+``` 
+
+#### <a name="unable-to-download-user-container-image"></a>Impossible de télécharger l’image conteneur utilisateur
+
+Il est possible que le conteneur utilisateur soit introuvable.
+
+Vérifiez que l’image conteneur est disponible dans le registre ACR de l’espace de travail.
+
+Par exemple, si l’image est `testacr.azurecr.io/azureml/azureml_92a029f831ce58d2ed011c3c42d35acb:latest`, vérifiez le dépôt avec `az acr repository show-tags -n testacr --repository azureml/azureml_92a029f831ce58d2ed011c3c42d35acb --orderby time_desc --output table`.
+
+#### <a name="unable-to-download-user-model-or-code-artifacts"></a>Impossible de télécharger les artefacts de modèle ou de code utilisateur
+
+Il est possible que les artefacts de modèle ou de code utilisateur soient introuvables.
+
+Vérifiez que les artefacts de modèle et de code sont inscrits auprès du même espace de travail que le déploiement. Utilisez la commande `show` pour voir les détails d’un artefact de modèle ou de code dans un espace de travail. 
+
+- Par exemple : 
+  
+  ```azurecli
+  az ml model show --name <model-name>
+  az ml code show --name <code-name> --version <version>
+  ```
+ 
+  Vous pouvez également vérifier si les blobs sont présents dans le compte de stockage de l’espace de travail.
+
+- Par exemple, si l’objet blob est `https://foobar.blob.core.windows.net/210212154504-1517266419/WebUpload/210212154504-1517266419/GaussianNB.pkl`, vous pouvez utiliser cette commande pour vérifier s’il existe :
+
+  `az storage blob exists --account-name foobar --container-name 210212154504-1517266419 --name WebUpload/210212154504-1517266419/GaussianNB.pkl --subscription <sub-name>`
+
+### <a name="error-resourcenotready"></a>ERREUR : ResourceNotReady
+
+Pour exécuter le code `score.py` fourni dans le cadre du déploiement, Azure crée un conteneur qui comprend toutes les ressources qui lui sont nécessaires, puis exécute le script de scoring sur ce conteneur. Dans ce scénario, l’erreur est la suivante : ce conteneur se bloque à l’exécution, ce qui signifie que le scoring ne peut pas être effectué. Cette erreur se produit dans les cas suivants :
 
 - Il y a une erreur dans `score.py`. Utilisez `get-logs` pour aider à diagnostiquer les problèmes courants :
-    - Un package qui a été importé mais qui n’est pas dans l’environnement Conda
-    - Une erreur de syntaxe
-    - Un échec dans la méthode `init()`
+    - Package qui a été importé mais qui n’est pas dans l’environnement Conda.
+    - Erreur de syntaxe.
+    - Échec dans la méthode `init()`.
 - Si `get-logs` ne produit aucun journal, cela signifie généralement que le conteneur n’a pas pu démarrer. Pour déboguer ce problème, essayez plutôt de [déployer localement](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-troubleshoot-online-endpoints.md#deploy-locally).
 - Les probes readiness ou liveness ne sont pas configurées correctement.
 - Il y a une erreur dans la configuration de l’environnement du conteneur, par exemple, une dépendance manquante.
 
-### <a name="err_5000-internal-error"></a>ERR_5000 : Erreur interne
+### <a name="error-resourcenotfound"></a>ERREUR : ResourceNotFound
 
-Nous faisons de notre mieux pour fournir un service stable et fiable. Cependant, il arrive que les choses ne se passent pas comme prévu. Si vous recevez cette erreur, cela signifie qu’il y a un problème de notre côté et que nous devons le corriger. Envoyez un [ticket de support client](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) avec toutes les informations associées et nous résoudrons le problème.  
+Cette erreur se produit quand Azure Resource Manager ne trouve pas une ressource nécessaire. Par exemple, vous recevez cette erreur si un compte de stockage est référencé, mais introuvable dans le chemin spécifié. Vérifiez attentivement les ressources qui peuvent avoir été fournies par un chemin exact ou l’orthographe des noms.
+
+Pour plus d’informations, consultez [Résoudre les erreurs liées à des ressources introuvables](../azure-resource-manager/troubleshooting/error-not-found.md). 
+
+### <a name="error-operationcancelled"></a>ERREUR : OperationCancelled
+
+Les opérations Azure disposent d’un certain niveau de priorité. Elles sont exécutées dans l’ordre de la priorité la plus élevée à la plus faible. Cette erreur se produit quand votre opération a été remplacée par une autre opération disposant d’une priorité plus élevée. Une nouvelle tentative de l’opération peut permettre de l’exécuter sans annulation.
+
+### <a name="error-internalservererror"></a>ERREUR : InternalServerError
+
+Nous faisons de notre mieux pour fournir un service stable et fiable. Cependant, il arrive que les opérations ne se déroulent pas comme prévu. Si vous recevez cette erreur, cela signifie qu’il y a un problème de notre côté et que nous devons le corriger. Envoyez un [ticket de support client](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) avec toutes les informations associées et nous résoudrons le problème. 
 
 ## <a name="autoscaling-issues"></a>Problèmes de mise à l’échelle automatique
 

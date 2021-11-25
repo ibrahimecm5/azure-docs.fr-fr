@@ -1,36 +1,36 @@
 ---
-title: Intégrer votre propre Machine Learning dans Azure Sentinel | Microsoft Docs
-description: Cet article explique comment créer et utiliser vos propres algorithmes d’apprentissage automatique pour l’analyse de données dans Azure Sentinel.
+title: Intégrer votre propre Machine Learning dans Microsoft Sentinel | Microsoft Docs
+description: Cet article explique comment créer et utiliser vos propres algorithmes d’apprentissage automatique pour l’analyse de données dans Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6af40b8744a404d68eb52af6cbc2c4d3f699b3a0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 815b1b640fad26587d354a306d4bfb4188cef053
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064579"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524642"
 ---
-# <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Intégrer votre propre Machine Learning (BYO-ML) dans Azure Sentinel
+# <a name="bring-your-own-machine-learning-ml-into-microsoft-sentinel"></a>Intégrer votre propre Machine Learning (BYO-ML) dans Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Le Machine Learning (ML ou apprentissage automatique) est l’un des fondements majeurs d’Azure Sentinel, et l’un des principaux attributs qui le distinguent. Azure Sentinel offre l’apprentissage automatique au travers de diverses expériences : intégré au moteur de corrélation [Fusion](fusion.md) et aux blocs-notes Jupyter, ainsi qu’à la nouvelle plateforme BYO ML (Construire votre propre ML). 
+Le Machine Learning (ML ou apprentissage automatique) est l’un des fondements majeurs de Microsoft Sentinel, et l’un des principaux attributs qui le distinguent. Microsoft Sentinel offre l’apprentissage automatique au travers de diverses expériences : intégré au moteur de corrélation [Fusion](fusion.md) et aux blocs-notes Jupyter, ainsi qu’à la nouvelle plateforme BYO ML (Construire votre propre ML). 
 
-Les modèles de détection de ML peuvent s’adapter à des environnements individuels ainsi qu’à des modifications du comportement des utilisateurs afin de réduire le nombre de [faux positifs](false-positives.md) et d’identifier des menaces qu’une approche traditionnelle ne permettrait pas de détecter. Si bon nombre d’organisations de sécurité comprennent la valeur de l’apprentissage automatique pour la sécurité, la plupart d’entre elles n’ont pas les moyens de s’entourer de professionnels disposant d’une expertise tant en matière de sécurité qu’en matière d’apprentissage automatique. Nous avons conçu l’infrastructure présentée ici afin de permettre aux organisations et aux professionnels de la sécurité de se développer avec nous en lien avec l’apprentissage automatique. Les organisations qui découvrent l’apprentissage automatique ou qui ne disposent pas de l’expertise nécessaire peuvent trouver une protection significative dans les fonctionnalités intégrées d’apprentissage automatique d’Azure Sentinel.
+Les modèles de détection de ML peuvent s’adapter à des environnements individuels ainsi qu’à des modifications du comportement des utilisateurs afin de réduire le nombre de [faux positifs](false-positives.md) et d’identifier des menaces qu’une approche traditionnelle ne permettrait pas de détecter. Si bon nombre d’organisations de sécurité comprennent la valeur de l’apprentissage automatique pour la sécurité, la plupart d’entre elles n’ont pas les moyens de s’entourer de professionnels disposant d’une expertise tant en matière de sécurité qu’en matière d’apprentissage automatique. Nous avons conçu l’infrastructure présentée ici afin de permettre aux organisations et aux professionnels de la sécurité de se développer avec nous en lien avec l’apprentissage automatique. Les organisations qui découvrent l’apprentissage automatique ou qui ne disposent pas de l’expertise nécessaire peuvent trouver une protection significative dans les fonctionnalités intégrées d’apprentissage automatique de Microsoft Sentinel.
 
 :::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="Infrastructure d’apprentissage automatique":::
 
@@ -45,7 +45,7 @@ Pour les organisations disposant de ressources de Machine Learning (ML) et dési
 
 - des exemples de blocs-notes pour effectuer l’apprentissage du modèle et planifier son scoring. 
 
-En outre, vous pouvez apporter vos propres modèles ML et/ou votre propre environnement Spark en vue d’une intégration avec Azure Sentinel.
+En outre, vous pouvez apporter vos propres modèles ML et/ou votre propre environnement Spark en vue d’une intégration avec Microsoft Sentinel.
 
 Avec la plateforme BYO-ML, vous pouvez commencer à créer vos propres modèles ML : 
 
@@ -57,27 +57,28 @@ Avec la plateforme BYO-ML, vous pouvez commencer à créer vos propres modèles 
 
 ### <a name="use-cases"></a>Cas d'utilisation
  
-La plateforme et le package BYO-ML réduisent sensiblement le temps et les efforts que vous devrez consacrer à la création de vos propres détections ML, et facilitent la résolution de problèmes de sécurité spécifiques dans Azure Sentinel. La plateforme prend en charge les cas d’utilisation suivants :
+La plateforme et le package BYO-ML réduisent sensiblement le temps et les efforts que vous devrez consacrer à la création de vos propres détections ML, et facilitent la résolution de problèmes de sécurité spécifiques dans Microsoft Sentinel. La plateforme prend en charge les cas d’utilisation suivants :
 
 **Effectuer l’apprentissage d’un algorithme ML pour obtenir un modèle personnalisé :** vous pouvez prendre un algorithme ML existant (partagé par Microsoft ou la communauté des utilisateurs) et en effectuer l’apprentissage facilement sur vos propres données afin d’obtenir un modèle ML personnalisé mieux adapté à vos données et à votre environnement.
 
 **Modifier un modèle d’algorithme ML pour obtenir un modèle personnalisé :** vous pouvez modifier un modèle d’algorithme ML (partagé par Microsoft ou la communauté d’utilisateurs) et effectuer l’apprentissage de l’algorithme modifié sur vos propres données, afin de dériver un modèle personnalisé adapté à votre problème spécifique.
 
-**Créer votre propre modèle :** vous pouvez créer votre propre modèle de toutes pièces en vous servant de la plateforme et des utilitaires BYO-ML d’Azure Sentinel.
+**Créez votre propre modèle :** vous pouvez créer votre propre modèle de toutes pièces en vous servant de la plateforme et des utilitaires BYO-ML Microsoft Sentinel.
 
-**Intégrer votre environnement Databricks/Spark :** vous pouvez intégrer votre environnement Databricks/Spark existant dans Azure Sentinel, et utiliser des bibliothèques et modèles BYO-ML pour créer des modèles ML adaptés à des situations uniques.
+**Intégrer votre environnement Databricks/Spark :** Vous pouvez intégrer votre environnement Databricks/Spark existant dans Microsoft Sentinel, et utiliser des bibliothèques et modèles BYO-ML pour créer des modèles ML adaptés à des situations uniques.
 
-**Importer votre propre modèle ML :** vous pouvez importer vos propres modèles ML et utiliser la plateforme et les utilitaires BYO-ML pour les intégrer avec Azure Sentinel.
+**Importer votre propre modèle ML :** Vous pouvez importer vos propres modèles ML et utiliser la plateforme et les utilitaires BYO-ML pour les intégrer avec Microsoft Sentinel.
 
 **Partager un algorithme ML :** vous pouvez partager un algorithme ML afin que la communauté l’adopte et l’adapte.
 
 **Utiliser ML pour consolider les SecOP :** vous pouvez utiliser votre propre modèle ML personnalisé et ses résultats à des fins de repérage, de détection, d’investigation et de réponse.
 
-Cet article présente les composants de la plateforme BYO-ML, et explique comment tirer parti de celle-ci ainsi que de l’algorithme d’accès anormal aux ressources pour fournir une détection ML personnalisée avec Azure Sentinel.
+Cet article présente les composants de la plateforme BYO-ML, et explique comment tirer parti de celle-ci ainsi que de l’algorithme d’accès anormal aux ressources pour fournir une détection ML personnalisée avec Microsoft Sentinel.
 
 ## <a name="azure-databricksspark-environment"></a>Environnement Azure Databricks/Spark
 
-[Apache Spark™](http://spark.apache.org/) a fait un bond en avant en simplifiant le Big Data par la fourniture d’une infrastructure unifiée pour la création de pipelines de données. Azure Databricks va plus loin en fournissant une plateforme cloud basée sur Spark, ne nécessitant aucune administration. Nous vous recommandons d’utiliser Databricks pour votre plateforme BYO-ML afin de pouvoir vous concentrer sur la recherche de réponses qui ont un impact immédiat sur votre activité, au lieu de vous attaquer aux problèmes de plateforme et pipelines de données.
+[Apache Spark](http://spark.apache.org/) a fait un bond en avant en simplifiant le Big Data par la fourniture d’une infrastructure unifiée pour la création de pipelines de données. Azure Databricks va plus loin en fournissant une plateforme cloud basée sur Spark, ne nécessitant aucune administration. Nous vous recommandons d’utiliser Databricks pour votre plateforme BYO-ML afin de pouvoir vous concentrer sur la recherche de réponses qui ont un impact immédiat sur votre activité, au lieu de vous attaquer aux problèmes de plateforme et pipelines de données.
+
 Si vous disposez déjà de Databricks ou d’un autre environnement Spark, et préférez utiliser l’installation existante, le package BYO-ML fonctionnera correctement sur ces derniers. 
 
 ## <a name="byo-ml-package"></a>Package BYO-ML
@@ -87,9 +88,9 @@ Le package BYO-ML inclut les meilleures pratiques et les recherches de Microsoft
 | Nom de fichier | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities.whl | Contient des utilitaires pour la lecture de blobs d’Azure et l’écriture dans Log Analytics. |
-| AnomalousRASampleData | Bloc-notes montrant l’utilisation d’un modèle d’accès anormal aux ressources dans Azure Sentinel avec des exemples de données d’apprentissage et de test générés. |
+| AnomalousRASampleData | Bloc-notes montrant l’utilisation d’un modèle d’accès anormal aux ressources dans Microsoft Sentinel avec des exemples de données d’apprentissage et de test générés. |
 | AnomalousRATraining.ipynb | Bloc-notes pour effectuer l’apprentissage de l’algorithme, générer et enregistrer les modèles. |
-| AnomalousRAScoring.ipynb | Bloc-notes pour planifier l’exécution du modèle, visualiser le résultat et écrire le score dans Azure Sentinel. |
+| AnomalousRAScoring.ipynb | Bloc-notes pour planifier l’exécution du modèle, visualiser le résultat et écrire le score dans Microsoft Sentinel. |
 |
 
 Le premier modèle d’algorithme ML que nous proposons est destiné à la [détection d’accès anormal aux ressources](https://github.com/Azure/Azure-Sentinel/tree/master/BYOML). Il est basé sur un algorithme de filtrage collaboratif et son apprentissage est effectué avec les journaux d’accès au partage de fichiers Windows (événements de sécurité avec l’ID d’événement 5140). Les informations clés dont vous avez besoin pour ce modèle dans le journal sont le couplage d’utilisateurs et de ressources utilisées. 
@@ -104,7 +105,7 @@ Si vous ne disposez pas encore de votre propre environnement Databricks, vous de
 
 ### <a name="auto-export-instruction"></a>Instruction d’exportation automatique
 
-Pour créer des modèles ML personnalisés basés sur vos propres données dans Azure Sentinel, vous devez exporter vos données de Log Analytics vers une ressource Stockage Blob ou Event Hub, afin que le modèle ML puisse y accéder à partir de Databricks. Découvrez comment [ingérer des données dans Azure Sentinel](connect-data-sources.md).
+Pour créer des modèles ML personnalisés basés sur vos propres données dans Microsoft Sentinel, vous devez exporter vos données de Log Analytics vers une ressource Stockage Blob ou Event Hub, afin que le modèle ML puisse y accéder à partir de Databricks. Découvrez comment [ingérer des données dans Microsoft Sentinel](connect-data-sources.md).
 
 Pour cet exemple, vous devez disposer de vos données d’apprentissage pour le journal d’accès au partage de fichiers dans le stockage d’objets blob Azure. Le format des données est documenté dans le bloc-notes et les bibliothèques.
 
@@ -144,13 +145,13 @@ az monitor log-analytics workspace data-export delete --resource-group "RG_NAME"
 
 Concernant vos données personnalisées qui ne sont pas prises en charge par l’exportation automatique de Log Analytics, vous pouvez utiliser une application logique ou d’autres solutions pour les déplacer. Vous pouvez vous référer au blog et au script [Exportation de données de Log Analytics vers un magasin d’objets blob](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530).
 
-### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Établir une corrélation avec des données en dehors d’Azure Sentinel
+### <a name="correlate-with-data-outside-of-microsoft-sentinel"></a>Établir une corrélation avec des données en dehors de Microsoft Sentinel
 
-Vous pouvez également importer des données extérieures à Azure Sentinel vers le Stockage blob ou l’Event Hub, et les mettre en corrélation avec les données d’Azure Sentinel pour créer vos modèles ML. 
- 
+Vous pouvez également importer des données extérieures à Microsoft Sentinel vers le Stockage blob ou l’Event Hub, et les mettre en corrélation avec les données de Microsoft Sentinel pour créer vos modèles ML.
+
 ### <a name="copy-and-install-the-related-packages"></a>Copier et installer les packages associés
 
-Copiez le package BYO-ML à partir du dépôt GitHub Azure Sentinel mentionné plus haut dans votre environnement Databricks. Ouvrez ensuite les blocs-notes et suivez les instructions qu’ils contiennent pour installer les bibliothèques requises sur vos clusters.
+Copiez le package BYO-ML à partir du dépôt GitHub Microsoft Sentinel mentionné plus haut dans votre environnement Databricks. Ouvrez ensuite les blocs-notes et suivez les instructions qu’ils contiennent pour installer les bibliothèques requises sur vos clusters.
 
 ### <a name="model-training-and-scoring"></a>Apprentissage et scoring du modèle
 
@@ -158,25 +159,25 @@ Suivez les instructions figurant dans les deux blocs-notes pour modifier les con
 
 ### <a name="write-results-to-log-analytics"></a>Écrire les résultats dans Log Analytics
 
-Une fois que vous avez planifié le scoring, vous pouvez utiliser le module figurant dans le bloc-notes de scoring pour écrire les résultats du scoring dans l’espace de travail Log Analytics associé à votre instance Azure Sentinel.
+Une fois que vous avez planifié le scoring, vous pouvez utiliser le module figurant dans le bloc-notes de scoring pour écrire les résultats du scoring dans l’espace de travail Log Analytics associé à votre instance Microsoft Sentinel.
 
-### <a name="check-results-in-azure-sentinel"></a>Vérifier les résultats dans Azure Sentinel
+### <a name="check-results-in-microsoft-sentinel"></a>Vérifier les résultats dans Microsoft Sentinel
 
-Pour afficher vos résultats de scoring avec les détails du journal associés, revenez à votre portail Azure Sentinel. Dans **Journaux** > Journaux personnalisés, vous verrez les résultats dans la table **AnomalousResourceAccessResult_CL** (ou la table portant votre nom personnalisé). Vous pouvez utiliser ces résultats pour améliorer vos expériences d’investigation et de repérage.
+Pour afficher vos résultats de scoring avec les détails du journal associés, revenez à votre portail Microsoft Sentinel. Dans **Journaux** > Journaux personnalisés, vous verrez les résultats dans la table **AnomalousResourceAccessResult_CL** (ou la table portant votre nom personnalisé). Vous pouvez utiliser ces résultats pour améliorer vos expériences d’investigation et de repérage.
 
 :::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Journaux d’accès anormaux aux ressources":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Créer une règle d’analytique personnalisée avec des résultats de ML
 
-Après avoir vérifié que les résultats de ML figurent dans la table des journaux personnalisés, lorsque vous êtes satisfait de la fidélité du scoring, vous pouvez créer une détection basée sur les résultats. Accédez à **Analytics** à partir du portail Azure Sentinel, et [créez une règle de détection](detect-threats-custom.md). Vous trouverez ci-dessous un exemple de requête utilisée pour créer la détection.
+Après avoir vérifié que les résultats de ML figurent dans la table des journaux personnalisés, lorsque vous êtes satisfait de la fidélité du scoring, vous pouvez créer une détection basée sur les résultats. Accédez à **Analytics** à partir du portail Microsoft Sentinel, et [créez une règle de détection](detect-threats-custom.md). Vous trouverez ci-dessous un exemple de requête utilisée pour créer la détection.
 
 :::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Créer une règle d’analytique personnalisée pour les détections BYO-ML":::
 
 ### <a name="view-and-respond-to-incidents"></a>Afficher et traiter les incidents
-Une fois que vous avez configuré la règle d’analytique basée sur les résultats de ML, si des résultats dépassent le seuil que vous avez défini dans la requête, un incident est généré et affiché dans la page **Incidents** sur Azure Sentinel. 
+Une fois que vous avez configuré la règle d’analytique basée sur les résultats de ML, si des résultats dépassent le seuil que vous avez défini dans la requête, un incident est généré et affiché dans la page **Incidents** sur Microsoft Sentinel. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Ce document vous a montré comment utiliser la plateforme BYO-ML d’Azure Sentinel pour créer ou importer vos propres algorithmes d’apprentissage automatique afin d’analyser des données et de détecter des menaces.
+Ce document vous a montré comment utiliser la plateforme BYO-ML de Microsoft Sentinel pour créer ou importer vos propres algorithmes d’apprentissage automatique afin d’analyser des données et de détecter des menaces.
 
-- Pour accéder à des billets relatifs à l’apprentissage automatique ainsi qu’à de nombreuses autres rubriques pertinentes, consultez le [Blog Azure Sentinel](https://aka.ms/azuresentinelblog).
+- Pour accéder à des billets relatifs à l’apprentissage automatique ainsi qu’à de nombreuses autres rubriques pertinentes, consultez le [Blog Microsoft Sentinel](https://aka.ms/azuresentinelblog).

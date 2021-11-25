@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/12/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: badc03111d7c657685742505e53642498db344e9
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 97798fdfc680d2cc644a47acc814a8fbe7e44654
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668577"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490039"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Configurer les paramètres de groupe d’accès privilégié (préversion) dans Privileged Identity Management
 
@@ -30,7 +30,7 @@ Les paramètres de rôle sont les paramètres par défaut appliqués aux attribu
 
 Procédez comme suit pour ouvrir les paramètres d’un rôle de groupe d’accès privilégié Azure.
 
-1. Connectez-vous à [Portail Azure](https://portal.azure.com/) avec un utilisateur ayant le rôle [Administrateur général](../roles/permissions-reference.md#global-administrator) ou qui est affecté en tant que propriétaire du groupe.
+1. Connectez-vous au [portail Azure](https://portal.azure.com/) avec un utilisateur ayant le rôle [Administrateur général](../roles/permissions-reference.md#global-administrator), Administrateur de rôle privilégié ou Propriétaire de groupe.
 
 1. Ouvrez **Azure AD Privileged Identity Management**.
 
@@ -64,10 +64,10 @@ Procédez comme suit pour ouvrir les paramètres d’un rôle de groupe d’acc�
 
 Sous l’onglet **Notifications** dans la page des paramètres de rôle, l’option Privileged Identity Management permet de contrôler précisément qui reçoit telle notification.
 
-- **Désactivation d’un e-mail**<br>Vous pouvez désactiver certains e-mails en désactivant la case à cocher du destinataire par défaut et en supprimant les éventuels destinataires supplémentaires.  
-- **Limiter les e-mails à des adresses e-mail spécifiées**<br>Vous pouvez désactiver les e-mails envoyés aux destinataires par défaut en désactivant la case à cocher du destinataire par défaut. Vous pouvez ensuite ajouter d’autres adresses e-mail comme destinataires supplémentaires. Si vous souhaitez ajouter plusieurs adresses e-mail, séparez-les par un point-virgule (;).
-- **Envoyer des e-mails à la fois aux destinataires par défaut et à des destinataires supplémentaires**<br>Vous pouvez envoyer des e-mails à la fois à des destinataires par défaut et à des destinataires supplémentaires en activant la case à cocher du destinataire par défaut et en ajoutant les adresses e-mail des destinataires supplémentaires.
-- **E-mails critiques uniquement**<br>Pour chaque type d’e-mail, vous pouvez activer la case à cocher pour recevoir uniquement les e-mails critiques. Cela signifie que Privileged Identity Management continue d’envoyer des e-mails aux destinataires configurés uniquement lorsqu’une action immédiate est requise. Par exemple, les e-mails qui demandent à l’utilisateur d’étendre son attribution de rôle ne seront pas déclenchés, tandis que ceux qui demandent à un administrateur d’approuver une demande d’extension seront déclenchés.
+- **Désactivation d’un e-mail**<br>Vous pouvez désactiver certains e-mails en décochant la case du destinataire par défaut et en supprimant tous les autres destinataires.  
+- **Limiter les e-mails à des adresses e-mail spécifiées**<br>Vous pouvez désactiver les e-mails envoyés aux destinataires par défaut en décochant la case du destinataire par défaut. Vous pouvez ensuite ajouter d’autres adresses e-mail en tant que destinataires. Si vous souhaitez ajouter plusieurs adresses e-mail, séparez-les par un point-virgule (;).
+- **Envoyer des e-mails à la fois aux destinataires par défaut et à d’autres destinataires**<br>Vous pouvez envoyer des e-mails à la fois au destinataire par défaut et à un autre destinataire en cochant la case du destinataire par défaut et en ajoutant les adresses e-mail des autres destinataires.
+- **E-mails critiques uniquement**<br>Pour chaque type d’e-mail, vous pouvez cocher la case pour recevoir uniquement les e-mails critiques. Cela signifie que Privileged Identity Management continuera d’envoyer des e-mails aux destinataires spécifiés uniquement lorsqu’une action immédiate est requise. Par exemple, les e-mails qui demandent à l’utilisateur d’étendre son attribution de rôle ne seront pas déclenchés, tandis que ceux qui demandent à un administrateur d’approuver une demande d’extension seront déclenchés.
 
 ## <a name="assignment-duration"></a>Durée de l’attribution
 
@@ -110,7 +110,7 @@ Pour plus d’informations, consultez [Authentification multifacteur et Privileg
 
 ## <a name="activation-maximum-duration"></a>Durée maximum d’activation
 
-Utilisez le curseur **Durée maximum d’activation** pour définir la durée maximale, en heures, pendant laquelle un rôle reste actif avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
+Utilisez le curseur **Durée maximale d’activation** pour définir la durée maximale, en heures, pendant laquelle une demande d’activation pour une attribution de rôle reste active avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
 
 ## <a name="require-justification"></a>Demander une justification
 

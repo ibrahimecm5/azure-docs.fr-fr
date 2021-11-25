@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 03/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c97d046208b2a2364b38ffd1e01ff0a9d25f7eeb
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: dcfa748de4df7a51e665d020357357dfebf41ef5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271931"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348462"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Gérer les variables dans Azure Automation
 
@@ -27,7 +27,7 @@ Les variables Automation sont utiles pour les scénarios suivants :
 
 Azure Automation conserve les variables et les rend disponibles même en cas d’échec d’une configuration runbook ou DSC. Ce comportement permet à un runbook ou à une configuration DSC de définir une valeur par la suite utilisée par un autre runbook, ou par le même runbook ou la même configuration DSC lors de son exécution suivante.
 
-Azure Automation stocke chaque variable chiffrée de manière sécurisée. Lorsque vous créez une variable, vous pouvez spécifier son mode de chiffrement et de stockage par Azure Automation sous la forme d’une ressource sécurisée. Après avoir créé la variable, vous ne pouvez pas modifier son état de chiffrement sans recréer la variable. Si vous avez des variables de compte Automation stockant des données sensibles qui ne sont pas encore chiffrées, vous devez les supprimer et les recréer en tant que variables chiffrées. Une suggestion Azure Security Center consiste à chiffrer toutes les variables Azure Automation, comme décrit dans [les variables de compte Automation doivent être chiffrées](../../security-center/recommendations-reference.md#recs-compute). Si vous avez des variables non chiffrées que vous souhaitez exclure de cette recommandation de sécurité, consultez [Exempter une ressource des recommandations et du niveau de sécurité](../../security-center/exempt-resource.md) pour créer une règle d’exemption.
+Azure Automation stocke chaque variable chiffrée de manière sécurisée. Lorsque vous créez une variable, vous pouvez spécifier son mode de chiffrement et de stockage par Azure Automation sous la forme d’une ressource sécurisée. Après avoir créé la variable, vous ne pouvez pas modifier son état de chiffrement sans recréer la variable. Si vous avez des variables de compte Automation stockant des données sensibles qui ne sont pas encore chiffrées, vous devez les supprimer et les recréer en tant que variables chiffrées. Une suggestion Microsoft Defender pour le Cloud consiste à chiffrer toutes les variables Azure Automation, comme décrit dans [Les variables de compte Automation doivent être chiffrées](../../security-center/recommendations-reference.md#recs-compute). Si vous avez des variables non chiffrées que vous souhaitez exclure de cette recommandation de sécurité, consultez [Exempter une ressource des recommandations et du niveau de sécurité](../../security-center/exempt-resource.md) pour créer une règle d’exemption.
 
 >[!NOTE]
 >Les ressources sécurisées dans Azure Automation incluent les informations d'identification, les certificats, les connexions et les variables chiffrées. Ces ressources sont chiffrées et stockées dans Azure Automation en utilisant une clé unique générée pour chaque compte Automation. Azure Automation stocke la clé dans le coffre de clés géré par le système. Avant de stocker une ressource sécurisée, Automation charge la clé à partir de Key Vault, puis l’utilise pour chiffrer la ressource.

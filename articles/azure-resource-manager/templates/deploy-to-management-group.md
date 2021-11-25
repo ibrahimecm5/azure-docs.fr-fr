@@ -4,12 +4,12 @@ description: Décrit comment déployer des ressources au niveau du groupe d’ad
 ms.topic: conceptual
 ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5dbf94c6f99e875e3694b96a3f01474c89348397
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ea8ee72cebc8a44d3e87ab80ab22d04b4fdc9f66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654173"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319308"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Déploiements de groupes d’administration avec des modèles Resource Manager
 
@@ -388,5 +388,5 @@ L’exemple suivant montre comment [définir](../../governance/policy/concepts/d
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour en savoir plus sur l’attribution de rôles, consultez [Attribuer des rôles Azure avec des modèles Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
-* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Azure Security Center, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Microsoft Defender pour le cloud, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Vous pouvez également déployer des modèles au [niveau de l’abonnement](deploy-to-subscription.md) et au [niveau du locataire](deploy-to-tenant.md).

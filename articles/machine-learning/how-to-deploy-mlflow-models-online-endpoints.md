@@ -11,12 +11,12 @@ ms.date: 11/03/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, mlflow, devplatv2, no-code-deployment
-ms.openlocfilehash: d17db7c63d4e17009bffab948f335cedffb85e2e
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a2328490185032e805a95f85b430d6742c76435c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132060070"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289885"
 ---
 # <a name="deploy-mlflow-models-to-managed-online-endpoint-preview"></a>Déployer des modèles MLflow sur un point de terminaison managé en ligne (préversion)
 
@@ -28,7 +28,7 @@ Dans cet article, découvrez comment déployer votre modèle [MLflow](https://ww
 
 [!INCLUDE [basic cli prereqs](../../includes/machine-learning-cli-prereqs.md)]
 
-* Vous devez disposer d’un modèle MLflow. Les exemples de cet article sont basés sur les modèles de [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
+* Vous devez disposer d’un modèle MLflow. Les exemples de cet article sont basés sur les modèles de [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow).
 
 [!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
@@ -68,9 +68,13 @@ Cet exemple montre comment vous pouvez déployer un modèle MLflow sur un point 
 
 ### <a name="invoke-the-endpoint"></a>Appeler le point de terminaison
 
-Une fois votre déploiement terminé, utilisez la commande suivante pour effectuer une demande de scoring sur le point de terminaison déployé. Le fichier [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/endpoints/online/mlflow/sample-request-sklearn.json) utilisé dans cette commande se trouve dans le répertoire `/cli/endpoints/online/mlflow` du référentiel azure-examples :
+Une fois votre déploiement terminé, utilisez la commande suivante pour effectuer une demande de scoring sur le point de terminaison déployé. Le fichier [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/mlflow/sample-request-sklearn.json) utilisé dans cette commande se trouve dans le répertoire `/cli/endpoints/online/mlflow` du référentiel azure-examples :
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
+
+**sample-request-sklearn.json**
+
+:::code language="json" source="~/azureml-examples-main/cli/endpoints/online/mlflow/sample-request-sklearn.json":::
 
 La réponse ressemblera au texte suivant :
 
@@ -91,7 +95,7 @@ Une fois que vous avez terminé avec le point de terminaison, utilisez la comman
 
 Cet exemple montre comment vous pouvez déployer un modèle MLflow sur un point de terminaison géré en ligne à l’aide d’[Azure Machine Learning Studio](https://ml.azure.com).
 
-1. Enregistrez votre modèle au format MLflow à l’aide de la commande YAML et CLI suivante. YAML utilise un modèle MLflow scikit-learn à partir de [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
+1. Enregistrez votre modèle au format MLflow à l’aide de la commande YAML et CLI suivante. YAML utilise un modèle MLflow scikit-learn à partir de [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow).
 
     __sample-create-mlflow-model.yaml__
 
@@ -126,7 +130,7 @@ Cet exemple montre comment vous pouvez déployer un modèle MLflow sur un point 
 
     1. Terminez l’assistant pour déployer le modèle sur le point de terminaison.
 
-        :::image type="content" source="media/how-to-deploy-mlflow-models-online-endpoints/review-screen-ncd.png" lightbox="media/how-to-deploy-mlflow-models-online-endpoints/review-screen-ncd.png" alt-text="Capture d’écran montrant l’écran de révision de NCD":::
+        :::image type="content" source="media/how-to-deploy-mlflow-models-online-endpoints/review-screen-ncd.png" lightbox="media/how-to-deploy-mlflow-models-online-endpoints/review-screen-ncd.png" alt-text="Capture d’écran montrant l’écran de révision du déploiement sans code":::
 
     # <a name="models-page"></a>[Page Modèles](#tab/models)
 
@@ -147,7 +151,7 @@ Cette section vous aide à comprendre comment déployer des modèles sur un poin
     > [!NOTE]
     > Si vous avez utilisé `mlflow.autolog()` dans votre script de formation, vous verrez des artefacts de modèle dans l’historique des exécutions du travail. Azure Machine Learning s’intègre avec la fonctionnalité de suivi de MLflow. Vous pouvez utiliser `mlflow.autolog()` pour plusieurs infrastructures de ML courantes afin de journaliser les paramètres de modèle, les métriques de performances, les artefacts de modèle et même des graphiques d’importance des caractéristiques.
     >
-    > Pour plus d’informations, consultez [Former des modèles avec l’interface CLI](how-to-train-cli.md#model-tracking-with-mlflow). Consultez également les [exemples de travail de formation](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/jobs/single-step) dans le référentiel GitHub.
+    > Pour plus d’informations, consultez [Former des modèles avec l’interface CLI](how-to-train-cli.md#model-tracking-with-mlflow). Consultez également les [exemples de travail de formation](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step) dans le référentiel GitHub.
 
     # <a name="azure-machine-learning-studio"></a>[Azure Machine Learning Studio](#tab/studio)
 
@@ -174,5 +178,5 @@ Pour en savoir plus, consultez les articles suivants :
 - [Comment mettre à l’échelle automatiquement des points de terminaison en ligne gérés](how-to-autoscale-endpoints.md)
 - [Utiliser des points de terminaison de traitement de lots (préversion) pour le scoring par lots](how-to-use-batch-endpoint.md)
 - [Afficher les coûts d’un point de terminaison en ligne managé Azure Machine Learning (préversion)](how-to-view-online-endpoints-costs.md)
-- [Accéder aux ressources Azure avec un point de terminaison en ligne managé et une identité managée (préversion)](how-to-access-resources-from-endpoints-managed-identities.md)
+- [Accéder aux ressources Azure avec un point de terminaison en ligne géré et une identité managée (préversion)](how-to-access-resources-from-endpoints-managed-identities.md)
 - [Résolution des problèmes de déploiement de points de terminaison en ligne managés](how-to-troubleshoot-managed-online-endpoints.md)

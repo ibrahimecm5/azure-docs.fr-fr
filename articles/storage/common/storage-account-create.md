@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7b34040e9516daeda71704d74ceac64a03572214
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3be79a2af3dfb05b289a0111c9e1f9fcf17bab02
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452506"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555543"
 ---
 # <a name="create-a-storage-account"></a>Créez un compte de stockage.
 
@@ -150,6 +150,7 @@ Le tableau suivant décrit les champs de l’onglet **Avancé**.
 | Sécurité | Activer l’accès de clé de compte de stockage (préversion) | Facultatif | Lorsqu’il est activé, ce paramètre permet aux clients d’autoriser les demandes au compte de stockage à l’aide des clés d’accès du compte ou d’un compte Azure Active Directory (Azure AD - par défaut). La désactivation de ce paramètre empêche l’autorisation avec les clés d’accès du compte. Pour plus d’informations, consultez [Empêcher l’autorisation avec clé partagée pour un compte de stockage Azure](shared-key-authorization-prevent.md). |
 | Sécurité | Version TLS minimale | Obligatoire | Sélectionnez la version minimale requise du protocole TLS (Transport Layer Security) pour les demandes entrantes adressées au compte de stockage. La valeur par défaut est TLS version 1.2. Lorsqu’elle est définie sur la valeur par défaut, les requêtes entrantes effectuées à l’aide de TLS 1.0 ou TLS 1.1 sont rejetées. Pour plus d’informations, consultez [Appliquer une version minimale requise du protocole TLS (Transport Layer Security) pour des demandes adressées à un compte de stockage](transport-layer-security-configure-minimum-version.md). |
 | Data Lake Storage Gen2 | Activer l’espace de noms hiérarchique | Facultatif | Pour utiliser ce compte de stockage pour les charges de travail Azure Data Lake Storage Gen2, configurez un espace de noms hiérarchique. Pour plus d’informations, consultez [Présentation d’Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md). |
+| Protocole FTP sécurisé (SFTP) | Activer le SFTP | Facultatif | Activer l’utilisation de Secure protocole FTP (SFTP) pour transférer en toute sécurité des données sur Internet. Pour plus d’informations, consultez [Prise en charge du protocole SFTP (Secure File Transfer) dans Stockage Blob Azure](../blobs/secure-file-transfer-protocol-support.md). |
 | Stockage d'objets blob | Activer le partage de fichiers réseau (NFS) v3 | Facultatif | NFS v3 assure la compatibilité du système de fichiers Linux au niveau du stockage des objets, et permet aux clients Linux de monter un conteneur dans Stockage Blob à partir d’une machine virtuelle Azure ou d’un ordinateur local. Pour plus d’informations, consultez [Prise en charge du protocole NFS (Network File System) 3.0 dans le stockage Blob Azure](../blobs/network-file-system-protocol-support.md). |
 | Stockage d'objets blob | Niveau d’accès | Obligatoire | Les niveaux d’accès aux objets blob vous permettent de stocker les données blob de la manière la plus économique, en fonction de l’utilisation. Sélectionnez le niveau chaud (par défaut) pour les données fréquemment utilisées. Sélectionnez le niveau froid pour les données rarement utilisées. Pour plus d’informations, consultez [Niveaux d’accès chaud, froid et archive pour les données d’objet blob](../blobs/access-tiers-overview.md). |
 | Azure Files | Activer les partages de fichiers volumineux | Facultatif | Disponible uniquement pour les partages de fichiers standard avec les redondances LRS ou ZRS. |

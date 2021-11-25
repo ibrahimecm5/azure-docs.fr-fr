@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e39641317cc02c12666adf622ccb931ef57d9339
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214188"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493682"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Comment créer, importer et exporter des termes de glossaire
 
-Cet article explique comment créer un terme de glossaire métier dans un catalogue de données Azure Purview, puis importer et exporter des termes de glossaire à l’aide de fichiers. csv.
+Cet article explique comment utiliser le glossaire métier dans Azure Purview. Vous découvrirez les étapes pour créer un terme de glossaire métier dans un catalogue de données Azure Purview, puis importer et exporter des termes de glossaire à l’aide de fichiers. csv.
 
 ## <a name="create-a-new-term"></a>Créez un terme
 
@@ -71,7 +71,7 @@ Notez que les noms de terme respectent la casse. Par exemple, les termes `Sample
 
    :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-import.png" alt-text="Capture d’écran de la page de termes de glossaire, bouton Importer les termes.":::
 
-3. Téléchargez le modèle csv et utilisez-le pour entrer les termes que vous souhaitez ajouter.
+3. Téléchargez le modèle csv et utilisez-le pour entrer les termes que vous souhaitez ajouter. Lorsque vous nommez votre fichier modèle CSV, le nom doit commencer par une lettre et ne peut contenir que des lettres, des chiffres, des espaces, « _ » ou d’autres caractères Unicode non-ASCII. Les caractères spéciaux dans le nom de fichier génèrent une erreur.
 
    > [!Important]
    > Le système prend uniquement en charge l’importation des colonnes disponibles dans le modèle. Le modèle « Système par défaut » aura tous les attributs par défaut.
@@ -101,4 +101,4 @@ Vous devez être en mesure d’exporter des termes d’un glossaire tant que les
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Suivez le [Didacticiel : Créer et importer des termes de glossaire](tutorial-import-create-glossary-terms.md) pour en savoir plus.
+* Pour plus d’informations sur les termes du glossaire, consultez la [Référence du glossaire](reference-purview-glossary.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: eur
-ms.openlocfilehash: ba4e6fc3d128daf54f55456163acb6a563745b55
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 0944e5da8bde152a2c8e9fd67e5641d419b0b1fd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507944"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493961"
 ---
 # <a name="speech-service-for-telephony-data"></a>Service Speech pour les données de téléphonie
 
@@ -130,7 +130,7 @@ Un autre scénario est l’intégration directe avec le protocole SIP (Session I
 
 ## <a name="sample-code"></a>Exemple de code
 
-Un exemple de code est disponible sur GitHub pour chacune des fonctionnalités du service Speech. Ces exemples couvrent des scénarios courants tels que la lecture du signal audio d’un fichier ou d’un flux, la reconnaissance continue et ponctuelle, et l’utilisation de modèles personnalisés. Pour voir les exemples SDK et REST, suivez ces liens :
+Un exemple de code est disponible sur GitHub pour chacune des fonctionnalités du service Speech. Ces exemples couvrent des scénarios courants tels que la lecture du signal audio d’un fichier ou d’un flux, la reconnaissance au départ et ponctuelle, et l’utilisation de modèles personnalisés. Pour voir les exemples SDK et REST, suivez ces liens :
 
 - [Exemples de reconnaissance vocale et de traduction vocale (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Exemples de transcription par lot (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
