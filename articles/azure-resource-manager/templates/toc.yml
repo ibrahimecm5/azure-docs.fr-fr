@@ -472,6 +472,8 @@
           href: template-functions-object.md
         - name: Fonctions de ressource
           href: template-functions-resource.md
+        - name: Fonctions de limitation
+          href: template-functions-scope.md
         - name: Fonctions de chaînes
           href: template-functions-string.md
     - name: REST
