@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 03bbb681c61f28c2b4fbed580094fd8f47017de0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0db7b5a92820e299658d793e66edba1e6e84c087
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466768"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281454"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines"></a>Lancement fiable pour les machines virtuelles Azure
 
@@ -91,7 +91,7 @@ Azure propose le lancement fiable pour améliorer de manière fluide la sécurit
 
 Le lancement fiable introduit également le module vTPM pour les machines virtuelles Azure. Il s’agit d’une version virtualisée d’un [module de plateforme sécurisée (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview) matériel, conforme à la spécification TPM2.0. Il sert de coffre sécurisé dédié pour les clés et les mesures. Le lancement fiable permet à votre machine virtuelle d’utiliser sa propre instance TPM dédiée, s’exécutant dans un environnement sécurisé en dehors de la portée de toute machine virtuelle. Le module vTPM permet d’effectuer l’[attestation](/windows/security/information-protection/tpm/tpm-fundamentals#measured-boot-with-support-for-attestation) en mesurant la chaîne de démarrage complète de votre machine virtuelle (UEFI, système d’exploitation, système et pilotes). 
 
-Le lancement fiable utilise le module vTPM pour effectuer l’attestation distante par le cloud. Il est utilisé pour les contrôles d’intégrité de la plateforme et pour permettre de prendre des décisions basées sur la confiance. En guise de contrôle d’intégrité, le lancement fiable peut certifier par chiffrement que votre machine virtuelle a démarré correctement. Si le processus échoue, par exemple parce que votre machine virtuelle exécute un composant non autorisé, Azure Security Center émet des alertes d’intégrité. Les alertes incluent des détails sur les composants concernés par l’échec des contrôles d’intégrité.
+Le lancement fiable utilise le module vTPM pour effectuer l’attestation distante par le cloud. Il est utilisé pour les contrôles d’intégrité de la plateforme et pour permettre de prendre des décisions basées sur la confiance. En guise de contrôle d’intégrité, le lancement fiable peut certifier par chiffrement que votre machine virtuelle a démarré correctement. Si le processus échoue, par exemple parce que votre machine virtuelle exécute un composant non autorisé, Defender pour le cloud émet des alertes d’intégrité. Les alertes incluent des détails sur les composants concernés par l’échec des contrôles d’intégrité.
 
 ## <a name="virtualization-based-security"></a>Sécurité basée sur la virtualisation
 
@@ -102,20 +102,20 @@ La fonctionnalité HVCI constitue une atténuation puissante des risques systèm
 Avec le lancement fiable et la sécurité basée sur la virtualisation (VBS), vous pouvez activer Windows Defender Credential Guard. Cette fonctionnalité isole et protège les secrets afin que seuls les logiciels système privilégiés puissent y accéder. Cela permet d’empêcher l’accès non autorisé aux secrets et le vol des informations d’identification, comme les attaques de type Pass-the-Hash (PtH). Pour plus d’informations, consultez [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
-## <a name="security-center-integration"></a>Intégration Security Center
+## <a name="defender-for-cloud-integration"></a>Intégration de Defender pour le cloud
 
-Le lancement fiable est intégré à Azure Security Center pour garantir que vos machines virtuelles sont correctement configurées. Azure Security Center évalue continuellement les machines virtuelles compatibles et émet des recommandations pertinentes.
+Le lancement fiable est intégré à Defender pour le cloud afin de garantir que vos machines virtuelles sont correctement configurées. Microsoft Defender pour le cloud évalue continuellement les machines virtuelles compatibles et émet des recommandations pertinentes.
 
-- **Recommandation pour activer le démarrage sécurisé** : cette recommandation s’applique uniquement aux machines virtuelles qui prennent en charge le lancement fiable. Azure Security Center identifie les machines virtuelles qui peuvent activer la fonctionnalité de démarrage sécurisé, mais qui ont cette fonctionnalité désactivée. Le système émet une recommandation de faible gravité pour suggérer de l’activer.
-- **Recommandation pour activer vTPM** : si vTPM est activé sur votre machine virtuelle, Azure Security Center peut l’utiliser pour effectuer une attestation d’invité et identifier les modèles de menaces avancés. Si Azure Security Center identifie des machines virtuelles qui prennent en charge le lancement fiable et dont le module vTPM est désactivé, il émet une recommandation de faible gravité pour suggérer de l’activer. 
-- **Recommandation pour installer l’extension d’attestation d’invité** : si votre machine virtuelle dispose d’un démarrage sécurisé et d’un vTPM activé, mais que l’extension d’attestation d’invité n’est pas installée, Azure Security Center émet une recommandation de faible gravité pour installer l’extension d’attestation d’invité. Cette extension permet à Azure Security Center d’attester et de surveiller de manière proactive l’intégrité du démarrage de vos machines virtuelles. L’intégrité du démarrage est attestée via une attestation à distance.  
-- **Évaluation de l’intégrité de l’attestation** : si un vTPM est activé et une extension d’attestation installée sur votre machine virtuelle, Azure Security Center peut confirmer à distance que votre machine virtuelle a démarré de manière saine. C’est ce que l’on appelle l’attestation distante. Azure Security Center émet une évaluation, indiquant l’état de l’attestation distante.
+- **Recommandation pour activer le démarrage sécurisé :** cette recommandation s’applique uniquement aux machines virtuelles qui prennent en charge le lancement fiable. Microsoft Defender pour le cloud identifie les machines virtuelles sur lesquelles la fonctionnalité de démarrage sécurisé est disponible mais désactivée. Le système émet une recommandation de faible gravité pour suggérer de l’activer.
+- **Recommandation pour activer vTPM :** si vTPM est activé sur votre machine virtuelle, Microsoft Defender pour le cloud peut l’utiliser pour effectuer une attestation d’invité et identifier les modèles de menaces avancés. Si Microsoft Defender pour le cloud identifie des machines virtuelles qui prennent en charge le lancement fiable et dont le module vTPM est désactivé, il émet une recommandation de faible gravité pour suggérer de l’activer. 
+- **Recommandation pour installer l’extension d’attestation d’invité** : si votre machine virtuelle dispose d’un démarrage sécurisé et d’un vTPM activé, mais que l’extension d’attestation d’invité n’est pas installée, Microsoft Defender pour le cloud émet une recommandation de faible gravité pour installer l’extension d’attestation d’invité. Cette extension permet à Microsoft Defender pour le cloud d’attester et de superviser de manière proactive l’intégrité du démarrage de vos machines virtuelles. L’intégrité du démarrage est attestée via une attestation à distance.  
+- **Évaluation de l’intégrité de l’attestation :** si vTPM est activé et une extension d’attestation installée sur votre machine virtuelle, Microsoft Defender pour le cloud peut confirmer à distance que votre machine virtuelle a démarré de manière saine. C’est ce que l’on appelle l’attestation distante. Microsoft Defender pour le cloud émet une évaluation qui indique l’état de l’attestation distante.
 
-## <a name="azure-defender-integration"></a>Intégration d’Azure Defender
+## <a name="microsoft-defender-for-cloud-integration"></a>Intégration de Microsoft Defender pour le cloud
 
-Si vos machines virtuelles sont correctement configurées avec la fonctionnalité de lancement fiable, Azure Defender peut détecter des problèmes d’intégrité des machines virtuelles et vous en informer.
+Si vos machines virtuelles sont correctement configurées avec la fonctionnalité de lancement fiable, Microsoft Defender pour le cloud peut détecter des problèmes d’intégrité des machines virtuelles et vous en informer.
 
-- **Alerte d’échec d’attestation de la machine virtuelle** : Azure Defender effectue régulièrement une attestation sur vos machines virtuelles. Cela se produit également après le démarrage de votre machine virtuelle. Si l’attestation échoue, une alerte de gravité moyenne est déclenchée.
+- **Alerte d’échec d’attestation de la machine virtuelle** : Microsoft Defender pour le cloud effectue régulièrement une attestation sur vos machines virtuelles. Cela se produit également après le démarrage de votre machine virtuelle. Si l’attestation échoue, une alerte de gravité moyenne est déclenchée.
     L’attestation de la machine virtuelle peut échouer pour les raisons suivantes :
     - Les informations attestées, qui comprennent un journal de démarrage, diffèrent d’une ligne de base approuvée. Cela peut indiquer que des modules non approuvés ont été chargés et que le système d’exploitation peut être compromis.
     - Il n’a pas été possible de vérifier que la déclaration d’attestation provient du module vTPM de la machine virtuelle attestée. Cela peut indiquer qu’un logiciel malveillant est présent et qu’il intercepte le trafic vers vTPM.
@@ -123,7 +123,7 @@ Si vos machines virtuelles sont correctement configurées avec la fonctionnalit�
     > [!NOTE]
     >  Cette alerte est disponible pour les machines virtuelles sur lesquelles vTPM est activé et l’extension d’attestation installée. Le démarrage sécurisé doit être activé pour que l’attestation réussisse. L’attestation échoue si le démarrage sécurisé est désactivé. Si vous devez désactiver le démarrage sécurisé, vous pouvez supprimer cette alerte pour éviter les faux positifs.
 
-- **Alerte pour le module noyau Linux non approuvé** : si le lancement fiable avec démarrage sécurisé est activé, une machine virtuelle peut démarrer même si un pilote du noyau échoue à la validation et que son chargement est interdit. Dans ce cas, Azure Defender émet une alerte de faible gravité. Bien qu’il n’y ait pas de menace immédiate car le pilote non approuvé n’a pas été chargé, ces événements doivent être examinés. Tenez compte des éléments suivants :
+- **Alerte pour le module noyau Linux non approuvé :** si le lancement fiable avec démarrage sécurisé est activé, une machine virtuelle peut démarrer même si un pilote du noyau échoue à la validation et que son chargement est interdit. Dans ce cas, Microsoft Defender pour le cloud émet une alerte de gravité faible. Bien qu’il n’y ait pas de menace immédiate car le pilote non approuvé n’a pas été chargé, ces événements doivent être examinés. Tenez compte des éléments suivants :
     - Quel pilote du noyau a échoué ? Est-ce que je connais ce pilote ? Est-ce que je m’attends à ce qu’il soit chargé ?
     - S’agit-il de la version exacte du pilote attendu ? Les fichiers binaires du pilote sont-ils intacts ? S’il s’agit d’un pilote tiers, le fournisseur a-t-il réussi les tests de conformité du système d’exploitation pour obtenir la signature ?
 
@@ -146,13 +146,14 @@ Dans une chaîne de démarrage sécurisée, chaque étape du processus de démar
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Que se passe-t-il quand une erreur d’intégrité est détectée ?
 
-La présence de menaces avancées est surveillée dans le lancement fiable pour les machines virtuelles Azure. Si de telles menaces sont détectées, une alerte est déclenchée. Les alertes sont disponibles uniquement dans le [Niveau Standard](../security-center/security-center-pricing.md) d’Azure Security Center.
-Azure Security Center effectue régulièrement une attestation. Si l’attestation échoue, une alerte de gravité moyenne est déclenchée. L’attestation de lancement fiable peut échouer pour les raisons suivantes : 
+La présence de menaces avancées est surveillée dans le lancement fiable pour les machines virtuelles Azure. Si de telles menaces sont détectées, une alerte est déclenchée. Les alertes sont disponibles uniquement si les [fonctionnalités de sécurité renforcée Defender pour le cloud](../security-center/enable-enhanced-security.md) sont activées.
+
+Defender pour le cloud effectue régulièrement une attestation. Si l’attestation échoue, une alerte de gravité moyenne est déclenchée. L’attestation de lancement fiable peut échouer pour les raisons suivantes :
+
 - Les informations attestées, qui comprennent un journal TCB (Trusted Computing Base), diffèrent d’une ligne de base approuvée (comme quand le démarrage sécurisé est activé). Cela peut indiquer que des modules non approuvés ont été chargés et que le système d’exploitation peut être compromis.
-- Il n’a pas été possible de vérifier que la déclaration d’attestation provient du module vTPM de la machine virtuelle attestée. Cela peut indiquer qu’un logiciel malveillant est présent et qu’il intercepte le trafic vers le module TPM. 
+- Il n’a pas été possible de vérifier que la déclaration d’attestation provient du module vTPM de la machine virtuelle attestée. Cela peut indiquer qu’un logiciel malveillant est présent et qu’il intercepte le trafic vers le module TPM.
 - L’extension d’attestation sur la machine virtuelle ne répond pas. Cela peut indiquer une attaque par déni de service par un programme malveillant ou un administrateur du système d’exploitation.
 
-  
 ### <a name="how-does-trusted-launch-compared-to-hyper-v-shielded-vm"></a>Quelles sont les performances du lancement fiable par rapport à la machine virtuelle dotée d’une protection maximale Hyper-V ?
 
 La machine virtuelle dotée d’une protection maximale Hyper-V est actuellement disponible uniquement sur Hyper-V. La [machine virtuelle dotée d’une protection maximale Hyper-V](/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms) est généralement déployée conjointement avec l’infrastructure protégée. Une infrastructure protégée est constituée d’un service Guardian hôte (SGH), d’un ou plusieurs hôtes protégés et d’un ensemble de machines virtuelles dotées d’une protection maximale. Les machines virtuelles dotées d’une protection maximale Hyper-V sont destinées à être utilisées dans des structures où les données et l’état de la machine virtuelle doivent être protégés des administrateurs de l’infrastructure et des logiciels non approuvés qui pourraient s’exécuter sur les hôtes Hyper-V. En revanche, le lancement fiable peut être déployé en tant que machine virtuelle autonome ou en tant que groupes de machines virtuelles identiques sur Azure sans déploiement ni gestion supplémentaires du service SGH. Toutes les fonctionnalités du lancement fiable peuvent être activées via une simple modification dans le code de déploiement ou à l’aide d’une case à cocher sur le portail Azure.  

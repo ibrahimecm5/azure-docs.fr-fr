@@ -3,14 +3,14 @@ title: Utiliser le widget de lecteur Video Analyzer
 description: Cet article explique comment ajouter un widget de lecteur Video Analyzer à votre application.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 11/12/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44d14f7dc2977f39276e4c57a4d35d5e28b31a3d
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8dbf85609196a930d7f51a713753f725b3016396
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845450"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487475"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Utiliser le widget du lecteur d’Azure Video Analyzer
 
@@ -142,6 +142,10 @@ Le composant de dessinateur de zone vous permet de dessiner des lignes et des po
    ```javascript
    zoneDrawer.load();
    ```
+1. Configurez le dessinateur de zone :
+   ```javascript
+   zoneDrawer.configure();
+   ```
 1. Pour créer et enregistrer des zones, vous devez ajouter des écouteurs d’événements ici :
    ```javascript
    zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
@@ -195,6 +199,7 @@ En associant les éléments web précédents, vous obtenez la page HTML statique
     
         const zoneDrawer = document.getElementById("zoneDrawer");
         zoneDrawer.load();
+        zoneDrawer.configure();
 
         zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
             console.log(event);

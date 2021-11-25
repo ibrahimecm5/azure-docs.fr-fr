@@ -6,12 +6,13 @@ ms.service: healthcare-apis
 ms.topic: quickstart
 ms.date: 09/10/2021
 ms.author: ginle
-ms.openlocfilehash: 5f65355ab77547c8587cd228378868b56b193c9b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: mode-other
+ms.openlocfilehash: 659fb82e35cd25622158d05a88d85a16e736c770
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782522"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133069710"
 ---
 # <a name="deploy-a-fhir-service-within-azure-healthcare-apis---using-portal"></a>Déployer un service FHIR dans les API de santé Azure-à l’aide du portail
 
@@ -60,4 +61,3 @@ Pour vérifier que le nouveau compte d’API FHIR est approvisionné, récupére
 
 >[!div class="nextstepaction"]
 >[Accéder au service FHIR à l’aide du poster](../use-postman.md)
-
