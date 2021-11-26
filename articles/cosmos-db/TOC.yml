@@ -171,7 +171,7 @@
               href: sql/create-sql-api-python.md
     - name: Tutoriels
       items:
-        - name: "1\_- Créer et gérer des données"
+        - name: Créer et gérer des données
           items:
             - name: Générer une application console
               items:
@@ -191,18 +191,20 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-        - name: 2 - Migrer les données
+        - name: Migration des données
           items:
             - name: Utilisation de l’outil de migration de données
               href: import-data.md
             - name: Utilisation de la prise en charge de l’exécution en bloc .NET
               href: sql/tutorial-sql-api-dotnet-bulk-import.md
-        - name: 3 - Interroger les données
+        - name: Interroger des données
           href: sql/tutorial-query-sql-api.md
-        - name: 4 - Créer un notebook
+        - name: Créer un notebook
           href: sql/create-notebook-visualize-data.md
-        - name: 5 - Distribuer les données globalement
+        - name: Distribuer les données à l’échelle mondiale
           href: sql/tutorial-global-distribution-sql-api.md
+        - name: Application Spring Boot sur Azure Kubernetes Service
+          href: sql/tutorial-springboot-azure-kubernetes-service.md
     - name: Exemples
       items:
         - name: Exemples du kit SDK .NET V3
@@ -1477,6 +1479,8 @@
           href: configure-synapse-link.md
         - name: Se connecter à Azure Synapse Link
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: "Synapse Link et Power\_BI intégré"
+          href: integrated-power-bi-synapse-link.md
         - name: Magasin analytique et points de terminaison privés
           href: analytical-store-private-endpoints.md
         - name: "Interroger avec Azure Synapse Spark\_3"
@@ -1497,7 +1501,7 @@
               href: continuous-backup-restore-permissions.md
             - name: "Provisionner un compte \_– Sauvegarde continue"
               href: provision-account-continuous-backup.md
-            - name: Obtenir le dernier horodatage restauré
+            - name: Obtenir le dernier horodatage pouvant être restauré
               href: get-latest-restore-timestamp.md
             - name: "Restaurer un compte\_– Sauvegarde continue"
               href: restore-account-continuous-backup.md

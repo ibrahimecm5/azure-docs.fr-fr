@@ -22,36 +22,54 @@
       href: ./resource-graph-samples.md
 - name: Concepts
   items:
-    - name: Architecture d’agent
-      href: conceptual-agent-architecture.md
-    - name: Configurations et GitOps
-      href: conceptual-configurations.md
-    - name: Extensions de cluster
-      href: conceptual-extensions.md
-    - name: Connexion au cluster
+    - name: Vue d’ensemble de l’agent
+      href: conceptual-agent-overview.md
+    - name: Modes de connectivité
+      href: conceptual-connectivity-modes.md
+    - name: Échange des données entre un cluster et Azure
+      href: conceptual-data-exchange.md
+    - name: Gestion de l’identité et de l’accès
+      items:
+        - name: "Azure\_RBAC"
+          href: conceptual-azure-rbac.md
+    - name: Accéder au cluster où que vous soyez
       href: conceptual-cluster-connect.md
-    - name: Localisations personnalisées
-      href: conceptual-custom-locations.md
-    - name: "Azure\_RBAC"
-      href: conceptual-azure-rbac.md
+    - name: Étendre les fonctionnalités Azure aux clusters où que vous soyez
+      items:
+        - name: Extensions de cluster
+          href: conceptual-extensions.md
+        - name: Localisations personnalisées
+          href: conceptual-custom-locations.md
+    - name: Déployer des applications sur un cluster
+      items:
+        - name: Configurations et GitOps
+          href: conceptual-configurations.md
+        - name: Workflow CI/CD avec GitOps
+          href: conceptual-gitops-ci-cd.md
+        - name: Expérience de développement avec des boucles internes
+          href: conceptual-inner-loop-gitops.md
     - name: Forum Aux Questions (FAQ)
       href: faq.md
-    - name: Workflow CI/CD avec GitOps
-      href: conceptual-gitops-ci-cd.md
-    - name: Expérience de développement avec des boucles internes
-      href: conceptual-inner-loop-gitops.md
 - name: Guides pratiques
   items:
-    - name: Connecter un cluster avec un principal de service
-      href: create-onboarding-service-principal.md
     - name: Mettre à niveau des agents
       href: agent-upgrade.md
-    - name: Scénarios
+    - name: Se connecter de façon sécurisée à un cluster depuis n’importe où
+      href: cluster-connect.md
+    - name: Vue des ressources Kubernetes dans le portail Azure
+      href: kubernetes-resource-view.md
+    - name: "Utiliser Azure\_AD RBAC pour les contrôles d’autorisation"
+      href: azure-rbac.md
+    - name: Déployer des applications sur un cluster
       items:
         - name: Déployer des graphiques Helm avec GitOps
           href: use-gitops-with-helm.md
-        - name: Appliquer GitOps avec Azure Policy
+        - name: Déploiement à grande échelle de configurations avec Azure Policy
           href: use-azure-policy.md
+        - name: Déployer des charges de travail IoT
+          href: deploy-azure-iot-edge-workloads.md
+    - name: Gérer votre cluster
+      items:
         - name: Déployer et gérer des extensions de cluster
           href: extensions.md
         - name: Superviser avec Azure Monitor pour conteneurs
@@ -62,16 +80,10 @@
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Déployer Open Service Mesh avec Azure Arc
           href: tutorial-arc-enabled-open-service-mesh.md
-        - name: Se connecter de façon sécurisée à un cluster depuis n’importe où
-          href: cluster-connect.md
-        - name: Vue des ressources Kubernetes dans le portail Azure
-          href: kubernetes-resource-view.md
-        - name: "Utiliser Azure\_AD RBAC pour les contrôles d’autorisation"
-          href: azure-rbac.md
+    - name: Déployer des services avec Arc
+      items:
         - name: Créer des localisations personnalisées
           href: custom-locations.md
-        - name: Déployer des charges de travail IoT
-          href: deploy-azure-iot-edge-workloads.md
         - name: Machine Learning avec Azure Arc
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Dépannage

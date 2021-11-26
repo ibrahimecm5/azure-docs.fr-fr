@@ -30,9 +30,9 @@
   items:
     - name: 1. Activer Defender pour le cloud sur vos abonnements
       href: get-started.md
-    - name: 2. Activer les protections renforcées
+    - name: 2. Activer les fonctionnalités de sécurité renforcée
       href: enable-enhanced-security.md
-    - name: 3. Connecter vos machines hybrides et multiclouds
+    - name: 3. Connecter des machines hybrides et multiclouds
       items:
         - name: Connecter des machines non-Azure
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'

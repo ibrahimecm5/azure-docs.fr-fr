@@ -4,19 +4,19 @@ summary: Microsoft Defender pour cloud fournit une gestion unifiée de la sécur
 metadata:
   title: Documentation Microsoft Defender pour le cloud
   description: Découvrez comment bien démarrer avec Defender pour le cloud et apprenez à sécuriser vos charges de travail, à limiter les risques, à détecter les attaques et à y répondre avec nos guides de démarrage rapides et nos tutoriels.
-  services: security-center
-  ms.service: defender-for-cloud
-  ms.topic: landing-page
-  ms.collection: collection
+  services: defender-for-cloud
   author: memildin
   ms.author: memildin
+  manager: raynew
+  ms.topic: landing-page
+  ms.collection: collection
   ms.date: 10/21/2021
-  ms.openlocfilehash: 66839c045da6af6c4b6279ac0501a85ab7ea939b
-  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.openlocfilehash: fc2ad72084b56df50a4f35da9e7e0f9d5b0d57ab
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/15/2021
-  ms.locfileid: "132487089"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097696"
 landingContent:
 - title: À propos de Defender pour le cloud
   linkLists:
@@ -28,20 +28,22 @@ landingContent:
       url: security-center-os-coverage.md
     - text: Comment prendre en main Defender pour le cloud ?
       url: get-started.md
+    - text: Que sont les stratégies, les initiatives et les recommandations de sécurité ?
+      url: security-policy-concept.md
 - title: Rester à jour
   linkLists:
   - linkListType: whats-new
     links:
     - text: Notes de publication pour Defender pour le cloud
       url: release-notes.md
-    - text: Appliquer des bases de référence de sécurité Azure sur des ordinateurs
-      url: apply-security-baseline.md
-    - text: Utiliser les rapports de classeurs intégrés
-      url: custom-dashboards-azure-workbooks.md
-    - text: Protéger les clusters Kubernetes hybrides et multiclouds
-      url: defender-for-kubernetes-azure-arc.md
-    - text: Microsoft Defender pour les bases de données relationnelles open source
-      url: defender-for-databases-introduction.md
+    - text: Changements importants à venir
+      url: upcoming-changes.md
+    - text: Sécurité multicloud - Défendre les clusters AWS EKS
+      url: defender-for-kubernetes-introduction.md#protect-amazon-elastic-kubernetes-service-clusters
+    - text: Connecter les comptes AWS avec les paramètres d’environnement
+      url: quickstart-onboard-aws.md
+    - text: Gestion des menaces et des vulnérabilités
+      url: deploy-vulnerability-assessment-tvm.md
 - title: Bien démarrer
   linkLists:
   - linkListType: get-started
@@ -50,12 +52,12 @@ landingContent:
       url: get-started.md
     - text: Activer les fonctionnalités de sécurité renforcée
       url: enable-enhanced-security.md
+    - text: Connecter des machines hybrides et multiclouds
+      url: quickstart-onboard-machines.md
     - text: Configurer le provisionnement automatique
       url: enable-data-collection.md
     - text: Configurer les notifications par e-mail
       url: configure-email-notifications.md
-    - text: Connecter des machines non-Azure
-      url: quickstart-onboard-machines.md
 - title: Améliorer votre score de sécurité
   linkLists:
   - linkListType: how-to-guide

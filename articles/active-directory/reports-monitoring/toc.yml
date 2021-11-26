@@ -54,6 +54,8 @@
   items:
     - name: Rapports
       items:
+        - name: Accéder aux journaux d’activité
+          href: howto-access-activity-logs.md
         - name: Télécharger les journaux
           href: howto-download-logs.md
         - name: Gérer les comptes d’utilisateurs inactifs dans Azure AD
