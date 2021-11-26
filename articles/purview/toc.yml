@@ -54,6 +54,8 @@ items:
             href: concept-best-practices-network.md
           - name: Bonnes pratiques d’analyse
             href: concept-best-practices-scanning.md
+          - name: Meilleures pratiques d’automatisation
+            href: concept-best-practices-automation.md
       - name: Autorisations Azure Purview
         href: catalog-permissions.md
       - name: Data Map

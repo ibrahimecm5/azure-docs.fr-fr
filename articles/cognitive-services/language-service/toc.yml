@@ -529,6 +529,8 @@ items:
             href: question-answering/how-to/manage-knowledge-base.md
           - name: Isolement réseau et points de terminaison privés
             href: question-answering/how-to/network-isolation.md
+          - name: Création d’API
+            href: question-answering/how-to/authoring.md
           - name: API prédéfinie
             href: question-answering/how-to/prebuilt.md
           - name: Dépannage
