@@ -126,21 +126,26 @@
       href: samples-rest.md
 - name: Concepts
   items:
-    - name: Rechercher dans les index
-      href: search-what-is-an-index.md
-    - name: Recherche en texte intégral
-      href: search-lucene-query-architecture.md
-    - name: Analyseurs
-      href: search-analyzers.md
-    - name: Recherche sémantique
-      href: semantic-search-overview.md
-    - name: Scoring de pertinence
-      href: index-similarity-and-scoring.md
-    - name: Indexeurs
-      href: search-indexer-overview.md
-    - name: Enrichissement de l’IA
-      href: cognitive-search-concept-intro.md
+    - name: Rechercher
       items:
+        - name: Recherche en texte intégral
+          href: search-lucene-query-architecture.md
+        - name: Recherche sémantique
+          href: semantic-search-overview.md
+        - name: Scoring de pertinence
+          href: index-similarity-and-scoring.md
+    - name: Indexation
+      items:
+        - name: Rechercher dans les index
+          href: search-what-is-an-index.md
+        - name: Analyseurs
+          href: search-analyzers.md
+        - name: Indexeurs
+          href: search-indexer-overview.md
+    - name: Enrichissement
+      items:
+        - name: Vue d’ensemble de l’enrichissement
+          href: cognitive-search-concept-intro.md
         - name: Ensemble de compétences
           href: cognitive-search-working-with-skillsets.md
         - name: Sessions de débogage
@@ -476,12 +481,10 @@
           href: performance-benchmarks.md
         - name: Conseils pour de meilleures performances
           href: search-performance-tips.md
-        - name: la journalisation des diagnostics.
-          href: search-monitor-logs.md
+        - name: Supervision de la Recherche cognitive
+          href: monitor-azure-cognitive-search.md
         - name: Visualiser les journaux de diagnostic
           href: search-monitor-logs-powerbi.md
-        - name: Vue d'ensemble de la surveillance
-          href: search-monitor-usage.md
         - name: Surveiller les requêtes
           href: search-monitor-queries.md
         - name: Superviser l’indexation basée sur un indexeur
@@ -490,12 +493,6 @@
           href: search-traffic-analytics.md
 - name: Informations de référence
   items:
-    - name: Azure CLI
-      href: /cli/azure/search
-    - name: Azure PowerShell
-      href: /powershell/module/az.search
-    - name: Modèle Resource Manager
-      href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
         - name: API de recherche
@@ -526,6 +523,17 @@
           href: /python/api/overview/azure/search-documents-readme
         - name: API de gestion
           href: /python/api/overview/azure/search/management
+    - name: Azure CLI
+      href: /cli/azure/search
+    - name: Azure PowerShell
+      href: /powershell/module/az.search
+    - name: Modèle Resource Manager
+      href: /azure/templates/microsoft.search/searchservices
+    - name: Éléments intégrés Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Informations de référence sur les données de supervision
+      href: monitor-azure-cognitive-search-data-reference.md
     - name: Informations de référence sur le langage OData
       items:
         - name: Vue d’ensemble
@@ -603,9 +611,6 @@
               href: cognitive-search-skill-entity-recognition.md
             - name: Sentiments
               href: cognitive-search-skill-sentiment.md
-    - name: Éléments intégrés Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Ressources
   items:
     - name: Support de la communauté Azure

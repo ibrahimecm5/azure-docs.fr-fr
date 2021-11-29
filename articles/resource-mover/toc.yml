@@ -26,6 +26,8 @@
       href: support-matrix-move-region-azure-vm.md
     - name: Support - Déplacer Azure SQL d’une région à une autre
       href: support-matrix-move-region-sql.md
+    - name: Support - Déplacer les types de ressource d’extension
+      href: support-matrix-extension-resource-types.md
 - name: Guides pratiques
   items:
     - name: Passer d’une région à l’autre
