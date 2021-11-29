@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 10/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1bf17761ed7ddba74ea62f5545f44f1c4b57c8d3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0212c21a90caa533003d2304cfded72eb2370b49
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456501"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286048"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled"></a>Déployer une machine virtuelle avec le lancement fiable activé
 
@@ -24,7 +24,7 @@ Le [lancement fiable](trusted-launch.md) est un moyen d’améliorer la sécurit
 
 ## <a name="prerequisites"></a>Prérequis 
 
-- Vous devez [intégrer votre abonnement à Azure Security Center](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview) si ce n’est déjà fait. Azure Security Center (ASC) dispose d’un niveau gratuit qui offre des Insights très utiles pour diverses ressources Azure et hybrides. Le lancement fiable tire parti d’ASC pour proposer plusieurs recommandations concernant l’intégrité de la machine virtuelle. 
+- Vous devez [intégrer votre abonnement à Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview) si ce n’est déjà fait. Microsoft Defender pour le cloud dispose d’un niveau gratuit qui offre des Insights très utiles pour diverses ressources Azure et hybrides. Le lancement fiable tire parti de Defender pour le cloud afin de proposer plusieurs recommandations concernant l’intégrité de la machine virtuelle. 
 
 - Attribuez des initiatives de stratégie Azure à votre abonnement. Ces initiatives de stratégie ne doivent être attribuées qu’une seule fois par abonnement. Cette opération installe automatiquement toutes les extensions requises sur toutes les machines virtuelles prises en charge. 
     - Configurer les prérequis pour activer l’attestation d’invité sur les machines virtuelles compatibles avec le Lancement fiable 
@@ -158,9 +158,6 @@ Vous pouvez déployer des machines virtuelles de lancement fiable à l’aide d�
 [![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ---
-
-
-
 
 ## <a name="verify-or-update-your-settings"></a>Vérifier ou mettre à jour vos paramètres
 
