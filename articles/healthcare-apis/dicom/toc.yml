@@ -9,7 +9,9 @@ items:
   - name: Démarrages rapides
     expanded: true
     items:
-      - name: Déployer des services DICOM à l’aide de l’Portail Azure
+      - name: Prise en main du service DICOM
+        href: get-started-with-dicom.md
+      - name: Déployer le service DICOM à l’aide de l’Portail Azure
         href: deploy-dicom-services-in-azure.md
   - name: Tutoriels
     expanded: true

@@ -1,7 +1,7 @@
 items:
   - name: Connecteur IoT
     href: index.yml
-  - name: Vue d'ensemble
+  - name: Vue d’ensemble
     expanded: true
     items:
       - name: À propos du connecteur IoT
@@ -9,6 +9,8 @@ items:
   - name: Démarrages rapides
     expanded: true
     items:
+      - name: Prise en main du connecteur IoT
+        href: get-started-with-iot.md
       - name: Déployer le connecteur IoT
         expanded: true
         items:

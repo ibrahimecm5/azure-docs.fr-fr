@@ -8,6 +8,8 @@ items:
   - name: Démarrages rapides
     expanded: true
     items:
+      - name: Prise en main du service FHIR
+        href: get-started-with-fhir.md
       - name: Déployer le service FHIR
         expanded: true
         items:
