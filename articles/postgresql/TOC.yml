@@ -409,7 +409,7 @@
               href: howto-migrate-using-dump-and-restore.md
             - name: Mettre à niveau/migrer des données avec pg_dump et psql
               href: howto-migrate-using-export-and-import.md
-- name: Serveur flexible (préversion)
+- name: Serveur flexible
   expanded: true
   items:
     - name: Documentation Serveur flexible

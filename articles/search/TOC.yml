@@ -132,6 +132,8 @@
           href: search-lucene-query-architecture.md
         - name: Recherche sémantique
           href: semantic-search-overview.md
+        - name: Types de requêtes et composition
+          href: search-query-overview.md
         - name: Scoring de pertinence
           href: index-similarity-and-scoring.md
     - name: Indexation
@@ -427,8 +429,8 @@
           href: semantic-answers.md
         - name: Ajouter une vérification orthographique aux requêtes
           href: speller-how-to-add.md
-        - name: Types de requêtes et composition
-          href: search-query-overview.md
+        - name: Pagination et mise en forme des résultats de recherche
+          href: search-pagination-page-layout.md
         - name: Utiliser une syntaxe simple (exemples)
           href: search-query-simple-examples.md
         - name: Utiliser la syntaxe Lucene complète (exemples)
@@ -443,16 +445,6 @@
               href: index-add-suggesters.md
             - name: Ajouter l’autocomplétion et les suggestions
               href: search-add-autocomplete-suggestions.md
-        - name: Pagination et comptages
-          href: search-pagination-page-layout.md
-        - name: Informations de référence sur la syntaxe
-          items:
-            - name: Syntaxe de requête simple
-              href: query-simple-syntax.md
-            - name: Syntaxe de requête complète Lucene
-              href: query-lucene-syntax.md
-            - name: moreLikeThis (préversion)
-              href: search-more-like-this.md
     - name: Filtres
       items:
         - name: Vue d’ensemble du filtre
@@ -527,7 +519,7 @@
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: Modèle Resource Manager
+    - name: "Modèle Azure\_Resource\_Manager"
       href: /azure/templates/microsoft.search/searchservices
     - name: Éléments intégrés Azure Policy
       displayName: 'samples, policies, definitions'
@@ -560,6 +552,14 @@
           href: search-query-odata-search-score-function.md
         - name: Grammaire du langage OData
           href: search-query-odata-syntax-reference.md
+    - name: Référence de syntaxe de requête
+      items:
+        - name: Syntaxe de requête simple
+          href: query-simple-syntax.md
+        - name: Syntaxe de requête complète Lucene
+          href: query-lucene-syntax.md
+        - name: moreLikeThis (préversion)
+          href: search-more-like-this.md
     - name: Informations de référence sur les compétences
       items:
         - name: Compétences prédéfinies

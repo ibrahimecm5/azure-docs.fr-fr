@@ -1030,6 +1030,8 @@
               href: cassandra/oracle-migrate-cosmos-db-blitzz.md
             - name: Migrer - Apache Cassandra vers l’API Cassandra avec Blitzz
               href: cassandra/migrate-data-blitzz.md
+            - name: Migrer-Apache Cassandra vers API Cassandra à l’aide d’un proxy à double écriture
+              href: cassandra/migrate-data-dual-write-proxy.md
             - name: Migrer - Apache Cassandra vers l’API Cassandra avec Databricks
               href: cassandra/migrate-data-databricks.md
             - name: Migrer - PostgreSQL vers l’API Cassandra avec Apache Kafka
@@ -1089,6 +1091,8 @@
           href: cassandra/glowroot-cassandra.md
         - name: Définitions de codes d’erreur
           href: cassandra/error-codes-solution.md
+        - name: Transactions légères dans API Cassandra
+          href: cassandra/lwt-cassandra-api.md
     - name: Informations de référence
       items:
         - name: Fournisseur de ressources REST

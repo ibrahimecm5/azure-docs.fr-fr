@@ -281,6 +281,38 @@ items:
         items:
           - name: Bien démarrer avec le contrôle de carte iOS
             href: how-to-use-ios-map-control-library.md
+          - name: Modifier le style d’une carte
+            href: set-map-style-ios-sdk.md
+          - name: Ajouter des commandes à une carte
+            href: add-controls-map-ios.md
+          - name: Création d'une source de données
+            href: create-data-source-ios-sdk.md
+          - name: Ajouter un calque de symboles
+            href: add-symbol-layer-ios.md
+          - name: Ajouter un calque de bulles
+            href: add-bubble-layer-map-ios.md
+          - name: Afficher des informations sur les fonctionnalités
+            href: display-feature-information-ios-sdk.md
+          - name: Ajouter une couche de lignes
+            href: add-line-layer-map-ios.md
+          - name: Ajouter une couche de polygones
+            href: add-polygon-layer-map-ios.md
+          - name: Ajouter une couche d’extrusion de polygone
+            href: add-polygon-extrusion-layer-map-ios.md
+          - name: Ajouter une couche de carte thermique
+            href: add-heat-map-layer-ios.md
+          - name: Ajouter un calque d’images
+            href: add-image-layer-map-ios.md
+          - name: Ajouter un calque de vignettes
+            href: add-tile-layer-map-ios.md
+          - name: Afficher les données du trafic
+            href: show-traffic-data-map-ios-sdk.md
+          - name: Clustering de données de point
+            href: clustering-point-data-ios-sdk.md
+          - name: Utiliser des expressions pilotées par les données
+            href: data-driven-style-expressions-ios-sdk.md
+          - name: React aux événements
+            href: interact-map-ios-sdk.md
           - name: Utiliser le module de cartes d’intérieur d’Azure Maps
             href: how-to-use-indoor-module-ios.md
       - name: Utiliser Azure Maps dans Power BI

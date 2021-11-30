@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: Documentation Serveur flexible (Préversion)
-summary: Azure Database pour PostgreSQL - Serveur flexible (préversion) est une offre de base de données PostgreSQL en tant que service complètement managée qui peut gérer des charges de travail stratégiques avec des performances prévisibles et une scalabilité dynamique. Développer des applications avec Azure Database pour PostgreSQL en exploitant les outils open source et la plateforme de votre choix. Découvrez comment utiliser Serveur flexible avec nos guides de démarrage rapide, nos tutoriels et nos exemples.
+title: Documentation Serveur flexible
+summary: 'Azure Database pour PostgreSQL : le serveur flexible est une base de données PostgreSQL entièrement gérée comme une offre de service qui peut gérer des charges de travail stratégiques avec des performances prévisibles et une évolutivité dynamique. Développer des applications avec Azure Database pour PostgreSQL en exploitant les outils open source et la plateforme de votre choix. Découvrez comment utiliser Serveur flexible avec nos guides de démarrage rapide, nos tutoriels et nos exemples.'
 metadata:
-  title: Azure Database pour PostgreSQL - Serveur flexible (préversion)
-  description: Azure Database pour PostgreSQL - Serveur flexible (préversion) est un service de base de données relationnelle du cloud Microsoft qui est conçu pour les développeurs et alimenté par PostgreSQL Community Edition.
+  title: Azure Database pour PostgreSQL - Serveur flexible
+  description: 'Azure Database pour PostgreSQL : le serveur flexible est un service de base de données relationnelle dans le Cloud Microsoft conçu pour les développeurs et alimenté par l’édition Community de PostgreSQL.'
   author: sunilagarwal
   ms.author: sunila
-  ms.date: 09/22/2020
+  ms.date: 11/30/2021
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: bb3b8d336eb79991c3c4eb1b379e5d3b60b315cd
-  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
+  ms.openlocfilehash: a9f0d9faf5ff1f1d9a6db416363f86c779c64ae5
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/18/2021
-  ms.locfileid: "132754535"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133268655"
 landingContent:
-- title: À propos de Serveur flexible (préversion)
+- title: À propos du Serveur flexible
   linkLists:
   - linkListType: overview
     links:

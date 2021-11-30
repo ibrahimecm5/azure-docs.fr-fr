@@ -570,7 +570,9 @@ items:
           - name: API REST
             items:
               - name: API de réponses
-                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering'
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers'
+              - name: API prédéfinie
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers-from-text'
               - name: Création d’API
                 href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering-projects'
   - name: Analyse des sentiments et exploration des opinions

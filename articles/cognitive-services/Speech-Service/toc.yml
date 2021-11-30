@@ -529,10 +529,14 @@ items:
                     href: windows-voice-assistants-faq.yml
   - name: Guides pratiques
     items:
-      - name: Activation de la journalisation
-        href: how-to-use-logging.md
-      - name: Suivre l’utilisation de la mémoire
-        href: how-to-track-speech-sdk-memory-usage.md
+      - name: Journaux et diagnostics
+        items:
+          - name: Activer la journalisation dans le SDK
+            href: how-to-use-logging.md
+          - name: Recevoir l’ID de session parole-à-texte
+            href: how-to-get-speech-session-id.md
+          - name: Suivre l’utilisation de la mémoire
+            href: how-to-track-speech-sdk-memory-usage.md
       - name: Activer un point de terminaison privé
         href: speech-services-private-link.md
       - name: Activer le point de terminaison de service VNet
