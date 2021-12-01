@@ -1125,6 +1125,8 @@
               href: containers/container-insights-agent-config.md
             - name: Mettre à jour pour activer les métriques
               href: containers/container-insights-update-metrics.md
+            - name: Migration d’Azure Red Hat OpenShift v4. x vers un cluster Azure arc activé
+              href: containers/container-insights-transition-hybrid.md
         - name: Surveillance
           items:
             - name: Superviser les performances
