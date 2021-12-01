@@ -73,18 +73,18 @@
   items:
     - name: Paramètres du portail
       href: manage.md
-    - name: Équilibreur de charge inter-région
-      href: cross-region-overview.md
-    - name: Équilibreur de charge de passerelle
-      href: gateway-overview.md
     - name: Nouveautés
       href: whats-new.md
     - name: Components
       href: components.md
     - name: Algorithme d’équilibrage de charge
       href: concepts.md
+    - name: Modes de distribution
+      href: distribution-mode-concepts.md
     - name: Références (SKU)
       href: skus.md
+    - name: Configuration d’adresses IP flottantes
+      href: load-balancer-floating-ip.md
     - name: Surveillance de l’intégrité
       items:
         - name: Superviser l’équilibreur de charge
@@ -109,12 +109,12 @@
       href: outbound-rules.md
     - name: Réinitialisation du protocole TCP pendant le délai d’inactivité
       href: load-balancer-tcp-reset.md
-    - name: Référence Standard de Load Balancer et zones de disponibilité
+    - name: Zones de disponibilité
       href: load-balancer-standard-availability-zones.md
-    - name: Configuration d’adresses IP flottantes
-      href: load-balancer-floating-ip.md
-    - name: Modes de distribution
-      href: distribution-mode-concepts.md
+    - name: Équilibreur de charge inter-région
+      href: cross-region-overview.md
+    - name: Équilibreur de charge de passerelle
+      href: gateway-overview.md
     - name: Sécurité
       items:
         - name: Base de référence de la sécurité

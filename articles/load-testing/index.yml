@@ -1,0 +1,59 @@
+### YamlMime:Hub
+title: Documentation sur le test de charge Azure
+summary: 'Découvrez comment générer des charges à grande échelle, identifier les goulots d’étranglement des performances des applications et automatiser les tests de régression avec le service de test de charge Azure. didacticiels, exemples de code, GitHub actions, Azure Pipelines et bien plus encore.'
+metadata:
+  title: Documentation sur le test de charge Azure
+  description: 'Découvrez comment générer des charges à grande échelle, identifier les goulots d’étranglement des performances des applications et automatiser les tests de régression avec le service de test de charge Azure. didacticiels, exemples de code, GitHub actions, Azure Pipelines et bien plus encore.'
+  services: load-testing
+  ms.service: load-testing
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 11/30/2021
+highlightedContent:
+  items:
+    - title: "Qu’est-ce que le test de charge Azure\_?"
+      itemType: overview
+      url: overview-what-is-azure-load-testing.md
+    - title: Identifier les goulots d’étranglement des performances
+      itemType: tutorial
+      url: tutorial-identify-bottlenecks-azure-portal.md
+    - title: Configurer des tests de régression continue
+      itemType: tutorial
+      url: tutorial-cicd-azure-pipelines.md
+conceptualContent:
+  items:
+    - title: Configurer des tests de charge
+      links:
+        - url: how-to-high-scale-load.md
+          itemType: how-to-guide
+          text: Configurer pour une mise à l’échelle élevée
+        - url: how-to-parameterize-load-tests.md
+          itemType: how-to-guide
+          text: Paramétrer les tests de charge
+        - url: how-to-update-rerun-test.md
+          itemType: how-to-guide
+          text: Mettre à jour & réexécuter les tests de charge
+    - title: Analyser les résultats des tests
+      links:
+        - url: how-to-compare-multiple-test-runs.md
+          itemType: how-to-guide
+          text: Analyser les performances en comparant les exécutions
+        - url: how-to-find-download-logs.md
+          itemType: how-to-guide
+          text: Rechercher & télécharger les journaux de test de charge
+        - url: how-to-appservice-insights.md
+          itemType: how-to-guide
+          text: Récupération d’informations à partir de charges de travail AppService
+        - url: how-to-export-test-results.md
+          itemType: how-to-guide
+          text: Exporter les résultats
+    - title: Automatiser les tests de charge
+      links:
+        - url: tutorial-cicd-azure-pipelines.md
+          itemType: tutorial
+          text: Flux de travail CI/CD dans Azure Pipelines
+        - url: tutorial-cicd-github-actions.md
+          itemType: tutorial
+          text: flux de travail CI/CD dans les Actions GitHub

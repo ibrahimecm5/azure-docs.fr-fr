@@ -712,6 +712,12 @@ productDirectory:
       azureCategories:
         - devops
       url: /azure/devops/test/
+    - title: Test de charge Azure
+      summary: Générer des goulots d’étranglement de performances de chargement et d’identification à grande échelle
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/load-testing.svg'
+      azureCategories:
+        - devops
+      url: load-testing/index.yml
     - title: GitHub Actions pour Azure
       summary: 'Créer, tester et déployer une application de GitHub sur Azure'
       imageSrc: ./media/index/github-actions-icon.svg

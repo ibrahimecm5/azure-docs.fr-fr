@@ -184,18 +184,28 @@
       items:
         - name: Vue d’ensemble
           href: backup-azure-sql-database.md
-        - name: Sauvegarde
+        - name: À partir du portail Azure
           items:
-            - name: Sauvegarder plusieurs machines virtuelles SQL Server à partir du coffre
-              href: backup-sql-server-database-azure-vms.md
-            - name: Sauvegarder un groupe de disponibilité SQL Server
-              href: backup-sql-server-on-availability-groups.md
-            - name: Sauvegarder une machine virtuelle SQL Server à partir du volet Machine virtuelle
-              href: backup-sql-server-vm-from-vm-pane.md
-        - name: Restaurer
-          href: restore-sql-database-azure-vm.md
-        - name: Gérer
-          href: manage-monitor-sql-database-backup.md
+            - name: Sauvegarde
+              items:
+                - name: Sauvegarder plusieurs machines virtuelles SQL Server à partir du coffre
+                  href: backup-sql-server-database-azure-vms.md
+                - name: Sauvegarder un groupe de disponibilité SQL Server
+                  href: backup-sql-server-on-availability-groups.md
+                - name: Sauvegarder une machine virtuelle SQL Server à partir du volet Machine virtuelle
+                  href: backup-sql-server-vm-from-vm-pane.md
+            - name: Restaurer
+              href: restore-sql-database-azure-vm.md
+            - name: Gérer
+              href: manage-monitor-sql-database-backup.md
+        - name: Avec l’API REST
+          items:
+            - name: Sauvegarde
+              href: backup-azure-sql-vm-rest-api.md
+            - name: Restaurer
+              href: restore-azure-sql-vm-rest-api.md
+            - name: Gérer
+              href: manage-azure-sql-vm-rest-api.md
     - name: Sauvegarde d’Azure Database pour PostgreSQL
       items:
         - name: Vue d’ensemble
