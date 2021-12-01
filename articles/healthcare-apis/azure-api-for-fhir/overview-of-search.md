@@ -5,14 +5,14 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 11/12/2021
+ms.date: 11/29/2021
 ms.author: cavoeg
-ms.openlocfilehash: a1bb41b9e3272297cb49f42ee3a6e20137a57d46
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: b8fc847edc18e9103534961051d550340dac9e98
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491712"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133366022"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>Vue d’ensemble de la recherche dans l’API Azure pour FHIR
 
@@ -138,7 +138,7 @@ Pour faciliter la gestion des ressources retournées, vous pouvez utiliser des p
 | _revinclude                   | Oui                  | Oui                       |Les éléments inclus sont limités à 100. _revinclude sur PaaS et OSS sur Cosmos DB n’incluez pas : prise en charge des itérations [(#2137)](https://github.com/microsoft/fhir-server/issues/2137).  Il y a également un code d’état incorrect pour une demande incorrecte [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | Oui             | Oui                   |
 | _total                        | Partiel              | Partiel                   | _total = None et _total = exact                               |
-| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour l’API Azure pour FHIR et OSS Cosmos DB les bases de données créées après le 20 avril 2021, le tri est pris en charge pour le prénom, le nom, la date de naissance et la date clinique. Notez qu’il existe un problème en cours d’utilisation de _sort avec une recherche chaînée, qui est documentée dans le [#2344](https://github.com/microsoft/fhir-server/issues/2344)de problème Open source.          |
+| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour l’API Azure pour FHIR et OSS Cosmos DB les bases de données créées après le 20 avril 2021, le tri est pris en charge pour le prénom, le nom, la date de naissance et la date clinique. Notez qu’il existe un problème en cours d’utilisation de _sort avec une recherche chaînée, qui est documentée dans le [#2344](https://github.com/microsoft/fhir-server/issues/2344)de problème Open source.         |
 | _contained                    | Non                   | Non                        |
 | _containedType                | Non                   | Non                        |
 | _score                        | Non                   | Non                        |
@@ -157,7 +157,7 @@ Une [recherche chaînée](https://www.hl7.org/fhir/search.html#chaining) vous pe
 De même, vous pouvez effectuer une recherche chaînée par inversion. Cela vous permet d’accéder à des ressources où vous spécifiez des critères sur d’autres ressources qui y font référence. Pour obtenir plus d’exemples de recherches chaînées et enchaînées, reportez-vous à la page d' [exemples de recherche FHIR](search-samples.md) . 
 
 > [!NOTE]
-> dans l’API Azure pour FHIR et la source open avec Cosmos DB, il existe une limitation où chaque sous-requête requise pour les recherches chaînées et enchaînées renverra uniquement 100 éléments. Si plus de 100 éléments sont trouvés, le message d’erreur suivant s’affiche : « les sous-requêtes dans une expression chaînée ne peuvent pas retourner plus de 100 résultats, veuillez utiliser un critère plus sélectif. » Pour obtenir une requête réussie, vous devez être plus précis dans ce que vous recherchez.
+> dans l’API Azure pour FHIR et la source open avec Cosmos DB, il existe une limitation où chaque sous-requête requise pour les recherches chaînées et enchaînées renverra uniquement 1000 éléments. Si plus de 1000 éléments sont trouvés, le message d’erreur suivant s’affiche : « les sous-requêtes dans une expression chaînée ne peuvent pas retourner plus de 1000 résultats, veuillez utiliser un critère plus sélectif. » Pour obtenir une requête réussie, vous devez être plus précis dans ce que vous recherchez.
 
 ## <a name="pagination"></a>Pagination
 

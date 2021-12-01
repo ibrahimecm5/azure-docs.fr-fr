@@ -5,14 +5,14 @@ author: CaitlinV39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/25/2021
+ms.date: 11/24/2021
 ms.author: cavoeg
-ms.openlocfilehash: c95123adc8962df5fdd20b766ffe72f5aec72ca0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dfdde4bb53624777d4e11cbd6652f749a6f3a394
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040450"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133368841"
 ---
 # <a name="overview-of-fhir-search"></a>Vue d’ensemble de la recherche FHIR
 
@@ -139,7 +139,7 @@ Pour faciliter la gestion des ressources retournées, vous pouvez utiliser des p
 | _revinclude                   | Oui                  | Oui                       |Les éléments inclus sont limités à 100. _revinclude sur PaaS et OSS sur Cosmos DB n’incluez pas : prise en charge des itérations [(#2137)](https://github.com/microsoft/fhir-server/issues/2137). Il y a également un code d’état incorrect pour une demande incorrecte [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | Oui             | Oui                   |
 | _total                        | Partiel              | Partiel                   | _total = None et _total = exact                               |
-| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour le service FHIR et les serveurs OSS SQL DB FHIR, le tri par chaînes et les champs dateTime sont pris en charge. pour l’API Azure pour FHIR et OSS Cosmos DB bases de données créées après le 20 avril 2021, le tri est pris en charge sur le prénom, le nom et la date clinique.             |
+| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour le service FHIR et les serveurs OSS SQL DB FHIR, le tri par chaînes et les champs dateTime sont pris en charge. pour l’API Azure pour FHIR et OSS Cosmos DB les bases de données créées après le 20 avril 2021, le tri est pris en charge pour le prénom, le nom, la date de naissance et la date clinique.             |
 | _contained                    | Non                   | Non                        |
 | _containedType                | Non                   | Non                        |
 | _score                        | Non                   | Non                        |

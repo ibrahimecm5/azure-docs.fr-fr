@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
-ms.date: 08/05/2021
-ms.openlocfilehash: d00d973bb589c7538c098821505dfdb0b10608c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/29/2021
+ms.openlocfilehash: 1390ed2316c4891a23684223644bb976ff230fbc
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782424"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133359661"
 ---
 # <a name="centers-for-medicare-and-medicaid-services-cms-interoperability-and-patient-access-rule-introduction"></a>Présentation de l’interopérabilité et des règles d’accès des patients aux centres pour les services d’assurance maladie et Medicaid (CMS)
 
@@ -71,4 +71,4 @@ Pour tester le respect des divers guides d’implémentation, [Touchstone](https
 Maintenant que vous avez une connaissance élémentaire de la règle d’accès à l’interopérabilité et des patients, des guides d’implémentation et de l’outil de test disponible (Touchstone), nous allons vous guider dans la configuration de l’API Azure pour FHIR pour le bouton CARIN GI for Blue. 
 
 >[!div class="nextstepaction"]
->[Guide d’implémentation de CARIN pour Blue Button](../fhir/carin-implementation-guide-blue-button-tutorial.md)  
+>[Guide d’implémentation de CARIN pour Blue Button](carin-implementation-guide-blue-button-tutorial.md)  
