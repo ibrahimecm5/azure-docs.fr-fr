@@ -18,7 +18,7 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 08/13/2021
 ms.locfileid: "121739701"
 ---
-# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Démarrage rapide : Importer un fichier BACPAC Ruby dans une base de données dans Azure SQL Database ou Azure SQL Managed Instance
+# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Démarrage rapide : Importer un fichier BACPAC dans une base de données dans Azure SQL Database ou Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Vous pouvez importer une base de données SQL Server dans Azure SQL Database ou SQL Managed Instance en utilisant un fichier [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac). Vous pouvez importer les données d’un fichier BACPAC stocké dans Stockage Blob Azure (stockage standard uniquement) ou à partir d’un stockage local à un emplacement local. Pour optimiser la vitesse d’importation en fournissant des ressources plus nombreuses et plus rapides, mettez à l’échelle votre base de données un niveau de service et une taille de calcul supérieurs pendant le processus d’importation. Vous pouvez ensuite effectuer un scale-down après l’importation.
