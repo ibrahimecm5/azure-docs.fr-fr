@@ -40,7 +40,7 @@ sections:
       Vérifiez que vous avez au moins une licence Azure AD Premium P1 ou P2 et qu’un connecteur de proxy d’application Azure AD est installé. Une fois votre premier connecteur correctement installé, le service de proxy d’application Azure AD s’active automatiquement.
   - question: >
       Configuration des connecteurs
-    answer: ''
+    answer: ' '
   - question: >
       Pourquoi mon connecteur utilise-t-il toujours une version ancienne et n'est-il pas automatiquement mis à niveau vers la dernière version ?
     answer: "Le service de mise à jour ne fonctionne peut-être pas correctement, ou bien aucune nouvelle mise à jour n'est disponible.\n\nLe service de mise à jour est sain s'il est en cours d'exécution et qu'aucune erreur n'est enregistrée dans le journal des événements (Journaux des applications et des services -> Microsoft -> AadApplicationProxy -> Mise à jour -> Admin). \n\n> [!IMPORTANT]\n> Seules les versions principales sont disponibles pour la mise à niveau automatique. Nous vous recommandons de mettre à jour votre connecteur manuellement uniquement si nécessaire. Par exemple, vous ne pouvez pas attendre une mise en production majeure parce que vous devez résoudre un problème connu ou utiliser une nouvelle fonctionnalité. Pour plus d'informations sur les nouvelles versions, le type de version (téléchargement, mise à niveau automatique), les correctifs de bogues et les nouvelles fonctionnalités, consultez [Proxy d'application Azure AD : historique de publication des versions](./application-proxy-release-version-history.md).\n\nPour procéder à la mise à niveau manuelle d'un connecteur :\n\n- Téléchargez la dernière version du connecteur. Vous la trouverez sous Proxy d’application dans le portail Azure. Vous trouverez également un lien dans [Proxy d'application Azure AD : historique de publication des versions](./application-proxy-release-version-history.md).\n-   Le programme d'installation redémarre les services Azure AD Application Proxy Connector. Dans certains cas, un redémarrage du serveur peut être nécessaire si le programme d'installation ne peut pas remplacer tous les fichiers. Par conséquent, nous vous recommandons de fermer toutes les applications (par exemple, l'observateur d'événements) avant de lancer la mise à niveau.\n-   Exécutez le programme d’installation. Le processus de mise à niveau est rapide, ne nécessite aucune information d'identification, et le connecteur n'est pas réinscrit.\n"
@@ -88,7 +88,7 @@ sections:
     answer: "Le proxy d’application nécessite Windows Server 2012 R2 ou une version ultérieure. Il existe actuellement une limitation sur HTTP2 pour Windows Server 2019. Pour pouvoir utiliser correctement le connecteur sur Windows Server 2019, vous devez ajouter la clé de Registre suivante et redémarrer le serveur :\n\n```\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp\\EnableDefaultHttp2 (DWORD) Value: 0 \n```\n"
   - question: >
       Configuration de l’application
-    answer: ''
+    answer: ' '
   - question: >
       Je reçois une erreur concernant un certificat non valide ou un mot de passe peut-être incorrect
     answer: >
@@ -143,7 +143,7 @@ sections:
       Un Proxy d’application n’ajoute pas automatiquement l’en-tête HTTP Strict-Transport-Security aux réponses HTTPS, mais il conserve l’en-tête s’il est dans la réponse d’origine envoyée par l’application publiée. La mise au point d’un paramètre pour activer cette fonctionnalité figure dans la feuille de route.
   - question: >
       Authentification Windows intégrée
-    answer: ''
+    answer: ' '
   - question: >
       Quand dois-je utiliser la méthode PrincipalsAllowedToDelegateToAccount lors de la configuration de la délégation contrainte Kerberos (KCD) ?
     answer: >
@@ -168,7 +168,7 @@ sections:
       Dans ce cas, « Nom principal de l'utilisateur » sera utilisé. Pour plus d'informations sur le scénario B2B, consultez [Accorder aux utilisateurs B2B d'Azure AD l'accès à vos applications locales](../external-identities/hybrid-cloud-to-on-premises.md).
   - question: >
       Authentification directe
-    answer: ''
+    answer: ' '
   - question: >
       Puis-je utiliser des stratégies d’accès conditionnel pour les applications publiées avec authentification directe ?
     answer: >
@@ -178,7 +178,7 @@ sections:
     answer: "Non, ce scénario n’est pas pris en charge, car le proxy d’application arrête le trafic TLS.  \n"
   - question: >
       Publication de la passerelle des services Bureau à distance
-    answer: ''
+    answer: ' '
   - question: >
       Comment puis-je publier la passerelle des services Bureau à distance sur le proxy d’application Azure AD ?
     answer: >
@@ -202,7 +202,7 @@ sections:
     answer: Cette option permet à l’utilisateur de télécharger le fichier RDP et de l’utiliser par un autre client RDP (en dehors du client web Bureau à distance). En règle générale, les autres clients RDP (comme le client Bureau à distance Microsoft) ne peuvent pas gérer la pré-authentification en mode natif. C’est pourquoi cela ne fonctionnera pas.
   - question: >
       Publication SharePoint
-    answer: ''
+    answer: ' '
   - question: >
       Comment puis-je publier SharePoint sur le proxy d’application Azure AD ?
     answer: >
@@ -212,7 +212,7 @@ sections:
     answer: >
       Pour le moment, l’[application mobile SharePoint](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) ne prend pas en charge la préauthentification Azure Active Directory.
   - question: "Publication des services de fédération Active Directory (AD FS) \n"
-    answer: ''
+    answer: ' '
   - question: >
       Puis-je utiliser le proxy d’application Azure AD en tant que proxy AD FS (comme le proxy d’application web) ?
     answer: >
@@ -222,7 +222,7 @@ sections:
     answer: "Non, ce n’est pas pris en charge.\n         \n"
   - question: >
       WebSocket
-    answer: ''
+    answer: ' '
   - question: >
       WebSocket prend-il en charge les applications autres que QlikSense et le client web Bureau à distance (HTML5) ?
     answer: >
@@ -232,13 +232,13 @@ sections:
       Les fonctionnalités (Eventlogs, PowerShell et Services Bureau à distance) de Windows Admin Center (WAC) ne fonctionnent pas actuellement via Proxy d’application Azure AD.
   - question: >
       Traduction de liens
-    answer: ''
+    answer: ' '
   - question: >
       L’utilisation de la traduction de liens affecte-t-elle les performances ?
     answer: "Oui. La traduction de liens affecte les performances. Le service de proxy d’application analyse l’application à la recherche de liens codés en dur, puis les remplace par leurs URL externes publiées respectives avant de les présenter à l’utilisateur. \n\nPour optimiser les performances, nous vous recommandons d’utiliser des URL internes et externes identiques en configurant des [domaines personnalisés](./application-proxy-configure-custom-domain.md). Si vous n’avez pas la possibilité d’utiliser des domaines personnalisés, vous pouvez améliorer les performances de la traduction des liens à l’aide de l’extension de connexion sécurisée Mes applications ou du navigateur Microsoft Edge sur mobile. Consultez [Rediriger les liens codés en dur pour les applications publiées avec le proxy d’application Azure AD](./application-proxy-configure-hard-coded-link-translation.md).\n"
   - question: >
       Caractères génériques
-    answer: ''
+    answer: ' '
   - question: >
       Comment puis-je utiliser des caractères génériques pour publier deux applications portant le même nom de domaine personnalisé, mais avec des protocoles différents, un pour HTTP et un pour HTTPS ?
     answer: >
