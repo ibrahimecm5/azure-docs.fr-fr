@@ -134,11 +134,11 @@ Maintenant que vous avez obtenu l’exemple d’application monopage, mettez à 
 
 |Fichier  |Clé  |Valeur  |
 |---------|---------|---------|
-|authConfig.js|clientId| L’ID d’application monopage de l’[étape 2.3](#step-23-register-the-spa).|
+|apiConfig.js|clientId| L’ID d’application monopage de l’[étape 2.3](#step-23-register-the-spa).|
 |policies.js| noms| Le flux d’utilisateurs ou la stratégie personnalisée que vous avez créés à l’[étape 1](#step-1-configure-your-user-flow).|
 |policies.js|authorities|Le [nom de locataire](tenant-management.md#get-your-tenant-name) de votre locataire Azure AD B2C (par exemple, `contoso.onmicrosoft.com`). Ensuite, remplacez par les flux d’utilisateur ou la stratégie personnalisée que vous avez créés à l’[étape 1](#step-1-configure-your-user-flow) (par exemple, `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`).|
 |policies.js|authorityDomain|Le [nom de locataire](tenant-management.md#get-your-tenant-name) de votre locataire Azure AD B2C (par exemple, `contoso.onmicrosoft.com`).|
-|authConfig.js|b2cScopes|Les étendues de l’API web que vous avez créées à l’[étape 2.2](#step-22-configure-scopes) (par exemple, `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`).|
+|apiConfig.js|b2cScopes|Les étendues de l’API web que vous avez créées à l’[étape 2.2](#step-22-configure-scopes) (par exemple, `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`).|
 |authConfig.js|webApi|L’URL de l’API web, `http://localhost:5000/tasks`.|
 | | | |
 
