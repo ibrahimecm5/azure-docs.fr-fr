@@ -7,86 +7,42 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 09/25/2020
+ms.date: 11/22/2021
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 0c648ae229db1ebe6ae50131c23e292c616b2820
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", contperf-fy21q1, mode-other
+ms.openlocfilehash: 734003bb94b0d1ccd4e622b698feeb41120a6041
+ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633485"
+ms.lasthandoff: 01/12/2022
+ms.locfileid: "135919308"
 ---
 # <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>Démarrage rapide : Application web ASP.NET qui connecte des utilisateurs Azure AD
 
 Dans ce guide de démarrage rapide, vous allez télécharger et exécuter un exemple de code qui montre comment une application web ASP.NET peut connecter des utilisateurs avec des comptes Azure AD (Azure Active Directory).
 
-> [!div renderon="docs"]
-> Le diagramme suivant illustre le fonctionnement de l’exemple d’application :
->
-> ![Diagramme de l’interaction entre le navigateur web, l’application web et la plateforme d’identités Microsoft dans l’exemple d’application.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
->
-> ## <a name="prerequisites"></a>Prérequis
->
-> * Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
-> * [.NET Framework 4.7.2+](https://dotnet.microsoft.com/download/visual-studio-sdks)
->
-> ## <a name="register-and-download-the-app"></a>Inscrire et télécharger l’application
-> Vous avez deux options pour commencer à créer votre application : configuration automatique ou configuration manuelle.
->
-> ### <a name="automatic-configuration"></a>Configuration automatique
-> Si vous souhaitez configurer automatiquement votre application, puis télécharger l’exemple de code, procédez comme suit :
->
-> 1. Accédez à la <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">page du portail Azure permettant d’inscrire des applications</a>.
-> 1. Entrez un nom pour votre application, puis sélectionnez **Inscrire**.
-> 1. Suivez les instructions pour télécharger et configurer automatiquement votre nouvelle application en un seul clic.
->
-> ### <a name="manual-configuration"></a>Configuration manuelle
-> Si vous souhaitez configurer manuellement votre application et votre exemple de code, utilisez les procédures suivantes.
->
-> #### <a name="step-1-register-your-application"></a>Étape 1 : Inscrivez votre application
->
-> 1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
-> 1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoires + abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour basculer vers le locataire dans lequel vous voulez inscrire l’application.
-> 1. Recherchez et sélectionnez **Azure Active Directory**.
-> 1. Sous **Gérer**, sélectionnez **Inscriptions d’applications** > **Nouvelle inscription**.
-> 1. Pour **Nom**, entrez un nom pour votre application. Par exemple, entrez **ASPNET-Quickstart**. Les utilisateurs de votre application verront ce nom, que vous pourrez changer ultérieurement.
-> 1. Ajoutez **https://localhost:44368/** dans **URI de redirection**, puis sélectionnez **Inscrire**.
-> 1. Sous **Gérer**, sélectionnez **Authentification**.
-> 1. Dans la section **Implicit grant and hybrid flows** (Flux d’octroi implicite et flux hybride), sélectionnez **Jetons d’ID**.
-> 1. Sélectionnez **Enregistrer**.
+#### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Étape 1 : Configurer votre application dans le portail Azure
+Pour que l’exemple de code de ce guide de démarrage rapide fonctionne, entrez **https://localhost:44368/** pour **URI de redirection**.
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Étape 1 : Configurer votre application dans le portail Azure
-> Pour que l’exemple de code de ce guide de démarrage rapide fonctionne, entrez **https://localhost:44368/** pour **URI de redirection**.
->
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Apporter cette modification pour moi]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![Déjà configuré](media/quickstart-v2-aspnet-webapp/green-check.png) Votre application est configurée avec cet attribut.
+> [!div class="nextstepaction"]
+> [Apporter cette modification pour moi]()
+
+> [!div class="alert alert-info"]
+> ![Déjà configuré](media/quickstart-v2-aspnet-webapp/green-check.png) Votre application est configurée avec cet attribut.
 
 #### <a name="step-2-download-the-project"></a>Étape 2 : Téléchargez le projet
 
-> [!div renderon="docs"]
-> [Télécharger la solution Visual Studio 2019](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
-
-> [!div renderon="portal" class="sxs-lookup"]
-> Exécutez le projet avec Visual Studio 2019.
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
+Exécutez le projet avec Visual Studio 2019.
+> [!div class="sxs-lookup nextstepaction"]
 > [Téléchargez l’exemple de code](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip).
 
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Étape 3 : Votre application est configurée et prête à être exécutée
-> Nous avons configuré votre projet avec les valeurs des propriétés de votre application.
 
-> [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>Étape 3 : Exécuter votre projet Visual Studio
+#### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Étape 3 : Votre application est configurée et prête à être exécutée
+Nous avons configuré votre projet avec les valeurs des propriétés de votre application.
 
 1. Extrayez le fichier .zip dans un dossier local proche du dossier racine. Par exemple, extrayez-le dans *C:\Azure-Samples*.
    
@@ -95,35 +51,17 @@ Dans ce guide de démarrage rapide, vous allez télécharger et exécuter un exe
 3. Selon la version de Visual Studio, vous devrez peut-être cliquer avec le bouton droit sur le projet **AppModelv2-WebApp-OpenIDConnect-DotNet**, puis sélectionner **Restaurer les packages NuGet**.
 4. Ouvrez la console du Gestionnaire de package en sélectionnant **Afficher** > **Autres fenêtres** > **Console du Gestionnaire de package**. Exécutez ensuite `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`.
 
-> [!div renderon="docs"]
-> 5. Modifiez *Web.config* et remplacez les paramètres `ClientId`, `Tenant` et `redirectUri` par :
->    ```xml
->    <add key="ClientId" value="Enter_the_Application_Id_here" />
->    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
->    <add key="redirectUri" value="https://localhost:44368/" />
->    ```
->    Dans ce code :
->
->    - `Enter_the_Application_Id_here` est l’ID d’application (client) de l’inscription d’application que vous avez créée. Recherchez l’ID d’application (client) dans la page **Vue d’ensemble** de l’application dans **Inscriptions d’applications** au sein du portail Azure.
->    - `Enter_the_Tenant_Info_Here` est l’une des options suivantes :
->      - Si votre application prend en charge **Mon organisation uniquement**, remplacez cette valeur par l’ID d’annuaire (locataire) ou le nom du locataire (par exemple, `contoso.onmicrosoft.com`). Recherchez l’ID d’annuaire (locataire) dans la page **Vue d’ensemble** de l’application dans **Inscriptions d’applications** au sein du portail Azure.
->      - Si votre application prend en charge **Comptes dans un annuaire organisationnel**, remplacez cette valeur par `organizations`.
->      - Si votre application prend en charge **tous les utilisateurs de compte Microsoft**, remplacez cette valeur par `common`.
->    - `redirectUri` est l’**URI de redirection** que vous avez entré dans **Inscriptions d’applications** dans le portail Azure.
->
-
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
+> [!NOTE]
+> `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="more-information"></a>Informations complémentaires
 
 Cette section offre une vue d’ensemble du code requis pour connecter les utilisateurs. Cette vue d’ensemble peut être utile pour comprendre comment le code fonctionne, quels sont les principaux arguments et comment ajouter une connexion à une application ASP.NET existante.
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="how-the-sample-works"></a>Fonctionnement de l’exemple
->
-> ![Diagramme de l’interaction entre le navigateur web, l’application web et la plateforme d’identités Microsoft dans l’exemple d’application.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
+
+### <a name="how-the-sample-works"></a>Fonctionnement de l’exemple
+
+![Diagramme de l’interaction entre le navigateur web, l’application web et la plateforme d’identités Microsoft dans l’exemple d’application.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>Packages NuGet de l’intergiciel (middleware) OWIN
 
