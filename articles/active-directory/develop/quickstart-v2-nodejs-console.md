@@ -7,15 +7,16 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
-ms.date: 02/17/2021
+ms.topic: portal
+ms.date: 01/10/2022
 ms.author: marsma
-ms.openlocfilehash: 9a75435ca75e5d6638315f3c96716c091048694f
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.custom: mode-api
+ms.openlocfilehash: eeb50fc335835dcc2765c894e151f39cccbf25e4
+ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502065"
+ms.lasthandoff: 01/14/2022
+ms.locfileid: "136834864"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Démarrage rapide : Acquérir un jeton et appeler l’API Microsoft Graph à partir d’une application console Node.js en utilisant l’identité de l’application
 
@@ -28,84 +29,33 @@ Ce guide de démarrage rapide utilise la [bibliothèque d’authentification Mic
 * [Node.JS](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) ou un autre éditeur de code
 
-> [!div renderon="docs"]
-> ## <a name="register-and-download-the-sample-application"></a>Inscrire et télécharger l’exemple d’application
->
-> Suivez les étapes ci-dessous pour commencer.
->
-> [!div renderon="docs"]
-> #### <a name="step-1-register-the-application"></a>Étape 1 : Enregistrement de l’application
-> Pour inscrire votre application et ajouter manuellement les informations d’inscription de l’application à votre solution, procédez comme suit :
->
-> 1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
-> 1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoires + abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour basculer vers le locataire dans lequel vous voulez inscrire l’application.
-> 1. Recherchez et sélectionnez **Azure Active Directory**.
-> 1. Sous **Gérer**, sélectionnez **Inscriptions d’applications** > **Nouvelle inscription**.
-> 1. Entrez un **nom** pour votre application (par exemple, `msal-node-cli`). Les utilisateurs de votre application peuvent voir ce nom, et vous pouvez le changer ultérieurement.
-> 1. Sélectionnez **Inscription**.
-> 1. Sous **Gérer**, sélectionnez **Certificats et secrets**.
-> 1. Sous **Secrets du client**, sélectionnez **Nouveau secret client**, entrez un nom, puis sélectionnez **Ajouter**. Enregistrez la valeur secrète dans un emplacement sûr pour l’utiliser dans une étape ultérieure.
-> 1. Sous **Gérer**, sélectionnez **Autorisations de l’API** > **Ajouter une autorisation**. Sélectionnez **Microsoft Graph**.
-> 1. Sélectionnez **Autorisations de l’application**.
-> 1. Sous le nœud **Utilisateur**, sélectionnez **User.Read.All**, puis sélectionnez **Ajouter des autorisations**.
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-the-sample-app"></a>Télécharger et configurer l’exemple d’application
->
-> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Étape 1 : Configurer l’application dans le portail Azure
-> Pour que l’exemple de code fonctionne dans ce guide de démarrage rapide, vous devez créer un secret client et ajouter l’autorisation d’application **User.Read.All** de l’API Graph.
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Apporter ces modifications pour moi]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![Déjà configuré](media/quickstart-v2-netcore-daemon/green-check.png) Votre application est configurée avec ces attributs.
+### <a name="download-and-configure-the-sample-app"></a>Télécharger et configurer l’exemple d’application
+
+#### <a name="step-1-configure-the-application-in-azure-portal"></a>Étape 1 : Configurer l’application dans le portail Azure
+Pour que l’exemple de code fonctionne dans ce guide de démarrage rapide, vous devez créer un secret client et ajouter l’autorisation d’application **User.Read.All** de l’API Graph.
+> [!div class="nextstepaction"]
+> [Apporter ces modifications pour moi]()
+
+> [!div class="alert alert-info"]
+> ![Déjà configuré](media/quickstart-v2-netcore-daemon/green-check.png) Votre application est configurée avec ces attributs.
 
 #### <a name="step-2-download-the-nodejs-sample-project"></a>Étape 2 : Télécharger l’exemple de projet Node.js
 
-> [!div renderon="docs"]
+> [!div class="sxs-lookup nextstepaction"]
 > [Téléchargez l’exemple de code](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip).
 
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
-> [Téléchargez l’exemple de code](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip).
-
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div class="sxs-lookup"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-the-nodejs-sample-project"></a>Étape 3 : Configurer l’exemple de projet Node.js
->
-> 1. Extrayez le fichier zip dans un dossier local proche de la racine du disque, par exemple *C:\Azure-Samples*.
-> 1. Éditez *.env* et remplacez les valeurs des champs `TENANT_ID`, `CLIENT_ID` et `CLIENT_SECRET` par l’extrait de code suivant :
->
->    ```
->    "TENANT_ID": "Enter_the_Tenant_Id_Here",
->    "CLIENT_ID": "Enter_the_Application_Id_Here",
->    "CLIENT_SECRET": "Enter_the_Client_Secret_Here"
->    ```
->    Où :
->    - `Enter_the_Application_Id_Here` - est l’**ID (de client) d’application** de l’application que vous avez inscrite précédemment. Recherchez cet ID dans le volet **Vue d’ensemble** de l’inscription de l’application dans le portail Azure.
->    - `Enter_the_Tenant_Id_Here` - remplacez cette valeur par l’**ID de locataire** ou le **Nom du locataire** (par exemple contoso.microsoft.com).  Recherchez ces valeurs dans le volet **Vue d’ensemble** de l’inscription de l’application dans le portail Azure.
->    - `Enter_the_Client_Secret_Here` - remplacez cette valeur par le secret client que vous avez créé précédemment. Pour générer une nouvelle clé, utilisez **Certificats et secrets** dans les paramètres d’inscription de l’application dans le portail Azure.
->
-> > [!WARNING]
-> > Tout secret en texte clair dans le code source présente un risque accru pour la sécurité. Cet article utilise un secret client en texte clair uniquement pour rester simple. Utilisez les [informations d’identification de certificat](active-directory-certificate-credentials.md) au lieu des secrets client dans vos applications clientes confidentielles, en particulier celles que vous prévoyez de déployer en production.
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-admin-consent"></a>Étape 3 : Consentement de l’administrateur
-
-> [!div renderon="docs"]
-> #### <a name="step-4-admin-consent"></a>Étape 4 : Consentement de l’administrateur
+#### <a name="step-3-admin-consent"></a>Étape 3 : Consentement de l’administrateur
 
 Si vous essayez d’exécuter l’application à ce stade, vous recevez l’erreur *HTTP 403 - Interdit* : `Insufficient privileges to complete the operation`. Cette erreur se produit parce que les *autorisations d’application uniquement* nécessitent le **consentement de l’administrateur** : un administrateur général de votre annuaire doit donner son consentement à votre application. Sélectionnez l’une des options ci-dessous en fonction de votre rôle :
 
 ##### <a name="global-tenant-administrator"></a>Administrateur de locataires général
 
-> [!div renderon="docs"]
-> Si vous avez le rôle d’administrateur de locataires général, accédez à la page **Autorisations de l’API** dans Inscription d’applications sur le portail Azure, puis sélectionnez **Accorder le consentement de l’administrateur pour {nom du locataire}** (où {nom du locataire} est le nom de votre annuaire).
-
-> [!div renderon="portal" class="sxs-lookup"]
-> Si vous êtes administrateur général, accédez à la page **Autorisations de l’API** et sélectionnez **Accorder le consentement de l’administrateur pour Entrer_le_nom_du_locataire_ici**
+Si vous êtes administrateur général, accédez à la page **Autorisations de l’API** et sélectionnez **Accorder le consentement de l’administrateur pour Entrer_le_nom_du_locataire_ici**
 > > [!div id="apipermissionspage"]
 > > [Accéder à la page Autorisations de l’API]()
 
@@ -117,16 +67,7 @@ Si vous êtes utilisateur standard de votre locataire, vous devez demander à un
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
 ```
 
-> [!div renderon="docs"]
->> Où :
->> * `Enter_the_Tenant_Id_Here` : remplacez cette valeur par l’**ID du locataire** ou le **nom du locataire** (par exemple, contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` : est l’**ID d’application (client)** pour l’application que vous avez inscrite.
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-4-run-the-application"></a>Étape 4 : Exécution de l'application
-
-> [!div renderon="docs"]
-> #### <a name="step-5-run-the-application"></a>Étape 5 : Exécution de l'application
+#### <a name="step-4-run-the-application"></a>Étape 4 : Exécution de l'application
 
 Localisez le dossier racine de l’exemple (c’est là où se trouve `package.json`) dans une invite de commandes ou une console. Vous devez installer les dépendances de cet exemple une seule fois :
 

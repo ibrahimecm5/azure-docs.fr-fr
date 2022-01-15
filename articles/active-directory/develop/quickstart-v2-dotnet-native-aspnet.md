@@ -7,17 +7,17 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 10/05/2020
+ms.date: 01/11/2022
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 79557d889e4942c7cb7e4ae849b1da84c12a3712
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", mode-api
+ms.openlocfilehash: 57bcd6562862210be21c17680842de44168c435b
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748724"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136847809"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Démarrage rapide : Appeler une API web ASP.NET qui est protégée par la plateforme d’identités Microsoft
 
@@ -48,8 +48,8 @@ Vous pouvez obtenir l’exemple de deux manières :
 
 Inscrivez votre API web dans **Inscriptions d’applications** au sein du portail Azure.
 
-1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
-1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoire + abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour sélectionner le locataire dans lequel vous voulez inscrire une application.
+1. Connectez-vous au [portail Azure](https://portal.azure.com/).
+1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoire + abonnement**:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour sélectionner le locataire dans lequel vous voulez inscrire une application.
 1. Recherchez et sélectionnez **Azure Active Directory**.
 1. Sous **Gérer**, sélectionnez **Inscriptions d’applications** > **Nouvelle inscription**.
 1. Entrez un **nom** pour votre application (par exemple, `AppModelv2-NativeClient-DotNet-TodoListService`). Les utilisateurs de votre application peuvent voir ce nom, et vous pouvez le changer ultérieurement.
@@ -132,13 +132,23 @@ Configurez votre projet TodoListClient en ajoutant l’ID d’application au fic
 
 1. Dans le dossier racine du projet TodoListClient, ouvrez le fichier *app.config*, puis collez la valeur ID de l’application dans le paramètre `ida:ClientId`.
 
-## <a name="run-your-todolistclient-project"></a>Exécuter votre projet TodoListClient
+## <a name="run-your-projects"></a>Exécuter vos projets
+
+Démarrez les deux projets. Si vous utilisez Visual Studio :
+
+1. Cliquez avec le bouton droit sur la solution Visual Studio, puis sélectionnez **Propriétés**
+
+1. Dans **Propriétés communes**, sélectionnez **Projet de démarrage**, puis **Plusieurs projets de démarrage**. 
+
+1. Pour les deux projets, choisissez **Démarrer** en tant qu’action
+
+1. Assurez-vous que le service TodoListService démarre en premier en le plaçant en première position dans la liste à l’aide de la touche flèche haut.
 
 Connectez-vous pour exécuter votre projet TodoListClient.
 
-1. Appuyez sur F5 pour exécuter votre projet TodoListClient. La page du projet s’ouvre.
+1. Appuyez sur F5 pour démarrer les projets. La page du service s’ouvre, ainsi que l’application de bureau.
 
-1. En haut à droite, sélectionnez **Se connecter**, puis connectez-vous avec les mêmes informations d’identification que celles que vous avez utilisées pour inscrire votre application ou connectez-vous en tant qu’utilisateur dans le même annuaire.
+1. Dans le projet TodoListClient, en haut à droite, sélectionnez **Se connecter**, puis connectez-vous avec les informations d’identification que vous avez utilisées pour inscrire votre application ou connectez-vous en tant qu’utilisateur dans le même annuaire.
 
    Si vous vous connectez pour la première fois, vous pouvez être invité à donner votre consentement à l’API web TodoListService.
 
