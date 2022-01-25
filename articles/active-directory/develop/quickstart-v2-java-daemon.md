@@ -7,24 +7,21 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 01/22/2021
+ms.date: 01/10/2022
 ms.author: marsma
-ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 71c376b93433a06d6b9ffee0c1e574c967e0629f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: aaddev, "scenarios:getting-started", "languages:Java", devx-track-java, mode-api
+ms.openlocfilehash: 03cbfaf39178f62a570b18dc9a53d50153dbf9da
+ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040187"
+ms.lasthandoff: 01/14/2022
+ms.locfileid: "136836232"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Démarrage rapide : Acquérir un jeton et appeler l’API Microsoft Graph à partir d’une application console Java à l’aide de l’identité de l’application
 
 Dans ce guide de démarrage rapide, vous téléchargez et exécutez un exemple de code qui montre comment une application Java peut obtenir un jeton d’accès à l’aide de l’identité de l’application pour appeler l’API Microsoft Graph et afficher une [liste d’utilisateurs](/graph/api/user-list) dans l’annuaire. L’exemple de code montre comment un travail sans assistance ou un service Windows peut s’exécuter avec l’identité d’une application, au lieu de l’identité d’un utilisateur.
-
-> [!div renderon="docs"]
-> ![Montre le fonctionnement de l’exemple d’application généré par ce guide de démarrage rapide](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -33,97 +30,35 @@ Pour exécuter cet exemple, vous avec besoin de ce qui suit :
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 ou version ultérieure
 - [Maven](https://maven.apache.org/)
 
-> [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>Inscrire et télécharger votre application de démarrage rapide
+> [!div class="sxs-lookup"]
+### <a name="download-and-configure-the-quickstart-app"></a>Télécharger et configurer l’application de démarrage rapide
 
-> [!div renderon="docs" class="sxs-lookup"]
->
-> Vous disposez de deux options pour démarrer votre application de démarrage rapide : Express (Option 1 ci-dessous) et Manuel (Option 2)
->
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1 : Inscrire et configurer automatiquement votre application, puis télécharger votre exemple de code
->
-> 1. Accédez à l’expérience de démarrage rapide <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs" target="_blank">Portail Azure - Inscriptions d’applications</a>.
-> 1. Entrez un nom pour votre application, puis sélectionnez **Inscrire**.
-> 1. Suivez les instructions pour télécharger et configurer automatiquement votre nouvelle application en un seul clic.
->
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option n°2 : Inscrire et configurer manuellement vos application et exemple de code
+#### <a name="step-1-configure-the-application-in-azure-portal"></a>Étape 1 : Configurer l’application dans le portail Azure
+Pour que l’exemple de code fonctionne dans ce guide de démarrage rapide, vous devez créer un secret client et ajouter l’autorisation d’application **User.Read.All** de l’API Graph.
+> [!div class="nextstepaction"]
+> [Apporter ces modifications pour moi]()
 
-> [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Étape 1 : Inscrivez votre application
-> Pour inscrire votre application et ajouter manuellement les informations d’inscription de l’application à votre solution, procédez comme suit :
->
-> 1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
-> 1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoires + abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour basculer vers le locataire dans lequel vous voulez inscrire l’application.
-> 1. Recherchez et sélectionnez **Azure Active Directory**.
-> 1. Sous **Gérer**, sélectionnez **Inscriptions d’applications** > **Nouvelle inscription**.
-> 1. Entrez un **nom** pour votre application (par exemple, `Daemon-console`). Les utilisateurs de votre application peuvent voir ce nom, et vous pouvez le changer ultérieurement.
-> 1. Sélectionnez **Inscription**.
-> 1. Sous **Gérer**, sélectionnez **Certificats et secrets**.
-> 1. Sous **Secrets du client**, sélectionnez **Nouveau secret client**, entrez un nom, puis sélectionnez **Ajouter**. Enregistrez la valeur secrète dans un emplacement sûr pour l’utiliser dans une étape ultérieure.
-> 1. Sous **Gérer**, sélectionnez **Autorisations de l’API** > **Ajouter une autorisation**. Sélectionnez **Microsoft Graph**.
-> 1. Sélectionnez **Autorisations de l’application**.
-> 1. Sous le nœud **Utilisateur**, sélectionnez **User.Read.All**, puis sélectionnez **Ajouter des autorisations**.
-
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-the-quickstart-app"></a>Télécharger et configurer l’application de démarrage rapide
->
-> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Étape 1 : Configurer l’application dans le portail Azure
-> Pour que l’exemple de code fonctionne dans ce guide de démarrage rapide, vous devez créer un secret client et ajouter l’autorisation d’application **User.Read.All** de l’API Graph.
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Apporter ces modifications pour moi]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![Déjà configuré](media/quickstart-v2-netcore-daemon/green-check.png) Votre application est configurée avec ces attributs.
+> [!div class="alert alert-info"]
+> ![Déjà configuré](media/quickstart-v2-netcore-daemon/green-check.png) Votre application est configurée avec ces attributs.
 
 #### <a name="step-2-download-the-java-project"></a>Étape 2 : Télécharger le projet Java
 
-> [!div renderon="docs"]
-> [Télécharger le projet de démon Java](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip)
-
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
+> [!div class="sxs-lookup nextstepaction"]
 > [Téléchargez l’exemple de code](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip).
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div class="sxs-lookup"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-the-java-project"></a>Étape 3 : Configurer le projet Java
->
-> 1. Extrayez le fichier zip dans un dossier local proche de la racine du disque, par exemple, *C:\Azure-Samples*.
-> 1. Accédez au sous-dossier **msal-client-credential-secret**.
-> 1. Modifiez *src\main\resources\application.properties* pour remplacer les valeurs des champs `AUTHORITY`, `CLIENT_ID` et `SECRET` par l’extrait suivant :
->
->    ```
->    AUTHORITY=https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/
->    CLIENT_ID=Enter_the_Application_Id_Here
->    SECRET=Enter_the_Client_Secret_Here
->    ```
->    Où :
->    - `Enter_the_Application_Id_Here` : est l’**ID d’application (client)** pour l’application que vous avez inscrite.
->    - `Enter_the_Tenant_Id_Here` : remplacez cette valeur par l’**ID du locataire** ou le **nom du locataire** (par exemple, contoso.microsoft.com).
->    - `Enter_the_Client_Secret_Here` : remplacez cette valeur par le secret client créé à l’étape 1.
->
-> > [!TIP]
-> > Pour connaître les valeurs de l’**ID d’application (client)** et de l’**ID de l’annuaire (locataire)** , consultez la page **Vue d’ensemble** de l’application dans le Portail Azure. Pour générer une nouvelle clé, accédez à la page **Certificats et secrets**.
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-admin-consent"></a>Étape 3 : Consentement de l’administrateur
-
-> [!div renderon="docs"]
-> #### <a name="step-4-admin-consent"></a>Étape 4 : Consentement de l’administrateur
+#### <a name="step-3-admin-consent"></a>Étape 3 : Consentement de l’administrateur
 
 Si vous essayez d’exécuter l’application à ce stade, vous recevez l’erreur *HTTP 403 - Interdit* : `Insufficient privileges to complete the operation`. Cette erreur se produit parce que toute *autorisation d’application uniquement* nécessite le consentement de l’administrateur. Autrement dit, un administrateur général de votre annuaire doit donner son consentement à votre application. Sélectionnez l’une des options ci-dessous en fonction de votre rôle :
 
 ##### <a name="global-tenant-administrator"></a>Administrateur de locataires général
 
-> [!div renderon="docs"]
-> Si vous avez le rôle d’administrateur de locataires général, accédez à la page **Autorisations de l’API** dans **Inscriptions d’applications** sur le portail Azure et sélectionnez **Accorder le consentement administrateur pour {nom du locataire}** (où {nom du locataire} correspond au nom de votre annuaire).
-
-> [!div renderon="portal" class="sxs-lookup"]
-> Si vous êtes administrateur général, accédez à la page **Autorisations de l’API** et sélectionnez **Accorder le consentement administrateur pour Entrer_le_nom_du_locataire_ici**.
-> > [!div id="apipermissionspage"]
-> > [Accéder à la page Autorisations de l’API]()
+Si vous êtes administrateur général, accédez à la page **Autorisations de l’API** et sélectionnez **Accorder le consentement administrateur pour Entrer_le_nom_du_locataire_ici**.
+> [!div id="apipermissionspage"]
+> [Accéder à la page Autorisations de l’API]()
 
 ##### <a name="standard-user"></a>Utilisateur standard
 
@@ -132,17 +67,7 @@ Si vous êtes un utilisateur standard de votre locataire, vous devez demander à
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
 ```
-
-> [!div renderon="docs"]
-> > Où :
-> > * `Enter_the_Tenant_Id_Here` : remplacez cette valeur par l’**ID du locataire** ou le **nom du locataire** (par exemple, contoso.microsoft.com)
-> > * `Enter_the_Application_Id_Here` : est l’**ID d’application (client)** pour l’application que vous avez inscrite.
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-4-run-the-application"></a>Étape 4 : Exécution de l'application
-
-> [!div renderon="docs"]
-> #### <a name="step-5-run-the-application"></a>Étape 5 : Exécution de l'application
+#### <a name="step-4-run-the-application"></a>Étape 4 : Exécution de l'application
 
 Vous pouvez tester l’exemple directement en exécutant la méthode main de ClientCredentialGrant.java à partir de votre IDE.
 
