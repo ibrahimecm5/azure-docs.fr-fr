@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 01/10/2022
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, "scenarios:getting-started", "languages:Python", mode-api
-ms.openlocfilehash: 56da3c2e7b52ffc9cfc0f4bdb2e4c83bb031965f
-ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
+ms.openlocfilehash: c762f47fe93780c6f405b3cabc546ecd6fec8f16
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2022
-ms.locfileid: "136832020"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137803739"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Démarrage rapide : acquérir un jeton et appeler l’API Microsoft Graph à partir d’une application console Python à l’aide de l’identité de l’application
 
